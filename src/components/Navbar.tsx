@@ -9,8 +9,8 @@ export default function Navbar() {
       <nav className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
         <NavLink to="/" className="text-lg font-semibold">Haven</NavLink>
         <div className="flex items-center gap-1">
-          <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
           <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Life in the UK</NavLink>
+          <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
           <NavLink to="/paywall" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Upgrade</NavLink>
         </div>
       </nav>

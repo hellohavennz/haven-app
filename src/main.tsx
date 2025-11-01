@@ -9,7 +9,8 @@ import ContentIndex from "./pages/ContentIndex";
 import ContentLesson from "./pages/ContentLesson";
 import PracticeIndex from "./pages/PracticeIndex";
 import PracticeLesson from "./pages/PracticeLesson";
-import Lesson from "./pages/Lesson"; // (Supabase-backed, kept for later)
+import PracticeFlashcards from "./pages/PracticeFlashcards";
+import Lesson from "./pages/Lesson"; // Supabase-backed (kept for later)
 
 const Mock = () => <div>Mock exam coming soon…</div>;
 const Profile = () => <div>Profile coming soon…</div>;
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       { path: "content/:lessonId", element: <ContentLesson /> },
       { path: "practice", element: <PracticeIndex /> },
       { path: "practice/:lessonId", element: <PracticeLesson /> },
-      { path: "lesson/:lessonId", element: <Lesson /> }, // optional legacy route
+      { path: "practice/:lessonId/flashcards", element: <PracticeFlashcards /> },
+      { path: "lesson/:lessonId", element: <Lesson /> },
       { path: "mock", element: <Mock /> },
       { path: "profile", element: <Profile /> },
       { path: "paywall", element: <Paywall /> }

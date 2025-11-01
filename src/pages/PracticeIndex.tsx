@@ -19,7 +19,7 @@ export default function PracticeIndex() {
                   <div className="font-medium">{l.title}</div>
                   <div className="flex gap-2">
                     <Link to={`/practice/${l.id}`} className="px-3 py-2 rounded bg-black text-white">Questions</Link>
-                    <Link to={`/practice/${l.id}#flashcards`} className="px-3 py-2 rounded border">Flashcards</Link>
+                    <Link to={`/practice/${l.id}/flashcards`} className="px-3 py-2 rounded border">Flashcards</Link>
                   </div>
                 </li>
               ))}

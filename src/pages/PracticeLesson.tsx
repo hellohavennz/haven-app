@@ -1,42 +1,45 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById } from "../lib/content";
 import { getProgress, recordAttempt, resetProgress } from "../lib/progress";
 
-function shuffle<T>(arr: T[]) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+type AnswerState = { selected: number | null; checked: boolean };
 
 export default function PracticeLesson() {
   const { lessonId } = useParams();
   const data = lessonId ? getLessonById(lessonId) : null;
 
-  const [idx, setIdx] = useState(0);
-  const [choice, setChoice] = useState<number | null>(null);
-  const [phase, setPhase] = useState<"ask" | "feedback">("ask");
+  const [answers, setAnswers] = useState<AnswerState[]>([]);
   const [stats, setStats] = useState(getProgress(lessonId || ""));
 
-  const flashcards = useMemo(() => shuffle(data?.flashcards ?? []), [lessonId]);
-
   useEffect(() => {
-    setIdx(0); setChoice(null); setPhase("ask");
-    setStats(getProgress(lessonId || ""));
+    if (!data) return;
+    setAnswers(data.questions.map(() => ({ selected: null, checked: false })));
+    setStats(getProgress(data.id));
   }, [lessonId]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
-  const q = data.questions[idx];
 
-  function answer(i: number) {
+  function choose(qIdx: number, optIdx: number) {
+    setAnswers(prev => {
+      const next = prev.slice();
+      next[qIdx].selected = optIdx;
+      return next;
+    });
+  }
+
+  function check(qIdx: number) {
     if (!data) return;
-    setChoice(i);
-    setPhase("feedback");
-    const updated = recordAttempt(data.id, i === q.correct_index);
+    const q = data.questions[qIdx];
+    const sel = answers[qIdx].selected;
+    if (sel === null) return;
+    const updated = recordAttempt(data.id, sel === q.correct_index);
     setStats(updated);
+    setAnswers(prev => {
+      const next = prev.slice();
+      next[qIdx].checked = true;
+      return next;
+    });
   }
 
   return (
@@ -46,12 +49,10 @@ export default function PracticeLesson() {
           Practice — {data.title}
         </h1>
         <p className="text-gray-600">
-          Read the study material first →{" "}
-          <Link to={`/content/${data.id}`} className="underline">Study: {data.title}</Link>
+          Study first → <Link to={`/content/${data.id}`} className="underline">read the lesson</Link>
         </p>
         <div className="text-sm text-gray-600">
-          Progress: <strong>{stats.correct || 0}</strong> correct out of <strong>{stats.attempted || 0}</strong>{" "}
-          attempts
+          Progress: <strong>{stats.correct || 0}</strong> correct of <strong>{stats.attempted || 0}</strong>
           <button
             className="ml-3 text-xs px-2 py-1 border rounded"
             onClick={() => { resetProgress(data.id); setStats({attempted:0, correct:0}); }}
@@ -61,73 +62,59 @@ export default function PracticeLesson() {
         </div>
       </header>
 
-      {/* Questions */}
-      <section id="questions" className="space-y-4">
+      <section id="questions" className="space-y-5">
         <h2 className="text-xl font-semibold">Questions</h2>
-        {q ? (
-          <div className="bg-white border rounded-xl p-5">
-            <p className="font-medium">{q.prompt}</p>
-            <ul className="mt-3 space-y-2">
-              {q.options.map((opt, i) => (
-                <li key={i}>
-                  <button
-                    className={`w-full text-left p-2 rounded border ${choice===i ? "bg-gray-100" : ""}`}
-                    onClick={() => phase==="ask" && answer(i)}
-                    disabled={phase==="feedback"}
-                  >
-                    {opt}
-                  </button>
-                </li>
-              ))}
-            </ul>
+        {data.questions.map((q, qIdx) => {
+          const a = answers[qIdx] || { selected: null, checked: false };
+          return (
+            <div key={qIdx} className="bg-white border rounded-xl p-5 space-y-3">
+              <p className="font-medium">{q.prompt}</p>
+              <ul className="space-y-2">
+                {q.options.map((opt, i) => {
+                  const isRight = i === q.correct_index;
+                  const picked = a.selected === i;
+                  const show = a.checked;
+                  return (
+                    <li key={i}>
+                      <button
+                        className={`w-full text-left p-2 rounded border
+                          ${picked ? "bg-gray-100" : ""}
+                          ${show && isRight ? "border-green-600" : ""}
+                          ${show && picked && !isRight ? "border-red-600" : ""}`}
+                        onClick={() => choose(qIdx, i)}
+                        disabled={show}
+                      >
+                        {opt}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
 
-            {phase === "feedback" && (
-              <div className="mt-4 text-sm">
-                {choice === q.correct_index ? "✅ Correct" : "❌ Not quite"}
-                <div className="mt-2 opacity-80">
-                  Learn more in{" "}
-                  <Link to={`/content/${data.id}`} className="underline">the study section</Link>. Tip: read the
-                  key facts and memory hook for quick recall.
-                </div>
-                <div className="mt-3">
-                  <button
-                    className="px-3 py-2 rounded bg-black text-white"
-                    onClick={() => { setIdx(idx+1 < data.questions.length ? idx+1 : 0); setChoice(null); setPhase("ask"); }}
-                  >
-                    Next question
-                  </button>
-                </div>
+              <div className="flex gap-2">
+                <button
+                  className="px-3 py-2 rounded bg-black text-white disabled:opacity-50"
+                  onClick={() => check(qIdx)}
+                  disabled={a.selected === null || a.checked}
+                >
+                  Check answer
+                </button>
+                {a.checked && (
+                  <Link to={`/content/${data.id}`} className="px-3 py-2 rounded border">
+                    Review in study section
+                  </Link>
+                )}
               </div>
-            )}
-          </div>
-        ) : (
-          <div className="text-gray-600">No questions yet for this lesson.</div>
-        )}
-      </section>
 
-      {/* Flashcards */}
-      <section id="flashcards" className="space-y-3">
-        <h2 className="text-xl font-semibold">Flashcards</h2>
-        <p className="text-sm text-gray-600">Click a card to reveal the answer. (Not tracked for progress.)</p>
-        <div className="grid md:grid-cols-2 gap-3">
-          {flashcards.map(([q, a], i) => (
-            <FlipCard key={i} question={q} answer={a} />
-          ))}
-        </div>
+              {a.checked && (
+                <div className="text-sm mt-2">
+                  {a.selected === q.correct_index ? "✅ Correct" : "❌ Not quite — review the key facts."}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
     </div>
-  );
-}
-
-function FlipCard({ question, answer }: { question: string; answer: string }) {
-  const [show, setShow] = useState(false);
-  return (
-    <button
-      className="text-left bg-white border rounded-xl p-4 hover:shadow transition"
-      onClick={() => setShow(s => !s)}
-    >
-      <div className="text-sm text-gray-500">{show ? "Answer" : "Question"}</div>
-      <div className="mt-1">{show ? answer : question}</div>
-    </button>
   );
 }
