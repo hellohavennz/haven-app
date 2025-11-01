@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getLessonById } from "../lib/content";
+import { loadLessonById } from "../lib/content";
+import type { LessonJSON } from "../types";
 import { getProgress, recordAttempt, resetProgress } from "../lib/progress";
 
 type AnswerState = { selected: number | null; checked: boolean };
 
 export default function PracticeLesson() {
   const { lessonId } = useParams();
-  const data = lessonId ? getLessonById(lessonId) : null;
-
+  const [data, setData] = useState<LessonJSON | null>(null);
   const [answers, setAnswers] = useState<AnswerState[]>([]);
-  const [stats, setStats] = useState(getProgress(lessonId || ""));
+  const [stats, setStats] = useState({ attempted: 0, correct: 0 });
 
   useEffect(() => {
-    if (!data) return;
-    setAnswers(data.questions.map(() => ({ selected: null, checked: false })));
-    setStats(getProgress(data.id));
+    if (!lessonId) return;
+    (async () => {
+      const d = await loadLessonById(lessonId);
+      setData(d);
+      setAnswers(d ? d.questions.map(() => ({ selected: null, checked: false })) : []);
+      setStats(d ? getProgress(d.id) : { attempted: 0, correct: 0 });
+    })();
   }, [lessonId]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
+  if (!data) return <div className="max-w-3xl mx-auto p-6">Loading…</div>;
 
   function choose(qIdx: number, optIdx: number) {
     setAnswers(prev => {
@@ -29,7 +33,6 @@ export default function PracticeLesson() {
   }
 
   function check(qIdx: number) {
-    if (!data) return;
     const q = data.questions[qIdx];
     const sel = answers[qIdx].selected;
     if (sel === null) return;
@@ -52,7 +55,7 @@ export default function PracticeLesson() {
           Study first → <Link to={`/content/${data.id}`} className="underline">read the lesson</Link>
         </p>
         <div className="text-sm text-gray-600">
-          Progress: <strong>{stats.correct || 0}</strong> correct of <strong>{stats.attempted || 0}</strong>
+          Progress: <strong>{stats.correct}</strong> correct of <strong>{stats.attempted}</strong>
           <button
             className="ml-3 text-xs px-2 py-1 border rounded"
             onClick={() => { resetProgress(data.id); setStats({attempted:0, correct:0}); }}

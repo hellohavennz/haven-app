@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getLessonById } from "../lib/content";
+import { loadLessonById } from "../lib/content";
+import type { LessonJSON } from "../types";
 
 function shuffle<T>(arr: T[]) {
   const a = arr.slice();
@@ -13,14 +14,19 @@ function shuffle<T>(arr: T[]) {
 
 export default function PracticeFlashcards() {
   const { lessonId } = useParams();
-  const data = lessonId ? getLessonById(lessonId) : null;
-  const deck = useMemo(() => shuffle(data?.flashcards ?? []), [lessonId]);
+  const [data, setData] = useState<LessonJSON | null>(null);
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
+  const deck = useMemo(() => shuffle(data?.flashcards ?? []), [data?.id]);
 
-  useEffect(() => { setIdx(0); setReveal(false); }, [lessonId]);
+  useEffect(() => {
+    if (!lessonId) return;
+    (async () => setData(await loadLessonById(lessonId)))();
+  }, [lessonId]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
+  useEffect(() => { setIdx(0); setReveal(false); }, [data?.id]);
+
+  if (!data) return <div className="max-w-3xl mx-auto p-6">Loading…</div>;
   const card = deck[idx];
 
   function next() {

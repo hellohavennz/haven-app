@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getLessonById } from "../lib/content";
+import { loadLessonById } from "../lib/content";
+import type { LessonJSON } from "../types";
 
 export default function ContentLesson() {
   const { lessonId } = useParams();
-  const data = lessonId ? getLessonById(lessonId) : null;
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
+  const [data, setData] = useState<LessonJSON | null>(null);
+
+  useEffect(() => {
+    if (!lessonId) return;
+    (async () => setData(await loadLessonById(lessonId)))();
+  }, [lessonId]);
+
+  if (!data) return <div className="max-w-3xl mx-auto p-6">Loading…</div>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-8">
@@ -29,7 +37,7 @@ export default function ContentLesson() {
 
       <div className="flex gap-3">
         <Link to={`/practice/${data.id}`} className="px-4 py-2 rounded bg-black text-white">Test yourself</Link>
-        <Link to={`/practice/${data.id}#flashcards`} className="px-4 py-2 rounded border">Flashcards</Link>
+        <Link to={`/practice/${data.id}/flashcards`} className="px-4 py-2 rounded border">Flashcards</Link>
       </div>
     </div>
   );
