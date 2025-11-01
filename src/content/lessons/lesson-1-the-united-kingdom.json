@@ -23,13 +23,48 @@
   ],
   "memory_hook": "Imagine the UK as a house with four rooms under one roof — each room decorated in its own style (England, Scotland, Wales, Northern Ireland), but all sharing one key (London government) and one roof (the Union Jack flag).",
   "questions": [
-    { "prompt": "How many countries make up the United Kingdom?", "options": ["Three","Four","Five","Six"], "correct_index": 1 },
-    { "prompt": "Which country is not part of Great Britain?", "options": ["Scotland","England","Wales","Northern Ireland"], "correct_index": 3 },
-    { "prompt": "What is the capital city of Wales?", "options": ["Swansea","Cardiff","Newport","Bangor"], "correct_index": 1 },
-    { "prompt": "Which currency is used throughout the UK?", "options": ["Euro","US Dollar","Pound Sterling","Scottish Pound"], "correct_index": 2 },
-    { "prompt": "Where is the UK located geographically?", "options": ["North-East Europe","North-West Europe","Southern Europe","Central Europe"], "correct_index": 1 },
-    { "prompt": "What is the approximate current population of the UK?", "options": ["50 million","60 million","67 million","80 million"], "correct_index": 2 },
-    { "prompt": "Which languages other than English are spoken in parts of the UK?", "options": ["Welsh, Gaelic, Irish Gaelic","French, Dutch, German","Cornish, Latin, Spanish","None"], "correct_index": 0 }
+    {
+      "prompt": "How many countries make up the United Kingdom?",
+      "options": ["Three","Four","Five","Six"],
+      "correct_index": 1,
+      "explanation": "The UK is made up of four countries: England, Scotland, Wales and Northern Ireland."
+    },
+    {
+      "prompt": "Which country is not part of Great Britain?",
+      "options": ["Scotland","England","Wales","Northern Ireland"],
+      "correct_index": 3,
+      "explanation": "Great Britain is the island containing England, Scotland and Wales. Northern Ireland is on the island of Ireland."
+    },
+    {
+      "prompt": "What is the capital city of Wales?",
+      "options": ["Swansea","Cardiff","Newport","Bangor"],
+      "correct_index": 1,
+      "explanation": "Cardiff is the capital of Wales. (Edinburgh is Scotland, Belfast is Northern Ireland, London is England/UK.)"
+    },
+    {
+      "prompt": "Which currency is used throughout the UK?",
+      "options": ["Euro","US Dollar","Pound Sterling","Scottish Pound"],
+      "correct_index": 2,
+      "explanation": "The pound sterling (£) is the UK currency across all four nations. Scotland and Northern Ireland may issue their own banknotes but they are still pounds."
+    },
+    {
+      "prompt": "Where is the UK located geographically?",
+      "options": ["North-East Europe","North-West Europe","Southern Europe","Central Europe"],
+      "correct_index": 1,
+      "explanation": "The UK sits in north-west Europe, off the north-western coast of mainland Europe."
+    },
+    {
+      "prompt": "What is the approximate current population of the UK?",
+      "options": ["50 million","60 million","67 million","80 million"],
+      "correct_index": 2,
+      "explanation": "The population is about 67 million (around 67.6 million in 2022 estimates)."
+    },
+    {
+      "prompt": "Which languages other than English are spoken in parts of the UK?",
+      "options": ["Welsh, Gaelic, Irish Gaelic","French, Dutch, German","Cornish, Latin, Spanish","None"],
+      "correct_index": 0,
+      "explanation": "Besides English, Welsh, Scottish Gaelic and Irish Gaelic are spoken in some areas."
+    }
   ],
   "flashcards": [
     ["What is the official name of the UK?","The United Kingdom of Great Britain and Northern Ireland"],

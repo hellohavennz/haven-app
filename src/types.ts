@@ -5,6 +5,11 @@ export type LessonJSON = {
   overview: string;
   key_facts: string[];
   memory_hook: string;
-  questions: { prompt: string; options: string[]; correct_index: number }[];
+  questions: {
+    prompt: string;
+    options: string[];
+    correct_index: number;
+    explanation?: string;  // ← new
+  }[];
   flashcards: [string, string][];
 };

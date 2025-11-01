@@ -66,6 +66,7 @@ export default function PracticeLesson() {
         <h2 className="text-xl font-semibold">Questions</h2>
         {data.questions.map((q, qIdx) => {
           const a = answers[qIdx] || { selected: null, checked: false };
+          const correct = a.selected === q.correct_index;
           return (
             <div key={qIdx} className="bg-white border rounded-xl p-5 space-y-3">
               <p className="font-medium">{q.prompt}</p>
@@ -108,7 +109,7 @@ export default function PracticeLesson() {
 
               {a.checked && (
                 <div className="text-sm mt-2">
-                  {a.selected === q.correct_index ? "✅ Correct" : "❌ Not quite — review the key facts."}
+                  {correct ? "✅ Correct" : "❌ Not quite"} — {q.explanation || "See the Key Facts for this lesson."}
                 </div>
               )}
             </div>
