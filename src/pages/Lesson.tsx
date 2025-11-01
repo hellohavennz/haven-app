@@ -1,7 +1,5 @@
-// src/pages/Lesson.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchLessonWithQuestionsById } from "../lib/api";
 import { supabase } from "../lib/supabase";
 
 type Q = {
@@ -23,42 +21,59 @@ export default function Lesson() {
 
   useEffect(() => {
     if (!lessonId) return;
-    fetchLessonWithQuestionsById(lessonId)
-      .then(({ lesson, questions }) => {
+    (async () => {
+      const { data: lesson } = await supabase
+        .from("lessons")
+        .select("id, title, body")
+        .eq("id", lessonId)
+        .single();
+      if (lesson) {
         setTitle(lesson.title);
         setBody(lesson.body || "");
-        setQs(questions as Q[]);
-        setI(0);
-        setSelected(null);
-        setState("ask");
-      })
-      .catch(console.error);
+      }
+      const { data: questions } = await supabase
+        .from("questions")
+        .select("id, prompt, options, correct_index, rationale")
+        .eq("lesson_id", lessonId);
+      setQs((questions as Q[]) ?? []);
+      setI(0);
+      setSelected(null);
+      setState("ask");
+    })();
   }, [lessonId]);
 
-  if (!lessonId) return <div className="p-6">Missing lesson id.</div>;
   const q = qs[i];
 
   async function answer(choice: number) {
     setSelected(choice);
     setState("feedback");
-
-    // Optional: record attempt (requires user auth enabled)
-    const { data: { user } } = await supabase.auth.getUser();
-    const user_id = user?.id ?? "00000000-0000-0000-0000-000000000000"; // guest
-    await supabase.from("attempts").insert({
-      user_id,
-      question_id: q.id,
-      correct: choice === q.correct_index,
-    });
+    // recording attempts can be added later when auth is enabled
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-5">
-      <h1 className="text-2xl font-semibold">{title}</h1>
-      <pre className="bg-gray-50 p-3 rounded whitespace-pre-wrap">{body}</pre>
+    <div className="max-w-3xl mx-auto p-6 space-y-6">
+      <h1 className="text-3xl font-bold tracking-tight text-[#0F4C5C]">{title}</h1>
+
+      <article className="bg-white border rounded-xl p-5 leading-relaxed text-gray-800 space-y-3">
+        {body.split("\n").map((line, idx) => {
+          const trimmed = line.trim();
+          if (!trimmed) return <div key={idx} className="h-1" />;
+          if (trimmed.startsWith("- ")) {
+            return (
+              <ul key={idx} className="list-disc pl-6">
+                <li>{trimmed.substring(2)}</li>
+              </ul>
+            );
+          }
+          if (trimmed.startsWith("# ")) {
+            return <h2 key={idx} className="text-xl font-semibold mt-2">{trimmed.substring(2)}</h2>;
+          }
+          return <p key={idx}>{line}</p>;
+        })}
+      </article>
 
       {q && (
-        <div className="border rounded p-4">
+        <div className="border rounded-xl p-5 bg-white">
           <p className="font-medium mb-2">{q.prompt}</p>
           <ul className="space-y-2">
             {q.options.map((opt, idx) => (
@@ -77,7 +92,7 @@ export default function Lesson() {
           {state === "feedback" && (
             <div className="mt-3 text-sm">
               {selected === q.correct_index ? "✅ Correct" : "❌ Not quite"}
-              <div className="opacity-80 mt-1">{q.rationale}</div>
+              {q.rationale && <div className="opacity-80 mt-1">{q.rationale}</div>}
               <button
                 className="mt-3 px-3 py-2 bg-black text-white rounded"
                 onClick={() => { setI((x) => x + 1); setSelected(null); setState("ask"); }}
