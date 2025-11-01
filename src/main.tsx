@@ -5,9 +5,11 @@ import "./index.css";
 
 import RootLayout from "./layouts/RootLayout";
 import App from "./App";
-import Path from "./pages/Path";
-import Lesson from "./pages/Lesson";
-import Lesson1Content from "./pages/Lesson1Content";
+import ContentIndex from "./pages/ContentIndex";
+import ContentLesson from "./pages/ContentLesson";
+import PracticeIndex from "./pages/PracticeIndex";
+import PracticeLesson from "./pages/PracticeLesson";
+import Lesson from "./pages/Lesson"; // (Supabase-backed, kept for later)
 
 const Mock = () => <div>Mock exam coming soon…</div>;
 const Profile = () => <div>Profile coming soon…</div>;
@@ -19,9 +21,11 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <App /> },
-      { path: "path", element: <Path /> },
-      { path: "lesson/:lessonId", element: <Lesson /> },
-      { path: "lesson1-content", element: <Lesson1Content /> },
+      { path: "content", element: <ContentIndex /> },
+      { path: "content/:lessonId", element: <ContentLesson /> },
+      { path: "practice", element: <PracticeIndex /> },
+      { path: "practice/:lessonId", element: <PracticeLesson /> },
+      { path: "lesson/:lessonId", element: <Lesson /> }, // optional legacy route
       { path: "mock", element: <Mock /> },
       { path: "profile", element: <Profile /> },
       { path: "paywall", element: <Paywall /> }
