@@ -1,0 +1,103 @@
+{
+  "id": "lesson-5-tudors-stuarts",
+  "title": "Tudors and Stuarts: Reformation to Revolution",
+  "module_slug": "history",
+  "overview": "The Tudor period (1485-1603) brought dramatic changes to Britain. The most famous Tudor monarch was Henry VIII, who ruled from 1509 to 1547. Henry wanted a male heir, but when the Pope refused to annul his marriage to Catherine of Aragon, Henry broke away from the Roman Catholic Church and established the Church of England, making himself its head. This period, known as the Reformation, changed Britain's religious identity forever.\n\nHenry VIII had six wives in his quest for a male heir. His daughter Elizabeth I became one of England's greatest monarchs, ruling from 1558 to 1603. During her reign, England defeated the Spanish Armada in 1588, a huge fleet sent by Spain to invade England. This victory established England as a major naval power. The Elizabethan era was also a golden age of culture, with William Shakespeare writing his famous plays.\n\nThe Stuart period (1603-1714) was marked by conflict between monarchs and Parliament over who had ultimate power. King Charles I believed in the 'divine right of kings' – that he was chosen by God and answerable only to God, not Parliament. This led to the English Civil War (1642-1651) between Royalists (Cavaliers) supporting the king and Parliamentarians (Roundheads). Parliament's forces, led by Oliver Cromwell, won, and Charles I was executed in 1649 – the only British monarch ever to be executed. After Cromwell's death, the monarchy was restored in 1660 under Charles II.\n\nIn 1688, the Glorious Revolution saw King James II, a Catholic, replaced by his Protestant daughter Mary and her husband William of Orange. This revolution was 'glorious' because it happened without bloodshed. Parliament then passed the Bill of Rights (1689), which limited royal power and established Parliament as the supreme authority. This marked the beginning of constitutional monarchy, where the monarch reigns but Parliament governs.",
+  "key_facts": [
+    "The Tudor period lasted from 1485 to 1603.",
+    "Henry VIII ruled from 1509 to 1547 and broke away from the Roman Catholic Church.",
+    "Henry VIII established the Church of England and made himself its head.",
+    "The Reformation was the period when England broke from the Catholic Church.",
+    "Henry VIII had six wives in his quest for a male heir.",
+    "Elizabeth I ruled from 1558 to 1603 and was one of England's greatest monarchs.",
+    "1588: The Spanish Armada was defeated by England, establishing naval power.",
+    "William Shakespeare wrote his plays during the Elizabethan era.",
+    "The Stuart period lasted from 1603 to 1714.",
+    "Charles I believed in the divine right of kings (answerable only to God).",
+    "The English Civil War (1642-1651) was fought between Royalists and Parliamentarians.",
+    "Royalists were called Cavaliers; Parliamentarians were called Roundheads.",
+    "Oliver Cromwell led Parliament's forces to victory in the Civil War.",
+    "Charles I was executed in 1649 – the only British monarch ever executed.",
+    "The monarchy was restored in 1660 under Charles II.",
+    "1688: The Glorious Revolution replaced James II with William and Mary without bloodshed.",
+    "The Bill of Rights (1689) limited royal power and established Parliament's authority.",
+    "Constitutional monarchy means the monarch reigns but Parliament governs."
+  ],
+  "memory_hook": "Think: Henry VIII broke with Rome and had six wives, then Elizabeth beat the Spanish Armada. Later, Charles I lost his head in the Civil War, and the Glorious Revolution (1688) gave power to Parliament forever.",
+  "questions": [
+    {
+      "prompt": "Why did Henry VIII break away from the Roman Catholic Church?",
+      "options": ["He wanted more power", "The Pope refused to annul his marriage", "He didn't believe in God", "Parliament forced him"],
+      "correct_index": 1,
+      "explanation": "Henry VIII broke from the Catholic Church because the Pope refused to annul his marriage to Catherine of Aragon. He established the Church of England with himself as head."
+    },
+    {
+      "prompt": "In which year was the Spanish Armada defeated?",
+      "options": ["1509", "1558", "1588", "1603"],
+      "correct_index": 2,
+      "explanation": "The Spanish Armada was defeated in 1588 during Elizabeth I's reign, establishing England as a major naval power."
+    },
+    {
+      "prompt": "What were the supporters of King Charles I called during the Civil War?",
+      "options": ["Roundheads", "Cavaliers", "Jacobites", "Parliamentarians"],
+      "correct_index": 1,
+      "explanation": "Royalist supporters of Charles I were called Cavaliers, while Parliamentarians were called Roundheads."
+    },
+    {
+      "prompt": "Who led Parliament's forces during the English Civil War?",
+      "options": ["Charles I", "Oliver Cromwell", "William of Orange", "Henry VIII"],
+      "correct_index": 1,
+      "explanation": "Oliver Cromwell led Parliament's forces to victory against King Charles I during the English Civil War."
+    },
+    {
+      "prompt": "What happened to King Charles I in 1649?",
+      "options": ["He abdicated", "He was executed", "He fled to France", "He died naturally"],
+      "correct_index": 1,
+      "explanation": "Charles I was executed in 1649 after losing the Civil War. He remains the only British monarch ever to be executed."
+    },
+    {
+      "prompt": "Why was the 1688 revolution called 'Glorious'?",
+      "options": ["It was very violent", "It happened without bloodshed", "It made England rich", "It lasted a long time"],
+      "correct_index": 1,
+      "explanation": "The Glorious Revolution of 1688 was called 'glorious' because James II was replaced peacefully without bloodshed."
+    },
+    {
+      "prompt": "What important document was passed in 1689 limiting royal power?",
+      "options": ["Magna Carta", "Act of Union", "Bill of Rights", "Reform Act"],
+      "correct_index": 2,
+      "explanation": "The Bill of Rights (1689) limited royal power and established Parliament as the supreme authority in England."
+    },
+    {
+      "prompt": "How many wives did Henry VIII have?",
+      "options": ["Three", "Four", "Six", "Eight"],
+      "correct_index": 2,
+      "explanation": "Henry VIII famously had six wives in his quest for a male heir."
+    },
+    {
+      "prompt": "Which famous playwright wrote during Elizabeth I's reign?",
+      "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Geoffrey Chaucer"],
+      "correct_index": 1,
+      "explanation": "William Shakespeare wrote his famous plays during the Elizabethan era, which is considered a golden age of English culture."
+    }
+  ],
+  "flashcards": [
+    ["When did Henry VIII rule?", "1509-1547"],
+    ["What church did Henry VIII establish?", "The Church of England"],
+    ["Why did Henry break with Rome?", "Pope refused to annul his marriage"],
+    ["How many wives did Henry VIII have?", "Six"],
+    ["When did Elizabeth I rule?", "1558-1603"],
+    ["When was the Spanish Armada defeated?", "1588"],
+    ["Who wrote plays in Elizabethan times?", "William Shakespeare"],
+    ["When was the English Civil War?", "1642-1651"],
+    ["What were Royalists called?", "Cavaliers"],
+    ["What were Parliamentarians called?", "Roundheads"],
+    ["Who led Parliament's army?", "Oliver Cromwell"],
+    ["When was Charles I executed?", "1649"],
+    ["When was the Glorious Revolution?", "1688"],
+    ["Who replaced James II in 1688?", "William and Mary"],
+    ["What limited royal power in 1689?", "Bill of Rights"],
+    ["What does constitutional monarchy mean?", "Monarch reigns, Parliament governs"],
+    ["What is divine right of kings?", "Belief king is chosen by God"],
+    ["When was monarchy restored?", "1660 under Charles II"]
+  ]
+}
