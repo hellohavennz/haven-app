@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser, logout } from "../lib/auth";
+import { onAuthStateChange } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
 import { Menu, X, Sparkles, Crown } from "lucide-react";
 
@@ -11,7 +12,17 @@ export default function Navbar() {
   const { tier } = useSubscription();
 
   useEffect(() => {
+    // Get initial user
     getCurrentUser().then(setUser);
+    
+    // Listen for auth changes
+    const { data: { subscription } } = onAuthStateChange((newUser) => {
+      setUser(newUser);
+    });
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const handleLogout = async () => {
@@ -22,7 +33,6 @@ export default function Navbar() {
 
   const showUpgrade = user && tier !== 'premium';
   const upgradeText = tier === 'plus' ? 'Upgrade to Premium' : 'Upgrade';
-  const upgradeTo = tier === 'plus' ? 'premium' : 'plus';
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -76,12 +86,15 @@ export default function Navbar() {
 
             {/* Auth Buttons */}
             {user ? (
-              <button
-                onClick={handleLogout}
-                className="hidden md:block px-4 py-2 text-sm font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors"
-              >
-                Sign Out
-              </button>
+              <div className="hidden md:flex items-center gap-3">
+                <span className="text-sm text-gray-600">Hi, {user.email?.split('@')[0]}</span>
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors"
+                >
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <div className="hidden md:flex items-center gap-2">
                 <Link
@@ -149,15 +162,20 @@ export default function Navbar() {
 
             <div className="border-t border-gray-200 pt-2 mt-2">
               {user ? (
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
-                >
-                  Sign Out
-                </button>
+                <>
+                  <div className="px-4 py-2 text-sm text-gray-600">
+                    Signed in as {user.email}
+                  </div>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+                  >
+                    Sign Out
+                  </button>
+                </>
               ) : (
                 <>
                   <Link
