@@ -1,459 +1,305 @@
+cat > src/pages/Dashboard.tsx << 'EOF'
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllLessons, getModules } from "../lib/content";
-import { getAllProgress } from "../lib/progress";
 import { getCurrentUser } from "../lib/auth";
-import { 
-  Trophy, Target, AlertCircle, BookOpen, CheckCircle2, 
-  TrendingUp, Award, Sparkles, ArrowRight, Zap, Brain, Clock, Star
-} from "lucide-react";
-
-type User = { email: string } | null;
-type ProgressData = Record<string, { attempted: number; correct: number }>;
+import { getModules, getAllLessons } from "../lib/content";
+import { getAllProgress } from "../lib/progress";
+import { Trophy, Target, CheckCircle2, BarChart3, TrendingUp, Sparkles, ArrowRight, Lock, Crown, BookOpen } from "lucide-react";
 
 export default function Dashboard() {
-  const [user, setUser] = useState<User>(null);
-  const [progressData, setProgressData] = useState<ProgressData>({});
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [progressData, setProgressData] = useState<Record<string, { attempted: number; correct: number }>>({});
 
   useEffect(() => {
-    Promise.all([
-      getCurrentUser(),
-      getAllProgress()
-    ]).then(([currentUser, progress]) => {
+    getCurrentUser().then(async (currentUser) => {
       setUser(currentUser);
-      setProgressData(progress);
+      if (currentUser) {
+        const progress = await getAllProgress();
+        setProgressData(progress);
+      }
       setLoading(false);
     });
   }, []);
 
   if (loading) {
     return (
-      <div className="max-w-6xl mx-auto p-6">
-        <div className="text-center py-12">
-          <div className="animate-spin w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full mx-auto"></div>
-          <p className="mt-4 text-gray-600 font-medium">Loading your progress...</p>
-        </div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
+  // If not logged in, show promotional dashboard
   if (!user) {
     return (
-      <div className="max-w-2xl mx-auto p-6 mt-12">
-        <div className="bg-gradient-to-br from-white to-teal-50 border-2 border-teal-200 rounded-2xl p-12 text-center shadow-xl">
-          <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <Trophy className="text-white" size={40} />
+      <div className="max-w-6xl mx-auto px-4 py-12 space-y-16">
+        <div className="text-center space-y-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full mb-4">
+            <BarChart3 className="text-white" size={40} />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Track Your Progress</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
-            Sign in to save your progress, view detailed statistics, and get personalized recommendations.
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+            Track Your Progress to Success
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Create an account to unlock your personal dashboard and track your journey to passing the Life in the UK test.
           </p>
-          <button
-            onClick={() => {
-              // AuthButton will handle the modal
-              document.querySelector('button')?.click();
-            }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-bold text-lg hover:opacity-90 transition shadow-lg"
-          >
-            <Sparkles size={24} />
-            Sign In to Continue
-          </button>
+        </div>
+
+        {/* Demo Dashboard Preview */}
+        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-3xl p-8 md:p-12">
+          <div className="space-y-8">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">
+                <Trophy className="text-amber-600 mx-auto mb-3" size={40} />
+                <div className="text-4xl font-black text-gray-900 mb-2">12</div>
+                <p className="text-gray-600 font-medium">Lessons Mastered</p>
+              </div>
+              <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">
+                <Target className="text-green-600 mx-auto mb-3" size={40} />
+                <div className="text-4xl font-black text-gray-900 mb-2">85%</div>
+                <p className="text-gray-600 font-medium">Average Score</p>
+              </div>
+              <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">
+                <TrendingUp className="text-teal-600 mx-auto mb-3" size={40} />
+                <div className="text-4xl font-black text-gray-900 mb-2">68%</div>
+                <p className="text-gray-600 font-medium">Overall Progress</p>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-teal-200 rounded-2xl p-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-gray-900">Your Progress</h3>
+                <span className="text-3xl font-black text-teal-600">68%</span>
+              </div>
+              <div className="h-4 bg-gray-200 rounded-full overflow-hidden mb-6">
+                <div className="h-4 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full" style={{width: '68%'}}></div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">History Module</span>
+                  <span className="font-semibold text-green-600">✓ 100%</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Government & Law</span>
+                  <span className="font-semibold text-amber-600">⚠ 65%</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Everyday Life</span>
+                  <span className="font-semibold text-gray-400">○ 0%</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute inset-0 backdrop-blur-sm bg-white/50 rounded-3xl flex items-center justify-center">
+              <div className="bg-white border-2 border-gray-300 rounded-2xl p-8 text-center max-w-md mx-4">
+                <Lock className="text-gray-400 mx-auto mb-4" size={48} />
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Sign In to Continue</h3>
+                <p className="text-gray-600 mb-6">Create a free account to access your personal dashboard and start tracking your progress.</p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/signup" className="flex-1 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold hover:opacity-90 transition-all">
+                    Sign Up Free
+                  </Link>
+                  <Link to="/login" className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all">
+                    Sign In
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Benefits Section */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <CheckCircle2 className="text-teal-600 mb-4" size={32} />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Track Your Progress</h3>
+            <p className="text-gray-600">See exactly which topics you've mastered and which need more practice. Visual charts show your progress at a glance.</p>
+          </div>
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <Target className="text-teal-600mb-4" size={32} />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Personalized Recommendations</h3>
+            <p className="text-gray-600">Get smart suggestions on what to study next based on your performance and weak areas.</p>
+          </div>
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <Trophy className="text-teal-600 mb-4" size={32} />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Achievement System</h3>
+            <p className="text-gray-600">Earn badges and milestones as you progress. Stay motivated with clear goals and achievements.</p>
+          </div>
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <BarChart3 className="text-teal-600 mb-4" size={32} />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Detailed Analytics</h3>
+            <p className="text-gray-600">Deep dive into your performance with detailed statistics on accuracy, time spent, and improvement trends.</p>
+          </div>
+        </div>
+
+        {/* Pricing CTA */}
+        <div className="bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl p-8 md:p-12 text-white text-center">
+          <Sparkles className="mx-auto mb-4" size={48} />
+          <h2 className="text-3xl font-extrabold mb-4">Ready to Start Your Journey?</h2>
+          <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">
+            Create a free account and get access to your first lesson. Upgrade to Haven Plus for full access to all features.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/signup" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-teal-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
+              Sign Up Free
+              <ArrowRight size={24} />
+            </Link>
+            <Link to="/paywall" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+              View Pricing
+              <Crown size={24} />
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 
-  const allLessons = getAllLessons();
+  // Existing dashboard code for logged-in users...
   const modules = getModules();
-
-  // Calculate statistics
+  const allLessons = getAllLessons();
   const totalLessons = allLessons.length;
-  const lessonsAttempted = Object.keys(progressData).length;
-  
-  let totalQuestions = 0;
-  let totalCorrect = 0;
-  let masteredLessons = 0;
-  let goodProgressLessons = 0;
-  let needsWorkLessons = 0;
-  let notStartedLessons = totalLessons;
+  const completedLessons = Object.keys(progressData).length;
+  const masteredLessons = Object.keys(progressData).filter(id => {
+    const p = progressData[id];
+    return p && p.attempted > 0 && (p.correct / p.attempted) >= 0.8;
+  }).length;
 
-  allLessons.forEach(lesson => {
-    const progress = progressData[lesson.id];
-    if (progress && progress.attempted > 0) {
-      notStartedLessons--;
-      totalQuestions += progress.attempted;
-      totalCorrect += progress.correct;
-      
-      const percentage = (progress.correct / progress.attempted) * 100;
-      
-      if (percentage >= 80) masteredLessons++;
-      else if (percentage >= 60) goodProgressLessons++;
-      else needsWorkLessons++;
-    }
-  });
+  const totalAttempted = Object.values(progressData).reduce((sum, p) => sum + p.attempted, 0);
+  const totalCorrect = Object.values(progressData).reduce((sum, p) => sum + p.correct, 0);
+  const overallAccuracy = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
+  const completionPercentage = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  const isReadyForTest = masteredLessons === totalLessons && masteredLessons > 0;
 
-  const overallPercentage = totalQuestions > 0 
-    ? Math.round((totalCorrect / totalQuestions) * 100) 
-    : 0;
-
-  const isReadyForTest = masteredLessons === totalLessons && totalLessons > 0;
-  const completionPercentage = Math.round((lessonsAttempted / totalLessons) * 100);
-
-  // Module breakdown
-  const moduleStats = modules.map(module => {
-    const moduleLessons = allLessons.filter(l => l.module_slug === module.slug);
-    const moduleProgress = moduleLessons.map(l => progressData[l.id]).filter(Boolean);
-    
-    let moduleCorrect = 0;
-    let moduleTotal = 0;
-    let mastered = 0;
-    
-    moduleLessons.forEach(l => {
-      const p = progressData[l.id];
-      if (p && p.attempted > 0) {
-        moduleCorrect += p.correct;
-        moduleTotal += p.attempted;
-        if ((p.correct / p.attempted) >= 0.8) mastered++;
-      }
-    });
-    
-    const percentage = moduleTotal > 0 ? Math.round((moduleCorrect / moduleTotal) * 100) : 0;
-    
-    return {
-      ...module,
-      total: moduleLessons.length,
-      attempted: moduleProgress.length,
-      mastered,
-      percentage,
-      questionsAnswered: moduleTotal
-    };
-  });
+  const needsWork = allLessons.filter(lesson => {
+    const p = progressData[lesson.id];
+    return p && p.attempted > 0 && (p.correct / p.attempted) < 0.6;
+  }).slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-6 pb-32 md:pb-8">
-      {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-5xl font-extrabold text-gray-900 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-          Your Dashboard
-        </h1>
-        <p className="text-xl text-gray-600">Welcome back, <span className="font-semibold text-gray-900">{user.email}</span></p>
-      </div>
+    <div className="max-w-6xl mx-auto px-4 py-8 space-y-8">
+      <header>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Your Dashboard</h1>
+        <p className="text-gray-600">Track your progress and see how you're doing</p>
+      </header>
 
-      {/* Ready for Test Banner */}
       {isReadyForTest && (
-        <div className="relative bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 rounded-3xl p-10 text-white overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-transparent"></div>
-          <div className="absolute top-0 right-0 opacity-10 transform rotate-12">
-            <Award size={300} />
-          </div>
-          <div className="relative z-10 flex items-center gap-6">
-            <div className="flex-shrink-0 w-24 h-24 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-              <Trophy size={48} className="text-white" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-4xl font-black mb-2">You're Test Ready! 🎉</h2>
-              <p className="text-xl text-green-50 mb-4">
-                Amazing work! You've mastered all {totalLessons} lessons with 80%+ scores.
-              </p>
-              <Link
-                to="/mock"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-600 rounded-xl font-bold hover:bg-green-50 transition shadow-lg text-lg"
-              >
-                Take Full Practice Test <ArrowRight size={24} />
-              </Link>
+        <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 md:p-8 text-white">
+          <div className="flex items-center gap-4">
+            <Trophy size={48} />
+            <div>
+              <h2 className="text-2xl font-bold mb-2">🎉 You're Ready for the Test!</h2>
+              <p className="text-green-50">You've mastered all lessons with 80%+ accuracy. Book your test with confidence!</p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Key Metrics - Large Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Overall Score */}
-        <div className="bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl p-6 text-white shadow-xl transform hover:scale-105 transition-transform">
-          <div className="flex items-center justify-between mb-4">
-            <Star className="opacity-80" size={28} />
-            <span className="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Overall</span>
-          </div>
-          <div className="text-5xl font-black mb-2">{overallPercentage}%</div>
-          <p className="text-teal-50">Accuracy Score</p>
-          <p className="text-sm text-teal-100 mt-1">{totalQuestions} questions answered</p>
-        </div>
-
-        {/* Mastered */}
-        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl transform hover:scale-105 transition-transform">
-          <div className="flex items-center justify-between mb-4">
-            <Trophy className="opacity-80" size={28} />
-            <span className="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Mastered</span>
-          </div>
-          <div className="text-5xl font-black mb-2">{masteredLessons}</div>
-          <p className="text-green-50">Lessons at 80%+</p>
-          <p className="text-sm text-green-100 mt-1">Out of {totalLessons} total</p>
-        </div>
-
-        {/* Progress */}
-        <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl transform hover:scale-105 transition-transform">
-          <div className="flex items-center justify-between mb-4">
-            <TrendingUp className="opacity-80" size={28} />
-            <span className="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Progress</span>
-          </div>
-          <div className="text-5xl font-black mb-2">{completionPercentage}%</div>
-          <p className="text-blue-50">Completion Rate</p>
-          <p className="text-sm text-blue-100 mt-1">{lessonsAttempted}/{totalLessons} lessons started</p>
-        </div>
-
-        {/* Needs Work */}
-        <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-6 text-white shadow-xl transform hover:scale-105 transition-transform">
-          <div className="flex items-center justify-between mb-4">
-            <Zap className="opacity-80" size={28} />
-            <span className="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">Focus</span>
-          </div>
-          <div className="text-5xl font-black mb-2">{needsWorkLessons}</div>
-          <p className="text-orange-50">Need Review</p>
-          <p className="text-sm text-orange-100 mt-1">Below 60% accuracy</p>
-        </div>
-      </div>
-
-      {/* Performance Distribution - Donut Chart */}
       <div className="grid md:grid-cols-3 gap-6">
-        {/* Donut Chart */}
-        <div className="md:col-span-1 bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg">
-          <h3 className="text-xl font-bold text-gray-900 mb-6">Lesson Status</h3>
-          <div className="relative w-48 h-48 mx-auto mb-6">
-            {/* SVG Donut Chart */}
-            <svg className="transform -rotate-90" viewBox="0 0 100 100">
-              {/* Background circle */}
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="#e5e7eb"
-                strokeWidth="12"
-              />
-              
-              {/* Mastered (Green) */}
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="12"
-                strokeDasharray={`${(masteredLessons / totalLessons) * 251.2} 251.2`}
-                strokeDashoffset="0"
-                className="transition-all duration-1000"
-              />
-              
-              {/* Good Progress (Amber) */}
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="#f59e0b"
-                strokeWidth="12"
-                strokeDasharray={`${(goodProgressLessons / totalLessons) * 251.2} 251.2`}
-                strokeDashoffset={`-${(masteredLessons / totalLessons) * 251.2}`}
-                className="transition-all duration-1000"
-              />
-              
-              {/* Needs Work (Red) */}
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="#ef4444"
-                strokeWidth="12"
-                strokeDasharray={`${(needsWorkLessons / totalLessons) * 251.2} 251.2`}
-                strokeDashoffset={`-${((masteredLessons + goodProgressLessons) / totalLessons) * 251.2}`}
-                className="transition-all duration-1000"
-              />
-            </svg>
-            
-            {/* Center Text */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-3xl font-black text-gray-900">{lessonsAttempted}</div>
-                <div className="text-xs text-gray-500 font-medium">of {totalLessons}</div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Legend */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="text-sm text-gray-700">Mastered (80%+)</span>
-              </div>
-              <span className="text-sm font-bold text-gray-900">{masteredLessons}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                <span className="text-sm text-gray-700">Good (60-79%)</span>
-              </div>
-              <span className="text-sm font-bold text-gray-900">{goodProgressLessons}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <span className="text-sm text-gray-700">Needs Work (&lt;60%)</span>
-              </div>
-              <span className="text-sm font-bold text-gray-900">{needsWorkLessons}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-                <span className="text-sm text-gray-700">Not Started</span>
-              </div>
-              <span className="text-sm font-bold text-gray-900">{notStartedLessons}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Module Performance Bars */}
-        <div className="md:col-span-2 bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Brain className="text-teal-600" size={24} />
-            Performance by Module
-          </h3>
-          
-          <div className="space-y-4">
-            {moduleStats.map(module => (
-              <div key={module.slug} className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-gray-900 text-sm truncate">{module.title}</h4>
-                    <p className="text-xs text-gray-500">
-                      {module.mastered}/{module.total} mastered • {module.questionsAnswered} questions
-                    </p>
-                  </div>
-                  <div className="text-right ml-4">
-                    <div className={`text-2xl font-black ${
-                      module.percentage >= 80 ? 'text-green-600' :
-                      module.percentage >= 60 ? 'text-amber-600' :
-                      module.percentage > 0 ? 'text-red-600' : 'text-gray-400'
-                    }`}>
-                      {module.attempted > 0 ? `${module.percentage}%` : '—'}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="relative w-full h-4 bg-gray-100 rounded-full overflow-hidden">
-                  <div
-                    className={`absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ${
-                      module.percentage >= 80 
-                        ? 'bg-gradient-to-r from-green-500 to-green-600' 
-                        : module.percentage >= 60
-                        ? 'bg-gradient-to-r from-amber-500 to-amber-600'
-                        : module.percentage > 0
-                        ? 'bg-gradient-to-r from-red-500 to-red-600'
-                        : 'bg-gray-300'
-                    }`}
-                    style={{ width: `${module.percentage}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Action Cards */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {/* Continue Learning */}
-        <div className="bg-gradient-to-br from-teal-50 to-cyan-50 border-2 border-teal-200 rounded-2xl p-6 shadow-lg">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
-              <BookOpen className="text-white" size={24} />
+            <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+              <BookOpen className="text-teal-600" size={24} />
             </div>
-            <h3 className="font-bold text-gray-900 text-lg">Keep Learning</h3>
+            <div>
+              <div className="text-3xl font-black text-gray-900">{completionPercentage}%</div>
+              <p className="text-sm text-gray-600">Overall Progress</p>
+            </div>
           </div>
-          {lessonsAttempted < totalLessons ? (
-            <>
-              <p className="text-sm text-gray-700 mb-4">
-                {totalLessons - lessonsAttempted} lessons waiting for you. Every lesson brings you closer to success!
-              </p>
-              <Link
-                to="/content"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 transition text-sm shadow-lg"
-              >
-                Browse Lessons <ArrowRight size={18} />
-              </Link>
-            </>
-          ) : (
-            <p className="text-sm text-gray-700">
-              Fantastic! You've started all lessons. Keep practicing to master them all.
-            </p>
-          )}
+          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all duration-500" style={{width: `${completionPercentage}%`}}></div>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">{completedLessons} of {totalLessons} lessons started</p>
         </div>
 
-        {/* Practice More */}
-        {needsWorkLessons > 0 ? (
-          <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
-                <AlertCircle className="text-white" size={24} />
-              </div>
-              <h3 className="font-bold text-gray-900 text-lg">Focus Areas</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+              <Trophy className="text-green-600" size={24} />
             </div>
-            <p className="text-sm text-gray-700 mb-4">
-              {needsWorkLessons} {needsWorkLessons === 1 ? 'lesson needs' : 'lessons need'} more practice. Let's improve those scores!
-            </p>
-            <Link
-              to="/practice"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition text-sm shadow-lg"
-            >
-              Practice Now <Target size={18} />
-            </Link>
+            <div>
+              <div className="text-3xl font-black text-gray-900">{masteredLessons}</div>
+              <p className="text-sm text-gray-600">Lessons Mastered</p>
+            </div>
           </div>
-        ) : (
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-6 shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
-                <CheckCircle2 className="text-white" size={24} />
-              </div>
-              <h3 className="font-bold text-gray-900 text-lg">Great Work!</h3>
+          <p className="text-xs text-gray-500">80%+ accuracy on these lessons</p>
+        </div>
+
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+              <Target className="text-blue-600" size={24} />
             </div>
-            <p className="text-sm text-gray-700 mb-4">
-              No lessons below 60%! You're making excellent progress across the board.
-            </p>
-            <Link
-              to="/practice"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition text-sm shadow-lg"
-            >
-              Keep Practicing <Trophy size={18} />
-            </Link>
+            <div>
+              <div className="text-3xl font-black text-gray-900">{overallAccuracy}%</div>
+              <p className="text-sm text-gray-600">Overall Accuracy</p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-500">{totalCorrect} correct out of {totalAttempted} attempted</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <BarChart3 className="text-teal-600" size={24} />
+            Progress by Module
+          </h2>
+          <div className="space-y-4">
+            {modules.map(module => {
+              const moduleLessons = allLessons.filter(l => l.module_slug === module.slug);
+              const moduleCompleted = moduleLessons.filter(l => progressData[l.id]?.attempted > 0).length;
+              const modulePercentage = Math.round((moduleCompleted / moduleLessons.length) * 100);
+              
+              return (
+                <div key={module.slug}>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-semibold text-gray-700">{module.title}</span>
+                    <span className="text-sm font-bold text-teal-600">{modulePercentage}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full" style={{width: `${modulePercentage}%`}}></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {needsWork.length > 0 && (
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <TrendingUp className="text-amber-600" size={24} />
+              Needs More Practice
+            </h2>
+            <div className="space-y-3">
+              {needsWork.map(lesson => {
+                const p = progressData[lesson.id];
+                const percentage = Math.round((p.correct / p.attempted) * 100);
+                return (
+                  <Link key={lesson.id} to={`/practice/${lesson.id}`} className="block p-4 bg-amber-50 border border-amber-200 rounded-xl hover:border-amber-300 transition-colors">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-semibold text-gray-900 text-sm">{lesson.title}</span>
+                      <span className="text-sm font-bold text-amber-600">{percentage}%</span>
+                    </div>
+                    <p className="text-xs text-gray-600">{p.correct} correct out of {p.attempted} attempted</p>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         )}
+      </div>
 
-        {/* Study Tips */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-6 shadow-lg">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-              <Clock className="text-white" size={24} />
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg">Pro Tips</h3>
-          </div>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex items-start gap-2">
-              <CheckCircle2 className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-              <span>Aim for 80%+ on all lessons</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle2 className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-              <span>Use flashcards daily for retention</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle2 className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-              <span>Review weak areas regularly</span>
-            </li>
-          </ul>
-        </div>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Link to="/content" className="flex-1 px-8 py-4 text-center border-2 border-teal-200 text-teal-700 font-semibold rounded-xl hover:bg-teal-50 transition-all">
+          Continue Studying
+        </Link>
+        <Link to="/practice" className="flex-1 px-8 py-4 text-center bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:opacity-90 transition-all">
+          Practice Questions
+        </Link>
       </div>
     </div>
   );
 }
+EOF

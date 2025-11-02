@@ -161,7 +161,7 @@ export default function App() {
       <section id="pricing" className="max-w-6xl mx-auto">
         <div className="text-center mb-12"><h2 className="text-4xl font-extrabold text-gray-900 mb-4">Choose Your Plan</h2><p className="text-xl text-gray-600">One-time payment. Lifetime access. No subscription.</p></div>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative">
+          <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative flex flex-col">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-bold rounded-full">MOST POPULAR</div>
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4"><Sparkles className="text-teal-600" size={32} /></div>
@@ -169,7 +169,7 @@ export default function App() {
               <div className="flex items-baseline justify-center gap-2 mb-2"><span className="text-5xl font-black text-gray-900">£9.99</span><span className="text-gray-600">one-time</span></div>
               <p className="text-sm text-gray-600">Everything you need to pass</p>
             </div>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">All 20+ comprehensive lessons</span></li>
               <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">500+ practice questions</span></li>
               <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">Interactive flashcards</span></li>
@@ -177,9 +177,9 @@ export default function App() {
               <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">Full mock exams</span></li>
               <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700 font-semibold">Pass guarantee</span></li>
             </ul>
-            <Link to="/paywall" className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all">Get Haven Plus<ArrowRight size={20} /></Link>
+            <Link to="/paywall" className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all mt-auto">Get Haven Plus<ArrowRight size={20} /></Link>
           </div>
-          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative">
+          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative flex flex-col">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full">COMING SOON</div>
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4"><Crown className="text-amber-600" size={32} /></div>
@@ -187,14 +187,14 @@ export default function App() {
               <div className="flex items-baseline justify-center gap-2 mb-2"><span className="text-5xl font-black text-gray-900">£14.99</span><span className="text-gray-600">one-time</span></div>
               <p className="text-sm text-gray-600">Ultimate learning experience</p>
             </div>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3"><CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-900 font-semibold">Everything in Haven Plus, and:</span></li>
               <li className="flex items-start gap-3"><Headphones className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Audio lessons</span><p className="text-sm text-gray-600">Listen and learn on the go</p></div></li>
               <li className="flex items-start gap-3"><FileText className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Downloadable study guides</span><p className="text-sm text-gray-600">PDF versions for offline study</p></div></li>
               <li className="flex items-start gap-3"><Zap className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Priority support</span><p className="text-sm text-gray-600">Get help within 24 hours</p></div></li>
               <li className="flex items-start gap-3"><Crown className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Early access</span><p className="text-sm text-gray-600">New features before everyone else</p></div></li>
             </ul>
-            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 text-center"><p className="text-sm text-amber-900 font-medium">🚀 Launching Next Month!</p></div>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 text-center mt-auto"><p className="text-sm text-amber-900 font-medium">🚀 Launching Next Month!</p></div>
           </div>
         </div>
       </section>
