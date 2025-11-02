@@ -1,0 +1,160 @@
+{
+  "id": "lesson-3-modern-society",
+  "title": "A Modern, Thriving Society",
+  "module_slug": "life-in-uk-overview",
+  "overview": "Modern Britain is a diverse, multicultural society with a rich cultural life. The UK has made major contributions to the arts, including music (Handel, Elgar, Britten), literature (Shakespeare, Austen, Dickens), and visual arts (Turner, Constable). The country celebrates many traditions and festivals from different communities, including Christian holidays (Christmas, Easter), Hindu and Sikh festivals (Diwali, Vaisakhi), Muslim celebrations (Eid), Jewish holidays (Hanukkah), and British traditions (Bonfire Night, Remembrance Day, Hogmanay). The UK has a strong sporting culture, with football being the most popular sport, and is home to Wimbledon, the Open Golf Championship at St Andrews, and has hosted the Olympics three times (1908, 1948, 2012). The BBC, funded by TV licence fees, is independent of government. The UK population is approximately 67 million, with an ageing population and growing diversity. Equality laws protect people from discrimination based on age, disability, gender, race, religion, and other characteristics.",
+  "key_facts": [
+    "The **Proms** is an eight-week summer season of orchestral classical music concerts, ending with the famous Last Night of the Proms.",
+    "**George Frideric Handel** became a British citizen in 1727 and wrote Water Music and Music for the Royal Fireworks.",
+    "**Edward Elgar** composed the Pomp and Circumstance Marches, **Gustav Holst** wrote The Planets suite, and **Benjamin Britten** composed operas like Peter Grimes.",
+    "**The Mousetrap** by Agatha Christie opened in London's West End in 1952 and is still running today.",
+    "The **Turner Prize**, established in 1984, is awarded annually for contemporary art.",
+    "Major UK landmarks include the **Cenotaph** (Remembrance service), **Tower of London**, **Edinburgh Castle**, **Giant's Causeway**, **Lake District**, **Snowdonia**, and the **Eden Project**.",
+    "The **BBC** is funded by television licence fees and is independent of government control.",
+    "**Christmas** (25 December) and **Easter** (March/April) are the main Christian festivals in the UK.",
+    "**Diwali** is celebrated by Hindu and Sikh communities, **Eid al-Fitr** marks the end of Ramadan for Muslims, **Hanukkah** is the Jewish Festival of Lights, and **Vaisakhi** is an important Sikh festival.",
+    "**Bonfire Night** (5 November) commemorates the failed Gunpowder Plot of 1605.",
+    "**Remembrance Day** (11 November) honours those who died in wars, with a service at the Cenotaph in Whitehall.",
+    "**Hogmanay** is the Scottish New Year celebration on 31 December.",
+    "**Football** is the UK's most popular sport. The Premier League attracts players and fans from around the world.",
+    "**Wimbledon** is the oldest tennis tournament in the world. The **Open Championship** (golf) is held at St Andrews and other courses.",
+    "The UK has hosted the **Olympics** three times: London in **1908**, **1948**, and **2012**. The 2012 Games also featured the Paralympics.",
+    "The UK population is approximately **67 million** people, with growing diversity and an ageing population.",
+    "**Equality laws** protect people from discrimination based on age, disability, gender reassignment, marriage, pregnancy, race, religion, sex, and sexual orientation.",
+    "Other languages spoken in the UK include **Welsh** (Wales), **Scottish Gaelic** (Scotland), and **Irish Gaelic** (Northern Ireland).",
+    "UK currency includes **£5**, **£10**, **£20**, and **£50** notes, plus **1p**, **2p**, **5p**, **10p**, **20p**, **50p**, **£1**, and **£2** coins."
+  ],
+  "memory_hook": "Think of modern Britain as a **cultural festival** - where arts (Proms, Turner Prize), traditions (Christmas to Diwali), sports (Wimbledon to football), and diverse communities all celebrate together under shared values of equality and tolerance.",
+  "questions": [
+    {
+      "prompt": "What is the Proms?",
+      "options": [
+        "An eight-week summer season of classical music concerts",
+        "A one-night pop music festival in Cardiff",
+        "A theatre award ceremony in London",
+        "A modern art exhibition at Tate Modern"
+      ],
+      "correct_index": 0,
+      "explanation": "The Proms is an eight-week season of orchestral classical music concerts, ending with the famous Last Night of the Proms at the Royal Albert Hall."
+    },
+    {
+      "prompt": "Which composer became a British citizen in 1727 and wrote Water Music and Music for the Royal Fireworks?",
+      "options": [
+        "Edward Elgar",
+        "George Frideric Handel",
+        "Gustav Holst",
+        "Benjamin Britten"
+      ],
+      "correct_index": 1,
+      "explanation": "George Frideric Handel became a British citizen in 1727 and composed both Water Music and Music for the Royal Fireworks."
+    },
+    {
+      "prompt": "Which long-running West End play by Agatha Christie opened in 1952?",
+      "options": [
+        "The Mousetrap",
+        "Hamlet",
+        "Noises Off",
+        "An Inspector Calls"
+      ],
+      "correct_index": 0,
+      "explanation": "The Mousetrap has been running in London's West End since 1952, making it the longest-running play in history."
+    },
+    {
+      "prompt": "What is the Turner Prize awarded for?",
+      "options": [
+        "Best new British film",
+        "Contemporary art",
+        "Architecture",
+        "Theatre direction"
+      ],
+      "correct_index": 1,
+      "explanation": "The Turner Prize, established in 1984, is awarded annually to recognize outstanding contemporary art."
+    },
+    {
+      "prompt": "Which statement about the BBC is TRUE?",
+      "options": [
+        "It is funded mainly by advertising",
+        "It is funded by television licence fees and is independent of government",
+        "It is a private subscription service only",
+        "It is funded by National Lottery grants"
+      ],
+      "correct_index": 1,
+      "explanation": "The BBC is funded by television licence fees paid by households and is independent of government control."
+    },
+    {
+      "prompt": "Which sport is the most popular in the UK?",
+      "options": [
+        "Rugby union",
+        "Cricket",
+        "Football",
+        "Tennis"
+      ],
+      "correct_index": 2,
+      "explanation": "Football is the UK's most popular sport, with the Premier League being one of the most watched leagues globally."
+    },
+    {
+      "prompt": "Which festival is celebrated by Hindu and Sikh communities?",
+      "options": [
+        "Diwali",
+        "Hanukkah",
+        "Eid al-Fitr",
+        "Vaisakhi"
+      ],
+      "correct_index": 0,
+      "explanation": "Diwali, the Festival of Lights, is celebrated by both Hindu and Sikh communities. Vaisakhi is also Sikh but not Hindu."
+    },
+    {
+      "prompt": "Where is the annual national Remembrance service held each November?",
+      "options": [
+        "The Cenotaph in Whitehall",
+        "Big Ben",
+        "The London Eye",
+        "St Paul's Cathedral"
+      ],
+      "correct_index": 0,
+      "explanation": "The Remembrance Day service is held at the Cenotaph in Whitehall, London, to honour those who died in wars."
+    },
+    {
+      "prompt": "How many times has London hosted the Olympic Games?",
+      "options": [
+        "Once",
+        "Twice",
+        "Three times",
+        "Four times"
+      ],
+      "correct_index": 2,
+      "explanation": "London has hosted the Olympics three times: in 1908, 1948, and 2012."
+    },
+    {
+      "prompt": "What is Hogmanay?",
+      "options": [
+        "A Welsh harvest festival",
+        "The Scottish New Year celebration",
+        "An Irish spring festival",
+        "An English Christmas tradition"
+      ],
+      "correct_index": 1,
+      "explanation": "Hogmanay is the Scottish celebration of New Year's Eve on 31 December, featuring traditions like first-footing."
+    }
+  ],
+  "flashcards": [
+    ["What is the Proms?", "An eight-week summer season of orchestral classical music concerts held at the Royal Albert Hall"],
+    ["Who composed Water Music and Music for the Royal Fireworks?", "George Frideric Handel (became British citizen in 1727)"],
+    ["Which Agatha Christie play has been running since 1952?", "The Mousetrap in London's West End"],
+    ["What is the Turner Prize?", "An annual award for contemporary art, established in 1984"],
+    ["How is the BBC funded?", "By television licence fees; it is independent of government"],
+    ["What is the UK's most popular sport?", "Football"],
+    ["What is Wimbledon?", "The oldest tennis tournament in the world"],
+    ["When is Remembrance Day?", "11 November - honours those who died in wars"],
+    ["What is Diwali?", "The Festival of Lights celebrated by Hindu and Sikh communities"],
+    ["What is Hogmanay?", "The Scottish New Year celebration on 31 December"],
+    ["When did London host the Olympics?", "Three times: 1908, 1948, and 2012"],
+    ["What is Bonfire Night?", "5 November - commemorates the failed Gunpowder Plot of 1605"],
+    ["What is the Cenotaph?", "A memorial in Whitehall, London where the national Remembrance service is held"],
+    ["What is Eid al-Fitr?", "A Muslim festival marking the end of Ramadan"],
+    ["What is Vaisakhi?", "An important Sikh festival"],
+    ["What languages are spoken in the UK besides English?", "Welsh, Scottish Gaelic, and Irish Gaelic"],
+    ["What is the UK population?", "Approximately 67 million people"],
+    ["What denominations are UK banknotes?", "£5, £10, £20, and £50"]
+  ]
+}
