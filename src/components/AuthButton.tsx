@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { getCurrentUser, signIn, signUp, signOut, onAuthStateChange } from '../lib/auth';
 import type { User } from '@supabase/supabase-js';
 
@@ -20,6 +21,18 @@ export default function AuthButton() {
       authListener.subscription.unsubscribe();
     };
   }, []);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -52,6 +65,90 @@ export default function AuthButton() {
     }
   }
 
+  const modalContent = showModal ? (
+    <div 
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4"
+      style={{ zIndex: 99999 }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          setShowModal(false);
+          setError('');
+        }
+      }}
+    >
+      <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">
+          {isSignUp ? 'Create Account' : 'Sign In'}
+        </h2>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-1 text-gray-700">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium mb-1 text-gray-700">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="Min. 6 characters"
+              required
+              minLength={6}
+            />
+          </div>
+
+          {error && (
+            <div className="text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition disabled:opacity-50"
+          >
+            {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center">
+          <button
+            type="button"
+            onClick={() => {
+              setIsSignUp(!isSignUp);
+              setError('');
+            }}
+            className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+          >
+            {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
+          </button>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            setShowModal(false);
+            setError('');
+          }}
+          className="mt-4 w-full px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  ) : null;
+
   if (user) {
     return (
       <div className="flex items-center gap-3">
@@ -75,87 +172,7 @@ export default function AuthButton() {
         Sign In
       </button>
 
-      {showModal && (
-        <div 
-          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4"
-          style={{ zIndex: 9999 }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setShowModal(false);
-              setError('');
-            }
-          }}
-        >
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">
-              {isSignUp ? 'Create Account' : 'Sign In'}
-            </h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700">Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  placeholder="your@email.com"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700">Password</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  placeholder="Min. 6 characters"
-                  required
-                  minLength={6}
-                />
-              </div>
-
-              {error && (
-                <div className="text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition disabled:opacity-50"
-              >
-                {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
-              </button>
-            </form>
-
-            <div className="mt-4 text-center">
-              <button
-                onClick={() => {
-                  setIsSignUp(!isSignUp);
-                  setError('');
-                }}
-                className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-              >
-                {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
-              </button>
-            </div>
-
-            <button
-              onClick={() => {
-                setShowModal(false);
-                setError('');
-              }}
-              className="mt-4 w-full px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      {modalContent && createPortal(modalContent, document.body)}
     </>
   );
 }
