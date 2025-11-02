@@ -14,9 +14,8 @@ export default function Sidebar() {
 
   useEffect(() => {
     getAllProgress().then(setProgressData);
-  }, [location]); // Refresh when route changes
+  }, [location]);
 
-  // Expand module if current lesson is in it
   useEffect(() => {
     const currentLessonId = location.pathname.split('/')[2];
     if (currentLessonId) {
@@ -53,7 +52,6 @@ export default function Sidebar() {
     return <Circle className="text-amber-500" size={16} />;
   };
 
-  // Calculate overall progress
   const totalLessons = modules.reduce((sum, m) => sum + m.count, 0);
   const completedLessons = Object.keys(progressData).length;
   const completionPercentage = totalLessons > 0 
@@ -62,14 +60,12 @@ export default function Sidebar() {
 
   return (
     <aside className="w-72 bg-white border-r border-gray-200 flex flex-col h-full">
-      {/* Header */}
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
           Study Content
         </h2>
       </div>
 
-      {/* Scrollable Module List */}
       <div className="flex-1 overflow-y-auto">
         <nav className="p-2">
           {modules.map(module => {
@@ -79,7 +75,6 @@ export default function Sidebar() {
 
             return (
               <div key={module.slug} className="mb-1">
-                {/* Module Header */}
                 <button
                   onClick={() => toggleModule(module.slug)}
                   className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-left"
@@ -99,7 +94,6 @@ export default function Sidebar() {
                   </div>
                 </button>
 
-                {/* Lesson List */}
                 {isExpanded && (
                   <div className="ml-4 mt-1 space-y-0.5">
                     {lessons.map(lesson => {
@@ -127,7 +121,6 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Progress Summary */}
       <div className="p-4 border-t border-gray-200 bg-gray-50">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-semibold text-gray-900">Your Progress</span>

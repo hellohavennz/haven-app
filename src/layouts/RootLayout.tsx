@@ -6,7 +6,6 @@ import PracticeSidebar from "../components/PracticeSidebar";
 export default function RootLayout() {
   const location = useLocation();
   
-  // Determine which sidebar to show
   const showStudySidebar = location.pathname.startsWith('/content');
   const showPracticeSidebar = location.pathname.startsWith('/practice') || location.pathname.startsWith('/flashcards');
   const showAnySidebar = showStudySidebar || showPracticeSidebar;
@@ -16,11 +15,9 @@ export default function RootLayout() {
       <Navbar />
       
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar - Only on content/practice pages */}
         {showStudySidebar && <Sidebar />}
         {showPracticeSidebar && <PracticeSidebar />}
         
-        {/* Main Content */}
         <main className={`flex-1 overflow-y-auto ${showAnySidebar ? '' : 'mx-auto max-w-6xl px-4 py-12'}`}>
           <Outlet />
         </main>

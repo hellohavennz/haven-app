@@ -7,7 +7,6 @@ export default function ContentIndex() {
   const allLessons = getAllLessons();
 
   useEffect(() => {
-    // Redirect to first lesson automatically
     if (allLessons.length > 0) {
       navigate(`/content/${allLessons[0].id}`, { replace: true });
     }

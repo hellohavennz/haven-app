@@ -7,7 +7,6 @@ export default function PracticeIndex() {
   const allLessons = getAllLessons();
 
   useEffect(() => {
-    // Redirect to first lesson automatically
     if (allLessons.length > 0) {
       navigate(`/practice/${allLessons[0].id}`, { replace: true });
     }

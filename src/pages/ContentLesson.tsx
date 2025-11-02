@@ -21,7 +21,6 @@ export default function ContentLesson() {
     );
   }
 
-  // Find previous and next lessons
   const currentIndex = allLessons.findIndex(l => l.id === data.id);
   const previousLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
@@ -29,7 +28,6 @@ export default function ContentLesson() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-8">
       <div className="space-y-12">
-        {/* Header */}
         <header className="space-y-6">
           <div className="flex items-center gap-2 text-sm text-teal-600 font-medium">
             <BookCheck size={18} />
@@ -45,7 +43,6 @@ export default function ContentLesson() {
           </div>
         </header>
 
-        {/* Key Facts */}
         <section className="space-y-4">
           <div className="flex items-center gap-2 mb-6">
             <CheckCircle2 className="text-teal-600" size={24} />
@@ -61,7 +58,6 @@ export default function ContentLesson() {
           </div>
         </section>
 
-        {/* Memory Hook */}
         <section className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-8">
           <div className="flex items-center gap-2 mb-4">
             <Brain className="text-amber-600" size={24} />
@@ -70,7 +66,6 @@ export default function ContentLesson() {
           <p className="text-gray-800 leading-relaxed text-lg">{data.memory_hook}</p>
         </section>
 
-        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             to={`/flashcards/${data.id}`}
@@ -86,7 +81,6 @@ export default function ContentLesson() {
           </Link>
         </div>
 
-        {/* Previous/Next Navigation */}
         <div className="flex items-center justify-between pt-8 border-t border-gray-200">
           {previousLesson ? (
             <Link
