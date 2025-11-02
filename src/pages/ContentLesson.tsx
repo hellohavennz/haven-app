@@ -10,7 +10,7 @@ export default function ContentLesson() {
   const data = lessonId ? getLessonById(lessonId) : null;
   const allLessons = getAllLessons();
   const contentRef = useRef<HTMLDivElement>(null);
-  const { isPremium, isLoading } = useSubscription();
+  const { hasPlus, isLoading } = useSubscription();
   
   useEffect(() => {
     if (contentRef.current) {
@@ -21,7 +21,6 @@ export default function ContentLesson() {
     }
   }, [lessonId]);
 
-  // Loading state
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -47,8 +46,8 @@ export default function ContentLesson() {
     );
   }
 
-  // Show paywall if lesson is premium and user doesn't have access
-  if (data.isPremium && !isPremium) {
+  // Show paywall if lesson requires Plus and user doesn't have access
+  if (data.isPremium && !hasPlus) {
     return <Paywall />;
   }
 

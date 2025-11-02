@@ -23,7 +23,9 @@ export type Module = {
   count: number;
 };
 
+export type SubscriptionTier = 'free' | 'plus' | 'premium';
+
 export type UserSubscription = {
-  isPremium: boolean;
+  tier: SubscriptionTier;
   email?: string;
 };

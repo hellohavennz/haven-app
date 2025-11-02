@@ -1,33 +1,41 @@
 import { useState, useEffect } from 'react';
 import { getCurrentUser } from './auth';
 
+export type SubscriptionTier = 'free' | 'plus' | 'premium';
+
 export type SubscriptionStatus = {
-  isPremium: boolean;
+  tier: SubscriptionTier;
+  hasPlus: boolean;
+  hasPremium: boolean;
   isLoading: boolean;
 };
 
 // This is a simplified version - in production, check Supabase for actual subscription
-export async function checkSubscriptionStatus(): Promise<boolean> {
+export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
   const user = await getCurrentUser();
   
-  if (!user) return false;
+  if (!user) return 'free';
   
   // TODO: Check actual subscription status in Supabase
-  // For now, check if user metadata has premium flag
-  // You can set this manually in Supabase for testing
+  // For now, check if user metadata has tier flag
   const metadata = user.user_metadata || {};
-  return metadata.isPremium === true;
+  return metadata.tier || 'free';
 }
 
 export function useSubscription(): SubscriptionStatus {
-  const [isPremium, setIsPremium] = useState(false);
+  const [tier, setTier] = useState<SubscriptionTier>('free');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     checkSubscriptionStatus()
-      .then(setIsPremium)
+      .then(setTier)
       .finally(() => setIsLoading(false));
   }, []);
 
-  return { isPremium, isLoading };
+  return { 
+    tier,
+    hasPlus: tier === 'plus' || tier === 'premium',
+    hasPremium: tier === 'premium',
+    isLoading 
+  };
 }

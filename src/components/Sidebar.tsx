@@ -12,7 +12,7 @@ export default function Sidebar() {
   const modules = getModules();
   const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
   const [progressData, setProgressData] = useState<ProgressData>({});
-  const { isPremium } = useSubscription();
+  const { hasPlus } = useSubscription();
 
   useEffect(() => {
     getAllProgress().then(setProgressData);
@@ -41,7 +41,7 @@ export default function Sidebar() {
   };
 
   const getLessonIcon = (lessonId: string, isPremiumLesson: boolean) => {
-    if (isPremiumLesson && !isPremium) {
+    if (isPremiumLesson && !hasPlus) {
       return <Lock className="text-gray-400" size={16} />;
     }
     
@@ -104,7 +104,7 @@ export default function Sidebar() {
                   <div className="ml-4 mt-1 space-y-0.5">
                     {lessons.map(lesson => {
                       const isActive = location.pathname.includes(lesson.id);
-                      const isLocked = lesson.isPremium && !isPremium;
+                      const isLocked = lesson.isPremium && !hasPlus;
                       
                       return (
                         <NavLink
