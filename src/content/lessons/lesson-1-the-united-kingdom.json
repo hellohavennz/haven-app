@@ -1,0 +1,84 @@
+{
+  "id": "lesson-1-the-united-kingdom",
+  "title": "The United Kingdom and Its People",
+  "module_slug": "nations-symbols",
+  "overview": "The United Kingdom (UK) is a country in north-west Europe made up of England, Scotland, Wales, and Northern Ireland. Each nation has its own capital city and distinct culture, but all share one government based in London. Most people live in towns and cities, yet much of the UK remains countryside with coasts, mountains and green spaces.\n\nThe country is ethnically and religiously diverse — about 10 per cent of people have a parent or grandparent born outside the UK. The population is around 67 million, with England 84 %, Scotland 8 %, Wales 5 %, and Northern Ireland 3 %. English is the main language, but Welsh, Scottish Gaelic, and Irish Gaelic are also spoken in some areas.\n\nThe currency is the pound sterling (£), used across all four nations. The UK is a multinational society built on equality before the law — men and women have the same legal rights to work, marry, and own property.",
+  "key_facts": [
+    "The UK is made up of England, Scotland, Wales, and Northern Ireland.",
+    "Official name: United Kingdom of Great Britain and Northern Ireland.",
+    "Great Britain includes England, Scotland, and Wales — not Northern Ireland.",
+    "The UK is in north-west Europe; its mainland stretches about 870 miles (1,400 km) from John O’Groats to Land’s End.",
+    "Capital cities: London (UK & England), Edinburgh (Scotland), Cardiff (Wales), Belfast (Northern Ireland).",
+    "Main cities in England: London, Birmingham, Liverpool, Leeds, Manchester, Bristol, Sheffield, Bradford, Newcastle upon Tyne, Plymouth, Southampton, Norwich.",
+    "Main cities in Wales: Cardiff, Swansea, Newport.",
+    "Main cities in Scotland: Edinburgh, Glasgow, Aberdeen, Dundee.",
+    "Main city in Northern Ireland: Belfast.",
+    "Currency: pound sterling (£) = 100 pence (p); notes of £5, £10, £20, £50.",
+    "Scotland and Northern Ireland issue their own banknotes (valid UK-wide).",
+    "Languages: English (main), Welsh, Scottish Gaelic, Irish Gaelic.",
+    "2022 population ≈ 67.6 million; growth driven by migration and longer life expectancy.",
+    "The UK population is ageing, with record numbers aged 85+.",
+    "Around 10% of people have foreign-born parents or grandparents.",
+    "Equality law guarantees men and women equal rights to work, property, and family responsibilities."
+  ],
+  "memory_hook": "Imagine the UK as a house with four rooms under one roof — each room decorated in its own style (England, Scotland, Wales, Northern Ireland), but all sharing one key (London government) and one roof (the Union Jack flag).",
+  "questions": [
+    {
+      "prompt": "How many countries make up the United Kingdom?",
+      "options": ["Three","Four","Five","Six"],
+      "correct_index": 1,
+      "explanation": "The UK is made up of four countries: England, Scotland, Wales and Northern Ireland."
+    },
+    {
+      "prompt": "Which country is not part of Great Britain?",
+      "options": ["Scotland","England","Wales","Northern Ireland"],
+      "correct_index": 3,
+      "explanation": "Great Britain is the island containing England, Scotland and Wales. Northern Ireland is on the island of Ireland."
+    },
+    {
+      "prompt": "What is the capital city of Wales?",
+      "options": ["Swansea","Cardiff","Newport","Bangor"],
+      "correct_index": 1,
+      "explanation": "Cardiff is the capital of Wales. (Edinburgh is Scotland, Belfast is Northern Ireland, London is England/UK.)"
+    },
+    {
+      "prompt": "Which currency is used throughout the UK?",
+      "options": ["Euro","US Dollar","Pound Sterling","Scottish Pound"],
+      "correct_index": 2,
+      "explanation": "The pound sterling (£) is the UK currency across all four nations. Scotland and Northern Ireland may issue their own banknotes but they are still pounds."
+    },
+    {
+      "prompt": "Where is the UK located geographically?",
+      "options": ["North-East Europe","North-West Europe","Southern Europe","Central Europe"],
+      "correct_index": 1,
+      "explanation": "The UK sits in north-west Europe, off the north-western coast of mainland Europe."
+    },
+    {
+      "prompt": "What is the approximate current population of the UK?",
+      "options": ["50 million","60 million","67 million","80 million"],
+      "correct_index": 2,
+      "explanation": "The population is about 67 million (around 67.6 million in 2022 estimates)."
+    },
+    {
+      "prompt": "Which languages other than English are spoken in parts of the UK?",
+      "options": ["Welsh, Gaelic, Irish Gaelic","French, Dutch, German","Cornish, Latin, Spanish","None"],
+      "correct_index": 0,
+      "explanation": "Besides English, Welsh, Scottish Gaelic and Irish Gaelic are spoken in some areas."
+    }
+  ],
+  "flashcards": [
+    ["What is the official name of the UK?","The United Kingdom of Great Britain and Northern Ireland"],
+    ["How many countries form the UK?","Four"],
+    ["What are the four countries of the UK?","England, Scotland, Wales, Northern Ireland"],
+    ["What is the capital city of the UK and England?","London"],
+    ["What is the capital of Scotland?","Edinburgh"],
+    ["What is the capital of Wales?","Cardiff"],
+    ["What is the capital of Northern Ireland?","Belfast"],
+    ["What currency is used in the UK?","Pound Sterling (£)"],
+    ["How many pence are in a pound?","100"],
+    ["Where is the UK located?","North-west Europe"],
+    ["What is the approximate population of the UK (2022 estimate)?","67.6 million"],
+    ["Which languages are spoken besides English?","Welsh, Scottish Gaelic, Irish Gaelic"],
+    ["Which law protects men and women from discrimination?","Equality Law (Equality Act 2010)"]
+  ]
+}
