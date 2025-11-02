@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCurrentUser, signIn, signUp, signOut, onAuthStateChange } from '../lib/auth';
-import { User } from '@supabase/supabase-js';
+import type { User } from '@supabase/supabase-js';
 
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null);
@@ -13,8 +13,12 @@ export default function AuthButton() {
 
   useEffect(() => {
     getCurrentUser().then(setUser);
-    const { data: { subscription } } = onAuthStateChange(setUser);
-    return () => subscription.unsubscribe();
+    
+    const { data: authListener } = onAuthStateChange(setUser);
+    
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, []);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -25,11 +29,12 @@ export default function AuthButton() {
     try {
       if (isSignUp) {
         await signUp(email, password);
-        alert('Check your email to confirm your account!');
+        alert('Account created! You can now sign in.');
+        setIsSignUp(false);
       } else {
         await signIn(email, password);
+        setShowModal(false);
       }
-      setShowModal(false);
       setEmail('');
       setPassword('');
     } catch (err: any) {
@@ -118,7 +123,10 @@ export default function AuthButton() {
 
             <div className="mt-4 text-center">
               <button
-                onClick={() => setIsSignUp(!isSignUp)}
+                onClick={() => {
+                  setIsSignUp(!isSignUp);
+                  setError('');
+                }}
                 className="text-sm text-teal-600 hover:text-teal-700"
               >
                 {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
@@ -126,7 +134,10 @@ export default function AuthButton() {
             </div>
 
             <button
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setShowModal(false);
+                setError('');
+              }}
               className="mt-4 w-full px-4 py-2 rounded-lg border hover:bg-gray-50 transition"
             >
               Close
