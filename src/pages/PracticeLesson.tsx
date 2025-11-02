@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById } from "../lib/content";
-import { getProgress, recordAttempt } from "../lib/progress";
+import { recordAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
 
 function shuffle<T>(arr: T[]): T[] {
@@ -27,95 +27,6 @@ export default function PracticeLesson() {
   const [finished, setFinished] = useState(false);
   const [wrongTopics, setWrongTopics] = useState<string[]>([]);
 
-  // Scroll to top when lesson changes or when moving to next question
-  useEffect(() => {
-    if (contentRef.current) {
-      const mainElement = contentRef.current.closest('main');
-      if (mainElement) {
-        mainElement.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  }, [lessonId, currentQIdx, finished]);
-
-  useEffect(() => {
-    if (!data) return;
-    setCurrentQIdx(0);
-    setAnswer({ selected: null, checked: false });
-    setSessionStats({ attempted: 0, correct: 0 });
-    setFinished(false);
-    setWrongTopics([]);
-  }, [lessonId, data]);
-
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
-
-  const currentQ = shuffledQuestions[currentQIdx];
-  const totalQuestions = shuffledQuestions.length;
-  const isCorrect = answer.selected === currentQ?.correct_index;
-  const percentage = sessionStats.attempted > 0 
-    ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) 
-    : 0;
-  const progressColor = percentage >= 80 ? "bg-green-600" : "bg-teal-600";
-
-  function choose(optIdx: number) {
-    if (answer.checked) return;
-    setAnswer(prev => ({ ...prev, selected: optIdx }));
-  }
-
-  function check() {
-    if (answer.selected === null) return;
-    recordAttempt(data.id, isCorrect);
-    setSessionStats(prev => ({
-      attempted: prev.attempted + 1,
-      correct: prev.correct + (isCorrect ? 1 : 0)
-    }));
-    setAnswer(prev => ({ ...prev, checked: true }));
-    if (!isCorrect) {
-      setWrongTopics(prev => [...prev, currentQ.prompt]);
-    }
-  }
-
-  function next() {
-    if (currentQIdx < totalQuestions - 1) {
-      setCurrentQIdx(prev => prev + 1);
-      setAnswer({ selected: null, checked: false });
-    } else {
-      setFinished(true);
-    }
-  }
-
-  function retry() {
-    setCurrentQIdx(0);
-cat > src/pages/PracticeLesson.tsx << 'ENDOFFILE'
-import { useEffect, useMemo, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getLessonById } from "../lib/content";
-import { getProgress, recordAttempt } from "../lib/progress";
-import { CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
-
-function shuffle<T>(arr: T[]): T[] {
-  const shuffled = arr.slice();
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
-type AnswerState = { selected: number | null; checked: boolean };
-
-export default function PracticeLesson() {
-  const { lessonId } = useParams();
-  const data = lessonId ? getLessonById(lessonId) : null;
-  const shuffledQuestions = useMemo(() => shuffle(data?.questions ?? []), [lessonId]);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  const [currentQIdx, setCurrentQIdx] = useState(0);
-  const [answer, setAnswer] = useState<AnswerState>({ selected: null, checked: false });
-  const [sessionStats, setSessionStats] = useState({ attempted: 0, correct: 0 });
-  const [finished, setFinished] = useState(false);
-  const [wrongTopics, setWrongTopics] = useState<string[]>([]);
-
-  // Scroll to top when lesson changes or when moving to next question
   useEffect(() => {
     if (contentRef.current) {
       const mainElement = contentRef.current.closest('main');
