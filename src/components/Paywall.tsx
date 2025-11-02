@@ -78,7 +78,7 @@ export default function Paywall() {
           {/* Pricing */}
           <div className="bg-gradient-to-br from-teal-50 to-cyan-50 border-2 border-teal-200 rounded-xl p-6 mb-6">
             <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-4xl font-black text-gray-900">£29.99</span>
+              <span className="text-4xl font-black text-gray-900">£12.99</span>
               <span className="text-lg text-gray-600">one-time</span>
             </div>
             <p className="text-sm text-gray-700">
