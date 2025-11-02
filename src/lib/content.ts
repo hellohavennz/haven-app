@@ -12,10 +12,20 @@ export function getLessonById(id: string): LessonJSON | null {
 }
 
 export function getModules() {
-  const map = new Map<string, { slug: string; title: string; count: number }>();
+  const map = new Map<string, { slug: string; title: string; count: number; order: number }>();
+  
+  // Define the correct order from the handbook
+  const moduleOrder: Record<string, number> = {
+    "life-in-uk-overview": 1,
+    "nations-symbols": 2,
+    "history": 3,
+    "government": 4,
+    "everyday-life": 5,
+  };
   
   for (const lesson of lessons) {
     const title = moduleTitleFromSlug(lesson.module_slug);
+    const order = moduleOrder[lesson.module_slug] || 999;
     const existing = map.get(lesson.module_slug);
     
     if (existing) {
@@ -24,12 +34,14 @@ export function getModules() {
       map.set(lesson.module_slug, {
         slug: lesson.module_slug,
         title,
-        count: 1
+        count: 1,
+        order
       });
     }
   }
   
-  return Array.from(map.values()).sort((a, b) => a.title.localeCompare(b.title));
+  // Sort by order instead of alphabetically
+  return Array.from(map.values()).sort((a, b) => a.order - b.order);
 }
 
 export function getLessonsForModule(slug: string): LessonJSON[] {
