@@ -1,0 +1,89 @@
+{
+  "id": "lesson-3-anglo-saxons-vikings",
+  "title": "Anglo-Saxons and Vikings",
+  "module_slug": "history",
+  "overview": "After the Romans left Britain around AD 410, new groups of people arrived from northern Europe. The Anglo-Saxons came from areas now known as Germany, Denmark, and the Netherlands. They established several kingdoms across England and gave the country its name – 'Angle-land' or England. The Anglo-Saxon period saw the development of the English language, with many everyday English words coming from Anglo-Saxon origins.\n\nChristianity returned to Britain during this period through two main routes. In AD 597, St Augustine was sent by the Pope to convert the Anglo-Saxons in the south of England. In the north, Christianity spread from Ireland and Scotland, led by missionaries like St Columba. These two Christian traditions eventually merged, helping to unify the country.\n\nStarting in AD 789, Vikings from Denmark and Norway began raiding British shores. These fierce warriors eventually settled and controlled large areas of eastern and northern England in a region called the Danelaw. King Alfred the Great of Wessex successfully fought back against the Vikings and is remembered as one of England's greatest kings. He defended his kingdom, promoted education and learning, and began the process of uniting England under one rule. The Anglo-Saxon and Viking periods laid the foundations for medieval England.",
+  "key_facts": [
+    "Anglo-Saxons arrived in Britain after the Romans left around AD 410.",
+    "Anglo-Saxons came from areas now known as Germany, Denmark, and the Netherlands.",
+    "The name 'England' comes from 'Angle-land' after the Angles, one of the Anglo-Saxon tribes.",
+    "Many everyday English words have Anglo-Saxon origins.",
+    "St Augustine was sent by the Pope in AD 597 to convert Anglo-Saxons to Christianity.",
+    "St Columba helped spread Christianity from Ireland and Scotland to northern Britain.",
+    "Vikings from Denmark and Norway began raiding Britain in AD 789.",
+    "The Danelaw was the area of England controlled by Viking settlers.",
+    "King Alfred the Great of Wessex successfully defended his kingdom against the Vikings.",
+    "Alfred the Great promoted education and learning in England.",
+    "Alfred began the process of uniting England under one rule.",
+    "The Anglo-Saxon period lasted from around AD 410 to 1066.",
+    "Anglo-Saxons established several kingdoms across England.",
+    "The two Christian traditions (from Rome and Ireland/Scotland) eventually merged."
+  ],
+  "memory_hook": "Remember: Romans left, Angels (Anglo-Saxons) arrived and named England, then Vikings raided until Alfred the Great defended and united the land.",
+  "questions": [
+    {
+      "prompt": "Where did the Anglo-Saxons originally come from?",
+      "options": ["France and Spain", "Germany, Denmark, and the Netherlands", "Italy and Greece", "Ireland and Scotland"],
+      "correct_index": 1,
+      "explanation": "The Anglo-Saxons came from areas of northern Europe that are now Germany, Denmark, and the Netherlands."
+    },
+    {
+      "prompt": "Who was sent by the Pope in AD 597 to convert the Anglo-Saxons?",
+      "options": ["St Patrick", "St Columba", "St Augustine", "St George"],
+      "correct_index": 2,
+      "explanation": "St Augustine was sent by the Pope in AD 597 to southern England to convert the Anglo-Saxons to Christianity."
+    },
+    {
+      "prompt": "What was the name of the area controlled by Viking settlers?",
+      "options": ["The Kingdom", "The Danelaw", "The Commonwealth", "The Empire"],
+      "correct_index": 1,
+      "explanation": "The Danelaw was the area of eastern and northern England where Viking settlers had control and their own laws."
+    },
+    {
+      "prompt": "Which king successfully defended his kingdom against the Vikings?",
+      "options": ["King Harold", "King Alfred the Great", "King William", "King Edward"],
+      "correct_index": 1,
+      "explanation": "King Alfred the Great of Wessex successfully defended his kingdom against Viking invasions and promoted education and learning."
+    },
+    {
+      "prompt": "When did Viking raids on Britain begin?",
+      "options": ["AD 410", "AD 597", "AD 789", "AD 1066"],
+      "correct_index": 2,
+      "explanation": "Viking raids on British shores began in AD 789, starting a period of conflict and settlement that lasted for centuries."
+    },
+    {
+      "prompt": "From which countries did the Vikings come?",
+      "options": ["France and Germany", "Spain and Portugal", "Denmark and Norway", "Ireland and Scotland"],
+      "correct_index": 2,
+      "explanation": "The Vikings who raided and settled in Britain came mainly from Denmark and Norway."
+    },
+    {
+      "prompt": "Which missionary helped spread Christianity in northern Britain from Scotland?",
+      "options": ["St Augustine", "St Columba", "St Patrick", "St George"],
+      "correct_index": 1,
+      "explanation": "St Columba was an Irish missionary who helped spread Christianity from Ireland and Scotland to northern Britain."
+    },
+    {
+      "prompt": "Where does the name 'England' come from?",
+      "options": ["Roman Latin", "Viking Norse", "Angle-land from the Angles", "Celtic tribes"],
+      "correct_index": 2,
+      "explanation": "The name 'England' comes from 'Angle-land,' named after the Angles, one of the Anglo-Saxon tribes who settled there."
+    }
+  ],
+  "flashcards": [
+    ["When did Anglo-Saxons arrive in Britain?", "After AD 410"],
+    ["Where did Anglo-Saxons come from?", "Germany, Denmark, and the Netherlands"],
+    ["What does England mean?", "Angle-land (land of the Angles)"],
+    ["Who was sent by the Pope in AD 597?", "St Augustine"],
+    ["What was St Augustine's mission?", "To convert Anglo-Saxons to Christianity"],
+    ["Who spread Christianity in northern Britain?", "St Columba"],
+    ["When did Viking raids begin?", "AD 789"],
+    ["Where did Vikings come from?", "Denmark and Norway"],
+    ["What was the Danelaw?", "Area of England controlled by Vikings"],
+    ["Who was Alfred the Great?", "King of Wessex who defeated Vikings"],
+    ["What did Alfred the Great promote?", "Education and learning"],
+    ["When did the Anglo-Saxon period end?", "1066"],
+    ["What language did Anglo-Saxons speak?", "Old English (early English)"],
+    ["How many kingdoms did Anglo-Saxons form?", "Several kingdoms across England"]
+  ]
+}
