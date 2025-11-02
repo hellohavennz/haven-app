@@ -80,73 +80,73 @@ export default function Paywall() {
             </Link>
           </div>
 
-          {/* Premium Plan */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500 rounded-full blur-3xl opacity-20"></div>
-            
-            <div className="relative z-10">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-500/20 backdrop-blur rounded-2xl mb-4">
-                  <Crown className="text-amber-400" size={32} />
-                </div>
-                <h2 className="text-2xl font-bold mb-2">Haven Premium</h2>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-black">£19.99</span>
-                  <span className="text-gray-400">one-time</span>
-                </div>
-                <p className="text-sm text-gray-400">
-                  Ultimate learning experience
-                </p>
-              </div>
-
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-200 font-semibold">Everything in Plus, plus:</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Headphones className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <span className="text-white font-semibold">Audio lessons</span>
-                    <p className="text-sm text-gray-400">Listen and learn on the go</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <FileText className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <span className="text-white font-semibold">Downloadable study guides</span>
-                    <p className="text-sm text-gray-400">PDF versions for offline study</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Zap className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <span className="text-white font-semibold">Priority support</span>
-                    <p className="text-sm text-gray-400">Get help within 24 hours</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Crown className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <span className="text-white font-semibold">Early access</span>
-                    <p className="text-sm text-gray-400">New features before everyone else</p>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-4 mb-6 text-center">
-                <p className="text-sm text-gray-300 font-medium">
-                  🚀 Coming Soon! Audio lessons launching next month.
-                </p>
-              </div>
-
-              <button
-                disabled
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-white/10 text-white/50 rounded-xl font-bold text-lg cursor-not-allowed"
-              >
-                Coming Soon
-              </button>
+          {/* Premium Plan - LIGHT VERSION */}
+          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 shadow-xl relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full">
+              COMING SOON
             </div>
+            
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
+                <Crown className="text-amber-600" size={32} />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Haven Premium</h2>
+              <div className="flex items-baseline justify-center gap-2 mb-2">
+                <span className="text-5xl font-black text-gray-900">£19.99</span>
+                <span className="text-gray-600">one-time</span>
+              </div>
+              <p className="text-sm text-gray-600">
+                Ultimate learning experience
+              </p>
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+                <span className="text-gray-900 font-semibold">Everything in Plus, plus:</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Headphones className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <span className="text-gray-900 font-semibold">Audio lessons</span>
+                  <p className="text-sm text-gray-600">Listen and learn on the go</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <span className="text-gray-900 font-semibold">Downloadable study guides</span>
+                  <p className="text-sm text-gray-600">PDF versions for offline study</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Zap className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <span className="text-gray-900 font-semibold">Priority support</span>
+                  <p className="text-sm text-gray-600">Get help within 24 hours</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Crown className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <span className="text-gray-900 font-semibold">Early access</span>
+                  <p className="text-sm text-gray-600">New features before everyone else</p>
+                </div>
+              </li>
+            </ul>
+
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 mb-6 text-center">
+              <p className="text-sm text-amber-900 font-medium">
+                🚀 Launching Next Month! Audio lessons coming soon.
+              </p>
+            </div>
+
+            <button
+              disabled
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-200 text-gray-500 rounded-xl font-bold text-lg cursor-not-allowed"
+            >
+              Coming Soon
+            </button>
           </div>
         </div>
 

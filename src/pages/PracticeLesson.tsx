@@ -27,6 +27,7 @@ export default function PracticeLesson() {
   const [finished, setFinished] = useState(false);
   const [wrongTopics, setWrongTopics] = useState<string[]>([]);
 
+  // Scroll to top when lesson changes or question changes or finished state changes
   useEffect(() => {
     if (contentRef.current) {
       const mainElement = contentRef.current.closest('main');
@@ -36,8 +37,9 @@ export default function PracticeLesson() {
     }
   }, [lessonId, currentQIdx, finished]);
 
+  // Reset state when lesson changes
   useEffect(() => {
-    if (!data) return;
+    if (!lessonId || !data) return;
     setCurrentQIdx(0);
     setAnswer({ selected: null, checked: false });
     setSessionStats({ attempted: 0, correct: 0 });
