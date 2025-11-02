@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { getCurrentUser, signIn, signUp, signOut, onAuthStateChange } from '../lib/auth';
 import type { User } from '@supabase/supabase-js';
+import { CheckCircle } from 'lucide-react';
 
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null);
@@ -11,6 +12,7 @@ export default function AuthButton() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -38,18 +40,25 @@ export default function AuthButton() {
     e.preventDefault();
     setLoading(true);
     setError('');
+    setSuccess('');
     
     try {
       if (isSignUp) {
         await signUp(email, password);
-        alert('Account created! You can now sign in.');
-        setIsSignUp(false);
+        setSuccess('Account created! You can now sign in.');
+        setEmail('');
+        setPassword('');
+        // Auto-switch to sign in after 2 seconds
+        setTimeout(() => {
+          setIsSignUp(false);
+          setSuccess('');
+        }, 2000);
       } else {
         await signIn(email, password);
         setShowModal(false);
+        setEmail('');
+        setPassword('');
       }
-      setEmail('');
-      setPassword('');
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -65,14 +74,21 @@ export default function AuthButton() {
     }
   }
 
+  function closeModal() {
+    setShowModal(false);
+    setError('');
+    setSuccess('');
+    setEmail('');
+    setPassword('');
+  }
+
   const modalContent = showModal ? (
     <div 
       className="fixed inset-0 bg-black/50 flex items-center justify-center p-4"
       style={{ zIndex: 99999 }}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
-          setShowModal(false);
-          setError('');
+          closeModal();
         }
       }}
     >
@@ -91,6 +107,7 @@ export default function AuthButton() {
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="your@email.com"
               required
+              disabled={loading || !!success}
             />
           </div>
           
@@ -104,6 +121,7 @@ export default function AuthButton() {
               placeholder="Min. 6 characters"
               required
               minLength={6}
+              disabled={loading || !!success}
             />
           </div>
 
@@ -113,35 +131,43 @@ export default function AuthButton() {
             </div>
           )}
 
+          {success && (
+            <div className="text-sm text-green-600 bg-green-50 p-3 rounded-lg border border-green-200 flex items-center gap-2">
+              <CheckCircle size={20} />
+              <span>{success}</span>
+            </div>
+          )}
+
           <button
             type="submit"
-            disabled={loading}
-            className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition disabled:opacity-50"
+            disabled={loading || !!success}
+            className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
           </button>
         </form>
 
-        <div className="mt-4 text-center">
-          <button
-            type="button"
-            onClick={() => {
-              setIsSignUp(!isSignUp);
-              setError('');
-            }}
-            className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-          >
-            {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
-          </button>
-        </div>
+        {!success && (
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setError('');
+              }}
+              disabled={loading}
+              className="text-sm text-teal-600 hover:text-teal-700 font-medium disabled:opacity-50"
+            >
+              {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
+            </button>
+          </div>
+        )}
 
         <button
           type="button"
-          onClick={() => {
-            setShowModal(false);
-            setError('');
-          }}
-          className="mt-4 w-full px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition"
+          onClick={closeModal}
+          disabled={loading}
+          className="mt-4 w-full px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition disabled:opacity-50"
         >
           Close
         </button>
