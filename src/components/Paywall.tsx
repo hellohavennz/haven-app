@@ -70,7 +70,7 @@ export default function Paywall() {
               <CheckCircle2 className="text-green-600 flex-shrink-0 mt-1" size={24} />
               <div>
                 <h3 className="font-semibold text-gray-900">Pass Guarantee</h3>
-                <p className="text-sm text-gray-600">Money-back guarantee if you complete the course</p>
+                <p className="text-sm text-gray-600">Complete the course and fail? Get your money back</p>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Paywall() {
               <span className="text-lg text-gray-600">one-time</span>
             </div>
             <p className="text-sm text-gray-700">
-              Full lifetime access • No subscription • Money-back guarantee
+              Full lifetime access • No subscription • Pass or get refunded
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function Paywall() {
 
         {/* Trust Indicators */}
         <div className="text-center text-sm text-gray-500">
-          <p>✓ Secure payment • ✓ Instant access • ✓ 30-day money-back guarantee</p>
+          <p>✓ Secure payment • ✓ Instant access • ✓ Pass guarantee: Fail after completing? Get refunded</p>
         </div>
       </div>
     </div>
