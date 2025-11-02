@@ -77,7 +77,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Stats Section - Updated with Real Pass Rate */}
+      {/* Stats Section */}
       <section className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center">
