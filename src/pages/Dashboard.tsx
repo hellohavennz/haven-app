@@ -1,4 +1,3 @@
-cat > src/pages/Dashboard.tsx << 'EOF'
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCurrentUser } from "../lib/auth";
@@ -30,7 +29,6 @@ export default function Dashboard() {
     );
   }
 
-  // If not logged in, show promotional dashboard
   if (!user) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-12 space-y-16">
@@ -38,17 +36,12 @@ export default function Dashboard() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full mb-4">
             <BarChart3 className="text-white" size={40} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-            Track Your Progress to Success
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Create an account to unlock your personal dashboard and track your journey to passing the Life in the UK test.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">Track Your Progress to Success</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Create an account to unlock your personal dashboard and track your journey to passing the Life in the UK test.</p>
         </div>
 
-        {/* Demo Dashboard Preview */}
-        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-3xl p-8 md:p-12">
-          <div className="space-y-8">
+        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-3xl p-8 md:p-12 relative">
+          <div className="space-y-8 opacity-50">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center">
                 <Trophy className="text-amber-600 mx-auto mb-3" size={40} />
@@ -90,26 +83,21 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="absolute inset-0 backdrop-blur-sm bg-white/50 rounded-3xl flex items-center justify-center">
-              <div className="bg-white border-2 border-gray-300 rounded-2xl p-8 text-center max-w-md mx-4">
-                <Lock className="text-gray-400 mx-auto mb-4" size={48} />
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Sign In to Continue</h3>
-                <p className="text-gray-600 mb-6">Create a free account to access your personal dashboard and start tracking your progress.</p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/signup" className="flex-1 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold hover:opacity-90 transition-all">
-                    Sign Up Free
-                  </Link>
-                  <Link to="/login" className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all">
-                    Sign In
-                  </Link>
-                </div>
+          <div className="absolute inset-0 backdrop-blur-sm bg-white/50 rounded-3xl flex items-center justify-center">
+            <div className="bg-white border-2 border-gray-300 rounded-2xl p-8 text-center max-w-md mx-4">
+              <Lock className="text-gray-400 mx-auto mb-4" size={48} />
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Sign In to Continue</h3>
+              <p className="text-gray-600 mb-6">Create a free account to access your personal dashboard and start tracking your progress.</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/signup" className="flex-1 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold hover:opacity-90 transition-all">Sign Up Free</Link>
+                <Link to="/login" className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all">Sign In</Link>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Benefits Section */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
             <CheckCircle2 className="text-teal-600 mb-4" size={32} />
@@ -117,7 +105,7 @@ export default function Dashboard() {
             <p className="text-gray-600">See exactly which topics you've mastered and which need more practice. Visual charts show your progress at a glance.</p>
           </div>
           <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
-            <Target className="text-teal-600mb-4" size={32} />
+            <Target className="text-teal-600 mb-4" size={32} />
             <h3 className="text-xl font-bold text-gray-900 mb-2">Personalized Recommendations</h3>
             <p className="text-gray-600">Get smart suggestions on what to study next based on your performance and weak areas.</p>
           </div>
@@ -133,29 +121,19 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Pricing CTA */}
         <div className="bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl p-8 md:p-12 text-white text-center">
           <Sparkles className="mx-auto mb-4" size={48} />
           <h2 className="text-3xl font-extrabold mb-4">Ready to Start Your Journey?</h2>
-          <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">
-            Create a free account and get access to your first lesson. Upgrade to Haven Plus for full access to all features.
-          </p>
+          <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">Create a free account and get access to your first lesson. Upgrade to Haven Plus for full access to all features.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/signup" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-teal-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">
-              Sign Up Free
-              <ArrowRight size={24} />
-            </Link>
-            <Link to="/paywall" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
-              View Pricing
-              <Crown size={24} />
-            </Link>
+            <Link to="/signup" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-teal-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all">Sign Up Free<ArrowRight size={24} /></Link>
+            <Link to="/paywall" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all">View Pricing<Crown size={24} /></Link>
           </div>
         </div>
       </div>
     );
   }
 
-  // Existing dashboard code for logged-in users...
   const modules = getModules();
   const allLessons = getAllLessons();
   const totalLessons = allLessons.length;
@@ -292,14 +270,9 @@ export default function Dashboard() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4">
-        <Link to="/content" className="flex-1 px-8 py-4 text-center border-2 border-teal-200 text-teal-700 font-semibold rounded-xl hover:bg-teal-50 transition-all">
-          Continue Studying
-        </Link>
-        <Link to="/practice" className="flex-1 px-8 py-4 text-center bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:opacity-90 transition-all">
-          Practice Questions
-        </Link>
+        <Link to="/content" className="flex-1 px-8 py-4 text-center border-2 border-teal-200 text-teal-700 font-semibold rounded-xl hover:bg-teal-50 transition-all">Continue Studying</Link>
+        <Link to="/practice" className="flex-1 px-8 py-4 text-center bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-xl hover:opacity-90 transition-all">Practice Questions</Link>
       </div>
     </div>
   );
 }
-EOF
