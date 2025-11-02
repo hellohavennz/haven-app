@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Home } from "lucide-react";
+import AuthButton from "./AuthButton";
 
 const link = "px-4 py-2 rounded-lg transition text-sm font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50";
 const active = "bg-teal-100 text-teal-700 hover:bg-teal-100";
@@ -14,10 +15,13 @@ export default function Navbar() {
           </div>
           <span className="text-lg font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent">Haven</span>
         </NavLink>
-        <div className="flex items-center gap-2">
-          <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Study</NavLink>
-          <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
-          <NavLink to="/paywall" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Upgrade</NavLink>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Study</NavLink>
+            <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
+            <NavLink to="/paywall" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Upgrade</NavLink>
+          </div>
+          <AuthButton />
         </div>
       </nav>
     </header>
