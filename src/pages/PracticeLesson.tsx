@@ -26,6 +26,11 @@ export default function PracticeLesson() {
   const [finished, setFinished] = useState(false);
   const [wrongTopics, setWrongTopics] = useState<string[]>([]);
 
+  // Scroll to top when lesson changes or when moving to next question
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [lessonId, currentQIdx]);
+
   useEffect(() => {
     if (!data) return;
     setCurrentQIdx(0);
@@ -78,6 +83,7 @@ export default function PracticeLesson() {
     setSessionStats({ attempted: 0, correct: 0 });
     setFinished(false);
     setWrongTopics([]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   if (finished) {
@@ -159,24 +165,7 @@ export default function PracticeLesson() {
           )}
         </div>
 
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-40">
-          <div className="flex gap-3 max-w-2xl mx-auto">
-            <Link
-              to={`/content/${data.id}`}
-              className="flex-1 px-6 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all text-center active:scale-95"
-            >
-              Review
-            </Link>
-            <button
-              onClick={retry}
-              className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all text-center active:scale-95"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-
-        <div className="hidden md:flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center">
           <Link
             to={`/content/${data.id}`}
             className="px-8 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all active:scale-95"

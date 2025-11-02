@@ -14,10 +14,12 @@ export default function RootLayout() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 flex flex-col">
       <Navbar />
       
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1" style={{ height: 'calc(100vh - 4rem)' }}>
+        {/* Sidebar - Fixed, scrollable independently */}
         {showStudySidebar && <Sidebar />}
         {showPracticeSidebar && <PracticeSidebar />}
         
+        {/* Main Content - Scrollable independently */}
         <main className={`flex-1 overflow-y-auto ${showAnySidebar ? '' : 'mx-auto max-w-6xl px-4 py-12'}`}>
           <Outlet />
         </main>

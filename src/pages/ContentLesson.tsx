@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById, getAllLessons } from "../lib/content";
 import { BookCheck, Brain, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
@@ -7,6 +8,11 @@ export default function ContentLesson() {
   const data = lessonId ? getLessonById(lessonId) : null;
   const allLessons = getAllLessons();
   
+  // Scroll to top whenever lesson changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [lessonId]);
+
   if (!data) {
     return (
       <div className="max-w-3xl mx-auto p-6">
@@ -90,7 +96,7 @@ export default function ContentLesson() {
               <ArrowLeft size={18} />
               <div className="text-left">
                 <div className="text-xs text-gray-500">Previous</div>
-                <div className="text-sm font-semibold">{previousLesson.title}</div>
+                <div className="text-sm font-semibold truncate max-w-[150px]">{previousLesson.title}</div>
               </div>
             </Link>
           ) : (
@@ -104,7 +110,7 @@ export default function ContentLesson() {
             >
               <div className="text-right">
                 <div className="text-xs text-teal-100">Next</div>
-                <div className="text-sm font-semibold">{nextLesson.title}</div>
+                <div className="text-sm font-semibold truncate max-w-[150px]">{nextLesson.title}</div>
               </div>
               <ArrowRight size={18} />
             </Link>
