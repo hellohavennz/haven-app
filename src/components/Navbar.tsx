@@ -1,15 +1,21 @@
 import { NavLink } from "react-router-dom";
+import { Home } from "lucide-react";
 
-const link = "px-3 py-2 rounded hover:bg-gray-100 transition text-sm font-medium";
-const active = "bg-black text-white hover:bg-black/90";
+const link = "px-4 py-2 rounded-lg transition text-sm font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50";
+const active = "bg-teal-100 text-teal-700 hover:bg-teal-100";
 
 export default function Navbar() {
   return (
-    <header className="border-b bg-white/70 backdrop-blur">
-      <nav className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
-        <NavLink to="/" className="text-lg font-semibold">Haven</NavLink>
-        <div className="flex items-center gap-1">
-          <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Life in the UK</NavLink>
+    <header className="border-b border-gray-200 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
+      <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+        <NavLink to="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg flex items-center justify-center">
+            <Home size={18} className="text-white" strokeWidth={2.5} />
+          </div>
+          <span className="text-lg font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent">Haven</span>
+        </NavLink>
+        <div className="flex items-center gap-2">
+          <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Study</NavLink>
           <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
           <NavLink to="/paywall" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Upgrade</NavLink>
         </div>

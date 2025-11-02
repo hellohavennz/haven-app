@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "content/:lessonId", element: <ContentLesson /> },
       { path: "practice", element: <PracticeIndex /> },
       { path: "practice/:lessonId", element: <PracticeLesson /> },
-      { path: "practice/:lessonId/flashcards", element: <PracticeFlashcards /> },
+      { path: "flashcards/:lessonId", element: <PracticeFlashcards /> },
       { path: "lesson/:lessonId", element: <Lesson /> },
       { path: "mock", element: <Mock /> },
       { path: "profile", element: <Profile /> },

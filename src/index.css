@@ -13,6 +13,13 @@
   display: inline-block;
   transform-origin: 70% 70%;
 }
-body {
-  background-color: #F7FAFC; /* soft off-white */
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-50 via-white to-teal-50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900;
+  }
 }
