@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById, getAllLessons } from "../lib/content";
 import { BookCheck, Brain, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
@@ -7,10 +7,17 @@ export default function ContentLesson() {
   const { lessonId } = useParams();
   const data = lessonId ? getLessonById(lessonId) : null;
   const allLessons = getAllLessons();
+  const contentRef = useRef<HTMLDivElement>(null);
   
   // Scroll to top whenever lesson changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (contentRef.current) {
+      // Scroll the parent container (main element)
+      const mainElement = contentRef.current.closest('main');
+      if (mainElement) {
+        mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   }, [lessonId]);
 
   if (!data) {
@@ -32,7 +39,7 @@ export default function ContentLesson() {
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8">
+    <div ref={contentRef} className="max-w-4xl mx-auto px-6 py-8">
       <div className="space-y-12">
         <header className="space-y-6">
           <div className="flex items-center gap-2 text-sm text-teal-600 font-medium">
