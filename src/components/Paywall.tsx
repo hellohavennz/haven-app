@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Lock, Sparkles, CheckCircle2, Crown, Headphones, FileText, Zap } from "lucide-react";
+import { Sparkles, CheckCircle2, Crown, Headphones, FileText, Zap, Trophy } from "lucide-react";
 
 export default function Paywall() {
   return (
@@ -7,14 +7,14 @@ export default function Paywall() {
       <div className="max-w-5xl w-full">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full mb-4 shadow-xl">
-            <Lock className="text-white" size={40} />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full mb-4 shadow-xl">
+            <Trophy className="text-white" size={40} />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3">
-            Unlock Full Access
+            Pass Your Test with Confidence
           </h1>
           <p className="text-xl text-gray-600">
-            Choose the plan that's right for you
+            Join thousands who passed on their first try
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function Paywall() {
               to="/paywall"
               className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all shadow-lg"
             >
-              Get Haven Plus
+              Start Your Journey
               <Sparkles size={20} />
             </Link>
           </div>
