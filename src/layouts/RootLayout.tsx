@@ -11,23 +11,22 @@ export default function RootLayout() {
   const showAnySidebar = showStudySidebar || showPracticeSidebar;
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 overflow-hidden">
       <Navbar />
       
-      {/* Main container with fixed height */}
       <div className="flex flex-1 min-h-0">
-        {/* Sidebars - independently scrollable */}
         {showStudySidebar && <Sidebar />}
         {showPracticeSidebar && <PracticeSidebar />}
         
-        {/* Main Content - independently scrollable */}
-        <main className={`flex-1 overflow-y-auto ${showAnySidebar ? '' : 'mx-auto max-w-6xl px-4 py-12'}`}>
-          <Outlet />
+        <main className={`flex-1 overflow-y-auto ${showAnySidebar ? '' : ''}`}>
+          <div className={showAnySidebar ? '' : 'mx-auto max-w-6xl px-4 py-12'}>
+            <Outlet />
+          </div>
         </main>
       </div>
       
       {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600">
+        <footer className="border-t border-gray-200 text-sm text-gray-600 flex-shrink-0">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center">
             <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
           </div>

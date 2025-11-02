@@ -18,7 +18,7 @@ type AnswerState = { selected: number | null; checked: boolean };
 export default function PracticeLesson() {
   const { lessonId } = useParams();
   const data = lessonId ? getLessonById(lessonId) : null;
-  const shuffledQuestions = useMemo(() => shuffle(data?.questions ?? []), [lessonId]);
+  const shuffledQuestions = useMemo(() => shuffle(data?.questions ?? []), [data?.questions]);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const [currentQIdx, setCurrentQIdx] = useState(0);
@@ -37,15 +37,14 @@ export default function PracticeLesson() {
     }
   }, [lessonId, currentQIdx, finished]);
 
-  // Reset state when lesson changes
+  // Reset state when lesson changes - ONLY depend on lessonId
   useEffect(() => {
-    if (!lessonId || !data) return;
     setCurrentQIdx(0);
     setAnswer({ selected: null, checked: false });
     setSessionStats({ attempted: 0, correct: 0 });
     setFinished(false);
     setWrongTopics([]);
-  }, [lessonId, data]);
+  }, [lessonId]); // Only lessonId dependency!
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
 
@@ -118,7 +117,7 @@ export default function PracticeLesson() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6 shadow-sm">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-gray-700">Your Score</span>
@@ -174,13 +173,13 @@ export default function PracticeLesson() {
         <div className="flex gap-4 justify-center">
           <Link
             to={`/content/${data.id}`}
-            className="px-8 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all active:scale-95"
+            className="px-8 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all"
           >
             Review Lesson
           </Link>
           <button
             onClick={retry}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-teal-200"
+            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
           >
             Try Again
           </button>
@@ -221,7 +220,7 @@ export default function PracticeLesson() {
           </div>
         </header>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6">
           <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed">
             {currentQ.prompt}
           </p>
@@ -234,10 +233,10 @@ export default function PracticeLesson() {
               return (
                 <li key={i}>
                   <button
-                    className={`w-full text-left p-4 rounded-xl border-2 font-medium transition-all active:scale-98
-                      ${!show && picked ? "border-teal-600 bg-teal-50 shadow-sm" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
-                      ${show && isRight ? "border-green-600 bg-green-50 text-green-900 shadow-sm" : ""}
-                      ${show && picked && !isRight ? "border-red-600 bg-red-50 text-red-900 shadow-sm" : ""}
+                    className={`w-full text-left p-4 rounded-xl border-2 font-medium transition-all
+                      ${!show && picked ? "border-teal-600 bg-teal-50" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
+                      ${show && isRight ? "border-green-600 bg-green-50 text-green-900" : ""}
+                      ${show && picked && !isRight ? "border-red-600 bg-red-50 text-red-900" : ""}
                       ${!show ? "cursor-pointer" : "cursor-default"}`}
                     onClick={() => choose(i)}
                     disabled={show}
@@ -251,7 +250,7 @@ export default function PracticeLesson() {
 
           {!answer.checked ? (
             <button
-              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 shadow-lg shadow-teal-200"
+              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={check}
               disabled={answer.selected === null}
             >
@@ -281,7 +280,7 @@ export default function PracticeLesson() {
               )}
               <button
                 onClick={next}
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-teal-200"
+                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
               >
                 {currentQIdx < totalQuestions - 1 ? "Next Question →" : "See Results →"}
               </button>
