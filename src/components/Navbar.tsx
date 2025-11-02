@@ -7,7 +7,7 @@ const active = "bg-teal-100 text-teal-700 hover:bg-teal-100";
 
 export default function Navbar() {
   return (
-    <header className="border-b border-gray-200 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
+    <header className="border-b border-gray-200 bg-white/95 backdrop-blur-sm sticky top-0 z-40">
       <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg flex items-center justify-center">
@@ -16,7 +16,7 @@ export default function Navbar() {
           <span className="text-lg font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent">Haven</span>
         </NavLink>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2">
             <NavLink to="/content" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Study</NavLink>
             <NavLink to="/practice" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Practice</NavLink>
             <NavLink to="/paywall" className={({isActive}) => `${link} ${isActive ? active : ""}`}>Upgrade</NavLink>

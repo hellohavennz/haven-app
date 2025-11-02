@@ -55,7 +55,7 @@ export default function AuthButton() {
   if (user) {
     return (
       <div className="flex items-center gap-3">
-        <span className="text-sm text-gray-600">{user.email}</span>
+        <span className="text-sm text-gray-600 hidden sm:inline">{user.email}</span>
         <button
           onClick={handleSignOut}
           className="px-3 py-1.5 text-sm rounded-lg border border-gray-300 hover:bg-gray-50 transition"
@@ -70,44 +70,55 @@ export default function AuthButton() {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition"
+        className="px-4 py-2 text-sm rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 text-white font-medium hover:opacity-90 transition"
       >
         Sign In
       </button>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full">
-            <h2 className="text-2xl font-bold mb-4">
+        <div 
+          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4"
+          style={{ zIndex: 9999 }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowModal(false);
+              setError('');
+            }
+          }}
+        >
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">
               {isSignUp ? 'Create Account' : 'Sign In'}
             </h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
+                <label className="block text-sm font-medium mb-1 text-gray-700">Email</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="your@email.com"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Password</label>
+                <label className="block text-sm font-medium mb-1 text-gray-700">Password</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Min. 6 characters"
                   required
                   minLength={6}
                 />
               </div>
 
               {error && (
-                <div className="text-sm text-red-600 bg-red-50 p-3 rounded">
+                <div className="text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
                   {error}
                 </div>
               )}
@@ -127,7 +138,7 @@ export default function AuthButton() {
                   setIsSignUp(!isSignUp);
                   setError('');
                 }}
-                className="text-sm text-teal-600 hover:text-teal-700"
+                className="text-sm text-teal-600 hover:text-teal-700 font-medium"
               >
                 {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
               </button>
@@ -138,7 +149,7 @@ export default function AuthButton() {
                 setShowModal(false);
                 setError('');
               }}
-              className="mt-4 w-full px-4 py-2 rounded-lg border hover:bg-gray-50 transition"
+              className="mt-4 w-full px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition"
             >
               Close
             </button>
