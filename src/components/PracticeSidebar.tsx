@@ -60,16 +60,16 @@ export default function PracticeSidebar() {
   }).length;
 
   return (
-    <aside className="w-72 bg-white border-r border-gray-200 flex flex-col h-full">
-      {/* Header */}
-      <div className="p-4 border-b border-gray-200">
+    <aside className="w-72 bg-white border-r border-gray-200 flex flex-col flex-shrink-0 overflow-hidden">
+      {/* Header - Fixed */}
+      <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
           Practice
         </h2>
       </div>
 
       {/* Scrollable Module List */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto min-h-0">
         <nav className="p-2">
           {modules.map(module => {
             const lessons = getLessonsForModule(module.slug);
@@ -130,8 +130,8 @@ export default function PracticeSidebar() {
         </nav>
       </div>
 
-      {/* Progress Summary */}
-      <div className="p-4 border-t border-gray-200 bg-gray-50">
+      {/* Progress Summary - Fixed at bottom */}
+      <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
         <div className="text-center mb-3">
           <div className="text-3xl font-black text-green-600 mb-1">{masteredLessons}</div>
           <p className="text-xs text-gray-600">Lessons Mastered (80%+)</p>

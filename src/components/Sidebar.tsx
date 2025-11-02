@@ -59,14 +59,16 @@ export default function Sidebar() {
     : 0;
 
   return (
-    <aside className="w-72 bg-white border-r border-gray-200 flex flex-col h-full">
-      <div className="p-4 border-b border-gray-200">
+    <aside className="w-72 bg-white border-r border-gray-200 flex flex-col flex-shrink-0 overflow-hidden">
+      {/* Header - Fixed */}
+      <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
           Study Content
         </h2>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      {/* Scrollable Module List */}
+      <div className="flex-1 overflow-y-auto min-h-0">
         <nav className="p-2">
           {modules.map(module => {
             const lessons = getLessonsForModule(module.slug);
@@ -121,7 +123,8 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="p-4 border-t border-gray-200 bg-gray-50">
+      {/* Progress Summary - Fixed at bottom */}
+      <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-semibold text-gray-900">Your Progress</span>
           <span className="text-2xl font-bold text-teal-600">{completionPercentage}%</span>
