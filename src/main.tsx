@@ -5,6 +5,7 @@ import "./index.css";
 
 import RootLayout from "./layouts/RootLayout";
 import App from "./App";
+import Dashboard from "./pages/Dashboard";
 import ContentIndex from "./pages/ContentIndex";
 import ContentLesson from "./pages/ContentLesson";
 import PracticeIndex from "./pages/PracticeIndex";
@@ -16,14 +17,14 @@ import AppError from "./components/AppError";
 const Mock = () => (
   <div className="max-w-2xl mx-auto p-6 text-center">
     <h1 className="text-3xl font-bold mb-4">Mock Exam</h1>
-    <p className="text-gray-600">Coming soon…</p>
+    <p className="text-gray-600">Full practice test coming soon…</p>
   </div>
 );
 
 const Profile = () => (
   <div className="max-w-2xl mx-auto p-6 text-center">
     <h1 className="text-3xl font-bold mb-4">Profile</h1>
-    <p className="text-gray-600">Coming soon…</p>
+    <p className="text-gray-600">Account settings coming soon…</p>
   </div>
 );
 
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
     errorElement: <AppError error={new Error("Route error")} />,
     children: [
       { index: true, element: <App /> },
+      { path: "dashboard", element: <Dashboard /> },
       { path: "content", element: <ContentIndex /> },
       { path: "content/:lessonId", element: <ContentLesson /> },
       { path: "practice", element: <PracticeIndex /> },
