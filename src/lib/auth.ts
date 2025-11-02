@@ -35,3 +35,11 @@ export function onAuthStateChange(callback: (user: any) => void) {
     callback(session?.user ?? null);
   });
 }
+
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.error('Logout error:', error);
+    throw error;
+  }
+}
