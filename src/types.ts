@@ -7,6 +7,7 @@ export type LessonJSON = {
   memory_hook: string;
   questions: Question[];
   flashcards: [string, string][];
+  isPremium?: boolean; // Optional - defaults to false
 };
 
 export type Question = {
@@ -20,4 +21,9 @@ export type Module = {
   slug: string;
   title: string;
   count: number;
+};
+
+export type UserSubscription = {
+  isPremium: boolean;
+  email?: string;
 };

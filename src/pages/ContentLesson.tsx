@@ -1,24 +1,37 @@
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById, getAllLessons } from "../lib/content";
+import { useSubscription } from "../lib/subscription";
 import { BookCheck, Brain, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import Paywall from "../components/Paywall";
 
 export default function ContentLesson() {
   const { lessonId } = useParams();
   const data = lessonId ? getLessonById(lessonId) : null;
   const allLessons = getAllLessons();
   const contentRef = useRef<HTMLDivElement>(null);
+  const { isPremium, isLoading } = useSubscription();
   
-  // Scroll to top whenever lesson changes
   useEffect(() => {
     if (contentRef.current) {
-      // Scroll the parent container (main element)
       const mainElement = contentRef.current.closest('main');
       if (mainElement) {
         mainElement.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }, [lessonId]);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <div className="text-center">
+          <div className="animate-spin w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!data) {
     return (
@@ -32,6 +45,11 @@ export default function ContentLesson() {
         </div>
       </div>
     );
+  }
+
+  // Show paywall if lesson is premium and user doesn't have access
+  if (data.isPremium && !isPremium) {
+    return <Paywall />;
   }
 
   const currentIndex = allLessons.findIndex(l => l.id === data.id);

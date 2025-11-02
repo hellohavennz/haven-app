@@ -3,18 +3,29 @@ import type { LessonJSON } from "../types";
 const files = import.meta.glob("../content/lessons/*.json", { eager: true });
 const lessons: LessonJSON[] = Object.values(files).map((m: any) => m.default as LessonJSON);
 
+// Mark which lessons are premium (all except the first one)
+const FIRST_FREE_LESSON = "lesson-1-the-united-kingdom";
+
 export function getAllLessons(): LessonJSON[] {
-  return lessons.slice().sort((a, b) => a.title.localeCompare(b.title));
+  return lessons.slice().sort((a, b) => a.title.localeCompare(b.title)).map(lesson => ({
+    ...lesson,
+    isPremium: lesson.id !== FIRST_FREE_LESSON
+  }));
 }
 
 export function getLessonById(id: string): LessonJSON | null {
-  return lessons.find(l => l.id === id) || null;
+  const lesson = lessons.find(l => l.id === id);
+  if (!lesson) return null;
+  
+  return {
+    ...lesson,
+    isPremium: lesson.id !== FIRST_FREE_LESSON
+  };
 }
 
 export function getModules() {
   const map = new Map<string, { slug: string; title: string; count: number; order: number }>();
   
-  // Define the correct order from the handbook
   const moduleOrder: Record<string, number> = {
     "life-in-uk-overview": 1,
     "nations-symbols": 2,
@@ -40,7 +51,6 @@ export function getModules() {
     }
   }
   
-  // Sort by order instead of alphabetically
   return Array.from(map.values()).sort((a, b) => a.order - b.order);
 }
 

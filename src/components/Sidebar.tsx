@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { getModules, getLessonsForModule } from "../lib/content";
 import { getAllProgress } from "../lib/progress";
-import { ChevronDown, ChevronRight, CheckCircle2, AlertCircle, Circle, BarChart3 } from "lucide-react";
+import { useSubscription } from "../lib/subscription";
+import { ChevronDown, ChevronRight, CheckCircle2, AlertCircle, Circle, BarChart3, Lock } from "lucide-react";
 
 type ProgressData = Record<string, { attempted: number; correct: number }>;
 
@@ -11,6 +12,7 @@ export default function Sidebar() {
   const modules = getModules();
   const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
   const [progressData, setProgressData] = useState<ProgressData>({});
+  const { isPremium } = useSubscription();
 
   useEffect(() => {
     getAllProgress().then(setProgressData);
@@ -38,7 +40,11 @@ export default function Sidebar() {
     );
   };
 
-  const getLessonIcon = (lessonId: string) => {
+  const getLessonIcon = (lessonId: string, isPremiumLesson: boolean) => {
+    if (isPremiumLesson && !isPremium) {
+      return <Lock className="text-gray-400" size={16} />;
+    }
+    
     const progress = progressData[lessonId];
     if (!progress || progress.attempted === 0) {
       return <Circle className="text-gray-300" size={16} />;
@@ -60,14 +66,12 @@ export default function Sidebar() {
 
   return (
     <aside className="w-72 bg-white border-r border-gray-200 flex flex-col flex-shrink-0 overflow-hidden">
-      {/* Header - Fixed */}
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
           Study Content
         </h2>
       </div>
 
-      {/* Scrollable Module List */}
       <div className="flex-1 overflow-y-auto min-h-0">
         <nav className="p-2">
           {modules.map(module => {
@@ -100,6 +104,8 @@ export default function Sidebar() {
                   <div className="ml-4 mt-1 space-y-0.5">
                     {lessons.map(lesson => {
                       const isActive = location.pathname.includes(lesson.id);
+                      const isLocked = lesson.isPremium && !isPremium;
+                      
                       return (
                         <NavLink
                           key={lesson.id}
@@ -107,10 +113,12 @@ export default function Sidebar() {
                           className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
                             isActive
                               ? 'bg-teal-50 text-teal-700 font-medium'
+                              : isLocked
+                              ? 'text-gray-400'
                               : 'text-gray-700 hover:bg-gray-50'
                           }`}
                         >
-                          {getLessonIcon(lesson.id)}
+                          {getLessonIcon(lesson.id, lesson.isPremium || false)}
                           <span className="flex-1 truncate">{lesson.title}</span>
                         </NavLink>
                       );
@@ -123,7 +131,6 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Progress Summary - Fixed at bottom */}
       <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-semibold text-gray-900">Your Progress</span>
