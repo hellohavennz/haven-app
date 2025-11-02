@@ -1,19 +1,19 @@
-// src/App.tsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllLessons } from "./lib/content";
-
-type Meta = { id: string; title: string; module_slug: string };
+import type { LessonJSON } from "./types";
 
 export default function App() {
-  const [starters, setStarters] = useState<Meta[]>([]);
+  const [starters, setStarters] = useState<LessonJSON[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     try {
-      const idx = getAllLessons();
-      const ns = idx.filter(i => i.module_slug === "nations-symbols").slice(0, 1);
-      setStarters(ns);
+      const lessons = getAllLessons();
+      const firstLesson = lessons.filter(l => l.module_slug === "nations-symbols").slice(0, 1);
+      setStarters(firstLesson);
+    } catch (error) {
+      console.error('Error loading lessons:', error);
     } finally {
       setLoading(false);
     }
@@ -32,10 +32,16 @@ export default function App() {
             Review with flashcards and audio. Feel confident on exam day.
           </p>
           <div className="flex gap-3">
-            <Link to="/content" className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all">
+            <Link 
+              to="/content" 
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
+            >
               Start studying
             </Link>
-            <Link to="/practice" className="px-5 py-2.5 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all">
+            <Link 
+              to="/practice" 
+              className="px-5 py-2.5 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all"
+            >
               Try practice
             </Link>
           </div>
@@ -61,15 +67,21 @@ export default function App() {
       <section className="grid md:grid-cols-3 gap-4">
         <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-teal-300 transition-colors">
           <h3 className="font-semibold text-gray-900">Plain-English lessons</h3>
-          <p className="text-sm text-gray-600">Everything you need, rewritten for clarity with memory hooks and key facts.</p>
+          <p className="text-sm text-gray-600">
+            Everything you need, rewritten for clarity with memory hooks and key facts.
+          </p>
         </div>
         <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-teal-300 transition-colors">
           <h3 className="font-semibold text-gray-900">Adaptive practice</h3>
-          <p className="text-sm text-gray-600">Track accuracy and revisit weak topics until you’re pass-ready.</p>
+          <p className="text-sm text-gray-600">
+            Track accuracy and revisit weak topics until you're pass-ready.
+          </p>
         </div>
         <div className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-teal-300 transition-colors">
           <h3 className="font-semibold text-gray-900">Audio + flashcards</h3>
-          <p className="text-sm text-gray-600">Listen on the go, then reinforce knowledge with quick-fire cards.</p>
+          <p className="text-sm text-gray-600">
+            Listen on the go, then reinforce knowledge with quick-fire cards.
+          </p>
         </div>
       </section>
 
@@ -77,10 +89,13 @@ export default function App() {
       <section className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-900">How it works</h2>
         <ol className="list-decimal pl-6 space-y-2 text-gray-700">
-          <li>Study each lesson’s overview, key facts, and memory hook.</li>
-          <li>Open <span className="font-medium text-teal-700">Practice</span> to answer questions with explanations.</li>
+          <li>Study each lesson's overview, key facts, and memory hook.</li>
+          <li>
+            Open <span className="font-medium text-teal-700">Practice</span> to answer questions 
+            with explanations.
+          </li>
           <li>Use flashcards to refresh — anywhere, any time.</li>
-          <li>Take a full mock exam. If you’ve completed everything, you’re pass-ready.</li>
+          <li>Take a full mock exam. If you've completed everything, you're pass-ready.</li>
         </ol>
       </section>
 
@@ -95,18 +110,36 @@ export default function App() {
               <div className="text-sm text-gray-600">Loading…</div>
             ) : starters[0] ? (
               <div className="flex gap-2">
-                <Link to={`/content/${starters[0].id}`} className="px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all">Open lesson</Link>
-                <Link to={`/practice/${starters[0].id}`} className="px-4 py-2 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all">Practice</Link>
+                <Link 
+                  to={`/content/${starters[0].id}`} 
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
+                >
+                  Open lesson
+                </Link>
+                <Link 
+                  to={`/practice/${starters[0].id}`} 
+                  className="px-4 py-2 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all"
+                >
+                  Practice
+                </Link>
               </div>
             ) : (
               <div className="text-sm text-gray-600">No lessons yet.</div>
             )}
           </div>
+          
           <div className="bg-white border-2 border-gray-200 rounded-xl p-5 space-y-3 hover:border-teal-300 transition-colors">
             <div className="text-sm text-teal-600 font-medium">Upgrade</div>
             <h3 className="font-semibold text-gray-900">Go Premium</h3>
-            <p className="text-sm text-gray-600">Unlock audio, full mocks, and the pass-ready guarantee.</p>
-            <Link to="/paywall" className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all">See Premium</Link>
+            <p className="text-sm text-gray-600">
+              Unlock audio, full mocks, and the pass-ready guarantee.
+            </p>
+            <Link 
+              to="/paywall" 
+              className="inline-block px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
+            >
+              See Premium
+            </Link>
           </div>
         </div>
       </section>

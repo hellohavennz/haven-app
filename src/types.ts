@@ -5,11 +5,19 @@ export type LessonJSON = {
   overview: string;
   key_facts: string[];
   memory_hook: string;
-  questions: {
-    prompt: string;
-    options: string[];
-    correct_index: number;
-    explanation?: string;  // ← new
-  }[];
+  questions: Question[];
   flashcards: [string, string][];
+};
+
+export type Question = {
+  prompt: string;
+  options: string[];
+  correct_index: number;
+  explanation: string;
+};
+
+export type Module = {
+  slug: string;
+  title: string;
+  count: number;
 };

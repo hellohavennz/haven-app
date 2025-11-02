@@ -9,7 +9,7 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <footer className="mt-20 border-t border-gray-200 text-sm text-gray-600">
-        <div className="mx-auto max-w-6xl px-4 py-8">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-center">
           <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
         </div>
       </footer>

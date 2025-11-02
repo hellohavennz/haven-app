@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById } from "../lib/content";
-import { getProgress, recordAttempt, resetProgress } from "../lib/progress";
+import { getProgress, recordAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
 
-function shuffle<T>(arr: T[]) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
+function shuffle<T>(arr: T[]): T[] {
+  const shuffled = arr.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return a;
+  return shuffled;
 }
 
 type AnswerState = { selected: number | null; checked: boolean };
@@ -33,14 +33,16 @@ export default function PracticeLesson() {
     setSessionStats({ attempted: 0, correct: 0 });
     setFinished(false);
     setWrongTopics([]);
-  }, [lessonId]);
+  }, [lessonId, data]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
+  if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
 
   const currentQ = shuffledQuestions[currentQIdx];
   const totalQuestions = shuffledQuestions.length;
   const isCorrect = answer.selected === currentQ?.correct_index;
-  const percentage = sessionStats.attempted > 0 ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) : 0;
+  const percentage = sessionStats.attempted > 0 
+    ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) 
+    : 0;
   const progressColor = percentage >= 80 ? "bg-green-600" : "bg-teal-600";
 
   function choose(optIdx: number) {
@@ -57,7 +59,7 @@ export default function PracticeLesson() {
     }));
     setAnswer(prev => ({ ...prev, checked: true }));
     if (!isCorrect) {
-      setWrongTopics([...wrongTopics, currentQ.prompt]);
+      setWrongTopics(prev => [...prev, currentQ.prompt]);
     }
   }
 
@@ -70,14 +72,26 @@ export default function PracticeLesson() {
     }
   }
 
+  function retry() {
+    setCurrentQIdx(0);
+    setAnswer({ selected: null, checked: false });
+    setSessionStats({ attempted: 0, correct: 0 });
+    setFinished(false);
+    setWrongTopics([]);
+  }
+
   if (finished) {
-    const finalPercentage = sessionStats.attempted > 0 ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) : 0;
+    const finalPercentage = sessionStats.attempted > 0 
+      ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) 
+      : 0;
     const passedStatus = finalPercentage >= 80;
 
     return (
       <div className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8 space-y-8">
         <div className="text-center space-y-6 py-12">
-          <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center ${passedStatus ? "bg-green-100" : "bg-teal-100"}`}>
+          <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center ${
+            passedStatus ? "bg-green-100" : "bg-teal-100"
+          }`}>
             <CheckCircle2 className={passedStatus ? "text-green-600" : "text-teal-600"} size={48} />
           </div>
           <div className="space-y-2">
@@ -92,17 +106,23 @@ export default function PracticeLesson() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6 shadow-sm">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-gray-700">Your Score</span>
-              <span className={`font-bold text-3xl ${passedStatus ? "text-green-600" : "text-teal-600"}`}>
+              <span className={`font-bold text-3xl ${
+                passedStatus ? "text-green-600" : "text-teal-600"
+              }`}>
                 {finalPercentage}%
               </span>
             </div>
             <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className={`h-4 rounded-full transition-all duration-1000 ${passedStatus ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-gradient-to-r from-teal-500 to-teal-600"}`}
+                className={`h-4 rounded-full transition-all duration-1000 ${
+                  passedStatus 
+                    ? "bg-gradient-to-r from-green-500 to-green-600" 
+                    : "bg-gradient-to-r from-teal-500 to-teal-600"
+                }`}
                 style={{ width: `${finalPercentage}%` }}
               />
             </div>
@@ -148,13 +168,7 @@ export default function PracticeLesson() {
               Review
             </Link>
             <button
-              onClick={() => {
-                setCurrentQIdx(0);
-                setAnswer({ selected: null, checked: false });
-                setSessionStats({ attempted: 0, correct: 0 });
-                setFinished(false);
-                setWrongTopics([]);
-              }}
+              onClick={retry}
               className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all text-center active:scale-95"
             >
               Try Again
@@ -170,14 +184,8 @@ export default function PracticeLesson() {
             Review Lesson
           </Link>
           <button
-            onClick={() => {
-              setCurrentQIdx(0);
-              setAnswer({ selected: null, checked: false });
-              setSessionStats({ attempted: 0, correct: 0 });
-              setFinished(false);
-              setWrongTopics([]);
-            }}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95"
+            onClick={retry}
+            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-teal-200"
           >
             Try Again
           </button>
@@ -203,7 +211,9 @@ export default function PracticeLesson() {
               <span className="text-sm font-medium text-gray-600">
                 Question {currentQIdx + 1} <span className="text-gray-400">of {totalQuestions}</span>
               </span>
-              <span className={`text-sm font-bold ${percentage >= 80 ? "text-green-600" : "text-gray-900"}`}>
+              <span className={`text-sm font-bold ${
+                percentage >= 80 ? "text-green-600" : "text-gray-900"
+              }`}>
                 {percentage}% correct
               </span>
             </div>
@@ -216,8 +226,10 @@ export default function PracticeLesson() {
           </div>
         </header>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6">
-          <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed">{currentQ.prompt}</p>
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm">
+          <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed">
+            {currentQ.prompt}
+          </p>
 
           <ul className="space-y-3">
             {currentQ.options.map((opt, i) => {
@@ -228,9 +240,9 @@ export default function PracticeLesson() {
                 <li key={i}>
                   <button
                     className={`w-full text-left p-4 rounded-xl border-2 font-medium transition-all active:scale-98
-                      ${!show && picked ? "border-teal-600 bg-teal-50" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
-                      ${show && isRight ? "border-green-600 bg-green-50 text-green-900" : ""}
-                      ${show && picked && !isRight ? "border-red-600 bg-red-50 text-red-900" : ""}
+                      ${!show && picked ? "border-teal-600 bg-teal-50 shadow-sm" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
+                      ${show && isRight ? "border-green-600 bg-green-50 text-green-900 shadow-sm" : ""}
+                      ${show && picked && !isRight ? "border-red-600 bg-red-50 text-red-900 shadow-sm" : ""}
                       ${!show ? "cursor-pointer" : "cursor-default"}`}
                     onClick={() => choose(i)}
                     disabled={show}
@@ -244,7 +256,7 @@ export default function PracticeLesson() {
 
           {!answer.checked ? (
             <button
-              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 shadow-lg shadow-teal-200"
               onClick={check}
               disabled={answer.selected === null}
             >
@@ -252,7 +264,9 @@ export default function PracticeLesson() {
             </button>
           ) : (
             <div className="space-y-4">
-              <div className={`flex items-center justify-center gap-2 text-xl font-bold py-4 rounded-xl ${isCorrect ? "bg-green-100 text-green-900" : "bg-red-100 text-red-900"}`}>
+              <div className={`flex items-center justify-center gap-2 text-xl font-bold py-4 rounded-xl ${
+                isCorrect ? "bg-green-100 text-green-900" : "bg-red-100 text-red-900"
+              }`}>
                 {isCorrect ? (
                   <>
                     <CheckCircle2 size={24} />
@@ -272,7 +286,7 @@ export default function PracticeLesson() {
               )}
               <button
                 onClick={next}
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95"
+                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-teal-200"
               >
                 {currentQIdx < totalQuestions - 1 ? "Next Question →" : "See Results →"}
               </button>
