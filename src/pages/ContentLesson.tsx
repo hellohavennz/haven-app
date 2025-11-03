@@ -1,146 +1,114 @@
-import { useEffect, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getLessonById, getAllLessons } from "../lib/content";
-import { useSubscription } from "../lib/subscription";
-import { BookCheck, Brain, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
-import Paywall from "../components/Paywall";
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import LessonContent from '../components/LessonContent';
 
-export default function ContentLesson() {
-  const { lessonId } = useParams();
-  const data = lessonId ? getLessonById(lessonId) : null;
-  const allLessons = getAllLessons();
-  const contentRef = useRef<HTMLDivElement>(null);
-  const { hasPlus, isLoading } = useSubscription();
-  
+interface Section {
+  title: string;
+  content: string;
+  key_facts: string[];
+}
+
+interface Lesson {
+  id: string;
+  title: string;
+  module_slug: string;
+  sections?: Section[];
+  overview?: string;
+  key_facts?: string[];
+  memory_hook?: string;
+}
+
+const ContentLesson: React.FC = () => {
+  const { lessonId } = useParams<{ lessonId: string }>();
+  const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    if (contentRef.current) {
-      const mainElement = contentRef.current.closest('main');
-      if (mainElement) {
-        mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+    const loadLesson = async () => {
+      try {
+        const lessonData = await import(`../content/lessons/${lessonId}.json`);
+        setLesson(lessonData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading lesson:', error);
+        setIsLoading(false);
       }
-    }
+    };
+
+    loadLesson();
   }, [lessonId]);
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-center">
-          <div className="animate-spin w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-xl text-gray-600">Loading lesson...</div>
       </div>
     );
   }
 
-  if (!data) {
+  if (!lesson) {
     return (
-      <div className="max-w-3xl mx-auto p-6">
-        <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 text-center">
-          <h2 className="text-xl font-bold text-red-900 mb-2">Lesson not found</h2>
-          <p className="text-red-700 mb-4">The lesson you're looking for doesn't exist.</p>
-          <Link to="/content" className="text-teal-600 hover:text-teal-700 font-medium">
-            ← Back to Study
-          </Link>
-        </div>
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">Lesson Not Found</h1>
+        <Link to="/study" className="text-blue-600 hover:text-blue-800 font-semibold">
+          ← Back to Study
+        </Link>
       </div>
     );
   }
-
-  // Show paywall if lesson requires Plus and user doesn't have access
-  if (data.isPremium && !hasPlus) {
-    return <Paywall />;
-  }
-
-  const currentIndex = allLessons.findIndex(l => l.id === data.id);
-  const previousLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
-  const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
 
   return (
-    <div ref={contentRef} className="max-w-4xl mx-auto px-6 py-8">
-      <div className="space-y-12">
-        <header className="space-y-6">
-          <div className="flex items-center gap-2 text-sm text-teal-600 font-medium">
-            <BookCheck size={18} />
-            <span>Study Lesson</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
-            {data.title}
-          </h1>
-          <div className="prose prose-lg max-w-none">
-            {data.overview.split('\n\n').map((paragraph, i) => (
-              <p key={i} className="text-gray-700 leading-relaxed">{paragraph}</p>
-            ))}
-          </div>
-        </header>
-
-        <section className="space-y-4">
-          <div className="flex items-center gap-2 mb-6">
-            <CheckCircle2 className="text-teal-600" size={24} />
-            <h2 className="text-2xl font-bold text-gray-900">Key Facts to Remember</h2>
-          </div>
-          <div className="space-y-3">
-            {data.key_facts.map((fact, i) => (
-              <div key={i} className="flex gap-3 items-start p-4 bg-white border border-gray-200 rounded-xl hover:border-teal-200 transition-colors">
-                <CheckCircle2 className="flex-shrink-0 text-teal-600 mt-0.5" size={18} />
-                <p className="text-gray-800 leading-relaxed">{fact}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Brain className="text-amber-600" size={24} />
-            <h3 className="text-xl font-bold text-gray-900">Memory Hook</h3>
-          </div>
-          <p className="text-gray-800 leading-relaxed text-lg">{data.memory_hook}</p>
-        </section>
-
-        <div className="flex flex-col sm:flex-row gap-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
           <Link
-            to={`/flashcards/${data.id}`}
-            className="flex-1 px-8 py-4 text-center rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all"
+            to="/study"
+            className="text-blue-600 hover:text-blue-800 font-semibold mb-4 inline-flex items-center"
           >
-            Review with Flashcards
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Study
           </Link>
-          <Link
-            to={`/practice/${data.id}`}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
-          >
-            Start Practice <ArrowRight size={20} />
-          </Link>
+          <h1 className="text-4xl font-bold text-gray-900 mt-2">{lesson.title}</h1>
         </div>
 
-        <div className="flex items-center justify-between pt-8 border-t border-gray-200">
-          {previousLesson ? (
-            <Link
-              to={`/content/${previousLesson.id}`}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-medium hover:border-teal-300 hover:bg-teal-50 transition-all"
-            >
-              <ArrowLeft size={18} />
-              <div className="text-left">
-                <div className="text-xs text-gray-500">Previous</div>
-                <div className="text-sm font-semibold truncate max-w-[150px]">{previousLesson.title}</div>
-              </div>
-            </Link>
-          ) : (
-            <div></div>
-          )}
+        {/* Lesson Content - handles both old and new structure */}
+        <LessonContent 
+          sections={lesson.sections}
+          overview={lesson.overview}
+          key_facts={lesson.key_facts}
+        />
 
-          {nextLesson && (
-            <Link
-              to={`/content/${nextLesson.id}`}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-teal-600 text-white font-medium hover:bg-teal-700 transition-all"
-            >
-              <div className="text-right">
-                <div className="text-xs text-teal-100">Next</div>
-                <div className="text-sm font-semibold truncate max-w-[150px]">{nextLesson.title}</div>
-              </div>
-              <ArrowRight size={18} />
-            </Link>
-          )}
+        {/* Memory Hook */}
+        {lesson.memory_hook && (
+          <div className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+            <h3 className="text-lg font-bold text-purple-900 mb-3 flex items-center">
+              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              Memory Hook
+            </h3>
+            <p className="text-gray-800 italic">{lesson.memory_hook}</p>
+          </div>
+        )}
+
+        {/* Practice Button */}
+        <div className="mt-8 flex justify-center">
+          <Link
+            to={`/practice/${lessonId}/questions`}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
+          >
+            <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Practice This Lesson
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ContentLesson;
