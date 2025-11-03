@@ -1,0 +1,104 @@
+{
+  "modules": [
+    {
+      "id": "british-values-principles",
+      "title": "The Values and Principles of the UK",
+      "slug": "british-values-principles"
+    },
+    {
+      "id": "uk-nations-symbols",
+      "title": "The UK's Nations & Symbols",
+      "slug": "uk-nations-symbols"
+    },
+    {
+      "id": "long-illustrious-history",
+      "title": "A Long and Illustrious History",
+      "slug": "long-illustrious-history"
+    },
+    {
+      "id": "life-in-uk-overview",
+      "title": "Life in the UK Overview",
+      "slug": "life-in-uk-overview"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson-1-1-british-values",
+      "title": "British Values and Principles",
+      "module_slug": "british-values-principles",
+      "order": 1
+    },
+    {
+      "id": "lesson-2-1-uk-geography",
+      "title": "UK Geography and Nations",
+      "module_slug": "uk-nations-symbols",
+      "order": 2
+    },
+    {
+      "id": "lesson-3-1-early-britain",
+      "title": "Early Britain to Norman Conquest",
+      "module_slug": "long-illustrious-history",
+      "order": 3
+    },
+    {
+      "id": "lesson-3-2-middle-ages",
+      "title": "Middle Ages to Tudor Period",
+      "module_slug": "long-illustrious-history",
+      "order": 4
+    },
+    {
+      "id": "lesson-3-3-stuart-modern",
+      "title": "Stuart Dynasty to Modern Britain",
+      "module_slug": "long-illustrious-history",
+      "order": 5
+    },
+    {
+      "id": "lesson-3-2-music",
+      "title": "Arts and Culture: Music",
+      "module_slug": "life-in-uk-overview",
+      "order": 6
+    },
+    {
+      "id": "lesson-3-3-theatre-art-architecture-literature",
+      "title": "Arts and Culture: Theatre, Art, Architecture, Literature",
+      "module_slug": "life-in-uk-overview",
+      "order": 7
+    },
+    {
+      "id": "lesson-3-4-customs-traditions",
+      "title": "Customs and Traditions",
+      "module_slug": "life-in-uk-overview",
+      "order": 8
+    },
+    {
+      "id": "lesson-3-5-leisure",
+      "title": "Leisure Activities",
+      "module_slug": "life-in-uk-overview",
+      "order": 9
+    },
+    {
+      "id": "lesson-3-6-places-of-interest",
+      "title": "Places of Interest",
+      "module_slug": "life-in-uk-overview",
+      "order": 10
+    },
+    {
+      "id": "lesson-3-7-religion",
+      "title": "Religion",
+      "module_slug": "life-in-uk-overview",
+      "order": 11
+    },
+    {
+      "id": "lesson-3-8-sport",
+      "title": "Sport",
+      "module_slug": "life-in-uk-overview",
+      "order": 12
+    },
+    {
+      "id": "lesson-3-9-uk-today",
+      "title": "The UK Today",
+      "module_slug": "life-in-uk-overview",
+      "order": 13
+    }
+  ]
+}
