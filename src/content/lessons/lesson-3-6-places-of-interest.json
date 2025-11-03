@@ -1,0 +1,211 @@
+{
+  "id": "lesson-3-6-places-of-interest",
+  "title": "Places of Interest",
+  "module_slug": "life-in-uk-overview",
+  "overview": "The UK has a large network of public footpaths in the countryside and many opportunities for outdoor activities. There are 15 national parks in England, Wales and Scotland - areas of protected countryside that everyone can visit, where people live, work and look after the landscape. There are many museums throughout the UK and famous landmarks exist in towns, cities and the countryside. This lesson covers major UK landmarks including Big Ben, the Eden Project, Edinburgh Castle, the Giant's Causeway, Loch Lomond and the Trossachs National Park, the London Eye, Snowdonia, the Tower of London, and the Lake District. You will also learn about the National Trust.",
+  "key_facts": [
+    "The UK has a large network of public footpaths in the countryside.",
+    "There are many opportunities for mountain biking, mountaineering and hill walking in the UK.",
+    "There are 15 national parks in England, Wales and Scotland.",
+    "National parks are areas of protected countryside that everyone can visit, and where people live, work and look after the landscape.",
+    "There are many museums in the UK, which range from small community museums to large national and civic collections.",
+    "Famous landmarks exist in towns, cities and the countryside throughout the UK.",
+    "Most landmarks are open to the public to view (generally for a charge).",
+    "Many parts of the countryside and places of interest are kept open by the National Trust in England, Wales and Northern Ireland and the National Trust for Scotland.",
+    "Both National Trusts are charities that work to preserve important buildings, coastline and countryside in the UK.",
+    "The National Trust was founded in 1895 by three volunteers.",
+    "There are now more than 61,000 volunteers helping to keep the National Trust running.",
+    "Big Ben is the nickname for the great bell of the clock at the Houses of Parliament in London.",
+    "Many people call the clock Big Ben as well.",
+    "The clock is over 150 years old and is a popular tourist attraction.",
+    "The clock tower is named 'Elizabeth Tower' in honour of Queen Elizabeth II's Diamond Jubilee in 2012.",
+    "The Eden Project is located in Cornwall, in the south west of England.",
+    "The Eden Project's biomes, which are like giant greenhouses, house plants from all over the world.",
+    "The Eden Project is also a charity which runs environmental and social projects internationally.",
+    "The Castle is a dominant feature of the skyline in Edinburgh, Scotland.",
+    "Edinburgh Castle has a long history, dating back to the early Middle Ages.",
+    "Edinburgh Castle is looked after by Historic Scotland, a Scottish government agency.",
+    "Located on the north-east coast of Northern Ireland, the Giant's Causeway is a land formation of columns made from volcanic lava.",
+    "The Giant's Causeway was formed about 50 million years ago.",
+    "There are many legends about the Giant's Causeway and how it was formed.",
+    "Loch Lomond and the Trossachs National Park covers 720 square miles (1,865 square kilometres) in the west of Scotland.",
+    "Loch Lomond is the largest expanse of fresh water in mainland Britain and probably the best-known part of the park.",
+    "The London Eye is situated on the southern bank of the River Thames.",
+    "The London Eye is a Ferris wheel that is 443 feet (135 metres) tall.",
+    "The London Eye was originally built as part of the UK's celebration of the new millennium.",
+    "The London Eye continues to be an important part of New Year celebrations.",
+    "Snowdonia is a national park in North Wales.",
+    "Snowdonia covers an area of 838 square miles (2,170 square kilometres).",
+    "Snowdonia's most well-known landmark is Snowdon, which is the highest mountain in Wales.",
+    "The Tower of London was first built by William the Conqueror after he became king in 1066.",
+    "Tours of the Tower of London are given by the Yeoman Warders, also known as Beefeaters.",
+    "Yeoman Warders tell visitors about the Tower of London's history.",
+    "People can also see the Crown Jewels at the Tower of London.",
+    "The Lake District is England's largest national park.",
+    "The Lake District covers 885 square miles (2,292 square kilometres).",
+    "The Lake District is famous for its lakes and mountains and is very popular with climbers, walkers and sailors.",
+    "The biggest stretch of water in the Lake District is Windermere.",
+    "In 2007, television viewers voted Wastwater as Britain's favourite view."
+  ],
+  "memory_hook": "Take a grand tour of UK landmarks starting from the top: In Scotland, visit Edinburgh Castle (medieval fortress, Historic Scotland) and Loch Lomond (720 sq miles, largest fresh water in mainland Britain). Head to Northern Ireland for the Giant's Causeway (volcanic columns, 50 million years old, lots of legends). Cross to North Wales for Snowdonia (838 sq miles, Snowdon is Wales' highest mountain). Down to England's Lake District (885 sq miles, England's largest park, Windermere lake, Wastwater voted Britain's favourite view 2007). Then London: see Big Ben's clock (150+ years old, tower renamed Elizabeth Tower 2012), ride the London Eye (443 feet tall, Millennium wheel on Thames), and visit the Tower of London (built 1066 by William the Conqueror, Beefeaters give tours, Crown Jewels inside). Don't miss Cornwall's Eden Project (giant greenhouse biomes, environmental charity). All protected by the National Trust (founded 1895, 61,000+ volunteers) and 15 national parks across England, Wales, Scotland.",
+  "questions": [
+    {
+      "prompt": "How many national parks are there in England, Wales and Scotland?",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "25"
+      ],
+      "correct_index": 1,
+      "explanation": "There are 15 national parks in England, Wales and Scotland. They are areas of protected countryside that everyone can visit."
+    },
+    {
+      "prompt": "When was the National Trust founded?",
+      "options": [
+        "1795",
+        "1845",
+        "1895",
+        "1945"
+      ],
+      "correct_index": 2,
+      "explanation": "The National Trust was founded in 1895 by three volunteers. There are now more than 61,000 volunteers helping to keep it running."
+    },
+    {
+      "prompt": "What is Big Ben?",
+      "options": [
+        "A famous bridge",
+        "The nickname for the great bell of the clock at the Houses of Parliament",
+        "A royal palace",
+        "A famous statue"
+      ],
+      "correct_index": 1,
+      "explanation": "Big Ben is the nickname for the great bell of the clock at the Houses of Parliament in London. Many people call the clock Big Ben as well. The clock tower is named 'Elizabeth Tower'."
+    },
+    {
+      "prompt": "Where is the Eden Project located?",
+      "options": [
+        "Scotland",
+        "Wales",
+        "Cornwall, in the south west of England",
+        "Northern Ireland"
+      ],
+      "correct_index": 2,
+      "explanation": "The Eden Project is located in Cornwall, in the south west of England. Its biomes house plants from all over the world."
+    },
+    {
+      "prompt": "Who built the Tower of London?",
+      "options": [
+        "Henry VIII",
+        "Queen Victoria",
+        "William the Conqueror after he became king in 1066",
+        "Edward I"
+      ],
+      "correct_index": 2,
+      "explanation": "The Tower of London was first built by William the Conqueror after he became king in 1066."
+    },
+    {
+      "prompt": "What are Yeoman Warders also known as?",
+      "options": [
+        "Redcoats",
+        "Beefeaters",
+        "Guards",
+        "Knights"
+      ],
+      "correct_index": 1,
+      "explanation": "Tours of the Tower of London are given by the Yeoman Warders, also known as Beefeaters, who tell visitors about the building's history."
+    },
+    {
+      "prompt": "What is the highest mountain in Wales?",
+      "options": [
+        "Ben Nevis",
+        "Scafell Pike",
+        "Snowdon",
+        "Slieve Donard"
+      ],
+      "correct_index": 2,
+      "explanation": "Snowdon is the highest mountain in Wales and is the most well-known landmark in Snowdonia national park."
+    },
+    {
+      "prompt": "What is the largest expanse of fresh water in mainland Britain?",
+      "options": [
+        "Windermere",
+        "Loch Lomond",
+        "Loch Ness",
+        "Wastwater"
+      ],
+      "correct_index": 1,
+      "explanation": "Loch Lomond is the largest expanse of fresh water in mainland Britain and probably the best-known part of Loch Lomond and the Trossachs National Park."
+    },
+    {
+      "prompt": "How tall is the London Eye?",
+      "options": [
+        "335 feet (102 metres)",
+        "443 feet (135 metres)",
+        "500 feet (152 metres)",
+        "600 feet (183 metres)"
+      ],
+      "correct_index": 1,
+      "explanation": "The London Eye is a Ferris wheel that is 443 feet (135 metres) tall, situated on the southern bank of the River Thames."
+    },
+    {
+      "prompt": "What is England's largest national park?",
+      "options": [
+        "Snowdonia",
+        "The Lake District",
+        "The Peak District",
+        "Dartmoor"
+      ],
+      "correct_index": 1,
+      "explanation": "The Lake District is England's largest national park, covering 885 square miles (2,292 square kilometres)."
+    },
+    {
+      "prompt": "How was the Giant's Causeway formed?",
+      "options": [
+        "By ice age glaciers",
+        "By volcanic lava about 50 million years ago",
+        "By ancient builders",
+        "By water erosion"
+      ],
+      "correct_index": 1,
+      "explanation": "The Giant's Causeway is a land formation of columns made from volcanic lava. It was formed about 50 million years ago."
+    },
+    {
+      "prompt": "What is the clock tower at the Houses of Parliament officially named?",
+      "options": [
+        "Big Ben Tower",
+        "Victoria Tower",
+        "Elizabeth Tower (in honour of Queen Elizabeth II's Diamond Jubilee in 2012)",
+        "Westminster Tower"
+      ],
+      "correct_index": 2,
+      "explanation": "The clock tower is named 'Elizabeth Tower' in honour of Queen Elizabeth II's Diamond Jubilee in 2012, though most people still call it Big Ben."
+    }
+  ],
+  "flashcards": [
+    ["How many national parks are in England, Wales and Scotland?", "15 national parks - areas of protected countryside everyone can visit, where people live, work and look after landscape"],
+    ["What is the National Trust?", "Charity that preserves important buildings, coastline and countryside in England, Wales and Northern Ireland. Founded 1895 by 3 volunteers, now 61,000+ volunteers"],
+    ["What is the National Trust for Scotland?", "Separate charity that preserves important buildings, coastline and countryside in Scotland"],
+    ["What is Big Ben?", "Nickname for great bell of clock at Houses of Parliament, London. Clock over 150 years old, popular tourist attraction"],
+    ["What is the clock tower at Parliament officially called?", "Elizabeth Tower - named in honour of Queen Elizabeth II's Diamond Jubilee in 2012"],
+    ["What is the Eden Project?", "Located in Cornwall, south west England. Biomes (giant greenhouses) house plants from around world. Also charity running environmental/social projects internationally"],
+    ["What is Edinburgh Castle?", "Dominant feature of Edinburgh skyline, Scotland. Long history dating to early Middle Ages. Looked after by Historic Scotland (Scottish government agency)"],
+    ["What is the Giant's Causeway?", "Land formation of columns made from volcanic lava on north-east coast of Northern Ireland. Formed about 50 million years ago. Many legends about how it was formed"],
+    ["What is Loch Lomond and the Trossachs National Park?", "Covers 720 square miles (1,865 sq km) in west Scotland. Loch Lomond is largest expanse of fresh water in mainland Britain"],
+    ["What is the London Eye?", "Ferris wheel 443 feet (135 metres) tall on southern bank of River Thames. Built for UK's millennium celebration, continues to be part of New Year celebrations"],
+    ["What is Snowdonia?", "National park in North Wales covering 838 square miles (2,170 sq km). Snowdon is most well-known landmark - highest mountain in Wales"],
+    ["What is the Tower of London?", "First built by William the Conqueror after he became king in 1066. Tours given by Yeoman Warders (Beefeaters). Can see Crown Jewels there"],
+    ["Who are Beefeaters?", "Yeoman Warders - give tours of Tower of London and tell visitors about its history"],
+    ["What is the Lake District?", "England's largest national park - 885 square miles (2,292 sq km). Famous for lakes and mountains, popular with climbers, walkers, sailors"],
+    ["What is Windermere?", "Biggest stretch of water in the Lake District"],
+    ["What is Wastwater?", "Lake in the Lake District - in 2007 television viewers voted it Britain's favourite view"],
+    ["How big is Loch Lomond and the Trossachs?", "720 square miles (1,865 square kilometres)"],
+    ["How big is Snowdonia?", "838 square miles (2,170 square kilometres)"],
+    ["How big is the Lake District?", "885 square miles (2,292 square kilometres) - England's largest national park"],
+    ["How tall is the London Eye?", "443 feet (135 metres) tall"],
+    ["When was the Giant's Causeway formed?", "About 50 million years ago from volcanic lava"],
+    ["When was the Tower of London built?", "First built by William the Conqueror in 1066"],
+    ["How old is the Big Ben clock?", "Over 150 years old"],
+    ["When was the National Trust founded and by whom?", "Founded in 1895 by three volunteers; now has over 61,000 volunteers"]
+  ]
+}
