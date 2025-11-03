@@ -1,0 +1,234 @@
+{
+  "id": "lesson-3-9-uk-today",
+  "title": "The UK Today",
+  "module_slug": "life-in-uk-overview",
+  "overview": "The UK today is a more diverse society than it was 100 years ago, in both ethnic and religious terms. Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK. This lesson covers the nations and cities of the UK, the UK currency, languages and dialects, population growth and demographics, ethnic diversity, and equality in society - particularly regarding gender equality and women's rights.",
+  "key_facts": [
+    "The UK today is a more diverse society than it was 100 years ago, in both ethnic and religious terms.",
+    "Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK.",
+    "The UK continues to be a multinational and multiracial society with a rich and varied culture.",
+    "The UK is located in the north west of Europe.",
+    "The longest distance on the mainland is from John O'Groats on the north coast of Scotland to Land's End in the south-west corner of England.",
+    "The distance from John O'Groats to Land's End is about 870 miles (approximately 1,400 kilometres).",
+    "Most people live in towns and cities but much of Britain is still countryside.",
+    "Many people continue to visit the countryside for holidays and for leisure activities such as walking, camping and fishing.",
+    "Major cities in England include: London, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Manchester, Bradford, Newcastle upon Tyne, Plymouth, Southampton, and Norwich.",
+    "Major cities in Wales include: Cardiff, Swansea, and Newport.",
+    "Major cities in Scotland include: Edinburgh, Glasgow, Dundee, and Aberdeen.",
+    "The major city in Northern Ireland is Belfast.",
+    "The capital city of the UK is London.",
+    "The capital city of Scotland is Edinburgh.",
+    "The capital city of Wales is Cardiff.",
+    "The capital city of Northern Ireland is Belfast.",
+    "The currency in the UK is the pound sterling (symbol £).",
+    "There are 100 pence in a pound.",
+    "The denominations of currency are: coins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2; notes: £5, £10, £20, £50.",
+    "Northern Ireland and Scotland have their own banknotes, which are valid everywhere in the UK.",
+    "However, shops and businesses do not have to accept Northern Ireland and Scotland banknotes.",
+    "There are many variations in language in the different parts of the UK.",
+    "The English language has many accents and dialects.",
+    "In Wales, many people speak Welsh – a completely different language from English – and it is taught in schools and universities.",
+    "In Scotland, Gaelic (again, a different language) is spoken in some parts of the Highlands and Islands.",
+    "In Northern Ireland some people speak Irish Gaelic.",
+    "Population growth has been faster in more recent years.",
+    "Migration into the UK and longer life expectancy have played a part in population growth.",
+    "The UK population in 1600 was just over 4 million.",
+    "The UK population in 1700 was 5 million.",
+    "The UK population in 1801 was 8 million.",
+    "The UK population in 1851 was 20 million.",
+    "The UK population in 1901 was 40 million.",
+    "The UK population in 1951 was 50 million.",
+    "The UK population in 1998 was 57 million.",
+    "The UK population in 2005 was just under 60 million.",
+    "The UK population in 2010 was just over 62 million.",
+    "The UK population in 2022 was estimated at 67.6 million.",
+    "The population is very unequally distributed over the four parts of the UK.",
+    "England more or less consistently makes up 84% of the total population.",
+    "Wales makes up around 5% of the total population.",
+    "Scotland makes up just over 8% of the total population.",
+    "Northern Ireland makes up less than 3% of the total population.",
+    "People in the UK are living longer than ever before.",
+    "This is due to improved living standards and better health care.",
+    "There are now a record number of people aged 85 and over.",
+    "An ageing population has an impact on the cost of pensions and health care.",
+    "The UK population is ethnically diverse and changing rapidly, especially in large cities such as London.",
+    "It is not always easy to get an exact picture of the ethnic origin of all the population.",
+    "There are people in the UK with ethnic origins from all over the world.",
+    "In surveys, the most common ethnic description chosen is white, which includes people of European, Australian, Canadian, New Zealand and American descent.",
+    "Other significant ethnic groups are those of Asian, black and mixed descent.",
+    "Within the UK, it is a legal requirement that men and women should not be discriminated against because of their gender or because they are, or are not, married.",
+    "Men and women have equal rights to work, own property, marry and divorce.",
+    "If they are married, both parents are equally responsible for their children.",
+    "Women in Britain today make up about half of the workforce.",
+    "On average, girls leave school with better qualifications than boys.",
+    "More women than men study at university.",
+    "Employment opportunities for women are much greater than they were in the past.",
+    "Women work in all sectors of the economy.",
+    "There are now more women in high-level positions than ever before, including senior managers in traditionally male-dominated occupations.",
+    "Alongside this, men now work in more varied jobs than they did in the past.",
+    "It is no longer expected that women should stay at home and not work.",
+    "Women often continue to work after having children.",
+    "In many families today, both partners work and both share responsibility for childcare and household chores."
+  ],
+  "memory_hook": "Picture the UK today as a diverse tapestry: Starting from John O'Groats (Scotland's north) to Land's End (England's southwest) - 870 miles across four nations. London (capital of UK and England), Edinburgh (Scotland), Cardiff (Wales), Belfast (Northern Ireland) anchor the major cities. Population exploded from 4 million (1600) to 67.6 million (2022) - that's England 84%, Scotland 8%, Wales 5%, Northern Ireland 3%. People live longer (85+ record numbers), creating an ageing population impacting pensions and healthcare. Currency: pound sterling (£), 100 pence, coins (1p-£2), notes (£5-£50), Scotland and NI have own notes but shops don't have to accept them! Languages: English with many dialects, plus Welsh (taught in schools), Scottish Gaelic (Highlands and Islands), Irish Gaelic (NI). Ethnic diversity exploding especially in big cities - white most common but Asian, black, and mixed descent significant. Gender equality is law: women make up half workforce, get better school qualifications than boys, more women at university, work in all sectors including senior management. Both partners typically work and share childcare/housework. The UK: multinational, multiracial, 10% have parent/grandparent born outside UK, truly modern and thriving!",
+  "questions": [
+    {
+      "prompt": "What is the approximate distance from John O'Groats to Land's End?",
+      "options": [
+        "500 miles",
+        "870 miles (approximately 1,400 kilometres)",
+        "1,000 miles",
+        "1,200 miles"
+      ],
+      "correct_index": 1,
+      "explanation": "The longest distance on the mainland is from John O'Groats on the north coast of Scotland to Land's End in the south-west corner of England, about 870 miles (approximately 1,400 kilometres)."
+    },
+    {
+      "prompt": "What is the capital city of Wales?",
+      "options": [
+        "Swansea",
+        "Newport",
+        "Cardiff",
+        "Wrexham"
+      ],
+      "correct_index": 2,
+      "explanation": "The capital city of Wales is Cardiff."
+    },
+    {
+      "prompt": "What is the currency of the UK?",
+      "options": [
+        "The euro",
+        "The dollar",
+        "The pound sterling (symbol £)",
+        "The crown"
+      ],
+      "correct_index": 2,
+      "explanation": "The currency in the UK is the pound sterling (symbol £). There are 100 pence in a pound."
+    },
+    {
+      "prompt": "What percentage of the UK population does England make up?",
+      "options": [
+        "70%",
+        "75%",
+        "84%",
+        "90%"
+      ],
+      "correct_index": 2,
+      "explanation": "England more or less consistently makes up 84% of the total UK population, Wales around 5%, Scotland just over 8%, and Northern Ireland less than 3%."
+    },
+    {
+      "prompt": "What was the estimated UK population in 2022?",
+      "options": [
+        "60 million",
+        "62 million",
+        "65 million",
+        "67.6 million"
+      ],
+      "correct_index": 3,
+      "explanation": "The UK population in 2022 was estimated at 67.6 million."
+    },
+    {
+      "prompt": "What languages are spoken in Wales besides English?",
+      "options": [
+        "French",
+        "Welsh – a completely different language taught in schools and universities",
+        "Gaelic",
+        "Latin"
+      ],
+      "correct_index": 1,
+      "explanation": "In Wales, many people speak Welsh – a completely different language from English – and it is taught in schools and universities."
+    },
+    {
+      "prompt": "What has contributed to the UK's ageing population?",
+      "options": [
+        "More young people leaving",
+        "Improved living standards and better health care, leading to people living longer",
+        "Lower birth rates only",
+        "Immigration"
+      ],
+      "correct_index": 1,
+      "explanation": "People in the UK are living longer than ever before due to improved living standards and better health care. There are now a record number of people aged 85 and over."
+    },
+    {
+      "prompt": "What proportion of women make up the UK workforce today?",
+      "options": [
+        "One quarter",
+        "One third",
+        "About half",
+        "Two thirds"
+      ],
+      "correct_index": 2,
+      "explanation": "Women in Britain today make up about half of the workforce."
+    },
+    {
+      "prompt": "Is it legal to discriminate against men or women because of their gender in the UK?",
+      "options": [
+        "Yes",
+        "Only in certain situations",
+        "No - it is a legal requirement that men and women should not be discriminated against",
+        "Only in private companies"
+      ],
+      "correct_index": 2,
+      "explanation": "Within the UK, it is a legal requirement that men and women should not be discriminated against because of their gender or marital status. They have equal rights to work, own property, marry and divorce."
+    },
+    {
+      "prompt": "Do shops and businesses have to accept Scottish and Northern Irish banknotes?",
+      "options": [
+        "Yes, they must accept them",
+        "No, they do not have to accept them",
+        "Only Scottish shops must accept them",
+        "Only if they are over £20"
+      ],
+      "correct_index": 1,
+      "explanation": "Northern Ireland and Scotland have their own banknotes, which are valid everywhere in the UK. However, shops and businesses do not have to accept them."
+    },
+    {
+      "prompt": "Who typically has better school qualifications on average in the UK?",
+      "options": [
+        "Boys",
+        "They are equal",
+        "Girls leave school with better qualifications than boys",
+        "It varies by region"
+      ],
+      "correct_index": 2,
+      "explanation": "On average, girls leave school with better qualifications than boys. More women than men study at university."
+    },
+    {
+      "prompt": "What percentage of the UK population has a parent or grandparent born outside the UK due to post-war immigration?",
+      "options": [
+        "Nearly 5%",
+        "Nearly 10%",
+        "Nearly 15%",
+        "Nearly 20%"
+      ],
+      "correct_index": 1,
+      "explanation": "Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK."
+    }
+  ],
+  "flashcards": [
+    ["What is the longest mainland distance in UK?", "John O'Groats (north coast Scotland) to Land's End (southwest England) - about 870 miles (1,400 km)"],
+    ["What are the capital cities of the UK?", "London (UK and England), Edinburgh (Scotland), Cardiff (Wales), Belfast (Northern Ireland)"],
+    ["Name major cities in England", "London, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Manchester, Bradford, Newcastle upon Tyne, Plymouth, Southampton, Norwich"],
+    ["Name major cities in Wales", "Cardiff, Swansea, Newport"],
+    ["Name major cities in Scotland", "Edinburgh, Glasgow, Dundee, Aberdeen"],
+    ["What is the major city in Northern Ireland?", "Belfast"],
+    ["What is the UK currency?", "Pound sterling (£) - 100 pence in a pound. Coins: 1p, 2p, 5p, 10p, 20p, 50p, £1, £2. Notes: £5, £10, £20, £50"],
+    ["Do Scotland and NI have their own banknotes?", "Yes - valid everywhere in UK, but shops/businesses don't have to accept them"],
+    ["What languages are spoken in UK?", "English (many accents/dialects), Welsh (Wales, taught in schools/universities), Scottish Gaelic (Highlands/Islands), Irish Gaelic (Northern Ireland)"],
+    ["What was UK population in 1600?", "Just over 4 million"],
+    ["What was UK population in 2022?", "Estimated 67.6 million"],
+    ["How is UK population distributed?", "England 84%, Scotland just over 8%, Wales around 5%, Northern Ireland less than 3%"],
+    ["What causes UK's ageing population?", "Improved living standards and better health care - people living longer, record number aged 85+"],
+    ["What impact does ageing population have?", "Impact on cost of pensions and health care"],
+    ["What has contributed to recent population growth?", "Migration into UK and longer life expectancy"],
+    ["What percentage has parent/grandparent born outside UK?", "Nearly 10% due to post-war immigration"],
+    ["What are the most common ethnic descriptions?", "White most common (includes European, Australian, Canadian, New Zealand, American descent). Other significant groups: Asian, black, mixed descent"],
+    ["What are legal requirements for gender equality?", "Legal requirement that men and women not discriminated against because of gender or marital status. Equal rights to work, own property, marry, divorce"],
+    ["Who is responsible for children if married?", "Both parents equally responsible for their children"],
+    ["What proportion of workforce are women?", "About half the workforce"],
+    ["Who gets better school qualifications?", "On average, girls leave school with better qualifications than boys"],
+    ["Who studies more at university?", "More women than men study at university"],
+    ["Do women work in all economic sectors?", "Yes - women work in all sectors, including more in high-level positions and senior management in traditionally male-dominated occupations"],
+    ["Is it expected women stay home and not work?", "No - it is no longer expected. Women often continue to work after having children. Both partners typically work and share childcare/household chores"]
+  ]
+}
