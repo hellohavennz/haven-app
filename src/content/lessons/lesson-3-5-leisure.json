@@ -1,0 +1,256 @@
+{
+  "id": "lesson-3-5-leisure",
+  "title": "Leisure Activities",
+  "module_slug": "life-in-uk-overview",
+  "overview": "People in the UK spend their leisure time in many different ways. This lesson covers popular leisure activities including gardening, shopping, cooking and food, films and British cinema, British comedy, television and radio, social networking, pubs and night clubs, betting and gambling, and pets. You will learn about the British film industry, the BBC and television licensing, traditional foods from different parts of the UK, and regulations around pubs, gambling, and pet ownership.",
+  "key_facts": [
+    "A lot of people have gardens at home and will spend their free time looking after them.",
+    "Some people rent additional land called 'an allotment', where they grow fruit and vegetables.",
+    "Gardening and flower shows range from major national exhibitions to small local events.",
+    "Many towns have garden centres selling plants and gardening equipment.",
+    "There are famous gardens to visit throughout the UK, including Kew Gardens, Sissinghurst and Hidcote in England, Crathes Castle and Inveraray Castle in Scotland, Bodnant Garden in Wales, and Mount Stewart in Northern Ireland.",
+    "The countries that make up the UK all have flowers which are particularly associated with them and which are sometimes worn on national saints' days.",
+    "There are many different places to go shopping in the UK.",
+    "Most towns and cities have a central shopping area, which is called the town centre.",
+    "Undercover shopping centres are also common and might be in town centres or on the outskirts of a town or city.",
+    "Most shops in the UK are open seven days a week, although trading hours on Sundays and public holidays are generally reduced.",
+    "Many towns also have markets on one or more days a week, where stallholders sell a variety of goods.",
+    "Many people in the UK enjoy cooking and often invite each other to their homes for dinner.",
+    "A wide variety of food is eaten in the UK because of the country's rich cultural heritage and diverse population.",
+    "Traditional food in England includes roast beef, which is served with potatoes, vegetables, Yorkshire puddings (batter that is baked in the oven) and other accompaniments. Fish and chips are also popular.",
+    "Traditional food in Wales includes Welsh cakes, a traditional Welsh snack made from flour, dried fruits and spices, served either hot or cold.",
+    "Traditional food in Scotland includes haggis, a sheep's stomach stuffed with offal, suet, onions and oatmeal.",
+    "Traditional food in Northern Ireland includes Ulster fry, a fried meal with bacon, eggs, sausage, black pudding, white pudding, tomatoes, mushrooms, soda bread and potato bread.",
+    "The UK has had a major influence on modern cinema.",
+    "Films were first shown publicly in the UK in 1896 and film screenings very quickly became popular.",
+    "From the beginning, film makers became famous for clever special effects and this continues to be an area of British expertise.",
+    "Sir Charles (Charlie) Chaplin became famous in silent movies for his tramp character and was one of many British actors to make a career in Hollywood.",
+    "British studios flourished in the 1930s with eminent directors including Sir Alexander Korda and Sir Alfred Hitchcock.",
+    "Sir Alfred Hitchcock later left for Hollywood and remained an important film director until his death in 1980.",
+    "During the Second World War, British movies (for example, In Which We Serve) played an important part in boosting morale.",
+    "Later, British directors including Sir David Lean and Ridley Scott found great success both in the UK and internationally.",
+    "The 1950s and 1960s were a high point for British comedies, including Passport to Pimlico, The Ladykillers and, later, the Carry On films.",
+    "Many of the films now produced in the UK are made by foreign companies, using British expertise.",
+    "Some of the most commercially successful films of all time, including the two highest-grossing film franchises (Harry Potter and James Bond), have been produced in the UK.",
+    "Ealing Studios has a claim to being the oldest continuously working film studio facility in the world.",
+    "Britain continues to be particularly strong in special effects and animation, for example the work of Nick Park, who has won four Oscars for his animated films, including three for films featuring Wallace and Gromit.",
+    "British actors continue to be popular and win awards throughout the world. Recent British actors to have won Oscars include Colin Firth, Sir Anthony Hopkins, Dame Judi Dench, Kate Winslet and Tilda Swinton.",
+    "The annual British Academy Film Awards, hosted by the British Academy of Film and Television Arts (BAFTA), are the British equivalent of the Oscars.",
+    "Famous British films include: The 39 Steps (1935, Alfred Hitchcock), Brief Encounter (1945, David Lean), The Third Man (1949, Carol Reed), The Belles of St Trinian's (1954, Frank Launder), Lawrence of Arabia (1962, David Lean), Women in Love (1969, Ken Russell), Don't Look Now (1973, Nicolas Roeg), Chariots of Fire (1981, Hugh Hudson), The Killing Fields (1984, Roland Joffé), Four Weddings and a Funeral (1994, Mike Newell), Touching the Void (2003, Kevin MacDonald).",
+    "The traditions of comedy and satire, and the ability to laugh at ourselves, are an important part of the UK character.",
+    "Medieval kings and rich nobles had jesters who told jokes and made fun of people in the Court.",
+    "Later, Shakespeare included comic characters in his plays.",
+    "In the 18th century, political cartoons attacking prominent politicians and sometimes the monarch or Royal Family became increasingly popular.",
+    "In the 19th century, satirical magazines began to be published. The most famous was Punch, which was published for the first time in the 1840s.",
+    "Today, political cartoons continue to be published in newspapers, and magazines such as Private Eye continue the tradition of satire.",
+    "Comedians were a popular feature of British music hall, a form of variety theatre which was very common until television became the leading form of entertainment.",
+    "Some people who had performed in music halls in the 1940s and 1950s, such as Morecambe and Wise, became stars of television.",
+    "Television comedy developed its own style. Situation comedies, or sitcoms, which often look at family life and relationships in the workplace, remain popular.",
+    "Satire has also continued to be important in television, with shows like That Was The Week That Was in the 1960s and Spitting Image in the 1980s and 1990s.",
+    "In 1969, Monty Python's Flying Circus introduced a new type of progressive comedy.",
+    "Stand-up comedy, where a solo comedian talks to a live audience, has become popular again in recent years.",
+    "Many different television (TV) channels are available in the UK. Some are free to watch and others require a paid subscription.",
+    "British television shows a wide variety of programmes.",
+    "Popular programmes include regular soap operas such as Coronation Street and EastEnders.",
+    "In Scotland, some Scotland-specific programmes are shown and there is also a channel with programmes in the Gaelic language.",
+    "There is a Welsh-language channel in Wales.",
+    "There are also programmes specific to Northern Ireland and some programmes broadcast in Irish Gaelic.",
+    "Everyone in the UK with a TV, computer or other medium which can be used for watching TV must have a television licence.",
+    "One television licence covers all of the equipment in one home, except when people rent different rooms in a shared house and each has a separate tenancy agreement - those people must each buy a separate licence.",
+    "People over 75 can apply for a free TV licence and blind people can get a 50% discount.",
+    "You will receive a fine of up to £1,000 if you watch TV but do not have a TV licence.",
+    "The money from TV licences is used to pay for the British Broadcasting Corporation (BBC).",
+    "The BBC is a British public service broadcaster providing television and radio programmes.",
+    "The BBC is the largest broadcaster in the world.",
+    "The BBC is the only wholly state-funded media organisation that is independent of government.",
+    "Other UK channels are primarily funded through advertisements and subscriptions.",
+    "There are also many different radio stations in the UK. Some broadcast nationally and others in certain cities or regions.",
+    "There are radio stations that play certain types of music and some broadcast in regional languages such as Welsh or Gaelic.",
+    "Like television, BBC radio stations are funded by TV licences and other radio stations are funded through advertisements.",
+    "Social networking websites such as Facebook and Twitter are a popular way for people to stay in touch with friends, organise social events, and share photos, videos and opinions.",
+    "Many people use social networking on their mobile phones when out and about.",
+    "Public houses (pubs) are an important part of the UK social culture.",
+    "Many people enjoy meeting friends in the pub.",
+    "Most communities will have a 'local' pub that is a natural focal point for social activities.",
+    "Pub quizzes are popular. Pool and darts are traditional pub games.",
+    "To buy alcohol in a pub or night club you must be 18 or over.",
+    "People under 18 may be allowed in some pubs with an adult.",
+    "When they are 16, people can drink wine or beer with a meal in a hotel or restaurant (including eating areas in pubs) as long as they are with someone over 18.",
+    "Pubs are usually open during the day from 11.00 am (12 noon on Sundays).",
+    "Night clubs with dancing and music usually open and close later than pubs.",
+    "The licensee decides the hours that the pub or night club is open.",
+    "In the UK, people often enjoy a gamble on sports or other events.",
+    "There are also casinos in many places.",
+    "You have to be 18 to go into betting shops or gambling clubs.",
+    "There is a National Lottery for which draws are made every week. You can enter by buying a ticket or a scratch card.",
+    "People under 18 (minimum age will rose from 16 to 18 from April 2021) are not allowed to participate in the National Lottery.",
+    "A lot of people in the UK have pets such as cats or dogs.",
+    "People might have pets for company or because they enjoy looking after them.",
+    "It is against the law to treat a pet cruelly or to neglect it.",
+    "All dogs in public places must wear a collar showing the name and address of the owner.",
+    "The owner is responsible for keeping the dog under control and for cleaning up after the animal in a public place.",
+    "Vaccinations and medical treatment for animals are available from veterinary surgeons (vets).",
+    "There are charities which may help people who cannot afford to pay a vet."
+  ],
+  "memory_hook": "Picture a typical British weekend: Saturday starts with gardening or visiting an allotment, then shopping at the town centre or a market. Lunch might be traditional roast beef (England), haggis (Scotland), Welsh cakes (Wales), or Ulster fry (Northern Ireland). Afternoon: watch a classic British film (maybe Hitchcock or a Wallace and Gromit animation - Nick Park won 4 Oscars!). Evening: meet friends at the local pub (must be 18 to buy alcohol, 16 to drink wine/beer with a meal), play darts or a pub quiz, then maybe to a night club. Sunday: stay in watching TV (need a licence or £1,000 fine!), catch up on social media, walk the dog (collar required showing owner's name). Maybe buy a National Lottery ticket (must be 18). The BBC (funded by TV licences) is the world's largest broadcaster and independent of government. Remember: pets need proper care (it's illegal to be cruel), and Ealing Studios is the world's oldest continuously working film studio!",
+  "questions": [
+    {
+      "prompt": "What is an allotment?",
+      "options": [
+        "A type of garden flower",
+        "Additional land people rent to grow fruit and vegetables",
+        "A gardening tool",
+        "A type of shop"
+      ],
+      "correct_index": 1,
+      "explanation": "Some people rent additional land called 'an allotment', where they grow fruit and vegetables."
+    },
+    {
+      "prompt": "What is a traditional food of Scotland?",
+      "options": [
+        "Fish and chips",
+        "Welsh cakes",
+        "Haggis - a sheep's stomach stuffed with offal, suet, onions and oatmeal",
+        "Ulster fry"
+      ],
+      "correct_index": 2,
+      "explanation": "Traditional Scottish food includes haggis, a sheep's stomach stuffed with offal, suet, onions and oatmeal."
+    },
+    {
+      "prompt": "Who became famous in silent movies for his tramp character?",
+      "options": [
+        "Alfred Hitchcock",
+        "Sir Charles (Charlie) Chaplin",
+        "David Lean",
+        "Nick Park"
+      ],
+      "correct_index": 1,
+      "explanation": "Sir Charles (Charlie) Chaplin became famous in silent movies for his tramp character and was one of many British actors to make a career in Hollywood."
+    },
+    {
+      "prompt": "What are BAFTA awards?",
+      "options": [
+        "Music awards",
+        "Sports awards",
+        "The British equivalent of the Oscars - British Academy Film Awards",
+        "Literary awards"
+      ],
+      "correct_index": 2,
+      "explanation": "The annual British Academy Film Awards, hosted by the British Academy of Film and Television Arts (BAFTA), are the British equivalent of the Oscars."
+    },
+    {
+      "prompt": "What happens if you watch TV without a television licence?",
+      "options": [
+        "Nothing",
+        "You receive a warning",
+        "You can receive a fine of up to £1,000",
+        "The TV is confiscated"
+      ],
+      "correct_index": 2,
+      "explanation": "You will receive a fine of up to £1,000 if you watch TV but do not have a TV licence."
+    },
+    {
+      "prompt": "How is the BBC funded?",
+      "options": [
+        "By advertisements",
+        "By the government directly",
+        "By television licence fees and is independent of government",
+        "By private donations"
+      ],
+      "correct_index": 2,
+      "explanation": "The money from TV licences is used to pay for the BBC. The BBC is the only wholly state-funded media organisation that is independent of government."
+    },
+    {
+      "prompt": "What is the minimum age to buy alcohol in a pub?",
+      "options": [
+        "16",
+        "17",
+        "18",
+        "21"
+      ],
+      "correct_index": 2,
+      "explanation": "To buy alcohol in a pub or night club you must be 18 or over. When they are 16, people can drink wine or beer with a meal in a restaurant as long as they are with someone over 18."
+    },
+    {
+      "prompt": "What must all dogs wear in public places?",
+      "options": [
+        "A leash only",
+        "A muzzle",
+        "A collar showing the name and address of the owner",
+        "An identification chip"
+      ],
+      "correct_index": 2,
+      "explanation": "All dogs in public places must wear a collar showing the name and address of the owner. The owner is responsible for keeping the dog under control and cleaning up after the animal."
+    },
+    {
+      "prompt": "What is the minimum age to participate in the National Lottery?",
+      "options": [
+        "16",
+        "18 (will change from 16 to 18 from April 2021)",
+        "21",
+        "No minimum age"
+      ],
+      "correct_index": 1,
+      "explanation": "People under 18 (minimum age will rose from 16 to 18 from April 2021) are not allowed to participate in the National Lottery."
+    },
+    {
+      "prompt": "Which animated character films won Nick Park four Oscars?",
+      "options": [
+        "Shaun the Sheep",
+        "Wallace and Gromit (three Oscars for these films)",
+        "Chicken Run",
+        "Aardman animations"
+      ],
+      "correct_index": 1,
+      "explanation": "Nick Park has won four Oscars for his animated films, including three for films featuring Wallace and Gromit."
+    },
+    {
+      "prompt": "What are popular soap operas on British television?",
+      "options": [
+        "Friends and Seinfeld",
+        "Coronation Street and EastEnders",
+        "The Simpsons and Family Guy",
+        "Breaking Bad and The Wire"
+      ],
+      "correct_index": 1,
+      "explanation": "Popular British TV programmes include regular soap operas such as Coronation Street and EastEnders."
+    },
+    {
+      "prompt": "Which studio has a claim to being the oldest continuously working film studio in the world?",
+      "options": [
+        "Pinewood Studios",
+        "Shepperton Studios",
+        "Ealing Studios",
+        "Elstree Studios"
+      ],
+      "correct_index": 2,
+      "explanation": "Ealing Studios has a claim to being the oldest continuously working film studio facility in the world."
+    }
+  ],
+  "flashcards": [
+    ["What is an allotment?", "Additional land people rent to grow fruit and vegetables"],
+    ["Name some famous UK gardens", "Kew Gardens, Sissinghurst, Hidcote (England); Crathes Castle, Inveraray Castle (Scotland); Bodnant Garden (Wales); Mount Stewart (Northern Ireland)"],
+    ["What is traditional English food?", "Roast beef with potatoes, vegetables, Yorkshire puddings; fish and chips"],
+    ["What is traditional Welsh food?", "Welsh cakes - made from flour, dried fruits and spices, served hot or cold"],
+    ["What is traditional Scottish food?", "Haggis - sheep's stomach stuffed with offal, suet, onions and oatmeal"],
+    ["What is traditional Northern Irish food?", "Ulster fry - bacon, eggs, sausage, black/white pudding, tomatoes, mushrooms, soda bread, potato bread"],
+    ["When were films first shown publicly in the UK?", "1896 - film screenings very quickly became popular"],
+    ["Who was Charlie Chaplin?", "Sir Charles Chaplin - became famous in silent movies for his tramp character, made career in Hollywood"],
+    ["Who were important British film directors?", "Sir Alfred Hitchcock (went to Hollywood, died 1980), Sir David Lean, Ridley Scott, Sir Alexander Korda"],
+    ["What are famous British film franchises?", "Harry Potter and James Bond - two highest-grossing film franchises, produced in UK"],
+    ["Who is Nick Park?", "Animator who won 4 Oscars, including 3 for Wallace and Gromit films"],
+    ["What are BAFTA awards?", "British Academy Film Awards - British equivalent of the Oscars"],
+    ["Name some famous British films", "The 39 Steps, Brief Encounter, Lawrence of Arabia, Chariots of Fire, Four Weddings and a Funeral"],
+    ["What is the oldest working film studio?", "Ealing Studios - claim to being oldest continuously working film studio in the world"],
+    ["What is British comedy known for?", "Traditions of satire and ability to laugh at ourselves; jesters, Shakespeare's comic characters, political cartoons, Punch magazine, music hall, sitcoms"],
+    ["What TV comedy shows are famous?", "Morecambe and Wise, That Was The Week That Was (1960s), Spitting Image (1980s-90s), Monty Python's Flying Circus (1969)"],
+    ["What are popular British soap operas?", "Coronation Street and EastEnders"],
+    ["Do you need a TV licence?", "Yes - everyone with TV, computer or device for watching TV must have licence. Fine up to £1,000 if you don't. Over 75s can apply for free, blind people get 50% discount"],
+    ["What does the BBC stand for and how is it funded?", "British Broadcasting Corporation - funded by TV licences, largest broadcaster in world, only wholly state-funded media org independent of government"],
+    ["What age must you be to buy alcohol in a pub?", "18 or over. At 16 can drink wine/beer with meal in restaurant if with someone over 18"],
+    ["What are pub opening hours?", "Usually open from 11am (12 noon Sundays). Night clubs open and close later. Licensee decides hours"],
+    ["What age to go to betting shops or buy lottery?", "18 for betting shops, gambling clubs, and National Lottery (changed from 16 to 18 in April 2021)"],
+    ["What are the rules about dogs in public?", "Must wear collar showing owner's name and address. Owner responsible for control and cleaning up. Illegal to treat pets cruelly or neglect them"],
+    ["Where can you get treatment for pets?", "Veterinary surgeons (vets). Charities may help people who can't afford vet costs"]
+  ]
+}
