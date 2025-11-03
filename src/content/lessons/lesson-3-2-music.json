@@ -2,39 +2,35 @@
   "id": "lesson-3-2-music",
   "title": "Arts and Culture: Music",
   "module_slug": "life-in-uk-overview",
-  "overview": "Music is an important part of British culture, with a rich and varied heritage ranging from classical music to modern pop. The UK has produced world-renowned composers from Henry Purcell to Benjamin Britten, and revolutionary popular music from The Beatles to modern artists. This lesson covers classical composers, The Proms, popular music history, major venues, festivals, and music awards.",
+  "overview": "Music is a vital thread in the rich tapestry of British culture, spanning centuries from baroque masterpieces to groundbreaking pop music that changed the world.\n\nBritain's classical music heritage begins with Henry Purcell in the 17th century, who created a distinctly British musical style as organist at Westminster Abbey. The 18th century brought George Frideric Handel, a German composer who so loved Britain that he became a citizen in 1727. Handel composed magnificent works for British royalty, including Water Music for King George I's river parties and Music for the Royal Fireworks for George II. His oratorio Messiah remains one of the most performed choral works worldwide, especially at Easter.\n\nThe Victorian and Edwardian eras produced composers who captured the British spirit. Sir Edward Elgar wrote the patriotic Pomp and Circumstance Marches, with March No 1 (Land of Hope and Glory) becoming synonymous with British pride and traditionally played at the Last Night of the Proms. Gustav Holst composed The Planets suite, adapting the Jupiter movement into the beloved hymn 'I vow to thee my country'. Ralph Vaughan Williams drew inspiration from traditional English folk music, while Sir William Walton wrote everything from film scores to coronation marches.\n\nThe 20th century brought Benjamin Britten, whose operas Peter Grimes and Billy Budd established him as one of Britain's greatest composers. He also wrote A Young Person's Guide to the Orchestra, introducing new generations to classical music. Britten founded the Aldeburgh Festival in Suffolk, which continues as an internationally important music event.\n\nThe Proms, an eight-week summer season of orchestral classical music, has been organised by the BBC since 1927. Held at the Royal Albert Hall and other venues, the Proms makes classical music accessible to everyone. The Last Night of the Proms, broadcast on television, is a beloved British tradition featuring patriotic music and enthusiastic audience participation.\n\nBritish popular music exploded onto the world stage in the 1960s. The Beatles and The Rolling Stones didn't just create hit songs—they revolutionised popular culture globally. British pop has continually innovated: the Punk movement of the late 1970s challenged musical conventions, while the 1990s brought the phenomenon of boy bands and girl bands.\n\nToday, Britain's music scene thrives in major venues like Wembley Stadium, The O2 in Greenwich, and Glasgow's SECC. Summer brings festival season, with Glastonbury, the Isle of Wight Festival, and the V Festival attracting hundreds of thousands of music lovers. The National Eisteddfod of Wales celebrates Welsh language music, dance, and poetry in an annual cultural festival.\n\nBritish musical achievement is recognised through prestigious awards. The Mercury Music Prize honours the best album from the UK and Ireland each September, while the Brit Awards celebrate categories including best British group and best British solo artist. From Handel to grime, from Elgar to Ed Sheeran, British music continues to shape global culture.",
   "key_facts": [
-    "The Proms is an eight-week summer season of orchestral classical music, organised by the BBC since 1927, held at the Royal Albert Hall and other venues.",
-    "The Last Night of the Proms is the most well-known concert and is broadcast on television.",
-    "Henry Purcell (1659-95) was organist at Westminster Abbey and developed a distinct British musical style.",
-    "George Frideric Handel (1695-1759), German-born, became a British citizen in 1727 and wrote Water Music and Music for the Royal Fireworks.",
-    "Handel wrote the oratorio Messiah, sung regularly by choirs, often at Easter.",
-    "Gustav Holst (1874-1934) composed The Planets suite and adapted Jupiter as the tune for 'I vow to thee my country'.",
-    "Sir Edward Elgar (1857-1934) composed the Pomp and Circumstance Marches; March No 1 (Land of Hope and Glory) is played at the Last Night of the Proms.",
-    "Ralph Vaughan Williams (1872-1958) was strongly influenced by traditional English folk music.",
-    "Sir William Walton (1902-83) wrote marches for the coronations of King George VI and Queen Elizabeth II; best-known works are Façade and Balthazar's Feast.",
-    "Benjamin Britten (1913-76) is best known for operas Peter Grimes and Billy Budd, and A Young Person's Guide to the Orchestra.",
-    "Britten founded the Aldeburgh festival in Suffolk, a popular international music event.",
-    "Since the 1960s, British pop music has been culturally significant; The Beatles and The Rolling Stones remain influential worldwide.",
-    "British pop has innovated through movements like Punk (late 1970s) and boy/girl bands (1990s).",
-    "Major music venues include Wembley Stadium, The O2 in Greenwich, and the SECC in Glasgow.",
-    "Famous summer festivals include Glastonbury, Isle of Wight Festival, and V Festival.",
-    "The National Eisteddfod of Wales is an annual cultural festival with music, dance, art, and Welsh poetry competitions.",
-    "The Mercury Music Prize is awarded each September for the best album from the UK and Ireland.",
-    "The Brit Awards is an annual event with categories like best British group and best British solo artist."
+    "The Proms: 8-week summer classical music season, BBC-organised since 1927, held at Royal Albert Hall",
+    "Henry Purcell (1659-95): Westminster Abbey organist, created distinct British musical style",
+    "Handel (1695-1759): German-born, British citizen 1727, wrote Water Music, Music for Royal Fireworks, Messiah",
+    "Elgar (1857-1934): Composed Pomp and Circumstance Marches, Land of Hope and Glory played at Last Night of Proms",
+    "Holst (1874-1934): Composed The Planets, adapted Jupiter into hymn 'I vow to thee my country'",
+    "Vaughan Williams (1872-1958): Influenced by English folk music",
+    "Walton (1902-83): Wrote coronation marches, Façade ballet, Balthazar's Feast",
+    "Britten (1913-76): Operas Peter Grimes and Billy Budd, founded Aldeburgh Festival",
+    "1960s: Beatles and Rolling Stones revolutionised global pop music",
+    "Major venues: Wembley Stadium, The O2 (Greenwich), SECC (Glasgow)",
+    "Summer festivals: Glastonbury, Isle of Wight Festival, V Festival",
+    "National Eisteddfod: Annual Welsh cultural festival with music, dance, poetry competitions",
+    "Mercury Music Prize: Best UK/Ireland album, awarded each September",
+    "Brit Awards: Annual ceremony for best British groups and solo artists"
   ],
-  "memory_hook": "Remember British music chronologically: Purcell (1600s) sets British style → Handel arrives and becomes British, writes Water Music for river parties → Victorian era brings Elgar's patriotic Land of Hope and Glory → 1900s: Holst's Planets, Britten's operas and Aldeburgh festival → 1960s EXPLOSION: Beatles and Stones conquer world → Summer festivals (Glastonbury!) and awards (Mercury Prize, Brit Awards) celebrate ongoing innovation.",
+  "memory_hook": "Timeline: Purcell (1600s) creates British style → Handel (1700s) becomes British, writes Water Music → Victorian Elgar writes Land of Hope and Glory → Holst's Planets → Britten's operas → 1960s BEATLES & STONES change world → Modern festivals (Glastonbury!) and awards (Mercury, Brits)",
   "questions": [
     {
       "prompt": "What is the Proms?",
       "options": [
-        "A one-night pop concert",
-        "An eight-week summer season of orchestral classical music organised by the BBC",
+        "A pop music festival",
+        "An 8-week summer season of orchestral classical music organised by the BBC",
         "A music awards ceremony",
-        "A music school"
+        "A music college"
       ],
       "correct_index": 1,
-      "explanation": "The Proms is an eight-week summer season of orchestral classical music held at various venues including the Royal Albert Hall, organised by the BBC since 1927."
+      "explanation": "The Proms is an eight-week summer season of orchestral classical music, organised by the BBC since 1927, held at the Royal Albert Hall and other venues."
     },
     {
       "prompt": "Which composer became a British citizen in 1727?",
@@ -45,7 +41,7 @@
         "Benjamin Britten"
       ],
       "correct_index": 1,
-      "explanation": "George Frideric Handel, German-born, became a British citizen in 1727. He composed Water Music and Music for the Royal Fireworks."
+      "explanation": "Handel was German-born but became a British citizen in 1727. He wrote Water Music for King George I and Music for the Royal Fireworks for George II."
     },
     {
       "prompt": "Who composed The Planets suite?",
@@ -56,10 +52,10 @@
         "Edward Elgar"
       ],
       "correct_index": 2,
-      "explanation": "Gustav Holst composed The Planets, a suite themed around the planets. He adapted Jupiter as the tune for 'I vow to thee my country'."
+      "explanation": "Gustav Holst composed The Planets, a suite themed around the planets of the solar system. He adapted the Jupiter movement as the tune for 'I vow to thee my country'."
     },
     {
-      "prompt": "Which piece is played at the Last Night of the Proms?",
+      "prompt": "Which piece is traditionally played at the Last Night of the Proms?",
       "options": [
         "The Planets",
         "Land of Hope and Glory",
@@ -67,7 +63,7 @@
         "Peter Grimes"
       ],
       "correct_index": 1,
-      "explanation": "Sir Edward Elgar's Pomp and Circumstance March No 1 (Land of Hope and Glory) is usually played at the Last Night of the Proms."
+      "explanation": "Sir Edward Elgar's Pomp and Circumstance March No 1, known as Land of Hope and Glory, is traditionally played at the Last Night of the Proms at the Royal Albert Hall."
     },
     {
       "prompt": "Who founded the Aldeburgh Festival?",
@@ -75,13 +71,13 @@
         "Henry Purcell",
         "Benjamin Britten",
         "Gustav Holst",
-        "George Frideric Handel"
+        "Handel"
       ],
       "correct_index": 1,
-      "explanation": "Benjamin Britten founded the Aldeburgh festival in Suffolk, which continues to be a popular music event of international importance."
+      "explanation": "Benjamin Britten founded the Aldeburgh Festival in Suffolk, which continues to be a popular music event of international importance."
     },
     {
-      "prompt": "Which bands have been influential since the 1960s?",
+      "prompt": "Which bands revolutionised popular music in the 1960s?",
       "options": [
         "The Beatles and The Rolling Stones",
         "Led Zeppelin and Pink Floyd",
@@ -89,10 +85,10 @@
         "Oasis and Blur"
       ],
       "correct_index": 0,
-      "explanation": "The Beatles and The Rolling Stones have been influential since the 1960s, continuing to impact music both in the UK and abroad."
+      "explanation": "The Beatles and The Rolling Stones revolutionised popular music in the 1960s and continue to influence music worldwide."
     },
     {
-      "prompt": "What is the Mercury Music Prize awarded for?",
+      "prompt": "What does the Mercury Music Prize award?",
       "options": [
         "Best classical composition",
         "Best live performance",
@@ -103,29 +99,29 @@
       "explanation": "The Mercury Music Prize is awarded each September for the best album from the UK and Ireland."
     },
     {
-      "prompt": "Name famous UK summer music festivals.",
+      "prompt": "Name three famous UK summer music festivals.",
       "options": [
-        "Glastonbury, Isle of Wight, V Festival",
-        "Coachella, Lollapalooza",
-        "Tomorrowland, Ultra",
-        "Reading, Download, Leeds"
+        "Glastonbury, Isle of Wight Festival, V Festival",
+        "Coachella, Lollapalooza, Bonnaroo",
+        "Tomorrowland, Ultra, EDC",
+        "Download, Creamfields, Reading"
       ],
       "correct_index": 0,
-      "explanation": "Famous UK summer festivals include Glastonbury, the Isle of Wight Festival and the V Festival."
+      "explanation": "Famous UK summer festivals include Glastonbury, the Isle of Wight Festival, and the V Festival, attracting hundreds of thousands of music fans."
     },
     {
-      "prompt": "What is the National Eisteddfod of Wales?",
+      "prompt": "What is the National Eisteddfod?",
       "options": [
         "A sports competition",
-        "An annual cultural festival with music, dance, art and Welsh poetry",
+        "An annual Welsh cultural festival with music, dance, art and poetry",
         "A political gathering",
         "A food festival"
       ],
       "correct_index": 1,
-      "explanation": "The National Eisteddfod of Wales is an annual cultural festival with music, dance, art and performances largely in Welsh, including Welsh poetry competitions."
+      "explanation": "The National Eisteddfod of Wales is an annual cultural festival featuring music, dance, art, and performances largely in Welsh, including important Welsh poetry competitions."
     },
     {
-      "prompt": "Who was influenced by English folk music?",
+      "prompt": "Who was strongly influenced by English folk music?",
       "options": [
         "Handel",
         "Britten",
@@ -133,30 +129,30 @@
         "William Walton"
       ],
       "correct_index": 2,
-      "explanation": "Ralph Vaughan Williams wrote music for orchestras and choirs and was strongly influenced by traditional English folk music."
+      "explanation": "Ralph Vaughan Williams was strongly influenced by traditional English folk music, which shaped his compositions for orchestras and choirs."
     }
   ],
   "flashcards": [
-    ["What is the Proms?", "8-week summer classical music season, BBC, Royal Albert Hall"],
-    ["Who was Henry Purcell?", "Westminster Abbey organist (1659-95), developed British style"],
-    ["Who was Handel?", "German-born, British 1727, Water Music, Fireworks Music, Messiah"],
-    ["What is Handel's Easter oratorio?", "Messiah"],
-    ["Who composed The Planets?", "Gustav Holst (1874-1934)"],
-    ["What hymn from Jupiter?", "I vow to thee my country"],
-    ["Who composed Land of Hope and Glory?", "Sir Edward Elgar - Pomp and Circumstance March No 1"],
+    ["What is the 8-week BBC summer classical music season at Royal Albert Hall?", "The Proms"],
+    ["Who was organist at Westminster Abbey 1659-95?", "Henry Purcell"],
+    ["Which German composer became British in 1727?", "Handel"],
+    ["What did Handel write for King George I?", "Water Music"],
+    ["What did Handel write for George II?", "Music for the Royal Fireworks"],
+    ["What is Handel's famous oratorio sung at Easter?", "Messiah"],
+    ["Who composed The Planets?", "Gustav Holst"],
+    ["Which hymn comes from Jupiter in The Planets?", "I vow to thee my country"],
+    ["Who wrote Land of Hope and Glory?", "Sir Edward Elgar"],
     ["When is Land of Hope and Glory played?", "Last Night of the Proms"],
-    ["Who influenced by folk music?", "Ralph Vaughan Williams"],
-    ["Walton's best works?", "Façade (ballet), Balthazar's Feast (choir)"],
-    ["What did Walton write for coronations?", "Marches for George VI and Elizabeth II"],
-    ["Britten's famous operas?", "Peter Grimes, Billy Budd"],
-    ["What teaches about orchestra?", "A Young Person's Guide to the Orchestra (Britten)"],
-    ["What festival did Britten found?", "Aldeburgh festival, Suffolk"],
-    ["1960s influential bands?", "The Beatles, The Rolling Stones"],
-    ["Late 1970s music movement?", "Punk"],
-    ["Major UK music venues?", "Wembley Stadium, The O2 (Greenwich), SECC (Glasgow)"],
-    ["Famous summer festivals?", "Glastonbury, Isle of Wight, V Festival"],
-    ["What is National Eisteddfod?", "Annual Welsh cultural festival, music/dance/poetry"],
-    ["What is Mercury Music Prize?", "Best UK/Ireland album each September"],
-    ["What is Brit Awards?", "Annual awards: best British group, solo artist, etc"]
+    ["Which composer was influenced by English folk music?", "Ralph Vaughan Williams"],
+    ["What are Walton's best-known works?", "Façade and Balthazar's Feast"],
+    ["Which operas did Britten compose?", "Peter Grimes and Billy Budd"],
+    ["What festival did Britten found in Suffolk?", "Aldeburgh Festival"],
+    ["Which 1960s bands revolutionised pop music?", "The Beatles and Rolling Stones"],
+    ["What was the late 1970s music movement?", "Punk"],
+    ["Name three major UK music venues", "Wembley Stadium, The O2, SECC Glasgow"],
+    ["Name three UK summer festivals", "Glastonbury, Isle of Wight, V Festival"],
+    ["What is the annual Welsh cultural festival?", "National Eisteddfod"],
+    ["What prize awards best UK/Ireland album?", "Mercury Music Prize"],
+    ["What awards best British groups and artists?", "Brit Awards"]
   ]
 }
