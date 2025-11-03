@@ -91,21 +91,21 @@
     }
   ],
   "flashcards": [
-    ["What is the capital city of the UK?", "London"],
-    ["What is the capital city of England?", "London"],
-    ["What is the capital city of Scotland?", "Edinburgh"],
-    ["What is the capital city of Wales?", "Cardiff"],
-    ["What is the capital city of Northern Ireland?", "Belfast"],
-    ["Name five major cities in England", "London, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Manchester, Bradford, Newcastle upon Tyne, Plymouth, Southampton, Norwich (any five)"],
-    ["Name the three major cities in Wales", "Cardiff, Swansea, Newport"],
-    ["Name the four major cities in Scotland", "Edinburgh, Glasgow, Dundee, Aberdeen"],
-    ["What is the major city in Northern Ireland?", "Belfast"],
-    ["What topics does Chapter 4 cover?", "Cities and population, religious festivals, sports and sportspeople, music and composers, theatre and cinema, artists and architects, poets and authors, famous poems, comedy and leisure, famous landmarks"],
-    ["What should you know about British poems?", "Be familiar with poems, books, and other works listed, and be able to recognize extracts from famous British poems"],
-    ["What should you know about British culture figures?", "Who they are and what they have achieved - including composers, artists, architects, authors, poets, and other famous people"],
-    ["What should you know about British sporting success?", "Who won Olympic medals, what events they competed in, and general information about sport in the UK"],
-    ["What should you know about UK landmarks?", "Be able to recognize famous landmarks at the end of the chapter"],
-    ["What makes the UK a multicultural country?", "Different ethnic and religious groups live in the UK, each with their own festivals and traditions"],
-    ["What cities should you be able to identify confidently?", "Major cities such as Leeds and Bradford, and other major cities across England, Scotland, Wales, and Northern Ireland"]
+    ["Capital of the UK?", "London"],
+    ["Capital of England?", "London"],
+    ["Capital of Scotland?", "Edinburgh"],
+    ["Capital of Wales?", "Cardiff"],
+    ["Capital of Northern Ireland?", "Belfast"],
+    ["Name 5 English cities", "London, Birmingham, Liverpool, Leeds, Sheffield (also Bristol, Manchester, Bradford, Newcastle, Plymouth, Southampton, Norwich)"],
+    ["Name 3 Welsh cities", "Cardiff, Swansea, Newport"],
+    ["Name 4 Scottish cities", "Edinburgh, Glasgow, Dundee, Aberdeen"],
+    ["Northern Ireland's major city?", "Belfast"],
+    ["What topics in Chapter 4?", "Cities, population, festivals, sports, music, theatre, cinema, art, architecture, literature, poetry, comedy, leisure, landmarks"],
+    ["What about British poems?", "Familiarize with poems and recognize famous extracts"],
+    ["Cultural figures to know?", "Composers, artists, architects, authors, poets - who they are and their achievements"],
+    ["Olympic knowledge needed?", "Who won medals and in which events"],
+    ["Landmarks to recognize?", "Famous UK landmarks at end of chapter"],
+    ["Why is UK multicultural?", "Different ethnic and religious groups with their own festivals"],
+    ["Cities to identify?", "Major cities like Leeds, Bradford across England, Scotland, Wales, Northern Ireland"]
   ]
 }
