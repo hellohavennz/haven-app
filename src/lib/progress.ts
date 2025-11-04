@@ -101,3 +101,25 @@ export function getAllProgress(): Record<string, LessonProgress> {
   const stored = localStorage.getItem('lesson-progress');
   return stored ? JSON.parse(stored) : {};
 }
+
+export interface LessonProgress {
+  attempted: number;
+  correct: number;
+}
+
+function recordAttempt(lessonId: string, isCorrect: boolean): void {
+  const progressKey = 'lesson-progress';
+  const stored = localStorage.getItem(progressKey);
+  const allProgress: Record<string, LessonProgress> = stored ? JSON.parse(stored) : {};
+  
+  if (!allProgress[lessonId]) {
+    allProgress[lessonId] = { attempted: 0, correct: 0 };
+  }
+  
+  allProgress[lessonId].attempted += 1;
+  if (isCorrect) {
+    allProgress[lessonId].correct += 1;
+  }
+  
+  localStorage.setItem(progressKey, JSON.stringify(allProgress));
+}
