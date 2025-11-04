@@ -13,13 +13,52 @@ function shuffle<T>(arr: T[]): T[] {
   return shuffled;
 }
 
+type ShuffledQuestion = {
+  prompt: string;
+  options: string[];
+  correctAnswerText: string;
+  explanation: string;
+  shuffledCorrectIndex: number;
+};
+
+function shuffleQuestionOptions(questions: any[]): ShuffledQuestion[] {
+  return questions.map(q => {
+    // Create array of option indices [0, 1, 2, 3]
+    const indices = q.options.map((_: any, i: number) => i);
+    // Shuffle the indices
+    const shuffledIndices = shuffle(indices);
+    
+    // Reorder options based on shuffled indices
+    const shuffledOptions = shuffledIndices.map(i => q.options[i]);
+    
+    // Find where the correct answer ended up
+    const correctAnswerText = q.options[q.correct_index];
+    const shuffledCorrectIndex = shuffledOptions.indexOf(correctAnswerText);
+    
+    return {
+      prompt: q.prompt,
+      options: shuffledOptions,
+      correctAnswerText,
+      explanation: q.explanation,
+      shuffledCorrectIndex
+    };
+  });
+}
+
 type AnswerState = { selected: number | null; checked: boolean };
 
 export default function PracticeLesson() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const data = lessonId ? getLessonById(lessonId) : null;
-  const shuffledQuestions = useMemo(() => shuffle(data?.questions ?? []), [data?.questions]);
+  
+  // Shuffle questions AND shuffle options within each question
+  const shuffledQuestions = useMemo(() => {
+    if (!data?.questions) return [];
+    const shuffled = shuffle(data.questions);
+    return shuffleQuestionOptions(shuffled);
+  }, [data?.questions]);
+  
   const contentRef = useRef<HTMLDivElement>(null);
 
   const [showChoice, setShowChoice] = useState(true);
@@ -29,7 +68,6 @@ export default function PracticeLesson() {
   const [finished, setFinished] = useState(false);
   const [wrongTopics, setWrongTopics] = useState<string[]>([]);
 
-  // Scroll to top when lesson changes or question changes or finished state changes
   useEffect(() => {
     if (contentRef.current) {
       const mainElement = contentRef.current.closest('main');
@@ -39,7 +77,6 @@ export default function PracticeLesson() {
     }
   }, [lessonId, currentQIdx, finished]);
 
-  // Reset state when lesson changes - ONLY depend on lessonId
   useEffect(() => {
     setShowChoice(true);
     setCurrentQIdx(0);
@@ -51,7 +88,6 @@ export default function PracticeLesson() {
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
 
-  // Show choice screen
   if (showChoice) {
     return (
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
@@ -66,13 +102,12 @@ export default function PracticeLesson() {
           </header>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Practice Questions Card */}
             <button
               onClick={() => setShowChoice(false)}
               className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
             >
               <div className="space-y-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Brain className="text-white" size={32} />
                 </div>
                 <div>
@@ -84,15 +119,15 @@ export default function PracticeLesson() {
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-teal-500 flex-shrink-0" size={16} />
                       Instant feedback on answers
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-teal-500 flex-shrink-0" size={16} />
                       Detailed explanations
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-teal-500 flex-shrink-0" size={16} />
                       Track your progress
                     </li>
                   </ul>
@@ -105,13 +140,12 @@ export default function PracticeLesson() {
               </div>
             </button>
 
-            {/* Flashcards Card */}
             <button
               onClick={() => navigate(`/practice/${lessonId}/flashcards`)}
               className="group bg-white border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
             >
               <div className="space-y-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Zap className="text-white" size={32} />
                 </div>
                 <div>
@@ -123,15 +157,15 @@ export default function PracticeLesson() {
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-emerald-500 flex-shrink-0" size={16} />
                       Randomized for better retention
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-emerald-500 flex-shrink-0" size={16} />
                       Auto-advance after viewing
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      <CheckCircle2 className="text-emerald-500 flex-shrink-0" size={16} />
                       Perfect for quick review
                     </li>
                   </ul>
@@ -163,11 +197,11 @@ export default function PracticeLesson() {
 
   const currentQ = shuffledQuestions[currentQIdx];
   const totalQuestions = shuffledQuestions.length;
-  const isCorrect = answer.selected === currentQ?.correct_index;
+  const isCorrect = answer.selected === currentQ?.shuffledCorrectIndex;
   const percentage = sessionStats.attempted > 0 
     ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) 
     : 0;
-  const progressColor = percentage >= 80 ? "bg-green-600" : "bg-teal-600";
+  const progressColor = percentage >= 80 ? "bg-green-500" : "bg-teal-500";
 
   function choose(optIdx: number) {
     if (answer.checked) return;
@@ -245,8 +279,8 @@ export default function PracticeLesson() {
               <div
                 className={`h-4 rounded-full transition-all duration-1000 ${
                   passedStatus 
-                    ? "bg-gradient-to-r from-green-500 to-green-600" 
-                    : "bg-gradient-to-r from-teal-500 to-teal-600"
+                    ? "bg-gradient-to-r from-green-400 to-green-500" 
+                    : "bg-gradient-to-r from-teal-400 to-teal-500"
                 }`}
                 style={{ width: `${finalPercentage}%` }}
               />
@@ -269,13 +303,13 @@ export default function PracticeLesson() {
           {wrongTopics.length > 0 && (
             <div className="border-t pt-6 space-y-3">
               <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-                <Lightbulb className="text-amber-600" size={20} />
+                <Lightbulb className="text-amber-500" size={20} />
                 Topics to review
               </h3>
               <ul className="space-y-2">
                 {wrongTopics.slice(0, 3).map((topic, i) => (
                   <li key={i} className="text-sm text-gray-700 flex gap-3 p-3 bg-amber-50 rounded-lg border border-amber-100">
-                    <AlertCircle className="flex-shrink-0 text-amber-600 mt-0.5" size={16} />
+                    <AlertCircle className="flex-shrink-0 text-amber-500 mt-0.5" size={16} />
                     <span>{topic}</span>
                   </li>
                 ))}
@@ -287,13 +321,13 @@ export default function PracticeLesson() {
         <div className="flex gap-4 justify-center">
           <Link
             to={`/content/${data.id}`}
-            className="px-8 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all"
+            className="px-8 py-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all"
           >
             Review Lesson
           </Link>
           <button
             onClick={retry}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
+            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all"
           >
             Try Again
           </button>
@@ -344,16 +378,16 @@ export default function PracticeLesson() {
 
           <ul className="space-y-3">
             {currentQ.options.map((opt, i) => {
-              const isRight = i === currentQ.correct_index;
+              const isRight = i === currentQ.shuffledCorrectIndex;
               const picked = answer.selected === i;
               const show = answer.checked;
               return (
                 <li key={i}>
                   <button
                     className={`w-full text-left p-4 rounded-xl border-2 font-medium transition-all
-                      ${!show && picked ? "border-teal-600 bg-teal-50" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
-                      ${show && isRight ? "border-green-600 bg-green-50 text-green-900" : ""}
-                      ${show && picked && !isRight ? "border-red-600 bg-red-50 text-red-900" : ""}
+                      ${!show && picked ? "border-teal-400 bg-teal-50" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
+                      ${show && isRight ? "border-green-500 bg-green-50 text-green-900" : ""}
+                      ${show && picked && !isRight ? "border-red-400 bg-red-50 text-red-900" : ""}
                       ${!show ? "cursor-pointer" : "cursor-default"}`}
                     onClick={() => choose(i)}
                     disabled={show}
@@ -367,7 +401,7 @@ export default function PracticeLesson() {
 
           {!answer.checked ? (
             <button
-              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={check}
               disabled={answer.selected === null}
             >
@@ -397,7 +431,7 @@ export default function PracticeLesson() {
               )}
               <button
                 onClick={next}
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold hover:opacity-90 transition-all"
+                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all"
               >
                 {currentQIdx < totalQuestions - 1 ? "Next Question →" : "See Results →"}
               </button>
