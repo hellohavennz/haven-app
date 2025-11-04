@@ -1,4 +1,16 @@
 {
-  "modules": [],
-  "lessons": []
+  "modules": [
+    {
+      "slug": "life-in-uk-overview",
+      "title": "Life in the UK Overview",
+      "lessons": ["lesson-1-values-and-principles"]
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson-1-values-and-principles",
+      "title": "The Values and Principles of the UK",
+      "module_slug": "life-in-uk-overview"
+    }
+  ]
 }
