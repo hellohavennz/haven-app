@@ -8,11 +8,17 @@ interface Section {
   key_facts: string[];
 }
 
+interface StudySection {
+  heading: string;
+  content: string;
+}
+
 interface Lesson {
   id: string;
   title: string;
   module_slug: string;
   sections?: Section[];
+  study_sections?: StudySection[];
   overview?: string;
   key_facts?: string[];
   memory_hook?: string;
@@ -77,6 +83,7 @@ const ContentLesson: React.FC = () => {
         {/* Lesson Content - handles both old and new structure */}
         <LessonContent 
           sections={lesson.sections}
+          study_sections={lesson.study_sections}
           overview={lesson.overview}
           key_facts={lesson.key_facts}
         />
@@ -94,8 +101,8 @@ const ContentLesson: React.FC = () => {
           </div>
         )}
 
-        {/* Practice Button */}
-        <div className="mt-8 flex justify-center">
+        {/* Practice Buttons */}
+        <div className="mt-8 flex gap-4 justify-center">
           <Link
             to={`/practice/${lessonId}/questions`}
             className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
@@ -103,7 +110,16 @@ const ContentLesson: React.FC = () => {
             <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
-            Practice This Lesson
+            Practice Questions
+          </Link>
+          <Link
+            to={`/practice/${lessonId}/flashcards`}
+            className="px-8 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
+          >
+            <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            Flashcards
           </Link>
         </div>
       </div>
