@@ -13,7 +13,9 @@ export default function PracticeSidebar() {
   const [progressData, setProgressData] = useState<ProgressData>({});
 
   useEffect(() => {
-    getAllProgress().then(setProgressData);
+    // getAllProgress returns an object directly, not a Promise
+    const progress = getAllProgress();
+    setProgressData(progress);
   }, [location]);
 
   useEffect(() => {
