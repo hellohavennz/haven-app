@@ -46,7 +46,7 @@ const ContentLesson: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-teal-50 to-cyan-50">
         <div className="text-xl text-gray-600">Loading lesson...</div>
       </div>
     );
@@ -56,7 +56,7 @@ const ContentLesson: React.FC = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Lesson Not Found</h1>
-        <Link to="/study" className="text-blue-600 hover:text-blue-800 font-semibold">
+        <Link to="/study" className="text-teal-600 hover:text-teal-800 font-semibold">
           ← Back to Study
         </Link>
       </div>
@@ -64,13 +64,13 @@ const ContentLesson: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-50 py-8 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <Link
             to="/study"
-            className="text-blue-600 hover:text-blue-800 font-semibold mb-4 inline-flex items-center"
+            className="text-teal-600 hover:text-teal-800 font-semibold mb-4 inline-flex items-center"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -80,7 +80,7 @@ const ContentLesson: React.FC = () => {
           <h1 className="text-4xl font-bold text-gray-900 mt-2">{lesson.title}</h1>
         </div>
 
-        {/* Lesson Content - handles both old and new structure */}
+        {/* Lesson Content */}
         <LessonContent 
           sections={lesson.sections}
           study_sections={lesson.study_sections}
@@ -90,22 +90,22 @@ const ContentLesson: React.FC = () => {
 
         {/* Memory Hook */}
         {lesson.memory_hook && (
-          <div className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+          <div className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-300 shadow-lg">
             <h3 className="text-lg font-bold text-purple-900 mb-3 flex items-center">
               <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
               Memory Hook
             </h3>
-            <p className="text-gray-800 italic">{lesson.memory_hook}</p>
+            <p className="text-gray-800 italic text-lg">{lesson.memory_hook}</p>
           </div>
         )}
 
         {/* Practice Buttons */}
-        <div className="mt-8 flex gap-4 justify-center">
+        <div className="mt-8 flex gap-4 justify-center flex-wrap">
           <Link
             to={`/practice/${lessonId}/questions`}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
+            className="px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
           >
             <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -114,7 +114,7 @@ const ContentLesson: React.FC = () => {
           </Link>
           <Link
             to={`/practice/${lessonId}/flashcards`}
-            className="px-8 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
+            className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center"
           >
             <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
