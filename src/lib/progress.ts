@@ -96,3 +96,8 @@ export async function getAllUserProgress(userId: string): Promise<UserProgress[]
     return [];
   }
 }
+
+export function getAllProgress(): Record<string, LessonProgress> {
+  const stored = localStorage.getItem('lesson-progress');
+  return stored ? JSON.parse(stored) : {};
+}
