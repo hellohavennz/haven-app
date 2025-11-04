@@ -12,7 +12,7 @@ import ContentIndex from './pages/ContentIndex';
 import ContentLesson from './pages/ContentLesson';
 import PracticeIndex from './pages/PracticeIndex';
 import PracticeLesson from './pages/PracticeLesson';
-import Flashcards from './pages/Flashcards';
+import PracticeFlashcards from './pages/PracticeFlashcards';
 import Paywall from './components/Paywall';
 
 const router = createBrowserRouter([
@@ -28,7 +28,9 @@ const router = createBrowserRouter([
       { path: 'content/:lessonId', element: <ContentLesson /> },
       { path: 'practice', element: <PracticeIndex /> },
       { path: 'practice/:lessonId', element: <PracticeLesson /> },
-      { path: 'flashcards/:lessonId', element: <Flashcards /> },
+      { path: 'practice/:lessonId/questions', element: <PracticeLesson /> },
+      { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
+      { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
       { path: 'paywall', element: <Paywall /> },
     ],
   },
