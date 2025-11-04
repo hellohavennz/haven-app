@@ -9,6 +9,11 @@ export interface UserProgress {
   last_attempt_date: string;
 }
 
+export interface LessonProgress {
+  attempted: number;
+  correct: number;
+}
+
 export async function getUserProgress(userId: string, lessonId: string): Promise<UserProgress | null> {
   try {
     const { data, error } = await supabase
@@ -27,54 +32,6 @@ export async function getUserProgress(userId: string, lessonId: string): Promise
   } catch (error) {
     console.error('Error in getUserProgress:', error);
     return null;
-  }
-}
-
-export async function recordAttempt(
-  userId: string,
-  lessonId: string,
-  score: number,
-  completed: boolean
-): Promise<void> {
-  try {
-    // First, try to get existing progress
-    const existing = await getUserProgress(userId, lessonId);
-
-    if (existing) {
-      // Update existing record
-      const { error } = await supabase
-        .from('user_progress')
-        .update({
-          score: Math.max(existing.score, score),
-          attempts: existing.attempts + 1,
-          completed: completed || existing.completed,
-          last_attempt_date: new Date().toISOString(),
-        })
-        .eq('user_id', userId)
-        .eq('lesson_id', lessonId);
-
-      if (error) {
-        console.error('Error updating attempt:', error);
-      }
-    } else {
-      // Insert new record
-      const { error } = await supabase
-        .from('user_progress')
-        .insert({
-          user_id: userId,
-          lesson_id: lessonId,
-          score,
-          attempts: 1,
-          completed,
-          last_attempt_date: new Date().toISOString(),
-        });
-
-      if (error) {
-        console.error('Error inserting attempt:', error);
-      }
-    }
-  } catch (error) {
-    console.error('Error recording attempt:', error);
   }
 }
 
@@ -102,12 +59,7 @@ export function getAllProgress(): Record<string, LessonProgress> {
   return stored ? JSON.parse(stored) : {};
 }
 
-export interface LessonProgress {
-  attempted: number;
-  correct: number;
-}
-
-function recordAttempt(lessonId: string, isCorrect: boolean): void {
+export function recordAttempt(lessonId: string, isCorrect: boolean): void {
   const progressKey = 'lesson-progress';
   const stored = localStorage.getItem(progressKey);
   const allProgress: Record<string, LessonProgress> = stored ? JSON.parse(stored) : {};
