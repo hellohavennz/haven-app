@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getLessonById } from "../lib/content";
 import { recordAttempt } from "../lib/progress";
-import { CheckCircle2, AlertCircle, Lightbulb } from "lucide-react";
+import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
 
 function shuffle<T>(arr: T[]): T[] {
   const shuffled = arr.slice();
@@ -17,10 +17,12 @@ type AnswerState = { selected: number | null; checked: boolean };
 
 export default function PracticeLesson() {
   const { lessonId } = useParams();
+  const navigate = useNavigate();
   const data = lessonId ? getLessonById(lessonId) : null;
   const shuffledQuestions = useMemo(() => shuffle(data?.questions ?? []), [data?.questions]);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const [showChoice, setShowChoice] = useState(true);
   const [currentQIdx, setCurrentQIdx] = useState(0);
   const [answer, setAnswer] = useState<AnswerState>({ selected: null, checked: false });
   const [sessionStats, setSessionStats] = useState({ attempted: 0, correct: 0 });
@@ -39,14 +41,125 @@ export default function PracticeLesson() {
 
   // Reset state when lesson changes - ONLY depend on lessonId
   useEffect(() => {
+    setShowChoice(true);
     setCurrentQIdx(0);
     setAnswer({ selected: null, checked: false });
     setSessionStats({ attempted: 0, correct: 0 });
     setFinished(false);
     setWrongTopics([]);
-  }, [lessonId]); // Only lessonId dependency!
+  }, [lessonId]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
+
+  // Show choice screen
+  if (showChoice) {
+    return (
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+        <div className="space-y-8">
+          <header className="text-center space-y-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+              {data.title}
+            </h1>
+            <p className="text-lg text-gray-600">
+              Choose how you'd like to practice
+            </p>
+          </header>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Practice Questions Card */}
+            <button
+              onClick={() => setShowChoice(false)}
+              className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
+            >
+              <div className="space-y-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Brain className="text-white" size={32} />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    Practice Questions
+                  </h2>
+                  <p className="text-gray-600 mb-4">
+                    Test your knowledge with {shuffledQuestions.length} multiple-choice questions
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      Instant feedback on answers
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      Detailed explanations
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-teal-600 flex-shrink-0" size={16} />
+                      Track your progress
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-gray-200">
+                  <span className="text-teal-600 font-semibold group-hover:translate-x-1 inline-block transition-transform">
+                    Start Practice →
+                  </span>
+                </div>
+              </div>
+            </button>
+
+            {/* Flashcards Card */}
+            <button
+              onClick={() => navigate(`/practice/${lessonId}/flashcards`)}
+              className="group bg-white border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
+            >
+              <div className="space-y-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Zap className="text-white" size={32} />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    Flashcards
+                  </h2>
+                  <p className="text-gray-600 mb-4">
+                    Quick review with {data.flashcards?.length || 0} flashcards
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      Randomized for better retention
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      Auto-advance after viewing
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="text-emerald-600 flex-shrink-0" size={16} />
+                      Perfect for quick review
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-gray-200">
+                  <span className="text-emerald-600 font-semibold group-hover:translate-x-1 inline-block transition-transform">
+                    Start Flashcards →
+                  </span>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div className="text-center">
+            <Link
+              to={`/content/${data.id}`}
+              className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to lesson
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const currentQ = shuffledQuestions[currentQIdx];
   const totalQuestions = shuffledQuestions.length;
@@ -84,6 +197,7 @@ export default function PracticeLesson() {
   }
 
   function retry() {
+    setShowChoice(true);
     setCurrentQIdx(0);
     setAnswer({ selected: null, checked: false });
     setSessionStats({ attempted: 0, correct: 0 });
@@ -196,9 +310,12 @@ export default function PracticeLesson() {
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
               Practice
             </h1>
-            <Link to={`/content/${data.id}`} className="text-sm text-teal-600 hover:text-teal-700 font-medium">
-              ← Back to lesson
-            </Link>
+            <button 
+              onClick={() => setShowChoice(true)}
+              className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+            >
+              ← Change mode
+            </button>
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
