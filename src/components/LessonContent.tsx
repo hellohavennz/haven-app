@@ -30,25 +30,25 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
   return (
     <div 
       onClick={nextFact}
-      className="bg-white rounded-xl p-6 border-2 border-gray-200 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all duration-300 my-8"
+      className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer hover:border-teal-300 hover:shadow-sm transition-all duration-300 my-8"
     >
       <div className="flex items-start justify-between mb-3">
-        <h3 className="text-base font-bold text-gray-700 flex items-center">
-          <svg className="w-5 h-5 mr-2 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
+        <h3 className="text-base font-semibold text-gray-700 flex items-center">
+          <svg className="w-5 h-5 mr-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
             <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
           </svg>
           Key Fact
         </h3>
         {facts.length > 1 && (
-          <span className="text-sm text-teal-600 font-semibold bg-teal-50 px-2 py-1 rounded-full">
+          <span className="text-sm text-teal-600 font-medium bg-teal-50 px-2.5 py-0.5 rounded-full">
             {currentIndex + 1} / {facts.length}
           </span>
         )}
       </div>
       
       <div className="relative overflow-hidden">
-        <p className="text-gray-800 text-base leading-relaxed animate-fadeIn">
+        <p className="text-gray-700 text-base leading-relaxed animate-fadeIn">
           {facts[currentIndex]}
         </p>
       </div>
@@ -68,17 +68,15 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
 };
 
 const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_facts, study_sections }) => {
-  // Calculate how many facts to show after each section
   const factsPerSection = study_sections && key_facts ? Math.ceil(key_facts.length / study_sections.length) : 0;
 
-  // Handle new structure (study_sections + global key_facts)
   if (study_sections) {
     return (
       <div className="space-y-8">
         {/* Overview Section */}
         {overview && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-teal-600 to-cyan-600 px-6 py-4">
+            <div className="bg-gradient-to-r from-teal-400 to-cyan-400 px-6 py-4">
               <h2 className="text-2xl font-bold text-white">Overview</h2>
             </div>
             <div className="p-6">
@@ -104,7 +102,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
               {/* Study Section */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 {section.heading && (
-                  <div className="bg-gradient-to-r from-teal-600 to-cyan-600 px-6 py-4">
+                  <div className="bg-gradient-to-r from-teal-400 to-cyan-400 px-6 py-4">
                     <h2 className="text-2xl font-bold text-white">{section.heading}</h2>
                   </div>
                 )}
@@ -133,14 +131,13 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
     );
   }
 
-  // Handle old structure (sections with embedded key_facts)
   if (sections) {
     return (
       <div className="space-y-8">
         {sections.map((section, index) => (
           <div key={index}>
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-              <div className="bg-gradient-to-r from-teal-600 to-cyan-600 px-6 py-4">
+              <div className="bg-gradient-to-r from-teal-400 to-cyan-400 px-6 py-4">
                 <h2 className="text-2xl font-bold text-white">{section.title}</h2>
               </div>
               <div className="p-6">
