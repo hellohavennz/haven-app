@@ -30,32 +30,32 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
   return (
     <div 
       onClick={nextFact}
-      className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer hover:border-teal-300 hover:shadow-sm transition-all duration-300 my-8"
+      className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-2 border-blue-200 cursor-pointer hover:border-blue-300 hover:shadow-md transition-all duration-300 my-8"
     >
       <div className="flex items-start justify-between mb-3">
-        <h3 className="text-base font-semibold text-gray-700 flex items-center">
-          <svg className="w-5 h-5 mr-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
+        <h3 className="text-base font-semibold text-blue-900 flex items-center">
+          <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
             <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
           </svg>
           Key Fact
         </h3>
         {facts.length > 1 && (
-          <span className="text-sm text-teal-600 font-medium bg-teal-50 px-2.5 py-0.5 rounded-full">
+          <span className="text-sm text-blue-700 font-medium bg-blue-100 px-2.5 py-0.5 rounded-full">
             {currentIndex + 1} / {facts.length}
           </span>
         )}
       </div>
       
       <div className="relative overflow-hidden">
-        <p className="text-gray-700 text-base leading-relaxed animate-fadeIn">
+        <p className="text-gray-800 text-base leading-relaxed animate-fadeIn">
           {facts[currentIndex]}
         </p>
       </div>
       
       {facts.length > 1 && (
         <div className="mt-4 flex items-center justify-center">
-          <button className="text-teal-600 hover:text-teal-700 text-sm font-medium flex items-center group">
+          <button className="text-blue-700 hover:text-blue-800 text-sm font-medium flex items-center group">
             <span>Click for next fact</span>
             <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
