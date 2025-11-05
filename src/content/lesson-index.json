@@ -3,13 +3,18 @@
     {
       "slug": "life-in-uk-overview",
       "title": "Life in the UK Overview",
-      "lessons": ["lesson-1-values-and-principles"]
+      "lessons": ["lesson-1-values-and-principles", "lesson-2-becoming-responsible-citizen"]
     }
   ],
   "lessons": [
     {
       "id": "lesson-1-values-and-principles",
       "title": "The Values and Principles of the UK",
+      "module_slug": "life-in-uk-overview"
+    },
+    {
+      "id": "lesson-2-becoming-responsible-citizen",
+      "title": "Becoming a Responsible Citizen",
       "module_slug": "life-in-uk-overview"
     }
   ]
