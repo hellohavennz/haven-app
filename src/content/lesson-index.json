@@ -6,7 +6,8 @@
       "lessons": [
         "lesson-1-values-and-principles",
         "lesson-2-becoming-responsible-citizen",
-        "lesson-3-long-illustrious-history"
+        "lesson-3-long-illustrious-history",
+        "lesson-4-modern-thriving-society"
       ]
     }
   ],
@@ -24,6 +25,11 @@
     {
       "id": "lesson-3-long-illustrious-history",
       "title": "A Long and Illustrious History",
+      "module_slug": "life-in-uk-overview"
+    },
+    {
+      "id": "lesson-4-modern-thriving-society",
+      "title": "A Modern, Thriving Society",
       "module_slug": "life-in-uk-overview"
     }
   ]
