@@ -76,7 +76,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
         {/* Overview Section */}
         {overview && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-teal-600 px-6 py-4">
+            <div className="bg-[#0D9488] px-6 py-4">
               <h2 className="text-2xl font-bold text-white">Overview</h2>
             </div>
             <div className="p-6">
@@ -102,7 +102,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
               {/* Study Section */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 {section.heading && (
-                  <div className="bg-teal-600 px-6 py-4">
+                  <div className="bg-[#0D9488] px-6 py-4">
                     <h2 className="text-2xl font-bold text-white">{section.heading}</h2>
                   </div>
                 )}
@@ -137,7 +137,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
         {sections.map((section, index) => (
           <div key={index}>
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-              <div className="bg-teal-600 px-6 py-4">
+              <div className="bg-[#0D9488] px-6 py-4">
                 <h2 className="text-2xl font-bold text-white">{section.title}</h2>
               </div>
               <div className="p-6">
