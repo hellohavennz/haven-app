@@ -3,7 +3,11 @@
     {
       "slug": "life-in-uk-overview",
       "title": "Life in the UK Overview",
-      "lessons": ["lesson-1-values-and-principles", "lesson-2-becoming-responsible-citizen"]
+      "lessons": [
+        "lesson-1-values-and-principles",
+        "lesson-2-becoming-responsible-citizen",
+        "lesson-3-long-illustrious-history"
+      ]
     }
   ],
   "lessons": [
@@ -15,6 +19,11 @@
     {
       "id": "lesson-2-becoming-responsible-citizen",
       "title": "Becoming a Responsible Citizen",
+      "module_slug": "life-in-uk-overview"
+    },
+    {
+      "id": "lesson-3-long-illustrious-history",
+      "title": "A Long and Illustrious History",
       "module_slug": "life-in-uk-overview"
     }
   ]
