@@ -3,6 +3,32 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import StudySidebar from "../components/Sidebar";
 import PracticeSidebar from "../components/PracticeSidebar";
+import MobileNav from "../components/navigation/MobileNav";
+
+function MobileTopBar() {
+  return (
+    <div className="md:hidden bg-white border-b border-gray-200">
+      <div className="px-4 py-3 flex items-center justify-between">
+        <button
+          type="button"
+          className="p-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-100"
+          aria-label="Open navigation"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+
+        <Link to="/" className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center">
+            <span className="text-white font-black text-lg">H</span>
+          </div>
+          <span className="font-black text-lg text-gray-900">Haven</span>
+        </Link>
+
+        <div className="w-10" aria-hidden="true" />
+      </div>
+    </div>
+  );
+}
 
 export default function RootLayout() {
   const location = useLocation();
@@ -65,14 +91,16 @@ export default function RootLayout() {
           </div>
         </main>
       </div>
-      
+
       {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600 flex-shrink-0">
+        <footer className="hidden md:block border-t border-gray-200 text-sm text-gray-600 flex-shrink-0">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center">
             <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
           </div>
         </footer>
       )}
+
+      <MobileNav />
     </div>
   );
 }
