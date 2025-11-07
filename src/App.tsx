@@ -4,13 +4,11 @@ import { getCurrentUser } from "./lib/auth";
 import { BookOpen, Brain, Trophy, BarChart3, Sparkles, CheckCircle2, Target, Zap, Award, ArrowRight, Star, Clock, Crown, TrendingUp, Headphones, FileText } from "lucide-react";
 
 export default function App() {
-  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     getCurrentUser().then(currentUser => {
-      setUser(currentUser);
       setLoading(false);
       if (currentUser) {
         navigate('/dashboard');

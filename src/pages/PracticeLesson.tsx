@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { getLessonById } from "../lib/content";
 import { recordAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
+import type { Question } from "../types";
 
 function shuffle<T>(arr: T[]): T[] {
   const shuffled = arr.slice();
@@ -21,7 +22,7 @@ type ShuffledQuestion = {
   shuffledCorrectIndex: number;
 };
 
-function shuffleQuestionOptions(questions: any[]): ShuffledQuestion[] {
+function shuffleQuestionOptions(questions: Question[]): ShuffledQuestion[] {
   return questions.map(q => {
     // Create array of option indices [0, 1, 2, 3]
     const indices = q.options.map((_: any, i: number) => i);
@@ -48,7 +49,7 @@ function shuffleQuestionOptions(questions: any[]): ShuffledQuestion[] {
 type AnswerState = { selected: number | null; checked: boolean };
 
 export default function PracticeLesson() {
-  const { lessonId } = useParams();
+  const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
   const data = lessonId ? getLessonById(lessonId) : null;
   
@@ -228,7 +229,7 @@ export default function PracticeLesson() {
   }
 
   const currentQ = shuffledQuestions[currentQIdx];
-  if (!currentQ && hasQuestions) {
+  if (!currentQ) {
     return null;
   }
   const totalQuestions = shuffledQuestions.length;
@@ -245,6 +246,7 @@ export default function PracticeLesson() {
 
   function check() {
     if (answer.selected === null) return;
+    if (!data) return;
     recordAttempt(data.id, isCorrect);
     setSessionStats(prev => ({
       attempted: prev.attempted + 1,

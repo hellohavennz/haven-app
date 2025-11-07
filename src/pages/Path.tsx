@@ -13,15 +13,6 @@ export default function Path() {
       .finally(() => setLoading(false));
   }, []);
 
-  async function goToFirstLesson(modSlug: string, setHref: (href: string) => void) {
-    const lessons = await fetchLessonsForModule(modSlug);
-    if (lessons.length > 0) {
-      setHref(`/lesson/${lessons[0].id}`);
-    } else {
-      alert("No lessons found for this module yet.");
-    }
-  }
-
   if (loading) return <div className="p-6">Loading modules…</div>;
 
   return (

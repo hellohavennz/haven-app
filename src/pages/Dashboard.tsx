@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
-import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Award } from 'lucide-react';
+import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock } from 'lucide-react';
 
 interface LessonProgressData {
   attempted: number;
