@@ -37,7 +37,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
 
   return (
     <aside
-      className={`h-full w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white ${className}`}
+      aria-label="Study navigation"
+      className={`h-full w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white md:max-h-screen md:sticky md:top-0 ${className}`}
     >
       <div className="p-4">
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 flex items-center">

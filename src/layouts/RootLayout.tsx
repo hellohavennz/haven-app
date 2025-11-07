@@ -20,6 +20,13 @@ export default function RootLayout() {
     setIsDrawerOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isDrawerOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isDrawerOpen]);
+
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
@@ -30,7 +37,7 @@ export default function RootLayout() {
   ) : null;
 
   const contentWrapperClasses = showAnySidebar
-    ? "h-full w-full px-4 pb-20 pt-4 md:px-8 md:pb-12"
+    ? "h-full w-full px-4 pb-28 pt-4 md:px-8 md:pb-12"
     : "mx-auto h-full w-full max-w-6xl px-4 py-12";
 
   return (
@@ -56,15 +63,15 @@ export default function RootLayout() {
 
       <div className="relative flex flex-1 min-h-0">
         {showStudySidebar && (
-          <div className="hidden h-full md:flex">
-            <StudySidebar />
-          </div>
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+            <StudySidebar className="flex-1" />
+          </aside>
         )}
 
         {showPracticeSidebar && (
-          <div className="hidden h-full md:flex">
-            <PracticeSidebar />
-          </div>
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+            <PracticeSidebar className="flex-1" />
+          </aside>
         )}
 
         <main className="flex-1 overflow-y-auto">

@@ -68,7 +68,8 @@ export default function PracticeSidebar({ className = "", onNavigate }: Practice
 
   return (
     <aside
-      className={`flex h-full w-72 flex-shrink-0 flex-col overflow-hidden border-r border-gray-200 bg-white ${className}`}
+      aria-label="Practice navigation"
+      className={`flex h-full w-72 flex-shrink-0 flex-col overflow-hidden border-r border-gray-200 bg-white md:max-h-screen md:sticky md:top-0 ${className}`}
     >
       {/* Header - Fixed */}
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
