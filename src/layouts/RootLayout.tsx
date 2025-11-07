@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import PracticeSidebar from "../components/PracticeSidebar";
+import MobileNav from "../components/navigation/MobileNav";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -18,20 +19,22 @@ export default function RootLayout() {
         {showStudySidebar && <Sidebar />}
         {showPracticeSidebar && <PracticeSidebar />}
         
-        <main className={`flex-1 overflow-y-auto ${showAnySidebar ? '' : ''}`}>
+        <main className={`flex-1 overflow-y-auto pb-20 md:pb-0 ${showAnySidebar ? '' : ''}`}>
           <div className={showAnySidebar ? '' : 'mx-auto max-w-6xl px-4 py-12'}>
             <Outlet />
           </div>
         </main>
       </div>
-      
+
       {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600 flex-shrink-0">
+        <footer className="hidden md:block border-t border-gray-200 text-sm text-gray-600 flex-shrink-0">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center">
             <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
           </div>
         </footer>
       )}
+
+      <MobileNav />
     </div>
   );
 }
