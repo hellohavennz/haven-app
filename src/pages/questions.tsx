@@ -37,7 +37,8 @@ const QuestionsPage: React.FC = () => {
   useEffect(() => {
     const loadQuestions = async () => {
       try {
-        const lessonData = await import(`../content/lessons/${lessonId}.json`);
+        const lessonModule = await import(`../content/lessons/${lessonId}.json`);
+        const lessonData = lessonModule.default as { title: string; questions: Question[] };
         setLessonTitle(lessonData.title);
         
         const loadedQuestions: Question[] = lessonData.questions;

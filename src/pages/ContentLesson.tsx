@@ -32,8 +32,8 @@ const ContentLesson: React.FC = () => {
   useEffect(() => {
     const loadLesson = async () => {
       try {
-        const lessonData = await import(`../content/lessons/${lessonId}.json`);
-        setLesson(lessonData);
+        const lessonModule = await import(`../content/lessons/${lessonId}.json`);
+        setLesson(lessonModule.default as Lesson);
         setIsLoading(false);
       } catch (error) {
         console.error('Error loading lesson:', error);

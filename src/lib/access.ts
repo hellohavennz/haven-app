@@ -1,7 +1,7 @@
 // Define which lessons are free
 const FREE_LESSON_IDS = [
-  'lesson-1-the-united-kingdom',
-  'lesson-2-early-britain'
+  'lesson-1-values-and-principles',
+  'lesson-2-becoming-responsible-citizen'
 ];
 
 export function hasAccessToLesson(lessonId: string, user: any): boolean {

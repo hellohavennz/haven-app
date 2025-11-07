@@ -20,14 +20,7 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
   const metadata = user.user_metadata || {};
   const tier = metadata.tier as SubscriptionTier;
   
-  // For testing: if user is logged in and has no tier set, give them 'plus' access
-  // Remove this in production!
-  if (!tier) {
-    console.log('⚠️ No tier found - defaulting to Plus for testing. Set tier in Supabase user metadata.');
-    return 'plus';
-  }
-  
-  return tier;
+  return tier || 'free';
 }
 
 export function useSubscription(): SubscriptionStatus {

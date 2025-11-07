@@ -58,6 +58,7 @@ export default function PracticeLesson() {
     const shuffled = shuffle(data.questions);
     return shuffleQuestionOptions(shuffled);
   }, [data?.questions]);
+  const hasQuestions = shuffledQuestions.length > 0;
   
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -88,6 +89,34 @@ export default function PracticeLesson() {
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
 
+  if (!hasQuestions && !showChoice) {
+    return (
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+        <div className="space-y-6 text-center">
+          <h1 className="text-3xl font-bold text-gray-900">Practice</h1>
+          <p className="text-lg text-gray-600">
+            Practice questions for this lesson are coming soon. Try flashcards instead or review the
+            lesson content.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Link
+              to={`/content/${data.id}`}
+              className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all"
+            >
+              Review Lesson
+            </Link>
+            <Link
+              to={`/practice/${lessonId}/flashcards`}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:opacity-90 transition-all"
+            >
+              Open Flashcards
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (showChoice) {
     return (
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
@@ -103,8 +132,9 @@ export default function PracticeLesson() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <button
-              onClick={() => setShowChoice(false)}
-              className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
+              onClick={() => hasQuestions && setShowChoice(false)}
+              disabled={!hasQuestions}
+              className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -115,7 +145,9 @@ export default function PracticeLesson() {
                     Practice Questions
                   </h2>
                   <p className="text-gray-600 mb-4">
-                    Test your knowledge with {shuffledQuestions.length} multiple-choice questions
+                    {hasQuestions
+                      ? `Test your knowledge with ${shuffledQuestions.length} multiple-choice questions`
+                      : "We're writing practice questions for this lesson."}
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
@@ -134,7 +166,7 @@ export default function PracticeLesson() {
                 </div>
                 <div className="pt-4 border-t border-gray-200">
                   <span className="text-teal-600 font-semibold group-hover:translate-x-1 inline-block transition-transform">
-                    Start Practice →
+                    {hasQuestions ? "Start Practice →" : "Practice coming soon"}
                   </span>
                 </div>
               </div>
@@ -196,6 +228,9 @@ export default function PracticeLesson() {
   }
 
   const currentQ = shuffledQuestions[currentQIdx];
+  if (!currentQ && hasQuestions) {
+    return null;
+  }
   const totalQuestions = shuffledQuestions.length;
   const isCorrect = answer.selected === currentQ?.shuffledCorrectIndex;
   const percentage = sessionStats.attempted > 0 

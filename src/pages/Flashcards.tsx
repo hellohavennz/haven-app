@@ -34,7 +34,8 @@ const FlashcardsPage: React.FC = () => {
   useEffect(() => {
     const loadFlashcards = async () => {
       try {
-        const lessonData = await import(`../content/lessons/${lessonId}.json`);
+        const lessonModule = await import(`../content/lessons/${lessonId}.json`);
+        const lessonData = lessonModule.default as { title: string; flashcards: [string, string][] };
         setLessonTitle(lessonData.title);
         
         const cards: Flashcard[] = lessonData.flashcards.map((card: [string, string]) => ({

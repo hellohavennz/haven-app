@@ -4,7 +4,7 @@ const files = import.meta.glob("../content/lessons/*.json", { eager: true });
 const lessons: LessonJSON[] = Object.values(files).map((m: any) => m.default as LessonJSON);
 
 // Mark which lessons are premium (all except the first one)
-const FIRST_FREE_LESSON = "lesson-1-the-united-kingdom";
+const FIRST_FREE_LESSON = "lesson-1-values-and-principles";
 
 export function getAllLessons(): LessonJSON[] {
   return lessons.slice().sort((a, b) => a.title.localeCompare(b.title)).map(lesson => ({
