@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
   const isActive = (lessonId: string) => location.pathname.includes(lessonId);
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 h-full overflow-y-auto flex-shrink-0">
+    <aside className="w-full md:w-72 bg-white border-r border-gray-200 h-full overflow-y-auto flex-shrink-0">
       <div className="p-4">
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 flex items-center">
           <BookOpen className="w-4 h-4 mr-2" />
@@ -88,6 +88,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
                                 ? 'bg-teal-50 text-teal-700 font-medium'
                                 : 'text-gray-700 hover:bg-gray-50'
                             }`}
+                            aria-current={active ? 'page' : undefined}
                             onClick={onNavigate}
                           >
                             <div className="flex items-center">
