@@ -3,7 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { getModules, getLessonsForModule } from '../lib/content';
 import { ChevronDown, ChevronRight, BookOpen } from 'lucide-react';
 
-const Sidebar: React.FC = () => {
+type SidebarProps = {
+  onNavigate?: () => void;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
   const location = useLocation();
   const modules = getModules();
   const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || '']);
@@ -84,6 +88,7 @@ const Sidebar: React.FC = () => {
                                 ? 'bg-teal-50 text-teal-700 font-medium'
                                 : 'text-gray-700 hover:bg-gray-50'
                             }`}
+                            onClick={onNavigate}
                           >
                             <div className="flex items-center">
                               <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mr-2 flex-shrink-0" />
