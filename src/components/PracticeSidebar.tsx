@@ -6,7 +6,12 @@ import { ChevronDown, ChevronRight, Trophy, Target, AlertCircle, Circle } from "
 
 type ProgressData = Record<string, { attempted: number; correct: number }>;
 
-export default function PracticeSidebar() {
+type PracticeSidebarProps = {
+  className?: string;
+  onNavigate?: () => void;
+};
+
+export default function PracticeSidebar({ className = "", onNavigate }: PracticeSidebarProps = {}) {
   const location = useLocation();
   const modules = getModules();
   const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
@@ -62,7 +67,9 @@ export default function PracticeSidebar() {
   }).length;
 
   return (
-    <aside className="w-72 bg-white border-r border-gray-200 flex flex-col flex-shrink-0 overflow-hidden">
+    <aside
+      className={`flex h-full w-72 flex-shrink-0 flex-col overflow-hidden border-r border-gray-200 bg-white ${className}`}
+    >
       {/* Header - Fixed */}
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
@@ -117,6 +124,7 @@ export default function PracticeSidebar() {
                               ? 'bg-teal-50 text-teal-700 font-medium'
                               : 'text-gray-700 hover:bg-gray-50'
                           }`}
+                          onClick={onNavigate}
                         >
                           {badge.icon}
                           <span className="flex-1 truncate text-xs">{lesson.title}</span>
