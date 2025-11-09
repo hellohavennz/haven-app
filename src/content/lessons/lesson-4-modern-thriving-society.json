@@ -10,11 +10,11 @@
     },
     {
       "heading": "Everyday Life",
-      "content": "British life balances work, family, and leisure. Most adults work full- or part-time; education is compulsory from ages 5 to 18. Public services such as the NHS provide health care free at the point of use. People take pride in community involvement—supporting local schools, charities, and events.\n\nCommunity and service are at the heart of daily life. The principle of equality and respect for others helps different communities live together peacefully."
+      "content": "British life balances work, family, and leisure. Most adults work full- or part-time; education is compulsory from ages 5 to 18. Public services such as the NHS provide health care free at the point of use. People take pride in community involvement\u2014supporting local schools, charities, and events.\n\nCommunity and service are at the heart of daily life. The principle of equality and respect for others helps different communities live together peacefully."
     },
     {
       "heading": "Modern British Achievements",
-      "content": "Britain remains a world leader in research, technology, and the arts. Innovations such as the World Wide Web, DNA structure discovery, and advances in renewable energy show its contribution to global progress. The creative industries—film, music, design, fashion, and gaming—employ millions.\n\nInnovation built on tradition keeps Britain thriving. Modern achievements continue to shape the world while honouring historical strengths."
+      "content": "Britain remains a world leader in research, technology, and the arts. Innovations such as the World Wide Web, DNA structure discovery, and advances in renewable energy show its contribution to global progress. The creative industries\u2014film, music, design, fashion, and gaming\u2014employ millions.\n\nInnovation built on tradition keeps Britain thriving. Modern achievements continue to shape the world while honouring historical strengths."
     },
     {
       "heading": "Equality and Opportunity",
@@ -22,11 +22,11 @@
     },
     {
       "heading": "Arts and Culture",
-      "content": "The United Kingdom has made an enormous contribution to world culture. British authors, artists, and musicians have influenced generations across the globe. Great writers include William Shakespeare, Jane Austen, Charles Dickens, and J. K. Rowling. Britain is also home to world-famous museums and galleries such as the British Museum, the National Gallery, and the Tate Modern.\n\nModern art and design continue to flourish. British architects, filmmakers, and musicians are known for creativity—from the Beatles and Rolling Stones to contemporary performers like Adele and Ed Sheeran. The BBC and the British Film Institute (BFI) support the arts through broadcasting and film preservation.\n\nCenturies of creativity in words, art, and music still shape the world."
+      "content": "The United Kingdom has made an enormous contribution to world culture. British authors, artists, and musicians have influenced generations across the globe. Great writers include William Shakespeare, Jane Austen, Charles Dickens, and J. K. Rowling. Britain is also home to world-famous museums and galleries such as the British Museum, the National Gallery, and the Tate Modern.\n\nModern art and design continue to flourish. British architects, filmmakers, and musicians are known for creativity\u2014from the Beatles and Rolling Stones to contemporary performers like Adele and Ed Sheeran. The BBC and the British Film Institute (BFI) support the arts through broadcasting and film preservation.\n\nCenturies of creativity in words, art, and music still shape the world."
     },
     {
       "heading": "Customs and Traditions",
-      "content": "Many British customs combine ancient and modern practices. National days include St George's Day (England), St Andrew's Day (Scotland), St David's Day (Wales), and St Patrick's Day (Northern Ireland). The Trooping the Colour ceremony marks the monarch's official birthday, and Remembrance Day in November honours those who died in war.\n\nTraditional foods—such as roast dinners, Cornish pasties, Welsh cakes, and Scottish haggis—remain popular. Afternoon tea and Sunday lunch are long-standing family occasions. Tradition brings generations together—from pageantry to puddings."
+      "content": "Many British customs combine ancient and modern practices. National days include St George's Day (England), St Andrew's Day (Scotland), St David's Day (Wales), and St Patrick's Day (Northern Ireland). The Trooping the Colour ceremony marks the monarch's official birthday, and Remembrance Day in November honours those who died in war.\n\nTraditional foods\u2014such as roast dinners, Cornish pasties, Welsh cakes, and Scottish haggis\u2014remain popular. Afternoon tea and Sunday lunch are long-standing family occasions. Tradition brings generations together\u2014from pageantry to puddings."
     },
     {
       "heading": "Leisure",
@@ -34,7 +34,7 @@
     },
     {
       "heading": "Religion",
-      "content": "The UK is a multi-faith society that values freedom of belief. The official church in England is the Church of England, headed by the monarch as Supreme Governor. Scotland has the Church of Scotland, which is Presbyterian and independent of the state. Wales and Northern Ireland have no established church.\n\nOther faiths—Islam, Hinduism, Sikhism, Judaism, Buddhism—and many non-religious beliefs are represented. Places of worship from mosques to temples and synagogues are found throughout the UK. Freedom of belief strengthens respect and diversity."
+      "content": "The UK is a multi-faith society that values freedom of belief. The official church in England is the Church of England, headed by the monarch as Supreme Governor. Scotland has the Church of Scotland, which is Presbyterian and independent of the state. Wales and Northern Ireland have no established church.\n\nOther faiths\u2014Islam, Hinduism, Sikhism, Judaism, Buddhism\u2014and many non-religious beliefs are represented. Places of worship from mosques to temples and synagogues are found throughout the UK. Freedom of belief strengthens respect and diversity."
     },
     {
       "heading": "Sport",
@@ -64,57 +64,368 @@
     "London hosted the Olympic Games in 2012.",
     "Traditional British foods include roast dinners and afternoon tea."
   ],
-  "memory_hook": "Think of modern Britain as a tapestry: threads of history (traditions, monarchy, tea), innovation (World Wide Web, medical advances), diversity (67 million people from many backgrounds), creativity (Shakespeare to Adele), and fairness (Equality Act, NHS). Each thread strengthens the whole—making Britain both proudly traditional and confidently modern.",
+  "memory_hook": "Think of modern Britain as a tapestry: threads of history (traditions, monarchy, tea), innovation (World Wide Web, medical advances), diversity (67 million people from many backgrounds), creativity (Shakespeare to Adele), and fairness (Equality Act, NHS). Each thread strengthens the whole\u2014making Britain both proudly traditional and confidently modern.",
   "questions": [
-    {"prompt": "According to the study guide, approximately how many people live in the UK?", "options": ["50 million", "67 million", "80 million", "95 million"], "correct_index": 1, "explanation": "The guide states the UK population is about 67 million."},
-    {"prompt": "Which of the following is the capital and largest city of the UK?", "options": ["Manchester", "London", "Birmingham", "Glasgow"], "correct_index": 1, "explanation": "London is the capital and the largest city."},
-    {"prompt": "What age is education compulsory in the UK?", "options": ["5 to 16", "5 to 18", "7 to 16", "4 to 18"], "correct_index": 1, "explanation": "Children must be in education or training from 5 to 18."},
-    {"prompt": "What is the NHS?", "options": ["A private insurance scheme", "A public health service free at the point of use", "A police department", "A benefits office"], "correct_index": 1, "explanation": "The NHS provides health care free at the point of use."},
-    {"prompt": "Why is the UK described as a diverse society?", "options": ["It has only one culture", "It has people from many backgrounds and faiths", "It has no immigration", "It has no national days"], "correct_index": 1, "explanation": "The UK includes people from many cultures, languages, and faiths."},
-    {"prompt": "What is the main UK law that protects people from discrimination?", "options": ["Human Rights Charter", "Equality Act 2010", "Parliament Act", "Representation Act"], "correct_index": 1, "explanation": "The Equality Act 2010 brings together equality laws."},
-    {"prompt": "Which of these is a protected characteristic?", "options": ["Favourite sport", "Sex", "Car ownership", "Internet provider"], "correct_index": 1, "explanation": "Sex is one of the protected characteristics."},
-    {"prompt": "Why are equality laws important in a modern society?", "options": ["They limit people's participation", "They ensure everyone has a fair chance", "They stop people working", "They remove public services"], "correct_index": 1, "explanation": "Equality supports fair access to work and services."},
-    {"prompt": "Which of the following could be unlawful discrimination?", "options": ["Refusing to employ someone because of their religion", "Inviting someone to an interview", "Offering training", "Providing equal pay"], "correct_index": 0, "explanation": "Religion is protected and must not be used unfairly."},
-    {"prompt": "Who is considered the most famous English playwright?", "options": ["J. K. Rowling", "William Shakespeare", "George Orwell", "C. S. Lewis"], "correct_index": 1, "explanation": "Shakespeare wrote many famous plays."},
-    {"prompt": "Which museum in London holds collections from around the world?", "options": ["Tate St Ives", "The British Museum", "The Science Museum", "The National Railway Museum"], "correct_index": 1, "explanation": "The British Museum is a major national museum."},
-    {"prompt": "What does the British Film Institute (BFI) support?", "options": ["Roads and transport", "Film and moving image culture", "Agriculture", "Sport"], "correct_index": 1, "explanation": "The BFI preserves and promotes film."},
-    {"prompt": "Which broadcaster is an important supporter of UK culture?", "options": ["ITV", "Channel 5", "BBC", "Sky Sports"], "correct_index": 2, "explanation": "The BBC is a public service broadcaster with cultural programmes."},
-    {"prompt": "What is Trooping the Colour?", "options": ["A football competition", "A ceremony for the monarch's official birthday", "A tax announcement", "A church festival"], "correct_index": 1, "explanation": "It marks the monarch's official birthday."},
-    {"prompt": "What is remembered on the Sunday closest to 11 November?", "options": ["Harvest", "Remembrance Day", "Royal Weddings", "Local elections"], "correct_index": 1, "explanation": "It honours those who died in wars."},
-    {"prompt": "Which of these is a traditional British occasion involving tea, sandwiches, and cakes?", "options": ["Afternoon tea", "Spring fair", "May Day", "Burns Night"], "correct_index": 0, "explanation": "Afternoon tea is a well-known British custom."},
-    {"prompt": "When was the BBC founded?", "options": ["1922", "1939", "1955", "1969"], "correct_index": 0, "explanation": "The BBC began in 1922."},
-    {"prompt": "Why are public parks and leisure centres important?", "options": ["They are only for tourists", "They help people stay active and healthy", "They replace schools", "They are only for sports teams"], "correct_index": 1, "explanation": "Leisure facilities support healthy lifestyles."},
-    {"prompt": "Which of these is a popular UK leisure activity?", "options": ["Bullfighting", "Gardening", "Ice road trucking", "Desert skiing"], "correct_index": 1, "explanation": "Gardening is common in the UK."},
-    {"prompt": "What is the established church in England?", "options": ["Church of Scotland", "Church of England", "Baptist Union", "Catholic Church"], "correct_index": 1, "explanation": "The Church of England is the established church."},
-    {"prompt": "Who is the Supreme Governor of the Church of England?", "options": ["The Prime Minister", "The Monarch", "The Archbishop of York", "The Speaker of the House"], "correct_index": 1, "explanation": "The monarch holds this role."},
-    {"prompt": "What is the national church in Scotland?", "options": ["Church of England", "Church of Scotland", "Methodist Church", "Orthodox Church"], "correct_index": 1, "explanation": "The Church of Scotland is Presbyterian and independent."},
-    {"prompt": "How is religion treated in the UK today?", "options": ["Only one faith is allowed", "Freedom of religion and belief is protected", "All faiths are banned", "Only private faith is allowed"], "correct_index": 1, "explanation": "The UK protects religious freedom."},
-    {"prompt": "Which international tennis tournament is held in the UK?", "options": ["Roland-Garros", "Wimbledon", "US Open", "Australian Open"], "correct_index": 1, "explanation": "Wimbledon is hosted in London."},
-    {"prompt": "Which of these sports has strong UK origins?", "options": ["Cricket", "Baseball", "Lacrosse", "Sumo"], "correct_index": 0, "explanation": "Cricket developed in England."},
-    {"prompt": "In what year did London host the Olympic Games, according to the guide?", "options": ["2004", "2008", "2012", "2016"], "correct_index": 2, "explanation": "The UK hosted the Olympics in 2012."}
+    {
+      "prompt": "According to the study guide, approximately how many people live in the UK?",
+      "options": [
+        "50 million",
+        "67 million",
+        "80 million",
+        "95 million"
+      ],
+      "correct_index": 1,
+      "explanation": "The guide states the UK population is about 67 million."
+    },
+    {
+      "prompt": "Which of the following is the capital and largest city of the UK?",
+      "options": [
+        "Manchester",
+        "London",
+        "Birmingham",
+        "Glasgow"
+      ],
+      "correct_index": 1,
+      "explanation": "London is the capital and the largest city."
+    },
+    {
+      "prompt": "What age is education compulsory in the UK?",
+      "options": [
+        "5 to 16",
+        "5 to 18",
+        "7 to 16",
+        "4 to 18"
+      ],
+      "correct_index": 1,
+      "explanation": "Children must be in education or training from 5 to 18."
+    },
+    {
+      "prompt": "What is the NHS?",
+      "options": [
+        "A private insurance scheme",
+        "A public health service free at the point of use",
+        "A police department",
+        "A benefits office"
+      ],
+      "correct_index": 1,
+      "explanation": "The NHS provides health care free at the point of use."
+    },
+    {
+      "prompt": "Why is the UK described as a diverse society?",
+      "options": [
+        "It has only one culture",
+        "It has people from many backgrounds and faiths",
+        "It has no immigration",
+        "It has no national days"
+      ],
+      "correct_index": 1,
+      "explanation": "The UK includes people from many cultures, languages, and faiths."
+    },
+    {
+      "prompt": "What is the main UK law that protects people from discrimination?",
+      "options": [
+        "Human Rights Charter",
+        "Equality Act 2010",
+        "Parliament Act",
+        "Representation Act"
+      ],
+      "correct_index": 1,
+      "explanation": "The Equality Act 2010 brings together equality laws."
+    },
+    {
+      "prompt": "Which of these is a protected characteristic?",
+      "options": [
+        "Favourite sport",
+        "Sex",
+        "Car ownership",
+        "Internet provider"
+      ],
+      "correct_index": 1,
+      "explanation": "Sex is one of the protected characteristics."
+    },
+    {
+      "prompt": "Why are equality laws important in a modern society?",
+      "options": [
+        "They limit people's participation",
+        "They ensure everyone has a fair chance",
+        "They stop people working",
+        "They remove public services"
+      ],
+      "correct_index": 1,
+      "explanation": "Equality supports fair access to work and services."
+    },
+    {
+      "prompt": "Which of the following could be unlawful discrimination?",
+      "options": [
+        "Refusing to employ someone because of their religion",
+        "Inviting someone to an interview",
+        "Offering training",
+        "Providing equal pay"
+      ],
+      "correct_index": 0,
+      "explanation": "Religion is protected and must not be used unfairly."
+    },
+    {
+      "prompt": "Who is considered the most famous English playwright?",
+      "options": [
+        "J. K. Rowling",
+        "William Shakespeare",
+        "George Orwell",
+        "C. S. Lewis"
+      ],
+      "correct_index": 1,
+      "explanation": "Shakespeare wrote many famous plays."
+    },
+    {
+      "prompt": "Which museum in London holds collections from around the world?",
+      "options": [
+        "Tate St Ives",
+        "The British Museum",
+        "The Science Museum",
+        "The National Railway Museum"
+      ],
+      "correct_index": 1,
+      "explanation": "The British Museum is a major national museum."
+    },
+    {
+      "prompt": "What does the British Film Institute (BFI) support?",
+      "options": [
+        "Roads and transport",
+        "Film and moving image culture",
+        "Agriculture",
+        "Sport"
+      ],
+      "correct_index": 1,
+      "explanation": "The BFI preserves and promotes film."
+    },
+    {
+      "prompt": "Which broadcaster is an important supporter of UK culture?",
+      "options": [
+        "ITV",
+        "Channel 5",
+        "BBC",
+        "Sky Sports"
+      ],
+      "correct_index": 2,
+      "explanation": "The BBC is a public service broadcaster with cultural programmes."
+    },
+    {
+      "prompt": "What is Trooping the Colour?",
+      "options": [
+        "A football competition",
+        "A ceremony for the monarch's official birthday",
+        "A tax announcement",
+        "A church festival"
+      ],
+      "correct_index": 1,
+      "explanation": "It marks the monarch's official birthday."
+    },
+    {
+      "prompt": "What is remembered on the Sunday closest to 11 November?",
+      "options": [
+        "Harvest",
+        "Remembrance Day",
+        "Royal Weddings",
+        "Local elections"
+      ],
+      "correct_index": 1,
+      "explanation": "It honours those who died in wars."
+    },
+    {
+      "prompt": "Which of these is a traditional British occasion involving tea, sandwiches, and cakes?",
+      "options": [
+        "Afternoon tea",
+        "Spring fair",
+        "May Day",
+        "Burns Night"
+      ],
+      "correct_index": 0,
+      "explanation": "Afternoon tea is a well-known British custom."
+    },
+    {
+      "prompt": "When was the BBC founded?",
+      "options": [
+        "1922",
+        "1939",
+        "1955",
+        "1969"
+      ],
+      "correct_index": 0,
+      "explanation": "The BBC began in 1922."
+    },
+    {
+      "prompt": "Why are public parks and leisure centres important?",
+      "options": [
+        "They are only for tourists",
+        "They help people stay active and healthy",
+        "They replace schools",
+        "They are only for sports teams"
+      ],
+      "correct_index": 1,
+      "explanation": "Leisure facilities support healthy lifestyles."
+    },
+    {
+      "prompt": "Which of these is a popular UK leisure activity?",
+      "options": [
+        "Bullfighting",
+        "Gardening",
+        "Ice road trucking",
+        "Desert skiing"
+      ],
+      "correct_index": 1,
+      "explanation": "Gardening is common in the UK."
+    },
+    {
+      "prompt": "What is the established church in England?",
+      "options": [
+        "Church of Scotland",
+        "Church of England",
+        "Baptist Union",
+        "Catholic Church"
+      ],
+      "correct_index": 1,
+      "explanation": "The Church of England is the established church."
+    },
+    {
+      "prompt": "Who is the Supreme Governor of the Church of England?",
+      "options": [
+        "The Prime Minister",
+        "The Monarch",
+        "The Archbishop of York",
+        "The Speaker of the House"
+      ],
+      "correct_index": 1,
+      "explanation": "The monarch holds this role."
+    },
+    {
+      "prompt": "What is the national church in Scotland?",
+      "options": [
+        "Church of England",
+        "Church of Scotland",
+        "Methodist Church",
+        "Orthodox Church"
+      ],
+      "correct_index": 1,
+      "explanation": "The Church of Scotland is Presbyterian and independent."
+    },
+    {
+      "prompt": "How is religion treated in the UK today?",
+      "options": [
+        "Only one faith is allowed",
+        "Freedom of religion and belief is protected",
+        "All faiths are banned",
+        "Only private faith is allowed"
+      ],
+      "correct_index": 1,
+      "explanation": "The UK protects religious freedom."
+    },
+    {
+      "prompt": "Which international tennis tournament is held in the UK?",
+      "options": [
+        "Roland-Garros",
+        "Wimbledon",
+        "US Open",
+        "Australian Open"
+      ],
+      "correct_index": 1,
+      "explanation": "Wimbledon is hosted in London."
+    },
+    {
+      "prompt": "Which of these sports has strong UK origins?",
+      "options": [
+        "Cricket",
+        "Baseball",
+        "Lacrosse",
+        "Sumo"
+      ],
+      "correct_index": 0,
+      "explanation": "Cricket developed in England."
+    },
+    {
+      "prompt": "In what year did London host the Olympic Games, according to the guide?",
+      "options": [
+        "2004",
+        "2008",
+        "2012",
+        "2016"
+      ],
+      "correct_index": 2,
+      "explanation": "The UK hosted the Olympics in 2012."
+    }
   ],
   "flashcards": [
-    ["UK population approx?", "67 million"],
-    ["Largest UK city?", "London"],
-    ["Free health service?", "NHS"],
-    ["Compulsory schooling ages?", "5-18"],
-    ["Equality Act year?", "2010"],
-    ["National broadcaster?", "BBC"],
-    ["Famous playwright?", "Shakespeare"],
-    ["Classic novelist?", "Dickens"],
-    ["Major museum?", "British Museum"],
-    ["Tea ritual?", "Afternoon tea"],
-    ["Top sport?", "Football"],
-    ["Second sport?", "Cricket"],
-    ["Grand slam held?", "Wimbledon"],
-    ["Monarch parade?", "Trooping the Colour"],
-    ["English national church?", "Church of England"],
-    ["Scottish church?", "Church of Scotland"],
-    ["Olympics hosted year?", "2012"]
+    [
+      "Approximately how many people live in the UK?",
+      "67 million"
+    ],
+    [
+      "What is the largest city in the UK?",
+      "London"
+    ],
+    [
+      "Which service provides healthcare free at the point of use?",
+      "NHS"
+    ],
+    [
+      "Between which ages is education compulsory?",
+      "5-18"
+    ],
+    [
+      "In what year was the Equality Act passed?",
+      "2010"
+    ],
+    [
+      "Which broadcaster was founded in 1922?",
+      "BBC"
+    ],
+    [
+      "Who is regarded as Britain's greatest playwright?",
+      "Shakespeare"
+    ],
+    [
+      "Which classic novelist wrote about manners and marriage?",
+      "Jane Austen"
+    ],
+    [
+      "Which London museum showcases world cultures?",
+      "British Museum"
+    ],
+    [
+      "Which social ritual pairs tea with cakes?",
+      "Afternoon tea"
+    ],
+    [
+      "Which sport is the nation's favourite pastime?",
+      "Football"
+    ],
+    [
+      "Which traditional bat-and-ball sport began in England?",
+      "Cricket"
+    ],
+    [
+      "Which tennis grand slam is hosted in London?",
+      "Wimbledon"
+    ],
+    [
+      "Which parade marks the monarch's official birthday?",
+      "Trooping the Colour"
+    ],
+    [
+      "What is the established church in England called?",
+      "Church of England"
+    ],
+    [
+      "What is Scotland's national church called?",
+      "Church of Scotland"
+    ],
+    [
+      "In which year did London host the Olympic Games?",
+      "2012"
+    ]
   ],
   "supportive_messages": {
-    "high_score": "Excellent! You understand modern British society brilliantly! 🎉",
-    "medium_score": "Good progress! Review the key facts about culture, equality, and traditions! 📚",
-    "low_score": "Keep going! Modern society has many aspects to learn. You'll get there! 💪"
+    "high_score": "Excellent! You understand modern British society brilliantly! \ud83c\udf89",
+    "medium_score": "Good progress! Review the key facts about culture, equality, and traditions! \ud83d\udcda",
+    "low_score": "Keep going! Modern society has many aspects to learn. You'll get there! \ud83d\udcaa"
   }
 }

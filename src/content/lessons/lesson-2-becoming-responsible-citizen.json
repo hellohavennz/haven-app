@@ -2,11 +2,11 @@
   "id": "lesson-2-becoming-responsible-citizen",
   "title": "Becoming a Responsible Citizen",
   "module_slug": "life-in-uk-overview",
-  "overview": "Being a responsible citizen means understanding both your rights and your duties in the United Kingdom. Every adult who lives here benefits from public services, laws, and freedoms that rely on everyone doing their part. Citizens help keep the country fair, safe, and successful by following the law, paying taxes, respecting others, and taking part in community life.\n\nBeing a good citizen is not only about obeying laws or paying taxes. It is also about how people behave in daily life. Small actions can make a big difference to the well-being of others and the community. Responsible citizens show respect, honesty, and kindness, even in simple situations—like queuing fairly, offering a seat on public transport, or picking up litter.",
+  "overview": "Being a responsible citizen means understanding both your rights and your duties in the United Kingdom. Every adult who lives here benefits from public services, laws, and freedoms that rely on everyone doing their part. Citizens help keep the country fair, safe, and successful by following the law, paying taxes, respecting others, and taking part in community life.\n\nBeing a good citizen is not only about obeying laws or paying taxes. It is also about how people behave in daily life. Small actions can make a big difference to the well-being of others and the community. Responsible citizens show respect, honesty, and kindness, even in simple situations\u2014like queuing fairly, offering a seat on public transport, or picking up litter.",
   "study_sections": [
     {
       "heading": "Rights and Responsibilities",
-      "content": "People in the UK enjoy many legal rights—such as freedom of speech, equality before the law, and the right to vote—but every right carries a matching responsibility. For example, freedom of speech must be used respectfully; equality requires treating others fairly. Citizens are expected to obey the law, serve on a jury if called, and take care of public property.\n\nEveryday examples include voting in local or national elections, following road safety rules, reporting crimes or antisocial behaviour, and looking after shared spaces such as parks or buses."
+      "content": "People in the UK enjoy many legal rights\u2014such as freedom of speech, equality before the law, and the right to vote\u2014but every right carries a matching responsibility. For example, freedom of speech must be used respectfully; equality requires treating others fairly. Citizens are expected to obey the law, serve on a jury if called, and take care of public property.\n\nEveryday examples include voting in local or national elections, following road safety rules, reporting crimes or antisocial behaviour, and looking after shared spaces such as parks or buses."
     },
     {
       "heading": "Respect for the Law",
@@ -22,11 +22,11 @@
     },
     {
       "heading": "Everyday Citizenship in Action",
-      "content": "Being a good citizen is not only about obeying laws or paying taxes. It is also about how people behave in daily life. Small actions can make a big difference to the well-being of others and the community. Responsible citizens show respect, honesty, and kindness, even in simple situations—like queuing fairly, offering a seat on public transport, or picking up litter.\n\nCitizenship means being aware that personal choices have public effects. Choosing to recycle, to save energy, or to treat others with courtesy helps create a society based on cooperation and respect. Good citizenship begins with small, everyday actions."
+      "content": "Being a good citizen is not only about obeying laws or paying taxes. It is also about how people behave in daily life. Small actions can make a big difference to the well-being of others and the community. Responsible citizens show respect, honesty, and kindness, even in simple situations\u2014like queuing fairly, offering a seat on public transport, or picking up litter.\n\nCitizenship means being aware that personal choices have public effects. Choosing to recycle, to save energy, or to treat others with courtesy helps create a society based on cooperation and respect. Good citizenship begins with small, everyday actions."
     },
     {
       "heading": "Public Participation and Volunteering",
-      "content": "Public participation is how people help shape their community and country. Voting is one way, but there are many others. People can attend local council meetings, join residents' associations, or take part in campaigns that matter to them—always within the law and with respect for others.\n\nVolunteering plays a major role in British society. Millions of people give their time to charities, schools, hospitals, youth groups, and emergency services. These efforts strengthen communities and often bring people from different backgrounds together.\n\nExamples of civic participation include helping with local clean-up days, assisting at food banks or community kitchens, mentoring students or supporting people who are new to the UK, and joining environmental or social campaigns that work for the public good."
+      "content": "Public participation is how people help shape their community and country. Voting is one way, but there are many others. People can attend local council meetings, join residents' associations, or take part in campaigns that matter to them\u2014always within the law and with respect for others.\n\nVolunteering plays a major role in British society. Millions of people give their time to charities, schools, hospitals, youth groups, and emergency services. These efforts strengthen communities and often bring people from different backgrounds together.\n\nExamples of civic participation include helping with local clean-up days, assisting at food banks or community kitchens, mentoring students or supporting people who are new to the UK, and joining environmental or social campaigns that work for the public good."
     }
   ],
   "key_facts": [
@@ -35,7 +35,7 @@
     "Paying taxes funds shared services such as health care, education, and policing.",
     "Citizens can influence society through voting, volunteering, and local participation.",
     "Respect for others and for public property keeps communities strong.",
-    "Simple daily actions—like recycling, helping neighbours, and showing courtesy—express good citizenship.",
+    "Simple daily actions\u2014like recycling, helping neighbours, and showing courtesy\u2014express good citizenship.",
     "Parliament makes the laws, the police enforce them, and courts apply them fairly.",
     "Freedom of speech must be used respectfully without harming others.",
     "Citizens are expected to serve on a jury if called.",
@@ -46,58 +46,400 @@
     "Public participation is a peaceful and lawful way to shape change.",
     "Responsible citizenship reflects the British values of fairness, respect, and cooperation."
   ],
-  "memory_hook": "Think of citizenship as a two-way street: rights travel one way, responsibilities travel back. Every right you enjoy (like voting) pairs with a duty (like paying taxes). Good citizenship is like being a good neighbour—small actions (helping, respecting, participating) build a strong community for everyone.",
+  "memory_hook": "Think of citizenship as a two-way street: rights travel one way, responsibilities travel back. Every right you enjoy (like voting) pairs with a duty (like paying taxes). Good citizenship is like being a good neighbour\u2014small actions (helping, respecting, participating) build a strong community for everyone.",
   "questions": [
-    {"prompt": "What is a responsible citizen expected to do?", "options": ["Ignore public rules", "Understand and follow their rights and duties", "Only claim benefits", "Avoid elections"], "correct_index": 1, "explanation": "Responsible citizenship includes both enjoying rights and accepting duties."},
-    {"prompt": "Which of these is a civic responsibility?", "options": ["Choosing not to work", "Obeying the law", "Travelling abroad", "Buying a car"], "correct_index": 1, "explanation": "All citizens are expected to follow the law."},
-    {"prompt": "Why is it important to respect the rights of others?", "options": ["So only one group benefits", "To support a single religion", "To help everyone live together fairly", "To avoid taxes"], "correct_index": 2, "explanation": "Respecting others' rights keeps society fair and peaceful."},
-    {"prompt": "What is one way to take part in public life?", "options": ["Staying silent", "Voting in elections", "Refusing to register to vote", "Destroying public property"], "correct_index": 1, "explanation": "Voting is a key way citizens influence how the country is run."},
-    {"prompt": "Which of the following best describes a 'right'?", "options": ["A legal protection or freedom you are entitled to", "A task set by your neighbour", "Anything you want to do", "A rule only for visitors"], "correct_index": 0, "explanation": "Rights are legal protections given to people in the UK."},
-    {"prompt": "Which action shows responsibility for shared spaces?", "options": ["Littering in parks", "Damaging buses", "Reporting vandalism", "Ignoring rubbish"], "correct_index": 2, "explanation": "Reporting damage helps protect public facilities."},
-    {"prompt": "Why should citizens stay informed about public issues?", "options": ["To spread rumours", "To make better decisions when voting", "To avoid jury service", "To stop laws from working"], "correct_index": 1, "explanation": "Informed citizens can take part more effectively in democracy."},
-    {"prompt": "Why must everyone obey the law in the UK?", "options": ["Because laws apply only to visitors", "Because the law applies equally to everyone", "Because only the police must obey", "Because only the government must obey"], "correct_index": 1, "explanation": "The rule of law means no one is above the law."},
-    {"prompt": "Who enforces the law?", "options": ["Local sports clubs", "The police and the courts", "Supermarkets", "TV stations"], "correct_index": 1, "explanation": "Police enforce laws and courts apply them."},
-    {"prompt": "What is the benefit of respecting the law?", "options": ["It makes society safer and more orderly", "It replaces elections", "It removes taxes", "It allows discrimination"], "correct_index": 0, "explanation": "Law and order protect people's rights and safety."},
-    {"prompt": "Which of these is an example of respecting the law?", "options": ["Driving through red lights", "Paying fines or penalties when due", "Ignoring parking rules", "Refusing to identify yourself to police"], "correct_index": 1, "explanation": "Obeying legal penalties shows respect for the system."},
-    {"prompt": "What should a citizen do if they witness a crime?", "options": ["Hide the information", "Report it to the police", "Help the offender escape", "Post it online only"], "correct_index": 1, "explanation": "Reporting crime supports the justice system."},
-    {"prompt": "What is the role of the courts?", "options": ["To make tax policy", "To apply the law fairly", "To run elections", "To collect bins"], "correct_index": 1, "explanation": "Courts make sure laws are applied fairly."},
-    {"prompt": "Why is cooperating with the police important?", "options": ["It helps the police keep communities safe", "It lets people avoid laws", "It replaces voting", "It stops taxes"], "correct_index": 0, "explanation": "Police need public cooperation to protect everyone."},
-    {"prompt": "What is one good way to contribute to your community?", "options": ["Volunteering your time to help others", "Damaging public buildings", "Refusing to speak to neighbours", "Avoiding local events"], "correct_index": 0, "explanation": "Volunteering is a positive form of citizenship."},
-    {"prompt": "Why is volunteering important in the UK?", "options": ["It replaces the government", "It supports services and people in need", "It is required by law for all adults", "It stops elections"], "correct_index": 1, "explanation": "Volunteers add support that public services may not fully provide."},
-    {"prompt": "Which of these is an example of community participation?", "options": ["Joining a local residents' group", "Ignoring community meetings", "Littering in public spaces", "Avoiding neighbours"], "correct_index": 0, "explanation": "Taking part in local groups helps improve the area."},
-    {"prompt": "What does 'civic pride' mean?", "options": ["Feeling responsible for and proud of your community", "Refusing to help others", "Leaving the UK", "Not paying tax"], "correct_index": 0, "explanation": "Civic pride motivates people to look after their local area."},
-    {"prompt": "Which action shows care for the environment?", "options": ["Fly-tipping", "Recycling household waste", "Vandalism", "Ignoring council rules"], "correct_index": 1, "explanation": "Recycling is a responsible act that supports the community."},
-    {"prompt": "How can young people contribute to society?", "options": ["By learning about rights and helping in school or community projects", "By refusing to follow school rules", "By breaking local by-laws", "By avoiding activity"], "correct_index": 0, "explanation": "Young people can contribute through learning and participation."},
-    {"prompt": "Why is helping neighbours a good example of citizenship?", "options": ["It creates division", "It strengthens local support networks", "It avoids the law", "It increases taxes"], "correct_index": 1, "explanation": "Helping neighbours builds trust and stronger communities."},
-    {"prompt": "Why do people in the UK pay taxes?", "options": ["To fund public services such as health, education, and policing", "To pay only for private schools", "To punish citizens", "To stop elections"], "correct_index": 0, "explanation": "Taxes provide money for services everyone uses."},
-    {"prompt": "Which of these is a tax for local services like rubbish collection?", "options": ["Income tax", "Council tax", "Inheritance tax", "Stamp duty"], "correct_index": 1, "explanation": "Council tax is paid to local authorities to fund local services."},
-    {"prompt": "What can happen if people do not pay the taxes they owe?", "options": ["Nothing", "Public services may have less funding", "Elections are cancelled", "Citizens lose the right to vote forever"], "correct_index": 1, "explanation": "Tax avoidance reduces money available for shared services."},
-    {"prompt": "Which tax is usually taken from earnings or salaries?", "options": ["VAT", "Income tax", "Council tax", "Road tax"], "correct_index": 1, "explanation": "Income tax is paid on money earned."},
-    {"prompt": "What is VAT charged on?", "options": ["Most goods and services", "Only council houses", "Voting", "Hospital treatment"], "correct_index": 0, "explanation": "VAT is a tax on many things people buy."},
-    {"prompt": "Why is paying tax honestly part of responsible citizenship?", "options": ["It ensures everyone shares the cost of public services", "It allows people to ignore laws", "It removes the need for police", "It replaces volunteering"], "correct_index": 0, "explanation": "A fair tax system depends on honest payment."},
-    {"prompt": "Which of these services is commonly funded by taxes?", "options": ["Online shopping", "The National Health Service (NHS)", "Private gyms", "Holiday travel"], "correct_index": 1, "explanation": "The NHS is a public service funded mainly through taxation."},
-    {"prompt": "Which of these is a simple act of good citizenship?", "options": ["Queuing fairly and patiently", "Pushing ahead of others", "Ignoring local rules", "Damaging property"], "correct_index": 0, "explanation": "Everyday respect helps communities function smoothly."},
-    {"prompt": "Why is voting described as both a right and a responsibility?", "options": ["Because only the council votes", "Because it allows citizens to influence decisions", "Because it increases tax", "Because it is secret"], "correct_index": 1, "explanation": "Voting lets citizens take part in democracy."}
+    {
+      "prompt": "What is a responsible citizen expected to do?",
+      "options": [
+        "Ignore public rules",
+        "Understand and follow their rights and duties",
+        "Only claim benefits",
+        "Avoid elections"
+      ],
+      "correct_index": 1,
+      "explanation": "Responsible citizenship includes both enjoying rights and accepting duties."
+    },
+    {
+      "prompt": "Which of these is a civic responsibility?",
+      "options": [
+        "Choosing not to work",
+        "Obeying the law",
+        "Travelling abroad",
+        "Buying a car"
+      ],
+      "correct_index": 1,
+      "explanation": "All citizens are expected to follow the law."
+    },
+    {
+      "prompt": "Why is it important to respect the rights of others?",
+      "options": [
+        "So only one group benefits",
+        "To support a single religion",
+        "To help everyone live together fairly",
+        "To avoid taxes"
+      ],
+      "correct_index": 2,
+      "explanation": "Respecting others' rights keeps society fair and peaceful."
+    },
+    {
+      "prompt": "What is one way to take part in public life?",
+      "options": [
+        "Staying silent",
+        "Voting in elections",
+        "Refusing to register to vote",
+        "Destroying public property"
+      ],
+      "correct_index": 1,
+      "explanation": "Voting is a key way citizens influence how the country is run."
+    },
+    {
+      "prompt": "Which of the following best describes a 'right'?",
+      "options": [
+        "A legal protection or freedom you are entitled to",
+        "A task set by your neighbour",
+        "Anything you want to do",
+        "A rule only for visitors"
+      ],
+      "correct_index": 0,
+      "explanation": "Rights are legal protections given to people in the UK."
+    },
+    {
+      "prompt": "Which action shows responsibility for shared spaces?",
+      "options": [
+        "Littering in parks",
+        "Damaging buses",
+        "Reporting vandalism",
+        "Ignoring rubbish"
+      ],
+      "correct_index": 2,
+      "explanation": "Reporting damage helps protect public facilities."
+    },
+    {
+      "prompt": "Why should citizens stay informed about public issues?",
+      "options": [
+        "To spread rumours",
+        "To make better decisions when voting",
+        "To avoid jury service",
+        "To stop laws from working"
+      ],
+      "correct_index": 1,
+      "explanation": "Informed citizens can take part more effectively in democracy."
+    },
+    {
+      "prompt": "Why must everyone obey the law in the UK?",
+      "options": [
+        "Because laws apply only to visitors",
+        "Because the law applies equally to everyone",
+        "Because only the police must obey",
+        "Because only the government must obey"
+      ],
+      "correct_index": 1,
+      "explanation": "The rule of law means no one is above the law."
+    },
+    {
+      "prompt": "Who enforces the law?",
+      "options": [
+        "Local sports clubs",
+        "The police and the courts",
+        "Supermarkets",
+        "TV stations"
+      ],
+      "correct_index": 1,
+      "explanation": "Police enforce laws and courts apply them."
+    },
+    {
+      "prompt": "What is the benefit of respecting the law?",
+      "options": [
+        "It makes society safer and more orderly",
+        "It replaces elections",
+        "It removes taxes",
+        "It allows discrimination"
+      ],
+      "correct_index": 0,
+      "explanation": "Law and order protect people's rights and safety."
+    },
+    {
+      "prompt": "Which of these is an example of respecting the law?",
+      "options": [
+        "Driving through red lights",
+        "Paying fines or penalties when due",
+        "Ignoring parking rules",
+        "Refusing to identify yourself to police"
+      ],
+      "correct_index": 1,
+      "explanation": "Obeying legal penalties shows respect for the system."
+    },
+    {
+      "prompt": "What should a citizen do if they witness a crime?",
+      "options": [
+        "Hide the information",
+        "Report it to the police",
+        "Help the offender escape",
+        "Post it online only"
+      ],
+      "correct_index": 1,
+      "explanation": "Reporting crime supports the justice system."
+    },
+    {
+      "prompt": "What is the role of the courts?",
+      "options": [
+        "To make tax policy",
+        "To apply the law fairly",
+        "To run elections",
+        "To collect bins"
+      ],
+      "correct_index": 1,
+      "explanation": "Courts make sure laws are applied fairly."
+    },
+    {
+      "prompt": "Why is cooperating with the police important?",
+      "options": [
+        "It helps the police keep communities safe",
+        "It lets people avoid laws",
+        "It replaces voting",
+        "It stops taxes"
+      ],
+      "correct_index": 0,
+      "explanation": "Police need public cooperation to protect everyone."
+    },
+    {
+      "prompt": "What is one good way to contribute to your community?",
+      "options": [
+        "Volunteering your time to help others",
+        "Damaging public buildings",
+        "Refusing to speak to neighbours",
+        "Avoiding local events"
+      ],
+      "correct_index": 0,
+      "explanation": "Volunteering is a positive form of citizenship."
+    },
+    {
+      "prompt": "Why is volunteering important in the UK?",
+      "options": [
+        "It replaces the government",
+        "It supports services and people in need",
+        "It is required by law for all adults",
+        "It stops elections"
+      ],
+      "correct_index": 1,
+      "explanation": "Volunteers add support that public services may not fully provide."
+    },
+    {
+      "prompt": "Which of these is an example of community participation?",
+      "options": [
+        "Joining a local residents' group",
+        "Ignoring community meetings",
+        "Littering in public spaces",
+        "Avoiding neighbours"
+      ],
+      "correct_index": 0,
+      "explanation": "Taking part in local groups helps improve the area."
+    },
+    {
+      "prompt": "What does 'civic pride' mean?",
+      "options": [
+        "Feeling responsible for and proud of your community",
+        "Refusing to help others",
+        "Leaving the UK",
+        "Not paying tax"
+      ],
+      "correct_index": 0,
+      "explanation": "Civic pride motivates people to look after their local area."
+    },
+    {
+      "prompt": "Which action shows care for the environment?",
+      "options": [
+        "Fly-tipping",
+        "Recycling household waste",
+        "Vandalism",
+        "Ignoring council rules"
+      ],
+      "correct_index": 1,
+      "explanation": "Recycling is a responsible act that supports the community."
+    },
+    {
+      "prompt": "How can young people contribute to society?",
+      "options": [
+        "By learning about rights and helping in school or community projects",
+        "By refusing to follow school rules",
+        "By breaking local by-laws",
+        "By avoiding activity"
+      ],
+      "correct_index": 0,
+      "explanation": "Young people can contribute through learning and participation."
+    },
+    {
+      "prompt": "Why is helping neighbours a good example of citizenship?",
+      "options": [
+        "It creates division",
+        "It strengthens local support networks",
+        "It avoids the law",
+        "It increases taxes"
+      ],
+      "correct_index": 1,
+      "explanation": "Helping neighbours builds trust and stronger communities."
+    },
+    {
+      "prompt": "Why do people in the UK pay taxes?",
+      "options": [
+        "To fund public services such as health, education, and policing",
+        "To pay only for private schools",
+        "To punish citizens",
+        "To stop elections"
+      ],
+      "correct_index": 0,
+      "explanation": "Taxes provide money for services everyone uses."
+    },
+    {
+      "prompt": "Which of these is a tax for local services like rubbish collection?",
+      "options": [
+        "Income tax",
+        "Council tax",
+        "Inheritance tax",
+        "Stamp duty"
+      ],
+      "correct_index": 1,
+      "explanation": "Council tax is paid to local authorities to fund local services."
+    },
+    {
+      "prompt": "What can happen if people do not pay the taxes they owe?",
+      "options": [
+        "Nothing",
+        "Public services may have less funding",
+        "Elections are cancelled",
+        "Citizens lose the right to vote forever"
+      ],
+      "correct_index": 1,
+      "explanation": "Tax avoidance reduces money available for shared services."
+    },
+    {
+      "prompt": "Which tax is usually taken from earnings or salaries?",
+      "options": [
+        "VAT",
+        "Income tax",
+        "Council tax",
+        "Road tax"
+      ],
+      "correct_index": 1,
+      "explanation": "Income tax is paid on money earned."
+    },
+    {
+      "prompt": "What is VAT charged on?",
+      "options": [
+        "Most goods and services",
+        "Only council houses",
+        "Voting",
+        "Hospital treatment"
+      ],
+      "correct_index": 0,
+      "explanation": "VAT is a tax on many things people buy."
+    },
+    {
+      "prompt": "Why is paying tax honestly part of responsible citizenship?",
+      "options": [
+        "It ensures everyone shares the cost of public services",
+        "It allows people to ignore laws",
+        "It removes the need for police",
+        "It replaces volunteering"
+      ],
+      "correct_index": 0,
+      "explanation": "A fair tax system depends on honest payment."
+    },
+    {
+      "prompt": "Which of these services is commonly funded by taxes?",
+      "options": [
+        "Online shopping",
+        "The National Health Service (NHS)",
+        "Private gyms",
+        "Holiday travel"
+      ],
+      "correct_index": 1,
+      "explanation": "The NHS is a public service funded mainly through taxation."
+    },
+    {
+      "prompt": "Which of these is a simple act of good citizenship?",
+      "options": [
+        "Queuing fairly and patiently",
+        "Pushing ahead of others",
+        "Ignoring local rules",
+        "Damaging property"
+      ],
+      "correct_index": 0,
+      "explanation": "Everyday respect helps communities function smoothly."
+    },
+    {
+      "prompt": "Why is voting described as both a right and a responsibility?",
+      "options": [
+        "Because only the council votes",
+        "Because it allows citizens to influence decisions",
+        "Because it increases tax",
+        "Because it is secret"
+      ],
+      "correct_index": 1,
+      "explanation": "Voting lets citizens take part in democracy."
+    }
   ],
   "flashcards": [
-    ["Main civic duty?", "Obey laws"],
-    ["Second civic duty?", "Pay taxes"],
-    ["Tax agency name?", "HMRC"],
-    ["Local property tax?", "Council tax"],
-    ["Serving in court?", "Jury duty"],
-    ["Who to contact for crime?", "Police"],
-    ["Community help act?", "Volunteer"],
-    ["Voting age UK?", "18"],
-    ["Before voting you must?", "Register"],
-    ["Who funds the NHS?", "Taxes"],
-    ["Local services run by?", "Councils"],
-    ["Simple eco action?", "Recycle"],
-    ["Rights rely on?", "Responsibility"],
-    ["UK rights law?", "Human Rights Act"]
+    [
+      "What is the primary duty of every citizen?",
+      "Obey laws"
+    ],
+    [
+      "Which duty ensures public services are funded?",
+      "Pay taxes"
+    ],
+    [
+      "Which agency collects national taxes?",
+      "HMRC"
+    ],
+    [
+      "Which local tax supports councils?",
+      "Council tax"
+    ],
+    [
+      "What service must you perform when called to court?",
+      "Jury duty"
+    ],
+    [
+      "Whom should you contact to report crime?",
+      "Police"
+    ],
+    [
+      "What action helps strengthen your community?",
+      "Volunteer"
+    ],
+    [
+      "What age grants the right to vote?",
+      "18"
+    ],
+    [
+      "What must you do before voting?",
+      "Register"
+    ],
+    [
+      "Who ultimately funds the NHS?",
+      "Taxes"
+    ],
+    [
+      "Who manages local services like parks?",
+      "Councils"
+    ],
+    [
+      "Which simple habit protects the environment?",
+      "Recycle"
+    ],
+    [
+      "Every individual right depends on what?",
+      "Responsibility"
+    ],
+    [
+      "Which law protects rights across the UK?",
+      "Human Rights Act"
+    ]
   ],
   "supportive_messages": {
-    "high_score": "Excellent! You understand what it means to be a responsible UK citizen! 🌟",
-    "medium_score": "Good progress! Keep reviewing the key responsibilities and you'll master this! 💪",
-    "low_score": "Don't worry - citizenship takes practice. Review the material and try again! 📚"
+    "high_score": "Excellent! You understand what it means to be a responsible UK citizen! \ud83c\udf1f",
+    "medium_score": "Good progress! Keep reviewing the key responsibilities and you'll master this! \ud83d\udcaa",
+    "low_score": "Don't worry - citizenship takes practice. Review the material and try again! \ud83d\udcda"
   }
 }
