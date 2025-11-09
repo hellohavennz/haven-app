@@ -18,34 +18,8 @@ export default function PracticeFlashcards() {
   const deck = useMemo(() => shuffle(data?.flashcards ?? []), [lessonId]);
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
-  const [countdown, setCountdown] = useState(4);
 
   useEffect(() => { setIdx(0); setReveal(false); }, [lessonId]);
-
-  useEffect(() => {
-    if (reveal) {
-      setCountdown(4);
-      const interval = setInterval(() => {
-        setCountdown(prev => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-
-      const timer = setTimeout(() => {
-        setReveal(false);
-        setIdx(i => (i + 1) % deck.length);
-      }, 4000);
-
-      return () => {
-        clearInterval(interval);
-        clearTimeout(timer);
-      };
-    }
-  }, [reveal, deck.length]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
   const card = deck[idx];
@@ -53,6 +27,15 @@ export default function PracticeFlashcards() {
   function skip() {
     setReveal(false);
     setIdx(i => (i + 1) % deck.length);
+  }
+
+  function handleCardClick() {
+    if (!card) return;
+    if (!reveal) {
+      setReveal(true);
+    } else {
+      skip();
+    }
   }
 
   return (
@@ -74,14 +57,14 @@ export default function PracticeFlashcards() {
             </Link>
           </div>
           <p className="text-gray-600 leading-relaxed">
-            Tap the card to reveal the answer. It will automatically move to the next card.
+            Tap the card to reveal the answer, then tap again to continue.
           </p>
         </header>
 
         {card ? (
           <div className="space-y-8">
             <div
-              onClick={() => setReveal(r => !r)}
+              onClick={handleCardClick}
               className={`relative h-96 rounded-3xl cursor-pointer flex items-center justify-center p-8 transition-all duration-300 ${
                 reveal
                   ? "bg-gradient-to-br from-emerald-600 to-teal-700"
@@ -98,7 +81,7 @@ export default function PracticeFlashcards() {
                   {reveal ? card[1] : card[0]}
                 </div>
                 <div className="text-sm text-teal-100 pt-4 font-medium">
-                  {reveal ? `Auto-advancing in ${countdown}s...` : "Tap to reveal →"}
+                  {reveal ? "Tap to continue →" : "Tap to reveal →"}
                 </div>
               </div>
             </div>
@@ -120,25 +103,6 @@ export default function PracticeFlashcards() {
               </div>
             </div>
 
-            {!reveal && (
-              <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-40">
-                <button
-                  onClick={skip}
-                  className="w-full max-w-2xl mx-auto px-6 py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all active:scale-95"
-                >
-                  Skip →
-                </button>
-              </div>
-            )}
-
-            {!reveal && (
-              <button
-                onClick={skip}
-                className="hidden md:block w-full py-4 rounded-xl border-2 border-teal-200 text-teal-700 font-semibold hover:bg-teal-50 transition-all active:scale-95"
-              >
-                Skip this card →
-              </button>
-            )}
           </div>
         ) : (
           <div className="text-center py-12 text-gray-600">
