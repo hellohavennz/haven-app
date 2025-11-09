@@ -56,7 +56,7 @@ const ContentLesson: React.FC = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Lesson Not Found</h1>
-        <Link to="/study" className="text-teal-600 hover:text-teal-700 font-semibold">
+        <Link to="/content" className="text-teal-600 hover:text-teal-700 font-semibold">
           ← Back to Study
         </Link>
       </div>
@@ -69,7 +69,7 @@ const ContentLesson: React.FC = () => {
         {/* Header */}
         <div className="mb-8">
           <Link
-            to="/study"
+            to="/content"
             className="text-teal-600 hover:text-teal-700 font-semibold mb-4 inline-flex items-center"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
