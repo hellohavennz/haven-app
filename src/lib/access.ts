@@ -1,6 +1,6 @@
 // Define which lessons are free
 const FREE_LESSON_IDS = [
-  'lesson-1-values-and-principles',
+  'lesson-1-values-principles',
   'lesson-2-becoming-responsible-citizen'
 ];
 
