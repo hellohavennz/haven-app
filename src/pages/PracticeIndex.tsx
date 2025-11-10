@@ -83,6 +83,7 @@ export default function PracticeIndex() {
     [lessonsWithQuestions, progressData]
   );
 
+  const completedLessons = useMemo(
   const masteredLessons = useMemo(
     () =>
       lessonsWithQuestions.filter((lesson) => {
@@ -127,6 +128,7 @@ export default function PracticeIndex() {
         return progress && progress.attempted > 0;
       });
 
+      const completed = lessonsWithPractice.filter((lesson) => {
       const mastered = lessonsWithPractice.filter((lesson) => {
         const accuracy = getAccuracy(progressData[lesson.id]);
         return accuracy !== null && accuracy >= 0.8;
@@ -173,6 +175,7 @@ export default function PracticeIndex() {
         lessons: lessonsWithPractice,
         hasPractice,
         startedCount: started.length,
+        completedCount: completed.length,
         masteredCount: mastered.length,
         coveragePercent,
         accuracyPercent,
@@ -193,6 +196,10 @@ export default function PracticeIndex() {
                 Practice dashboard
               </p>
               <h1 className="text-3xl font-bold md:text-4xl">
+                Track your quiz progress across every module
+              </h1>
+              <p className="max-w-xl text-sm text-sky-50/90 md:text-base">
+                See how many questions you&apos;ve attempted, how consistent your answers are,
                 Track your quiz mastery across every module
               </h1>
               <p className="max-w-xl text-sm text-sky-50/90 md:text-base">
@@ -245,6 +252,9 @@ export default function PracticeIndex() {
 
             <div className="rounded-2xl bg-white/15 p-5">
               <div className="flex items-center justify-between text-sm uppercase tracking-wider text-sky-100">
+                <span>Lessons completed</span>
+                <span>
+                  {completedLessons}/{lessonsWithQuestions.length}
                 <span>Lessons mastered</span>
                 <span>
                   {masteredLessons}/{lessonsWithQuestions.length}
@@ -256,11 +266,13 @@ export default function PracticeIndex() {
                   style={{
                     width:
                       lessonsWithQuestions.length > 0
+                        ? `${Math.round((completedLessons / lessonsWithQuestions.length) * 100)}%`
                         ? `${Math.round((masteredLessons / lessonsWithQuestions.length) * 100)}%`
                         : "0%",
                   }}
                 />
               </div>
+              <p className="mt-2 text-xs text-sky-50/80">Completion is 80%+ accuracy</p>
               <p className="mt-2 text-xs text-sky-50/80">Mastery is 80%+ accuracy</p>
             </div>
           </div>
@@ -329,6 +341,7 @@ export default function PracticeIndex() {
                           <div className="mt-2 flex items-center gap-2 text-xs text-slate-500">
                             <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                             <span>
+                              {summary.completedCount}/{summary.lessons.length} lessons completed
                               {summary.masteredCount}/{summary.lessons.length} lessons mastered
                             </span>
                           </div>
@@ -345,6 +358,7 @@ export default function PracticeIndex() {
                                 <span>{nextUpLesson.title}</span>
                               </>
                             ) : (
+                              <span>All practice in this module completed 🎉</span>
                               <span>All practice in this module mastered 🎉</span>
                             )}
                           </div>
@@ -354,6 +368,7 @@ export default function PracticeIndex() {
                               {summary.startedCount} started
                             </span>
                             <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">
+                              {summary.completedCount} completed
                               {summary.masteredCount} mastered
                             </span>
                           </div>

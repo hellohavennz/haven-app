@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import {
   ArrowRight,
   BarChart3,
@@ -66,6 +67,7 @@ export default function ContentIndex() {
     [allLessons, progressData]
   );
 
+  const completedLessons = useMemo(
   const masteredLessons = useMemo(
     () =>
       allLessons.filter((lesson) => {
@@ -77,6 +79,8 @@ export default function ContentIndex() {
 
   const overallProgressPercent =
     totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
+  const overallCompletionPercent =
+    totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
   const overallMasteryPercent =
     totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
@@ -101,6 +105,7 @@ export default function ContentIndex() {
         return progress && progress.attempted > 0;
       });
 
+      const completed = lessons.filter((lesson) => {
       const mastered = lessons.filter((lesson) => {
         const accuracy = getAccuracy(progressData[lesson.id]);
         return accuracy !== null && accuracy >= 0.8;
@@ -118,6 +123,9 @@ export default function ContentIndex() {
 
       const nextUpLesson = inProgressLesson ?? unstartedLesson ?? lessons[0];
 
+      const completedPercent =
+        lessons.length > 0
+          ? Math.round((completed.length / lessons.length) * 100)
       const startedPercent =
         lessons.length > 0
           ? Math.round((started.length / lessons.length) * 100)
@@ -138,6 +146,8 @@ export default function ContentIndex() {
         module,
         lessons,
         startedCount: started.length,
+        completedCount: completed.length,
+        completedPercent,
         masteredCount: mastered.length,
         startedPercent,
         masteredPercent,
@@ -196,6 +206,9 @@ export default function ContentIndex() {
 
             <div className="rounded-2xl bg-white/15 p-5">
               <div className="flex items-center justify-between text-sm uppercase tracking-wider text-teal-100">
+                <span>Lessons completed</span>
+                <span>
+                  {completedLessons}/{totalLessons}
                 <span>Lessons mastered</span>
                 <span>
                   {masteredLessons}/{totalLessons}
@@ -204,6 +217,7 @@ export default function ContentIndex() {
               <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/30">
                 <div
                   className="h-2 rounded-full bg-emerald-200"
+                  style={{ width: `${overallCompletionPercent}%` }}
                   style={{ width: `${overallMasteryPercent}%` }}
                 />
               </div>
@@ -224,6 +238,69 @@ export default function ContentIndex() {
               module,
               lessons,
               startedCount,
+              completedCount,
+              completedPercent,
+              nextUpLesson,
+              callToActionLabel,
+            }) => {
+              const inProgressCount = Math.max(startedCount - completedCount, 0);
+
+              return (
+                <div
+                  key={module.slug}
+                  className="flex h-full flex-col justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-500">
+                        Module {module.order + 1}
+                      </p>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {module.title}
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        {lessons.length} lesson{lessons.length === 1 ? "" : "s"}
+                      </p>
+                    </div>
+
+                    <div>
+                      <div className="flex items-center justify-between text-xs uppercase tracking-wide text-gray-500">
+                        <span>Completion</span>
+                        <span>{completedPercent}%</span>
+                      </div>
+                      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                        <div
+                          className="h-2 rounded-full bg-gradient-to-r from-teal-400 to-emerald-500"
+                          style={{ width: `${completedPercent}%` }}
+                        />
+                      </div>
+                      <p className="mt-2 text-sm text-gray-600">
+                        {completedCount}/{lessons.length} completed
+                        {inProgressCount > 0 && ` · ${inProgressCount} in progress`}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between">
+                    {nextUpLesson ? (
+                      <Link
+                        to={`/content/${nextUpLesson.id}`}
+                        className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 transition hover:text-emerald-600"
+                      >
+                        {callToActionLabel}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    ) : (
+                      <span className="text-sm text-gray-500">Lessons coming soon</span>
+                    )}
+
+                    <span className="text-xs uppercase tracking-widest text-gray-400">
+                      Module {module.order + 1}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
               masteredCount,
               startedPercent,
               masteredPercent,

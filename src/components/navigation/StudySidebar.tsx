@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { BookOpen, ChevronDown, ChevronRight, Trophy } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -33,6 +35,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
     () => Object.values(progressData).filter(progress => progress.attempted > 0).length,
     [progressData]
   );
+  const completedLessons = useMemo(
   const masteredLessons = useMemo(
     () =>
       Object.values(progressData).filter(progress => {
@@ -42,6 +45,38 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
     [progressData]
   );
   const journeyPercent = totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
+  const completionPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+
+  const lastPathnameRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    if (lastPathnameRef.current === pathname) {
+      return;
+    }
+
+    lastPathnameRef.current = pathname;
+
+    const currentLessonId = pathname.split("/content/")[1];
+    if (!currentLessonId) {
+      return;
+    }
+
+    modules.forEach((module) => {
+      const lessons = getLessonsForModule(module.slug);
+      if (lessons.some((lesson) => lesson.id === currentLessonId)) {
+        setExpandedModule(module.slug);
+      }
+    });
+  }, [location.pathname, modules]);
+
+  useEffect(() => {
+    try {
+      const progress = getAllProgress();
+      setProgressData(progress);
+    } catch (error) {
+      console.error("Failed to load lesson progress", error);
+    }
   const masteryPercent = totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
   const lastPathnameRef = useRef<string | null>(null);
@@ -96,6 +131,9 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
 
     if (!progress || progress.attempted === 0) {
       return {
+        status: "Start",
+        description: "Ready to begin",
+        chipClass: "bg-gray-100 text-gray-700"
         label: "Ready to begin",
         badge: "Start",
         badgeClass: "bg-gray-200 text-gray-700",
@@ -108,6 +146,9 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
 
     if (accuracy >= 80) {
       return {
+        status: "Completed",
+        description: `${accuracy}% accuracy`,
+        chipClass: "bg-emerald-100 text-emerald-700"
         label: "Mastered",
         badge: `${accuracy}%`,
         badgeClass: "bg-emerald-100 text-emerald-700",
@@ -127,6 +168,9 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
     }
 
     return {
+      status: "In progress",
+      description: `${accuracy}% accuracy`,
+      chipClass: "bg-amber-100 text-amber-700"
       label: "Keep practicing",
       badge: `${accuracy}%`,
       badgeClass: "bg-rose-100 text-rose-700",
@@ -145,6 +189,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-teal-100/80">Study Journey</p>
+              <p className="mt-2 text-3xl font-bold leading-tight">{completedLessons}</p>
+              <p className="text-sm text-teal-100">Lessons completed</p>
               <p className="mt-2 text-3xl font-bold leading-tight">{masteredLessons}</p>
               <p className="text-sm text-teal-100">Lessons mastered</p>
             </div>
@@ -169,6 +215,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
               </div>
             </div>
             <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-teal-100/80">
+              <span>Completion</span>
+              <span>{completionPercent}%</span>
               <span>Mastery</span>
               <span>{masteryPercent}%</span>
             </div>
@@ -202,6 +250,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                   return progress && progress.attempted > 0;
                 }).length;
 
+                const completedInModule = lessons.filter((lesson) => {
                 const masteredInModule = lessons.filter((lesson) => {
                   const progress = progressData[lesson.id];
                   if (!progress || progress.attempted === 0) return false;
@@ -209,6 +258,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                 }).length;
 
                 const moduleProgress = lessons.length > 0
+                  ? Math.round((completedInModule / lessons.length) * 100)
                   ? Math.round((startedInModule / lessons.length) * 100)
                   : 0;
 
@@ -216,6 +266,34 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                   <div key={module.slug} className="space-y-2">
                     <button
                       onClick={() => toggleModule(module.slug)}
+                      className={`group relative w-full overflow-hidden rounded-2xl border transition-all duration-200 ${
+                        isExpanded
+                          ? "border-teal-400 bg-teal-50 text-teal-900 shadow-sm"
+                          : "border-gray-200 bg-white hover:border-teal-200 hover:bg-teal-50"
+                      }`}
+                    >
+                      <div className="flex items-start gap-3 px-4 py-3">
+                        <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                          {isExpanded ? (
+                            <ChevronDown className="h-4 w-4" />
+                          ) : (
+                            <ChevronRight className="h-4 w-4" />
+                          )}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-baseline gap-2">
+                            <p className="truncate text-sm font-semibold text-gray-900">{module.title}</p>
+                            <span className="rounded-full bg-teal-100 px-2 py-0.5 text-[11px] font-semibold text-teal-700">
+                              {moduleProgress}%
+                            </span>
+                          </div>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                            <span>{module.count} lessons</span>
+                            <span>• {completedInModule} completed</span>
+                          </div>
+                          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
+                            <div
+                              className="h-1.5 rounded-full bg-teal-500"
                       className={`group relative flex w-full items-stretch overflow-hidden rounded-2xl border transition-all duration-200 ${
                         isExpanded
                           ? "border-teal-400 bg-teal-50 text-teal-900 shadow-sm"
@@ -305,6 +383,18 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                               }`}
                               onClick={onNavigate}
                             >
+                              <div className="space-y-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span
+                                    className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${status.chipClass}`}
+                                  >
+                                    {status.status}
+                                  </span>
+                                  <p className={`min-w-0 flex-1 truncate font-semibold ${active ? "text-teal-800" : "text-gray-900"}`}>
+                                    {lesson.title}
+                                  </p>
+                                </div>
+                                <p className="text-xs text-gray-500">{status.description}</p>
                               <div className="flex items-start gap-3">
                                 <div
                                   className={`mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg ${status.iconBg}`}
