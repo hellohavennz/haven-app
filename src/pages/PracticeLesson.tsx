@@ -18,7 +18,7 @@ type ShuffledQuestion = {
   prompt: string;
   options: string[];
   correctAnswerText: string;
-  explanation: string;
+  explanation?: string;
   shuffledCorrectIndex: number;
 };
 
@@ -277,27 +277,85 @@ export default function PracticeLesson() {
   }
 
   if (finished) {
-    const finalPercentage = sessionStats.attempted > 0 
-      ? Math.round((sessionStats.correct / sessionStats.attempted) * 100) 
+    const finalPercentage = sessionStats.attempted > 0
+      ? Math.round((sessionStats.correct / sessionStats.attempted) * 100)
       : 0;
-    const passedStatus = finalPercentage >= 80;
+
+    const isHighScore = finalPercentage >= 80;
+    const isMediumScore = finalPercentage >= 50 && finalPercentage < 80;
+
+    const resultVariant = isHighScore
+      ? {
+          circleBg: "bg-green-100",
+          iconColor: "text-green-600",
+          gradient: "from-green-400 to-green-500",
+          accentText: "text-green-600",
+          headline: "Outstanding work!",
+          summary: "You're ready to move forward!",
+        }
+      : isMediumScore
+        ? {
+            circleBg: "bg-teal-100",
+            iconColor: "text-teal-600",
+            gradient: "from-teal-400 to-teal-500",
+            accentText: "text-teal-600",
+            headline: "Great progress!",
+            summary: "A little more practice and you'll be there!",
+          }
+        : {
+            circleBg: "bg-amber-100",
+            iconColor: "text-amber-600",
+            gradient: "from-amber-400 to-amber-500",
+            accentText: "text-amber-600",
+            headline: "Keep practicing!",
+            summary: "Review the lesson and try again soon!",
+          };
+
+    const supportiveMessages = data.supportive_messages ?? {};
+    const supportiveMessage = isHighScore
+      ? supportiveMessages.high_score ?? "You've mastered this topic! Keep up the great work!"
+      : isMediumScore
+        ? supportiveMessages.medium_score ?? "Solid progress—target the questions you missed to reach mastery."
+        : supportiveMessages.low_score ?? "Keep going—review the key facts and try another round.";
+
+    const highlightVariant = isHighScore
+      ? {
+          bg: "bg-green-50",
+          border: "border-green-200",
+          text: "text-green-800",
+          iconColor: "text-green-600",
+          Icon: CheckCircle2,
+        }
+      : isMediumScore
+        ? {
+            bg: "bg-teal-50",
+            border: "border-teal-200",
+            text: "text-teal-800",
+            iconColor: "text-teal-600",
+            Icon: Brain,
+          }
+        : {
+            bg: "bg-amber-50",
+            border: "border-amber-200",
+            text: "text-amber-800",
+            iconColor: "text-amber-600",
+            Icon: Lightbulb,
+          };
+
+    const HighlightIcon = highlightVariant.Icon;
 
     return (
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8 space-y-8">
         <div className="text-center space-y-6 py-12">
-          <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center ${
-            passedStatus ? "bg-green-100" : "bg-teal-100"
-          }`}>
-            <CheckCircle2 className={passedStatus ? "text-green-600" : "text-teal-600"} size={48} />
+          <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center ${resultVariant.circleBg}`}>
+            <CheckCircle2 className={resultVariant.iconColor} size={48} />
           </div>
           <div className="space-y-2">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-              {passedStatus ? "Excellent work!" : "Good effort!"}
+              {resultVariant.headline}
             </h1>
             <p className="text-xl text-gray-600">
-              {passedStatus
-                ? "You're ready to move forward!"
-                : "A little more practice and you'll be there!"}
+              {resultVariant.summary}
             </p>
           </div>
         </div>
@@ -306,19 +364,13 @@ export default function PracticeLesson() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-gray-700">Your Score</span>
-              <span className={`font-bold text-3xl ${
-                passedStatus ? "text-green-600" : "text-teal-600"
-              }`}>
+              <span className={`font-bold text-3xl ${resultVariant.accentText}`}>
                 {finalPercentage}%
               </span>
             </div>
             <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className={`h-4 rounded-full transition-all duration-1000 ${
-                  passedStatus 
-                    ? "bg-gradient-to-r from-green-400 to-green-500" 
-                    : "bg-gradient-to-r from-teal-400 to-teal-500"
-                }`}
+                className={`h-4 rounded-full transition-all duration-1000 bg-gradient-to-r ${resultVariant.gradient}`}
                 style={{ width: `${finalPercentage}%` }}
               />
             </div>
@@ -328,14 +380,12 @@ export default function PracticeLesson() {
             </div>
           </div>
 
-          {passedStatus && (
-            <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-              <div className="flex items-center gap-2 justify-center text-green-800">
-                <CheckCircle2 size={20} />
-                <p className="font-medium">You've mastered this topic! Keep up the great work!</p>
-              </div>
+          <div className={`${highlightVariant.bg} ${highlightVariant.border} rounded-xl p-4`}>
+            <div className={`flex items-center gap-2 justify-center ${highlightVariant.text}`}>
+              <HighlightIcon className={highlightVariant.iconColor} size={20} />
+              <p className="font-medium text-center">{supportiveMessage}</p>
             </div>
-          )}
+          </div>
 
           {wrongTopics.length > 0 && (
             <div className="border-t pt-6 space-y-3">
