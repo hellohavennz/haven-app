@@ -1,154 +1,298 @@
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { getModules, getLessonsForModule } from "../lib/content";
-import { getAllProgress } from "../lib/progress";
-import { ChevronDown, ChevronRight, Trophy, Target, AlertCircle, Circle } from "lucide-react";
+import {
+  AlertTriangle,
+  Brain,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  Circle,
+  Clock,
+  Target,
+} from "lucide-react";
 
-type ProgressData = Record<string, { attempted: number; correct: number }>;
+import { getLessonsForModule, getModules } from "../lib/content";
+import { getAllProgress } from "../lib/progress";
+
+type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 
 type PracticeSidebarProps = {
   className?: string;
   onNavigate?: () => void;
 };
 
-export default function PracticeSidebar({ className = "", onNavigate }: PracticeSidebarProps = {}) {
+export default function PracticeSidebar({
+  className = "",
+  onNavigate,
+}: PracticeSidebarProps = {}) {
   const location = useLocation();
-  const modules = getModules();
-  const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
-  const [progressData, setProgressData] = useState<ProgressData>({});
+  const modules = useMemo(() => getModules(), []);
+  const [expandedModule, setExpandedModule] = useState<string | null>(
+    modules[0]?.slug ?? null
+  );
+  const [progressData, setProgressData] = useState<ProgressRecord>({});
+
+  const totalLessons = modules.reduce((sum, module) => sum + module.count, 0);
+  const startedLessons = useMemo(
+    () =>
+      Object.values(progressData).filter((record) => record.attempted > 0).length,
+    [progressData]
+  );
+  const masteredLessons = useMemo(
+    () =>
+      Object.values(progressData).filter((record) => {
+        if (!record || record.attempted === 0) return false;
+        return record.correct / record.attempted >= 0.8;
+      }).length,
+    [progressData]
+  );
+  const coveragePercent =
+    totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
+  const masteryPercent =
+    totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
+
+  const lastPathnameRef = useRef<string | null>(null);
 
   useEffect(() => {
-    // getAllProgress returns an object directly, not a Promise
-    const progress = getAllProgress();
-    setProgressData(progress);
-  }, [location]);
-
-  useEffect(() => {
-    const currentLessonId = location.pathname.split('/')[2];
-    if (currentLessonId) {
-      modules.forEach(module => {
-        const lessons = getLessonsForModule(module.slug);
-        if (lessons.some(l => l.id === currentLessonId)) {
-          setExpandedModules(prev => 
-            prev.includes(module.slug) ? prev : [...prev, module.slug]
-          );
-        }
-      });
+    try {
+      setProgressData(getAllProgress());
+    } catch (error) {
+      console.error("Failed to load practice progress", error);
     }
-  }, [location, modules]);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    if (lastPathnameRef.current === pathname) {
+      return;
+    }
+
+    lastPathnameRef.current = pathname;
+
+    const practiceMatch = pathname.match(/\/practice\/(.+?)(?:\/|$)/);
+    const currentLessonId = practiceMatch?.[1];
+    if (!currentLessonId) {
+      return;
+    }
+
+    modules.forEach((module) => {
+      const lessons = getLessonsForModule(module.slug);
+      if (lessons.some((lesson) => lesson.id === currentLessonId)) {
+        setExpandedModule(module.slug);
+      }
+    });
+  }, [location.pathname, modules]);
 
   const toggleModule = (slug: string) => {
-    setExpandedModules(prev =>
-      prev.includes(slug)
-        ? prev.filter(s => s !== slug)
-        : [...prev, slug]
-    );
+    setExpandedModule((current) => (current === slug ? null : slug));
   };
 
-  const getProgressBadge = (lessonId: string) => {
+  const getActiveLessonId = () => {
+    const practiceMatch = location.pathname.match(/\/practice\/(.+?)(?:\/|$)/);
+    return practiceMatch?.[1] ?? null;
+  };
+
+  const activeLessonId = getActiveLessonId();
+
+  const getLessonStatus = (lessonId: string) => {
     const progress = progressData[lessonId];
-    if (!progress || progress.attempted === 0) {
-      return { icon: <Circle className="text-gray-300" size={14} />, text: '—', color: 'text-gray-400' };
-    }
-    const percentage = Math.round((progress.correct / progress.attempted) * 100);
-    if (percentage >= 80) {
-      return { icon: <Trophy className="text-green-600" size={14} />, text: `${percentage}%`, color: 'text-green-600' };
-    } else if (percentage >= 60) {
-      return { icon: <Target className="text-amber-600" size={14} />, text: `${percentage}%`, color: 'text-amber-600' };
-    } else {
-      return { icon: <AlertCircle className="text-red-600" size={14} />, text: `${percentage}%`, color: 'text-red-600' };
-    }
-  };
 
-  const totalLessons = modules.reduce((sum, m) => sum + m.count, 0);
-  const masteredLessons = Object.keys(progressData).filter(id => {
-    const p = progressData[id];
-    return p && p.attempted > 0 && (p.correct / p.attempted) >= 0.8;
-  }).length;
+    if (!progress || progress.attempted === 0) {
+      return {
+        label: "Ready to practice",
+        badge: "Start",
+        badgeClass: "bg-slate-200 text-slate-700",
+        iconBg: "bg-slate-100 text-slate-400",
+        icon: <Circle className="h-4 w-4" />,
+      };
+    }
+
+    const accuracy = Math.round((progress.correct / progress.attempted) * 100);
+
+    if (accuracy >= 80) {
+      return {
+        label: "Mastered",
+        badge: `${accuracy}%`,
+        badgeClass: "bg-emerald-100 text-emerald-700",
+        iconBg: "bg-emerald-100 text-emerald-600",
+        icon: <CheckCircle2 className="h-4 w-4" />,
+      };
+    }
+
+    if (accuracy >= 50) {
+      return {
+        label: "In progress",
+        badge: `${accuracy}%`,
+        badgeClass: "bg-amber-100 text-amber-700",
+        iconBg: "bg-amber-100 text-amber-600",
+        icon: <Clock className="h-4 w-4" />,
+      };
+    }
+
+    return {
+      label: "Needs review",
+      badge: `${accuracy}%`,
+      badgeClass: "bg-rose-100 text-rose-700",
+      iconBg: "bg-rose-100 text-rose-600",
+      icon: <AlertTriangle className="h-4 w-4" />,
+    };
+  };
 
   return (
     <aside
       aria-label="Practice navigation"
-      className={`flex h-full w-72 flex-shrink-0 flex-col overflow-hidden border-r border-gray-200 bg-white md:max-h-screen md:sticky md:top-0 ${className}`}
+      className={`h-full w-72 flex-shrink-0 overflow-y-auto border-r border-slate-200 bg-white md:sticky md:top-0 md:max-h-screen ${className}`}
     >
-      {/* Header - Fixed */}
-      <div className="p-4 border-b border-gray-200 flex-shrink-0">
-        <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
-          Practice
-        </h2>
-      </div>
+      <div className="space-y-6 p-4">
+        <div className="rounded-3xl bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-500 p-5 text-white shadow-md">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-sky-100/80">Practice Journey</p>
+              <p className="mt-2 text-3xl font-bold leading-tight">{masteredLessons}</p>
+              <p className="text-sm text-sky-100">Lessons mastered</p>
+            </div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
+              <Brain className="h-6 w-6" />
+            </div>
+          </div>
 
-      {/* Scrollable Module List */}
-      <div className="flex-1 overflow-y-auto min-h-0">
-        <nav className="p-2">
-          {modules.map(module => {
-            const lessons = getLessonsForModule(module.slug);
-            const isExpanded = expandedModules.includes(module.slug);
-            const masteredInModule = lessons.filter(l => {
-              const p = progressData[l.id];
-              return p && p.attempted > 0 && (p.correct / p.attempted) >= 0.8;
-            }).length;
-
-            return (
-              <div key={module.slug} className="mb-1">
-                <button
-                  onClick={() => toggleModule(module.slug)}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-left"
-                >
-                  {isExpanded ? (
-                    <ChevronDown className="text-gray-400 flex-shrink-0" size={18} />
-                  ) : (
-                    <ChevronRight className="text-gray-400 flex-shrink-0" size={18} />
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-sm text-gray-900 truncate">
-                      {module.title}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {masteredInModule}/{module.count} mastered
-                    </div>
-                  </div>
-                </button>
-
-                {isExpanded && (
-                  <div className="ml-4 mt-1 space-y-0.5">
-                    {lessons.map(lesson => {
-                      const isActive = location.pathname.includes(lesson.id);
-                      const badge = getProgressBadge(lesson.id);
-                      
-                      return (
-                        <NavLink
-                          key={lesson.id}
-                          to={`/practice/${lesson.id}`}
-                          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-                            isActive
-                              ? 'bg-teal-50 text-teal-700 font-medium'
-                              : 'text-gray-700 hover:bg-gray-50'
-                          }`}
-                          onClick={onNavigate}
-                        >
-                          {badge.icon}
-                          <span className="flex-1 truncate text-xs">{lesson.title}</span>
-                          <span className={`text-xs font-bold ${badge.color}`}>{badge.text}</span>
-                        </NavLink>
-                      );
-                    })}
-                  </div>
-                )}
+          <div className="mt-4 space-y-3 text-sm text-sky-50/80">
+            <div>
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-sky-100/90">
+                <span>Started</span>
+                <span>
+                  {startedLessons}/{totalLessons}
+                </span>
               </div>
-            );
-          })}
-        </nav>
-      </div>
-
-      {/* Progress Summary - Fixed at bottom */}
-      <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
-        <div className="text-center mb-3">
-          <div className="text-3xl font-black text-green-600 mb-1">{masteredLessons}</div>
-          <p className="text-xs text-gray-600">Lessons Mastered (80%+)</p>
+              <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-white/25">
+                <div
+                  className="h-2 rounded-full bg-white"
+                  style={{ width: `${coveragePercent}%` }}
+                />
+              </div>
+            </div>
+            <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-sky-100/80">
+              <span>Mastery</span>
+              <span>{masteryPercent}%</span>
+            </div>
+          </div>
         </div>
-        <div className="text-center">
-          <p className="text-xs text-gray-500">Out of {totalLessons} total lessons</p>
+
+        <div>
+          <h2 className="mb-3 flex items-center text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+            <Target className="mr-2 h-4 w-4" />
+            Practice sets
+          </h2>
+
+          <nav className="space-y-2">
+            {modules.length === 0 ? (
+              <div className="py-8 text-center text-slate-500">
+                <p className="text-sm">No lessons available yet</p>
+              </div>
+            ) : (
+              modules.map((module) => {
+                const lessons = getLessonsForModule(module.slug);
+                const isExpanded = expandedModule === module.slug;
+
+                const startedInModule = lessons.filter((lesson) => {
+                  const progress = progressData[lesson.id];
+                  return progress && progress.attempted > 0;
+                }).length;
+
+                const masteredInModule = lessons.filter((lesson) => {
+                  const progress = progressData[lesson.id];
+                  if (!progress || progress.attempted === 0) return false;
+                  return progress.correct / progress.attempted >= 0.8;
+                }).length;
+
+                const moduleProgress =
+                  lessons.length > 0
+                    ? Math.round((startedInModule / lessons.length) * 100)
+                    : 0;
+
+                return (
+                  <div key={module.slug} className="space-y-2">
+                    <button
+                      onClick={() => toggleModule(module.slug)}
+                      className={`group relative flex w-full items-stretch overflow-hidden rounded-2xl border transition-all duration-200 ${
+                        isExpanded
+                          ? "border-sky-400 bg-sky-50 text-sky-900 shadow-sm"
+                          : "border-slate-200 bg-white hover:border-sky-200 hover:bg-sky-50"
+                      }`}
+                    >
+                      <div className="flex w-full items-center gap-3 px-4 py-3">
+                        {isExpanded ? (
+                          <ChevronDown className="h-4 w-4 flex-shrink-0 text-sky-600" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 flex-shrink-0 text-sky-500" />
+                        )}
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-sky-100 text-sky-600">
+                          <Brain className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate text-sm font-semibold text-slate-900">{module.title}</div>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                            <span>{module.count} lessons</span>
+                            <span>• {masteredInModule} mastered</span>
+                          </div>
+                          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                            <div
+                              className={`h-1.5 rounded-full ${isExpanded ? "bg-sky-500" : "bg-sky-400"}`}
+                              style={{ width: `${moduleProgress}%` }}
+                            />
+                          </div>
+                        </div>
+                        <span className="self-start rounded-full bg-sky-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-sky-700">
+                          {moduleProgress}%
+                        </span>
+                      </div>
+                    </button>
+
+                    {isExpanded && (
+                      <div className="space-y-1.5 rounded-2xl bg-slate-50 p-3">
+                        {lessons.map((lesson) => {
+                          const status = getLessonStatus(lesson.id);
+                          const active = activeLessonId === lesson.id;
+
+                          return (
+                            <NavLink
+                              key={lesson.id}
+                              to={`/practice/${lesson.id}`}
+                              className={`group relative block rounded-xl border px-3 py-3 text-sm transition-all ${
+                                active
+                                  ? "border-sky-300 bg-sky-50 text-sky-800 shadow-sm"
+                                  : "border-transparent bg-white text-slate-700 hover:border-sky-200 hover:bg-sky-50"
+                              }`}
+                              onClick={onNavigate}
+                            >
+                              <div className="flex items-start gap-3">
+                                <div
+                                  className={`mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg ${status.iconBg}`}
+                                >
+                                  {status.icon}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className={`truncate font-semibold ${active ? "text-sky-800" : "text-slate-900"}`}>
+                                    {lesson.title}
+                                  </p>
+                                  <p className="text-xs text-slate-500">{status.label}</p>
+                                </div>
+                                <span
+                                  className={`mt-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ${status.badgeClass}`}
+                                >
+                                  {status.badge}
+                                </span>
+                              </div>
+                            </NavLink>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            )}
+          </nav>
         </div>
       </div>
     </aside>
