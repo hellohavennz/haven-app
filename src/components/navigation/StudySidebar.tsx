@@ -43,18 +43,13 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const masteryPercent = totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
   useEffect(() => {
-    const currentLessonId = location.pathname.split("/content/")[1];
-    if (currentLessonId) {
-      modules.forEach((module) => {
-        const lessons = getLessonsForModule(module.slug);
-        if (lessons.some((lesson) => lesson.id === currentLessonId)) {
-          setExpandedModules((prev) =>
-            prev.includes(module.slug) ? prev : [...prev, module.slug]
-          );
-        }
-      });
+    try {
+      const progress = getAllProgress();
+      setProgressData(progress);
+    } catch (error) {
+      console.error("Failed to load lesson progress", error);
     }
-  }, [location, modules]);
+  }, [location.pathname]);
 
   useEffect(() => {
     try {
