@@ -84,6 +84,7 @@ export default function PracticeIndex() {
   );
 
   const completedLessons = useMemo(
+  const masteredLessons = useMemo(
     () =>
       lessonsWithQuestions.filter((lesson) => {
         const accuracy = getAccuracy(progressData[lesson.id]);
@@ -128,6 +129,7 @@ export default function PracticeIndex() {
       });
 
       const completed = lessonsWithPractice.filter((lesson) => {
+      const mastered = lessonsWithPractice.filter((lesson) => {
         const accuracy = getAccuracy(progressData[lesson.id]);
         return accuracy !== null && accuracy >= 0.8;
       });
@@ -174,6 +176,7 @@ export default function PracticeIndex() {
         hasPractice,
         startedCount: started.length,
         completedCount: completed.length,
+        masteredCount: mastered.length,
         coveragePercent,
         accuracyPercent,
         nextUpLesson,
@@ -197,6 +200,10 @@ export default function PracticeIndex() {
               </h1>
               <p className="max-w-xl text-sm text-sky-50/90 md:text-base">
                 See how many questions you&apos;ve attempted, how consistent your answers are,
+                Track your quiz mastery across every module
+              </h1>
+              <p className="max-w-xl text-sm text-sky-50/90 md:text-base">
+                See how many questions you&apos;ve attempted, where you&apos;re mastering the material,
                 and jump straight into the next lesson that needs review.
               </p>
             </div>
@@ -248,6 +255,9 @@ export default function PracticeIndex() {
                 <span>Lessons completed</span>
                 <span>
                   {completedLessons}/{lessonsWithQuestions.length}
+                <span>Lessons mastered</span>
+                <span>
+                  {masteredLessons}/{lessonsWithQuestions.length}
                 </span>
               </div>
               <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/30">
@@ -257,11 +267,13 @@ export default function PracticeIndex() {
                     width:
                       lessonsWithQuestions.length > 0
                         ? `${Math.round((completedLessons / lessonsWithQuestions.length) * 100)}%`
+                        ? `${Math.round((masteredLessons / lessonsWithQuestions.length) * 100)}%`
                         : "0%",
                   }}
                 />
               </div>
               <p className="mt-2 text-xs text-sky-50/80">Completion is 80%+ accuracy</p>
+              <p className="mt-2 text-xs text-sky-50/80">Mastery is 80%+ accuracy</p>
             </div>
           </div>
         </header>
@@ -330,6 +342,7 @@ export default function PracticeIndex() {
                             <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                             <span>
                               {summary.completedCount}/{summary.lessons.length} lessons completed
+                              {summary.masteredCount}/{summary.lessons.length} lessons mastered
                             </span>
                           </div>
                         </div>
@@ -346,6 +359,7 @@ export default function PracticeIndex() {
                               </>
                             ) : (
                               <span>All practice in this module completed 🎉</span>
+                              <span>All practice in this module mastered 🎉</span>
                             )}
                           </div>
 
@@ -355,6 +369,7 @@ export default function PracticeIndex() {
                             </span>
                             <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">
                               {summary.completedCount} completed
+                              {summary.masteredCount} mastered
                             </span>
                           </div>
 

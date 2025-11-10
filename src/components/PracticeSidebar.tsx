@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Brain, ChevronDown, ChevronRight, Target } from "lucide-react";
+import {
+  AlertTriangle,
+  Brain,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  Circle,
+  Clock,
+  Target,
+} from "lucide-react";
 
 import { getLessonsForModule, getModules } from "../lib/content";
 import { getAllProgress } from "../lib/progress";
@@ -30,6 +40,7 @@ export default function PracticeSidebar({
     [progressData]
   );
   const completedLessons = useMemo(
+  const masteredLessons = useMemo(
     () =>
       Object.values(progressData).filter((record) => {
         if (!record || record.attempted === 0) return false;
@@ -41,6 +52,8 @@ export default function PracticeSidebar({
     totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
   const completionPercent =
     totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  const masteryPercent =
+    totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
   const lastPathnameRef = useRef<string | null>(null);
 
@@ -56,6 +69,16 @@ export default function PracticeSidebar({
     const pathname = location.pathname;
     if (lastPathnameRef.current === pathname) {
       return;
+    }
+
+    lastPathnameRef.current = pathname;
+
+    const practiceMatch = pathname.match(/\/practice\/(.+?)(?:\/|$)/);
+    const currentLessonId = practiceMatch?.[1];
+    if (!currentLessonId) {
+      return;
+    }
+
     }
 
     lastPathnameRef.current = pathname;
@@ -93,6 +116,11 @@ export default function PracticeSidebar({
         status: "Start",
         description: "Ready to practice",
         chipClass: "bg-slate-100 text-slate-700",
+        label: "Ready to practice",
+        badge: "Start",
+        badgeClass: "bg-slate-200 text-slate-700",
+        iconBg: "bg-slate-100 text-slate-400",
+        icon: <Circle className="h-4 w-4" />,
       };
     }
 
@@ -110,6 +138,30 @@ export default function PracticeSidebar({
       status: "In progress",
       description: `${accuracy}% accuracy`,
       chipClass: "bg-amber-100 text-amber-700",
+        label: "Mastered",
+        badge: `${accuracy}%`,
+        badgeClass: "bg-emerald-100 text-emerald-700",
+        iconBg: "bg-emerald-100 text-emerald-600",
+        icon: <CheckCircle2 className="h-4 w-4" />,
+      };
+    }
+
+    if (accuracy >= 50) {
+      return {
+        label: "In progress",
+        badge: `${accuracy}%`,
+        badgeClass: "bg-amber-100 text-amber-700",
+        iconBg: "bg-amber-100 text-amber-600",
+        icon: <Clock className="h-4 w-4" />,
+      };
+    }
+
+    return {
+      label: "Needs review",
+      badge: `${accuracy}%`,
+      badgeClass: "bg-rose-100 text-rose-700",
+      iconBg: "bg-rose-100 text-rose-600",
+      icon: <AlertTriangle className="h-4 w-4" />,
     };
   };
 
@@ -125,6 +177,8 @@ export default function PracticeSidebar({
               <p className="text-xs uppercase tracking-[0.25em] text-sky-100/80">Practice Journey</p>
               <p className="mt-2 text-3xl font-bold leading-tight">{completedLessons}</p>
               <p className="text-sm text-sky-100">Lessons completed</p>
+              <p className="mt-2 text-3xl font-bold leading-tight">{masteredLessons}</p>
+              <p className="text-sm text-sky-100">Lessons mastered</p>
             </div>
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
               <Brain className="h-6 w-6" />
@@ -149,6 +203,8 @@ export default function PracticeSidebar({
             <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-sky-100/80">
               <span>Completion</span>
               <span>{completionPercent}%</span>
+              <span>Mastery</span>
+              <span>{masteryPercent}%</span>
             </div>
           </div>
         </div>
@@ -170,6 +226,12 @@ export default function PracticeSidebar({
                 const isExpanded = expandedModule === module.slug;
 
                 const completedInModule = lessons.filter((lesson) => {
+                const startedInModule = lessons.filter((lesson) => {
+                  const progress = progressData[lesson.id];
+                  return progress && progress.attempted > 0;
+                }).length;
+
+                const masteredInModule = lessons.filter((lesson) => {
                   const progress = progressData[lesson.id];
                   if (!progress || progress.attempted === 0) return false;
                   return progress.correct / progress.attempted >= 0.8;
@@ -178,6 +240,7 @@ export default function PracticeSidebar({
                 const moduleProgress =
                   lessons.length > 0
                     ? Math.round((completedInModule / lessons.length) * 100)
+                    ? Math.round((startedInModule / lessons.length) * 100)
                     : 0;
 
                 return (
@@ -185,6 +248,7 @@ export default function PracticeSidebar({
                     <button
                       onClick={() => toggleModule(module.slug)}
                       className={`group relative w-full overflow-hidden rounded-2xl border transition-all duration-200 ${
+                      className={`group relative flex w-full items-stretch overflow-hidden rounded-2xl border transition-all duration-200 ${
                         isExpanded
                           ? "border-sky-400 bg-sky-50 text-sky-900 shadow-sm"
                           : "border-slate-200 bg-white hover:border-sky-200 hover:bg-sky-50"
@@ -212,10 +276,31 @@ export default function PracticeSidebar({
                           <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
                             <div
                               className="h-1.5 rounded-full bg-sky-500"
+                      <div className="flex w-full items-center gap-3 px-4 py-3">
+                        {isExpanded ? (
+                          <ChevronDown className="h-4 w-4 flex-shrink-0 text-sky-600" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 flex-shrink-0 text-sky-500" />
+                        )}
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-sky-100 text-sky-600">
+                          <Brain className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate text-sm font-semibold text-slate-900">{module.title}</div>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                            <span>{module.count} lessons</span>
+                            <span>• {masteredInModule} mastered</span>
+                          </div>
+                          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                            <div
+                              className={`h-1.5 rounded-full ${isExpanded ? "bg-sky-500" : "bg-sky-400"}`}
                               style={{ width: `${moduleProgress}%` }}
                             />
                           </div>
                         </div>
+                        <span className="self-start rounded-full bg-sky-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-sky-700">
+                          {moduleProgress}%
+                        </span>
                       </div>
                     </button>
 
@@ -248,6 +333,23 @@ export default function PracticeSidebar({
                                   </p>
                                 </div>
                                 <p className="text-xs text-slate-500">{status.description}</p>
+                              <div className="flex items-start gap-3">
+                                <div
+                                  className={`mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg ${status.iconBg}`}
+                                >
+                                  {status.icon}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className={`truncate font-semibold ${active ? "text-sky-800" : "text-slate-900"}`}>
+                                    {lesson.title}
+                                  </p>
+                                  <p className="text-xs text-slate-500">{status.label}</p>
+                                </div>
+                                <span
+                                  className={`mt-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ${status.badgeClass}`}
+                                >
+                                  {status.badge}
+                                </span>
                               </div>
                             </NavLink>
                           );
