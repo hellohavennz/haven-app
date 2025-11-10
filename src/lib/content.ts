@@ -1,73 +1,72 @@
 import type { LessonJSON } from "../types";
+import lessonIndex from "../content/lesson-index.json";
+
+type LessonIndexModule = {
+  slug: string;
+  title: string;
+  lessons: string[];
+};
 
 const files = import.meta.glob("../content/lessons/*.json", { eager: true });
-const lessons: LessonJSON[] = Object.values(files).map((m: any) => m.default as LessonJSON);
 
-// Mark which lessons are premium (all except the first one)
-const FIRST_FREE_LESSON = "lesson-1-values-and-principles";
+const lessonEntries = Object.values(files)
+  .map((m: any) => m?.default as LessonJSON | undefined)
+  .filter((lesson): lesson is LessonJSON => Boolean(lesson?.id));
 
-export function getAllLessons(): LessonJSON[] {
-  return lessons.slice().sort((a, b) => a.title.localeCompare(b.title)).map(lesson => ({
-    ...lesson,
-    isPremium: lesson.id !== FIRST_FREE_LESSON
-  }));
+const lessonsById = new Map<string, LessonJSON>();
+for (const lesson of lessonEntries) {
+  lessonsById.set(lesson.id, lesson);
 }
 
-export function getLessonById(id: string): LessonJSON | null {
-  const lesson = lessons.find(l => l.id === id);
-  if (!lesson) return null;
-  
+const indexModules = (lessonIndex.modules ?? []) as LessonIndexModule[];
+const orderedLessonIds = indexModules.flatMap(module => module.lessons);
+
+const orderedLessons: LessonJSON[] = orderedLessonIds
+  .map(id => lessonsById.get(id))
+  .filter((lesson): lesson is LessonJSON => Boolean(lesson));
+
+const FIRST_FREE_LESSON = orderedLessonIds[0] ?? "lesson-1-values-principles";
+
+const remainingLessons = lessonEntries.filter(lesson => !orderedLessonIds.includes(lesson.id));
+if (remainingLessons.length) {
+  orderedLessons.push(...remainingLessons.sort((a, b) => a.title.localeCompare(b.title)));
+}
+
+function withAccessFlag(lesson: LessonJSON): LessonJSON {
   return {
     ...lesson,
     isPremium: lesson.id !== FIRST_FREE_LESSON
   };
 }
 
+export function getAllLessons(): LessonJSON[] {
+  return orderedLessons.map(withAccessFlag);
+}
+
+export function getLessonById(id: string): LessonJSON | null {
+  const lesson = lessonsById.get(id);
+  return lesson ? withAccessFlag(lesson) : null;
+}
+
 export function getModules() {
-  const map = new Map<string, { slug: string; title: string; count: number; order: number }>();
-  
-  const moduleOrder: Record<string, number> = {
-    "life-in-uk-overview": 1,
-    "nations-symbols": 2,
-    "history": 3,
-    "government": 4,
-    "everyday-life": 5,
-  };
-  
-  for (const lesson of lessons) {
-    const title = moduleTitleFromSlug(lesson.module_slug);
-    const order = moduleOrder[lesson.module_slug] || 999;
-    const existing = map.get(lesson.module_slug);
-    
-    if (existing) {
-      existing.count += 1;
-    } else {
-      map.set(lesson.module_slug, {
-        slug: lesson.module_slug,
-        title,
-        count: 1,
-        order
-      });
-    }
-  }
-  
-  return Array.from(map.values()).sort((a, b) => a.order - b.order);
+  return indexModules.map((module, order) => ({
+    slug: module.slug,
+    title: module.title,
+    count: module.lessons.filter(id => lessonsById.has(id)).length,
+    order,
+  }));
 }
 
 export function getLessonsForModule(slug: string): LessonJSON[] {
-  return getAllLessons().filter(l => l.module_slug === slug);
-}
+  const module = indexModules.find(m => m.slug === slug);
+  if (!module) {
+    return orderedLessons
+      .filter(lesson => lesson.module_slug === slug)
+      .map(withAccessFlag);
+  }
 
-function moduleTitleFromSlug(slug: string): string {
-  const titleMap: Record<string, string> = {
-    "life-in-uk-overview": "Life in the UK Overview",
-    "nations-symbols": "The UK's Nations & Symbols",
-    "history": "A Long and Illustrious History",
-    "government": "Government and Law",
-    "everyday-life": "Everyday Life",
-  };
-  
-  return titleMap[slug] || slug
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, c => c.toUpperCase());
+  return module.lessons
+    .map(id => lessonsById.get(id))
+    .filter((lesson): lesson is LessonJSON => Boolean(lesson))
+    .map(withAccessFlag);
 }

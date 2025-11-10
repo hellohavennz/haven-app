@@ -1,4 +1,4 @@
-import data from "../content/lessons/lesson-1-values-and-principles.json";
+import data from "../content/lessons/lesson-1-values-principles.json";
 
 export default function Lesson1Content() {
   return (
