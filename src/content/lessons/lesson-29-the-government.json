@@ -1,0 +1,332 @@
+{
+  "id": "lesson-29-the-government",
+  "title": "The Government",
+  "module_slug": "government-law-role-detailed",
+  "overview": "The United Kingdom is a parliamentary democracy where government is chosen by the people through elections. The Prime Minister leads the government, and the Cabinet and Civil Service help make and carry out policies. Power is also shared with local councils and the devolved governments of Scotland, Wales and Northern Ireland.",
+  "study_sections": [
+    {
+      "heading": "Government Structure",
+      "content": "UK is parliamentary democracy: voters elect MPs to represent them. Government formed by political party with most MPs in House of Commons. PM is Head of Government and leads Cabinet. Cabinet includes senior ministers who head departments (Defence, Education, Health). Civil Service supports government by providing expert, neutral advice and carrying out policy. Opposition questions and challenges Government's work."
+    },
+    {
+      "heading": "Local and Devolved Government",
+      "content": "Local government (councils) provides local services: housing, planning, transport, education, waste collection. Each area has elected councillors making local decisions. Devolution gives powers to governments in Scotland, Wales, Northern Ireland. Scottish Parliament (Edinburgh) controls health, education, justice, transport. Welsh Parliament/Senedd (Cardiff) controls health, education, environment, culture. NI Assembly (Belfast) controls health, education, agriculture, justice."
+    },
+    {
+      "heading": "Elections and Voting",
+      "content": "General elections held at least every 5 years. UK uses first-past-the-post voting—candidate with most votes in each constituency becomes MP. To vote must be: 18 or over, British/Commonwealth/Irish citizen living in UK, registered to vote. Register at www.gov.uk/register-to-vote. Can stand for election if 18+ and British/Irish/qualifying Commonwealth citizen. Voting at polling stations, by post, or by proxy. Electoral Commission oversees fair elections and campaign funding."
+    }
+  ],
+  "key_facts": [
+    "UK: parliamentary democracy",
+    "PM leads Government",
+    "Cabinet: senior ministers",
+    "Civil Service: carries out policy",
+    "Opposition holds Government to account",
+    "Local government: councils provide services",
+    "Elected councillors",
+    "Devolution: powers to regions",
+    "Scottish Parliament: Edinburgh",
+    "Welsh Parliament: Senedd",
+    "NI Assembly: Belfast",
+    "Elections: at least every 5 years",
+    "Voting system: first past the post",
+    "Vote requirements: 18+, British/Irish/Commonwealth, registered",
+    "Register at gov.uk/register-to-vote",
+    "Can stand for election: 18+, eligible citizen",
+    "Vote: polling station, post, or proxy",
+    "Electoral Commission oversees elections",
+    "Government accountable to Parliament & public",
+    "PM residence: 10 Downing Street"
+  ],
+  "memory_hook": "Government as engine: PM (driver steering), Cabinet (dashboard—ministers showing different gauges), Civil Service (mechanics keeping it running), Opposition (backseat driver questioning route). Local councils (wheels touching ground), Devolved govts (regional GPS for Scotland/Wales/NI). Elections every 5 years = fuel stop. All need voters (fuel) age 18+ to run!",
+  "questions": [
+    {
+      "prompt": "UK democracy type?",
+      "options": [
+        "Parliamentary democracy",
+        "Presidential democracy",
+        "Absolute monarchy",
+        "Military government"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Who leads UK Government?",
+      "options": [
+        "Prime Minister",
+        "Monarch",
+        "Speaker",
+        "Chief Justice"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Cabinet is?",
+      "options": [
+        "Senior ministers responsible for major departments",
+        "Police officers",
+        "Local councillors",
+        "Opposition MPs"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Civil Service role?",
+      "options": [
+        "Carry out government policy & provide impartial advice",
+        "Lead political campaigns",
+        "Vote on laws",
+        "Manage elections"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Opposition's main job?",
+      "options": [
+        "Question and challenge Government's decisions",
+        "Enforce laws",
+        "Manage local councils",
+        "Lead army"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Local government provides?",
+      "options": [
+        "Services like housing, planning, education, transport",
+        "National defence",
+        "Foreign policy",
+        "Currency control"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Who runs local councils?",
+      "options": [
+        "Elected councillors",
+        "MPs",
+        "Civil servants",
+        "Judges"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Devolution is?",
+      "options": [
+        "Transfer of powers to regional governments",
+        "Separation of church & state",
+        "Ending monarchy",
+        "Changing voting age"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Scottish Parliament located?",
+      "options": [
+        "Edinburgh",
+        "Cardiff",
+        "Belfast",
+        "London"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Welsh Parliament also called?",
+      "options": [
+        "Senedd",
+        "Assembly of Britain",
+        "Welsh Council",
+        "National Forum"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "NI Assembly meets where?",
+      "options": [
+        "Belfast",
+        "Glasgow",
+        "Dublin",
+        "London"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How often must elections be held?",
+      "options": [
+        "At least every 5 years",
+        "Every 10 years",
+        "Every 2 years",
+        "Every 8 years"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UK voting system?",
+      "options": [
+        "First past the post",
+        "Proportional representation",
+        "Single transferable vote",
+        "Weighted ballot"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Requirements to vote in UK?",
+      "options": [
+        "18+, British/Irish/Commonwealth citizen, registered",
+        "16+, any resident",
+        "Only property owners",
+        "Only taxpayers"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How can people vote?",
+      "options": [
+        "In person, by post, or by proxy",
+        "By email",
+        "By phone",
+        "By text"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Who oversees elections?",
+      "options": [
+        "Electoral Commission",
+        "Prime Minister",
+        "Police",
+        "Courts"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Before voting must?",
+      "options": [
+        "Register to vote",
+        "Join political party",
+        "Pay voting fee",
+        "Show passport"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "'Standing for election' means?",
+      "options": [
+        "Becoming a candidate",
+        "Voting for someone",
+        "Attending Parliament",
+        "Protesting in public"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Why voting important?",
+      "options": [
+        "Allows citizens to choose who governs",
+        "Required by law",
+        "Reduces taxes",
+        "Gives free services"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "PM's residence?",
+      "options": [
+        "10 Downing Street",
+        "Buckingham Palace",
+        "Parliament",
+        "Windsor Castle"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "flashcards": [
+    [
+      "UK democracy type",
+      "Parliamentary democracy"
+    ],
+    [
+      "Who leads UK Government",
+      "Prime Minister"
+    ],
+    [
+      "What is Cabinet",
+      "Senior ministers leading departments"
+    ],
+    [
+      "Civil Service does what",
+      "Carries out government policy"
+    ],
+    [
+      "Opposition does what",
+      "Holds Government to account"
+    ],
+    [
+      "Local government provides",
+      "Local services like housing, education, transport"
+    ],
+    [
+      "Who runs local councils",
+      "Elected councillors"
+    ],
+    [
+      "What is devolution",
+      "Transfer of powers to regional governments"
+    ],
+    [
+      "Scottish Parliament where",
+      "Edinburgh"
+    ],
+    [
+      "Welsh Parliament called",
+      "Senedd"
+    ],
+    [
+      "NI Assembly where",
+      "Belfast"
+    ],
+    [
+      "Elections held how often",
+      "At least every 5 years"
+    ],
+    [
+      "UK voting system",
+      "First past the post"
+    ],
+    [
+      "Main voting requirements",
+      "18+, British/Irish/Commonwealth citizen, registered"
+    ],
+    [
+      "How to vote",
+      "In person, by post, or by proxy"
+    ],
+    [
+      "Who oversees elections",
+      "Electoral Commission"
+    ],
+    [
+      "'Standing for election' means",
+      "Becoming a candidate"
+    ],
+    [
+      "Why voting important",
+      "Lets citizens choose leaders"
+    ],
+    [
+      "PM's home",
+      "10 Downing Street"
+    ],
+    [
+      "Local democracy symbolized by",
+      "Town and county councils"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand government structure brilliantly! 🏛️",
+    "medium_score": "Good work! Review elections and devolution! 📚",
+    "low_score": "Government takes time. Keep studying! 💪"
+  }
+}

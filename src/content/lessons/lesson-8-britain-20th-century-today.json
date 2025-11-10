@@ -1,0 +1,338 @@
+{
+  "id": "lesson-8-britain-20th-century-today",
+  "title": "Britain in the 20th Century and Today",
+  "module_slug": "british-history-depth",
+  "overview": "The 20th century was a time of rapid change for the United Kingdom. Two world wars transformed the country and led to major social and political reforms. Britain rebuilt itself into a modern, democratic, and multicultural nation that continues to influence the world today.",
+  "study_sections": [
+    {
+      "heading": "The First World War (1914–1918)",
+      "content": "Britain entered the First World War in 1914. Millions of men served in the armed forces, and many women took on new roles in factories, farms, and hospitals. Around 1 million British and Commonwealth soldiers died.\n\nAfter the war, women over 30 gained the right to vote (1918). The war deeply changed society, politics, and attitudes toward equality. The Great War reshaped Britain and gave women a new voice."
+    },
+    {
+      "heading": "The Interwar Years (1918–1939)",
+      "content": "The 1920s and 1930s saw economic hardship and unemployment, especially in industrial areas. The Great Depression of the 1930s affected trade and living standards. Yet new inventions such as radio, cinema, and household electricity began changing everyday life.\n\nBetween wars, hardship and progress existed side by side. These decades saw both struggle and innovation as Britain adjusted to post-war realities."
+    },
+    {
+      "heading": "The Second World War (1939–1945)",
+      "content": "Britain declared war on Germany in 1939 after Nazi forces invaded Poland. Under Prime Minister Winston Churchill, the country stood firm during the Blitz, when cities were heavily bombed. British and Allied forces helped defeat Nazi Germany in 1945. The war cost millions of lives but showed national courage and unity.\n\nCourage in the darkest hour—Britain stood alone and prevailed. Churchill's leadership became a symbol of British resilience."
+    },
+    {
+      "heading": "Post-war Britain and the Welfare State",
+      "content": "After 1945, Britain focused on rebuilding. The National Health Service (NHS) was created in 1948, providing healthcare free at the point of use. The welfare state offered support for the unemployed, elderly, and disabled. Housing and education reforms improved living standards.\n\nFrom wartime struggle came fairness and care for all. The post-war settlement created a more equal society."
+    },
+    {
+      "heading": "Immigration and the Commonwealth",
+      "content": "After the war, people from across the Commonwealth came to help rebuild Britain. The Windrush generation from the Caribbean arrived in 1948, followed by workers from South Asia and Africa. Their hard work and culture helped shape modern British society.\n\nNew citizens built a stronger, more diverse Britain. Immigration enriched the nation's culture and economy."
+    },
+    {
+      "heading": "Social Change and Modern Life",
+      "content": "The 1960s brought major cultural change—music, art, fashion, and new freedoms. The UK led the world in pop culture with bands like The Beatles. Laws promoted equality, ending discrimination in race, gender, and workplace rights. In later decades, technology and global communication connected Britain to the world.\n\nFrom post-war recovery to global creativity, Britain transformed into a modern, diverse society."
+    },
+    {
+      "heading": "Britain Today",
+      "content": "Today the UK is a democratic, diverse country known for innovation, culture, and law. Citizens' rights are protected by law, and people continue to contribute through work, volunteering, and participation in civic life. Britain remains proud of its history and confident about its future.\n\nModern Britain—united in diversity and guided by fairness."
+    }
+  ],
+  "key_facts": [
+    "The First World War began in 1914 and ended in 1918.",
+    "Around 1 million British and Commonwealth soldiers died in WWI.",
+    "Women over 30 gained the right to vote in 1918.",
+    "The Great Depression affected Britain in the 1930s.",
+    "Coal and shipbuilding industries declined during the 1930s.",
+    "Winston Churchill was Prime Minister during most of World War II.",
+    "The Second World War began in 1939 and ended in 1945.",
+    "The Blitz was the German bombing campaign against British cities.",
+    "The National Health Service (NHS) was created in 1948.",
+    "The NHS provides free healthcare at the point of use.",
+    "The welfare state provides health care, education, and social support.",
+    "The Windrush generation arrived from the Caribbean in 1948.",
+    "Commonwealth citizens helped rebuild post-war Britain.",
+    "The 1960s brought major cultural change.",
+    "The Beatles symbolised 1960s British culture.",
+    "Remembrance Day commemorates those killed in war.",
+    "The red poppy symbolises remembrance.",
+    "Britain's key values after 1945 are democracy, fairness, and equality.",
+    "NATO was formed in 1949 for collective defence.",
+    "Television changed daily life in the 1950s.",
+    "Modern Britain is diverse and multicultural."
+  ],
+  "memory_hook": "Think of 20th century Britain as a phoenix: WWI (devastating fire), Interwar years (struggling in ashes), WWII (Churchill's courage), Post-war (NHS rising from ruins), Immigration (new feathers from Commonwealth), 1960s (full flight with Beatles), Today (soaring with diversity). Each crisis made Britain stronger and fairer—from empire to equality.",
+  "questions": [
+    {
+      "prompt": "When did the First World War begin?",
+      "options": [
+        "1914",
+        "1916",
+        "1918",
+        "1920"
+      ],
+      "correct_index": 0,
+      "explanation": "Britain entered the war in 1914."
+    },
+    {
+      "prompt": "When did the First World War end?",
+      "options": [
+        "1916",
+        "1918",
+        "1921",
+        "1925"
+      ],
+      "correct_index": 1,
+      "explanation": "The war ended with the Armistice in November 1918."
+    },
+    {
+      "prompt": "What change occurred for women after WWI?",
+      "options": [
+        "Equal pay for all",
+        "The right to vote (over age 30)",
+        "Free education for all",
+        "Universal healthcare"
+      ],
+      "correct_index": 1,
+      "explanation": "Women gained voting rights in 1918."
+    },
+    {
+      "prompt": "What was the Great Depression?",
+      "options": [
+        "A major political reform",
+        "A period of global economic hardship in the 1930s",
+        "A scientific discovery",
+        "A new political party"
+      ],
+      "correct_index": 1,
+      "explanation": "The Great Depression affected jobs and trade."
+    },
+    {
+      "prompt": "Which new inventions changed daily life between the wars?",
+      "options": [
+        "Radio and cinema",
+        "Motorways and computers",
+        "Television and the internet",
+        "Mobile phones"
+      ],
+      "correct_index": 0,
+      "explanation": "Radio and cinema became popular in the 1920s–30s."
+    },
+    {
+      "prompt": "Who was Prime Minister during most of WWII?",
+      "options": [
+        "Neville Chamberlain",
+        "Winston Churchill",
+        "Clement Attlee",
+        "Harold Wilson"
+      ],
+      "correct_index": 1,
+      "explanation": "Churchill led Britain during the war."
+    },
+    {
+      "prompt": "What was the Blitz?",
+      "options": [
+        "The end of WWI",
+        "Bombing of British cities by Germany",
+        "A battle in Africa",
+        "A post-war rebuilding plan"
+      ],
+      "correct_index": 1,
+      "explanation": "The Blitz heavily damaged UK cities."
+    },
+    {
+      "prompt": "When did WWII end in Europe?",
+      "options": [
+        "1943",
+        "1944",
+        "1945",
+        "1946"
+      ],
+      "correct_index": 2,
+      "explanation": "Germany surrendered in 1945."
+    },
+    {
+      "prompt": "When was the NHS founded?",
+      "options": [
+        "1945",
+        "1948",
+        "1952",
+        "1960"
+      ],
+      "correct_index": 1,
+      "explanation": "The NHS began in 1948."
+    },
+    {
+      "prompt": "What does the welfare state provide?",
+      "options": [
+        "Entertainment",
+        "Health care, education, and social support",
+        "Sports facilities",
+        "Military defence"
+      ],
+      "correct_index": 1,
+      "explanation": "It supports citizens' well-being."
+    },
+    {
+      "prompt": "Where did the Windrush generation come from?",
+      "options": [
+        "Caribbean",
+        "Africa",
+        "India",
+        "Europe"
+      ],
+      "correct_index": 0,
+      "explanation": "The Empire Windrush brought migrants from the Caribbean."
+    },
+    {
+      "prompt": "What year did the Empire Windrush arrive?",
+      "options": [
+        "1939",
+        "1948",
+        "1958",
+        "1963"
+      ],
+      "correct_index": 1,
+      "explanation": "It arrived in 1948."
+    },
+    {
+      "prompt": "What decade saw major social and cultural change?",
+      "options": [
+        "1940s",
+        "1960s",
+        "1980s",
+        "2000s"
+      ],
+      "correct_index": 1,
+      "explanation": "The 1960s were known for music, art, and social progress."
+    },
+    {
+      "prompt": "What famous music group came from Liverpool?",
+      "options": [
+        "The Beatles",
+        "The Rolling Stones",
+        "Queen",
+        "Oasis"
+      ],
+      "correct_index": 0,
+      "explanation": "The Beatles became symbols of British pop culture."
+    },
+    {
+      "prompt": "What values define Britain today?",
+      "options": [
+        "Military strength",
+        "Fairness, diversity, and democracy",
+        "Religious rule",
+        "Isolationism"
+      ],
+      "correct_index": 1,
+      "explanation": "These values reflect the principles of modern Britain."
+    }
+  ],
+  "flashcards": [
+    [
+      "When did the First World War begin?",
+      "1914"
+    ],
+    [
+      "When did the First World War end?",
+      "1918"
+    ],
+    [
+      "Who was the British Prime Minister during most of the Second World War?",
+      "Winston Churchill"
+    ],
+    [
+      "When did the Second World War begin?",
+      "1939"
+    ],
+    [
+      "When did the Second World War end?",
+      "1945"
+    ],
+    [
+      "What was the Blitz?",
+      "German bombing campaign"
+    ],
+    [
+      "What new public service was created in 1948?",
+      "National Health Service"
+    ],
+    [
+      "What is the purpose of the NHS?",
+      "To provide free healthcare"
+    ],
+    [
+      "What is the welfare state?",
+      "System of public support"
+    ],
+    [
+      "When were women first allowed to vote in the UK?",
+      "1918"
+    ],
+    [
+      "When did women gain equal voting rights with men?",
+      "1928"
+    ],
+    [
+      "Who were the 'Windrush Generation'?",
+      "Caribbean migrants arriving 1948"
+    ],
+    [
+      "What was the Great Depression?",
+      "1930s economic crisis"
+    ],
+    [
+      "Which industries declined during the 1930s?",
+      "Coal and shipbuilding"
+    ],
+    [
+      "What decade brought major cultural change?",
+      "1960s"
+    ],
+    [
+      "Which famous band symbolised 1960s culture?",
+      "The Beatles"
+    ],
+    [
+      "What act created free national healthcare?",
+      "NHS Act 1948"
+    ],
+    [
+      "Who helped rebuild post-war Britain?",
+      "Commonwealth citizens"
+    ],
+    [
+      "What flower symbolises remembrance of war?",
+      "Red poppy"
+    ],
+    [
+      "What day commemorates those killed in war?",
+      "Remembrance Day"
+    ],
+    [
+      "What were Britain's key values after 1945?",
+      "Democracy, fairness, equality"
+    ],
+    [
+      "What was the Marshall Plan?",
+      "US aid for European recovery"
+    ],
+    [
+      "What new alliance formed in 1949 for defence?",
+      "NATO"
+    ],
+    [
+      "What helped women's independence after WWII?",
+      "Employment opportunities"
+    ],
+    [
+      "What invention changed daily life in the 1950s?",
+      "Television"
+    ],
+    [
+      "What word describes Britain's modern population?",
+      "Diverse"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand 20th century Britain brilliantly! 🎖️",
+    "medium_score": "Good work! Review the world wars and post-war changes! 📚",
+    "low_score": "20th century history is complex. Keep studying—you're making progress! 💪"
+  }
+}
