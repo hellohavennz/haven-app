@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   AlertTriangle,
@@ -24,6 +25,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const location = useLocation();
   const modules = useMemo(() => getModules(), []);
   const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.slug ?? null);
+  const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
   const [progressData, setProgressData] = useState<ProgressRecord>({});
 
   const totalLessons = modules.reduce((sum, module) => sum + module.count, 0);
@@ -64,6 +66,15 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
       }
     });
   }, [location.pathname, modules]);
+
+  useEffect(() => {
+    try {
+      const progress = getAllProgress();
+      setProgressData(progress);
+    } catch (error) {
+      console.error("Failed to load lesson progress", error);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     try {
@@ -161,6 +172,11 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
               <span>Mastery</span>
               <span>{masteryPercent}%</span>
             </div>
+            </div>
+            <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-teal-100/80">
+              <span>Mastery</span>
+              <span>{masteryPercent}%</span>
+            </div>
           </div>
         </div>
 
@@ -179,6 +195,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
               modules.map((module) => {
                 const lessons = getLessonsForModule(module.slug);
                 const isExpanded = expandedModule === module.slug;
+                const isExpanded = expandedModules.includes(module.slug);
 
                 const startedInModule = lessons.filter((lesson) => {
                   const progress = progressData[lesson.id];
@@ -203,6 +220,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                         isExpanded
                           ? "border-teal-400 bg-teal-50 text-teal-900 shadow-sm"
                           : "border-gray-200 bg-white hover:border-teal-200 hover:bg-teal-50"
+                          ? "border-teal-500/50 bg-gradient-to-r from-teal-500 via-teal-500 to-emerald-500 text-white shadow-lg"
+                          : "border-gray-200 bg-white hover:border-teal-200 hover:bg-teal-50/70 hover:shadow"
                       }`}
                     >
                       <div className="flex w-full items-center gap-3 px-4 py-3">
@@ -223,11 +242,46 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                           <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
                             <div
                               className={`h-1.5 rounded-full ${isExpanded ? "bg-teal-500" : "bg-teal-400"}`}
+                          <ChevronDown className="h-4 w-4 flex-shrink-0 text-white" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 flex-shrink-0 text-teal-500" />
+                        )}
+                        <div
+                          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${
+                            isExpanded ? "bg-white/15 text-white" : "bg-teal-100 text-teal-600"
+                          }`}
+                        >
+                          <BookOpen className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div
+                            className={`truncate text-sm font-semibold ${
+                              isExpanded ? "text-white" : "text-gray-900"
+                            }`}
+                          >
+                            {module.title}
+                          </div>
+                          <div
+                            className={`mt-1 flex flex-wrap items-center gap-2 text-xs ${
+                              isExpanded ? "text-teal-50/80" : "text-gray-500"
+                            }`}
+                          >
+                            <span>{module.count} lessons</span>
+                            <span>• {masteredInModule} mastered</span>
+                          </div>
+                          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/25">
+                            <div
+                              className={`h-1.5 rounded-full ${isExpanded ? "bg-white" : "bg-teal-500"}`}
                               style={{ width: `${moduleProgress}%` }}
                             />
                           </div>
                         </div>
                         <span className="self-start rounded-full bg-teal-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-teal-700">
+                        <span
+                          className={`self-start rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
+                            isExpanded ? "bg-white/15 text-white" : "bg-teal-100 text-teal-700"
+                          }`}
+                        >
                           {moduleProgress}%
                         </span>
                       </div>
@@ -235,6 +289,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
 
                     {isExpanded && (
                       <div className="space-y-1.5 rounded-2xl bg-gray-50 p-3">
+                      <div className="space-y-1.5 rounded-2xl bg-gray-50/80 p-3">
                         {lessons.map((lesson) => {
                           const active = isActiveLesson(lesson.id);
                           const status = getLessonStatus(lesson.id);
