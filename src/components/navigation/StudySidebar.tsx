@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -23,6 +24,7 @@ type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 export default function StudySidebar({ className = "", onNavigate }: StudySidebarProps) {
   const location = useLocation();
   const modules = useMemo(() => getModules(), []);
+  const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.slug ?? null);
   const [expandedModules, setExpandedModules] = useState<string[]>([modules[0]?.slug || ""]);
   const [progressData, setProgressData] = useState<ProgressRecord>({});
 
@@ -41,6 +43,29 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   );
   const journeyPercent = totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
   const masteryPercent = totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
+
+  const lastPathnameRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const pathname = location.pathname;
+    if (lastPathnameRef.current === pathname) {
+      return;
+    }
+
+    lastPathnameRef.current = pathname;
+
+    const currentLessonId = pathname.split("/content/")[1];
+    if (!currentLessonId) {
+      return;
+    }
+
+    modules.forEach((module) => {
+      const lessons = getLessonsForModule(module.slug);
+      if (lessons.some((lesson) => lesson.id === currentLessonId)) {
+        setExpandedModule(module.slug);
+      }
+    });
+  }, [location.pathname, modules]);
 
   useEffect(() => {
     try {
@@ -61,9 +86,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   }, [location.pathname]);
 
   const toggleModule = (slug: string) => {
-    setExpandedModules((prev) =>
-      prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]
-    );
+    setExpandedModule((current) => (current === slug ? null : slug));
   };
 
   const isActiveLesson = (lessonId: string) => location.pathname.includes(lessonId);
@@ -149,6 +172,11 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
               <span>Mastery</span>
               <span>{masteryPercent}%</span>
             </div>
+            </div>
+            <div className="flex items-center justify-between text-[11px] uppercase tracking-wide text-teal-100/80">
+              <span>Mastery</span>
+              <span>{masteryPercent}%</span>
+            </div>
           </div>
         </div>
 
@@ -166,6 +194,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
             ) : (
               modules.map((module) => {
                 const lessons = getLessonsForModule(module.slug);
+                const isExpanded = expandedModule === module.slug;
                 const isExpanded = expandedModules.includes(module.slug);
 
                 const startedInModule = lessons.filter((lesson) => {
@@ -189,12 +218,30 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                       onClick={() => toggleModule(module.slug)}
                       className={`group relative flex w-full items-stretch overflow-hidden rounded-2xl border transition-all duration-200 ${
                         isExpanded
+                          ? "border-teal-400 bg-teal-50 text-teal-900 shadow-sm"
+                          : "border-gray-200 bg-white hover:border-teal-200 hover:bg-teal-50"
                           ? "border-teal-500/50 bg-gradient-to-r from-teal-500 via-teal-500 to-emerald-500 text-white shadow-lg"
                           : "border-gray-200 bg-white hover:border-teal-200 hover:bg-teal-50/70 hover:shadow"
                       }`}
                     >
                       <div className="flex w-full items-center gap-3 px-4 py-3">
                         {isExpanded ? (
+                          <ChevronDown className="h-4 w-4 flex-shrink-0 text-teal-600" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 flex-shrink-0 text-teal-500" />
+                        )}
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 text-teal-600">
+                          <BookOpen className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate text-sm font-semibold text-gray-900">{module.title}</div>
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                            <span>{module.count} lessons</span>
+                            <span>• {masteredInModule} mastered</span>
+                          </div>
+                          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
+                            <div
+                              className={`h-1.5 rounded-full ${isExpanded ? "bg-teal-500" : "bg-teal-400"}`}
                           <ChevronDown className="h-4 w-4 flex-shrink-0 text-white" />
                         ) : (
                           <ChevronRight className="h-4 w-4 flex-shrink-0 text-teal-500" />
@@ -229,6 +276,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                             />
                           </div>
                         </div>
+                        <span className="self-start rounded-full bg-teal-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-teal-700">
                         <span
                           className={`self-start rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
                             isExpanded ? "bg-white/15 text-white" : "bg-teal-100 text-teal-700"
@@ -240,6 +288,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                     </button>
 
                     {isExpanded && (
+                      <div className="space-y-1.5 rounded-2xl bg-gray-50 p-3">
                       <div className="space-y-1.5 rounded-2xl bg-gray-50/80 p-3">
                         {lessons.map((lesson) => {
                           const active = isActiveLesson(lesson.id);
