@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import lessonIndex from '../content/lesson-index.json';
+import { getAllLessons } from '../lib/content';
+import { getAllProgress } from '../lib/progress';
 
 interface LessonProgress {
   questionsCompleted: number;
@@ -12,28 +13,31 @@ interface LessonProgress {
 
 const PracticePage: React.FC = () => {
   const [progress, setProgress] = useState<Record<string, LessonProgress>>({});
+  const lessons = useMemo(() => getAllLessons(), []);
 
   useEffect(() => {
-    // Load progress from localStorage
     const savedProgress: Record<string, LessonProgress> = {};
-    
-    lessonIndex.lessons.forEach(lesson => {
-      const lessonProgress = localStorage.getItem(`progress_${lesson.id}`);
-      if (lessonProgress) {
-        savedProgress[lesson.id] = JSON.parse(lessonProgress);
-      } else {
-        savedProgress[lesson.id] = {
-          questionsCompleted: 0,
-          totalQuestions: 0,
-          correctAnswers: 0,
-          flashcardsReviewed: 0,
-          totalFlashcards: 0
-        };
-      }
+    const aggregatedProgress = getAllProgress();
+
+    lessons.forEach(lesson => {
+      const legacyProgressRaw = localStorage.getItem(`progress_${lesson.id}`);
+      const legacyProgress = legacyProgressRaw ? JSON.parse(legacyProgressRaw) : null;
+
+      const questionStats = aggregatedProgress[lesson.id];
+      const totalQuestions = lesson.questions?.length ?? 0;
+      const totalFlashcards = lesson.flashcards?.length ?? 0;
+
+      savedProgress[lesson.id] = {
+        questionsCompleted: questionStats?.attempted ?? legacyProgress?.questionsCompleted ?? 0,
+        totalQuestions,
+        correctAnswers: questionStats?.correct ?? legacyProgress?.correctAnswers ?? 0,
+        flashcardsReviewed: legacyProgress?.flashcardsReviewed ?? 0,
+        totalFlashcards,
+      };
     });
-    
+
     setProgress(savedProgress);
-  }, []);
+  }, [lessons]);
 
   const getSuccessRate = (lessonId: string): number => {
     const p = progress[lessonId];
@@ -56,13 +60,13 @@ const PracticePage: React.FC = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {lessonIndex.lessons.map((lesson) => {
+        {lessons.map((lesson) => {
           const lessonProgress = progress[lesson.id] || {
             questionsCompleted: 0,
-            totalQuestions: 0,
+            totalQuestions: lesson.questions?.length ?? 0,
             correctAnswers: 0,
             flashcardsReviewed: 0,
-            totalFlashcards: 0
+            totalFlashcards: lesson.flashcards?.length ?? 0
           };
           const successRate = getSuccessRate(lesson.id);
           const questionsProgress = lessonProgress.totalQuestions > 0
@@ -81,7 +85,7 @@ const PracticePage: React.FC = () => {
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2">{lesson.title}</h3>
                 <p className="text-sm text-blue-100">
-                  Lesson {lesson.id.split('-').pop()}
+                  Lesson {lesson.id.match(/lesson-(\d+)/)?.[1] ?? '—'}
                 </p>
               </div>
 
@@ -93,7 +97,7 @@ const PracticePage: React.FC = () => {
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-gray-700">Questions</span>
                       <span className="text-sm font-bold text-gray-900">
-                        {lessonProgress.questionsCompleted}/{lessonProgress.totalQuestions || '?'}
+                        {lessonProgress.questionsCompleted}/{lessonProgress.totalQuestions ?? '—'}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
@@ -125,7 +129,7 @@ const PracticePage: React.FC = () => {
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-gray-700">Flashcards</span>
                       <span className="text-sm font-bold text-gray-900">
-                        {lessonProgress.flashcardsReviewed}/{lessonProgress.totalFlashcards || '?'}
+                        {lessonProgress.flashcardsReviewed}/{lessonProgress.totalFlashcards ?? '—'}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
