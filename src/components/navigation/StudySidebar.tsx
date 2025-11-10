@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BookOpen, ChevronDown, ChevronRight, Trophy } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import {
   AlertTriangle,
   BookOpen,
