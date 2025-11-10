@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   AlertTriangle,
@@ -42,30 +42,14 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const journeyPercent = totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
   const masteryPercent = totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
-  const lastPathnameRef = useRef<string | null>(null);
-
   useEffect(() => {
-    const pathname = location.pathname;
-    if (lastPathnameRef.current === pathname) {
-      return;
+    try {
+      const progress = getAllProgress();
+      setProgressData(progress);
+    } catch (error) {
+      console.error("Failed to load lesson progress", error);
     }
-
-    lastPathnameRef.current = pathname;
-
-    const currentLessonId = pathname.split("/content/")[1];
-    if (!currentLessonId) {
-      return;
-    }
-
-    modules.forEach((module) => {
-      const lessons = getLessonsForModule(module.slug);
-      if (lessons.some((lesson) => lesson.id === currentLessonId)) {
-        setExpandedModules((prev) =>
-          prev.includes(module.slug) ? prev : [...prev, module.slug]
-        );
-      }
-    });
-  }, [location.pathname, modules]);
+  }, [location.pathname]);
 
   useEffect(() => {
     try {
