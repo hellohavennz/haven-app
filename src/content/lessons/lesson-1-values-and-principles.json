@@ -379,56 +379,60 @@
       "Voters"
     ],
     [
-      "What is the minimum age to vote in the UK?",
+      "What is the minimum voting age in the UK?",
       "18"
     ],
     [
-      "Which system keeps every ballot private?",
+      "What protects the privacy of votes?",
       "Secret ballot"
     ],
     [
-      "Which institution creates national laws?",
+      "Which body creates national laws?",
       "Parliament"
     ],
     [
-      "Who must follow the law throughout the UK?",
-      "Everyone"
+      "Who must obey UK law?",
+      "Everyone in Britain"
     ],
     [
-      "Which service enforces the law each day?",
-      "Police"
+      "Which services enforce the law?",
+      "Police and courts"
     ],
     [
-      "How are people treated before conviction?",
+      "What are the five British values?",
+      "Democracy, rule of law, liberty, respect, tolerance"
+    ],
+    [
+      "What does democracy in the UK mean?",
+      "Government chosen by voters"
+    ],
+    [
+      "Which value ensures fair treatment?",
+      "Rule of law"
+    ],
+    [
+      "What are people presumed to be before trial?",
       "Innocent"
     ],
     [
-      "What personal freedom does liberty safeguard?",
-      "Free choice"
+      "What freedom protects personal choice?",
+      "Individual liberty"
     ],
     [
-      "Which freedom protects religion and belief?",
-      "Freedom of belief"
+      "Which freedom covers religion and belief?",
+      "Freedom of religion"
     ],
     [
-      "What does mutual respect require from citizens?",
-      "Fair treatment"
+      "What does mutual respect require?",
+      "Fair treatment of others"
     ],
     [
-      "What threat does democracy guard against?",
-      "Unlimited power"
+      "What does tolerance protect?",
+      "Freedom to worship"
     ],
     [
-      "What outcome does rule of law guarantee?",
-      "Equal justice"
-    ],
-    [
-      "Which freedom lets people form groups?",
-      "Freedom of association"
-    ],
-    [
-      "Liberty must always be balanced with what?",
-      "Responsibility"
+      "Why are regular elections important?",
+      "Ensure accountability"
     ]
   ],
   "supportive_messages": {
