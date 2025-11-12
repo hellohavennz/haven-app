@@ -1,0 +1,235 @@
+{
+  "id": "lesson-17-arts-culture",
+  "title": "Arts and Culture",
+  "module_slug": "society-culture-traditions",
+  "overview": "The arts have shaped British identity for over a thousand years. Writers, painters, composers, and filmmakers from the United Kingdom have influenced cultures worldwide. Britain's creative industries remain among the most respected in the world. Public museums, libraries, and galleries make art available to everyone.",
+  "study_sections": [
+    {
+      "heading": "Literature and Theatre",
+      "content": "Famous writers include William Shakespeare, Jane Austen, Charles Dickens, and J. K. Rowling. British theatre thrives from London's West End to local community stages. Shakespeare is Britain's most famous playwright."
+    },
+    {
+      "heading": "Music and Film",
+      "content": "Classical music was shaped by Henry Purcell, George Frideric Handel, Edward Elgar, and Gustav Holst. The Beatles led the British Invasion in the 1960s. The UK film industry is world-renowned, with studios like Pinewood producing James Bond films."
+    },
+    {
+      "heading": "Visual Arts",
+      "content": "Modern artists include Henry Moore, Barbara Hepworth, David Hockney, and Banksy (anonymous street artist from Bristol). Arts Council England funds creative projects."
+    },
+    {
+      "heading": "Architecture and Heritage",
+      "content": "Gothic architecture features pointed arches and stained glass. Modern landmarks include the Shard and London Eye. The National Trust preserves historic places. Britain hosts the Edinburgh Festival Fringe, the world's largest arts festival."
+    }
+  ],
+  "key_facts": [
+    "Shakespeare wrote Romeo and Juliet",
+    "Jane Austen wrote Pride and Prejudice",
+    "London's theatre district: West End",
+    "J.K. Rowling wrote Harry Potter",
+    "Gustav Holst composed The Planets",
+    "Handel became British citizen",
+    "Edward Elgar composed Land of Hope and Glory",
+    "Glastonbury is major music festival",
+    "Beatles led 1960s British Invasion",
+    "Pinewood Studios produces Bond films",
+    "Henry Moore was leading sculptor",
+    "David Hockney known for Yorkshire landscapes",
+    "Banksy is anonymous Bristol street artist",
+    "Arts Council England funds arts",
+    "Edinburgh hosts Fringe Festival",
+    "Gothic style: pointed arches, stained glass",
+    "The Shard is glass pyramid shape",
+    "London Eye is giant Ferris wheel",
+    "National Trust protects historic places"
+  ],
+  "memory_hook": "British arts as a gallery tour: Literature room (Shakespeare, Austen, Rowling—words that moved millions), Music hall (Handel, Beatles—sounds heard worldwide), Film theater (Bond, Pinewood—action on screen), Art studio (Moore, Hockney, Banksy—vision in bronze/paint/walls), Architecture wing (Gothic cathedrals, Shard—old meets new). Free admission (public funding)—creativity for all!",
+  "questions": [
+    {
+      "prompt": "Who wrote Romeo and Juliet?",
+      "options": [
+        "Dickens",
+        "Shakespeare",
+        "Austen",
+        "Orwell"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who created Pride and Prejudice?",
+      "options": [
+        "Jane Austen",
+        "Virginia Woolf",
+        "Charlotte Bronte",
+        "Mary Shelley"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "London's theatre district?",
+      "options": [
+        "Broadway",
+        "West End",
+        "Piccadilly",
+        "South Bank"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who wrote Harry Potter?",
+      "options": [
+        "Tolkien",
+        "J.K. Rowling",
+        "Lewis",
+        "Pullman"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who composed The Planets?",
+      "options": [
+        "Elgar",
+        "Gustav Holst",
+        "Purcell",
+        "Handel"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Which band led British Invasion?",
+      "options": [
+        "The Beatles",
+        "Rolling Stones",
+        "The Who",
+        "The Kinks"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Studio producing Bond films?",
+      "options": [
+        "Pinewood",
+        "Universal",
+        "Paramount",
+        "Elstree"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Famous British sculptor?",
+      "options": [
+        "Henry Moore",
+        "Monet",
+        "Warhol",
+        "Picasso"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Anonymous Bristol street artist?",
+      "options": [
+        "Banksy",
+        "Hockney",
+        "Turner",
+        "Constable"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "World's largest arts festival city?",
+      "options": [
+        "London",
+        "Edinburgh",
+        "Belfast",
+        "Cardiff"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "flashcards": [
+    [
+      "Who wrote Romeo and Juliet?",
+      "William Shakespeare"
+    ],
+    [
+      "Who wrote Pride and Prejudice?",
+      "Jane Austen"
+    ],
+    [
+      "London's theatre district",
+      "West End"
+    ],
+    [
+      "Who wrote Harry Potter?",
+      "J. K. Rowling"
+    ],
+    [
+      "Who composed The Planets?",
+      "Gustav Holst"
+    ],
+    [
+      "Composer who became British",
+      "George Frideric Handel"
+    ],
+    [
+      "Who composed Land of Hope and Glory?",
+      "Edward Elgar"
+    ],
+    [
+      "Major UK music festival",
+      "Glastonbury"
+    ],
+    [
+      "Band leading British Invasion",
+      "The Beatles"
+    ],
+    [
+      "Studio for Bond films",
+      "Pinewood Studios"
+    ],
+    [
+      "Leading British sculptor",
+      "Henry Moore"
+    ],
+    [
+      "Artist known for Yorkshire landscapes",
+      "David Hockney"
+    ],
+    [
+      "Anonymous Bristol street artist",
+      "Banksy"
+    ],
+    [
+      "Arts funder in England",
+      "Arts Council England"
+    ],
+    [
+      "City hosting Fringe Festival",
+      "Edinburgh"
+    ],
+    [
+      "Architecture with pointed arches",
+      "Gothic"
+    ],
+    [
+      "Glass pyramid tower in London",
+      "The Shard"
+    ],
+    [
+      "Giant Ferris wheel on Thames",
+      "London Eye"
+    ],
+    [
+      "Protects historic UK places",
+      "National Trust"
+    ],
+    [
+      "British creativity phrase",
+      "Art for everyone"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know British arts brilliantly! 🎭",
+    "medium_score": "Good work! Review writers, composers, and artists! 📚",
+    "low_score": "Arts take time to learn. Keep studying! 💪"
+  }
+}

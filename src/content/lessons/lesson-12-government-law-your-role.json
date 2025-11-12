@@ -1,0 +1,269 @@
+{
+  "id": "lesson-12-government-law-your-role",
+  "title": "The UK Government, the Law and Your Role",
+  "module_slug": "government-law-citizenship",
+  "overview": "In the United Kingdom, the rule of law protects everyone equally. Citizens enjoy certain rights, but they also have responsibilities. Understanding how the legal system works helps people live safely, resolve disputes fairly, and play a positive role in their communities.",
+  "study_sections": [
+    {
+      "heading": "The Rule of Law",
+      "content": "The rule of law means that everyone—including the government—must obey the law. No one is above it. The laws protect citizens and define what is acceptable in society. Courts and judges interpret these laws independently of political influence. The law protects everyone, from citizen to crown."
+    },
+    {
+      "heading": "The Police and Law Enforcement",
+      "content": "The police serve to keep the public safe, prevent crime, and investigate offences. They must act fairly, respect human rights, and follow legal procedures. Different forces cover local areas, while specialist agencies like the National Crime Agency (NCA) handle organised crime. The police cannot act outside the law—they must have reasonable grounds to arrest or search someone."
+    },
+    {
+      "heading": "The Courts and Justice System",
+      "content": "The UK has separate legal systems for England and Wales, Scotland, and Northern Ireland. Main courts include: Magistrates' Courts (minor cases), Crown Court (serious criminal cases with jury), County Courts (civil disputes), High Court and Court of Appeal (appeals), and Supreme Court (final court of appeal). In Scotland, the High Court of Justiciary handles serious crimes."
+    },
+    {
+      "heading": "Rights and Responsibilities",
+      "content": "Every UK resident has legal rights: the right to a fair trial, the right to vote (if eligible), freedom of belief and expression, and protection from discrimination. These are protected under the Human Rights Act 1998. Responsibilities include obeying the law, paying taxes, serving on a jury when called, and respecting others' rights."
+    },
+    {
+      "heading": "Jury Service",
+      "content": "Ordinary citizens play a key role in justice by serving on juries. A jury of 12 people decides whether a defendant is guilty or not guilty based on evidence. Jury duty is an important civic responsibility that helps ensure fair trials. Justice by the people, for the people."
+    },
+    {
+      "heading": "Being an Active Citizen",
+      "content": "Citizens strengthen democracy by taking part in public life—voting, following the news, volunteering, or helping local initiatives. Respecting laws and others' rights keeps society fair and peaceful. Obeying the law is not just a duty; it's an act of respect for the community."
+    }
+  ],
+  "key_facts": [
+    "The rule of law means everyone must obey the law.",
+    "Independent judges interpret and apply UK law.",
+    "The police protect the public and prevent crime.",
+    "The National Crime Agency tackles serious crime.",
+    "The Supreme Court is the highest UK court.",
+    "Magistrates' Courts handle minor offences.",
+    "Crown Court hears serious criminal cases.",
+    "A jury of 12 decides guilt in serious trials.",
+    "Human Rights Act 1998 protects individual freedoms.",
+    "Equality Act 2010 protects from discrimination.",
+    "Main legal duties are obeying laws and paying taxes.",
+    "Jury service allows citizens to participate in justice.",
+    "Equality before the law guarantees fair treatment.",
+    "Police and courts enforce laws.",
+    "Good citizenship is built on respect and responsibility."
+  ],
+  "memory_hook": "Think of UK law as a protective shield: Rule of Law (shield for all), Police (guards protecting you), Courts (judges ensuring fairness), Juries (citizens deciding justice), Rights (your freedoms), Responsibilities (maintaining the shield). Everyone holds part of the shield—from bobby on the beat to you paying taxes. Drop your part and everyone's less protected!",
+  "questions": [
+    {
+      "prompt": "What does the rule of law mean?",
+      "options": [
+        "Only judges must obey the law",
+        "Everyone, including government, must follow the law",
+        "The police can ignore laws when necessary",
+        "The monarch makes laws personally"
+      ],
+      "correct_index": 1,
+      "explanation": "The rule of law means no one is above the law."
+    },
+    {
+      "prompt": "Who ensures the law is applied fairly?",
+      "options": [
+        "The Prime Minister",
+        "The police",
+        "Independent judges and courts",
+        "The public"
+      ],
+      "correct_index": 2,
+      "explanation": "Judges are independent and apply laws impartially."
+    },
+    {
+      "prompt": "What are the main duties of the police?",
+      "options": [
+        "To protect the public and prevent crime",
+        "To write laws",
+        "To run Parliament",
+        "To collect taxes"
+      ],
+      "correct_index": 0,
+      "explanation": "The police keep order and enforce the law."
+    },
+    {
+      "prompt": "What national body investigates organised crime?",
+      "options": [
+        "HM Treasury",
+        "The National Crime Agency (NCA)",
+        "Local councils",
+        "The Home Office"
+      ],
+      "correct_index": 1,
+      "explanation": "The NCA tackles serious and organised crime."
+    },
+    {
+      "prompt": "What is the highest court in the UK?",
+      "options": [
+        "Crown Court",
+        "Supreme Court",
+        "Magistrates' Court",
+        "Court of Appeal"
+      ],
+      "correct_index": 1,
+      "explanation": "The Supreme Court is the final court of appeal."
+    },
+    {
+      "prompt": "What cases do Magistrates' Courts handle?",
+      "options": [
+        "Minor criminal offences",
+        "International cases",
+        "Only civil disputes",
+        "Appeals from the Supreme Court"
+      ],
+      "correct_index": 0,
+      "explanation": "Magistrates' Courts deal with local, minor offences."
+    },
+    {
+      "prompt": "Who decides guilt in serious criminal cases?",
+      "options": [
+        "A judge alone",
+        "A jury",
+        "The police",
+        "The Prime Minister"
+      ],
+      "correct_index": 1,
+      "explanation": "A jury of 12 citizens decides the verdict."
+    },
+    {
+      "prompt": "What act protects rights such as freedom of expression?",
+      "options": [
+        "Equality Act 2010",
+        "Human Rights Act 1998",
+        "Magna Carta",
+        "Bill of Rights 1689"
+      ],
+      "correct_index": 1,
+      "explanation": "The Human Rights Act lists key freedoms."
+    },
+    {
+      "prompt": "What are civic responsibilities in the UK?",
+      "options": [
+        "Paying taxes, obeying laws, and jury service",
+        "Ignoring the law and voting",
+        "Only obeying police orders",
+        "Writing laws for government"
+      ],
+      "correct_index": 0,
+      "explanation": "These are duties every citizen shares."
+    },
+    {
+      "prompt": "What is jury service?",
+      "options": [
+        "Helping the police",
+        "Citizens deciding a criminal case outcome",
+        "Paying fines",
+        "Becoming a lawyer"
+      ],
+      "correct_index": 1,
+      "explanation": "Juries help ensure fair trials."
+    }
+  ],
+  "flashcards": [
+    [
+      "What does the term 'rule of law' mean?",
+      "Everyone must obey the law"
+    ],
+    [
+      "Who interprets and applies UK law?",
+      "Independent judges"
+    ],
+    [
+      "What is the main duty of the police?",
+      "To protect the public and prevent crime"
+    ],
+    [
+      "What must the police always act within?",
+      "The law"
+    ],
+    [
+      "What does NCA stand for?",
+      "National Crime Agency"
+    ],
+    [
+      "What is the role of the National Crime Agency?",
+      "To tackle serious and organised crime"
+    ],
+    [
+      "What is the highest court in the United Kingdom?",
+      "The Supreme Court"
+    ],
+    [
+      "What type of cases do Magistrates' Courts handle?",
+      "Minor criminal offences"
+    ],
+    [
+      "What type of cases are heard in the Crown Court?",
+      "Serious criminal cases"
+    ],
+    [
+      "Who decides guilt in serious criminal trials?",
+      "A jury"
+    ],
+    [
+      "How many people serve on a jury in the UK?",
+      "Twelve"
+    ],
+    [
+      "What law protects individual freedoms?",
+      "Human Rights Act 1998"
+    ],
+    [
+      "What law protects people from discrimination?",
+      "Equality Act 2010"
+    ],
+    [
+      "What are the main legal duties of UK citizens?",
+      "Obey laws and pay taxes"
+    ],
+    [
+      "What does jury service allow citizens to do?",
+      "Participate in justice"
+    ],
+    [
+      "What is one civic duty of UK citizens?",
+      "Serving on a jury"
+    ],
+    [
+      "What principle guarantees fair treatment for all?",
+      "Equality before the law"
+    ],
+    [
+      "Who enforces laws in the UK?",
+      "Police and courts"
+    ],
+    [
+      "What ensures everyone is accountable to the law?",
+      "Rule of law"
+    ],
+    [
+      "What is good citizenship built on?",
+      "Respect and responsibility"
+    ],
+    [
+      "What must citizens do to support the law?",
+      "Report crimes and follow rules"
+    ],
+    [
+      "What is the purpose of the justice system?",
+      "To ensure fairness and protect rights"
+    ],
+    [
+      "Who ensures fair trials in court?",
+      "Independent judges and juries"
+    ],
+    [
+      "What shows respect for others in society?",
+      "Obeying the law"
+    ],
+    [
+      "What phrase summarises civic responsibility in the UK?",
+      "Rights balanced with duties"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand law and civic duty brilliantly! ⚖️",
+    "medium_score": "Good work! Review courts, police, and responsibilities! 📚",
+    "low_score": "Legal systems are complex. Keep studying—you're building knowledge! 💪"
+  }
+}

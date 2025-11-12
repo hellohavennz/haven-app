@@ -1,0 +1,274 @@
+{
+  "id": "lesson-3-long-illustrious-history",
+  "title": "A Long and Illustrious History",
+  "module_slug": "life-in-uk-overview",
+  "overview": "Britain's story stretches back thousands of years. From the first settlers to modern times, each era has shaped the country's identity, laws, and culture. Understanding this history helps explain today's United Kingdom and its values.",
+  "study_sections": [
+    {
+      "heading": "Early Britain",
+      "content": "Archaeological evidence shows people lived in Britain as early as 800,000 years ago. The Stone Age saw the building of monuments like Stonehenge, created for ceremonies and gatherings. Farmers arrived around 4000 BC, clearing forests to grow crops and raise animals. These early inhabitants laid the foundations for settlement patterns that would continue for millennia."
+    },
+    {
+      "heading": "The Romans in Britain",
+      "content": "The Romans, led by Emperor Claudius, invaded in AD 43 and ruled for almost 400 years. They built roads, walls, and towns such as London (called Londinium). Hadrian's Wall in northern England marked the empire's frontier. When the Romans left in the 5th century, Britain was open to new settlers."
+    },
+    {
+      "heading": "Anglo-Saxons and Vikings",
+      "content": "After Rome's withdrawal, tribes from northern Europe—Angles, Saxons, and Jutes—settled in England. They founded many towns and kingdoms and introduced Old English. Later, Viking raiders arrived from Scandinavia, settling in parts of the north and east. This period saw the development of early English identity and language."
+    },
+    {
+      "heading": "The Norman Conquest",
+      "content": "In 1066, William of Normandy defeated King Harold II at the Battle of Hastings and became king. The Normans built stone castles and cathedrals, re-organised the land, and introduced Norman French words into English. The Norman conquest fundamentally changed English society, law, and language."
+    },
+    {
+      "heading": "Medieval England",
+      "content": "The Middle Ages saw kings, nobles, and the Church share power uneasily. The Magna Carta in 1215 limited the king's authority and laid the foundations for Parliament. The Black Death in 1348–50 reduced the population but changed social conditions, giving workers more bargaining power. These medieval developments established principles of limited royal power that continue today."
+    }
+  ],
+  "key_facts": [
+    "People first lived in Britain about 800,000 years ago.",
+    "Stonehenge was built in the Stone Age.",
+    "Farming began in Britain around 4000 BC.",
+    "The Romans invaded Britain in AD 43 under Emperor Claudius.",
+    "Roman London was called Londinium.",
+    "Hadrian's Wall marked the northern frontier.",
+    "The Romans left Britain in the early 5th century AD.",
+    "Angles, Saxons, and Jutes settled after the Romans left.",
+    "These tribes introduced Old English.",
+    "Vikings raided and settled in northern and eastern England.",
+    "The Battle of Hastings took place in 1066.",
+    "William of Normandy defeated King Harold II.",
+    "The Normans built stone castles and cathedrals.",
+    "The Magna Carta was signed in 1215.",
+    "The Magna Carta limited the king's power.",
+    "The Black Death struck in 1348–50.",
+    "The Black Death reduced the population but gave workers more bargaining power."
+  ],
+  "memory_hook": "Think of British history as building blocks: Ancient stones (Stonehenge), Roman roads (infrastructure), Saxon kingdoms (language), Norman castles (power), and Medieval charters (rights). Each period added a layer that shaped modern Britain.",
+  "questions": [
+    {
+      "prompt": "What is Stonehenge?",
+      "options": [
+        "A castle built by William the Conqueror",
+        "A prehistoric monument used for ceremonies",
+        "A Roman temple",
+        "A medieval church"
+      ],
+      "correct_index": 1,
+      "explanation": "Stonehenge dates from the Stone Age and was used for gatherings."
+    },
+    {
+      "prompt": "When did farming begin in Britain?",
+      "options": [
+        "Around 4000 BC",
+        "AD 43",
+        "1215",
+        "1348"
+      ],
+      "correct_index": 0,
+      "explanation": "Early farmers cleared forests and began agriculture around 4000 BC."
+    },
+    {
+      "prompt": "Who invaded Britain in AD 43?",
+      "options": [
+        "Vikings",
+        "Romans led by Emperor Claudius",
+        "Normans",
+        "Saxons"
+      ],
+      "correct_index": 1,
+      "explanation": "The Roman Empire expanded under Claudius."
+    },
+    {
+      "prompt": "What was Roman London called?",
+      "options": [
+        "Londinium",
+        "Westminster",
+        "Winchester",
+        "York"
+      ],
+      "correct_index": 0,
+      "explanation": "Londinium was the Roman settlement on the Thames."
+    },
+    {
+      "prompt": "Which peoples settled after the Romans left?",
+      "options": [
+        "Angles, Saxons, and Jutes",
+        "Normans",
+        "Romans",
+        "Celts"
+      ],
+      "correct_index": 0,
+      "explanation": "They established early English kingdoms."
+    },
+    {
+      "prompt": "Where did many Vikings settle?",
+      "options": [
+        "Northern and eastern England",
+        "Southern France",
+        "Wales",
+        "Scotland's Highlands"
+      ],
+      "correct_index": 0,
+      "explanation": "Viking Danelaw covered parts of northern and eastern England."
+    },
+    {
+      "prompt": "Who won the Battle of Hastings in 1066?",
+      "options": [
+        "King Harold II",
+        "William of Normandy",
+        "Edward the Confessor",
+        "Alfred the Great"
+      ],
+      "correct_index": 1,
+      "explanation": "William defeated Harold II and became king."
+    },
+    {
+      "prompt": "What was one result of Norman rule?",
+      "options": [
+        "New castles and cathedrals",
+        "Roman roads rebuilt",
+        "End of English language",
+        "Abolition of Parliament"
+      ],
+      "correct_index": 0,
+      "explanation": "The Normans built stone castles and reorganised society."
+    },
+    {
+      "prompt": "What did the Magna Carta (1215) do?",
+      "options": [
+        "Freed slaves",
+        "Limited the king's power",
+        "Ended taxation",
+        "Started the monarchy"
+      ],
+      "correct_index": 1,
+      "explanation": "It required the king to follow the law."
+    },
+    {
+      "prompt": "What was the Black Death?",
+      "options": [
+        "A great fire",
+        "A disease that killed millions",
+        "A civil war",
+        "A drought"
+      ],
+      "correct_index": 1,
+      "explanation": "The Black Death reduced the population sharply."
+    },
+    {
+      "prompt": "How did the Black Death change society?",
+      "options": [
+        "Workers could demand better pay",
+        "The Church gained total control",
+        "The monarchy ended",
+        "Cities disappeared"
+      ],
+      "correct_index": 0,
+      "explanation": "Labour shortages gave workers more bargaining power."
+    }
+  ],
+  "flashcards": [
+    [
+      "What prehistoric monument is found in England?",
+      "Stonehenge"
+    ],
+    [
+      "When did the Romans invade Britain?",
+      "AD 43"
+    ],
+    [
+      "Who led the Roman invasion of Britain?",
+      "Emperor Claudius"
+    ],
+    [
+      "What was Roman London called?",
+      "Londinium"
+    ],
+    [
+      "What wall marked the northern Roman frontier?",
+      "Hadrian's Wall"
+    ],
+    [
+      "Which peoples settled after the Romans left?",
+      "Angles, Saxons and Jutes"
+    ],
+    [
+      "What language developed under the Anglo-Saxons?",
+      "Old English"
+    ],
+    [
+      "Who brought Christianity to England in 597 AD?",
+      "St Augustine"
+    ],
+    [
+      "Who raided Britain from Scandinavia in the 8th century?",
+      "The Vikings"
+    ],
+    [
+      "What area of England was ruled by the Vikings?",
+      "The Danelaw"
+    ],
+    [
+      "When was the Battle of Hastings fought?",
+      "1066"
+    ],
+    [
+      "Who won the Battle of Hastings?",
+      "William the Conqueror"
+    ],
+    [
+      "What did the Normans build across England to secure control?",
+      "Stone castles and cathedrals"
+    ],
+    [
+      "What document in 1215 limited the king's power?",
+      "Magna Carta"
+    ],
+    [
+      "What principle did the Magna Carta establish?",
+      "Rule of law"
+    ],
+    [
+      "When did the Black Death strike Britain?",
+      "1348–1350"
+    ],
+    [
+      "What was a major effect of the Black Death?",
+      "Labour shortage"
+    ],
+    [
+      "Who founded the Tudor dynasty in 1485?",
+      "Henry VII"
+    ],
+    [
+      "Who created the Church of England?",
+      "Henry VIII"
+    ],
+    [
+      "Which queen ruled from 1558 to 1603?",
+      "Elizabeth I"
+    ],
+    [
+      "What event in 1688 reduced monarch power further?",
+      "The Glorious Revolution"
+    ],
+    [
+      "What did the Glorious Revolution lead to?",
+      "A constitutional monarchy"
+    ],
+    [
+      "Which document followed the Glorious Revolution?",
+      "Bill of Rights 1689"
+    ],
+    [
+      "What does the Bill of Rights guarantee?",
+      "Parliament's supremacy over the monarch"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You have a strong grasp of British history! 🏰",
+    "medium_score": "Good work! Review the key dates and events to master this topic! 📚",
+    "low_score": "History takes time to learn. Keep studying and you'll get there! 💪"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "id": "lesson-28-respecting-law",
+  "title": "Respecting the Law",
+  "module_slug": "government-law-role-detailed",
+  "overview": "In the UK everyone—including the government—must obey the law. This principle is called the rule of law. It protects people's rights and keeps society safe and fair. Laws are made by Parliament and enforced by the police and courts. Everyone has the right to a fair trial and to be treated equally before the law.",
+  "study_sections": [
+    {
+      "heading": "Rule of Law",
+      "content": "Rule of law: everyone must obey law; no one above it. Criminal law deals with offences like theft, assault, murder. Civil law settles disputes between people or organisations (contracts, family, property). Police prevent crime and protect public—must themselves act within law. PCSOs assist local policing through patrol and public contact."
+    },
+    {
+      "heading": "Courts and Justice",
+      "content": "People who break law may be arrested and charged. Have right to legal representation and fair hearing. Magistrates' courts hear minor offences; serious crimes go to Crown Court (with judge and jury). In Scotland: sheriff courts or High Court of Justiciary. Supreme Court is highest appeal court in UK. Juries (usually 12 citizens) decide guilt/innocence in serious criminal cases."
+    },
+    {
+      "heading": "Rights and Support",
+      "content": "Terrorism and extremism are serious crimes against public safety; citizens should report suspicious activity to police. People can get legal advice from solicitors, Citizens Advice, or community law centres. Legal aid may help those who can't afford lawyer. Respecting law means knowing rights, duties, and treating others fairly."
+    }
+  ],
+  "key_facts": [
+    "Rule of law: everyone must obey",
+    "Parliament makes laws",
+    "Criminal law: offences like theft/assault",
+    "Civil law: disputes between people/organisations",
+    "Police enforce law",
+    "PCSO: Police Community Support Officer",
+    "Magistrates' court: minor cases",
+    "Jury: 12 citizens decide guilt",
+    "Supreme Court: highest court",
+    "Independent judges ensure fair trials",
+    "Innocent until proven guilty",
+    "Citizens Advice: free legal advice",
+    "Legal aid: help for affordability",
+    "CPS prosecutes (England/Wales)",
+    "Scotland: Sheriff Court & High Court of Justiciary",
+    "Report suspicious activity to police",
+    "Terrorism: violence to influence politics",
+    "Extremism: rejects democracy/tolerance",
+    "Counter-Terrorism Police handle anti-terror",
+    "Respecting law keeps society safe & fair"
+  ],
+  "memory_hook": "Law as pyramid: Base (rule of law—everyone equal), Middle layers (criminal law/civil law—what breaks rules), Upper layers (police enforce, courts judge, magistrates/crown/supreme), Peak (Supreme Court—final say). Support pillars: juries (citizens), legal aid (help), CPS (prosecute). Pyramid stands only if base solid—respect from all!",
+  "questions": [
+    {
+      "prompt": "'Rule of law' is?",
+      "options": [
+        "Everyone must obey law including government",
+        "Only judges follow laws",
+        "PM makes laws alone",
+        "Police can ignore laws"
+      ],
+      "correct_index": 0,
+      "explanation": "Rule of law means no one is above law."
+    },
+    {
+      "prompt": "Who makes UK laws?",
+      "options": [
+        "Parliament",
+        "Police",
+        "Courts only",
+        "Local councils"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament creates laws that courts then apply."
+    },
+    {
+      "prompt": "Criminal law concerned with?",
+      "options": [
+        "Offences like theft or assault",
+        "Business contracts",
+        "Neighbour disputes",
+        "Employment rights"
+      ],
+      "correct_index": 0,
+      "explanation": "Criminal law deals with crimes against society."
+    },
+    {
+      "prompt": "Civil law deals with?",
+      "options": [
+        "Disputes between individuals or organisations",
+        "Serious crime",
+        "Traffic offences only",
+        "Tax collection"
+      ],
+      "correct_index": 0,
+      "explanation": "Civil law settles private disputes."
+    },
+    {
+      "prompt": "Who enforces UK laws?",
+      "options": [
+        "Police forces",
+        "Parliament members",
+        "Teachers",
+        "Bank officials"
+      ],
+      "correct_index": 0,
+      "explanation": "Police officers uphold law and public safety."
+    },
+    {
+      "prompt": "PCSO role?",
+      "options": [
+        "Support local policing & assist public",
+        "Judge criminal cases",
+        "Write laws",
+        "Collect fines"
+      ],
+      "correct_index": 0,
+      "explanation": "PCSOs help communities and report issues to police."
+    },
+    {
+      "prompt": "Minor offences tried where?",
+      "options": [
+        "Magistrates' court",
+        "Crown Court",
+        "Supreme Court",
+        "European Court Justice"
+      ],
+      "correct_index": 0,
+      "explanation": "Magistrates handle less serious cases locally."
+    },
+    {
+      "prompt": "Who decides guilt in serious cases?",
+      "options": [
+        "Jury of 12 citizens",
+        "Prime Minister",
+        "Police chief",
+        "Home Secretary"
+      ],
+      "correct_index": 0,
+      "explanation": "Jury decides verdict in Crown Court."
+    },
+    {
+      "prompt": "Highest UK court?",
+      "options": [
+        "Supreme Court",
+        "High Court",
+        "Crown Court",
+        "Magistrates' Court"
+      ],
+      "correct_index": 0,
+      "explanation": "Supreme Court is final court of appeal."
+    },
+    {
+      "prompt": "Who ensures fair/impartial trials?",
+      "options": [
+        "Independent judges",
+        "Police officers",
+        "MPs",
+        "Civil servants"
+      ],
+      "correct_index": 0,
+      "explanation": "Judges must act without political influence."
+    },
+    {
+      "prompt": "'Innocent until proven guilty'?",
+      "options": [
+        "Person not punished unless proven guilty",
+        "Police always right",
+        "Guilt assumed first",
+        "Only judges decide innocence"
+      ],
+      "correct_index": 0,
+      "explanation": "Everyone has right to fair trial."
+    },
+    {
+      "prompt": "Free legal advice in UK?",
+      "options": [
+        "Citizens Advice",
+        "Home Office",
+        "PM Office",
+        "Police clerks"
+      ],
+      "correct_index": 0,
+      "explanation": "Citizens Advice provides guidance on legal issues."
+    },
+    {
+      "prompt": "Legal aid is?",
+      "options": [
+        "Government help for those who can't afford lawyer",
+        "Type of fine",
+        "Police training",
+        "Court tax"
+      ],
+      "correct_index": 0,
+      "explanation": "Legal aid ensures access to justice for everyone."
+    },
+    {
+      "prompt": "Who prosecutes in England/Wales?",
+      "options": [
+        "Crown Prosecution Service (CPS)",
+        "Home Office",
+        "Cabinet Office",
+        "House of Lords"
+      ],
+      "correct_index": 0,
+      "explanation": "CPS reviews evidence and brings cases to court."
+    },
+    {
+      "prompt": "Scottish criminal courts?",
+      "options": [
+        "Sheriff courts & High Court of Justiciary",
+        "Crown Court only",
+        "County courts",
+        "Family courts"
+      ],
+      "correct_index": 0,
+      "explanation": "Scotland has own legal system and courts."
+    },
+    {
+      "prompt": "See suspicious/terrorist activity?",
+      "options": [
+        "Report to police immediately",
+        "Ignore it",
+        "Post online",
+        "Investigate yourself"
+      ],
+      "correct_index": 0,
+      "explanation": "Citizens should report concerns to police."
+    },
+    {
+      "prompt": "Terrorism is?",
+      "options": [
+        "Using violence to influence politics or intimidate public",
+        "Peaceful protest",
+        "Public debate",
+        "Media criticism"
+      ],
+      "correct_index": 0,
+      "explanation": "Terrorism is serious crime against public safety."
+    },
+    {
+      "prompt": "Extremism is?",
+      "options": [
+        "Supporting ideas rejecting democracy or tolerance",
+        "Strong interest in sport",
+        "Local volunteering",
+        "Religious celebration"
+      ],
+      "correct_index": 0,
+      "explanation": "Extremism opposes British values of freedom and respect."
+    },
+    {
+      "prompt": "Who polices anti-terror laws?",
+      "options": [
+        "Specialist Counter-Terrorism Police & Security Services",
+        "Armed Forces only",
+        "Local councillors",
+        "Cabinet Office"
+      ],
+      "correct_index": 0,
+      "explanation": "Specialist units work to prevent terrorism."
+    },
+    {
+      "prompt": "Why respecting law important?",
+      "options": [
+        "Keeps society safe & fair",
+        "Gives police more power",
+        "Reduces taxes",
+        "Stops politics"
+      ],
+      "correct_index": 0,
+      "explanation": "Law protects rights and ensures justice for all."
+    }
+  ],
+  "flashcards": [
+    [
+      "'Rule of law' means",
+      "Everyone must obey law"
+    ],
+    [
+      "Who makes UK laws",
+      "Parliament"
+    ],
+    [
+      "Criminal law covers",
+      "Offences like theft or assault"
+    ],
+    [
+      "Civil law covers",
+      "Disputes between people or organisations"
+    ],
+    [
+      "Who enforces law",
+      "Police"
+    ],
+    [
+      "What is PCSO",
+      "Police Community Support Officer"
+    ],
+    [
+      "Minor cases heard where",
+      "Magistrates' court"
+    ],
+    [
+      "Who decides guilt in serious cases",
+      "Jury of 12 citizens"
+    ],
+    [
+      "Highest UK court",
+      "Supreme Court"
+    ],
+    [
+      "Who ensures fair trials",
+      "Independent judges"
+    ],
+    [
+      "'Innocent until proven guilty' means",
+      "No punishment without proof"
+    ],
+    [
+      "Free legal advice where",
+      "Citizens Advice"
+    ],
+    [
+      "What is legal aid",
+      "Help for those who can't afford lawyer"
+    ],
+    [
+      "Who prosecutes England/Wales",
+      "Crown Prosecution Service (CPS)"
+    ],
+    [
+      "Two Scottish criminal courts",
+      "Sheriff Court and High Court of Justiciary"
+    ],
+    [
+      "See suspicious activity do what",
+      "Report it to police"
+    ],
+    [
+      "Terrorism is",
+      "Violence to influence politics/intimidate public"
+    ],
+    [
+      "Extremism is",
+      "Ideas rejecting democracy or tolerance"
+    ],
+    [
+      "Who handles anti-terror laws",
+      "Counter-Terrorism Police & Security Services"
+    ],
+    [
+      "Why respecting law important",
+      "Keeps society safe & fair"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand law and justice brilliantly! ⚖️",
+    "medium_score": "Good work! Review courts and rights! 📚",
+    "low_score": "Law takes time to learn. Keep studying! 💪"
+  }
+}

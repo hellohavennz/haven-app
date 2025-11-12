@@ -1,0 +1,397 @@
+{
+  "id": "lesson-5-government-law-your-role",
+  "title": "The UK Government, the Law and Your Role",
+  "module_slug": "life-in-uk-overview",
+  "overview": "The United Kingdom is a democracy where people choose who governs them through regular elections. The UK has a constitutional monarchy, meaning the monarch is the Head of State but the government is run by elected representatives. Understanding how government works helps citizens play an active part in society.\n\nThe UK does not have a single written constitution. Instead, its system is built on laws, court judgments, and historical documents such as the Magna Carta (1215) and the Bill of Rights (1689).",
+  "study_sections": [
+    {
+      "heading": "The Constitution",
+      "content": "The UK does not have a single written constitution. Instead, its system is built on laws, court judgments, and historical documents such as the Magna Carta (1215) and the Bill of Rights (1689). The constitution defines how power is shared between Parliament, the government, and the monarchy.\n\nTradition and law together form the British Constitution. This flexible approach has allowed the system to evolve over centuries while maintaining stability."
+    },
+    {
+      "heading": "The Monarchy",
+      "content": "The monarch—currently King Charles III—is the Head of State. The monarch's powers are limited by law and carried out on the advice of ministers. The monarch meets the Prime Minister weekly, approves laws passed by Parliament, and represents the UK on formal occasions.\n\nThe monarch serves as a symbol of unity above politics. While the role is largely ceremonial, it provides continuity and represents the nation at important events."
+    },
+    {
+      "heading": "Parliament",
+      "content": "Parliament is the supreme law-making body in the UK. It consists of three parts: the Monarch, the House of Commons, and the House of Lords.\n\nMembers of Parliament (MPs) are elected by citizens to represent their local areas, known as constituencies. The Prime Minister (PM) is usually the leader of the political party with the most MPs in the Commons.\n\nThe House of Lords reviews and suggests amendments to laws. It includes life peers, bishops, and hereditary peers. Both Houses must agree before a bill becomes law.\n\nThe Commons debate, Lords review, and the Monarch approves laws in this system."
+    },
+    {
+      "heading": "The Government",
+      "content": "The government runs the country. It is formed by the political party (or coalition) with a majority in the House of Commons. The Prime Minister leads the government and appoints Cabinet Ministers to head major departments such as Health, Education, and Defence.\n\nCivil servants support ministers and remain politically neutral, serving whichever government is in power. The government runs the country while Parliament holds it to account through debates, questions, and votes."
+    },
+    {
+      "heading": "Devolved Governments",
+      "content": "Some powers are handled by separate parliaments or assemblies:\n\n• Scottish Parliament (Edinburgh) manages health, education, justice, and environment in Scotland.\n• Senedd (Cardiff) handles health, education, and local government in Wales.\n• Northern Ireland Assembly (Belfast) controls health, education, justice, and transport in Northern Ireland.\n\nThe UK Parliament in Westminster remains responsible for defence, foreign affairs, and overall economic policy. Local decisions are made locally through devolution."
+    },
+    {
+      "heading": "Local Government",
+      "content": "Local councils manage community services such as schools, housing, libraries, waste collection, and social care. Councillors are elected by residents and funded mainly through council tax and grants from central government.\n\nLocal voices manage local services, ensuring that communities have a say in the decisions that affect their daily lives."
+    },
+    {
+      "heading": "The Law and the Courts",
+      "content": "The rule of law ensures everyone is treated equally. Judges are independent of government and apply the law fairly. The main types of courts are:\n\n• Magistrates' Courts (minor cases)\n• Crown Court (serious criminal cases)\n• County Courts and High Court (civil matters)\n• Supreme Court (the final court of appeal)\n\nThe law protects everyone, from citizen to crown. The independence of the judiciary is a cornerstone of British democracy."
+    },
+    {
+      "heading": "Elections and Political Participation",
+      "content": "Elections allow citizens to choose MPs, councillors, and mayors. The main types are General Elections (choose MPs to the House of Commons), Local Elections, and Devolved Parliament Elections.\n\nTo vote, you must be 18 or over, a British, Irish, or eligible Commonwealth citizen, and registered to vote.\n\nYour vote is your voice in democracy. Regular elections ensure that government remains accountable to the people."
+    },
+    {
+      "heading": "Rights and Responsibilities",
+      "content": "Citizens have rights such as freedom of expression, a fair trial, and protection from discrimination. These are set out in the Human Rights Act 1998. Responsibilities include obeying the law, paying taxes, serving on a jury if called, and participating in civic life.\n\nRights give freedom while responsibilities sustain it. This balance is essential to a functioning democracy."
+    }
+  ],
+  "key_facts": [
+    "The UK is a constitutional monarchy and parliamentary democracy.",
+    "The UK does not have a single written constitution.",
+    "Key constitutional documents include the Magna Carta (1215) and Bill of Rights (1689).",
+    "King Charles III is the current Head of State.",
+    "The monarch's powers are limited by law.",
+    "Parliament consists of the Monarch, House of Commons, and House of Lords.",
+    "MPs are elected to represent constituencies in the House of Commons.",
+    "The Prime Minister leads the government and appoints Cabinet Ministers.",
+    "Civil servants remain politically neutral.",
+    "Scotland has its own parliament with powers over health, education, and justice.",
+    "Wales has the Senedd with devolved powers.",
+    "Northern Ireland has its own Assembly.",
+    "Westminster retains control over defence, foreign affairs, and economic policy.",
+    "Local councils manage services like schools, housing, and waste collection.",
+    "Judges are independent of government.",
+    "The Supreme Court is the highest court in the UK.",
+    "Magistrates' Courts handle minor legal cases.",
+    "Crown Court deals with serious criminal cases.",
+    "General Elections are usually held every five years.",
+    "To vote, you must be 18 or over and registered to vote.",
+    "British, Irish, and eligible Commonwealth citizens can vote in UK elections.",
+    "The Human Rights Act 1998 protects individual rights.",
+    "Citizens must obey the law, pay taxes, and serve on a jury if called."
+  ],
+  "memory_hook": "Think of UK government as a pyramid: At the top is the Monarch (ceremonial head), below is Parliament (Commons for debate, Lords for review), then Government (PM and Cabinet running things), then Devolved Governments (Scotland, Wales, NI handling local matters), and at the base are Local Councils and Citizens (you!). Laws flow down, votes flow up. The Courts stand separately to keep everyone honest. Your role? Vote, pay taxes, serve on juries, and participate—democracy only works when citizens engage!",
+  "questions": [
+    {
+      "prompt": "What kind of monarchy does the UK have?",
+      "options": [
+        "Absolute monarchy",
+        "Constitutional monarchy",
+        "Military monarchy",
+        "Federal monarchy"
+      ],
+      "correct_index": 1,
+      "explanation": "The monarch's powers are limited by law."
+    },
+    {
+      "prompt": "What document, signed in 1215, first limited the power of the king?",
+      "options": [
+        "Bill of Rights",
+        "Magna Carta",
+        "Human Rights Act",
+        "Reform Act"
+      ],
+      "correct_index": 1,
+      "explanation": "The Magna Carta is a foundation of UK constitutional law."
+    },
+    {
+      "prompt": "Who is the Head of State in the UK?",
+      "options": [
+        "Prime Minister",
+        "Speaker of the House",
+        "Monarch",
+        "Home Secretary"
+      ],
+      "correct_index": 2,
+      "explanation": "The monarch is the Head of State."
+    },
+    {
+      "prompt": "What are the three parts of Parliament?",
+      "options": [
+        "Commons, Lords, Monarch",
+        "Commons, Prime Minister, Cabinet",
+        "Lords, Judges, Monarch",
+        "Commons, Cabinet, Voters"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament includes the Commons, Lords, and Monarch."
+    },
+    {
+      "prompt": "Who leads the UK Government?",
+      "options": [
+        "The Speaker",
+        "The Prime Minister",
+        "The King",
+        "The Chief Justice"
+      ],
+      "correct_index": 1,
+      "explanation": "The Prime Minister leads the government."
+    },
+    {
+      "prompt": "What is the main role of the House of Lords?",
+      "options": [
+        "Making laws alone",
+        "Reviewing and suggesting amendments to laws",
+        "Electing MPs",
+        "Running the police"
+      ],
+      "correct_index": 1,
+      "explanation": "The Lords revise and review proposed laws."
+    },
+    {
+      "prompt": "What are government departments led by?",
+      "options": [
+        "Civil servants",
+        "Cabinet Ministers",
+        "Local councillors",
+        "Judges"
+      ],
+      "correct_index": 1,
+      "explanation": "Each department is headed by a Cabinet Minister."
+    },
+    {
+      "prompt": "Which of these has a devolved parliament?",
+      "options": [
+        "Scotland",
+        "England",
+        "London",
+        "Isle of Man"
+      ],
+      "correct_index": 0,
+      "explanation": "Scotland has its own parliament."
+    },
+    {
+      "prompt": "What is one power devolved to the Scottish Parliament?",
+      "options": [
+        "Defence",
+        "Health and education",
+        "Foreign affairs",
+        "Immigration"
+      ],
+      "correct_index": 1,
+      "explanation": "Scotland controls domestic services like health and education."
+    },
+    {
+      "prompt": "Who manages services like waste collection and libraries?",
+      "options": [
+        "Parliament",
+        "Local councils",
+        "The Cabinet",
+        "The police"
+      ],
+      "correct_index": 1,
+      "explanation": "Local councils handle community services."
+    },
+    {
+      "prompt": "What is the highest court in the UK?",
+      "options": [
+        "Crown Court",
+        "High Court",
+        "Supreme Court",
+        "Magistrates' Court"
+      ],
+      "correct_index": 2,
+      "explanation": "The Supreme Court is the final court of appeal."
+    },
+    {
+      "prompt": "What type of cases do magistrates usually hear?",
+      "options": [
+        "Serious criminal trials",
+        "Minor legal cases",
+        "Civil appeals",
+        "Constitutional disputes"
+      ],
+      "correct_index": 1,
+      "explanation": "Magistrates handle minor offences."
+    },
+    {
+      "prompt": "What ensures that judges remain independent?",
+      "options": [
+        "Separation from Parliament and Government",
+        "Election by voters",
+        "Appointment by Cabinet",
+        "Control by police"
+      ],
+      "correct_index": 0,
+      "explanation": "Judges are separate from government influence."
+    },
+    {
+      "prompt": "How often are General Elections normally held?",
+      "options": [
+        "Every three years",
+        "Every five years",
+        "Every six years",
+        "Every ten years"
+      ],
+      "correct_index": 1,
+      "explanation": "General elections usually occur every five years."
+    },
+    {
+      "prompt": "What must you do to vote?",
+      "options": [
+        "Pay tax",
+        "Register to vote",
+        "Own property",
+        "Join a political party"
+      ],
+      "correct_index": 1,
+      "explanation": "Registration is required to vote."
+    },
+    {
+      "prompt": "Who can vote in UK elections?",
+      "options": [
+        "Anyone over 16",
+        "British, Irish, or eligible Commonwealth citizens aged 18 or over",
+        "Tourists visiting the UK",
+        "Members of the House of Lords"
+      ],
+      "correct_index": 1,
+      "explanation": "These groups are entitled to vote."
+    },
+    {
+      "prompt": "Which act protects human rights in the UK?",
+      "options": [
+        "Equality Act",
+        "Human Rights Act 1998",
+        "Freedom of Information Act",
+        "Parliament Act"
+      ],
+      "correct_index": 1,
+      "explanation": "The Human Rights Act safeguards individual rights."
+    },
+    {
+      "prompt": "What is one key responsibility of a UK citizen?",
+      "options": [
+        "Ignoring laws",
+        "Paying taxes",
+        "Avoiding elections",
+        "Declining jury duty"
+      ],
+      "correct_index": 1,
+      "explanation": "Citizens must pay taxes to support public services."
+    }
+  ],
+  "flashcards": [
+    [
+      "What type of government does the UK have?",
+      "Constitutional monarchy and parliamentary democracy"
+    ],
+    [
+      "Who is the Head of State?",
+      "The Monarch (King Charles III)"
+    ],
+    [
+      "Who runs the government?",
+      "The Prime Minister and Cabinet"
+    ],
+    [
+      "What are the three parts of Parliament?",
+      "The Monarch, House of Commons, and House of Lords"
+    ],
+    [
+      "What is the role of the House of Commons?",
+      "To debate and pass laws"
+    ],
+    [
+      "What is the role of the House of Lords?",
+      "To review and suggest changes to laws"
+    ],
+    [
+      "What is a constituency?",
+      "A local area represented by an MP"
+    ],
+    [
+      "Who appoints government ministers?",
+      "The Prime Minister"
+    ],
+    [
+      "What do civil servants do?",
+      "Support ministers and remain politically neutral"
+    ],
+    [
+      "Name one devolved parliament or assembly.",
+      "The Scottish Parliament, the Senedd (Wales), or the Northern Ireland Assembly"
+    ],
+    [
+      "What is devolution?",
+      "The transfer of powers from UK Parliament to local governments"
+    ],
+    [
+      "What services do local councils manage?",
+      "Schools, housing, waste collection, libraries, and social care"
+    ],
+    [
+      "What is the rule of law?",
+      "The principle that everyone is subject to the law"
+    ],
+    [
+      "Who are magistrates?",
+      "Volunteers who deal with minor legal cases"
+    ],
+    [
+      "What is the highest court in the UK?",
+      "The Supreme Court"
+    ],
+    [
+      "What is a General Election?",
+      "An election to choose MPs for the House of Commons"
+    ],
+    [
+      "Who can vote in UK elections?",
+      "Citizens aged 18+ who are British, Irish, or eligible Commonwealth citizens and registered to vote"
+    ],
+    [
+      "What document protects human rights in the UK?",
+      "The Human Rights Act 1998"
+    ],
+    [
+      "Name one key responsibility of a UK citizen.",
+      "Obey the law / pay taxes / serve on a jury / participate in civic life"
+    ],
+    [
+      "What ensures the independence of judges?",
+      "The separation of powers between government and courts"
+    ],
+    [
+      "When was the Magna Carta signed?",
+      "1215"
+    ],
+    [
+      "What does the Magna Carta do?",
+      "It limited the king's power and established foundations for the rule of law"
+    ],
+    [
+      "When was the Bill of Rights?",
+      "1689"
+    ],
+    [
+      "What is the current monarch's name?",
+      "King Charles III"
+    ],
+    [
+      "How often does the monarch meet the Prime Minister?",
+      "Weekly"
+    ],
+    [
+      "What does Westminster Parliament control?",
+      "Defence, foreign affairs, and overall economic policy"
+    ],
+    [
+      "What funds local councils?",
+      "Council tax and grants from central government"
+    ],
+    [
+      "What types of cases does Crown Court hear?",
+      "Serious criminal cases"
+    ],
+    [
+      "What are the requirements to vote?",
+      "Be 18 or over, British/Irish/eligible Commonwealth citizen, and registered to vote"
+    ],
+    [
+      "What is the UK's political system based on?",
+      "Parliamentary democracy"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You have a strong understanding of UK government and democracy! 🏛️",
+    "medium_score": "Good work! Review Parliament, devolution, and voting to master this topic! 📚",
+    "low_score": "Government systems take time to learn. Keep studying and you'll succeed! 💪"
+  }
+}
