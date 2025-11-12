@@ -1,1 +1,329 @@
-{"id":"lesson-30-uk-international-institutions","title":"The UK and International Institutions","module_slug":"government-law-role-detailed","overview":"The United Kingdom plays an active part in international affairs. It works with other countries to promote peace, security, human rights, and economic progress. Through international organisations like the Commonwealth, United Nations, NATO, and Council of Europe, Britain helps tackle global challenges and supports cooperation.","study_sections":[{"heading":"Commonwealth","content":"Commonwealth: voluntary association of 56 independent countries, most former British Empire. British Monarch is ceremonial Head. Members work together to promote democracy, human rights, development. Examples: Canada, Australia, India, Nigeria, New Zealand, South Africa."},{"heading":"United Nations","content":"UN founded 1945 after Second World War to maintain peace and promote cooperation. UK is one of 5 permanent members of UN Security Council (with USA, France, China, Russia). UK contributes troops and aid to UN peacekeeping and humanitarian missions. HQ in New York."},{"heading":"NATO and Council of Europe","content":"NATO formed 1949 by Western allies for mutual defence. If one member attacked, others help defend. UK is founding member and leading contributor. Council of Europe founded 1949, separate from EU. Works to protect human rights, democracy, rule of law across Europe. European Court of Human Rights in Strasbourg enforces principles."},{"heading":"Other Organizations","content":"European Union: UK was member 1973-2020 (Brexit). Now maintains trade and security cooperation under new agreements. UK belongs to WTO, G7, G20 coordinating global trade and economic policy. Through these institutions, Britain promotes peace, free trade, shared values worldwide."}],"key_facts":["The Commonwealth of Nations brings together 56 countries that share values set out in the 2013 Commonwealth Charter.","The Commonwealth Secretariat in London helps members cooperate on democracy, development and climate action.","The UK is a founding member of NATO (1949) and contributes to allied defence and operations.","The UK participates in the Organization for Security and Co-operation in Europe to promote security and human rights.","As a permanent member of the UN Security Council, the UK has veto power and works to maintain international peace.","UK armed forces and police officers support UN peacekeeping and humanitarian missions.","The World Trade Organization sets global trade rules; the UK also negotiates its own trade agreements.","The Council of Europe\u2019s European Court of Human Rights in Strasbourg can hear cases from UK residents after domestic appeals.","The UK left the European Union on 31 January 2020 but continues to cooperate with European partners through new agreements.","Cultural diplomacy bodies such as the British Council and BBC World Service promote British culture, education and information overseas.","The Foreign, Commonwealth & Development Office delivers overseas development assistance, focusing on poverty reduction, health and climate projects."],"memory_hook":"Picture the UK\u2019s foreign policy as a web of handshakes\u2014Commonwealth, NATO, UN, WTO, OSCE, Council of Europe\u2014while the BBC World Service and British Council carry its voice along every strand.","questions":[{"prompt":"Commonwealth is?","options":["Voluntary association of independent nations","Military alliance","Trade-only organisation","Political party"],"correct_index":0},{"prompt":"Ceremonial Head of Commonwealth?","options":["British Monarch","Prime Minister","UN Secretary-General","US President"],"correct_index":0},{"prompt":"Commonwealth member countries?","options":["56","27","35","64"],"correct_index":0},{"prompt":"Commonwealth promotes?","options":["Democracy, human rights, development","Trade competition","Religious law","Political control"],"correct_index":0},{"prompt":"Two Commonwealth countries?","options":["Canada and India","China and Russia","France and Germany","Spain and Portugal"],"correct_index":0},{"prompt":"UN founded?","options":["1945","1939","1950","1969"],"correct_index":0},{"prompt":"UN main purpose?","options":["Maintain world peace & cooperation","Enforce trade taxes","Create new countries","Govern Europe"],"correct_index":0},{"prompt":"UN Security Council permanent members?","options":["Five","Ten","Twelve","Twenty"],"correct_index":0},{"prompt":"UK contributes to UN?","options":["Troops, aid, diplomatic support","Weapons only","Funding for private companies","Sports teams"],"correct_index":0},{"prompt":"UN HQ located?","options":["New York, USA","London, UK","Brussels, Belgium","Geneva, Switzerland"],"correct_index":0},{"prompt":"NATO stands for?","options":["North Atlantic Treaty Organisation","National Atlantic Trading Office","Northern Alliance Treaty Organisation","New Atlantic Treaty Order"],"correct_index":0},{"prompt":"NATO main purpose?","options":["Mutual defence against attack","Regulate trade","Provide foreign aid","Run elections"],"correct_index":0},{"prompt":"NATO founded?","options":["1949","1955","1971","1989"],"correct_index":0},{"prompt":"Council of Europe main goal?","options":["Protect human rights & democracy","Create single currency","Oversee defence","Enforce EU laws"],"correct_index":0},{"prompt":"European Court of Human Rights based?","options":["Strasbourg, France","Brussels, Belgium","Geneva, Switzerland","London, UK"],"correct_index":0},{"prompt":"UK left EU?","options":["2020","2016","2019","2022"],"correct_index":0},{"prompt":"UK originally joined EU (EEC)?","options":["1973","1960","1980","1995"],"correct_index":0},{"prompt":"WTO is?","options":["Body overseeing global trade rules","Part of NATO","British government department","EU Court"],"correct_index":0},{"prompt":"G7 is?","options":["Group of 7 leading industrial nations","Military alliance","Religious council","Environmental treaty"],"correct_index":0},{"prompt":"Britain's aim in joining international institutions?","options":["Promote peace, democracy, cooperation","Control other countries","Avoid global contact","Isolate trade partners"],"correct_index":0}],"flashcards":[["What is the Commonwealth?","A voluntary group of 56 independent nations"],["Who is the ceremonial Head of the Commonwealth?","The British Monarch"],["What values does the Commonwealth promote?","Democracy, human rights and development"],["When was the United Nations founded?","1945"],["What is the main purpose of the UN?","To maintain peace and promote cooperation"],["Who are the five permanent UN Security Council members?","UK, USA, France, China and Russia"],["Where is the UN headquarters?","New York City"],["Which organisation runs UN peacekeeping?","The United Nations"],["What does NATO stand for?","North Atlantic Treaty Organization"],["When was NATO formed?","1949"],["What is NATO's main purpose?","Mutual defence of members"],["Where is NATO headquartered?","Brussels, Belgium"],["Who is the UK's closest NATO ally?","The United States"],["What is the Commonwealth of Nations?","Independent countries working for peace and democracy"],["When is Commonwealth Day marked?","The second Monday in March"],["What does the WTO do?","Oversees global trade rules"],["What is the G7?","A group of seven major industrial nations"],["What does the Council of Europe protect?","Human rights and democracy"],["Which treaty upholds European human rights?","The European Convention on Human Rights"],["What is the UK's role on the UN Security Council?","Permanent member with veto power"]],"supportive_messages":{"high_score":"Excellent! You understand UK global role brilliantly! \ud83c\udf0d","medium_score":"Good work! Review Commonwealth and UN! \ud83d\udcda","low_score":"International institutions take time. Keep studying! \ud83d\udcaa"}}
+{
+  "id": "lesson-30-uk-international-institutions",
+  "title": "The UK and International Institutions",
+  "module_slug": "government-law-role-detailed",
+  "overview": "The United Kingdom plays an active part in international affairs. It works with other countries to promote peace, security, human rights, and economic progress. Through international organisations like the Commonwealth, United Nations, NATO, and Council of Europe, Britain helps tackle global challenges and supports cooperation.",
+  "study_sections": [
+    {
+      "heading": "Commonwealth",
+      "content": "Commonwealth: voluntary association of 56 independent countries, most former British Empire. British Monarch is ceremonial Head. Members work together to promote democracy, human rights, development. Examples: Canada, Australia, India, Nigeria, New Zealand, South Africa."
+    },
+    {
+      "heading": "United Nations",
+      "content": "UN founded 1945 after Second World War to maintain peace and promote cooperation. UK is one of 5 permanent members of UN Security Council (with USA, France, China, Russia). UK contributes troops and aid to UN peacekeeping and humanitarian missions. HQ in New York."
+    },
+    {
+      "heading": "NATO and Council of Europe",
+      "content": "NATO formed 1949 by Western allies for mutual defence. If one member attacked, others help defend. UK is founding member and leading contributor. Council of Europe founded 1949, separate from EU. Works to protect human rights, democracy, rule of law across Europe. European Court of Human Rights in Strasbourg enforces principles."
+    },
+    {
+      "heading": "Other Organizations",
+      "content": "European Union: UK was member 1973-2020 (Brexit). Now maintains trade and security cooperation under new agreements. UK belongs to WTO, G7, G20 coordinating global trade and economic policy. Through these institutions, Britain promotes peace, free trade, shared values worldwide."
+    }
+  ],
+  "key_facts": [
+    "The UK actively engages in international institutions to promote peace, democracy, human rights, and development.",
+    "The United Nations, founded in 1945, has the UK as a founding member and permanent Security Council member with veto powers.",
+    "The UK contributes troops, diplomats, and funding to UN peacekeeping, humanitarian work, and sustainable development goals.",
+    "The Commonwealth links over 50 independent countries with the British monarch as Head, promoting democracy, development, human rights, and education through the 2013 Charter.",
+    "Events like the Commonwealth Games build friendship and cultural exchange among members.",
+    "NATO, created in 1949, is a military alliance whose Article 5 guarantees collective defence; the UK is a founding member providing forces and strategic support.",
+    "The alliance now also tackles counterterrorism, cyber defence, and humanitarian missions.",
+    "The Council of Europe, also founded in 1949, promotes human rights, democracy, and the rule of law, with the UK helping to draft the European Convention on Human Rights.",
+    "The European Court of Human Rights in Strasbourg enforces the Convention, and the Human Rights Act 1998 brings those rights into UK law.",
+    "The G7 unites leading economies, including the UK, to discuss economic stability, security, and climate issues.",
+    "The World Trade Organization regulates global trade; the UK has been an independent member since leaving the EU in 2020 and supports free trade and dispute resolution.",
+    "The Organisation for Security and Co-operation in Europe promotes peace and democracy; the UK takes part in election monitoring and peacebuilding.",
+    "Working through these organisations helps the UK support global stability, international law, and shared progress."
+  ],
+  "memory_hook": "See Britain’s diplomacy as a network of partnerships—UN, Commonwealth, NATO, rights courts, and trade forums woven together for shared security and progress.",
+  "questions": [
+    {
+      "prompt": "Commonwealth is?",
+      "options": [
+        "Voluntary association of independent nations",
+        "Military alliance",
+        "Trade-only organisation",
+        "Political party"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Ceremonial Head of Commonwealth?",
+      "options": [
+        "British Monarch",
+        "Prime Minister",
+        "UN Secretary-General",
+        "US President"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Commonwealth member countries?",
+      "options": [
+        "56",
+        "27",
+        "35",
+        "64"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Commonwealth promotes?",
+      "options": [
+        "Democracy, human rights, development",
+        "Trade competition",
+        "Religious law",
+        "Political control"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Two Commonwealth countries?",
+      "options": [
+        "Canada and India",
+        "China and Russia",
+        "France and Germany",
+        "Spain and Portugal"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UN founded?",
+      "options": [
+        "1945",
+        "1939",
+        "1950",
+        "1969"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UN main purpose?",
+      "options": [
+        "Maintain world peace & cooperation",
+        "Enforce trade taxes",
+        "Create new countries",
+        "Govern Europe"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UN Security Council permanent members?",
+      "options": [
+        "Five",
+        "Ten",
+        "Twelve",
+        "Twenty"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UK contributes to UN?",
+      "options": [
+        "Troops, aid, diplomatic support",
+        "Weapons only",
+        "Funding for private companies",
+        "Sports teams"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UN HQ located?",
+      "options": [
+        "New York, USA",
+        "London, UK",
+        "Brussels, Belgium",
+        "Geneva, Switzerland"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "NATO stands for?",
+      "options": [
+        "North Atlantic Treaty Organisation",
+        "National Atlantic Trading Office",
+        "Northern Alliance Treaty Organisation",
+        "New Atlantic Treaty Order"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "NATO main purpose?",
+      "options": [
+        "Mutual defence against attack",
+        "Regulate trade",
+        "Provide foreign aid",
+        "Run elections"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "NATO founded?",
+      "options": [
+        "1949",
+        "1955",
+        "1971",
+        "1989"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Council of Europe main goal?",
+      "options": [
+        "Protect human rights & democracy",
+        "Create single currency",
+        "Oversee defence",
+        "Enforce EU laws"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "European Court of Human Rights based?",
+      "options": [
+        "Strasbourg, France",
+        "Brussels, Belgium",
+        "Geneva, Switzerland",
+        "London, UK"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UK left EU?",
+      "options": [
+        "2020",
+        "2016",
+        "2019",
+        "2022"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "UK originally joined EU (EEC)?",
+      "options": [
+        "1973",
+        "1960",
+        "1980",
+        "1995"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "WTO is?",
+      "options": [
+        "Body overseeing global trade rules",
+        "Part of NATO",
+        "British government department",
+        "EU Court"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "G7 is?",
+      "options": [
+        "Group of 7 leading industrial nations",
+        "Military alliance",
+        "Religious council",
+        "Environmental treaty"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Britain's aim in joining international institutions?",
+      "options": [
+        "Promote peace, democracy, cooperation",
+        "Control other countries",
+        "Avoid global contact",
+        "Isolate trade partners"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "flashcards": [
+    [
+      "What is the Commonwealth?",
+      "A voluntary group of 56 independent nations"
+    ],
+    [
+      "Who is the ceremonial Head of the Commonwealth?",
+      "The British Monarch"
+    ],
+    [
+      "What values does the Commonwealth promote?",
+      "Democracy, human rights and development"
+    ],
+    [
+      "When was the United Nations founded?",
+      "1945"
+    ],
+    [
+      "What is the main purpose of the UN?",
+      "To maintain peace and promote cooperation"
+    ],
+    [
+      "Who are the five permanent UN Security Council members?",
+      "UK, USA, France, China and Russia"
+    ],
+    [
+      "Where is the UN headquarters?",
+      "New York City"
+    ],
+    [
+      "Which organisation runs UN peacekeeping?",
+      "The United Nations"
+    ],
+    [
+      "What does NATO stand for?",
+      "North Atlantic Treaty Organization"
+    ],
+    [
+      "When was NATO formed?",
+      "1949"
+    ],
+    [
+      "What is NATO's main purpose?",
+      "Mutual defence of members"
+    ],
+    [
+      "Where is NATO headquartered?",
+      "Brussels, Belgium"
+    ],
+    [
+      "Who is the UK's closest NATO ally?",
+      "The United States"
+    ],
+    [
+      "What is the Commonwealth of Nations?",
+      "Independent countries working for peace and democracy"
+    ],
+    [
+      "When is Commonwealth Day marked?",
+      "The second Monday in March"
+    ],
+    [
+      "What does the WTO do?",
+      "Oversees global trade rules"
+    ],
+    [
+      "What is the G7?",
+      "A group of seven major industrial nations"
+    ],
+    [
+      "What does the Council of Europe protect?",
+      "Human rights and democracy"
+    ],
+    [
+      "Which treaty upholds European human rights?",
+      "The European Convention on Human Rights"
+    ],
+    [
+      "What is the UK's role on the UN Security Council?",
+      "Permanent member with veto power"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand UK global role brilliantly! 🌍",
+    "medium_score": "Good work! Review Commonwealth and UN! 📚",
+    "low_score": "International institutions take time. Keep studying! 💪"
+  }
+}

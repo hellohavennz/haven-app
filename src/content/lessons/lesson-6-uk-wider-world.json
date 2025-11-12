@@ -30,18 +30,20 @@
     }
   ],
   "key_facts": [
-    "The Commonwealth links 56 independent countries that cooperate on democracy and development, with the UK monarch as Head of the Commonwealth.",
-    "Commonwealth Day is marked on the second Monday in March and the Commonwealth Games take place every four years.",
-    "The UK helped found the United Nations in 1945 and is one of five permanent members of the Security Council.",
-    "UK armed forces, diplomats and aid workers contribute to UN peacekeeping and humanitarian work through the FCDO.",
-    "NATO, formed in 1949, commits members to collective defence under Article 5 of the Washington Treaty.",
-    "The Council of Europe promotes human rights and democracy; the UK helped draft the European Convention on Human Rights in 1950.",
-    "Convention rights are enforceable in UK courts through the Human Rights Act 1998.",
-    "The UK belongs to the World Trade Organization, G7 and G20 and works for fair, rules-based international trade.",
-    "The UK left the European Union on 31 January 2020 but continues to cooperate with European partners.",
-    "The BBC World Service and British Council share British news, culture and education around the world."
+    "The UK plays an active role in global affairs through diplomacy, trade, development, and defence.",
+    "It is a permanent member of the United Nations Security Council, helping decide issues of peace and security since 1945.",
+    "The UK belongs to NATO, founded in 1949 to provide collective defence for member countries.",
+    "The Commonwealth links more than 50 independent nations, with the British monarch serving as Head of the Commonwealth.",
+    "The Commonwealth Charter promotes democracy, human rights, equality, and sustainable development among its members.",
+    "The UK is part of the World Trade Organization and the G7, working for fair global trade and economic cooperation.",
+    "British diplomacy promotes democratic governance, the rule of law, and international stability with allies worldwide.",
+    "The armed forces contribute to peacekeeping, humanitarian relief, and collective security missions.",
+    "The Foreign, Commonwealth and Development Office manages diplomacy and international development work.",
+    "The UK provides aid to countries facing poverty, disaster, or conflict, supporting global development goals.",
+    "The British Council encourages cultural exchange, education, and English language learning across the world.",
+    "Strong economic and cultural ties allow the UK to project influence while championing cooperation and peace."
   ],
-  "memory_hook": "Imagine the UK at the hub of a wheel: spokes to the Commonwealth, UN, NATO, Council of Europe, WTO and cultural links keep the country connected, secure and sharing its values worldwide.",
+  "memory_hook": "Picture the UK as a hub with many spokes—UN, NATO, Commonwealth, aid, and culture all connecting the nation to the wider world.",
   "questions": [
     {
       "prompt": "How many countries are in the Commonwealth?",

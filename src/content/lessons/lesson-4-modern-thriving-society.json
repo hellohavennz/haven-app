@@ -42,17 +42,19 @@
     }
   ],
   "key_facts": [
-    "The UK is made up of England, Scotland, Wales and Northern Ireland with capitals London, Edinburgh, Cardiff and Belfast.",
-    "Around 67 million people live in the UK, mostly in towns and cities with thriving rural communities too.",
-    "English is the main language, while Welsh, Scottish Gaelic, Irish and Scots are also officially protected.",
-    "The 2021 Census showed about 46% of people identifying as Christian and 37% with no religion, reflecting diversity protected by law.",
-    "Education is compulsory from ages 5 to 18, with funded early years places for three- and four-year-olds.",
-    "The NHS, founded in 1948, provides healthcare free at the point of use across the UK.",
-    "The Equality Act 2010 protects characteristics such as age, disability, race, religion, sex and sexual orientation from discrimination.",
-    "National museums including the British Museum, National Gallery and Tate Modern offer free entry to share culture widely.",
-    "National events like Remembrance Sunday and Trooping the Colour celebrate shared history and service."
+    "The UK is a modern, diverse society that balances long traditions with social and technological progress.",
+    "Around 67 million people live across England, Scotland, Wales, and Northern Ireland, each with its own identity.",
+    "English is the main language, with Welsh, Scottish Gaelic, and Irish Gaelic recognised in their regions.",
+    "The Union Flag and the national anthem ‘God Save the King’ symbolise unity under a constitutional monarchy and parliamentary democracy.",
+    "Freedom of speech, tolerance, equality, and the rule of law are core social values protected in public life.",
+    "The welfare state and the NHS, founded in 1948, provide support and free healthcare funded through taxation.",
+    "Education is compulsory from ages 5 to 18, and universities such as Oxford, Cambridge, and Edinburgh are internationally respected.",
+    "The UK economy ranks among the world’s largest, driven by services, finance, manufacturing, and technology.",
+    "London is a global financial centre, while cities like Birmingham, Manchester, Glasgow, and Cardiff power business and innovation.",
+    "Museums, theatres, and galleries reflect the country’s artistic heritage and contemporary creativity, supported by public institutions such as the BBC.",
+    "British society continues to adapt to changes in technology, communication, and sustainability while remaining open and democratic."
   ],
-  "memory_hook": "Picture the UK as a woven scarf: four coloured stripes for the nations, stitched with schools, the NHS and free museums that keep 67 million people warm together.",
+  "memory_hook": "See Britain as a living mosaic—four nations, shared rights, the NHS, schools, and culture fitting together to form a modern, thriving society.",
   "questions": [
     {
       "prompt": "According to the study guide, approximately how many people live in the UK?",

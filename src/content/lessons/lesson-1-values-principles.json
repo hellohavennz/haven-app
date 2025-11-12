@@ -30,69 +30,437 @@
     }
   ],
   "key_facts": [
-    "The five British values are democracy, the rule of law, individual liberty, mutual respect, and tolerance of different faiths and beliefs.",
-    "Democracy relies on free and fair elections in which voters choose who governs the UK.",
-    "The rule of law makes everyone, including public bodies, accountable to the same laws.",
-    "Individual liberty protects personal choices, balanced by duties not to harm others.",
-    "Mutual respect and tolerance require people to accept different beliefs; discrimination and hate crime are illegal.",
-    "Residents are expected to obey the law, pay taxes, care for their families, and take part in civic life.",
-    "Schools, councils, police and courts must uphold and promote these shared values."
+    "The United Kingdom is built on shared values that guide its laws, society, and democratic institutions.",
+    "These values apply to everyone in the UK, whatever their background, religion, or ethnicity.",
+    "The five fundamental values are democracy, the rule of law, individual liberty, mutual respect, and tolerance of different faiths and beliefs.",
+    "Democracy gives citizens the right to vote in free and fair elections to choose their representatives.",
+    "The rule of law ensures that everyone, including those in authority, must obey the law.",
+    "Individual liberty protects people’s choices about how they live, believe, and express themselves within the law.",
+    "Mutual respect means recognising the rights of others even when their views or lifestyles differ.",
+    "Tolerance requires accepting the presence of different cultures, faiths, and viewpoints within society.",
+    "These values are embedded in Parliament, the legal system, education, and community life across the UK.",
+    "Newcomers are expected to respect and uphold these principles as part of joining British society.",
+    "The Life in the UK test and citizenship ceremonies reinforce the importance of these shared values.",
+    "Following these values supports a peaceful, fair, and cohesive United Kingdom."
   ],
-  "memory_hook": "Imagine a compass with five steady points—each British value keeps society heading in a fair, respectful direction.",
+  "memory_hook": "Picture five pillars holding up a hall: democracy, rule of law, liberty, respect, and tolerance keep the UK steady.",
   "questions": [
-    {"prompt": "What does democracy mean in the UK?", "options": ["Judges choose who can vote", "The King approves every law", "The people elect representatives to make decisions", "Only the Prime Minister votes"], "correct_index": 2, "explanation": "Democracy means citizens choose who governs them through elections."},
-    {"prompt": "What can citizens do if they disagree with how the government runs the country?", "options": ["Vote for a different candidate in the next election", "Refuse to follow the law", "Leave the country", "Ask the police to intervene"], "correct_index": 0, "explanation": "In a democracy, people can change their government through elections."},
-    {"prompt": "Why are regular elections important in the UK?", "options": ["To ensure government stays accountable to the people", "To replace judges", "To increase taxes", "To elect the King"], "correct_index": 0, "explanation": "Regular elections keep leaders responsible to the public."},
-    {"prompt": "Which level of democracy manages local services like libraries and roads?", "options": ["Devolved governments", "Local councils", "The UK Parliament", "The courts"], "correct_index": 1, "explanation": "Local councils run everyday community services."},
-    {"prompt": "What does a secret ballot guarantee?", "options": ["Voters can choose freely and privately", "Everyone votes in public", "Parties count their own votes", "The government sees how you vote"], "correct_index": 0, "explanation": "Secret ballots protect voter privacy and independence."},
-    {"prompt": "What does 'the rule of law' mean?", "options": ["The law applies to everyone equally", "The police create the laws", "Only MPs follow the law", "Judges can ignore the law"], "correct_index": 0, "explanation": "No one is above the law."},
-    {"prompt": "Who makes laws in the UK?", "options": ["Parliament", "The police", "The King", "The Prime Minister alone"], "correct_index": 0, "explanation": "Parliament debates and passes laws for the UK."},
-    {"prompt": "Who enforces the law?", "options": ["The courts and the police", "The Royal Family", "The media", "Political parties"], "correct_index": 0, "explanation": "The police enforce laws; the courts apply them."},
-    {"prompt": "What does 'equality before the law' mean?", "options": ["Everyone is treated the same by the legal system", "Wealthy people get extra rights", "Citizens can choose which laws to follow", "Judges make laws for each group"], "correct_index": 0, "explanation": "All people are subject to the same laws."},
-    {"prompt": "What is the presumption of innocence?", "options": ["Everyone is innocent until proven guilty", "Everyone is guilty until proven innocent", "The police decide guilt", "Only judges are innocent"], "correct_index": 0, "explanation": "People cannot be punished unless proven guilty."},
-    {"prompt": "Why is the rule of law essential for democracy?", "options": ["It ensures fair elections and protects rights", "It lets politicians break laws", "It removes courts' power", "It limits freedom"], "correct_index": 0, "explanation": "Democracy depends on fair, predictable laws."},
-    {"prompt": "What is individual liberty?", "options": ["Freedom to make choices within the law", "Freedom to ignore laws", "Freedom only for citizens", "Freedom given by employers"], "correct_index": 0, "explanation": "Liberty is the right to live freely while respecting others."},
-    {"prompt": "Which freedom protects people's right to express opinions?", "options": ["Freedom of speech", "Freedom of belief", "Freedom of work", "Freedom of movement"], "correct_index": 0, "explanation": "People can share opinions openly without fear."},
-    {"prompt": "Which freedom allows people to meet and form groups?", "options": ["Freedom of assembly", "Freedom of religion", "Freedom from taxes", "Freedom to work abroad"], "correct_index": 0, "explanation": "People can gather peacefully under this right."},
-    {"prompt": "What limits individual liberty in the UK?", "options": ["The need to respect others' rights and safety", "Age", "Income", "Education"], "correct_index": 0, "explanation": "Freedom ends where it harms others' rights or safety."},
-    {"prompt": "Who protects individual liberty in the UK?", "options": ["Parliament, the courts, and public institutions", "The media", "The police alone", "Charities"], "correct_index": 0, "explanation": "Liberty is protected through democratic and legal systems."},
-    {"prompt": "What is mutual respect?", "options": ["Treating others politely and fairly, even when you disagree", "Always agreeing with others", "Staying silent in discussions", "Avoiding new cultures"], "correct_index": 0, "explanation": "Respect means recognising others' equal worth."},
-    {"prompt": "Why is mutual respect important in the UK?", "options": ["It helps people from different backgrounds live peacefully", "It limits speech", "It prevents voting", "It supports one religion"], "correct_index": 0, "explanation": "Respect builds harmony in diverse communities."},
-    {"prompt": "What is the first step in showing respect?", "options": ["Listening to others' views", "Arguing loudly", "Ignoring people", "Agreeing with everyone"], "correct_index": 0, "explanation": "Listening shows value for others' opinions."},
-    {"prompt": "How can communities encourage mutual respect?", "options": ["Through education and teamwork", "By separating groups", "Through censorship", "By avoiding differences"], "correct_index": 0, "explanation": "Shared learning fosters respect."},
-    {"prompt": "What is tolerance?", "options": ["Accepting that others may have different beliefs or lifestyles", "Agreeing with all religions", "Ignoring cultural diversity", "Avoiding discussions"], "correct_index": 0, "explanation": "Tolerance means allowing diversity within the law."},
-    {"prompt": "What is illegal under UK law?", "options": ["Discrimination or hate speech based on religion or belief", "Practising religion", "Changing faith", "Celebrating holidays"], "correct_index": 0, "explanation": "The Equality Act protects people from religious discrimination."},
-    {"prompt": "What freedom does tolerance support?", "options": ["Freedom of religion and belief", "Freedom to travel", "Freedom from taxes", "Freedom to own property"], "correct_index": 0, "explanation": "People can follow any faith or none."},
-    {"prompt": "What is the limit of free speech in the UK?", "options": ["It cannot promote hatred or violence", "It cannot criticise the government", "It must follow one religion", "It cannot discuss politics"], "correct_index": 0, "explanation": "Speech that incites hatred or harm is not protected."},
-    {"prompt": "How must schools and employers support tolerance?", "options": ["By making reasonable adjustments for different faiths", "By avoiding religion", "By favouring one faith", "By ignoring diversity"], "correct_index": 0, "explanation": "Institutions must accommodate different beliefs fairly."},
-    {"prompt": "What does 'living the values' mean?", "options": ["Turning fairness and respect into everyday action", "Talking about values without practising them", "Obeying only some laws", "Following rules blindly"], "correct_index": 0, "explanation": "Living the values means practising them in daily life."},
-    {"prompt": "How can citizens live these values?", "options": ["By obeying the law, voting, and helping others", "By avoiding community life", "By ignoring local issues", "By refusing to participate"], "correct_index": 0, "explanation": "Active citizenship puts values into practice."},
-    {"prompt": "How do schools reflect British values?", "options": ["By teaching fairness, participation, and respect", "By avoiding debates", "By enforcing one viewpoint", "By skipping civic topics"], "correct_index": 0, "explanation": "Schools help students practise democracy and respect."},
-    {"prompt": "How do police and courts live these values?", "options": ["By applying the law equally to everyone", "By choosing which laws to enforce", "By working only for officials", "By ignoring minor laws"], "correct_index": 0, "explanation": "Equal enforcement upholds justice and fairness."},
-    {"prompt": "What do these shared values help create?", "options": ["A fair, safe, and democratic society", "A divided and unfair country", "A single-faith state", "A society without freedom"], "correct_index": 0, "explanation": "Shared values unite people and protect freedom."}
+    {
+      "prompt": "What does democracy mean in the UK?",
+      "options": [
+        "Judges choose who can vote",
+        "The King approves every law",
+        "The people elect representatives to make decisions",
+        "Only the Prime Minister votes"
+      ],
+      "correct_index": 2,
+      "explanation": "Democracy means citizens choose who governs them through elections."
+    },
+    {
+      "prompt": "What can citizens do if they disagree with how the government runs the country?",
+      "options": [
+        "Vote for a different candidate in the next election",
+        "Refuse to follow the law",
+        "Leave the country",
+        "Ask the police to intervene"
+      ],
+      "correct_index": 0,
+      "explanation": "In a democracy, people can change their government through elections."
+    },
+    {
+      "prompt": "Why are regular elections important in the UK?",
+      "options": [
+        "To ensure government stays accountable to the people",
+        "To replace judges",
+        "To increase taxes",
+        "To elect the King"
+      ],
+      "correct_index": 0,
+      "explanation": "Regular elections keep leaders responsible to the public."
+    },
+    {
+      "prompt": "Which level of democracy manages local services like libraries and roads?",
+      "options": [
+        "Devolved governments",
+        "Local councils",
+        "The UK Parliament",
+        "The courts"
+      ],
+      "correct_index": 1,
+      "explanation": "Local councils run everyday community services."
+    },
+    {
+      "prompt": "What does a secret ballot guarantee?",
+      "options": [
+        "Voters can choose freely and privately",
+        "Everyone votes in public",
+        "Parties count their own votes",
+        "The government sees how you vote"
+      ],
+      "correct_index": 0,
+      "explanation": "Secret ballots protect voter privacy and independence."
+    },
+    {
+      "prompt": "What does 'the rule of law' mean?",
+      "options": [
+        "The law applies to everyone equally",
+        "The police create the laws",
+        "Only MPs follow the law",
+        "Judges can ignore the law"
+      ],
+      "correct_index": 0,
+      "explanation": "No one is above the law."
+    },
+    {
+      "prompt": "Who makes laws in the UK?",
+      "options": [
+        "Parliament",
+        "The police",
+        "The King",
+        "The Prime Minister alone"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament debates and passes laws for the UK."
+    },
+    {
+      "prompt": "Who enforces the law?",
+      "options": [
+        "The courts and the police",
+        "The Royal Family",
+        "The media",
+        "Political parties"
+      ],
+      "correct_index": 0,
+      "explanation": "The police enforce laws; the courts apply them."
+    },
+    {
+      "prompt": "What does 'equality before the law' mean?",
+      "options": [
+        "Everyone is treated the same by the legal system",
+        "Wealthy people get extra rights",
+        "Citizens can choose which laws to follow",
+        "Judges make laws for each group"
+      ],
+      "correct_index": 0,
+      "explanation": "All people are subject to the same laws."
+    },
+    {
+      "prompt": "What is the presumption of innocence?",
+      "options": [
+        "Everyone is innocent until proven guilty",
+        "Everyone is guilty until proven innocent",
+        "The police decide guilt",
+        "Only judges are innocent"
+      ],
+      "correct_index": 0,
+      "explanation": "People cannot be punished unless proven guilty."
+    },
+    {
+      "prompt": "Why is the rule of law essential for democracy?",
+      "options": [
+        "It ensures fair elections and protects rights",
+        "It lets politicians break laws",
+        "It removes courts' power",
+        "It limits freedom"
+      ],
+      "correct_index": 0,
+      "explanation": "Democracy depends on fair, predictable laws."
+    },
+    {
+      "prompt": "What is individual liberty?",
+      "options": [
+        "Freedom to make choices within the law",
+        "Freedom to ignore laws",
+        "Freedom only for citizens",
+        "Freedom given by employers"
+      ],
+      "correct_index": 0,
+      "explanation": "Liberty is the right to live freely while respecting others."
+    },
+    {
+      "prompt": "Which freedom protects people's right to express opinions?",
+      "options": [
+        "Freedom of speech",
+        "Freedom of belief",
+        "Freedom of work",
+        "Freedom of movement"
+      ],
+      "correct_index": 0,
+      "explanation": "People can share opinions openly without fear."
+    },
+    {
+      "prompt": "Which freedom allows people to meet and form groups?",
+      "options": [
+        "Freedom of assembly",
+        "Freedom of religion",
+        "Freedom from taxes",
+        "Freedom to work abroad"
+      ],
+      "correct_index": 0,
+      "explanation": "People can gather peacefully under this right."
+    },
+    {
+      "prompt": "What limits individual liberty in the UK?",
+      "options": [
+        "The need to respect others' rights and safety",
+        "Age",
+        "Income",
+        "Education"
+      ],
+      "correct_index": 0,
+      "explanation": "Freedom ends where it harms others' rights or safety."
+    },
+    {
+      "prompt": "Who protects individual liberty in the UK?",
+      "options": [
+        "Parliament, the courts, and public institutions",
+        "The media",
+        "The police alone",
+        "Charities"
+      ],
+      "correct_index": 0,
+      "explanation": "Liberty is protected through democratic and legal systems."
+    },
+    {
+      "prompt": "What is mutual respect?",
+      "options": [
+        "Treating others politely and fairly, even when you disagree",
+        "Always agreeing with others",
+        "Staying silent in discussions",
+        "Avoiding new cultures"
+      ],
+      "correct_index": 0,
+      "explanation": "Respect means recognising others' equal worth."
+    },
+    {
+      "prompt": "Why is mutual respect important in the UK?",
+      "options": [
+        "It helps people from different backgrounds live peacefully",
+        "It limits speech",
+        "It prevents voting",
+        "It supports one religion"
+      ],
+      "correct_index": 0,
+      "explanation": "Respect builds harmony in diverse communities."
+    },
+    {
+      "prompt": "What is the first step in showing respect?",
+      "options": [
+        "Listening to others' views",
+        "Arguing loudly",
+        "Ignoring people",
+        "Agreeing with everyone"
+      ],
+      "correct_index": 0,
+      "explanation": "Listening shows value for others' opinions."
+    },
+    {
+      "prompt": "How can communities encourage mutual respect?",
+      "options": [
+        "Through education and teamwork",
+        "By separating groups",
+        "Through censorship",
+        "By avoiding differences"
+      ],
+      "correct_index": 0,
+      "explanation": "Shared learning fosters respect."
+    },
+    {
+      "prompt": "What is tolerance?",
+      "options": [
+        "Accepting that others may have different beliefs or lifestyles",
+        "Agreeing with all religions",
+        "Ignoring cultural diversity",
+        "Avoiding discussions"
+      ],
+      "correct_index": 0,
+      "explanation": "Tolerance means allowing diversity within the law."
+    },
+    {
+      "prompt": "What is illegal under UK law?",
+      "options": [
+        "Discrimination or hate speech based on religion or belief",
+        "Practising religion",
+        "Changing faith",
+        "Celebrating holidays"
+      ],
+      "correct_index": 0,
+      "explanation": "The Equality Act protects people from religious discrimination."
+    },
+    {
+      "prompt": "What freedom does tolerance support?",
+      "options": [
+        "Freedom of religion and belief",
+        "Freedom to travel",
+        "Freedom from taxes",
+        "Freedom to own property"
+      ],
+      "correct_index": 0,
+      "explanation": "People can follow any faith or none."
+    },
+    {
+      "prompt": "What is the limit of free speech in the UK?",
+      "options": [
+        "It cannot promote hatred or violence",
+        "It cannot criticise the government",
+        "It must follow one religion",
+        "It cannot discuss politics"
+      ],
+      "correct_index": 0,
+      "explanation": "Speech that incites hatred or harm is not protected."
+    },
+    {
+      "prompt": "How must schools and employers support tolerance?",
+      "options": [
+        "By making reasonable adjustments for different faiths",
+        "By avoiding religion",
+        "By favouring one faith",
+        "By ignoring diversity"
+      ],
+      "correct_index": 0,
+      "explanation": "Institutions must accommodate different beliefs fairly."
+    },
+    {
+      "prompt": "What does 'living the values' mean?",
+      "options": [
+        "Turning fairness and respect into everyday action",
+        "Talking about values without practising them",
+        "Obeying only some laws",
+        "Following rules blindly"
+      ],
+      "correct_index": 0,
+      "explanation": "Living the values means practising them in daily life."
+    },
+    {
+      "prompt": "How can citizens live these values?",
+      "options": [
+        "By obeying the law, voting, and helping others",
+        "By avoiding community life",
+        "By ignoring local issues",
+        "By refusing to participate"
+      ],
+      "correct_index": 0,
+      "explanation": "Active citizenship puts values into practice."
+    },
+    {
+      "prompt": "How do schools reflect British values?",
+      "options": [
+        "By teaching fairness, participation, and respect",
+        "By avoiding debates",
+        "By enforcing one viewpoint",
+        "By skipping civic topics"
+      ],
+      "correct_index": 0,
+      "explanation": "Schools help students practise democracy and respect."
+    },
+    {
+      "prompt": "How do police and courts live these values?",
+      "options": [
+        "By applying the law equally to everyone",
+        "By choosing which laws to enforce",
+        "By working only for officials",
+        "By ignoring minor laws"
+      ],
+      "correct_index": 0,
+      "explanation": "Equal enforcement upholds justice and fairness."
+    },
+    {
+      "prompt": "What do these shared values help create?",
+      "options": [
+        "A fair, safe, and democratic society",
+        "A divided and unfair country",
+        "A single-faith state",
+        "A society without freedom"
+      ],
+      "correct_index": 0,
+      "explanation": "Shared values unite people and protect freedom."
+    }
   ],
   "flashcards": [
-    ["What type of society is the United Kingdom?", "A democratic society"],
-    ["What does democracy in the UK mean?", "Government chosen by voters"],
-    ["Which principle keeps everyone subject to the law?", "The rule of law"],
-    ["Who must obey UK law?", "Everyone including authorities"],
-    ["What value protects free speech?", "Freedom of expression"],
-    ["Which right covers faith or no faith?", "Freedom of religion"],
-    ["What value supports personal choice?", "Individual liberty"],
-    ["Which value promotes respect between communities?", "Mutual respect"],
-    ["What does tolerance of beliefs encourage?", "Peaceful coexistence"],
-    ["Which Act protects equality rights?", "Equality Act 2010"],
-    ["Which Act safeguards fundamental freedoms?", "Human Rights Act 1998"],
-    ["What charter first limited royal power?", "Magna Carta"],
-    ["When was the Magna Carta sealed?", "1215"],
-    ["What system describes the UK's monarchy?", "Constitutional monarchy"],
-    ["Who is the Head of State in the UK?", "The Monarch"],
-    ["Who leads the UK government?", "The Prime Minister"],
-    ["Who makes national laws?", "Parliament"],
-    ["Who enforces UK laws?", "Courts and police"],
-    ["What value ensures fair treatment?", "Equality"],
-    ["What balances rights with duties?", "Personal responsibility"],
-    ["What are the five British values?", "Democracy, rule of law, liberty, mutual respect, tolerance"]
+    [
+      "What type of society is the United Kingdom?",
+      "A democratic society"
+    ],
+    [
+      "What does democracy in the UK mean?",
+      "Government chosen by voters"
+    ],
+    [
+      "Which principle keeps everyone subject to the law?",
+      "The rule of law"
+    ],
+    [
+      "Who must obey UK law?",
+      "Everyone including authorities"
+    ],
+    [
+      "What value protects free speech?",
+      "Freedom of expression"
+    ],
+    [
+      "Which right covers faith or no faith?",
+      "Freedom of religion"
+    ],
+    [
+      "What value supports personal choice?",
+      "Individual liberty"
+    ],
+    [
+      "Which value promotes respect between communities?",
+      "Mutual respect"
+    ],
+    [
+      "What does tolerance of beliefs encourage?",
+      "Peaceful coexistence"
+    ],
+    [
+      "Which Act protects equality rights?",
+      "Equality Act 2010"
+    ],
+    [
+      "Which Act safeguards fundamental freedoms?",
+      "Human Rights Act 1998"
+    ],
+    [
+      "What charter first limited royal power?",
+      "Magna Carta"
+    ],
+    [
+      "When was the Magna Carta sealed?",
+      "1215"
+    ],
+    [
+      "What system describes the UK's monarchy?",
+      "Constitutional monarchy"
+    ],
+    [
+      "Who is the Head of State in the UK?",
+      "The Monarch"
+    ],
+    [
+      "Who leads the UK government?",
+      "The Prime Minister"
+    ],
+    [
+      "Who makes national laws?",
+      "Parliament"
+    ],
+    [
+      "Who enforces UK laws?",
+      "Courts and police"
+    ],
+    [
+      "What value ensures fair treatment?",
+      "Equality"
+    ],
+    [
+      "What balances rights with duties?",
+      "Personal responsibility"
+    ],
+    [
+      "What are the five British values?",
+      "Democracy, rule of law, liberty, mutual respect, tolerance"
+    ]
   ],
   "supportive_messages": {
     "high_score": "Excellent! You understand British values brilliantly! 🌟",

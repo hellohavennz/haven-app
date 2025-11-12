@@ -1,1 +1,229 @@
-{"id":"lesson-17-arts-culture","title":"Arts and Culture","module_slug":"society-culture-traditions","overview":"The arts have shaped British identity for over a thousand years. Writers, painters, composers, and filmmakers from the United Kingdom have influenced cultures worldwide. Britain's creative industries remain among the most respected in the world. Public museums, libraries, and galleries make art available to everyone.","study_sections":[{"heading":"Literature and Theatre","content":"Famous writers include William Shakespeare, Jane Austen, Charles Dickens, and J. K. Rowling. British theatre thrives from London's West End to local community stages. Shakespeare is Britain's most famous playwright."},{"heading":"Music and Film","content":"Classical music was shaped by Henry Purcell, George Frideric Handel, Edward Elgar, and Gustav Holst. The Beatles led the British Invasion in the 1960s. The UK film industry is world-renowned, with studios like Pinewood producing James Bond films."},{"heading":"Visual Arts","content":"Modern artists include Henry Moore, Barbara Hepworth, David Hockney, and Banksy (anonymous street artist from Bristol). Arts Council England funds creative projects."},{"heading":"Architecture and Heritage","content":"Gothic architecture features pointed arches and stained glass. Modern landmarks include the Shard and London Eye. The National Trust preserves historic places. Britain hosts the Edinburgh Festival Fringe, the world's largest arts festival."}],"key_facts":["William Shakespeare\u2019s plays such as Hamlet and Macbeth have shaped English theatre worldwide.","Novelists including Jane Austen, Charles Dickens, the Bront\u00eb sisters and Thomas Hardy explored British society in their works.","Poets like Robert Burns, Dylan Thomas and Seamus Heaney represent voices from across the UK and Ireland.","Composers Henry Purcell, George Frideric Handel, Edward Elgar, Gustav Holst and Benjamin Britten helped define British music.","The Proms and other major concerts celebrate classical music each summer.","Modern music icons from The Beatles and David Bowie to Adele and Stormzy continue Britain\u2019s influence.","British cinema is supported by the British Film Institute and studios such as Pinewood, home of the James Bond films.","Artists including J. M. W. Turner, John Constable, Henry Moore, Barbara Hepworth and David Hockney shaped visual art.","Architecture ranges from Gothic cathedrals and Georgian terraces to modern landmarks like the Shard and the Scottish Parliament building.","Arts Councils and National Lottery funding support cultural projects and widen access across the UK."],"memory_hook":"Imagine the UK\u2019s culture as a festival tent: Shakespeare writes the script, musicians fill the air, painters colour the walls, filmmakers run the screens, and Arts Council funding keeps the lights glowing.","questions":[{"prompt":"Who wrote Romeo and Juliet?","options":["Dickens","Shakespeare","Austen","Orwell"],"correct_index":1},{"prompt":"Who created Pride and Prejudice?","options":["Jane Austen","Virginia Woolf","Charlotte Bronte","Mary Shelley"],"correct_index":0},{"prompt":"London's theatre district?","options":["Broadway","West End","Piccadilly","South Bank"],"correct_index":1},{"prompt":"Who wrote Harry Potter?","options":["Tolkien","J.K. Rowling","Lewis","Pullman"],"correct_index":1},{"prompt":"Who composed The Planets?","options":["Elgar","Gustav Holst","Purcell","Handel"],"correct_index":1},{"prompt":"Which band led British Invasion?","options":["The Beatles","Rolling Stones","The Who","The Kinks"],"correct_index":0},{"prompt":"Studio producing Bond films?","options":["Pinewood","Universal","Paramount","Elstree"],"correct_index":0},{"prompt":"Famous British sculptor?","options":["Henry Moore","Monet","Warhol","Picasso"],"correct_index":0},{"prompt":"Anonymous Bristol street artist?","options":["Banksy","Hockney","Turner","Constable"],"correct_index":0},{"prompt":"World's largest arts festival city?","options":["London","Edinburgh","Belfast","Cardiff"],"correct_index":1}],"flashcards":[["Who wrote Romeo and Juliet?","William Shakespeare"],["Who wrote Pride and Prejudice?","Jane Austen"],["What is London's main theatre district?","The West End"],["Who wrote the Harry Potter series?","J. K. Rowling"],["Who composed The Planets?","Gustav Holst"],["Which composer became a British citizen?","George Frideric Handel"],["Who composed Land of Hope and Glory?","Edward Elgar"],["What is a major UK music festival?","Glastonbury"],["Which band led the British Invasion?","The Beatles"],["Which studio makes James Bond films?","Pinewood Studios"],["Who is a leading British sculptor?","Henry Moore"],["Which artist is known for Yorkshire landscapes?","David Hockney"],["Which Bristol street artist is anonymous?","Banksy"],["Which body funds the arts in England?","Arts Council England"],["Which city hosts the Fringe Festival?","Edinburgh"],["Which architecture features pointed arches?","Gothic style"],["Which London building has a glass pyramid top?","The Shard"],["Which landmark is the giant Ferris wheel on the Thames?","The London Eye"],["Which charity protects historic UK places?","The National Trust"],["What phrase sums up British creativity?","Art for everyone"]],"supportive_messages":{"high_score":"Excellent! You know British arts brilliantly! \ud83c\udfad","medium_score":"Good work! Review writers, composers, and artists! \ud83d\udcda","low_score":"Arts take time to learn. Keep studying! \ud83d\udcaa"}}
+{
+  "id": "lesson-17-arts-culture",
+  "title": "Arts and Culture",
+  "module_slug": "society-culture-traditions",
+  "overview": "The arts have shaped British identity for over a thousand years. Writers, painters, composers, and filmmakers from the United Kingdom have influenced cultures worldwide. Britain's creative industries remain among the most respected in the world. Public museums, libraries, and galleries make art available to everyone.",
+  "study_sections": [
+    {
+      "heading": "Literature and Theatre",
+      "content": "Famous writers include William Shakespeare, Jane Austen, Charles Dickens, and J. K. Rowling. British theatre thrives from London's West End to local community stages. Shakespeare is Britain's most famous playwright."
+    },
+    {
+      "heading": "Music and Film",
+      "content": "Classical music was shaped by Henry Purcell, George Frideric Handel, Edward Elgar, and Gustav Holst. The Beatles led the British Invasion in the 1960s. The UK film industry is world-renowned, with studios like Pinewood producing James Bond films."
+    },
+    {
+      "heading": "Visual Arts",
+      "content": "Modern artists include Henry Moore, Barbara Hepworth, David Hockney, and Banksy (anonymous street artist from Bristol). Arts Council England funds creative projects."
+    },
+    {
+      "heading": "Architecture and Heritage",
+      "content": "Gothic architecture features pointed arches and stained glass. Modern landmarks include the Shard and London Eye. The National Trust preserves historic places. Britain hosts the Edinburgh Festival Fringe, the world's largest arts festival."
+    }
+  ],
+  "key_facts": [
+    "The UK has a long, influential artistic heritage across literature, music, architecture, visual art, and theatre.",
+    "Literary history ranges from Beowulf and Geoffrey Chaucer to contemporary authors such as J.K. Rowling.",
+    "William Shakespeare’s plays and sonnets from the Renaissance remain globally celebrated.",
+    "Writers including John Milton, Jane Austen, Charles Dickens, Thomas Hardy, George Eliot, and Virginia Woolf shaped English literature.",
+    "Theatre traditions run from the Globe Theatre to today’s National Theatre and Royal Shakespeare Company.",
+    "Architecture spans ancient sites like Stonehenge, medieval cathedrals, and modern designs by Norman Foster and Zaha Hadid.",
+    "Artists such as J.M.W. Turner, John Constable, Henry Moore, Lucian Freud, and David Hockney advanced visual art.",
+    "Museums and galleries like the British Museum, National Gallery, Tate Modern, and Victoria and Albert Museum preserve art and history.",
+    "Music contributions include composers Henry Purcell, George Frideric Handel, Edward Elgar, Gustav Holst, and Benjamin Britten.",
+    "20th-century popular music from The Beatles, The Rolling Stones, Queen, Elton John, and David Bowie influenced global culture.",
+    "Film and television thrive at studios such as Pinewood and Shepperton with series like James Bond and Harry Potter.",
+    "The BBC has promoted cultural awareness since 1922, while designers like Vivienne Westwood, Alexander McQueen, and Stella McCartney lead global fashion.",
+    "Arts Councils support creativity, and festivals including Edinburgh, Glastonbury, The Proms, and Hay celebrate culture."
+  ],
+  "memory_hook": "Picture British culture as a symphony—Shakespeare’s words, Turner’s colours, and Beatles melodies layering movements that still play around the world.",
+  "questions": [
+    {
+      "prompt": "Who wrote Romeo and Juliet?",
+      "options": [
+        "Dickens",
+        "Shakespeare",
+        "Austen",
+        "Orwell"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who created Pride and Prejudice?",
+      "options": [
+        "Jane Austen",
+        "Virginia Woolf",
+        "Charlotte Bronte",
+        "Mary Shelley"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "London's theatre district?",
+      "options": [
+        "Broadway",
+        "West End",
+        "Piccadilly",
+        "South Bank"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who wrote Harry Potter?",
+      "options": [
+        "Tolkien",
+        "J.K. Rowling",
+        "Lewis",
+        "Pullman"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who composed The Planets?",
+      "options": [
+        "Elgar",
+        "Gustav Holst",
+        "Purcell",
+        "Handel"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Which band led British Invasion?",
+      "options": [
+        "The Beatles",
+        "Rolling Stones",
+        "The Who",
+        "The Kinks"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Studio producing Bond films?",
+      "options": [
+        "Pinewood",
+        "Universal",
+        "Paramount",
+        "Elstree"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Famous British sculptor?",
+      "options": [
+        "Henry Moore",
+        "Monet",
+        "Warhol",
+        "Picasso"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Anonymous Bristol street artist?",
+      "options": [
+        "Banksy",
+        "Hockney",
+        "Turner",
+        "Constable"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "World's largest arts festival city?",
+      "options": [
+        "London",
+        "Edinburgh",
+        "Belfast",
+        "Cardiff"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "flashcards": [
+    [
+      "Who wrote Romeo and Juliet?",
+      "William Shakespeare"
+    ],
+    [
+      "Who wrote Pride and Prejudice?",
+      "Jane Austen"
+    ],
+    [
+      "What is London's main theatre district?",
+      "The West End"
+    ],
+    [
+      "Who wrote the Harry Potter series?",
+      "J. K. Rowling"
+    ],
+    [
+      "Who composed The Planets?",
+      "Gustav Holst"
+    ],
+    [
+      "Which composer became a British citizen?",
+      "George Frideric Handel"
+    ],
+    [
+      "Who composed Land of Hope and Glory?",
+      "Edward Elgar"
+    ],
+    [
+      "What is a major UK music festival?",
+      "Glastonbury"
+    ],
+    [
+      "Which band led the British Invasion?",
+      "The Beatles"
+    ],
+    [
+      "Which studio makes James Bond films?",
+      "Pinewood Studios"
+    ],
+    [
+      "Who is a leading British sculptor?",
+      "Henry Moore"
+    ],
+    [
+      "Which artist is known for Yorkshire landscapes?",
+      "David Hockney"
+    ],
+    [
+      "Which Bristol street artist is anonymous?",
+      "Banksy"
+    ],
+    [
+      "Which body funds the arts in England?",
+      "Arts Council England"
+    ],
+    [
+      "Which city hosts the Fringe Festival?",
+      "Edinburgh"
+    ],
+    [
+      "Which architecture features pointed arches?",
+      "Gothic style"
+    ],
+    [
+      "Which London building has a glass pyramid top?",
+      "The Shard"
+    ],
+    [
+      "Which landmark is the giant Ferris wheel on the Thames?",
+      "The London Eye"
+    ],
+    [
+      "Which charity protects historic UK places?",
+      "The National Trust"
+    ],
+    [
+      "What phrase sums up British creativity?",
+      "Art for everyone"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know British arts brilliantly! 🎭",
+    "medium_score": "Good work! Review writers, composers, and artists! 📚",
+    "low_score": "Arts take time to learn. Keep studying! 💪"
+  }
+}

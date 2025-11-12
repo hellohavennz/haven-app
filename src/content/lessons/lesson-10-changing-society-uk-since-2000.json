@@ -26,18 +26,24 @@
     }
   ],
   "key_facts": [
-    "Devolution has expanded, with extra powers for the Scottish Parliament and Senedd Cymru granted in the 2000s and 2010s.",
-    "The 1998 Belfast (Good Friday) Agreement continues to underpin power-sharing in Northern Ireland, with institutions restored in 2007 and again in 2020.",
-    "The 2008 global financial crisis triggered recession and subsequent austerity policies in the UK.",
-    "London hosted the Olympic and Paralympic Games in 2012, showcasing the UK’s diversity and volunteers.",
-    "The Equality Act 2010 brought previous anti-discrimination laws together and strengthened protections.",
-    "Scotland voted to remain in the UK in the 2014 independence referendum (55% to 45%).",
-    "The UK voted to leave the European Union in the 2016 referendum and formally left on 31 January 2020.",
-    "The COVID-19 pandemic from 2020 led to nationwide public health measures, furlough schemes and rapid expansion of remote working.",
-    "In 2019 the UK set a legal target to achieve net-zero greenhouse gas emissions by 2050, expanding renewable energy and green investment.",
-    "The Foreign and Commonwealth Office merged with the Department for International Development in 2020 to form the FCDO."
+    "Since 2000 the UK has navigated major political, social, and technological change.",
+    "Labour governments under Tony Blair and Gordon Brown pursued social reform, education investment, and economic modernisation.",
+    "Devolution strengthened the Scottish Parliament, Welsh Parliament, and Northern Ireland Assembly.",
+    "The Good Friday Agreement continued to underpin peace and cooperation in Northern Ireland.",
+    "The 9/11 attacks led to UK involvement in Afghanistan (2001) and Iraq (2003) alongside the United States.",
+    "The 2005 London bombings highlighted security challenges and the need for community cohesion.",
+    "The 2008 global financial crisis caused recession, austerity measures, and debates about social inequality.",
+    "The Conservative–Liberal Democrat coalition government (2010–2015) introduced spending cuts and welfare reforms to reduce the deficit.",
+    "Digital technology, the internet, and smartphones transformed work, politics, and daily life.",
+    "Migration and global links made British society increasingly diverse and multicultural.",
+    "London hosted the 2012 Olympic Games, showcasing creativity, inclusion, and national confidence.",
+    "Scotland voted to remain in the UK during the 2014 independence referendum, though debates continue.",
+    "The 2016 Brexit referendum led to departure from the EU in January 2020.",
+    "The COVID-19 pandemic (2020–2021) brought lockdowns, economic support schemes, and a mass vaccination programme.",
+    "In the 2020s the UK adapts to post-Brexit realities, climate commitments, and digital transformation, with King Charles III succeeding Queen Elizabeth II in 2022.",
+    "Throughout these changes the UK remains committed to democratic values, individual rights, and international cooperation."
   ],
-  "memory_hook": "Imagine the 21st-century UK as a constantly updating app: devolution upgrades, Equality Act security patches, Olympic highlights, Brexit reboot and a net-zero roadmap guiding every new release.",
+  "memory_hook": "Imagine Britain since 2000 as a suspension bridge—devolution towers, Brexit crosswinds, digital cables, and pandemic gusts keeping the nation balancing tradition and change.",
   "questions": [
     {
       "prompt": "Which law protects people from discrimination in modern Britain?",

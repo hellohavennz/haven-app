@@ -30,18 +30,22 @@
     }
   ],
   "key_facts": [
-    "The rule of law means everyone, including government, must obey the law and face an independent court system.",
-    "Police services protect the public, prevent crime and are overseen by Police and Crime Commissioners in England and Wales.",
-    "Most criminal cases begin in Magistrates’ Courts (or Sheriff Courts in Scotland); serious cases go to the Crown Court or High Court of Justiciary.",
-    "The UK Supreme Court, created in 2009, is the final court of appeal for civil cases across the UK and for criminal cases in England, Wales and Northern Ireland.",
-    "Juries of 12 citizens decide guilt in most Crown Court trials in England, Wales and Northern Ireland; Scotland uses juries of 15.",
-    "The Crown Prosecution Service, Crown Office and Procurator Fiscal Service, and Public Prosecution Service decide whether cases should proceed to court.",
-    "The Human Rights Act 1998 and Equality Act 2010 protect individual freedoms and prohibit discrimination.",
-    "People must obey the law, pay taxes, serve on juries when called and respect the rights of others.",
-    "Citizens can seek legal advice from solicitors or organisations such as Citizens Advice; legal aid helps those who cannot afford representation.",
-    "Communities are encouraged to report extremism or terrorism concerns to keep the UK safe."
+    "UK governance separates power between the executive, legislature, and judiciary.",
+    "The executive, led by the Prime Minister and Cabinet, runs public services and applies the law.",
+    "Parliament forms the legislature, debating and making laws through the House of Commons and House of Lords.",
+    "The judiciary interprets and enforces the law independently from government influence.",
+    "The rule of law ensures that everyone, including the government, is subject to the law.",
+    "UK law is divided into criminal law, dealing with offences against society, and civil law, resolving disputes between people or organisations.",
+    "Police services protect life and property, prevent crime, and must act within legal powers.",
+    "The Crown Prosecution Service brings criminal cases to court in England and Wales, with equivalent bodies elsewhere in the UK.",
+    "Courts guarantee fair trials and uphold the presumption of innocence until guilt is proven.",
+    "Serious criminal cases use juries, while magistrates’ courts handle minor offences and the Supreme Court sits at the top since 2009.",
+    "Solicitors and barristers represent people to ensure justice is properly served.",
+    "The Human Rights Act 1998 incorporates European Convention rights, protecting freedoms such as speech, religion, and fair trial.",
+    "People living in the UK must obey the law, respect others, serve on juries when called, pay taxes, and take part in democracy when eligible.",
+    "An informed public and free media help keep legal and political systems accountable."
   ],
-  "memory_hook": "Picture justice as a shield: police hold the front, courts and juries reinforce the centre, rights laws line the inside, and citizens grip the handle by obeying the law and speaking up.",
+  "memory_hook": "Imagine justice as balanced scales—state power on one side, personal rights on the other, kept level by courts, police, and informed citizens.",
   "questions": [
     {
       "prompt": "What does the rule of law mean?",

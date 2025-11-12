@@ -1,1 +1,232 @@
-{"id":"lesson-20-places-of-interest","title":"Places of Interest","module_slug":"society-culture-traditions","overview":"The United Kingdom is rich in historic landmarks and cultural sites that reflect centuries of change. From prehistoric monuments like Stonehenge to royal palaces and national parks, these places attract millions of visitors every year. They remind people of the nation's shared story and remain central to both British identity and tourism today.","study_sections":[{"heading":"Historic Sites","content":"Stonehenge (Wiltshire) dates from around 3000 BC. Hadrian's Wall marks the northern frontier of Roman Britain. The Tower of London was built by William the Conqueror in the 11th century. Windsor Castle is the oldest occupied royal castle in the world. Palace of Westminster houses UK Parliament."},{"heading":"Natural Landscapes","content":"Lake District National Park inspired poet William Wordsworth. Ben Nevis is the UK's highest mountain in Scotland. Giant's Causeway in Northern Ireland is formed from volcanic rock. Snowdonia (Eryri) attracts mountain walkers."},{"heading":"Cultural Sites","content":"Edinburgh Castle dominates Scotland's capital. Stratford-upon-Avon is Shakespeare's birthplace. Bath is known for Roman baths and Georgian architecture. Cambridge and Oxford are world-famous university cities. Caernarfon Castle is a Welsh UNESCO World Heritage Site."},{"heading":"Museums and Attractions","content":"British Museum houses the Rosetta Stone. Tate Modern displays modern art. National Gallery shows Turner and Constable paintings. Belfast Titanic Museum tells the ship's story. National Trust protects heritage buildings across the UK. The UK has 32 UNESCO World Heritage Sites."}],"key_facts":["Stonehenge in Wiltshire dates from around 3000\u20132000 BC and is a UNESCO World Heritage Site.","Hadrian\u2019s Wall, begun in AD 122, marked the northern frontier of Roman Britain across northern England.","The Tower of London, founded by William the Conqueror, has served as fortress, palace and treasury.","Windsor Castle is the oldest continuously occupied royal residence in the world.","The Palace of Westminster houses the UK Parliament; its clock tower is officially called the Elizabeth Tower.","Edinburgh Castle dominates Scotland\u2019s capital and hosts the annual Royal Edinburgh Military Tattoo.","The Giant\u2019s Causeway in County Antrim features volcanic basalt columns and is a UNESCO World Heritage Site.","Caernarfon Castle in Wales formed part of King Edward I\u2019s Iron Ring and hosted the 1969 investiture of the Prince of Wales.","The city of Bath combines Roman baths with Georgian architecture and is a World Heritage Site.","The Lake District National Park inspired poets such as William Wordsworth and became a World Heritage Site in 2017.","Modern attractions include the London Eye (opened 2000) and Titanic Belfast museum.","The National Trust, Historic England and Historic Environment Scotland care for many historic sites."],"memory_hook":"Imagine a sightseeing train: prehistoric Stonehenge, Roman walls, Norman towers, Welsh castles, Scottish fortresses, Georgian baths, the Giant\u2019s Causeway and the London Eye\u2014all stops on Britain\u2019s story told in stone.","questions":[{"prompt":"Where is Stonehenge?","options":["Scotland","Wales","Wiltshire, England","Northern Ireland"],"correct_index":2},{"prompt":"Roman frontier wall?","options":["Offa's Dyke","Hadrian's Wall","Great Wall","Watling Street"],"correct_index":1},{"prompt":"Who built Tower of London?","options":["Henry VIII","William the Conqueror","Elizabeth I","Charles II"],"correct_index":1},{"prompt":"Oldest occupied royal castle?","options":["Edinburgh","Windsor","Cardiff","Conwy"],"correct_index":1},{"prompt":"National park inspiring Wordsworth?","options":["Snowdonia","Lake District","Peak District","Dartmoor"],"correct_index":1},{"prompt":"UK's highest mountain?","options":["Snowdon","Scafell Pike","Ben Nevis","Slieve Donard"],"correct_index":2},{"prompt":"Where is Giant's Causeway?","options":["Scotland","Northern Ireland","Wales","Cornwall"],"correct_index":1},{"prompt":"Welsh UNESCO castle?","options":["Cardiff","Caernarfon","Windsor","Edinburgh"],"correct_index":1},{"prompt":"City with Roman baths?","options":["York","Bath","Canterbury","Liverpool"],"correct_index":1},{"prompt":"Museum with Rosetta Stone?","options":["National Gallery","British Museum","Tate Modern","Science Museum"],"correct_index":1}],"flashcards":[["Where is Stonehenge located?","Wiltshire in England"],["What was the Roman frontier wall in Britain?","Hadrian's Wall"],["Who built the Tower of London?","William the Conqueror"],["What is the oldest occupied royal castle?","Windsor Castle"],["Where does the UK Parliament meet?","The Palace of Westminster"],["Which park inspired Wordsworth's poetry?","The Lake District"],["What is the UK's highest mountain?","Ben Nevis"],["Where is the Giant's Causeway?","Northern Ireland"],["Which Welsh castle is a UNESCO site?","Caernarfon Castle"],["Which city is famous for Roman baths?","Bath"],["Which museum houses the Rosetta Stone?","The British Museum"],["Which London gallery shows modern art?","Tate Modern"],["Which gallery displays Turner and Constable?","The National Gallery"],["Which city hosts the Titanic Belfast museum?","Belfast"],["Which charity protects historic sites?","The National Trust"],["Which two famous university cities are in England?","Oxford and Cambridge"],["Where was William Shakespeare born?","Stratford-upon-Avon"],["Which castle dominates Edinburgh's skyline?","Edinburgh Castle"],["Which London landmark opened in 2000?","The London Eye"],["Which sector includes tourism?","The service sector"]],"supportive_messages":{"high_score":"Excellent! You know UK landmarks brilliantly! \ud83c\udff0","medium_score":"Good work! Review historic sites! \ud83d\udcda","low_score":"Places take time to learn. Keep studying! \ud83d\udcaa"}}
+{
+  "id": "lesson-20-places-of-interest",
+  "title": "Places of Interest",
+  "module_slug": "society-culture-traditions",
+  "overview": "The United Kingdom is rich in historic landmarks and cultural sites that reflect centuries of change. From prehistoric monuments like Stonehenge to royal palaces and national parks, these places attract millions of visitors every year. They remind people of the nation's shared story and remain central to both British identity and tourism today.",
+  "study_sections": [
+    {
+      "heading": "Historic Sites",
+      "content": "Stonehenge (Wiltshire) dates from around 3000 BC. Hadrian's Wall marks the northern frontier of Roman Britain. The Tower of London was built by William the Conqueror in the 11th century. Windsor Castle is the oldest occupied royal castle in the world. Palace of Westminster houses UK Parliament."
+    },
+    {
+      "heading": "Natural Landscapes",
+      "content": "Lake District National Park inspired poet William Wordsworth. Ben Nevis is the UK's highest mountain in Scotland. Giant's Causeway in Northern Ireland is formed from volcanic rock. Snowdonia (Eryri) attracts mountain walkers."
+    },
+    {
+      "heading": "Cultural Sites",
+      "content": "Edinburgh Castle dominates Scotland's capital. Stratford-upon-Avon is Shakespeare's birthplace. Bath is known for Roman baths and Georgian architecture. Cambridge and Oxford are world-famous university cities. Caernarfon Castle is a Welsh UNESCO World Heritage Site."
+    },
+    {
+      "heading": "Museums and Attractions",
+      "content": "British Museum houses the Rosetta Stone. Tate Modern displays modern art. National Gallery shows Turner and Constable paintings. Belfast Titanic Museum tells the ship's story. National Trust protects heritage buildings across the UK. The UK has 32 UNESCO World Heritage Sites."
+    }
+  ],
+  "key_facts": [
+    "The UK is rich in historic, cultural, and natural sites that tell its national story.",
+    "In London, landmarks include the Houses of Parliament and Big Ben, symbols of democracy.",
+    "Buckingham Palace serves as the monarch’s official residence.",
+    "The Tower of London is a World Heritage Site that has been a royal fortress and prison.",
+    "St Paul’s Cathedral, designed by Sir Christopher Wren, reflects the city’s resilience after the Great Fire of 1666.",
+    "The British Museum holds artefacts from global civilisations such as the Rosetta Stone and Elgin Marbles.",
+    "Edinburgh Castle and the Royal Mile showcase Scottish heritage.",
+    "Cardiff Castle and the Millennium Centre combine Welsh history with modern culture.",
+    "The Giant’s Causeway in Northern Ireland features basalt columns and is a UNESCO World Heritage Site.",
+    "Stonehenge and Hadrian’s Wall highlight prehistoric and Roman history.",
+    "Canterbury Cathedral and York Minster are major centres of Christian worship and architecture.",
+    "Bath is known for its Roman baths and Georgian architecture, while Stratford-upon-Avon marks Shakespeare’s birthplace.",
+    "Oxford and Cambridge are famed for historic universities and scholarship.",
+    "National parks such as the Lake District, Peak District, Snowdonia, Cairngorms, and Mourne Mountains protect natural landscapes.",
+    "Organisations like the National Trust and Historic England preserve historic buildings, gardens, and countryside.",
+    "Tourism brings millions of visitors each year, reflecting national pride in a blend of ancient and modern landmarks."
+  ],
+  "memory_hook": "Imagine exploring a living history book—each UK landmark, from Parliament to Stonehenge, opens a new chapter in the nation’s story.",
+  "questions": [
+    {
+      "prompt": "Where is Stonehenge?",
+      "options": [
+        "Scotland",
+        "Wales",
+        "Wiltshire, England",
+        "Northern Ireland"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "Roman frontier wall?",
+      "options": [
+        "Offa's Dyke",
+        "Hadrian's Wall",
+        "Great Wall",
+        "Watling Street"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Who built Tower of London?",
+      "options": [
+        "Henry VIII",
+        "William the Conqueror",
+        "Elizabeth I",
+        "Charles II"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Oldest occupied royal castle?",
+      "options": [
+        "Edinburgh",
+        "Windsor",
+        "Cardiff",
+        "Conwy"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "National park inspiring Wordsworth?",
+      "options": [
+        "Snowdonia",
+        "Lake District",
+        "Peak District",
+        "Dartmoor"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "UK's highest mountain?",
+      "options": [
+        "Snowdon",
+        "Scafell Pike",
+        "Ben Nevis",
+        "Slieve Donard"
+      ],
+      "correct_index": 2
+    },
+    {
+      "prompt": "Where is Giant's Causeway?",
+      "options": [
+        "Scotland",
+        "Northern Ireland",
+        "Wales",
+        "Cornwall"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Welsh UNESCO castle?",
+      "options": [
+        "Cardiff",
+        "Caernarfon",
+        "Windsor",
+        "Edinburgh"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "City with Roman baths?",
+      "options": [
+        "York",
+        "Bath",
+        "Canterbury",
+        "Liverpool"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Museum with Rosetta Stone?",
+      "options": [
+        "National Gallery",
+        "British Museum",
+        "Tate Modern",
+        "Science Museum"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "flashcards": [
+    [
+      "Where is Stonehenge located?",
+      "Wiltshire in England"
+    ],
+    [
+      "What was the Roman frontier wall in Britain?",
+      "Hadrian's Wall"
+    ],
+    [
+      "Who built the Tower of London?",
+      "William the Conqueror"
+    ],
+    [
+      "What is the oldest occupied royal castle?",
+      "Windsor Castle"
+    ],
+    [
+      "Where does the UK Parliament meet?",
+      "The Palace of Westminster"
+    ],
+    [
+      "Which park inspired Wordsworth's poetry?",
+      "The Lake District"
+    ],
+    [
+      "What is the UK's highest mountain?",
+      "Ben Nevis"
+    ],
+    [
+      "Where is the Giant's Causeway?",
+      "Northern Ireland"
+    ],
+    [
+      "Which Welsh castle is a UNESCO site?",
+      "Caernarfon Castle"
+    ],
+    [
+      "Which city is famous for Roman baths?",
+      "Bath"
+    ],
+    [
+      "Which museum houses the Rosetta Stone?",
+      "The British Museum"
+    ],
+    [
+      "Which London gallery shows modern art?",
+      "Tate Modern"
+    ],
+    [
+      "Which gallery displays Turner and Constable?",
+      "The National Gallery"
+    ],
+    [
+      "Which city hosts the Titanic Belfast museum?",
+      "Belfast"
+    ],
+    [
+      "Which charity protects historic sites?",
+      "The National Trust"
+    ],
+    [
+      "Which two famous university cities are in England?",
+      "Oxford and Cambridge"
+    ],
+    [
+      "Where was William Shakespeare born?",
+      "Stratford-upon-Avon"
+    ],
+    [
+      "Which castle dominates Edinburgh's skyline?",
+      "Edinburgh Castle"
+    ],
+    [
+      "Which London landmark opened in 2000?",
+      "The London Eye"
+    ],
+    [
+      "Which sector includes tourism?",
+      "The service sector"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know UK landmarks brilliantly! 🏰",
+    "medium_score": "Good work! Review historic sites! 📚",
+    "low_score": "Places take time to learn. Keep studying! 💪"
+  }
+}

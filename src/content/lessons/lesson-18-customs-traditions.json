@@ -1,1 +1,231 @@
-{"id":"lesson-18-customs-traditions","title":"Customs and Traditions","module_slug":"society-culture-traditions","overview":"British customs and traditions blend history with everyday life. From royal ceremonies to local festivals, these shared experiences strengthen national identity. Public holidays, seasonal festivals, and family customs give people a sense of continuity, belonging, and pride.","study_sections":[{"heading":"National Events","content":"Trooping the Colour celebrates monarch's official birthday. Bonfire Night (5 Nov) marks Gunpowder Plot 1605. Remembrance Day (11 Nov) honours war dead with red poppies. May Day celebrates spring with fairs and dancing."},{"heading":"Religious Festivals","content":"Christmas Day (25 Dec) celebrates Christ's birth. Easter Sunday marks resurrection. New Year's Eve (31 Dec) celebrated with fireworks. Hogmanay is Scotland's New Year celebration."},{"heading":"Patron Saints' Days","content":"St George's Day (England) - 23 April. St Andrew's Day (Scotland) - 30 November. St David's Day (Wales) - 1 March. St Patrick's Day (Northern Ireland) - 17 March."},{"heading":"Local Traditions","content":"Highland Games in Scotland feature tug-of-war and caber tossing. Traditional foods include roast dinner (Sunday lunch) and fish and chips. Tea is iconic British drink. Boxing Day (26 Dec) follows Christmas. Public holidays called bank holidays."}],"key_facts":["Bank holidays are public holidays in the UK, including Christmas Day (25 December) and Boxing Day (26 December).","Easter takes place in spring and celebrates the resurrection of Jesus with services, family meals and egg traditions.","Bonfire Night on 5 November marks the failure of the 1605 Gunpowder Plot with fireworks and bonfires.","Remembrance Sunday in November honours those who died in war, symbolised by red poppies.","Patron saint days\u2014St David (1 March), St Patrick (17 March), St George (23 April) and St Andrew (30 November)\u2014celebrate each nation of the UK.","Hogmanay and Burns Night (25 January) are important Scottish celebrations; Highland Games showcase Scottish sport and music.","Notting Hill Carnival celebrates Caribbean culture; other major festivals include Diwali, Eid, Hanukkah, Vaisakhi and Chinese New Year.","Traditional foods such as the Sunday roast, fish and chips and afternoon tea remain popular.","Trooping the Colour marks the monarch\u2019s official birthday with a parade in June.","Village f\u00eates, agricultural shows and summer festivals bring communities together across the UK."],"memory_hook":"Picture the UK year as a circular calendar: fireworks in November, winter feasts, spring saint days, summer f\u00eates and carnival colours\u2014traditions old and new woven through every season.","questions":[{"prompt":"Monarch's birthday celebration?","options":["Parliament Opening","Trooping Colour","Remembrance Day","May Day"],"correct_index":1},{"prompt":"5 November commemorates?","options":["Bonfire Night","St George's Day","May Day","Remembrance"],"correct_index":0},{"prompt":"When is Remembrance Day?","options":["25 Dec","11 Nov","31 Oct","23 Apr"],"correct_index":1},{"prompt":"Remembrance Day flower?","options":["Rose","Poppy","Daffodil","Thistle"],"correct_index":1},{"prompt":"Christmas Day date?","options":["24 Dec","25 Dec","26 Dec","31 Dec"],"correct_index":1},{"prompt":"Scotland's New Year?","options":["Burns Night","Hogmanay","Beltane","St Andrew's"],"correct_index":1},{"prompt":"England's patron saint day?","options":["23 April","1 March","17 March","30 November"],"correct_index":0},{"prompt":"Scotland's national day?","options":["30 Nov","1 Mar","17 Mar","23 Apr"],"correct_index":0},{"prompt":"Wales patron saint day?","options":["1 March","17 March","30 Nov","5 Nov"],"correct_index":0},{"prompt":"Traditional Sunday meal?","options":["Fish and chips","Roast dinner","Full breakfast","Tea sandwiches"],"correct_index":1}],"flashcards":[["What are UK public holidays called?","Bank holidays"],["When is Christmas Day celebrated?","25 December"],["When is Easter celebrated?","In spring"],["When is Bonfire Night?","5 November"],["Which flower symbolises Remembrance Day?","The red poppy"],["When is Remembrance Day marked?","11 November"],["What event celebrates the monarch's birthday?","Trooping the Colour"],["When is St George's Day?","23 April"],["When is St Andrew's Day?","30 November"],["When is St David's Day?","1 March"],["When is St Patrick's Day?","17 March"],["What spring festival marks the start of summer?","May Day"],["What is the Scottish New Year called?","Hogmanay"],["Which event showcases Scottish games?","The Highland Games"],["What is a popular Sunday meal?","A roast dinner"],["What is a classic British fast food?","Fish and chips"],["What drink is iconic in Britain?","Tea"],["What is the day after Christmas called?","Boxing Day"],["What is the world's largest arts festival?","The Edinburgh Fringe"],["What phrase sums up British traditions?","Celebrating heritage together"]],"supportive_messages":{"high_score":"Excellent! You know British traditions brilliantly! \ud83c\udf8a","medium_score":"Good work! Review festivals and celebrations! \ud83d\udcda","low_score":"Traditions take time. Keep studying! \ud83d\udcaa"}}
+{
+  "id": "lesson-18-customs-traditions",
+  "title": "Customs and Traditions",
+  "module_slug": "society-culture-traditions",
+  "overview": "British customs and traditions blend history with everyday life. From royal ceremonies to local festivals, these shared experiences strengthen national identity. Public holidays, seasonal festivals, and family customs give people a sense of continuity, belonging, and pride.",
+  "study_sections": [
+    {
+      "heading": "National Events",
+      "content": "Trooping the Colour celebrates monarch's official birthday. Bonfire Night (5 Nov) marks Gunpowder Plot 1605. Remembrance Day (11 Nov) honours war dead with red poppies. May Day celebrates spring with fairs and dancing."
+    },
+    {
+      "heading": "Religious Festivals",
+      "content": "Christmas Day (25 Dec) celebrates Christ's birth. Easter Sunday marks resurrection. New Year's Eve (31 Dec) celebrated with fireworks. Hogmanay is Scotland's New Year celebration."
+    },
+    {
+      "heading": "Patron Saints' Days",
+      "content": "St George's Day (England) - 23 April. St Andrew's Day (Scotland) - 30 November. St David's Day (Wales) - 1 March. St Patrick's Day (Northern Ireland) - 17 March."
+    },
+    {
+      "heading": "Local Traditions",
+      "content": "Highland Games in Scotland feature tug-of-war and caber tossing. Traditional foods include roast dinner (Sunday lunch) and fish and chips. Tea is iconic British drink. Boxing Day (26 Dec) follows Christmas. Public holidays called bank holidays."
+    }
+  ],
+  "key_facts": [
+    "UK customs reflect its long history and diverse influences.",
+    "Bank holidays, created by the Bank Holidays Act 1871, mark national public holidays.",
+    "New Year’s Day, Easter, Christmas Day, and Boxing Day are celebrated across the country.",
+    "Easter commemorates the resurrection of Jesus with church services and traditions such as Easter eggs.",
+    "Christmas marks the birth of Jesus and is observed by religious and non-religious people with services, family gatherings, gifts, and festive meals.",
+    "The King’s Official Birthday is celebrated with the Trooping the Colour parade in London.",
+    "Remembrance Day on 11 November honours those who died in military service with two minutes’ silence and red poppies.",
+    "Each nation has a patron saint’s day: St George’s Day on 23 April, St Andrew’s Day on 30 November, St David’s Day on 1 March, and St Patrick’s Day on 17 March.",
+    "Events such as the Notting Hill Carnival and Burns Night celebrate Caribbean heritage and Scottish culture.",
+    "The Edinburgh Festival in August is one of the world’s largest arts festivals.",
+    "Guy Fawkes Night on 5 November marks the failed 1605 Gunpowder Plot with bonfires and fireworks.",
+    "Harvest Festival thanks communities for crops in churches and schools.",
+    "Regional customs include Morris dancing in England, Eisteddfod festivals in Wales, and Highland Games in Scotland.",
+    "Royal ceremonies like the Changing of the Guard, State Opening of Parliament, coronations, and royal weddings draw national attention.",
+    "British traditions continue to evolve within a modern multicultural society."
+  ],
+  "memory_hook": "Imagine the UK’s year as a calendar quilt—Trooping colours, poppies, carnivals, bonfires, and saint days stitching history to modern life.",
+  "questions": [
+    {
+      "prompt": "Monarch's birthday celebration?",
+      "options": [
+        "Parliament Opening",
+        "Trooping Colour",
+        "Remembrance Day",
+        "May Day"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "5 November commemorates?",
+      "options": [
+        "Bonfire Night",
+        "St George's Day",
+        "May Day",
+        "Remembrance"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "When is Remembrance Day?",
+      "options": [
+        "25 Dec",
+        "11 Nov",
+        "31 Oct",
+        "23 Apr"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Remembrance Day flower?",
+      "options": [
+        "Rose",
+        "Poppy",
+        "Daffodil",
+        "Thistle"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Christmas Day date?",
+      "options": [
+        "24 Dec",
+        "25 Dec",
+        "26 Dec",
+        "31 Dec"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "Scotland's New Year?",
+      "options": [
+        "Burns Night",
+        "Hogmanay",
+        "Beltane",
+        "St Andrew's"
+      ],
+      "correct_index": 1
+    },
+    {
+      "prompt": "England's patron saint day?",
+      "options": [
+        "23 April",
+        "1 March",
+        "17 March",
+        "30 November"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Scotland's national day?",
+      "options": [
+        "30 Nov",
+        "1 Mar",
+        "17 Mar",
+        "23 Apr"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Wales patron saint day?",
+      "options": [
+        "1 March",
+        "17 March",
+        "30 Nov",
+        "5 Nov"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Traditional Sunday meal?",
+      "options": [
+        "Fish and chips",
+        "Roast dinner",
+        "Full breakfast",
+        "Tea sandwiches"
+      ],
+      "correct_index": 1
+    }
+  ],
+  "flashcards": [
+    [
+      "What are UK public holidays called?",
+      "Bank holidays"
+    ],
+    [
+      "When is Christmas Day celebrated?",
+      "25 December"
+    ],
+    [
+      "When is Easter celebrated?",
+      "In spring"
+    ],
+    [
+      "When is Bonfire Night?",
+      "5 November"
+    ],
+    [
+      "Which flower symbolises Remembrance Day?",
+      "The red poppy"
+    ],
+    [
+      "When is Remembrance Day marked?",
+      "11 November"
+    ],
+    [
+      "What event celebrates the monarch's birthday?",
+      "Trooping the Colour"
+    ],
+    [
+      "When is St George's Day?",
+      "23 April"
+    ],
+    [
+      "When is St Andrew's Day?",
+      "30 November"
+    ],
+    [
+      "When is St David's Day?",
+      "1 March"
+    ],
+    [
+      "When is St Patrick's Day?",
+      "17 March"
+    ],
+    [
+      "What spring festival marks the start of summer?",
+      "May Day"
+    ],
+    [
+      "What is the Scottish New Year called?",
+      "Hogmanay"
+    ],
+    [
+      "Which event showcases Scottish games?",
+      "The Highland Games"
+    ],
+    [
+      "What is a popular Sunday meal?",
+      "A roast dinner"
+    ],
+    [
+      "What is a classic British fast food?",
+      "Fish and chips"
+    ],
+    [
+      "What drink is iconic in Britain?",
+      "Tea"
+    ],
+    [
+      "What is the day after Christmas called?",
+      "Boxing Day"
+    ],
+    [
+      "What is the world's largest arts festival?",
+      "The Edinburgh Fringe"
+    ],
+    [
+      "What phrase sums up British traditions?",
+      "Celebrating heritage together"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know British traditions brilliantly! 🎊",
+    "medium_score": "Good work! Review festivals and celebrations! 📚",
+    "low_score": "Traditions take time. Keep studying! 💪"
+  }
+}

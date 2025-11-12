@@ -1,1 +1,328 @@
-{"id":"lesson-31-role-in-community","title":"Your Role in the Community","module_slug":"government-law-role-detailed","overview":"Citizenship in the UK means more than enjoying rights\u2014it means taking an active role in your community. Good citizens respect the law, help their neighbours, and take part in decisions that affect local life. From volunteering to jury service, every action strengthens democracy and makes the UK a fairer, safer place to live.","study_sections":[{"heading":"Being a Good Citizen","content":"Being good citizen means: obeying law, respecting others, helping community. Shared responsibilities include: caring for family and neighbours, helping protect environment, paying taxes honestly, voting in elections, reporting crimes and suspicious activity. Community involvement improves local life and builds understanding between people."},{"heading":"Ways to Contribute","content":"Ways to contribute: Volunteering in schools, hospitals, charities, environmental projects. Jury service\u2014ordinary citizens decide guilt in criminal cases. Becoming school governor, councillor, or magistrate. Supporting local events, youth clubs, neighbourhood groups. Public servants (teachers, police, nurses, firefighters) serve public with honesty and fairness."},{"heading":"Community Support","content":"Charities and community organisations rely on volunteers and donations to support those in need. Blood and organ donation save lives and reflect value of helping others. Respecting diversity and practising tolerance keep communities safe and welcoming. Active citizenship helps democracy work by connecting everyday people with decision-makers."}],"key_facts":["Active citizens obey the law, respect others and help keep their communities safe and welcoming.","People are expected to care for their families, support children\u2019s education and look after elderly or vulnerable relatives.","Paying taxes funds essential services such as schools, the NHS, policing and social care.","Volunteering with charities, youth groups, sports clubs, food banks or environmental projects strengthens local support networks.","Serving as a school governor, councillor, magistrate or juror allows citizens to take part in decision-making and justice.","Reporting crime or antisocial behaviour to the police helps protect the community.","Recycling, conserving energy and caring for public spaces safeguard the environment for future generations.","Donating blood, registering as an organ donor and supporting community health initiatives save lives.","Participating in community meetings, consultations and residents\u2019 associations gives people a voice in local issues.","Respecting diversity and challenging discrimination promote trust and cohesion among neighbours."],"memory_hook":"Think of your community as a shared garden\u2014laws are the fence, taxes the water, volunteering the compost and respect the sunlight. When everyone tends it, the whole neighbourhood blooms.","questions":[{"prompt":"Being good citizen in UK?","options":["Respecting law & helping community","Owning property","Joining political party","Paying no taxes"],"correct_index":0},{"prompt":"Citizen's legal duty?","options":["Obey law and pay taxes","Travel abroad","Run for office","Join church"],"correct_index":0},{"prompt":"What builds strong communities?","options":["Volunteering & mutual respect","Avoiding neighbours","Complaining about taxes","Refusing to vote"],"correct_index":0},{"prompt":"Shared responsibility?","options":["Protecting environment","Owning car","Living abroad","Watching television"],"correct_index":0},{"prompt":"Respect for others means?","options":["Treating people fairly regardless of background","Agreeing with everyone","Avoiding diversity","Following same religion"],"correct_index":0},{"prompt":"Volunteering is?","options":["Giving time to help others without payment","Paid government work","Mandatory service","Tax collection"],"correct_index":0},{"prompt":"Where can citizens volunteer?","options":["Schools, hospitals, charities, community projects","Private banks only","Parliament","Airports"],"correct_index":0},{"prompt":"Jury service is?","options":["Citizens deciding guilt in court cases","Training police","Serving in army","Voting for laws"],"correct_index":0},{"prompt":"Who can be called for jury?","options":["Citizens 18-75 on electoral register","Only lawyers","MPs & judges only","Foreign visitors"],"correct_index":0},{"prompt":"School governors help by?","options":["Supporting & overseeing local education standards","Teaching lessons","Inspecting hospitals","Managing policing"],"correct_index":0},{"prompt":"Public servant is?","options":["Someone working for public honestly & fairly","Private business owner","Political donor","Celebrity"],"correct_index":0},{"prompt":"Support local services how?","options":["Volunteer or take part in consultations","Ignore council meetings","Avoid public projects","Move abroad"],"correct_index":0},{"prompt":"Charities' role in UK?","options":["Help people & communities through donations & volunteers","Run businesses for profit","Collect taxes","Set laws"],"correct_index":0},{"prompt":"Why blood/organ donation important?","options":["Saves lives & supports health care","Earns income","Is mandatory","Replaces volunteering"],"correct_index":0},{"prompt":"Active citizenship means?","options":["Taking part in community & democratic life","Travelling abroad","Avoiding responsibility","Voting only once"],"correct_index":0},{"prompt":"Why helping others important?","options":["Builds trust & unity","Reduces taxes","Replaces government services","Is legal requirement"],"correct_index":0},{"prompt":"Support democracy locally how?","options":["Vote in elections & attend public meetings","Ignore elections","Protest violently","Demand positions"],"correct_index":0},{"prompt":"Benefit of working with others?","options":["Improves shared understanding & reduces conflict","Gives special rights","Avoids debate","Ends local elections"],"correct_index":0},{"prompt":"Connection between law & citizenship?","options":["Citizens must obey law to protect everyone's rights","Citizens write laws personally","Laws apply only to officials","Law & citizenship separate"],"correct_index":0},{"prompt":"Why active citizenship important for UK?","options":["Strengthens democracy & community life","Reduces tax income","Ends voting","Limits education"],"correct_index":0}],"flashcards":[["What does being a good citizen mean?","Respecting the law and helping others"],["What is one legal duty of citizens?","Obey the law and pay taxes"],["What helps to build strong communities?","Volunteering and mutual respect"],["What is one shared responsibility?","Protecting the environment"],["What does respect for others mean?","Treating everyone fairly regardless of background"],["What is volunteering?","Helping others without payment"],["Where can people volunteer?","Schools, hospitals, charities, community projects"],["What is jury service?","Citizens deciding guilt in a trial"],["Who can serve on a jury?","Citizens aged 18-75 on the electoral register"],["What do school governors do?","Oversee local education standards"],["What is a public servant?","Someone who works honestly for the public"],["How can people support local services?","Volunteer or join community consultations"],["What do charities do?","Help people through volunteers and donations"],["Why are blood and organ donations important?","They save lives"],["What is active citizenship?","Taking part in community and democracy"],["Why is helping others important?","Builds trust and unity"],["How can people support democracy locally?","Vote and attend public meetings"],["Why is working with others valuable?","Improves understanding and reduces conflict"],["How is law linked to citizenship?","Obeying the law protects everyone's rights"],["Why is active citizenship important?","Strengthens democracy and community life"]],"supportive_messages":{"high_score":"Excellent! You understand community role brilliantly! \ud83e\udd1d","medium_score":"Good work! Review volunteering and duties! \ud83d\udcda","low_score":"Community role takes time. Keep studying! \ud83d\udcaa"}}
+{
+  "id": "lesson-31-role-in-community",
+  "title": "Your Role in the Community",
+  "module_slug": "government-law-role-detailed",
+  "overview": "Citizenship in the UK means more than enjoying rights—it means taking an active role in your community. Good citizens respect the law, help their neighbours, and take part in decisions that affect local life. From volunteering to jury service, every action strengthens democracy and makes the UK a fairer, safer place to live.",
+  "study_sections": [
+    {
+      "heading": "Being a Good Citizen",
+      "content": "Being good citizen means: obeying law, respecting others, helping community. Shared responsibilities include: caring for family and neighbours, helping protect environment, paying taxes honestly, voting in elections, reporting crimes and suspicious activity. Community involvement improves local life and builds understanding between people."
+    },
+    {
+      "heading": "Ways to Contribute",
+      "content": "Ways to contribute: Volunteering in schools, hospitals, charities, environmental projects. Jury service—ordinary citizens decide guilt in criminal cases. Becoming school governor, councillor, or magistrate. Supporting local events, youth clubs, neighbourhood groups. Public servants (teachers, police, nurses, firefighters) serve public with honesty and fairness."
+    },
+    {
+      "heading": "Community Support",
+      "content": "Charities and community organisations rely on volunteers and donations to support those in need. Blood and organ donation save lives and reflect value of helping others. Respecting diversity and practising tolerance keep communities safe and welcoming. Active citizenship helps democracy work by connecting everyday people with decision-makers."
+    }
+  ],
+  "key_facts": [
+    "Active participation in community life is a key part of citizenship in the UK.",
+    "Citizenship means contributing positively to society while respecting the rights of others.",
+    "People enjoy rights such as freedom of speech, freedom of religion, the right to a fair trial, and protection from discrimination.",
+    "Responsibilities include obeying the law, paying taxes, respecting others’ freedoms, and taking part in democratic processes.",
+    "Voting in local and national elections keeps communities inclusive and representative.",
+    "People can volunteer, serve as school governors, magistrates, or councillors, and join local groups to improve their area.",
+    "Charities like the British Red Cross, Age UK, and the NSPCC support vulnerable people and strengthen communities.",
+    "Faith groups and cultural organisations also build cohesion through social and charitable work.",
+    "Local councils deliver services such as housing, education, transport, and environmental management and invite residents to take part in decisions.",
+    "Devolved governments in Scotland, Wales, and Northern Ireland encourage civic engagement across their nations.",
+    "Public service careers in teaching, nursing, policing, or the armed forces contribute directly to society.",
+    "Volunteering provides experience and networks, with programmes like the National Citizen Service supporting youth participation.",
+    "Charitable giving and fundraising are important parts of civic life.",
+    "The UK values mutual respect, tolerance, and inclusion, encouraging people to challenge discrimination and support equality.",
+    "Education and local initiatives promote understanding between people from different backgrounds.",
+    "Active citizenship strengthens communities, solves local challenges, and puts democratic values into everyday action."
+  ],
+  "memory_hook": "Picture your community as a chain—each person’s volunteering, voting, and respect links together to keep it strong.",
+  "questions": [
+    {
+      "prompt": "Being good citizen in UK?",
+      "options": [
+        "Respecting law & helping community",
+        "Owning property",
+        "Joining political party",
+        "Paying no taxes"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Citizen's legal duty?",
+      "options": [
+        "Obey law and pay taxes",
+        "Travel abroad",
+        "Run for office",
+        "Join church"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "What builds strong communities?",
+      "options": [
+        "Volunteering & mutual respect",
+        "Avoiding neighbours",
+        "Complaining about taxes",
+        "Refusing to vote"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Shared responsibility?",
+      "options": [
+        "Protecting environment",
+        "Owning car",
+        "Living abroad",
+        "Watching television"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Respect for others means?",
+      "options": [
+        "Treating people fairly regardless of background",
+        "Agreeing with everyone",
+        "Avoiding diversity",
+        "Following same religion"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Volunteering is?",
+      "options": [
+        "Giving time to help others without payment",
+        "Paid government work",
+        "Mandatory service",
+        "Tax collection"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Where can citizens volunteer?",
+      "options": [
+        "Schools, hospitals, charities, community projects",
+        "Private banks only",
+        "Parliament",
+        "Airports"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Jury service is?",
+      "options": [
+        "Citizens deciding guilt in court cases",
+        "Training police",
+        "Serving in army",
+        "Voting for laws"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Who can be called for jury?",
+      "options": [
+        "Citizens 18-75 on electoral register",
+        "Only lawyers",
+        "MPs & judges only",
+        "Foreign visitors"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "School governors help by?",
+      "options": [
+        "Supporting & overseeing local education standards",
+        "Teaching lessons",
+        "Inspecting hospitals",
+        "Managing policing"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Public servant is?",
+      "options": [
+        "Someone working for public honestly & fairly",
+        "Private business owner",
+        "Political donor",
+        "Celebrity"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Support local services how?",
+      "options": [
+        "Volunteer or take part in consultations",
+        "Ignore council meetings",
+        "Avoid public projects",
+        "Move abroad"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Charities' role in UK?",
+      "options": [
+        "Help people & communities through donations & volunteers",
+        "Run businesses for profit",
+        "Collect taxes",
+        "Set laws"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Why blood/organ donation important?",
+      "options": [
+        "Saves lives & supports health care",
+        "Earns income",
+        "Is mandatory",
+        "Replaces volunteering"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Active citizenship means?",
+      "options": [
+        "Taking part in community & democratic life",
+        "Travelling abroad",
+        "Avoiding responsibility",
+        "Voting only once"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Why helping others important?",
+      "options": [
+        "Builds trust & unity",
+        "Reduces taxes",
+        "Replaces government services",
+        "Is legal requirement"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Support democracy locally how?",
+      "options": [
+        "Vote in elections & attend public meetings",
+        "Ignore elections",
+        "Protest violently",
+        "Demand positions"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Benefit of working with others?",
+      "options": [
+        "Improves shared understanding & reduces conflict",
+        "Gives special rights",
+        "Avoids debate",
+        "Ends local elections"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Connection between law & citizenship?",
+      "options": [
+        "Citizens must obey law to protect everyone's rights",
+        "Citizens write laws personally",
+        "Laws apply only to officials",
+        "Law & citizenship separate"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Why active citizenship important for UK?",
+      "options": [
+        "Strengthens democracy & community life",
+        "Reduces tax income",
+        "Ends voting",
+        "Limits education"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "flashcards": [
+    [
+      "What does being a good citizen mean?",
+      "Respecting the law and helping others"
+    ],
+    [
+      "What is one legal duty of citizens?",
+      "Obey the law and pay taxes"
+    ],
+    [
+      "What helps to build strong communities?",
+      "Volunteering and mutual respect"
+    ],
+    [
+      "What is one shared responsibility?",
+      "Protecting the environment"
+    ],
+    [
+      "What does respect for others mean?",
+      "Treating everyone fairly regardless of background"
+    ],
+    [
+      "What is volunteering?",
+      "Helping others without payment"
+    ],
+    [
+      "Where can people volunteer?",
+      "Schools, hospitals, charities, community projects"
+    ],
+    [
+      "What is jury service?",
+      "Citizens deciding guilt in a trial"
+    ],
+    [
+      "Who can serve on a jury?",
+      "Citizens aged 18-75 on the electoral register"
+    ],
+    [
+      "What do school governors do?",
+      "Oversee local education standards"
+    ],
+    [
+      "What is a public servant?",
+      "Someone who works honestly for the public"
+    ],
+    [
+      "How can people support local services?",
+      "Volunteer or join community consultations"
+    ],
+    [
+      "What do charities do?",
+      "Help people through volunteers and donations"
+    ],
+    [
+      "Why are blood and organ donations important?",
+      "They save lives"
+    ],
+    [
+      "What is active citizenship?",
+      "Taking part in community and democracy"
+    ],
+    [
+      "Why is helping others important?",
+      "Builds trust and unity"
+    ],
+    [
+      "How can people support democracy locally?",
+      "Vote and attend public meetings"
+    ],
+    [
+      "Why is working with others valuable?",
+      "Improves understanding and reduces conflict"
+    ],
+    [
+      "How is law linked to citizenship?",
+      "Obeying the law protects everyone's rights"
+    ],
+    [
+      "Why is active citizenship important?",
+      "Strengthens democracy and community life"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand community role brilliantly! 🤝",
+    "medium_score": "Good work! Review volunteering and duties! 📚",
+    "low_score": "Community role takes time. Keep studying! 💪"
+  }
+}

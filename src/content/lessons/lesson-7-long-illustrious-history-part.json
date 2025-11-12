@@ -26,20 +26,23 @@
     }
   ],
   "key_facts": [
-    "Henry VII won the Battle of Bosworth in 1485, founding the Tudor dynasty after the Wars of the Roses.",
-    "Henry VIII’s break with Rome in the 1530s created the Church of England with the monarch as its head.",
-    "Elizabeth I’s navy defeated the Spanish Armada in 1588, securing England and encouraging exploration and trade.",
-    "In 1603 James VI of Scotland became James I of England, uniting the crowns; the 1605 Gunpowder Plot failed to blow up Parliament.",
-    "Civil War between Charles I and Parliament began in 1642, leading to the king’s execution in 1649 and Oliver Cromwell’s Commonwealth.",
-    "The monarchy was restored in 1660, and the 1688 Glorious Revolution brought William and Mary to the throne with the 1689 Bill of Rights confirming Parliament’s powers.",
-    "The Acts of Union 1707 created the Kingdom of Great Britain, with MPs from Scotland joining Westminster.",
-    "The 18th and 19th centuries saw the Industrial Revolution, driven by inventors like James Watt, and the growth of the British Empire.",
-    "Admiral Nelson’s victory at Trafalgar (1805) and the Duke of Wellington’s success at Waterloo (1815) ended the Napoleonic threat.",
-    "Reform Acts in the 19th century and the abolition of slavery in 1833 expanded rights and reshaped society.",
-    "The First World War (1914–18) caused heavy losses and led to wider voting rights for women and men.",
-    "The 1921 Anglo-Irish Treaty created the Irish Free State while Northern Ireland remained in the UK."
+    "The 18th century saw Britain expand its trade, empire, and scientific influence around the world.",
+    "The Industrial Revolution from about 1760 transformed manufacturing, transport, and communication.",
+    "Innovations such as the steam engine and spinning jenny drove urban growth in cities like Birmingham, Manchester, and Glasgow.",
+    "The Abolition of the Slave Trade Act 1807 ended Britain’s slave trade, and the Slavery Abolition Act 1833 outlawed slavery in the empire.",
+    "The Victorian era under Queen Victoria (1837–1901) combined imperial expansion, social reform, and technological progress.",
+    "Britain became the world’s leading industrial and naval power during the 19th century.",
+    "Reform Acts in 1832, 1867, and 1884 widened the vote for men and reduced unfair electoral districts.",
+    "The Education Act 1870 introduced compulsory elementary schooling, while Factory Acts improved working conditions.",
+    "Debates over Irish Home Rule dominated late 19th-century politics.",
+    "The First World War (1914–1918) brought heavy losses and reshaped British society.",
+    "The Representation of the People Acts of 1918 and 1928 expanded the vote to most men and women on equal terms.",
+    "Between the wars Britain faced economic difficulties and social unrest.",
+    "The Second World War (1939–1945) saw Winston Churchill’s leadership, the Blitz, and eventual Allied victory.",
+    "Post-war Britain created the welfare state and the NHS in 1948, while the empire evolved into the Commonwealth and decolonisation advanced.",
+    "Later decades saw European cooperation and, eventually, the 2016 vote to leave the EU, showing ongoing constitutional change."
   ],
-  "memory_hook": "Imagine lighting beacons across history: Tudor victory, Armada, Civil War, Glorious Revolution, Union, Industrial Revolution, Trafalgar, Waterloo, reforms and votes for all—each flame shows Britain’s path to modern democracy.",
+  "memory_hook": "Imagine a chain of transformation—industrial engines, reform acts, world wars, and welfare links forging the modern United Kingdom.",
   "questions": [
     {
       "prompt": "What is the name of the prehistoric monument built around 3000 BC in Wiltshire?",
