@@ -26,25 +26,18 @@
     }
   ],
   "key_facts": [
-    "People first lived in Britain about 800,000 years ago.",
-    "Stonehenge was built in the Stone Age.",
-    "Farming began in Britain around 4000 BC.",
-    "The Romans invaded Britain in AD 43 under Emperor Claudius.",
-    "Roman London was called Londinium.",
-    "Hadrian's Wall marked the northern frontier.",
-    "The Romans left Britain in the early 5th century AD.",
-    "Angles, Saxons, and Jutes settled after the Romans left.",
-    "These tribes introduced Old English.",
-    "Vikings raided and settled in northern and eastern England.",
-    "The Battle of Hastings took place in 1066.",
-    "William of Normandy defeated King Harold II.",
-    "The Normans built stone castles and cathedrals.",
-    "The Magna Carta was signed in 1215.",
-    "The Magna Carta limited the king's power.",
-    "The Black Death struck in 1348–50.",
-    "The Black Death reduced the population but gave workers more bargaining power."
+    "Archaeological finds show people living in Britain at least 800,000 years ago.",
+    "Farming arrived around 4000 BC and monuments such as Stonehenge were built about 3000 BC.",
+    "The Romans invaded in AD 43 under Emperor Claudius, founding Londinium and building roads, forts and baths.",
+    "Hadrian's Wall, begun in AD 122, marked the Roman Empire's northern frontier in Britain.",
+    "Roman rule ended in the early 5th century and Anglo-Saxon kingdoms developed, shaping Old English.",
+    "St Augustine arrived from Rome in AD 597 to spread Christianity and establish the church at Canterbury.",
+    "Viking raids from the late 8th century created the Danelaw, while Alfred the Great defended Wessex.",
+    "William of Normandy defeated Harold II at Hastings in 1066 and ordered the Domesday survey in 1086.",
+    "Magna Carta in 1215 limited royal power and affirmed that the king must obey the law.",
+    "The Black Death of 1348–50 killed about a third of the population and transformed labour relations."
   ],
-  "memory_hook": "Think of British history as building blocks: Ancient stones (Stonehenge), Roman roads (infrastructure), Saxon kingdoms (language), Norman castles (power), and Medieval charters (rights). Each period added a layer that shaped modern Britain.",
+  "memory_hook": "Imagine walking through stone arches: prehistoric builders, Roman roads, Saxon halls, Viking ships, Norman castles, Magna Carta and plague bells—each arch marks Britain’s early journey toward law and nationhood.",
   "questions": [
     {
       "prompt": "What is Stonehenge?",
