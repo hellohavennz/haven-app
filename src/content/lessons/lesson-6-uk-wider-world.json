@@ -30,27 +30,18 @@
     }
   ],
   "key_facts": [
-    "The Commonwealth has 56 member countries.",
-    "The Commonwealth Charter was signed in 2013.",
-    "The UK monarch is Head of the Commonwealth.",
-    "The United Nations was founded in 1945.",
-    "The UK is a permanent member of the UN Security Council.",
-    "There are five permanent members of the UN Security Council: China, France, Russia, UK, USA.",
-    "NATO was founded in 1949.",
-    "NATO operates on collective defence—an attack on one is an attack on all.",
-    "The UK joined the EEC (later EU) in 1973.",
-    "The UK left the EU on 31 January 2020 (Brexit).",
-    "The FCDO manages foreign policy and aid.",
-    "The BBC World Service provides international news.",
-    "The British Council promotes British education and culture overseas.",
-    "The UK is part of the UN, NATO, Commonwealth, and WTO.",
-    "The Human Rights Act 1998 includes the European Convention on Human Rights.",
-    "The Council of Europe was created in 1949 to protect human rights.",
-    "The UK contributes to UN peacekeeping missions.",
-    "British universities attract students from around the world.",
-    "UK research influences global innovation in health and technology."
+    "The Commonwealth links 56 independent countries that cooperate on democracy and development, with the UK monarch as Head of the Commonwealth.",
+    "Commonwealth Day is marked on the second Monday in March and the Commonwealth Games take place every four years.",
+    "The UK helped found the United Nations in 1945 and is one of five permanent members of the Security Council.",
+    "UK armed forces, diplomats and aid workers contribute to UN peacekeeping and humanitarian work through the FCDO.",
+    "NATO, formed in 1949, commits members to collective defence under Article 5 of the Washington Treaty.",
+    "The Council of Europe promotes human rights and democracy; the UK helped draft the European Convention on Human Rights in 1950.",
+    "Convention rights are enforceable in UK courts through the Human Rights Act 1998.",
+    "The UK belongs to the World Trade Organization, G7 and G20 and works for fair, rules-based international trade.",
+    "The UK left the European Union on 31 January 2020 but continues to cooperate with European partners.",
+    "The BBC World Service and British Council share British news, culture and education around the world."
   ],
-  "memory_hook": "Think of the UK's global connections as bridges: The Commonwealth (56 family members), UN (peace keeper since 1945), NATO (defense pact from 1949), EU (neighbour left in 2020), and Aid/Culture (BBC World Service + British Council spreading knowledge). Each bridge connects Britain to the world in different ways—through shared values, security, trade, or culture.",
+  "memory_hook": "Imagine the UK at the hub of a wheel: spokes to the Commonwealth, UN, NATO, Council of Europe, WTO and cultural links keep the country connected, secure and sharing its values worldwide.",
   "questions": [
     {
       "prompt": "How many countries are in the Commonwealth?",

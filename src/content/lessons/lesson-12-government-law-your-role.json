@@ -30,23 +30,18 @@
     }
   ],
   "key_facts": [
-    "The rule of law means everyone must obey the law.",
-    "Independent judges interpret and apply UK law.",
-    "The police protect the public and prevent crime.",
-    "The National Crime Agency tackles serious crime.",
-    "The Supreme Court is the highest UK court.",
-    "Magistrates' Courts handle minor offences.",
-    "Crown Court hears serious criminal cases.",
-    "A jury of 12 decides guilt in serious trials.",
-    "Human Rights Act 1998 protects individual freedoms.",
-    "Equality Act 2010 protects from discrimination.",
-    "Main legal duties are obeying laws and paying taxes.",
-    "Jury service allows citizens to participate in justice.",
-    "Equality before the law guarantees fair treatment.",
-    "Police and courts enforce laws.",
-    "Good citizenship is built on respect and responsibility."
+    "The rule of law means everyone, including government, must obey the law and face an independent court system.",
+    "Police services protect the public, prevent crime and are overseen by Police and Crime Commissioners in England and Wales.",
+    "Most criminal cases begin in Magistrates’ Courts (or Sheriff Courts in Scotland); serious cases go to the Crown Court or High Court of Justiciary.",
+    "The UK Supreme Court, created in 2009, is the final court of appeal for civil cases across the UK and for criminal cases in England, Wales and Northern Ireland.",
+    "Juries of 12 citizens decide guilt in most Crown Court trials in England, Wales and Northern Ireland; Scotland uses juries of 15.",
+    "The Crown Prosecution Service, Crown Office and Procurator Fiscal Service, and Public Prosecution Service decide whether cases should proceed to court.",
+    "The Human Rights Act 1998 and Equality Act 2010 protect individual freedoms and prohibit discrimination.",
+    "People must obey the law, pay taxes, serve on juries when called and respect the rights of others.",
+    "Citizens can seek legal advice from solicitors or organisations such as Citizens Advice; legal aid helps those who cannot afford representation.",
+    "Communities are encouraged to report extremism or terrorism concerns to keep the UK safe."
   ],
-  "memory_hook": "Think of UK law as a protective shield: Rule of Law (shield for all), Police (guards protecting you), Courts (judges ensuring fairness), Juries (citizens deciding justice), Rights (your freedoms), Responsibilities (maintaining the shield). Everyone holds part of the shield—from bobby on the beat to you paying taxes. Drop your part and everyone's less protected!",
+  "memory_hook": "Picture justice as a shield: police hold the front, courts and juries reinforce the centre, rights laws line the inside, and citizens grip the handle by obeying the law and speaking up.",
   "questions": [
     {
       "prompt": "What does the rule of law mean?",

@@ -30,17 +30,14 @@
     }
   ],
   "key_facts": [
-    "The five fundamental British values are democracy, the rule of law, individual liberty, mutual respect, and tolerance of different faiths and beliefs.",
-    "These values protect freedom and fairness in society.",
-    "Mutual respect means treating others courteously, even when you disagree.",
-    "Tolerance means accepting that people have the right to live and worship differently.",
-    "Freedom of religion includes the right not to follow any faith.",
-    "Discrimination or hate speech based on religion or belief is illegal.",
-    "Living the values means obeying the law, voting, contributing to the community, and respecting others.",
-    "Public institutions such as schools, councils, police, and courts reflect and teach these values.",
-    "These shared principles help people of all backgrounds live together peacefully in the UK."
+    "The UK's shared values are democracy, the rule of law, individual liberty, mutual respect, and tolerance of different faiths and beliefs.",
+    "No one is above UK law, and everyone must respect the rights and freedoms of others.",
+    "Freedom of thought, conscience and religion includes the choice to follow no faith.",
+    "Citizens are expected to vote, obey the law, pay taxes, and look after themselves and their families.",
+    "People should treat others with fairness, reject extremism and support those in need.",
+    "Schools, councils, police and courts are required to promote and protect these values."
   ],
-  "memory_hook": "Think of the five values as the foundation of a house: democracy is the floor (everyone stands equal), rule of law is the walls (protecting everyone equally), liberty is the roof (freedom above), and respect and tolerance are the windows (letting in different views and light).",
+  "memory_hook": "Picture a five-pointed star: each point is a British value, and together they guide how everyone lives side by side in the UK.",
   "questions": [
     {
       "prompt": "What does democracy mean in the UK?",
