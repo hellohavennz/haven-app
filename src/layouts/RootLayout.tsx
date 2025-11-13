@@ -42,35 +42,35 @@ export default function RootLayout() {
     : "mx-auto h-full w-full max-w-6xl px-4 py-12";
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900">
+    <div className="relative flex min-h-screen flex-col bg-[var(--bg)] text-[var(--text-primary)] theme-transition">
       <div className={showAnySidebar ? "hidden md:block" : undefined}>
         <Navbar />
       </div>
 
       {showAnySidebar && (
-        <header className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 md:hidden">
+        <header className="flex items-center justify-between border-b px-4 py-3 md:hidden bg-[var(--bg)]">
           <button
             type="button"
             onClick={openDrawer}
-            className="rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100"
+            className="rounded-md p-2 text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-section)]"
           >
             <span className="sr-only">Open navigation</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="font-semibold text-gray-900">Haven</div>
+          <div className="font-semibold text-[var(--text-primary)]">Haven</div>
           <div className="h-6 w-6" aria-hidden="true" />
         </header>
       )}
 
       <div className="relative flex flex-1 min-h-0">
         {showStudySidebar && (
-          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:bg-[var(--bg-section)]">
             <StudySidebar className="flex-1" />
           </aside>
         )}
 
         {showPracticeSidebar && (
-          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:bg-[var(--bg-section)]">
             <PracticeSidebar className="flex-1" />
           </aside>
         )}
@@ -83,8 +83,8 @@ export default function RootLayout() {
       </div>
 
       {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-center">
+        <footer className="border-t text-sm">
+          <div className="mx-auto max-w-6xl px-4 py-8 text-center text-[var(--text-secondary)]">
             <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
           </div>
         </footer>
@@ -95,14 +95,15 @@ export default function RootLayout() {
       {showAnySidebar && drawerSidebar && (
         <>
           <div
-            className={`fixed inset-0 z-40 bg-gray-900/40 transition-opacity duration-300 md:hidden ${
+            className={`fixed inset-0 z-40 transition-opacity duration-300 md:hidden ${
               isDrawerOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
             }`}
+            style={{ backgroundColor: "var(--overlay)" }}
             aria-hidden="true"
             onClick={closeDrawer}
           />
           <div
-            className={`fixed inset-y-0 left-0 z-50 w-72 max-w-full transform overflow-hidden bg-white shadow-xl transition-transform duration-300 md:hidden ${
+            className={`fixed inset-y-0 left-0 z-50 w-72 max-w-full transform overflow-hidden bg-[var(--bg-section)] transition-transform duration-300 md:hidden ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             role="dialog"

@@ -16,6 +16,7 @@ import PracticeFlashcards from './pages/PracticeFlashcards';
 import Exam from './pages/Exam';
 import Help from './pages/Help';
 import Paywall from './components/Paywall';
+import { ThemeProvider } from './components/ThemeProvider';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );

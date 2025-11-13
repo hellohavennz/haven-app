@@ -2,6 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #FFFFFF;
+  --bg-section: #F8F9FA;
+  --bg-section-alt: #F3F4F6;
+  --text-primary: #2E2E2E;
+  --text-secondary: #6B7280;
+  --accent-primary: #A9C8E8;
+  --accent-secondary: #B8E0D2;
+  --accent-primary-hover: color-mix(in srgb, #A9C8E8 85%, #1E293B 15%);
+  --accent-secondary-hover: color-mix(in srgb, #B8E0D2 80%, #1E293B 10%);
+  --tile-learning: #F3F8FC;
+  --tile-practice: #F4FBF7;
+  --tile-flashcards: #FFFFFF;
+  --tile-exams: #FAF9F4;
+  --highlight: #F5EFD7;
+  --success: #8BC89C;
+  --error: #E68C8C;
+  --divider: #E5E7EB;
+  --link: #6AA9E9;
+  --nav-icon: #6B7280;
+  --overlay: rgba(17, 24, 39, 0.08);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #1E1F22;
+  --bg-section: #2B2C30;
+  --bg-section-alt: #23242A;
+  --text-primary: #EAEAEA;
+  --text-secondary: #A8A8A8;
+  --accent-primary: #5B8CC7;
+  --accent-secondary: #6DB9D7;
+  --accent-primary-hover: color-mix(in srgb, #5B8CC7 85%, black 15%);
+  --accent-secondary-hover: color-mix(in srgb, #6DB9D7 80%, black 20%);
+  --tile-learning: #252C35;
+  --tile-practice: #25342F;
+  --tile-flashcards: #2B2C30;
+  --tile-exams: #2F2D28;
+  --highlight: #383121;
+  --success: #6FBF8F;
+  --error: #D98282;
+  --divider: #3C3E42;
+  --link: #6DB9D7;
+  --nav-icon: #C8C8C8;
+  --overlay: rgba(8, 9, 10, 0.5);
+  color-scheme: dark;
+}
+
+html {
+  font-family: 'Inter', 'Lato', 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+* {
+  border-color: var(--divider);
+}
+
+a {
+  color: var(--link);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--link) 85%, black 15%);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  p,
+  span,
+  li {
+    color: var(--text-secondary);
+  }
+}
+
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -11,38 +105,31 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-}
 
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-15deg); }
-}
-
-.animate-wave {
-  animation: wave 1s ease-in-out infinite;
-  display: inline-block;
-  transform-origin: 70% 70%;
-}
-
-@layer base {
-  body {
-    @apply bg-white;
+  .surface-card {
+    background-color: var(--bg-section);
+    border: 1px solid var(--divider);
+    border-radius: 16px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-gray-900;
+  .surface-tile {
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--divider) 80%, transparent);
+  }
+
+  .theme-transition {
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 

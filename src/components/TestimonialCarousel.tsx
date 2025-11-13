@@ -89,7 +89,7 @@ export default function TestimonialCarousel() {
 
   return (
     <div className="relative mx-auto max-w-4xl">
-      <div className="relative overflow-hidden rounded-3xl border-2 border-gray-200 bg-white shadow-lg">
+      <div className="relative overflow-hidden rounded-3xl border bg-[var(--bg)]">
         <div className="relative" style={{ minHeight: '400px' }}>
           {testimonials.map((testimonial, index) => (
             <div
@@ -104,22 +104,22 @@ export default function TestimonialCarousel() {
             >
               <div className="mb-6 flex items-center gap-1">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="h-5 w-5 text-[var(--accent-secondary)]" />
                 ))}
               </div>
 
-              <blockquote className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl">
+              <blockquote className="mb-6 text-lg leading-relaxed text-[var(--text-secondary)] md:text-xl">
                 "{testimonial.text}"
               </blockquote>
 
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--accent-secondary)]/30 px-4 py-2 text-sm font-semibold text-[var(--text-primary)]">
                 ✓ {testimonial.result}
               </div>
 
-              <div className="flex items-center justify-between border-t border-gray-200 pt-6">
+              <div className="flex items-center justify-between border-t pt-6">
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-[var(--text-primary)]">{testimonial.name}</div>
+                  <div className="text-sm text-[var(--text-secondary)]">
                     {testimonial.location} • From {testimonial.country}
                   </div>
                 </div>
@@ -127,14 +127,14 @@ export default function TestimonialCarousel() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={goToPrevious}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300 text-gray-700 transition-all hover:border-teal-500 hover:bg-teal-50 hover:text-teal-600"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border text-[var(--text-secondary)] transition-all hover:bg-[var(--bg-section)]"
                     aria-label="Previous testimonial"
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </button>
                   <button
                     onClick={goToNext}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300 text-gray-700 transition-all hover:border-teal-500 hover:bg-teal-50 hover:text-teal-600"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border text-[var(--text-secondary)] transition-all hover:bg-[var(--bg-section)]"
                     aria-label="Next testimonial"
                   >
                     <ChevronRight className="h-5 w-5" />
@@ -153,8 +153,8 @@ export default function TestimonialCarousel() {
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition-all ${
               index === currentIndex
-                ? "w-8 bg-teal-600"
-                : "w-2 bg-gray-300 hover:bg-gray-400"
+                ? "w-8 bg-[var(--accent-primary)]"
+                : "w-2 bg-[var(--bg-section-alt)] hover:bg-[var(--accent-secondary)]/60"
             }`}
             aria-label={`Go to testimonial ${index + 1}`}
           />
