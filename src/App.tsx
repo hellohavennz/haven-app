@@ -1,8 +1,124 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getCurrentUser } from "./lib/auth";
-import { BookOpen, Brain, Trophy, BarChart3, Sparkles, CheckCircle2, Target, Zap, Award, ArrowRight, Star, Clock, Crown, TrendingUp, Headphones, FileText } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  BarChart3,
+  BookOpen,
+  Brain,
+  CheckCircle2,
+  Clock,
+  Sparkles,
+  Star,
+  Target,
+} from "lucide-react";
+
 import TestimonialCarousel from "./components/TestimonialCarousel";
+import { getCurrentUser } from "./lib/auth";
+
+const quickStats = [
+  { label: "Lessons", value: "20+", detail: "Plain-English modules" },
+  { label: "Practice questions", value: "500+", detail: "Exam-style" },
+  { label: "Pass rate", value: "95%", detail: "Haven learners" },
+];
+
+const studyTiles = [
+  {
+    title: "Learning",
+    description: "Structured lessons rewritten clearly with context and calm pacing.",
+    icon: <BookOpen className="h-6 w-6" />,
+    background: "var(--tile-learning)",
+  },
+  {
+    title: "Practice",
+    description: "500+ questions with gentle feedback and progress markers.",
+    icon: <Target className="h-6 w-6" />,
+    background: "var(--tile-practice)",
+  },
+  {
+    title: "Flashcards",
+    description: "Short, memorable prompts to keep facts fresh every day.",
+    icon: <Brain className="h-6 w-6" />,
+    background: "var(--tile-flashcards)",
+  },
+  {
+    title: "Exams",
+    description: "Timed mock exams mirroring the official experience.",
+    icon: <Award className="h-6 w-6" />,
+    background: "var(--tile-exams)",
+  },
+];
+
+const featureHighlights = [
+  {
+    title: "Guided study path",
+    description: "Follow a calm, step-by-step route that keeps you focused without overwhelm.",
+    icon: <Sparkles className="h-5 w-5" />,
+  },
+  {
+    title: "Progress visuals",
+    description: "Lightweight charts help you understand mastery without noisy dashboards.",
+    icon: <BarChart3 className="h-5 w-5" />,
+  },
+  {
+    title: "Smart reminders",
+    description: "Stay gently on track with subtle prompts when it's time to review.",
+    icon: <Clock className="h-5 w-5" />,
+  },
+];
+
+const howItWorks = [
+  {
+    title: "Study each lesson",
+    text: "Absorb every topic from the official handbook in refreshed, plain language.",
+  },
+  {
+    title: "Practise with intent",
+    text: "Build confidence through question sets that reinforce understanding, not guesswork.",
+  },
+  {
+    title: "Review essentials",
+    text: "Use flashcards and key fact lists to keep details close without cramming.",
+  },
+  {
+    title: "Sit the exam",
+    text: "Arrive calm, knowing you've met every target with a clear readiness signal.",
+  },
+];
+
+const plans = [
+  {
+    name: "Haven Plus",
+    price: "£9.99",
+    description: "Everything you need for a calm, confident pass.",
+    badge: "Most loved",
+    badgeColor: "var(--accent-primary)",
+    features: [
+      "All lessons and practice questions",
+      "Interactive flashcards",
+      "Progress insights",
+      "Full mock exams",
+      "Pass assurance guidance",
+    ],
+    cta: "Get Haven Plus",
+    link: "/paywall",
+  },
+  {
+    name: "Haven Premium",
+    price: "£14.99",
+    description: "A future collection of supportive extras for every learner.",
+    badge: "Coming soon",
+    badgeColor: "var(--accent-secondary)",
+    features: [
+      "Everything in Haven Plus",
+      "Audio lessons for on-the-go study",
+      "Downloadable study journals",
+      "Guided revision plans",
+    ],
+    cta: "Join the waitlist",
+    link: "/paywall",
+  },
+];
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -12,205 +128,238 @@ export default function App() {
     getCurrentUser().then(currentUser => {
       setLoading(false);
       if (currentUser) {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }
     });
   }, [navigate]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full"></div>
+      <div className="flex min-h-screen items-center justify-center bg-[var(--bg)]">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent-primary)] border-t-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-20 pb-20">
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-cyan-50 -mx-4 px-4 py-20 md:py-32">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold mb-6">
-            <Sparkles size={16} />
-            <span>Pass Your Life in the UK Test with Confidence</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
-            Study Calmly.
-            <br />
-            <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Pass Confidently.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Master the official Life in the UK handbook with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/content" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all">
-              Start Learning Free
-              <ArrowRight size={24} />
-            </Link>
-            <a href="#pricing" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all">
-              View Plans
-              <Star size={20} />
-            </a>
-          </div>
-          <p className="mt-6 text-sm text-gray-500">✓ Try the first lesson free • ✓ No credit card required • ✓ Pass guarantee</p>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4"><BookOpen className="text-teal-600" size={32} /></div>
-            <div className="text-4xl font-black text-gray-900 mb-2">20+</div>
-            <p className="text-gray-600 font-medium">Comprehensive Lessons</p>
-          </div>
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-4"><Target className="text-green-600" size={32} /></div>
-            <div className="text-4xl font-black text-gray-900 mb-2">500+</div>
-            <p className="text-gray-600 font-medium">Practice Questions</p>
-          </div>
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4"><TrendingUp className="text-amber-600" size={32} /></div>
-            <div className="text-4xl font-black text-gray-900 mb-2">95%</div>
-            <p className="text-gray-600 font-medium">Haven User Pass Rate</p>
-            <p className="text-sm text-gray-500 mt-1">vs 68.5% average</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Everything You Need to Pass</h2>
-          <p className="text-xl text-gray-600">Comprehensive study tools designed for success</p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-4"><BookOpen className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Plain-English Lessons</h3>
-            <p className="text-gray-600">Every topic from the official handbook, rewritten clearly with memory hooks and key facts.</p>
-          </div>
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4"><Target className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Realistic Practice Questions</h3>
-            <p className="text-gray-600">Hundreds of exam-style questions with detailed explanations for every answer.</p>
-          </div>
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4"><Brain className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Interactive Flashcards</h3>
-            <p className="text-gray-600">Memorize key facts with spaced repetition. Perfect for on-the-go learning.</p>
-          </div>
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4"><BarChart3 className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Smart Progress Tracking</h3>
-            <p className="text-gray-600">See your mastery level for each topic. Know exactly what to focus on.</p>
-          </div>
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4"><Zap className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Full Mock Exams</h3>
-            <p className="text-gray-600">Practice under real exam conditions. Build confidence before test day.</p>
-          </div>
-          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-teal-300 transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center mb-4"><Award className="text-white" size={24} /></div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Pass Guarantee</h3>
-            <p className="text-gray-600">Complete the course and fail? Get your money back. We're that confident.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto">
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500 rounded-full blur-3xl opacity-20"></div>
-          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-sm font-semibold mb-6"><BarChart3 size={16} /><span>Smart Dashboard</span></div>
-              <h2 className="text-4xl font-extrabold mb-6">Track Every Step of Your Journey</h2>
-              <p className="text-lg text-gray-300 mb-8">Your personal dashboard shows exactly where you are, what you've mastered, and what needs more practice. Never wonder if you're ready for the test.</p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3"><CheckCircle2 className="text-green-400 flex-shrink-0" size={24} /><span>Visual progress charts for every module</span></li>
-                <li className="flex items-center gap-3"><CheckCircle2 className="text-green-400 flex-shrink-0" size={24} /><span>Personalized recommendations on what to study next</span></li>
-                <li className="flex items-center gap-3"><CheckCircle2 className="text-green-400 flex-shrink-0" size={24} /><span>"Ready for test" indicator when you hit 80%+ on all lessons</span></li>
-              </ul>
-              <Link to="/content" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-xl font-bold hover:bg-gray-100 transition-all">Try It Free<ArrowRight size={20} /></Link>
+    <div className="space-y-20 pb-24">
+      <section className="border-b bg-[var(--bg-section)]/70">
+        <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-16 pt-20 md:flex-row md:items-center">
+          <div className="flex-1 space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold text-[var(--text-secondary)]">
+              <Sparkles className="h-4 w-4" />
+              Calm preparation for the Life in the UK Test
             </div>
-            <div className="relative">
-              <div className="bg-white rounded-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between"><span className="text-sm font-semibold text-gray-600">Your Progress</span><span className="text-3xl font-black text-teal-600">68%</span></div>
-                  <div className="h-3 bg-gray-200 rounded-full overflow-hidden"><div className="h-3 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full" style={{width: '68%'}}></div></div>
-                  <div className="grid grid-cols-2 gap-4 pt-4">
-                    <div className="bg-green-50 rounded-xl p-4"><Trophy className="text-green-600 mb-2" size={24} /><div className="text-2xl font-bold text-gray-900">12</div><div className="text-xs text-gray-600">Mastered</div></div>
-                    <div className="bg-blue-50 rounded-xl p-4"><Target className="text-blue-600 mb-2" size={24} /><div className="text-2xl font-bold text-gray-900">85%</div><div className="text-xs text-gray-600">Accuracy</div></div>
+            <h1 className="text-4xl font-bold leading-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl">
+              Study with clarity.
+              <br />
+              Pass with composure.
+            </h1>
+            <p className="max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)] md:text-xl">
+              Haven turns the official handbook into a focused journey. Gentle explanations, structured practice, and light-touch
+              guidance keep you moving forward without overwhelm.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/content"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-8 py-3 text-base font-semibold text-[#1E293B] transition-colors hover:bg-[var(--accent-primary-hover)]"
+              >
+                Explore the first lesson
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <a
+                href="#pricing"
+                className="inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3 text-base font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-section)]"
+              >
+                View plans
+                <Star className="h-5 w-5" />
+              </a>
+            </div>
+            <p className="text-sm text-[var(--text-secondary)]">
+              No credit card required • First lesson free • Built-in readiness check
+            </p>
+          </div>
+          <div className="flex flex-1 flex-col gap-6">
+            <div className="rounded-3xl border bg-[var(--bg)] p-6 shadow-sm">
+              <h2 className="text-lg font-semibold text-[var(--text-primary)]">Your progress snapshot</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                A light dashboard keeps your attention on the next best step.
+              </p>
+              <div className="mt-6 space-y-4">
+                <div>
+                  <div className="flex items-center justify-between text-sm font-medium text-[var(--text-secondary)]">
+                    <span>Overall readiness</span>
+                    <span className="text-base font-semibold text-[var(--text-primary)]">68%</span>
+                  </div>
+                  <div className="mt-2 h-2.5 w-full rounded-full bg-[var(--bg-section-alt)]">
+                    <div className="h-2.5 rounded-full bg-[var(--accent-primary)]" style={{ width: "68%" }} />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="rounded-2xl border bg-[var(--tile-learning)] p-4">
+                    <p className="text-xs uppercase tracking-wide text-[var(--text-secondary)]">Mastered</p>
+                    <p className="mt-1 text-2xl font-semibold text-[var(--text-primary)]">12 lessons</p>
+                  </div>
+                  <div className="rounded-2xl border bg-[var(--tile-practice)] p-4">
+                    <p className="text-xs uppercase tracking-wide text-[var(--text-secondary)]">Accuracy</p>
+                    <p className="mt-1 text-2xl font-semibold text-[var(--text-primary)]">85%</p>
                   </div>
                 </div>
               </div>
             </div>
+            <ul className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
+              {quickStats.map(stat => (
+                <li key={stat.label} className="rounded-2xl border bg-[var(--bg)] px-4 py-3 text-center">
+                  <span className="text-2xl font-semibold text-[var(--text-primary)]">{stat.value}</span>
+                  <p className="text-xs uppercase tracking-wide text-[var(--text-secondary)]">{stat.label}</p>
+                  <p className="mt-1 text-xs text-[var(--text-secondary)]">{stat.detail}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Loved by Thousands of Test Takers</h2>
-          <p className="text-xl text-gray-600">Real stories from people who passed with Haven</p>
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="mb-10 max-w-3xl">
+          <h2 className="text-3xl font-semibold text-[var(--text-primary)] md:text-4xl">Everything in one calm workspace</h2>
+          <p className="mt-3 text-lg text-[var(--text-secondary)]">
+            Haven balances structure and breathing room. Each area is built to help you stay composed while making steady progress.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {studyTiles.map(tile => (
+            <div
+              key={tile.title}
+              className="surface-tile flex h-full flex-col gap-3 p-6 transition-colors"
+              style={{ backgroundColor: tile.background }}
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-transparent bg-[var(--bg-section)] text-[var(--text-primary)]">
+                {tile.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-[var(--text-primary)]">{tile.title}</h3>
+              <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{tile.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="grid gap-10 rounded-3xl border bg-[var(--bg-section)] p-10 md:grid-cols-2">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-semibold text-[var(--text-primary)] md:text-4xl">A planner that keeps focus gentle</h2>
+            <p className="text-lg text-[var(--text-secondary)]">
+              Stay centred with a dashboard that favours clarity. Clear targets, soft colour cues, and readiness indicators help you
+              understand exactly where to focus next.
+            </p>
+            <ul className="space-y-3 text-sm text-[var(--text-secondary)]">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-5 w-5 text-[var(--success)]" />
+                Personalised recommendations highlight topics for today.
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-5 w-5 text-[var(--success)]" />
+                Light progress rings show mastery without harsh visuals.
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-5 w-5 text-[var(--success)]" />
+                A readiness badge confirms when you are comfortably prepared.
+              </li>
+            </ul>
+              <Link
+                to="/content"
+                className="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg)]"
+            >
+              Try it free
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="space-y-5">
+            {featureHighlights.map(feature => (
+              <div key={feature.title} className="rounded-2xl border bg-[var(--bg)] p-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-secondary)]/40 text-[var(--text-primary)]">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-[var(--text-primary)]">{feature.title}</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="mb-10 max-w-3xl text-center md:mx-auto">
+          <h2 className="text-3xl font-semibold text-[var(--text-primary)] md:text-4xl">Learners feel supported every step</h2>
+          <p className="mt-3 text-lg text-[var(--text-secondary)]">
+            Real stories from people who passed their Life in the UK Test feeling composed and prepared.
+          </p>
         </div>
         <TestimonialCarousel />
       </section>
 
-      <section className="max-w-4xl mx-auto">
-        <div className="text-center mb-12"><h2 className="text-4xl font-extrabold text-gray-900 mb-4">How It Works</h2><p className="text-xl text-gray-600">Four simple steps to test success</p></div>
-        <div className="space-y-8">
-          <div className="flex gap-6 items-start"><div className="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-xl">1</div><div><h3 className="text-xl font-bold text-gray-900 mb-2">Study Each Lesson</h3><p className="text-gray-600">Read through our plain-English lessons covering every topic from the official handbook. Each lesson includes key facts and memory hooks.</p></div></div>
-          <div className="flex gap-6 items-start"><div className="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-xl">2</div><div><h3 className="text-xl font-bold text-gray-900 mb-2">Practice Questions</h3><p className="text-gray-600">Test yourself with realistic exam-style questions. Get instant feedback with detailed explanations for every answer.</p></div></div>
-          <div className="flex gap-6 items-start"><div className="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-xl">3</div><div><h3 className="text-xl font-bold text-gray-900 mb-2">Review with Flashcards</h3><p className="text-gray-600">Reinforce your memory with interactive flashcards. Perfect for quick daily review sessions on your phone or computer.</p></div></div>
-          <div className="flex gap-6 items-start"><div className="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-xl">4</div><div><h3 className="text-xl font-bold text-gray-900 mb-2">Take the Real Test</h3><p className="text-gray-600">When you've scored 80%+ on all practice questions, you're ready. Book your test and pass with confidence.</p></div></div>
+      <section className="mx-auto max-w-4xl px-4">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-semibold text-[var(--text-primary)] md:text-4xl">How it works</h2>
+          <p className="mt-3 text-lg text-[var(--text-secondary)]">
+            Four calm steps guide you from the first lesson to a confident exam day.
+          </p>
+        </div>
+        <div className="space-y-6">
+          {howItWorks.map((item, index) => (
+            <div key={item.title} className="flex gap-4 rounded-2xl border bg-[var(--bg-section)] p-6">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent-secondary)]/30 text-lg font-semibold text-[var(--text-primary)]">
+                {index + 1}
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[var(--text-primary)]">{item.title}</h3>
+                <p className="mt-2 text-[var(--text-secondary)]">{item.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section id="pricing" className="max-w-6xl mx-auto">
-        <div className="text-center mb-12"><h2 className="text-4xl font-extrabold text-gray-900 mb-4">Choose Your Plan</h2><p className="text-xl text-gray-600">One-time payment. Lifetime access. No subscription.</p></div>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative flex flex-col">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-bold rounded-full">MOST POPULAR</div>
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4"><Sparkles className="text-teal-600" size={32} /></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Haven Plus</h3>
-              <div className="flex items-baseline justify-center gap-2 mb-2"><span className="text-5xl font-black text-gray-900">£9.99</span><span className="text-gray-600">one-time</span></div>
-              <p className="text-sm text-gray-600">Everything you need to pass</p>
-            </div>
-            <ul className="space-y-3 mb-8 flex-1">
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">All 20+ comprehensive lessons</span></li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">500+ practice questions</span></li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">Interactive flashcards</span></li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">Smart progress tracking</span></li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700">Full mock exams</span></li>
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-700 font-semibold">Pass guarantee</span></li>
-            </ul>
-            <Link to="/paywall" className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all mt-auto">Get Haven Plus<ArrowRight size={20} /></Link>
-          </div>
-          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative flex flex-col">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full">COMING SOON</div>
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4"><Crown className="text-amber-600" size={32} /></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Haven Premium</h3>
-              <div className="flex items-baseline justify-center gap-2 mb-2"><span className="text-5xl font-black text-gray-900">£14.99</span><span className="text-gray-600">one-time</span></div>
-              <p className="text-sm text-gray-600">Ultimate learning experience</p>
-            </div>
-            <ul className="space-y-3 mb-8 flex-1">
-              <li className="flex items-start gap-3"><CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><span className="text-gray-900 font-semibold">Everything in Haven Plus, and:</span></li>
-              <li className="flex items-start gap-3"><Headphones className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Audio lessons</span><p className="text-sm text-gray-600">Listen and learn on the go</p></div></li>
-              <li className="flex items-start gap-3"><FileText className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Downloadable study guides</span><p className="text-sm text-gray-600">PDF versions for offline study</p></div></li>
-              <li className="flex items-start gap-3"><Zap className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Priority support</span><p className="text-sm text-gray-600">Get help within 24 hours</p></div></li>
-              <li className="flex items-start gap-3"><Crown className="text-amber-600 flex-shrink-0 mt-0.5" size={20} /><div><span className="text-gray-900 font-semibold">Early access</span><p className="text-sm text-gray-600">New features before everyone else</p></div></li>
-            </ul>
-            <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 text-center mt-auto"><p className="text-sm text-amber-900 font-medium">🚀 Launching Next Month!</p></div>
-          </div>
+      <section id="pricing" className="mx-auto max-w-5xl px-4">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-semibold text-[var(--text-primary)] md:text-4xl">Choose the support you need</h2>
+          <p className="mt-3 text-lg text-[var(--text-secondary)]">
+            One-time payment. Lifetime access. Keep your study calm from start to finish.
+          </p>
         </div>
-      </section>
-
-      <section className="max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div><Clock className="text-teal-600 mx-auto mb-3" size={32} /><h4 className="font-bold text-gray-900 mb-2">Instant Access</h4><p className="text-sm text-gray-600">Start learning immediately after purchase</p></div>
-          <div><Award className="text-teal-600 mx-auto mb-3" size={32} /><h4 className="font-bold text-gray-900 mb-2">Pass Guarantee</h4><p className="text-sm text-gray-600">Complete course and fail? Get refunded</p></div>
-          <div><CheckCircle2 className="text-teal-600 mx-auto mb-3" size={32} /><h4 className="font-bold text-gray-900 mb-2">No Subscription</h4><p className="text-sm text-gray-600">One payment, lifetime access forever</p></div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {plans.map(plan => (
+            <div key={plan.name} className="flex h-full flex-col rounded-3xl border bg-[var(--bg-section)] p-8">
+              <div className="inline-flex items-center justify-center self-start rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[var(--text-primary)]" style={{ backgroundColor: plan.badgeColor }}>
+                {plan.badge}
+              </div>
+              <div className="mt-6 space-y-2">
+                <h3 className="text-2xl font-semibold text-[var(--text-primary)]">{plan.name}</h3>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-bold text-[var(--text-primary)]">{plan.price}</span>
+                  <span className="text-sm text-[var(--text-secondary)]">one-time</span>
+                </div>
+                <p className="text-sm text-[var(--text-secondary)]">{plan.description}</p>
+              </div>
+              <ul className="mt-6 space-y-3 text-sm text-[var(--text-secondary)]">
+                {plan.features.map(feature => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[var(--accent-secondary)]" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to={plan.link}
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-[#1E293B] transition-colors hover:bg-[var(--accent-primary-hover)]"
+              >
+                {plan.cta}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
     </div>
