@@ -53,13 +53,13 @@ const PracticePage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-gray-900 mb-2">Practice</h1>
-      <p className="text-lg text-gray-600 mb-8">
+    <div className="mx-auto max-w-7xl px-4 py-8 text-[var(--text-secondary)]">
+      <h1 className="mb-2 text-4xl font-bold text-[var(--text-primary)]">Practice</h1>
+      <p className="mb-8 text-lg">
         Test your knowledge with questions and flashcards for each lesson
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {lessons.map((lesson) => {
           const lessonProgress = progress[lesson.id] || {
             questionsCompleted: 0,
@@ -79,7 +79,7 @@ const PracticePage: React.FC = () => {
           return (
             <div
               key={lesson.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200"
+              className="overflow-hidden rounded-xl border border-[var(--divider)] bg-[var(--bg-section)] shadow-md transition-shadow duration-300 hover:shadow-xl"
             >
               {/* Header with gradient */}
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
@@ -90,17 +90,17 @@ const PracticePage: React.FC = () => {
               </div>
 
               {/* Progress Stats */}
-              <div className="p-6 bg-gray-50">
+              <div className="bg-[var(--bg-section-alt)] p-6">
                 <div className="space-y-4">
                   {/* Questions Progress */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">Questions</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-medium">Questions</span>
+                      <span className="text-sm font-bold text-[var(--text-primary)]">
                         {lessonProgress.questionsCompleted}/{lessonProgress.totalQuestions ?? '—'}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="h-2 w-full rounded-full bg-[color:color-mix(in_srgb,var(--divider)_65%,transparent)]">
                       <div
                         className={`h-2 rounded-full transition-all duration-300 ${getProgressColor(questionsProgress)}`}
                         style={{ width: `${questionsProgress}%` }}
@@ -112,10 +112,10 @@ const PracticePage: React.FC = () => {
                   {lessonProgress.questionsCompleted > 0 && (
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Success Rate</span>
-                        <span className="text-sm font-bold text-gray-900">{successRate}%</span>
+                        <span className="text-sm font-medium">Success Rate</span>
+                        <span className="text-sm font-bold text-[var(--text-primary)]">{successRate}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="h-2 w-full rounded-full bg-[color:color-mix(in_srgb,var(--divider)_65%,transparent)]">
                         <div
                           className={`h-2 rounded-full transition-all duration-300 ${getProgressColor(successRate)}`}
                           style={{ width: `${successRate}%` }}
@@ -127,14 +127,14 @@ const PracticePage: React.FC = () => {
                   {/* Flashcards Progress */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">Flashcards</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-medium">Flashcards</span>
+                      <span className="text-sm font-bold text-[var(--text-primary)]">
                         {lessonProgress.flashcardsReviewed}/{lessonProgress.totalFlashcards ?? '—'}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="h-2 w-full rounded-full bg-[color:color-mix(in_srgb,var(--divider)_65%,transparent)]">
                       <div
-                        className={`h-2 rounded-full transition-all duration-300 bg-purple-500`}
+                        className="h-2 rounded-full transition-all duration-300 bg-purple-500"
                         style={{ width: `${flashcardsProgress}%` }}
                       />
                     </div>
@@ -143,7 +143,7 @@ const PracticePage: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="p-6 grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 p-6">
                 <Link
                   to={`/practice/${lesson.id}/questions`}
                   className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"

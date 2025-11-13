@@ -26,8 +26,8 @@ const Dashboard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading...</div>
+      <div className="flex min-h-screen items-center justify-center bg-[var(--bg)] text-[var(--text-secondary)]">
+        <div className="text-xl">Loading...</div>
       </div>
     );
   }
@@ -95,13 +95,13 @@ const Dashboard: React.FC = () => {
   const notStartedCount = totalLessons - lessonsStarted;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-[var(--bg)] px-4 py-8 text-[var(--text-secondary)]">
+      <div className="mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-teal-700 mb-2">Your Dashboard</h1>
-            <p className="text-lg text-gray-600">{hasFullAccess ? 'Welcome back!' : 'Sample Dashboard'}</p>
+            <h1 className="mb-2 text-4xl font-bold text-[var(--text-primary)]">Your Dashboard</h1>
+            <p className="text-lg">{hasFullAccess ? 'Welcome back!' : 'Sample Dashboard'}</p>
           </div>
           {!hasFullAccess && (
             <Link
@@ -116,29 +116,36 @@ const Dashboard: React.FC = () => {
         </div>
 
         {!hasFullAccess && (
-          <div className="rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50 p-6">
+          <div
+            className="rounded-2xl border-2 bg-gradient-to-br p-6"
+            style={{
+              borderColor: "color-mix(in srgb, #f59e0b 60%, var(--divider) 40%)",
+              backgroundImage:
+                "linear-gradient(135deg, color-mix(in srgb, #fcd34d 18%, var(--bg) 82%), color-mix(in srgb, #fb923c 14%, var(--bg) 86%))",
+            }}
+          >
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white">
                 <Sparkles className="h-6 w-6" />
               </div>
               <div className="flex-1">
-                <h3 className="mb-2 text-xl font-bold text-gray-900">
+                <h3 className="mb-2 text-xl font-bold text-[var(--text-primary)]">
                   This is a Sample Dashboard
                 </h3>
-                <p className="mb-4 text-gray-700">
+                <p className="mb-4">
                   Upgrade to Haven Plus to unlock your personalized dashboard with real-time progress tracking, performance analytics, and study recommendations tailored just for you.
                 </p>
-                <div className="flex flex-wrap gap-3 text-sm text-gray-600">
+                <div className="flex flex-wrap gap-3 text-sm">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-teal-600" />
+                    <CheckCircle className="h-4 w-4 text-[color:color-mix(in_srgb,#059669_70%,var(--text-primary)_30%)]" />
                     <span>Real progress tracking</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-teal-600" />
+                    <CheckCircle className="h-4 w-4 text-[color:color-mix(in_srgb,#059669_70%,var(--text-primary)_30%)]" />
                     <span>Performance analytics</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-teal-600" />
+                    <CheckCircle className="h-4 w-4 text-[color:color-mix(in_srgb,#059669_70%,var(--text-primary)_30%)]" />
                     <span>Study recommendations</span>
                   </div>
                 </div>
@@ -194,10 +201,10 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Lesson Status */}
-          <div className="lg:col-span-1 bg-white rounded-2xl shadow-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Lesson Status</h2>
+          <div className="rounded-2xl bg-[var(--bg-section)] p-6 shadow-lg lg:col-span-1">
+            <h2 className="mb-6 text-xl font-bold text-[var(--text-primary)]">Lesson Status</h2>
             
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-48 h-48">
@@ -221,8 +228,8 @@ const Dashboard: React.FC = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-4xl font-bold text-gray-900">{masteredCount}</div>
-                  <div className="text-sm text-gray-600">of {totalLessons}</div>
+                  <div className="text-4xl font-bold text-[var(--text-primary)]">{masteredCount}</div>
+                  <div className="text-sm">of {totalLessons}</div>
                 </div>
               </div>
             </div>
@@ -231,48 +238,48 @@ const Dashboard: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-sm text-gray-700">Mastered (80%+)</span>
+                  <span className="text-sm">Mastered (80%+)</span>
                 </div>
-                <span className="font-bold text-gray-900">{masteredCount}</span>
+                <span className="font-bold text-[var(--text-primary)]">{masteredCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <span className="text-sm text-gray-700">Good (60-79%)</span>
+                  <span className="text-sm">Good (60-79%)</span>
                 </div>
-                <span className="font-bold text-gray-900">{goodCount}</span>
+                <span className="font-bold text-[var(--text-primary)]">{goodCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <span className="text-sm text-gray-700">Needs Work (&lt;60%)</span>
+                  <span className="text-sm">Needs Work (&lt;60%)</span>
                 </div>
-                <span className="font-bold text-gray-900">{needsWorkCount}</span>
+                <span className="font-bold text-[var(--text-primary)]">{needsWorkCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-                  <span className="text-sm text-gray-700">Not Started</span>
+                  <span className="text-sm">Not Started</span>
                 </div>
-                <span className="font-bold text-gray-900">{notStartedCount}</span>
+                <span className="font-bold text-[var(--text-primary)]">{notStartedCount}</span>
               </div>
             </div>
           </div>
 
           {/* Performance by Module */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Target className="text-teal-600" size={24} />
+          <div className="rounded-2xl bg-[var(--bg-section)] p-6 shadow-lg lg:col-span-2">
+            <h2 className="mb-6 flex items-center gap-2 text-xl font-bold text-[var(--text-primary)]">
+              <Target className="text-[color:color-mix(in_srgb,var(--accent-secondary)_70%,var(--text-primary)_30%)]" size={24} />
               Performance by Module
             </h2>
-            
+
             <div className="space-y-4">
               {modulePerformance.map(module => (
                 <div key={module.slug}>
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <div className="font-semibold text-gray-900">{module.title}</div>
-                      <div className="text-sm text-gray-600">
+                      <div className="font-semibold text-[var(--text-primary)]">{module.title}</div>
+                      <div className="text-sm">
                         {module.masteredCount}/{module.totalLessons} mastered • {module.questionsAnswered} questions
                       </div>
                     </div>
@@ -284,7 +291,7 @@ const Dashboard: React.FC = () => {
                       {module.avgPercentage > 0 ? `${module.avgPercentage}%` : '—'}
                     </div>
                   </div>
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-3 overflow-hidden rounded-full bg-[color:color-mix(in_srgb,var(--divider)_65%,transparent)]">
                     <div
                       className={`h-full rounded-full transition-all ${
                         module.avgPercentage >= 80 ? 'bg-green-500' :
@@ -301,14 +308,21 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Action Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Keep Learning */}
-          <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-6 border-2 border-teal-200">
-            <div className="w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center mb-4">
+          <div
+            className="rounded-2xl border-2 bg-gradient-to-br p-6"
+            style={{
+              borderColor: "color-mix(in srgb, var(--accent-secondary) 55%, var(--divider) 45%)",
+              backgroundImage:
+                "linear-gradient(135deg, color-mix(in srgb, var(--accent-secondary) 16%, var(--bg) 84%), color-mix(in srgb, #22d3ee 12%, var(--bg) 88%))",
+            }}
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-600">
               <BookOpen className="text-white" size={24} />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Keep Learning</h3>
-            <p className="text-gray-700 mb-4">
+            <h3 className="mb-2 text-xl font-bold text-[var(--text-primary)]">Keep Learning</h3>
+            <p className="mb-4">
               {notStartedCount} lessons waiting for you. Every lesson brings you closer to success!
             </p>
             <Link
@@ -323,13 +337,20 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Great Work */}
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200">
-            <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
+          <div
+            className="rounded-2xl border-2 bg-gradient-to-br p-6"
+            style={{
+              borderColor: "color-mix(in srgb, #22c55e 55%, var(--divider) 45%)",
+              backgroundImage:
+                "linear-gradient(135deg, color-mix(in srgb, #22c55e 14%, var(--bg) 86%), color-mix(in srgb, #86efac 14%, var(--bg) 86%))",
+            }}
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-600">
               <CheckCircle className="text-white" size={24} />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Great Work!</h3>
-            <p className="text-gray-700 mb-4">
-              {needsReview === 0 
+            <h3 className="mb-2 text-xl font-bold text-[var(--text-primary)]">Great Work!</h3>
+            <p className="mb-4">
+              {needsReview === 0
                 ? "No lessons below 60%! You're making excellent progress across the board."
                 : `${needsReview} lesson${needsReview > 1 ? 's' : ''} need${needsReview === 1 ? 's' : ''} more practice. Keep going!`}
             </p>
@@ -343,12 +364,19 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Pro Tips */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-blue-200">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+          <div
+            className="rounded-2xl border-2 bg-gradient-to-br p-6"
+            style={{
+              borderColor: "color-mix(in srgb, #2563eb 55%, var(--divider) 45%)",
+              backgroundImage:
+                "linear-gradient(135deg, color-mix(in srgb, #2563eb 14%, var(--bg) 86%), color-mix(in srgb, #a5b4fc 14%, var(--bg) 86%))",
+            }}
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
               <Clock className="text-white" size={24} />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Pro Tips</h3>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <h3 className="mb-4 text-xl font-bold text-[var(--text-primary)]">Pro Tips</h3>
+            <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
                 <CheckCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
                 <span>Aim for 80%+ on all lessons</span>

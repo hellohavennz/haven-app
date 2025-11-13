@@ -116,7 +116,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   return (
     <aside
       aria-label="Study navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white md:sticky md:top-0 scrollbar-hide ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-[var(--divider)] bg-[var(--bg-section)] text-[var(--text-secondary)] md:sticky md:top-0 scrollbar-hide ${className}`}`
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
@@ -169,22 +169,32 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                     isLocked
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
-                      ? "bg-teal-50 text-teal-900"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "bg-[var(--bg-section-alt)] text-[var(--text-primary)]"
+                      : "hover:bg-[var(--bg-section-alt)]"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     {isLocked ? (
-                      <Lock className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                      <Lock className="h-4 w-4 flex-shrink-0 text-[var(--text-secondary)]" />
                     ) : isExpanded ? (
-                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-teal-600" />
+                      <ChevronDown
+                        className="h-4 w-4 flex-shrink-0"
+                        style={{ color: "color-mix(in srgb, #14b8a6 70%, var(--text-primary) 30%)" }}
+                      />
                     ) : (
-                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-[var(--text-secondary)]" />
                     )}
-                    <BookOpen className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-teal-600'}`} />
+                    <BookOpen
+                      className="h-4 w-4 flex-shrink-0"
+                      style={{
+                        color: isLocked
+                          ? 'var(--text-secondary)'
+                          : "color-mix(in srgb, #14b8a6 70%, var(--text-primary) 30%)"
+                      }}
+                    />
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold truncate">{module.title}</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="truncate text-sm font-semibold text-[var(--text-primary)]">{module.title}</div>
+                      <div className="text-xs">
                         {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
                       </div>
                     </div>
@@ -203,19 +213,34 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                           to={`/content/${lesson.id}`}
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
-                              ? "bg-teal-100 font-medium text-teal-900"
-                              : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-[var(--bg-section-alt)] font-medium text-[var(--text-primary)]"
+                              : "hover:bg-[var(--bg-section-alt)]"
                           }`}
                           onClick={onNavigate}
                         >
                           <span
-                            className={`flex-shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold ${status.badgeClass}`}
+                            className="flex-shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold"
+                            style={{
+                              backgroundColor: status.badgeClass.includes('emerald')
+                                ? 'color-mix(in srgb, #10b981 18%, var(--bg))'
+                                : status.badgeClass.includes('amber')
+                                ? 'color-mix(in srgb, #f59e0b 18%, var(--bg))'
+                                : 'color-mix(in srgb, var(--text-secondary) 20%, var(--bg))',
+                              color: status.badgeClass.includes('emerald')
+                                ? 'color-mix(in srgb, #10b981 70%, var(--text-primary) 30%)'
+                                : status.badgeClass.includes('amber')
+                                ? 'color-mix(in srgb, #f59e0b 70%, var(--text-primary) 30%)'
+                                : 'var(--text-secondary)'
+                            }}
                           >
                             {status.badge}
                           </span>
                           <span className="flex-1 truncate">{lesson.title}</span>
                           {status.badge !== "New" && (
-                            <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0 text-emerald-600" />
+                            <CheckCircle2
+                              className="h-3.5 w-3.5 flex-shrink-0"
+                              style={{ color: "color-mix(in srgb, #10b981 70%, var(--text-primary) 30%)" }}
+                            />
                           )}
                         </Link>
                       );
