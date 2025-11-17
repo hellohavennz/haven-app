@@ -93,7 +93,7 @@ export default function AuthButton() {
       }}
     >
       <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-900">
+        <h2 className="font-semibold mb-4 text-gray-900">
           {isSignUp ? 'Create Account' : 'Sign In'}
         </h2>
         

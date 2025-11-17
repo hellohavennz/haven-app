@@ -43,9 +43,9 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
               {/* Logo */}
               <Link to="/" className="flex items-center gap-2">
                 <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">H</span>
+                  <span className="text-white font-semibold text-xl">H</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Haven</span>
+                <span className="text-xl font-semibold text-gray-900">Haven</span>
               </Link>
             </div>
 

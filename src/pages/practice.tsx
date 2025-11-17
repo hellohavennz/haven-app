@@ -54,8 +54,8 @@ const PracticePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-gray-900 mb-2">Practice</h1>
-      <p className="text-lg text-gray-600 mb-8">
+      <h1 className="font-semibold text-gray-900 mb-2">Practice</h1>
+      <p className="text-gray-600 mb-8">
         Test your knowledge with questions and flashcards for each lesson
       </p>
 
@@ -83,7 +83,7 @@ const PracticePage: React.FC = () => {
             >
               {/* Header with gradient */}
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">{lesson.title}</h3>
+                <h3 className="font-semibold mb-2">{lesson.title}</h3>
                 <p className="text-sm text-blue-100">
                   Lesson {lesson.id.match(/lesson-(\d+)/)?.[1] ?? '—'}
                 </p>
@@ -96,7 +96,7 @@ const PracticePage: React.FC = () => {
                   <div>
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-gray-700">Questions</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-semibold text-gray-900">
                         {lessonProgress.questionsCompleted}/{lessonProgress.totalQuestions ?? '—'}
                       </span>
                     </div>
@@ -113,7 +113,7 @@ const PracticePage: React.FC = () => {
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm font-medium text-gray-700">Success Rate</span>
-                        <span className="text-sm font-bold text-gray-900">{successRate}%</span>
+                        <span className="text-sm font-semibold text-gray-900">{successRate}%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
@@ -128,7 +128,7 @@ const PracticePage: React.FC = () => {
                   <div>
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-gray-700">Flashcards</span>
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-semibold text-gray-900">
                         {lessonProgress.flashcardsReviewed}/{lessonProgress.totalFlashcards ?? '—'}
                       </span>
                     </div>
