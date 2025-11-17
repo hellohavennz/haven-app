@@ -224,7 +224,7 @@ export default function ContentIndex() {
         <section className="mt-10">
           <div className="mb-6 flex items-center gap-3">
             <BookOpen className="h-5 w-5 text-teal-600" />
-            <h2 className="font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Explore modules
             </h2>
           </div>
@@ -263,7 +263,7 @@ export default function ContentIndex() {
                           <Lock className="h-3 w-3 text-gray-400 dark:text-gray-500" />
                         )}
                       </div>
-                      <h3 className="mt-2 font-semibold text-gray-900 dark:text-gray-100">
+                      <h3 className="mt-2 text-xl font-bold text-gray-900 dark:text-gray-100">
                         {module.title}
                       </h3>
                       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
@@ -304,13 +304,13 @@ export default function ContentIndex() {
 
                   {nextUpLesson && (
                     <div className="rounded-2xl bg-gray-50 p-4 dark:bg-gray-800">
-                      <p className="text-small uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
                         Next up
                       </p>
-                      <p className="mt-1 text-sm text-gray-900 dark:text-gray-100">
+                      <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
                         {nextUpLesson.title}
                       </p>
-                      <div className="mt-3 flex flex-wrap items-center gap-3 text-small font-medium text-gray-500 dark:text-gray-300">
+                      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs font-medium text-gray-500 dark:text-gray-300">
                         <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm dark:bg-gray-900">
                           <Circle className="h-3 w-3" />
                           {startedCount === 0 ? "Not started" : "Keep going"}
@@ -348,7 +348,7 @@ export default function ContentIndex() {
                     </span>
                   )}
 
-                  <span className="text-small uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                  <span className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500">
                     Module {module.order + 1}
                   </span>
                 </div>

@@ -100,8 +100,8 @@ const Dashboard: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="font-semibold text-teal-700 mb-2 dark:text-teal-400">Your Dashboard</h1>
-            <p className="text-gray-600 dark:text-gray-300">{hasFullAccess ? 'Welcome back!' : 'Sample Dashboard'}</p>
+            <h1 className="text-4xl font-bold text-teal-700 mb-2 dark:text-teal-400">Your Dashboard</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300">{hasFullAccess ? 'Welcome back!' : 'Sample Dashboard'}</p>
           </div>
           {!hasFullAccess && (
             <Link
@@ -122,7 +122,7 @@ const Dashboard: React.FC = () => {
                 <Sparkles className="h-6 w-6" />
               </div>
               <div className="flex-1">
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">
+                <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-gray-100">
                   This is a Sample Dashboard
                 </h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-200">
@@ -197,7 +197,7 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Lesson Status */}
           <div className="lg:col-span-1 rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
-            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-6">Lesson Status</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Lesson Status</h2>
 
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-48 h-48">
@@ -221,7 +221,7 @@ const Dashboard: React.FC = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-4xl font-semibold text-gray-900 dark:text-gray-100">{masteredCount}</div>
+                  <div className="text-4xl font-bold text-gray-900 dark:text-gray-100">{masteredCount}</div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">of {totalLessons}</div>
                 </div>
               </div>
@@ -233,35 +233,35 @@ const Dashboard: React.FC = () => {
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">Mastered (80%+)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{masteredCount}</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">{masteredCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">Good (60-79%)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{goodCount}</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">{goodCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">Needs Work (&lt;60%)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{needsWorkCount}</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">{needsWorkCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-gray-300"></div>
                   <span className="text-sm text-gray-700 dark:text-gray-300">Not Started</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{notStartedCount}</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">{notStartedCount}</span>
               </div>
             </div>
           </div>
 
           {/* Performance by Module */}
           <div className="lg:col-span-2 rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
-            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-2">
               <Target className="text-teal-600" size={24} />
               Performance by Module
             </h2>
@@ -307,7 +307,7 @@ const Dashboard: React.FC = () => {
             <div className="w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center mb-4">
               <BookOpen className="text-white" size={24} />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Keep Learning</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Keep Learning</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
               {notStartedCount} lessons waiting for you. Every lesson brings you closer to success!
             </p>
@@ -327,7 +327,7 @@ const Dashboard: React.FC = () => {
             <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
               <CheckCircle className="text-white" size={24} />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Great Work!</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Great Work!</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
               {needsReview === 0
                 ? "No lessons below 60%! You're making excellent progress across the board."
@@ -347,7 +347,7 @@ const Dashboard: React.FC = () => {
             <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
               <Clock className="text-white" size={24} />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Pro Tips</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Pro Tips</h3>
             <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <CheckCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />

@@ -17,11 +17,11 @@ export default function Home() {
               175K+ Students Passed
             </div>
 
-            <h1 className="font-semibold leading-tight tracking-tight text-gray-900 dark:text-white">
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
               Pass Your Life in the UK Test
             </h1>
 
-            <p className="leading-relaxed text-gray-600 dark:text-gray-200">
+            <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-200 md:text-xl">
               Master the official content with engaging lessons, smart practice, and proven study methods. Join thousands who've passed with confidence.
             </p>
 
@@ -62,7 +62,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">Learning Progress</div>
-                    <div className="text-small text-gray-500 dark:text-gray-400">Track your journey</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400">Track your journey</div>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function Home() {
                     </div>
                     <div className="flex-1">
                       <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">Next Milestone</div>
-                      <div className="text-small text-gray-600 dark:text-gray-300">Complete 5 more lessons</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-300">Complete 5 more lessons</div>
                     </div>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ export default function Home() {
 
       <section>
         <div className="mb-8 text-center">
-          <h2 className="font-semibold text-gray-900 dark:text-white">Everything You Need to Pass</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Everything You Need to Pass</h2>
           <p className="mt-2 text-gray-600 dark:text-gray-300">Comprehensive study tools designed for success</p>
         </div>
 
@@ -123,7 +123,7 @@ export default function Home() {
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
               <BookOpen className="h-6 w-6" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">Clear Lessons</h3>
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Clear Lessons</h3>
             <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Master essential topics with easy-to-understand lessons, key facts, and memory techniques that make learning stick.
             </p>
@@ -133,7 +133,7 @@ export default function Home() {
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
               <Brain className="h-6 w-6" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">Smart Practice</h3>
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Smart Practice</h3>
             <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Answer realistic questions with instant feedback. Track your progress and focus on areas that need improvement.
             </p>
@@ -143,7 +143,7 @@ export default function Home() {
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors">
               <CheckCircle className="h-6 w-6" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">Quick Review</h3>
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Quick Review</h3>
             <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Reinforce what you've learned with flashcards. Perfect for quick study sessions on the go.
             </p>
@@ -193,11 +193,11 @@ export default function Home() {
             Join 175K+ Successful Students
           </div>
 
-          <h2 className="font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
             Ready to Pass Your Test?
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Start your free trial today. No credit card required. Cancel anytime.
           </p>
 

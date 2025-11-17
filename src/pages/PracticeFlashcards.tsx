@@ -48,7 +48,7 @@ export default function PracticeFlashcards() {
                 <RotateCcw size={16} />
                 <span>Flashcards</span>
               </div>
-              <h1 className="font-semibold text-gray-900 dark:text-gray-100">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
                 {data.title}
               </h1>
             </div>
