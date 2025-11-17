@@ -41,7 +41,7 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
             <LogIn className="text-teal-600" size={32} />
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900">Welcome back</h2>
+          <h2 className="font-semibold text-gray-900">Welcome back</h2>
           <p className="mt-2 text-gray-600">Sign in to continue your learning journey</p>
         </div>
 
@@ -92,7 +92,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -102,14 +102,14 @@ export default function Login() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or continue with</span>
+              <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200">Or continue with</span>
             </div>
           </div>
 
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white border-2 border-gray-300 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all"
+            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white border-2 border-gray-300 rounded-xl font-semibold text-gray-700 dark:text-gray-900 hover:bg-gray-50 transition-all"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path

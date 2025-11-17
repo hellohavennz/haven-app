@@ -164,7 +164,7 @@ const FlashcardsPage: React.FC = () => {
   if (!currentCard) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">No Flashcards Available</h1>
+        <h1 className="font-semibold text-gray-900 mb-4">No Flashcards Available</h1>
         <button
           onClick={() => navigate('/practice')}
           className="text-blue-600 hover:text-blue-800 font-semibold"
@@ -191,9 +191,9 @@ const FlashcardsPage: React.FC = () => {
             </svg>
             Back to Practice
           </button>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{lessonTitle}</h1>
+          <h1 className="font-semibold text-gray-900 mb-2">{lessonTitle}</h1>
           <div className="flex items-center justify-between">
-            <p className="text-lg text-gray-600">
+            <p className="text-gray-600">
               Flashcard {sessionStats.reviewed + 1} of {sessionStats.total}
             </p>
             <p className="text-sm text-gray-500">
@@ -231,7 +231,7 @@ const FlashcardsPage: React.FC = () => {
                 <div className="text-sm font-semibold uppercase tracking-wide mb-4 opacity-90">
                   Question
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-center leading-relaxed">
+                <div className="text-2xl md:text-3xl font-semibold text-center leading-relaxed">
                   {currentCard.question}
                 </div>
                 <div className="mt-8 text-sm opacity-75 flex items-center">
