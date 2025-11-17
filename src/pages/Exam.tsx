@@ -15,7 +15,7 @@ export default function Exam() {
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
       <div className="space-y-4 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-700">
+        <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-700 dark:text-purple-800">
           <Trophy className="h-4 w-4" />
           Test Your Knowledge
         </div>
@@ -24,7 +24,7 @@ export default function Exam() {
           Practice Exams
         </h1>
 
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-900">
           Simulate the real Life in the UK test with full-length practice exams.
           Get instant results and detailed explanations for every question.
         </p>
@@ -41,16 +41,16 @@ export default function Exam() {
           </div>
 
           <h3 className="mb-2 font-semibold text-gray-900">Mock Exam 1</h3>
-          <p className="mb-6 text-sm text-gray-600">
+          <p className="mb-6 text-sm text-gray-600 dark:text-gray-900">
             Full practice test covering all topics. 45 minutes. Pass with 75% or higher.
           </p>
 
           <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4">
-            <div className="flex items-center gap-2 text-sm text-gray-700">
+            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-900">
               <Clock className="h-4 w-4 text-gray-500" />
               <span>45 minutes time limit</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-700">
+            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-900">
               <Target className="h-4 w-4 text-gray-500" />
               <span>18/24 questions needed to pass</span>
             </div>
@@ -86,16 +86,16 @@ export default function Exam() {
           </div>
 
           <h3 className="mb-2 font-semibold text-gray-900">Mock Exam 2</h3>
-          <p className="mb-6 text-sm text-gray-600">
+          <p className="mb-6 text-sm text-gray-600 dark:text-gray-900">
             Second full practice test with all-new questions. Perfect for final preparation.
           </p>
 
           <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4">
-            <div className="flex items-center gap-2 text-sm text-gray-700">
+            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-900">
               <Clock className="h-4 w-4 text-gray-500" />
               <span>45 minutes time limit</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-700">
+            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-900">
               <Target className="h-4 w-4 text-gray-500" />
               <span>18/24 questions needed to pass</span>
             </div>
@@ -128,7 +128,7 @@ export default function Exam() {
             <h3 className="font-semibold text-gray-900">
               Not ready for a full exam yet?
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-900">
               Keep practicing individual lessons and build your confidence first.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function Exam() {
       <div className="rounded-2xl border border-gray-200 bg-white p-8">
         <h2 className="mb-4 font-semibold text-gray-900">About the Exam</h2>
 
-        <div className="space-y-4 text-gray-700">
+        <div className="space-y-4 text-gray-700 dark:text-gray-900">
           <p>
             The Life in the UK test consists of 24 multiple-choice questions about British
             traditions, history, and everyday life. You'll have 45 minutes to complete the test,
@@ -163,7 +163,7 @@ export default function Exam() {
 
           <div className="rounded-xl bg-gray-50 p-4">
             <h3 className="mb-2 font-semibold text-gray-900">What to Expect:</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-900">
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
                 <span>Questions are randomly selected from the official test bank</span>

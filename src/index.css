@@ -110,31 +110,6 @@
     font-weight: 600 !important;
   }
 
-  .dark .text-gray-950,
-  .dark .text-gray-900,
-  .dark .text-gray-800,
-  .dark .text-gray-700,
-  .dark .text-slate-950,
-  .dark .text-slate-900,
-  .dark .text-slate-800,
-  .dark .text-slate-700 {
-    color: #f8fafc !important;
-  }
-
-  .dark .text-gray-600,
-  .dark .text-slate-600 {
-    color: #e5e7eb !important;
-  }
-
-  .dark .text-gray-500,
-  .dark .text-slate-500 {
-    color: #cbd5f5 !important;
-  }
-
-  .dark .text-gray-400,
-  .dark .text-slate-400 {
-    color: #94a3b8 !important;
-  }
 }
 
 @keyframes fadeIn {

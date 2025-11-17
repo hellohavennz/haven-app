@@ -87,7 +87,7 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 
       {isOpen && (
         <div className="border-t border-gray-100 px-6 pb-6 pt-4">
-          <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+          <p className="text-gray-600 dark:text-gray-900 leading-relaxed">{item.answer}</p>
         </div>
       )}
     </div>
@@ -107,7 +107,7 @@ export default function Help() {
           Help & Support
         </h1>
 
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-900">
           Everything you need to know about using Haven to prepare for your Life in the UK test.
         </p>
       </div>
@@ -121,7 +121,7 @@ export default function Help() {
               <BookOpen className="h-6 w-6 text-teal-600" />
             </div>
             <h3 className="mb-2 font-semibold text-gray-900">1. Study Lessons</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-900 leading-relaxed">
               Start by reading through the lessons in Study mode. Each lesson covers essential
               facts you need to know, organized by topic. Take your time to understand and absorb
               the information.
@@ -133,7 +133,7 @@ export default function Help() {
               <Brain className="h-6 w-6 text-emerald-600" />
             </div>
             <h3 className="mb-2 font-semibold text-gray-900">2. Practice Questions</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-900 leading-relaxed">
               Test your knowledge with realistic practice questions. Get instant feedback and
               detailed explanations. Keep practicing until you consistently score 75% or higher.
             </p>
@@ -144,7 +144,7 @@ export default function Help() {
               <BarChart3 className="h-6 w-6 text-sky-600" />
             </div>
             <h3 className="mb-2 font-semibold text-gray-900">3. Track Progress</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-900 leading-relaxed">
               Monitor your progress on the Dashboard. See which topics you've mastered and which
               need more work. Focus your study time where it matters most.
             </p>
@@ -155,7 +155,7 @@ export default function Help() {
               <Trophy className="h-6 w-6 text-purple-600" />
             </div>
             <h3 className="mb-2 font-semibold text-gray-900">4. Take Mock Exams</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-900 leading-relaxed">
               When you're ready, take a full mock exam under timed conditions. This simulates the
               real test experience and helps you verify you're fully prepared.
             </p>
@@ -181,7 +181,7 @@ export default function Help() {
 
           <div className="flex-1 space-y-2">
             <h3 className="font-semibold text-gray-900">Still have questions?</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-900">
               Can't find the answer you're looking for? Our support team is here to help.
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function Help() {
 
       <div className="rounded-xl bg-gray-50 p-6">
         <h3 className="mb-4 font-semibold text-gray-900">Tips for Success</h3>
-        <ul className="space-y-3 text-sm text-gray-700">
+        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-900">
           <li className="flex items-start gap-3">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600">
               1
