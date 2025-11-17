@@ -72,22 +72,22 @@ function FAQAccordion({ item }: { item: FAQItem }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white transition-all hover:border-teal-300">
+    <div className="rounded-xl border border-gray-200 bg-white transition-all hover:border-teal-300 dark:border-gray-800 dark:bg-gray-900">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between p-6 text-left"
       >
-        <span className="pr-4 font-semibold text-gray-900">{item.question}</span>
+        <span className="pr-4 font-semibold text-gray-900 dark:text-white">{item.question}</span>
         {isOpen ? (
-          <ChevronUp className="h-5 w-5 flex-shrink-0 text-teal-600" />
+          <ChevronUp className="h-5 w-5 flex-shrink-0 text-teal-500" />
         ) : (
-          <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-400" />
+          <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500" />
         )}
       </button>
 
       {isOpen && (
-        <div className="border-t border-gray-100 px-6 pb-6 pt-4">
-          <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+        <div className="border-t border-gray-100 px-6 pb-6 pt-4 dark:border-gray-800">
+          <p className="leading-relaxed text-gray-600 dark:text-gray-200">{item.answer}</p>
         </div>
       )}
     </div>
@@ -98,64 +98,64 @@ export default function Help() {
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
       <div className="space-y-4 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700">
+        <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700 dark:bg-teal-900/30 dark:text-teal-100">
           <HelpCircle className="h-4 w-4" />
           Need Help?
         </div>
 
-        <h1 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
+        <h1 className="font-semibold text-gray-900 dark:text-white">
           Help & Support
         </h1>
 
-        <p className="text-lg text-gray-600">
+        <p className="text-gray-600 dark:text-gray-200">
           Everything you need to know about using Haven to prepare for your Life in the UK test.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8">
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">How to Use Haven</h2>
+      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
+        <h2 className="mb-6 font-semibold text-gray-900 dark:text-white">How to Use Haven</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100">
-              <BookOpen className="h-6 w-6 text-teal-600" />
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
+              <BookOpen className="h-6 w-6 text-teal-600 dark:text-teal-200" />
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">1. Study Lessons</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">1. Study Lessons</h3>
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Start by reading through the lessons in Study mode. Each lesson covers essential
               facts you need to know, organized by topic. Take your time to understand and absorb
               the information.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
-              <Brain className="h-6 w-6 text-emerald-600" />
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 dark:bg-emerald-900/40">
+              <Brain className="h-6 w-6 text-emerald-600 dark:text-emerald-200" />
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">2. Practice Questions</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">2. Practice Questions</h3>
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Test your knowledge with realistic practice questions. Get instant feedback and
               detailed explanations. Keep practicing until you consistently score 75% or higher.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100">
-              <BarChart3 className="h-6 w-6 text-sky-600" />
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-900/40">
+              <BarChart3 className="h-6 w-6 text-sky-600 dark:text-sky-200" />
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">3. Track Progress</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">3. Track Progress</h3>
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               Monitor your progress on the Dashboard. See which topics you've mastered and which
               need more work. Focus your study time where it matters most.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
-              <Trophy className="h-6 w-6 text-purple-600" />
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/40">
+              <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-200" />
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">4. Take Mock Exams</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">4. Take Mock Exams</h3>
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               When you're ready, take a full mock exam under timed conditions. This simulates the
               real test experience and helps you verify you're fully prepared.
             </p>
@@ -164,7 +164,7 @@ export default function Help() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <h2 className="font-semibold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
 
         <div className="space-y-3">
           {faqs.map((faq, index) => (
@@ -173,15 +173,15 @@ export default function Help() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-8">
+      <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
           <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-500">
             <Mail className="h-8 w-8 text-white" />
           </div>
 
           <div className="flex-1 space-y-2">
-            <h3 className="text-xl font-bold text-gray-900">Still have questions?</h3>
-            <p className="text-gray-600">
+            <h3 className="font-semibold text-gray-900 dark:text-white">Still have questions?</h3>
+            <p className="text-gray-600 dark:text-gray-300">
               Can't find the answer you're looking for? Our support team is here to help.
             </p>
           </div>
@@ -195,11 +195,11 @@ export default function Help() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-gray-50 p-6">
-        <h3 className="mb-4 font-semibold text-gray-900">Tips for Success</h3>
-        <ul className="space-y-3 text-sm text-gray-700">
+      <div className="rounded-xl bg-gray-50 p-6 dark:border dark:border-gray-800 dark:bg-gray-900">
+        <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">Tips for Success</h3>
+        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-200">
           <li className="flex items-start gap-3">
-            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-600">
+            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               1
             </span>
             <span>
@@ -208,7 +208,7 @@ export default function Help() {
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-600">
+            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               2
             </span>
             <span>
@@ -217,7 +217,7 @@ export default function Help() {
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-600">
+            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               3
             </span>
             <span>
@@ -226,7 +226,7 @@ export default function Help() {
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-600">
+            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               4
             </span>
             <span>
@@ -235,7 +235,7 @@ export default function Help() {
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-xs font-bold text-teal-600">
+            <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               5
             </span>
             <span>
