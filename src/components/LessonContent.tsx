@@ -28,9 +28,9 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
   if (facts.length === 0) return null;
 
   return (
-    <div 
+    <div
       onClick={nextFact}
-      className="bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 rounded-xl p-6 border-2 border-teal-300 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all duration-300 my-8"
+      className="bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 rounded-xl p-6 border-2 border-teal-300 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all duration-300 my-8 dark:border-teal-600 dark:bg-gray-900 dark:text-gray-100"
     >
       <div className="flex items-start justify-between mb-3">
         <h3 className="text-base font-semibold text-teal-900 flex items-center">
@@ -48,7 +48,7 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
       </div>
       
       <div className="relative overflow-hidden">
-        <p className="text-gray-800 text-base leading-relaxed animate-fadeIn">
+        <p className="text-gray-800 text-base leading-relaxed animate-fadeIn dark:text-gray-100">
           {facts[currentIndex]}
         </p>
       </div>
@@ -75,14 +75,14 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
       <div className="space-y-8">
         {/* Overview Section */}
         {overview && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
             <div className="bg-[#0D9488] px-6 py-4">
               <h2 className="text-2xl font-bold text-white">Overview</h2>
             </div>
             <div className="p-6">
               <div className="prose prose-lg max-w-none">
                 {overview.split('\n\n').map((paragraph, pIndex) => (
-                  <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed">
+                  <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
                     {paragraph}
                   </p>
                 ))}
@@ -100,7 +100,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
           return (
             <div key={index}>
               {/* Study Section */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
                 {section.heading && (
                   <div className="bg-[#0D9488] px-6 py-4">
                     <h2 className="text-2xl font-bold text-white">{section.heading}</h2>
@@ -109,7 +109,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
                 <div className="p-6">
                   <div className="prose prose-lg max-w-none">
                     {section.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed">
+                      <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
                         {paragraph}
                       </p>
                     ))}
@@ -136,14 +136,14 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
       <div className="space-y-8">
         {sections.map((section, index) => (
           <div key={index}>
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
               <div className="bg-[#0D9488] px-6 py-4">
                 <h2 className="text-2xl font-bold text-white">{section.title}</h2>
               </div>
               <div className="p-6">
                 <div className="prose prose-lg max-w-none mb-6">
                   {section.content.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed">
+                    <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
                       {paragraph}
                     </p>
                   ))}
@@ -160,7 +160,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
   }
 
   return (
-    <div className="text-center text-gray-500 py-8">
+    <div className="text-center text-gray-500 py-8 dark:text-gray-300">
       No content available for this lesson.
     </div>
   );

@@ -130,7 +130,7 @@ export default function PracticeSidebar({
   return (
     <aside
       aria-label="Practice navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-slate-200 bg-white md:sticky md:top-0 scrollbar-hide ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-slate-200 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-slate-100 ${className}`}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
@@ -183,8 +183,8 @@ export default function PracticeSidebar({
                     isLocked
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
-                      ? "bg-sky-50 text-sky-900"
-                      : "text-slate-700 hover:bg-slate-50"
+                      ? "bg-sky-50 text-sky-900 dark:bg-sky-900/20 dark:text-sky-100"
+                      : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -198,7 +198,7 @@ export default function PracticeSidebar({
                     <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-sky-600'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
-                      <div className="text-xs text-slate-500">
+                      <div className="text-xs text-slate-500 dark:text-slate-300">
                         {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
                       </div>
                     </div>
@@ -217,8 +217,8 @@ export default function PracticeSidebar({
                           to={`/practice/${lesson.id}`}
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
-                              ? "bg-sky-100 font-medium text-sky-900"
-                              : "text-slate-700 hover:bg-slate-50"
+                              ? "bg-sky-100 font-medium text-sky-900 dark:bg-sky-900/30 dark:text-sky-100"
+                              : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
                           }`}
                           onClick={onNavigate}
                         >

@@ -158,9 +158,9 @@ export default function ContentIndex() {
   }, [modules, progressData]);
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-16">
+    <div className="min-h-screen bg-slate-50 pb-16 text-slate-900 transition-colors dark:bg-gray-950 dark:text-slate-100">
       <div className="mx-auto w-full max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
-        <header className="rounded-3xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 p-8 text-white shadow-lg">
+        <header className="rounded-3xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 p-8 text-white shadow-lg dark:from-teal-600 dark:via-emerald-700 dark:to-emerald-800">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
               <p className="text-sm font-medium uppercase tracking-[0.35em] text-teal-100">
@@ -224,7 +224,7 @@ export default function ContentIndex() {
         <section className="mt-10">
           <div className="mb-6 flex items-center gap-3">
             <BookOpen className="h-5 w-5 text-teal-600" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Explore modules
             </h2>
           </div>
@@ -246,7 +246,11 @@ export default function ContentIndex() {
               return (
               <div
                 key={module.slug}
-                className={`flex h-full flex-col justify-between rounded-3xl border bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg ${isLocked ? 'border-gray-200 opacity-75' : 'border-gray-100'}`}
+                className={`flex h-full flex-col justify-between rounded-3xl border bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:bg-gray-900/70 dark:shadow-gray-900/30 ${
+                  isLocked
+                    ? 'border-gray-200 opacity-75 dark:border-gray-800'
+                    : 'border-gray-100 dark:border-gray-800'
+                }`}
               >
                 <div className="space-y-5">
                   <div className="flex items-start justify-between gap-4">
@@ -256,23 +260,29 @@ export default function ContentIndex() {
                           Module {module.order + 1}
                         </p>
                         {isLocked && (
-                          <Lock className="h-3 w-3 text-gray-400" />
+                          <Lock className="h-3 w-3 text-gray-400 dark:text-gray-500" />
                         )}
                       </div>
-                      <h3 className="mt-2 text-xl font-bold text-gray-900">
+                      <h3 className="mt-2 text-xl font-bold text-gray-900 dark:text-gray-100">
                         {module.title}
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
+                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                         {lessons.length} lesson{lessons.length === 1 ? "" : "s"}
                       </p>
                     </div>
-                    <div className={`rounded-full p-3 ${isLocked ? 'bg-gray-100 text-gray-400' : 'bg-emerald-50 text-emerald-600'}`}>
+                    <div
+                      className={`rounded-full p-3 ${
+                        isLocked
+                          ? 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500'
+                          : 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-200'
+                      }`}
+                    >
                       {isLocked ? <Lock className="h-5 w-5" /> : <BarChart3 className="h-5 w-5" />}
                     </div>
                   </div>
 
                   <div>
-                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-800">
                       <div
                         className="absolute left-0 top-0 h-full bg-teal-200"
                         style={{ width: `${startedPercent}%` }}
@@ -282,7 +292,7 @@ export default function ContentIndex() {
                         style={{ width: `${masteredPercent}%` }}
                       />
                     </div>
-                    <div className="mt-3 flex items-center justify-between text-sm text-gray-600">
+                    <div className="mt-3 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
                       <span>
                         Started {startedCount}/{lessons.length}
                       </span>
@@ -293,19 +303,19 @@ export default function ContentIndex() {
                   </div>
 
                   {nextUpLesson && (
-                    <div className="rounded-2xl bg-gray-50 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+                    <div className="rounded-2xl bg-gray-50 p-4 dark:bg-gray-800">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
                         Next up
                       </p>
-                      <p className="mt-1 text-sm font-semibold text-gray-900">
+                      <p className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">
                         {nextUpLesson.title}
                       </p>
-                      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs font-medium text-gray-500">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm">
+                      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs font-medium text-gray-500 dark:text-gray-300">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm dark:bg-gray-900">
                           <Circle className="h-3 w-3" />
                           {startedCount === 0 ? "Not started" : "Keep going"}
                         </span>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm dark:bg-gray-900">
                           <CheckCircle2 className="h-3 w-3 text-emerald-500" />
                           {masteredCount} mastered
                         </span>
@@ -318,7 +328,7 @@ export default function ContentIndex() {
                   {isLocked ? (
                     <Link
                       to="/paywall"
-                      className="group inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition hover:text-teal-600"
+                      className="group inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition hover:text-teal-600 dark:text-gray-300"
                     >
                       <Lock className="h-4 w-4" />
                       Sign up to unlock
@@ -327,18 +337,18 @@ export default function ContentIndex() {
                   ) : nextUpLesson ? (
                     <Link
                       to={`/content/${nextUpLesson.id}`}
-                      className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 transition hover:text-emerald-600"
+                      className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 transition hover:text-emerald-600 dark:text-emerald-400"
                     >
                       {callToActionLabel}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   ) : (
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
                       Lessons coming soon
                     </span>
                   )}
 
-                  <span className="text-xs uppercase tracking-widest text-gray-400">
+                  <span className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500">
                     Module {module.order + 1}
                   </span>
                 </div>
