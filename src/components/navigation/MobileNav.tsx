@@ -48,7 +48,7 @@ export default function MobileNav() {
   return (
     <nav
       aria-label="Primary mobile navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur md:hidden"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur md:hidden dark:border-gray-800 dark:bg-gray-950/90"
     >
       <div
         className="mx-auto flex max-w-xl items-stretch justify-between gap-1 px-4 pt-2"
@@ -62,8 +62,8 @@ export default function MobileNav() {
               [
                 "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
                 (isActive || isPathActive(location.pathname))
-                  ? "text-teal-600"
-                  : "text-gray-500 hover:text-gray-700",
+                  ? "text-teal-600 dark:text-teal-300"
+                  : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100",
               ].join(" ")
             }
           >

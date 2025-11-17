@@ -57,7 +57,7 @@ export default function RootLayout() {
             <span className="sr-only">Open navigation</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="font-semibold">Haven</div>
+          <div className="font-heading font-semibold">Haven</div>
           <div className="h-6 w-6" aria-hidden="true" />
         </header>
       )}

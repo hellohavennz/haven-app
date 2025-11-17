@@ -278,7 +278,7 @@ export default function PracticeIndex() {
         <section className="mt-10 space-y-6">
           <div className="flex items-center gap-3">
             <BarChart3 className="h-5 w-5 text-sky-600" />
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Module progress</h2>
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Module progress</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -309,7 +309,7 @@ export default function PracticeIndex() {
                           </p>
                           {isLocked && <Lock className="h-3 w-3 text-gray-400" />}
                         </div>
-                        <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{module.title}</h3>
+                        <h3 className="font-semibold text-slate-900 dark:text-slate-100">{module.title}</h3>
                         <p className="text-sm text-slate-500 dark:text-slate-300">
                           {hasPractice
                             ? `${summary.lessons.length} lessons · ${summary.totalQuestions} questions`
@@ -325,7 +325,7 @@ export default function PracticeIndex() {
                       <div className="rounded-2xl bg-gray-50 p-6 dark:bg-gray-800">
                         <div className="text-center">
                           <Lock className="mx-auto mb-3 h-8 w-8 text-gray-400" />
-                          <p className="font-semibold text-gray-700 mb-2 dark:text-gray-200">Module Locked</p>
+                          <p className="text-gray-700 mb-2 dark:text-gray-200">Module Locked</p>
                           <p className="text-sm text-gray-600 mb-4 dark:text-gray-300">
                             Sign up to access practice questions for this module
                           </p>
@@ -341,7 +341,7 @@ export default function PracticeIndex() {
                     ) : hasPractice ? (
                       <div className="space-y-4">
                         <div>
-                          <div className="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
                             <span>Question coverage</span>
                             <span>{coveragePercent}%</span>
                           </div>
@@ -354,11 +354,11 @@ export default function PracticeIndex() {
                         </div>
 
                         <div>
-                          <div className="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
                             <span>Accuracy</span>
                             <span>{accuracyPercent !== null ? `${accuracyPercent}%` : "—"}</span>
                           </div>
-                          <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-300">
+                          <div className="mt-2 flex items-center gap-2 text-small text-slate-500 dark:text-slate-300">
                             <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                             <span>
                               {summary.masteredCount}/{summary.lessons.length} lessons mastered
@@ -367,7 +367,7 @@ export default function PracticeIndex() {
                         </div>
 
                         <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-900">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                          <p className="text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
                             Next focus
                           </p>
                           <div className="mt-1 flex items-start gap-2 text-sm text-slate-700 dark:text-slate-200">
@@ -403,7 +403,7 @@ export default function PracticeIndex() {
                       </div>
                     ) : (
                       <div className="rounded-2xl bg-slate-50 p-6 text-sm text-slate-600 dark:bg-slate-900 dark:text-slate-300">
-                        <p className="font-semibold text-slate-700 dark:text-slate-100">Practice sets in progress</p>
+                        <p className="text-slate-700 dark:text-slate-100">Practice sets in progress</p>
                         <p className="mt-2 text-slate-500 dark:text-slate-300">
                           We&apos;re preparing quizzes and flashcards for this module. Check back soon to train here.
                         </p>

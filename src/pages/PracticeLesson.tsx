@@ -94,8 +94,8 @@ export default function PracticeLesson() {
     return (
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
         <div className="space-y-6 text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Practice</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <h1 className="font-semibold text-gray-900 dark:text-gray-100">Practice</h1>
+          <p className="text-gray-600 dark:text-gray-300">
             Practice questions for this lesson are coming soon. Try flashcards instead or review the
             lesson content.
           </p>
@@ -123,10 +123,10 @@ export default function PracticeLesson() {
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
         <div className="space-y-8">
           <header className="text-center space-y-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="font-semibold text-gray-900 dark:text-gray-100">
               {data.title}
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300">
               Choose how you'd like to practice
             </p>
           </header>
@@ -142,7 +142,7 @@ export default function PracticeLesson() {
                   <Brain className="text-white" size={32} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2 dark:text-gray-100">
+                  <h2 className="font-semibold text-gray-900 mb-2 dark:text-gray-100">
                     Practice Questions
                   </h2>
                   <p className="text-gray-600 mb-4 dark:text-gray-300">
@@ -182,7 +182,7 @@ export default function PracticeLesson() {
                   <Zap className="text-white" size={32} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2 dark:text-gray-100">
+                  <h2 className="font-semibold text-gray-900 mb-2 dark:text-gray-100">
                     Flashcards
                   </h2>
                   <p className="text-gray-600 mb-4 dark:text-gray-300">
@@ -351,10 +351,10 @@ export default function PracticeLesson() {
             <CheckCircle2 className={resultVariant.iconColor} size={48} />
           </div>
           <div className="space-y-2">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="font-semibold text-gray-900 dark:text-gray-100">
               {resultVariant.headline}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300">
               {resultVariant.summary}
             </p>
           </div>
@@ -364,7 +364,7 @@ export default function PracticeLesson() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-gray-700 dark:text-gray-200">Your Score</span>
-              <span className={`font-bold text-3xl ${resultVariant.accentText}`}>
+              <span className={`font-semibold text-3xl ${resultVariant.accentText}`}>
                 {finalPercentage}%
               </span>
             </div>
@@ -428,7 +428,7 @@ export default function PracticeLesson() {
       <div className="space-y-8">
         <header className="space-y-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="font-semibold text-gray-900 dark:text-gray-100">
               Practice
             </h1>
             <button
@@ -443,7 +443,7 @@ export default function PracticeLesson() {
               <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                 Question {currentQIdx + 1} <span className="text-gray-400 dark:text-gray-400">of {totalQuestions}</span>
               </span>
-              <span className={`text-sm font-bold ${
+              <span className={`text-sm font-semibold ${
                 percentage >= 80 ? "text-green-600" : "text-gray-900 dark:text-gray-100"
               }`}>
                 {percentage}% correct
@@ -459,7 +459,7 @@ export default function PracticeLesson() {
         </header>
 
         <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6 dark:bg-gray-900 dark:border-gray-800">
-          <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed dark:text-gray-100">
+          <p className="text-gray-900 leading-relaxed dark:text-gray-100">
             {currentQ.prompt}
           </p>
 
@@ -496,7 +496,7 @@ export default function PracticeLesson() {
             </button>
           ) : (
             <div className="space-y-4">
-              <div className={`flex items-center justify-center gap-2 text-xl font-bold py-4 rounded-xl ${
+              <div className={`flex items-center justify-center gap-2 text-xl font-semibold py-4 rounded-xl ${
                 isCorrect ? "bg-green-100 text-green-900 dark:bg-green-900/40 dark:text-green-200" : "bg-red-100 text-red-900 dark:bg-red-900/40 dark:text-red-200"
               }`}>
                 {isCorrect ? (

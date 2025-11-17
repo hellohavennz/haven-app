@@ -184,7 +184,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                     <BookOpen className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-teal-600'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-300">
+                      <div className="text-small text-gray-500 dark:text-gray-300">
                         {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
                       </div>
                     </div>
