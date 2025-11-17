@@ -198,10 +198,10 @@ export default function PracticeIndex() {
         <header className="rounded-3xl bg-gradient-to-r from-sky-500 via-sky-600 to-cyan-500 p-8 text-white shadow-lg">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
-              <p className="text-sm font-medium uppercase tracking-[0.35em] text-sky-100">
+              <p className="text-sm uppercase tracking-[0.35em] text-sky-100">
                 Practice dashboard
               </p>
-              <h1 className="text-3xl font-bold md:text-4xl">
+              <h1 className="font-semibold">
                 Track your quiz mastery across every module
               </h1>
               <p className="max-w-xl text-sm text-sky-50/90 md:text-base">
@@ -217,7 +217,7 @@ export default function PracticeIndex() {
               >
                 <Brain className="h-5 w-5 text-cyan-500" />
                 <span>
-                  Continue practice: <span className="font-bold">{nextLesson.title}</span>
+                  Continue practice: <span className="font-semibold">{nextLesson.title}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -236,7 +236,7 @@ export default function PracticeIndex() {
                   style={{ width: `${questionCoveragePercent}%` }}
                 />
               </div>
-              <p className="mt-2 text-xs text-sky-50/80">
+              <p className="mt-2 text-small text-sky-50/80">
                 {totalQuestions} total questions available
               </p>
             </div>
@@ -246,7 +246,7 @@ export default function PracticeIndex() {
                 <span>Accuracy</span>
                 <span>{overallAccuracyPercent !== null ? `${overallAccuracyPercent}%` : "—"}</span>
               </div>
-              <div className="mt-3 flex items-center gap-2 text-xs text-sky-50/80">
+              <div className="mt-3 flex items-center gap-2 text-small text-sky-50/80">
                 <Target className="h-4 w-4" />
                 <span>{correctAnswers} correct answers logged</span>
               </div>
@@ -270,7 +270,7 @@ export default function PracticeIndex() {
                   }}
                 />
               </div>
-              <p className="mt-2 text-xs text-sky-50/80">Mastery is 80%+ accuracy</p>
+              <p className="mt-2 text-small text-sky-50/80">Mastery is 80%+ accuracy</p>
             </div>
           </div>
         </header>
@@ -304,7 +304,7 @@ export default function PracticeIndex() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-1 flex-1">
                         <div className="flex items-center gap-2">
-                          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
+                          <p className="text-small uppercase tracking-[0.35em] text-slate-400">
                             Module
                           </p>
                           {isLocked && <Lock className="h-3 w-3 text-gray-400" />}

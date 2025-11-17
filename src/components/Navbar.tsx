@@ -43,7 +43,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-lg">H</span>
+                <span className="text-white font-heading font-semibold text-lg">H</span>
               </div>
               <span className="font-black text-xl text-gray-900 dark:text-white">Haven</span>
             </Link>
@@ -89,7 +89,7 @@ export default function Navbar() {
             {showUpgrade && (
               <Link
                 to="/paywall"
-                className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-sm hover:opacity-90 transition-all"
+                className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-base hover:opacity-90 transition-all"
               >
                 {tier === 'plus' ? <Crown size={16} /> : <Sparkles size={16} />}
                 {upgradeText}
@@ -117,7 +117,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   to="/paywall"
-                  className="px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-sm hover:bg-teal-700 transition-colors"
+                  className="px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-base hover:bg-teal-700 transition-colors"
                 >
                   Sign Up
                 </Link>
@@ -178,7 +178,7 @@ export default function Navbar() {
             {showUpgrade && (
               <Link
                 to="/paywall"
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-base"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {tier === 'plus' ? <Crown size={16} /> : <Sparkles size={16} />}
@@ -213,7 +213,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/paywall"
-                    className="block px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-sm text-center mt-2"
+                    className="block px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-base text-center mt-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Sign Up

@@ -143,13 +143,13 @@ export default function PracticeSidebar({
               <Target className="h-5 w-5" />
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold">{masteredLessons}</div>
-              <div className="text-xs text-sky-100">Mastered</div>
+              <div className="text-2xl font-semibold">{masteredLessons}</div>
+              <div className="text-small text-sky-100">Mastered</div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-sky-100">
+            <div className="flex items-center justify-between text-small text-sky-100">
               <span>Progress</span>
               <span>{coveragePercent}%</span>
             </div>

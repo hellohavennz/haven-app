@@ -163,10 +163,10 @@ export default function ContentIndex() {
         <header className="rounded-3xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 p-8 text-white shadow-lg dark:from-teal-600 dark:via-emerald-700 dark:to-emerald-800">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
-              <p className="text-sm font-medium uppercase tracking-[0.35em] text-teal-100">
+              <p className="text-sm uppercase tracking-[0.35em] text-teal-100">
                 Study dashboard
               </p>
-              <h1 className="text-3xl font-bold md:text-4xl">
+              <h1 className="font-semibold">
                 Map your progress through the handbook
               </h1>
               <p className="max-w-xl text-sm text-teal-50/90 md:text-base">
@@ -181,7 +181,7 @@ export default function ContentIndex() {
               >
                 <Sparkles className="h-5 w-5 text-emerald-500" />
                 <span>
-                  Continue: <span className="font-bold">{nextLesson.title}</span>
+                  Continue: <span className="font-semibold">{nextLesson.title}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -256,7 +256,7 @@ export default function ContentIndex() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-500">
+                        <p className="text-small uppercase tracking-[0.35em] text-teal-500">
                           Module {module.order + 1}
                         </p>
                         {isLocked && (

@@ -153,32 +153,32 @@ export default function Home() {
 
       <section className="rounded-3xl bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-12 text-white md:px-12">
         <div className="mx-auto max-w-3xl text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Simple Path to Success</h2>
-          <p className="text-lg text-gray-300">
+          <h2 className="font-semibold">Simple Path to Success</h2>
+          <p className="text-gray-300">
             Follow our proven 4-step method used by thousands of successful test-takers
           </p>
 
           <div className="grid gap-6 md:grid-cols-2 pt-8">
             <div className="rounded-2xl bg-white/10 p-6 text-left backdrop-blur">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-xl font-bold">1</div>
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-xl font-semibold">1</div>
               <h3 className="mb-2 font-semibold">Study Lessons</h3>
               <p className="text-sm text-gray-300">Learn key facts with clear explanations and memory hooks</p>
             </div>
 
             <div className="rounded-2xl bg-white/10 p-6 text-left backdrop-blur">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-xl font-bold">2</div>
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-xl font-semibold">2</div>
               <h3 className="mb-2 font-semibold">Practice Questions</h3>
               <p className="text-sm text-gray-300">Test your knowledge with realistic exam-style questions</p>
             </div>
 
             <div className="rounded-2xl bg-white/10 p-6 text-left backdrop-blur">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-sky-500 text-xl font-bold">3</div>
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-sky-500 text-xl font-semibold">3</div>
               <h3 className="mb-2 font-semibold">Review Flashcards</h3>
               <p className="text-sm text-gray-300">Reinforce learning with quick spaced repetition</p>
             </div>
 
             <div className="rounded-2xl bg-white/10 p-6 text-left backdrop-blur">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-purple-500 text-xl font-bold">4</div>
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-purple-500 text-xl font-semibold">4</div>
               <h3 className="mb-2 font-semibold">Take Mock Exam</h3>
               <p className="text-sm text-gray-300">Verify your readiness with a full practice test</p>
             </div>
@@ -204,7 +204,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link
               to="/content"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 text-white text-lg font-semibold hover:shadow-lg hover:scale-105 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all"
             >
               Start Learning Free
               <ArrowRight className="h-5 w-5" />

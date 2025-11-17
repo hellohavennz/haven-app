@@ -60,7 +60,7 @@ export default function MobileNav() {
             to={to}
             className={({ isActive }) =>
               [
-                "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-xs font-medium transition-colors",
+                "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
                 (isActive || isPathActive(location.pathname))
                   ? "text-teal-600"
                   : "text-gray-500 hover:text-gray-700",

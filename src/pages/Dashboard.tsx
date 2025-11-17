@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
               <Star className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Overall</span>
             </div>
-            <div className="text-5xl font-bold mb-2">{accuracyScore}%</div>
+            <div className="text-5xl font-semibold mb-2">{accuracyScore}%</div>
             <div className="text-teal-100 font-medium">Accuracy Score</div>
             <div className="text-sm text-teal-100 mt-1">{totalAttempted} questions answered</div>
           </div>
@@ -166,7 +166,7 @@ const Dashboard: React.FC = () => {
               <Trophy className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Mastered</span>
             </div>
-            <div className="text-5xl font-bold mb-2">{masteredLessons}</div>
+            <div className="text-5xl font-semibold mb-2">{masteredLessons}</div>
             <div className="text-green-100 font-medium">Lessons at 80%+</div>
             <div className="text-sm text-green-100 mt-1">Out of {totalLessons} total</div>
           </div>
@@ -177,7 +177,7 @@ const Dashboard: React.FC = () => {
               <TrendingUp className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Progress</span>
             </div>
-            <div className="text-5xl font-bold mb-2">{completionRate}%</div>
+            <div className="text-5xl font-semibold mb-2">{completionRate}%</div>
             <div className="text-blue-100 font-medium">Completion Rate</div>
             <div className="text-sm text-blue-100 mt-1">{lessonsStarted}/{totalLessons} lessons started</div>
           </div>
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
               <Zap className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Focus</span>
             </div>
-            <div className="text-5xl font-bold mb-2">{needsReview}</div>
+            <div className="text-5xl font-semibold mb-2">{needsReview}</div>
             <div className="text-orange-100 font-medium">Need Review</div>
             <div className="text-sm text-orange-100 mt-1">Below 60% accuracy</div>
           </div>
@@ -276,7 +276,7 @@ const Dashboard: React.FC = () => {
                         {module.masteredCount}/{module.totalLessons} mastered • {module.questionsAnswered} questions
                       </div>
                     </div>
-                    <div className={`text-2xl font-bold ${
+                    <div className={`text-2xl font-semibold ${
                       module.avgPercentage >= 80 ? 'text-green-600' :
                       module.avgPercentage >= 60 ? 'text-yellow-600' :
                       module.avgPercentage > 0 ? 'text-gray-400' : 'text-gray-300'

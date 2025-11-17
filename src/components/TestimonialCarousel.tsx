@@ -108,7 +108,7 @@ export default function TestimonialCarousel() {
                 ))}
               </div>
 
-              <blockquote className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl">
+              <blockquote className="mb-6 leading-relaxed text-gray-700">
                 "{testimonial.text}"
               </blockquote>
 
@@ -118,7 +118,7 @@ export default function TestimonialCarousel() {
 
               <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.name}</div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
                   <div className="text-sm text-gray-600">
                     {testimonial.location} • From {testimonial.country}
                   </div>

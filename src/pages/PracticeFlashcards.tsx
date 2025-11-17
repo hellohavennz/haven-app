@@ -73,11 +73,11 @@ export default function PracticeFlashcards() {
             >
               <div className="text-center space-y-6">
                 <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
-                  <span className="text-sm font-bold text-white uppercase tracking-wider">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wider">
                     {reveal ? "Answer" : "Question"}
                   </span>
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-white leading-tight px-4">
+                <div className="text-3xl md:text-4xl font-semibold text-white leading-tight px-4">
                   {reveal ? card[1] : card[0]}
                 </div>
                 <div className="text-sm text-teal-100 pt-4 font-medium">

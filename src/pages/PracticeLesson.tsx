@@ -383,7 +383,7 @@ export default function PracticeLesson() {
           <div className={`${highlightVariant.bg} ${highlightVariant.border} rounded-xl p-4`}>
             <div className={`flex items-center gap-2 justify-center ${highlightVariant.text} dark:text-gray-100`}>
               <HighlightIcon className={highlightVariant.iconColor} size={20} />
-              <p className="font-medium text-center">{supportiveMessage}</p>
+              <p className="text-center">{supportiveMessage}</p>
             </div>
           </div>
 

@@ -32,8 +32,8 @@ export default function AskPippa() {
                 <Sparkles className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-bold">Ask Pippa</h3>
-                <p className="text-xs text-white/90">Your study assistant</p>
+                <h3 className="font-semibold">Ask Pippa</h3>
+                <p className="text-small text-white/90">Your study assistant</p>
               </div>
             </div>
             <button
@@ -90,10 +90,10 @@ export default function AskPippa() {
 
               <div className="rounded-xl border-2 border-teal-200 bg-teal-50 p-4 text-center">
                 <Sparkles className="mx-auto mb-2 h-8 w-8 text-teal-600" />
-                <p className="text-sm font-semibold text-teal-900 mb-1">
+                <p className="text-sm text-teal-900 mb-1">
                   Coming Soon!
                 </p>
-                <p className="text-xs text-teal-700">
+                <p className="text-small text-teal-700">
                   Pippa is currently being trained and will be available to help you soon.
                 </p>
               </div>
