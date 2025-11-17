@@ -88,21 +88,21 @@ export default function PracticeLesson() {
     setWrongTopics([]);
   }, [lessonId]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Lesson not found.</div>;
+  if (!data) return <div className="max-w-3xl mx-auto p-6 text-gray-900 dark:text-gray-100">Lesson not found.</div>;
 
   if (!hasQuestions && !showChoice) {
     return (
-      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
         <div className="space-y-6 text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Practice</h1>
-          <p className="text-lg text-gray-600">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Practice</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Practice questions for this lesson are coming soon. Try flashcards instead or review the
             lesson content.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               to={`/content/${data.id}`}
-              className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all"
+              className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
             >
               Review Lesson
             </Link>
@@ -120,13 +120,13 @@ export default function PracticeLesson() {
 
   if (showChoice) {
     return (
-      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
         <div className="space-y-8">
           <header className="text-center space-y-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
               {data.title}
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               Choose how you'd like to practice
             </p>
           </header>
@@ -135,22 +135,22 @@ export default function PracticeLesson() {
             <button
               onClick={() => hasQuestions && setShowChoice(false)}
               disabled={!hasQuestions}
-              className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left disabled:opacity-60 disabled:cursor-not-allowed"
+              className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left disabled:opacity-60 disabled:cursor-not-allowed dark:bg-gray-900 dark:border-gray-800 dark:hover:border-teal-400/80"
             >
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Brain className="text-white" size={32} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 dark:text-gray-100">
                     Practice Questions
                   </h2>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 mb-4 dark:text-gray-300">
                     {hasQuestions
                       ? `Test your knowledge with ${shuffledQuestions.length} multiple-choice questions`
                       : "We're writing practice questions for this lesson."}
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-teal-500 flex-shrink-0" size={16} />
                       Instant feedback on answers
@@ -165,8 +165,8 @@ export default function PracticeLesson() {
                     </li>
                   </ul>
                 </div>
-                <div className="pt-4 border-t border-gray-200">
-                  <span className="text-teal-600 font-semibold group-hover:translate-x-1 inline-block transition-transform">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                  <span className="text-teal-600 font-semibold group-hover:translate-x-1 inline-block transition-transform dark:text-teal-300">
                     {hasQuestions ? "Start Practice →" : "Practice coming soon"}
                   </span>
                 </div>
@@ -175,20 +175,20 @@ export default function PracticeLesson() {
 
             <button
               onClick={() => navigate(`/practice/${lessonId}/flashcards`)}
-              className="group bg-white border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left"
+              className="group bg-white border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left dark:bg-gray-900 dark:border-gray-800 dark:hover:border-emerald-400/80"
             >
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Zap className="text-white" size={32} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 dark:text-gray-100">
                     Flashcards
                   </h2>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 mb-4 dark:text-gray-300">
                     Quick review with {data.flashcards?.length || 0} flashcards
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="text-emerald-500 flex-shrink-0" size={16} />
                       Randomized for better retention
@@ -203,8 +203,8 @@ export default function PracticeLesson() {
                     </li>
                   </ul>
                 </div>
-                <div className="pt-4 border-t border-gray-200">
-                  <span className="text-emerald-600 font-semibold group-hover:translate-x-1 inline-block transition-transform">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                  <span className="text-emerald-600 font-semibold group-hover:translate-x-1 inline-block transition-transform dark:text-emerald-300">
                     Start Flashcards →
                   </span>
                 </div>
@@ -215,7 +215,7 @@ export default function PracticeLesson() {
           <div className="text-center">
             <Link
               to={`/content/${data.id}`}
-              className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center gap-2"
+              className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center gap-2 dark:text-teal-300 dark:hover:text-teal-200"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -345,43 +345,43 @@ export default function PracticeLesson() {
     const HighlightIcon = highlightVariant.Icon;
 
     return (
-      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8 space-y-8">
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8 space-y-8">
         <div className="text-center space-y-6 py-12">
           <div className={`w-20 h-20 mx-auto rounded-full flex items-center justify-center ${resultVariant.circleBg}`}>
             <CheckCircle2 className={resultVariant.iconColor} size={48} />
           </div>
           <div className="space-y-2">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
               {resultVariant.headline}
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               {resultVariant.summary}
             </p>
           </div>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 space-y-6 dark:bg-gray-900 dark:border-gray-800">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <span className="font-semibold text-gray-700">Your Score</span>
+              <span className="font-semibold text-gray-700 dark:text-gray-200">Your Score</span>
               <span className={`font-bold text-3xl ${resultVariant.accentText}`}>
                 {finalPercentage}%
               </span>
             </div>
-            <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+            <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-800">
               <div
                 className={`h-4 rounded-full transition-all duration-1000 bg-gradient-to-r ${resultVariant.gradient}`}
                 style={{ width: `${finalPercentage}%` }}
               />
             </div>
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
               <span>{sessionStats.correct} correct</span>
               <span>{sessionStats.attempted - sessionStats.correct} incorrect</span>
             </div>
           </div>
 
           <div className={`${highlightVariant.bg} ${highlightVariant.border} rounded-xl p-4`}>
-            <div className={`flex items-center gap-2 justify-center ${highlightVariant.text}`}>
+            <div className={`flex items-center gap-2 justify-center ${highlightVariant.text} dark:text-gray-100`}>
               <HighlightIcon className={highlightVariant.iconColor} size={20} />
               <p className="font-medium text-center">{supportiveMessage}</p>
             </div>
@@ -389,13 +389,13 @@ export default function PracticeLesson() {
 
           {wrongTopics.length > 0 && (
             <div className="border-t pt-6 space-y-3">
-              <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+              <h3 className="font-semibold text-gray-900 flex items-center gap-2 dark:text-gray-100">
                 <Lightbulb className="text-amber-500" size={20} />
                 Topics to review
               </h3>
               <ul className="space-y-2">
                 {wrongTopics.slice(0, 3).map((topic, i) => (
-                  <li key={i} className="text-sm text-gray-700 flex gap-3 p-3 bg-amber-50 rounded-lg border border-amber-100">
+                  <li key={i} className="text-sm text-gray-700 flex gap-3 p-3 bg-amber-50 rounded-lg border border-amber-100 dark:text-gray-900">
                     <AlertCircle className="flex-shrink-0 text-amber-500 mt-0.5" size={16} />
                     <span>{topic}</span>
                   </li>
@@ -408,7 +408,7 @@ export default function PracticeLesson() {
         <div className="flex gap-4 justify-center">
           <Link
             to={`/content/${data.id}`}
-            className="px-8 py-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all"
+            className="px-8 py-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-all dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             Review Lesson
           </Link>
@@ -424,32 +424,32 @@ export default function PracticeLesson() {
   }
 
   return (
-    <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+    <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
       <div className="space-y-8">
         <header className="space-y-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
               Practice
             </h1>
-            <button 
+            <button
               onClick={() => setShowChoice(true)}
-              className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+              className="text-sm text-teal-600 hover:text-teal-700 font-medium dark:text-teal-300 dark:hover:text-teal-200"
             >
               ← Change mode
             </button>
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium text-gray-600">
-                Question {currentQIdx + 1} <span className="text-gray-400">of {totalQuestions}</span>
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                Question {currentQIdx + 1} <span className="text-gray-400 dark:text-gray-400">of {totalQuestions}</span>
               </span>
               <span className={`text-sm font-bold ${
-                percentage >= 80 ? "text-green-600" : "text-gray-900"
+                percentage >= 80 ? "text-green-600" : "text-gray-900 dark:text-gray-100"
               }`}>
                 {percentage}% correct
               </span>
             </div>
-            <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
+            <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-800">
               <div
                 className={`h-2.5 rounded-full transition-all duration-300 ${progressColor}`}
                 style={{ width: `${((currentQIdx + 1) / totalQuestions) * 100}%` }}
@@ -458,8 +458,8 @@ export default function PracticeLesson() {
           </div>
         </header>
 
-        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6">
-          <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed">
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 space-y-6 dark:bg-gray-900 dark:border-gray-800">
+          <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed dark:text-gray-100">
             {currentQ.prompt}
           </p>
 
@@ -472,9 +472,9 @@ export default function PracticeLesson() {
                 <li key={i}>
                   <button
                     className={`w-full text-left p-4 rounded-xl border-2 font-medium transition-all
-                      ${!show && picked ? "border-teal-400 bg-teal-50" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50"}
-                      ${show && isRight ? "border-green-500 bg-green-50 text-green-900" : ""}
-                      ${show && picked && !isRight ? "border-red-400 bg-red-50 text-red-900" : ""}
+                      ${!show && picked ? "border-teal-400 bg-teal-50 dark:bg-teal-900/20" : "border-gray-200 hover:border-teal-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"}
+                      ${show && isRight ? "border-green-500 bg-green-50 text-green-900 dark:bg-green-900/30 dark:text-green-200" : ""}
+                      ${show && picked && !isRight ? "border-red-400 bg-red-50 text-red-900 dark:bg-red-900/30 dark:text-red-200" : ""}
                       ${!show ? "cursor-pointer" : "cursor-default"}`}
                     onClick={() => choose(i)}
                     disabled={show}
@@ -497,7 +497,7 @@ export default function PracticeLesson() {
           ) : (
             <div className="space-y-4">
               <div className={`flex items-center justify-center gap-2 text-xl font-bold py-4 rounded-xl ${
-                isCorrect ? "bg-green-100 text-green-900" : "bg-red-100 text-red-900"
+                isCorrect ? "bg-green-100 text-green-900 dark:bg-green-900/40 dark:text-green-200" : "bg-red-100 text-red-900 dark:bg-red-900/40 dark:text-red-200"
               }`}>
                 {isCorrect ? (
                   <>
@@ -512,7 +512,7 @@ export default function PracticeLesson() {
                 )}
               </div>
               {currentQ.explanation && (
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 text-sm text-blue-900 leading-relaxed">
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 text-sm text-blue-900 leading-relaxed dark:bg-blue-900/30 dark:text-blue-100 dark:border-blue-800">
                   <span className="font-semibold">Explanation:</span> {currentQ.explanation}
                 </div>
               )}
