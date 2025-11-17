@@ -116,7 +116,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   return (
     <aside
       aria-label="Study navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white md:sticky md:top-0 scrollbar-hide ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white text-gray-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100 ${className}`}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
@@ -129,13 +129,13 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
               <Trophy className="h-5 w-5" />
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold">{masteredLessons}</div>
-              <div className="text-xs text-teal-100">Mastered</div>
+              <div className="text-2xl font-semibold">{masteredLessons}</div>
+              <div className="text-small text-teal-100">Mastered</div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-teal-100">
+            <div className="flex items-center justify-between text-small text-teal-100">
               <span>Progress</span>
               <span>{journeyPercent}%</span>
             </div>
@@ -169,8 +169,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                     isLocked
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
-                      ? "bg-teal-50 text-teal-900"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "bg-teal-50 text-teal-900 dark:bg-teal-900/20 dark:text-teal-100"
+                      : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -184,7 +184,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                     <BookOpen className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-teal-600'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-small text-gray-500 dark:text-gray-300">
                         {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
                       </div>
                     </div>
@@ -203,8 +203,8 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                           to={`/content/${lesson.id}`}
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
-                              ? "bg-teal-100 font-medium text-teal-900"
-                              : "text-gray-700 hover:bg-gray-50"
+                              ? "bg-teal-100 font-medium text-teal-900 dark:bg-teal-900/30 dark:text-teal-100"
+                              : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800"
                           }`}
                           onClick={onNavigate}
                         >

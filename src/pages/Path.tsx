@@ -17,7 +17,7 @@ export default function Path() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4">Study Path</h1>
+      <h1 className="font-semibold mb-4">Study Path</h1>
       <ul className="space-y-4">
         {modules.map((m) => (
           <li key={m.id} className="border rounded p-4">
