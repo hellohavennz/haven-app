@@ -150,7 +150,7 @@ const QuestionsPage: React.FC = () => {
   if (!currentQuestion) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">No Questions Available</h1>
+        <h1 className="font-semibold text-gray-900 mb-4">No Questions Available</h1>
         <button
           onClick={() => navigate('/practice')}
           className="text-blue-600 hover:text-blue-800 font-semibold"
@@ -178,9 +178,9 @@ const QuestionsPage: React.FC = () => {
             </svg>
             Back to Practice
           </button>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{lessonTitle}</h1>
+          <h1 className="font-semibold text-gray-900 mb-2">{lessonTitle}</h1>
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <p className="text-lg text-gray-600">
+            <p className="text-gray-600">
               Question {sessionStats.attempted + 1} of {sessionStats.total}
             </p>
             <div className="flex gap-4">
@@ -209,7 +209,7 @@ const QuestionsPage: React.FC = () => {
 
         {/* Question Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="font-semibold text-gray-900 mb-6">
             {currentQuestion.prompt}
           </h2>
 
@@ -284,27 +284,7 @@ const QuestionsPage: React.FC = () => {
                 )}
               </div>
               <div className="flex-1">
-                <h3 className={`font-bold text-lg mb-2 ${
-                  selectedAnswer === currentQuestion.correct_index
-                    ? 'text-green-900'
-                    : 'text-red-900'
-                }`}>
-                  {selectedAnswer === currentQuestion.correct_index ? 'Correct!' : 'Incorrect'}
-                </h3>
-                <p className={
-                  selectedAnswer === currentQuestion.correct_index
-                    ? 'text-green-800'
-                    : 'text-red-800'
-                }>
-                  {currentQuestion.explanation}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Action Buttons */}
-        <div className="flex justify-between items-center">
+                <h3 className={`font-semibold mb-2 ${ selectedAnswer === currentQuestion.correct_index ? 'text-green-900' : 'text-red-900' }`}> {selectedAnswer === currentQuestion.correct_index ? 'Correct!' : 'Incorrect'} </h3> <p className={ selectedAnswer === currentQuestion.correct_index ? 'text-green-800' : 'text-red-800' }> {currentQuestion.explanation} </p> </div> </div> </div> )} {/* Action Buttons */} <div className="flex justify-between items-center">
           <button
             onClick={handleRestart}
             className="flex items-center px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-gray-300"

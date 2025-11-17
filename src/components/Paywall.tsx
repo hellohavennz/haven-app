@@ -10,10 +10,10 @@ export default function Paywall() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full mb-4">
             <Trophy className="text-white" size={40} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3">
+          <h1 className="font-semibold text-gray-900 mb-3">
             Pass Your Test with Confidence
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-gray-600">
             Join thousands who passed on their first try
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function Paywall() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Plus Plan */}
           <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-bold rounded-full">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
               MOST POPULAR
             </div>
             
@@ -30,9 +30,9 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600" size={32} />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Haven Plus</h2>
+              <h2 className="font-semibold text-gray-900 mb-2">Haven Plus</h2>
               <div className="flex items-baseline justify-center gap-2 mb-2">
-                <span className="text-5xl font-black text-gray-900">£9.99</span>
+                <span className="text-5xl font-semibold text-gray-900">£9.99</span>
                 <span className="text-gray-600">one-time</span>
               </div>
               <p className="text-sm text-gray-600">
@@ -73,7 +73,7 @@ export default function Paywall() {
 
             <Link
               to="/paywall"
-              className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all"
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all"
             >
               Start Your Journey
               <Sparkles size={20} />
@@ -82,7 +82,7 @@ export default function Paywall() {
 
           {/* Premium Plan */}
           <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">
               COMING SOON
             </div>
             
@@ -90,9 +90,9 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                 <Crown className="text-amber-600" size={32} />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Haven Premium</h2>
+              <h2 className="font-semibold text-gray-900 mb-2">Haven Premium</h2>
               <div className="flex items-baseline justify-center gap-2 mb-2">
-                <span className="text-5xl font-black text-gray-900">£14.99</span>
+                <span className="text-5xl font-semibold text-gray-900">£14.99</span>
                 <span className="text-gray-600">one-time</span>
               </div>
               <p className="text-sm text-gray-600">
@@ -136,7 +136,7 @@ export default function Paywall() {
             </ul>
 
             <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 text-center">
-              <p className="text-sm text-amber-900 font-medium">
+              <p className="text-sm text-amber-900">
                 🚀 Launching Next Month! Audio lessons coming soon.
               </p>
             </div>
