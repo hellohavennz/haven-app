@@ -20,10 +20,10 @@ export default function Paywall() {
             <Sparkles className="h-4 w-4" />
             Choose Your Plan
           </div>
-          <h1 className="mb-4 text-5xl font-extrabold text-gray-900 md:text-6xl">
+          <h1 className="mb-4 font-semibold text-gray-900">
             Pass Your Life in the UK Test
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-gray-600">
+          <p className="mx-auto max-w-2xl text-gray-600">
             Join thousands who've passed on their first try. Get instant access to comprehensive study materials, practice questions, and expert guidance.
           </p>
         </div>
@@ -42,12 +42,12 @@ export default function Paywall() {
                 <div>
                   <div className="mb-2 flex items-center gap-2">
                     <Zap className="h-6 w-6 text-teal-600" />
-                    <h3 className="text-2xl font-bold text-gray-900">Haven Plus</h3>
+                    <h3 className="font-semibold text-gray-900">Haven Plus</h3>
                   </div>
                   <p className="text-gray-600">Perfect for focused learners</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-extrabold text-gray-900">£9.99</div>
+                  <div className="text-4xl font-semibold text-gray-900">£9.99</div>
                   <div className="text-sm text-gray-500">one-time payment</div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function Paywall() {
 
               <button
                 onClick={() => handleSelectPlan('plus')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-semibold transition-all ${
+                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
                   selectedPlan === 'plus'
                     ? 'bg-teal-600 text-white hover:bg-teal-700'
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
@@ -111,7 +111,7 @@ export default function Paywall() {
                 : 'border-amber-200'
             }`}
           >
-            <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-1 text-xs font-bold text-white shadow-lg">
+            <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-1 text-small font-semibold text-white shadow-lg">
               MOST POPULAR
             </div>
 
@@ -120,12 +120,12 @@ export default function Paywall() {
                 <div>
                   <div className="mb-2 flex items-center gap-2">
                     <Crown className="h-6 w-6 text-amber-600" />
-                    <h3 className="text-2xl font-bold text-gray-900">Haven Premium</h3>
+                    <h3 className="font-semibold text-gray-900">Haven Premium</h3>
                   </div>
                   <p className="text-gray-700">Ultimate preparation package</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-extrabold text-gray-900">£19.99</div>
+                  <div className="text-4xl font-semibold text-gray-900">£19.99</div>
                   <div className="text-sm text-gray-600">one-time payment</div>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export default function Paywall() {
 
               <button
                 onClick={() => handleSelectPlan('premium')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-semibold transition-all ${
+                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
                   selectedPlan === 'premium'
                     ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600'
                     : 'bg-white text-gray-900 hover:bg-gray-50'
@@ -192,15 +192,15 @@ export default function Paywall() {
         <div className="mt-16 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">
-              <div className="mb-3 text-4xl font-bold text-teal-600">10,000+</div>
+              <div className="mb-3 text-4xl font-semibold text-teal-600">10,000+</div>
               <div className="text-sm font-medium text-gray-600">Students Passed</div>
             </div>
             <div className="text-center">
-              <div className="mb-3 text-4xl font-bold text-teal-600">94%</div>
+              <div className="mb-3 text-4xl font-semibold text-teal-600">94%</div>
               <div className="text-sm font-medium text-gray-600">First-Time Pass Rate</div>
             </div>
             <div className="text-center">
-              <div className="mb-3 text-4xl font-bold text-teal-600">4.9/5</div>
+              <div className="mb-3 text-4xl font-semibold text-teal-600">4.9/5</div>
               <div className="text-sm font-medium text-gray-600">Average Rating</div>
             </div>
           </div>

@@ -63,7 +63,7 @@ export default function Signup() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
             <CheckCircle2 className="text-green-600" size={48} />
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900">Account created!</h2>
+          <h2 className="font-semibold text-gray-900">Account created!</h2>
           <p className="text-gray-600">Check your email to verify your account, then you can start learning.</p>
         </div>
       </div>
@@ -77,14 +77,14 @@ export default function Signup() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
             <UserPlus className="text-teal-600" size={32} />
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900">Create your account</h2>
+          <h2 className="font-semibold text-gray-900">Create your account</h2>
           <p className="mt-2 text-gray-600">Start your journey to passing the test</p>
 
           <div className={`mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-3 ${selectedPlan === 'premium' ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300' : 'bg-teal-50 border-2 border-teal-200'}`}>
             <PlanIcon className={`h-5 w-5 ${selectedPlan === 'premium' ? 'text-amber-600' : 'text-teal-600'}`} />
-            <span className="font-bold text-gray-900">{plan.name}</span>
+            <span className="font-semibold text-gray-900">{plan.name}</span>
             <span className="mx-2 text-gray-400">•</span>
-            <span className="font-bold text-gray-900">{plan.price}</span>
+            <span className="font-semibold text-gray-900">{plan.price}</span>
           </div>
 
           <p className="mt-3 text-sm text-gray-500">
@@ -136,25 +136,25 @@ export default function Signup() {
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="••••••••"
               />
-              <p className="mt-1 text-xs text-gray-500">Must be at least 6 characters</p>
+              <p className="mt-1 text-small text-gray-500">Must be at least 6 characters</p>
             </div>
           </div>
 
           <div className="rounded-xl border-2 border-gray-200 bg-gray-50 p-4 mb-4">
-            <p className="text-sm font-semibold text-gray-700 mb-2">Payment Information</p>
-            <p className="text-xs text-gray-600 mb-3">
+            <p className="text-sm text-gray-700 mb-2">Payment Information</p>
+            <p className="text-small text-gray-600 mb-3">
               Payment processing will be added soon. For now, creating an account will give you free access to {plan.name}.
             </p>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Total due today:</span>
-              <span className="text-xl font-bold text-gray-900">{plan.price}</span>
+              <span className="text-xl font-semibold text-gray-900">{plan.price}</span>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full px-8 py-4 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+            className={`w-full px-8 py-4 text-white rounded-xl font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
               selectedPlan === 'premium'
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500'
                 : 'bg-gradient-to-r from-teal-600 to-teal-700'

@@ -20,11 +20,11 @@ export default function Exam() {
           Test Your Knowledge
         </div>
 
-        <h1 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
+        <h1 className="font-semibold text-gray-900">
           Practice Exams
         </h1>
 
-        <p className="text-lg text-gray-600">
+        <p className="text-gray-600">
           Simulate the real Life in the UK test with full-length practice exams.
           Get instant results and detailed explanations for every question.
         </p>
@@ -32,7 +32,7 @@ export default function Exam() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg">
-          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700">
             24 Questions
           </div>
 
@@ -40,7 +40,7 @@ export default function Exam() {
             <FileCheck className="h-7 w-7 text-white" />
           </div>
 
-          <h3 className="mb-2 text-2xl font-bold text-gray-900">Mock Exam 1</h3>
+          <h3 className="mb-2 font-semibold text-gray-900">Mock Exam 1</h3>
           <p className="mb-6 text-sm text-gray-600">
             Full practice test covering all topics. 45 minutes. Pass with 75% or higher.
           </p>
@@ -77,7 +77,7 @@ export default function Exam() {
         </div>
 
         <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg">
-          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700">
             24 Questions
           </div>
 
@@ -85,7 +85,7 @@ export default function Exam() {
             <FileCheck className="h-7 w-7 text-white" />
           </div>
 
-          <h3 className="mb-2 text-2xl font-bold text-gray-900">Mock Exam 2</h3>
+          <h3 className="mb-2 font-semibold text-gray-900">Mock Exam 2</h3>
           <p className="mb-6 text-sm text-gray-600">
             Second full practice test with all-new questions. Perfect for final preparation.
           </p>
@@ -125,7 +125,7 @@ export default function Exam() {
       <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="space-y-2">
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="font-semibold text-gray-900">
               Not ready for a full exam yet?
             </h3>
             <p className="text-gray-600">
@@ -152,7 +152,7 @@ export default function Exam() {
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-8">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">About the Exam</h2>
+        <h2 className="mb-4 font-semibold text-gray-900">About the Exam</h2>
 
         <div className="space-y-4 text-gray-700">
           <p>

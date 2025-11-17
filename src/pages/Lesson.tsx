@@ -52,7 +52,7 @@ export default function Lesson() {
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-[#0F4C5C]">{title}</h1>
+      <h1 className="font-semibold tracking-tight text-[#0F4C5C]">{title}</h1>
 
       <article className="bg-white border rounded-xl p-5 leading-relaxed text-gray-800 space-y-3">
         {body.split("\n").map((line, idx) => {
@@ -66,7 +66,7 @@ export default function Lesson() {
             );
           }
           if (trimmed.startsWith("# ")) {
-            return <h2 key={idx} className="text-xl font-semibold mt-2">{trimmed.substring(2)}</h2>;
+            return <h2 key={idx} className="font-semibold mt-2">{trimmed.substring(2)}</h2>;
           }
           return <p key={idx}>{line}</p>;
         })}
@@ -74,7 +74,7 @@ export default function Lesson() {
 
       {q && (
         <div className="border rounded-xl p-5 bg-white">
-          <p className="font-medium mb-2">{q.prompt}</p>
+          <p className="mb-2">{q.prompt}</p>
           <ul className="space-y-2">
             {q.options.map((opt, idx) => (
               <li key={idx}>

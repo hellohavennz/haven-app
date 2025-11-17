@@ -41,7 +41,7 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
             <LogIn className="text-teal-600" size={32} />
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900">Welcome back</h2>
+          <h2 className="font-semibold text-gray-900">Welcome back</h2>
           <p className="mt-2 text-gray-600">Sign in to continue your learning journey</p>
         </div>
 
@@ -92,7 +92,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-bold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
