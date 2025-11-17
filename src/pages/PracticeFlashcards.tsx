@@ -21,7 +21,7 @@ export default function PracticeFlashcards() {
 
   useEffect(() => { setIdx(0); setReveal(false); }, [lessonId]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6">Not found.</div>;
+  if (!data) return <div className="max-w-3xl mx-auto p-6 text-gray-900 dark:text-gray-100">Not found.</div>;
   const card = deck[idx];
 
   function skip() {
@@ -39,24 +39,24 @@ export default function PracticeFlashcards() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 pb-32 md:pb-8">
+    <div className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
       <div className="space-y-8">
         <header className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <div className="flex items-center gap-2 text-sm text-teal-600 font-medium">
+              <div className="flex items-center gap-2 text-sm text-teal-600 font-medium dark:text-teal-300">
                 <RotateCcw size={16} />
                 <span>Flashcards</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
                 {data.title}
               </h1>
             </div>
-            <Link to={`/content/${data.id}`} className="text-sm text-teal-600 hover:text-teal-700 font-medium">
+            <Link to={`/content/${data.id}`} className="text-sm text-teal-600 hover:text-teal-700 font-medium dark:text-teal-300 dark:hover:text-teal-200">
               ← Back
             </Link>
           </div>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed dark:text-gray-300">
             Tap the card to reveal the answer, then tap again to continue.
           </p>
         </header>
@@ -88,14 +88,14 @@ export default function PracticeFlashcards() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-semibold text-gray-900">
-                  Card {idx + 1} <span className="text-gray-500">of {deck.length}</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {deck.length}</span>
                 </span>
-                <span className="text-gray-500">
+                <span className="text-gray-500 dark:text-gray-400">
                   {Math.round(((idx + 1) / deck.length) * 100)}% complete
                 </span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-800">
                 <div
                   className="h-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all duration-300"
                   style={{ width: `${((idx + 1) / deck.length) * 100}%` }}
@@ -105,7 +105,7 @@ export default function PracticeFlashcards() {
 
           </div>
         ) : (
-          <div className="text-center py-12 text-gray-600">
+          <div className="text-center py-12 text-gray-600 dark:text-gray-300">
             No flashcards available for this lesson yet.
           </div>
         )}

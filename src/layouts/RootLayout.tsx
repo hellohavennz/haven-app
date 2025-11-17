@@ -42,35 +42,35 @@ export default function RootLayout() {
     : "mx-auto h-full w-full max-w-6xl px-4 py-12";
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900">
+    <div className="relative flex min-h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
       <div className={showAnySidebar ? "hidden md:block" : undefined}>
         <Navbar />
       </div>
 
       {showAnySidebar && (
-        <header className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 md:hidden">
+        <header className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 text-gray-900 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100 md:hidden">
           <button
             type="button"
             onClick={openDrawer}
-            className="rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100"
+            className="rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <span className="sr-only">Open navigation</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="font-semibold text-gray-900">Haven</div>
+          <div className="font-semibold">Haven</div>
           <div className="h-6 w-6" aria-hidden="true" />
         </header>
       )}
 
       <div className="relative flex flex-1 min-h-0">
         {showStudySidebar && (
-          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm dark:md:border-gray-800 dark:md:bg-gray-900">
             <StudySidebar className="flex-1" />
           </aside>
         )}
 
         {showPracticeSidebar && (
-          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm">
+          <aside className="hidden h-full md:flex md:w-72 md:flex-shrink-0 md:border-r md:border-gray-100 md:bg-white md:shadow-sm dark:md:border-gray-800 dark:md:bg-gray-900">
             <PracticeSidebar className="flex-1" />
           </aside>
         )}
@@ -83,7 +83,7 @@ export default function RootLayout() {
       </div>
 
       {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600">
+        <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center">
             <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
           </div>
@@ -102,7 +102,7 @@ export default function RootLayout() {
             onClick={closeDrawer}
           />
           <div
-            className={`fixed inset-y-0 left-0 z-50 w-72 max-w-full transform overflow-hidden bg-white shadow-xl transition-transform duration-300 md:hidden ${
+            className={`fixed inset-y-0 left-0 z-50 w-72 max-w-full transform overflow-hidden bg-white shadow-xl transition-transform duration-300 dark:bg-gray-900 md:hidden ${
               isDrawerOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             role="dialog"
