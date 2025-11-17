@@ -3,7 +3,7 @@ import { BookOpen, Brain, CheckCircle, ArrowRight, Trophy, Target, Users } from 
 
 export default function Home() {
   return (
-    <div className="space-y-20 text-gray-900 dark:text-gray-100">
+    <div className="space-y-20 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-950">
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-50 via-white to-emerald-50 px-6 py-16 dark:from-gray-900 dark:via-slate-950 dark:to-emerald-950 md:px-12 md:py-20">
         <div className="absolute right-0 top-0 h-full w-1/2 opacity-10">
           <div className="absolute right-10 top-10 h-64 w-64 rounded-full bg-teal-400 blur-3xl" />

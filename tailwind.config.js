@@ -19,7 +19,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'Playfair Display', 'serif'],
+        heading: ['var(--font-heading)', 'Inter', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
         ui: ['var(--font-ui)', 'Inter', 'system-ui', 'sans-serif'],
         sans: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
