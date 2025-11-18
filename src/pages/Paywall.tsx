@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Check, Sparkles, Crown, Zap, ArrowRight } from 'lucide-react';
+import { Check, Sparkles, Crown, Zap, ArrowRight, BookOpen } from 'lucide-react';
 
-type Plan = 'plus' | 'premium';
+type Plan = 'free' | 'plus' | 'premium';
 
 export default function Paywall() {
-  const [selectedPlan, setSelectedPlan] = useState<Plan>('plus');
+  const [selectedPlan, setSelectedPlan] = useState<Plan>('free');
   const navigate = useNavigate();
 
   const handleSelectPlan = (plan: Plan) => {
-    navigate('/signup', { state: { selectedPlan: plan } });
+    if (plan === 'free') {
+      navigate('/signup?plan=free');
+    } else {
+      navigate('/signup', { state: { selectedPlan: plan } });
+    }
   };
 
   return (
@@ -28,7 +32,75 @@ export default function Paywall() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-3 lg:gap-8">
+          {/* Free Plan */}
+          <div
+            className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
+              selectedPlan === 'free'
+                ? 'border-gray-500 ring-4 ring-gray-100'
+                : 'border-gray-200'
+            }`}
+          >
+            <div className="p-8 md:p-10">
+              <div className="mb-6 flex items-start justify-between">
+                <div>
+                  <div className="mb-2 flex items-center gap-2">
+                    <BookOpen className="h-6 w-6 text-gray-600" />
+                    <h3 className="font-semibold text-gray-900">Free</h3>
+                  </div>
+                  <p className="text-gray-600">Try Haven and get started</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-4xl font-semibold text-gray-900">£0</div>
+                  <div className="text-sm text-gray-500">forever</div>
+                </div>
+              </div>
+
+              <ul className="mb-8 space-y-4">
+                <li className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <span className="text-gray-700">
+                    <strong>First lesson</strong> (Values & Principles)
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <span className="text-gray-700">
+                    <strong>2 free modules</strong> to explore
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <span className="text-gray-700">
+                    <strong>Practice questions</strong> to test yourself
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <span className="text-gray-700">
+                    <strong>Progress tracking</strong> basics
+                  </span>
+                </li>
+              </ul>
+
+              <button
+                onClick={() => handleSelectPlan('free')}
+                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
+                  selectedPlan === 'free'
+                    ? 'bg-gray-900 text-white hover:bg-gray-800'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                }`}
+              >
+                Get Started Free
+                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+              </button>
+
+              <p className="mt-4 text-center text-sm text-gray-500">
+                No credit card required
+              </p>
+            </div>
+          </div>
+
           {/* Haven Plus */}
           <div
             className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
