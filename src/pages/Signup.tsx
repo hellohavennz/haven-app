@@ -5,15 +5,26 @@ import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown } from "lucide-react";
 
 export default function Signup() {
   const location = useLocation();
-  const selectedPlan = (location.state as any)?.selectedPlan || 'plus';
+  const navigate = useNavigate();
+
+  // Read plan from URL query parameter (?plan=free) or fallback to location.state
+  const searchParams = new URLSearchParams(location.search);
+  const planFromQuery = searchParams.get('plan') || (location.state as any)?.selectedPlan || 'free';
+  const selectedPlan = planFromQuery;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const planDetails = {
+    free: {
+      name: 'Free',
+      price: '£0',
+      icon: UserPlus,
+      color: 'gray'
+    },
     plus: {
       name: 'Haven Plus',
       price: '£9.99',
@@ -28,7 +39,7 @@ export default function Signup() {
     }
   };
 
-  const plan = planDetails[selectedPlan as keyof typeof planDetails];
+  const plan = planDetails[selectedPlan as keyof typeof planDetails] || planDetails.free;
   const PlanIcon = plan.icon;
 
   const handleSubmit = async (e: React.FormEvent) => {

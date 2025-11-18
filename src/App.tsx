@@ -323,9 +323,49 @@ export default function App() {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
             <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Choose Your Plan</h2>
-            <p className="text-gray-600 dark:text-gray-300">One-time payment. Lifetime access. No subscription.</p>
+            <p className="text-gray-600 dark:text-gray-300">Start free or unlock full access with lifetime plans</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Free Plan */}
+            <div className="bg-white border-2 border-gray-300 dark:bg-gray-900 dark:border-gray-700 rounded-2xl p-8 flex flex-col">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
+                  <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Free</h3>
+                <div className="flex items-baseline justify-center gap-2 mb-2">
+                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Try Haven with the first module and core practice tools</p>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">First lesson (Values & Principles)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">2 free modules</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">Practice questions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">Progress tracking</span>
+                </li>
+              </ul>
+              <Link
+                to="/signup?plan=free"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors mt-auto"
+              >
+                Get Started Free
+                <ArrowRight size={20} />
+              </Link>
+            </div>
+
+            {/* Haven Plus */}
             <div className="bg-white border-2 border-teal-300 dark:bg-gray-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
               <div className="text-center mb-6">
@@ -347,11 +387,16 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              <Link to="/paywall" className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all mt-auto">
-                Get Haven Plus
-                <ArrowRight size={20} />
-              </Link>
+              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
+              <button
+                disabled
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
+              >
+                Coming Soon
+              </button>
             </div>
+
+            {/* Haven Premium */}
             <div className="bg-white border-2 border-amber-300 dark:bg-gray-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">COMING SOON</div>
               <div className="text-center mb-6">
@@ -383,9 +428,13 @@ export default function App() {
                   );
                 })}
               </ul>
-              <div className="bg-amber-50 dark:bg-amber-500/10 border-2 border-amber-200 dark:border-amber-400/40 rounded-xl p-4 text-center mt-auto">
-                <p className="text-sm text-amber-900 dark:text-amber-100">🚀 Launching Next Month!</p>
-              </div>
+              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
+              <button
+                disabled
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
+              >
+                Coming Soon
+              </button>
             </div>
           </div>
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
