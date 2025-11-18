@@ -53,61 +53,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative rounded-3xl bg-white p-8 shadow-2xl dark:bg-gray-900/80">
-              <div className="absolute -left-4 -top-4 rounded-2xl bg-white px-4 py-3 shadow-lg dark:bg-gray-900">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500">
-                    <Trophy className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">Learning Progress</div>
-                    <div className="text-small text-gray-500 dark:text-gray-400">Track your journey</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-6">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-gray-700 dark:text-gray-200">Lessons Completed</span>
-                    <span className="font-semibold text-teal-600">15/31</span>
-                  </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800">
-                    <div className="h-3 w-[48%] rounded-full bg-gradient-to-r from-teal-500 to-emerald-500" />
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-gray-700 dark:text-gray-200">Practice Accuracy</span>
-                    <span className="font-semibold text-emerald-600">87%</span>
-                  </div>
-                  <div className="grid grid-cols-4 gap-2">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={i}
-                        className={`h-12 rounded-lg ${i < 3 ? 'bg-gradient-to-br from-emerald-400 to-teal-400' : 'bg-gray-100 dark:bg-gray-800'}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 p-4 dark:from-teal-900/50 dark:to-emerald-900/50">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-gray-900">
-                      <Target className="h-5 w-5 text-teal-600" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">Next Milestone</div>
-                      <div className="text-small text-gray-600 dark:text-gray-300">Complete 5 more lessons</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 opacity-20 blur-2xl" />
-            </div>
+          <div className="relative flex items-center justify-center">
+            <img
+              src="/haven/passed-life-uk-circle.png"
+              alt="Happy student celebrating passing the Life in the UK test"
+              className="w-full max-w-md rounded-3xl shadow-2xl transition-transform hover:scale-105"
+            />
           </div>
         </div>
       </section>
