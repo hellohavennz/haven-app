@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Brain, CheckCircle, ArrowRight, Trophy, Target, Users } from "lucide-react";
+import { BookOpen, Brain, CheckCircle, ArrowRight, Trophy, Target, Users, Star } from "lucide-react";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
           <div className="absolute right-32 bottom-10 h-48 w-48 rounded-full bg-emerald-400 blur-3xl" />
         </div>
 
-        <div className="relative grid gap-12 md:grid-cols-2 items-center">
+        <div className="relative grid gap-12 lg:grid-cols-2 items-center">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700 dark:bg-teal-500/20 dark:text-teal-200">
               <Trophy className="h-4 w-4" />
@@ -57,9 +57,32 @@ export default function Home() {
             <img
               src="/haven/passed-life-uk-circle.png"
               alt="Happy student celebrating passing the Life in the UK test"
-              className="w-full max-w-md rounded-3xl shadow-2xl transition-transform hover:scale-105"
+              className="w-full max-w-md rounded-full shadow-2xl transition-transform hover:scale-105"
             />
           </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 md:grid-cols-3">
+        <div className="rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 p-6 text-center dark:from-teal-900/30 dark:to-emerald-900/30">
+          <div className="mb-2 text-4xl font-bold text-teal-600 dark:text-teal-400">31+</div>
+          <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Comprehensive Lessons</div>
+          <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">Complete study materials</div>
+        </div>
+
+        <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-6 text-center dark:from-emerald-900/30 dark:to-teal-900/30">
+          <div className="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400">94%</div>
+          <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Haven User Pass Rate</div>
+          <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">Above national average</div>
+        </div>
+
+        <div className="rounded-2xl bg-gradient-to-br from-sky-50 to-teal-50 p-6 text-center dark:from-sky-900/30 dark:to-teal-900/30">
+          <div className="mb-2 flex items-center justify-center gap-1">
+            <span className="text-4xl font-bold text-sky-600 dark:text-sky-400">4.8</span>
+            <Star className="h-6 w-6 fill-sky-500 text-sky-500" />
+          </div>
+          <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Student Rating</div>
+          <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">From 12,000+ reviews</div>
         </div>
       </section>
 
