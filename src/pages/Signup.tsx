@@ -91,8 +91,20 @@ export default function Signup() {
           <h2 className="font-semibold text-gray-900">Create your account</h2>
           <p className="mt-2 text-gray-600">Start your journey to passing the test</p>
 
-          <div className={`mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-3 ${selectedPlan === 'premium' ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300' : 'bg-teal-50 border-2 border-teal-200'}`}>
-            <PlanIcon className={`h-5 w-5 ${selectedPlan === 'premium' ? 'text-amber-600' : 'text-teal-600'}`} />
+          <div className={`mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-3 ${
+            selectedPlan === 'premium'
+              ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300'
+              : selectedPlan === 'free'
+              ? 'bg-gray-100 border-2 border-gray-300'
+              : 'bg-teal-50 border-2 border-teal-200'
+          }`}>
+            <PlanIcon className={`h-5 w-5 ${
+              selectedPlan === 'premium'
+                ? 'text-amber-600'
+                : selectedPlan === 'free'
+                ? 'text-gray-600'
+                : 'text-teal-600'
+            }`} />
             <span className="font-semibold text-gray-900">{plan.name}</span>
             <span className="mx-2 text-gray-400">•</span>
             <span className="font-semibold text-gray-900">{plan.price}</span>
@@ -168,6 +180,8 @@ export default function Signup() {
             className={`w-full px-8 py-4 text-white rounded-xl font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
               selectedPlan === 'premium'
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500'
+                : selectedPlan === 'free'
+                ? 'bg-gray-900'
                 : 'bg-gradient-to-r from-teal-600 to-teal-700'
             }`}
           >
