@@ -1,8 +1,183 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Check, Sparkles, Crown, Zap, ArrowRight, BookOpen } from 'lucide-react';
+import { Check, Sparkles, Crown, Zap, BookOpen } from 'lucide-react';
+import PlanCard, { type PlanCardFeature } from '../components/PlanCard';
 
 type Plan = 'free' | 'plus' | 'premium';
+
+const paywallFreeFeatures: PlanCardFeature[] = [
+  {
+    key: 'free-lesson',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>First lesson</strong> (Values & Principles)
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'free-modules',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>2 free modules</strong> to explore
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'free-practice',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>Practice questions</strong> to test yourself
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'free-progress',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>Progress tracking</strong> basics
+        </span>
+      </div>
+    ),
+  },
+];
+
+const paywallPlusFeatures: PlanCardFeature[] = [
+  {
+    key: 'plus-lessons',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>31 comprehensive lessons</strong> covering all official handbook content
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'plus-practice',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>500+ practice questions</strong> matching the real test format
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'plus-tracking',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>Progress tracking</strong> to monitor your improvement
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'plus-lifetime',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>Lifetime access</strong> to all study materials
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'plus-mobile',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+        <span className="text-gray-700 dark:text-gray-200">
+          <strong>Mobile-friendly</strong> study on any device
+        </span>
+      </div>
+    ),
+  },
+];
+
+const paywallPremiumFeatures: PlanCardFeature[] = [
+  {
+    key: 'premium-plus',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>Everything in Haven Plus</strong>
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'premium-ai',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>AI-powered study assistant</strong> for instant answers to your questions
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'premium-exams',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>4 full-length mock exams</strong> with detailed explanations
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'premium-flashcards',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>Interactive flashcards</strong> for quick revision
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'premium-analytics',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>Performance analytics</strong> to identify weak areas
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'premium-support',
+    content: (
+      <div className="flex items-start gap-3">
+        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
+        <span className="text-gray-800 dark:text-gray-100">
+          <strong>Priority email support</strong> from our expert team
+        </span>
+      </div>
+    ),
+  },
+];
 
 export default function Paywall() {
   const [selectedPlan, setSelectedPlan] = useState<Plan>('free');
@@ -34,231 +209,72 @@ export default function Paywall() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-8">
-          {/* Free Plan */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'free'
-                ? 'border-gray-500 ring-4 ring-gray-100'
-                : 'border-gray-200'
-            }`}
-          >
-            <div className="p-8 md:p-10">
-              <div className="mb-6 flex items-start justify-between">
-                <div>
-                  <div className="mb-2 flex items-center gap-2">
-                    <BookOpen className="h-6 w-6 text-gray-600" />
-                    <h3 className="font-semibold text-gray-900">Free</h3>
-                  </div>
-                  <p className="text-gray-600">Try Haven and get started</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-4xl font-semibold text-gray-900">£0</div>
-                  <div className="text-sm text-gray-500">forever</div>
+          <PlanCard
+            className="h-full"
+            name="Free"
+            price="£0"
+            priceNote="forever"
+            description="Try Haven and get started"
+            features={paywallFreeFeatures}
+            icon={
+              <div className="mb-4 flex justify-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800">
+                  <BookOpen className="h-8 w-8 text-gray-600 dark:text-gray-300" />
                 </div>
               </div>
-
-              <ul className="mb-8 space-y-4">
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-                  <span className="text-gray-700">
-                    <strong>First lesson</strong> (Values & Principles)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-                  <span className="text-gray-700">
-                    <strong>2 free modules</strong> to explore
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-                  <span className="text-gray-700">
-                    <strong>Practice questions</strong> to test yourself
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-                  <span className="text-gray-700">
-                    <strong>Progress tracking</strong> basics
-                  </span>
-                </li>
-              </ul>
-
-              <button
-                onClick={() => handleSelectPlan('free')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'free'
-                    ? 'bg-gray-900 text-white hover:bg-gray-800'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Get Started Free
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
-
-              <p className="mt-4 text-center text-sm text-gray-500">
-                No credit card required
-              </p>
-            </div>
-          </div>
-
-          {/* Haven Plus */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'plus'
-                ? 'border-teal-500 ring-4 ring-teal-100'
-                : 'border-gray-200'
-            }`}
-          >
-            <div className="p-8 md:p-10">
-              <div className="mb-6 flex items-start justify-between">
-                <div>
-                  <div className="mb-2 flex items-center gap-2">
-                    <Zap className="h-6 w-6 text-teal-600" />
-                    <h3 className="font-semibold text-gray-900">Haven Plus</h3>
-                  </div>
-                  <p className="text-gray-600">Perfect for focused learners</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-4xl font-semibold text-gray-900">£9.99</div>
-                  <div className="text-sm text-gray-500">one-time payment</div>
+            }
+            highlight={selectedPlan === 'free'}
+            highlightColor="gray"
+            buttonLabel="Get Started Free"
+            buttonVariant="dark"
+            footerNote="No credit card required"
+            onButtonClick={() => handleSelectPlan('free')}
+          />
+          <PlanCard
+            className="h-full"
+            name="Haven Plus"
+            price="£9.99"
+            priceNote="one-time payment"
+            description="Perfect for focused learners"
+            features={paywallPlusFeatures}
+            icon={
+              <div className="mb-4 flex justify-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-teal-100 dark:bg-teal-500/20">
+                  <Zap className="h-8 w-8 text-teal-600" />
                 </div>
               </div>
-
-              <ul className="mb-8 space-y-4">
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
-                  <span className="text-gray-700">
-                    <strong>31 comprehensive lessons</strong> covering all official handbook content
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
-                  <span className="text-gray-700">
-                    <strong>500+ practice questions</strong> matching the real test format
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
-                  <span className="text-gray-700">
-                    <strong>Progress tracking</strong> to monitor your improvement
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
-                  <span className="text-gray-700">
-                    <strong>Lifetime access</strong> to all study materials
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
-                  <span className="text-gray-700">
-                    <strong>Mobile-friendly</strong> study on any device
-                  </span>
-                </li>
-              </ul>
-
-              <button
-                onClick={() => handleSelectPlan('plus')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'plus'
-                    ? 'bg-teal-600 text-white hover:bg-teal-700'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Get Haven Plus
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
-
-              <p className="mt-4 text-center text-sm text-gray-500">
-                One-time payment • No recurring fees
-              </p>
-            </div>
-          </div>
-
-          {/* Haven Premium */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'premium'
-                ? 'border-amber-500 ring-4 ring-amber-100'
-                : 'border-amber-200'
-            }`}
-          >
-            <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-1 text-small font-semibold text-white shadow-lg">
-              MOST POPULAR
-            </div>
-
-            <div className="p-8 md:p-10">
-              <div className="mb-6 flex items-start justify-between">
-                <div>
-                  <div className="mb-2 flex items-center gap-2">
-                    <Crown className="h-6 w-6 text-amber-600" />
-                    <h3 className="font-semibold text-gray-900">Haven Premium</h3>
-                  </div>
-                  <p className="text-gray-700">Ultimate preparation package</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-4xl font-semibold text-gray-900">£19.99</div>
-                  <div className="text-sm text-gray-600">one-time payment</div>
+            }
+            highlight={selectedPlan === 'plus'}
+            highlightColor="teal"
+            buttonLabel="Get Haven Plus"
+            buttonVariant="teal"
+            footerNote="One-time payment • No recurring fees"
+            onButtonClick={() => handleSelectPlan('plus')}
+          />
+          <PlanCard
+            className="h-full"
+            name="Haven Premium"
+            price="£19.99"
+            priceNote="one-time payment"
+            description="Ultimate preparation package"
+            features={paywallPremiumFeatures}
+            icon={
+              <div className="mb-4 flex justify-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-500/20">
+                  <Crown className="h-8 w-8 text-amber-600" />
                 </div>
               </div>
-
-              <ul className="mb-8 space-y-4">
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>Everything in Haven Plus</strong>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>AI-powered study assistant</strong> for instant answers to your questions
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>4 full-length mock exams</strong> with detailed explanations
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>Interactive flashcards</strong> for quick revision
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>Performance analytics</strong> to identify weak areas
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
-                  <span className="text-gray-800">
-                    <strong>Priority email support</strong> from our expert team
-                  </span>
-                </li>
-              </ul>
-
-              <button
-                onClick={() => handleSelectPlan('premium')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'premium'
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600'
-                    : 'bg-white text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                Get Haven Premium
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
-
-              <p className="mt-4 text-center text-sm text-gray-600">
-                One-time payment • Best value • No recurring fees
-              </p>
-            </div>
-          </div>
+            }
+            badgeText="MOST POPULAR"
+            badgeVariant="amber"
+            badgePosition="right"
+            highlight={selectedPlan === 'premium'}
+            highlightColor="amber"
+            buttonLabel="Get Haven Premium"
+            buttonVariant="amber"
+            footerNote="One-time payment • Best value • No recurring fees"
+            onButtonClick={() => handleSelectPlan('premium')}
+          />
         </div>
 
         {/* Trust Indicators */}
