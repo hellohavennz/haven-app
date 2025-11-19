@@ -18,8 +18,8 @@ export default function Login() {
     try {
       await signIn(email, password);
       navigate("/dashboard");
-    } catch (err: any) {
-      setError(err.message || "Failed to sign in");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign in");
     } finally {
       setLoading(false);
     }
@@ -29,8 +29,8 @@ export default function Login() {
     try {
       setError("");
       await signInWithGoogle();
-    } catch (err: any) {
-      setError(err.message || "Failed to sign in with Google");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign in with Google");
     }
   };
 

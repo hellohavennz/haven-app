@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Brain, CheckCircle, ArrowRight, Trophy, Target, Users, Star } from "lucide-react";
+import { BookOpen, Brain, CheckCircle, ArrowRight, Trophy, Users, Star } from "lucide-react";
 
 export default function Home() {
   return (

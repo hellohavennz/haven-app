@@ -3,14 +3,20 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signUp, signInWithGoogle } from "../lib/auth";
 import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown } from "lucide-react";
 
+type Plan = 'free' | 'plus' | 'premium';
+
 export default function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
 
   // Read plan from URL query parameter (?plan=free) or fallback to location.state
   const searchParams = new URLSearchParams(location.search);
-  const planFromQuery = searchParams.get('plan') || (location.state as any)?.selectedPlan || 'free';
-  const selectedPlan = planFromQuery;
+  const planFromQuery = searchParams.get('plan');
+  const locationState = location.state as { selectedPlan?: Plan } | null;
+
+  const selectedPlanValue = planFromQuery ?? locationState?.selectedPlan ?? 'free';
+  const isValidPlan = (value: string): value is Plan => ['free', 'plus', 'premium'].includes(value);
+  const selectedPlan: Plan = isValidPlan(selectedPlanValue) ? selectedPlanValue : 'free';
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +24,12 @@ export default function Signup() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const planDetails = {
+  const planDetails: Record<Plan, {
+    name: string;
+    price: string;
+    icon: typeof UserPlus;
+    color: string;
+  }> = {
     free: {
       name: 'Free',
       price: '£0',
@@ -51,8 +62,8 @@ export default function Signup() {
       await signUp(email, password);
       setSuccess(true);
       setTimeout(() => navigate("/dashboard"), 2000);
-    } catch (err: any) {
-      setError(err.message || "Failed to sign up");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign up");
     } finally {
       setLoading(false);
     }
@@ -62,8 +73,8 @@ export default function Signup() {
     try {
       setError("");
       await signInWithGoogle();
-    } catch (err: any) {
-      setError(err.message || "Failed to sign in with Google");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to sign in with Google");
     }
   };
 

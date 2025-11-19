@@ -12,6 +12,7 @@ import {
 
 import { getCurrentUser } from "../lib/auth";
 import { hasAccessToModule } from "../lib/access";
+import type { User } from "@supabase/supabase-js";
 
 import {
   getAllLessons,
@@ -34,7 +35,7 @@ export default function ContentIndex() {
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [progressData, setProgressData] = useState<ProgressRecord>({});
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);

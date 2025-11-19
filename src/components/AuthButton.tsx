@@ -59,8 +59,8 @@ export default function AuthButton() {
         setEmail('');
         setPassword('');
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ export default function AuthButton() {
   async function handleSignOut() {
     try {
       await signOut();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Sign out error:', err);
     }
   }

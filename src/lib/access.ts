@@ -1,9 +1,13 @@
+import type { User } from '@supabase/supabase-js';
+
 const FREE_MODULE_SLUGS = [
   'life-in-uk-overview',
   'british-history-depth'
 ];
 
-export function hasAccessToLesson(lessonId: string, user: any): boolean {
+type AuthenticatedUser = Pick<User, 'user_metadata'> | null;
+
+export function hasAccessToLesson(lessonId: string, user: AuthenticatedUser): boolean {
   if (!user) {
     return false;
   }
@@ -11,7 +15,7 @@ export function hasAccessToLesson(lessonId: string, user: any): boolean {
   return user.user_metadata?.isPremium === true;
 }
 
-export function hasAccessToModule(moduleSlug: string, user: any): boolean {
+export function hasAccessToModule(moduleSlug: string, user: AuthenticatedUser): boolean {
   if (FREE_MODULE_SLUGS.includes(moduleSlug)) {
     return true;
   }

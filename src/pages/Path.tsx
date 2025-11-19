@@ -1,10 +1,10 @@
 // src/pages/Path.tsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchModules, fetchLessonsForModule } from "../lib/api";
+import { fetchModules, fetchLessonsForModule, type ModuleRecord } from "../lib/api";
 
 export default function Path() {
-  const [modules, setModules] = useState<any[]>([]);
+  const [modules, setModules] = useState<ModuleRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function JumpToFirstLessonButton({ slug }: { slug: string }) {
     </Link>
   );
 
-  async function goDynamic(s: string, setH: (h: string)=>void) {
+  async function goDynamic(s: string, setH: (h: string) => void) {
     const ls = await fetchLessonsForModule(s);
     if (ls.length) setH(`/lesson/${ls[0].id}`);
   }

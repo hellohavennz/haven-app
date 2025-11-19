@@ -4,6 +4,7 @@ import { getAllProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight } from 'lucide-react';
+import type { User } from '@supabase/supabase-js';
 
 interface LessonProgressData {
   attempted: number;
@@ -13,7 +14,7 @@ interface LessonProgressData {
 const Dashboard: React.FC = () => {
   const [progress, setProgress] = useState<Record<string, LessonProgressData>>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -46,13 +47,13 @@ const Dashboard: React.FC = () => {
   const accuracyScore = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
 
   // Count mastered lessons (80%+)
-  const masteredLessons = Object.entries(progress).filter(([_, p]) => {
+  const masteredLessons = Object.entries(progress).filter(([, p]) => {
     const percentage = p.attempted > 0 ? (p.correct / p.attempted) * 100 : 0;
     return percentage >= 80;
   }).length;
 
   // Count lessons needing review (<60%)
-  const needsReview = Object.entries(progress).filter(([_, p]) => {
+  const needsReview = Object.entries(progress).filter(([, p]) => {
     const percentage = p.attempted > 0 ? (p.correct / p.attempted) * 100 : 0;
     return percentage < 60 && p.attempted > 0;
   }).length;
@@ -87,7 +88,7 @@ const Dashboard: React.FC = () => {
 
   // Lesson status breakdown
   const masteredCount = masteredLessons;
-  const goodCount = Object.entries(progress).filter(([_, p]) => {
+  const goodCount = Object.entries(progress).filter(([, p]) => {
     const percentage = p.attempted > 0 ? (p.correct / p.attempted) * 100 : 0;
     return percentage >= 60 && percentage < 80;
   }).length;
