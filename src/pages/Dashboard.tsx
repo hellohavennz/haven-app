@@ -26,27 +26,30 @@ const Dashboard: React.FC = () => {
       setUser(currentUser);
 
       if (currentUser) {
-        const dbProgress = await getAllProgressFromDB();
+        try {
+          const dbProgress = await getAllProgressFromDB();
 
-        if (!isMounted) {
-          return;
-        }
+          if (!isMounted) {
+            return;
+          }
 
-        if (dbProgress) {
           setProgress(dbProgress);
           setIsLoading(false);
           return;
+        } catch (error) {
+          console.error('Failed to load progress from Supabase', error);
         }
       }
 
-      const localProgress = getAllProgress();
-      if (isMounted) {
-        setProgress(localProgress);
-        setIsLoading(false);
+      if (!isMounted) {
+        return;
       }
+
+      setProgress(getAllProgress());
+      setIsLoading(false);
     };
 
-    loadProgress();
+    void loadProgress();
 
     return () => {
       isMounted = false;

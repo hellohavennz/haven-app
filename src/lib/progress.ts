@@ -3,21 +3,29 @@ import { supabase } from './supabase';
 const PROGRESS_STORAGE_KEY = 'lesson-progress';
 
 export interface UserProgress {
+  id?: string;
   user_id: string;
   lesson_id: string;
-  completed: boolean;
-  score: number;
   attempts: number;
-  last_attempt_date: string;
+  correct: number;
+  questions_attempted: number;
+  questions_correct: number;
+  flashcards_reviewed: number;
+  completed: boolean;
+  last_practiced_at: string | null;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface LessonProgress {
   attempted: number;
   correct: number;
-  flashcardsReviewed?: number;
-  completed?: boolean;
+  flashcardsReviewed: number;
+  completed: boolean;
   lastPracticedAt?: string;
 }
+
+type LessonProgressRecord = Record<string, LessonProgress>;
 
 type UserProgressRow = {
   lesson_id: string;
@@ -30,25 +38,68 @@ type UserProgressRow = {
   last_practiced_at?: string | null;
 };
 
+const DEFAULT_PROGRESS: LessonProgress = {
+  attempted: 0,
+  correct: 0,
+  flashcardsReviewed: 0,
+  completed: false,
+};
+
 function isBrowserEnvironment() {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 }
 
-function readProgressFromStorage(): Record<string, LessonProgress> {
+function sanitizeLessonProgress(progress?: Partial<LessonProgress>): LessonProgress {
+  return {
+    attempted: progress?.attempted ?? 0,
+    correct: progress?.correct ?? 0,
+    flashcardsReviewed: progress?.flashcardsReviewed ?? 0,
+    completed: progress?.completed ?? false,
+    lastPracticedAt: progress?.lastPracticedAt,
+  };
+}
+
+function readProgressFromStorage(): LessonProgressRecord {
   if (!isBrowserEnvironment()) {
     return {};
   }
 
-  const stored = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
-  return stored ? JSON.parse(stored) : {};
+  try {
+    const stored = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
+    if (!stored) {
+      return {};
+    }
+
+    const parsed = JSON.parse(stored) as LessonProgressRecord;
+    return Object.entries(parsed).reduce<LessonProgressRecord>((acc, [lessonId, progress]) => {
+      acc[lessonId] = sanitizeLessonProgress(progress);
+      return acc;
+    }, {});
+  } catch (error) {
+    console.error('Failed to parse lesson progress', error);
+    return {};
+  }
 }
 
-function writeProgressToStorage(progress: Record<string, LessonProgress>) {
+function writeProgressToStorage(progress: LessonProgressRecord) {
   if (!isBrowserEnvironment()) {
     return;
   }
 
   window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+}
+
+function updateLocalProgress(lessonId: string, updater: (progress: LessonProgress) => LessonProgress) {
+  const allProgress = readProgressFromStorage();
+  const existing = allProgress[lessonId] ?? DEFAULT_PROGRESS;
+  const updated = sanitizeLessonProgress(updater(existing));
+
+  allProgress[lessonId] = updated;
+  writeProgressToStorage(allProgress);
+
+  void syncLessonProgressWithDB(lessonId, updated);
+
+  return updated;
 }
 
 export async function getUserProgress(userId: string, lessonId: string): Promise<UserProgress | null> {
@@ -60,12 +111,12 @@ export async function getUserProgress(userId: string, lessonId: string): Promise
       .eq('lesson_id', lessonId)
       .single();
 
-    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
+    if (error && error.code !== 'PGRST116') {
       console.error('Error fetching progress:', error);
       return null;
     }
 
-    return data;
+    return data as UserProgress | null;
   } catch (error) {
     console.error('Error in getUserProgress:', error);
     return null;
@@ -84,28 +135,33 @@ export async function getAllUserProgress(userId: string): Promise<UserProgress[]
       return [];
     }
 
-    return data || [];
+    return (data as UserProgress[]) ?? [];
   } catch (error) {
     console.error('Error in getAllUserProgress:', error);
     return [];
   }
 }
 
-export function getAllProgress(): Record<string, LessonProgress> {
+export function getAllProgress(): LessonProgressRecord {
   return readProgressFromStorage();
 }
 
-export async function getAllProgressFromDB(): Promise<Record<string, LessonProgress> | null> {
+export async function getAllProgressFromDB(): Promise<LessonProgressRecord> {
+  const fallback = getAllProgress();
+
   try {
-    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
 
     if (userError) {
       console.error('Supabase user_progress error', userError);
-      return null;
+      return fallback;
     }
 
     if (!user) {
-      return null;
+      return fallback;
     }
 
     const { data, error } = await supabase
@@ -115,21 +171,21 @@ export async function getAllProgressFromDB(): Promise<Record<string, LessonProgr
 
     if (error) {
       console.error('Supabase user_progress error', error);
-      return null;
+      return fallback;
     }
 
-    const mapped: Record<string, LessonProgress> = {};
+    const mapped: LessonProgressRecord = {};
+
     (data ?? []).forEach((row: UserProgressRow) => {
       const attempted = row.questions_attempted ?? row.attempts ?? 0;
       const correct = row.questions_correct ?? row.correct ?? 0;
-
-      mapped[row.lesson_id] = {
+      mapped[row.lesson_id] = sanitizeLessonProgress({
         attempted,
         correct,
-        flashcardsReviewed: row.flashcards_reviewed ?? undefined,
-        completed: row.completed ?? undefined,
+        flashcardsReviewed: row.flashcards_reviewed ?? 0,
+        completed: row.completed ?? false,
         lastPracticedAt: row.last_practiced_at ?? undefined,
-      };
+      });
     });
 
     writeProgressToStorage(mapped);
@@ -137,30 +193,58 @@ export async function getAllProgressFromDB(): Promise<Record<string, LessonProgr
     return mapped;
   } catch (error) {
     console.error('Supabase user_progress error', error);
-    return null;
+    return fallback;
   }
 }
 
-export function recordAttempt(lessonId: string, isCorrect: boolean): void {
-  const allProgress = readProgressFromStorage();
-  const existingProgress: LessonProgress = allProgress[lessonId] ?? { attempted: 0, correct: 0 };
-
-  const updated: LessonProgress = {
-    ...existingProgress,
-    attempted: existingProgress.attempted + 1,
-    correct: existingProgress.correct + (isCorrect ? 1 : 0),
-    lastPracticedAt: new Date().toISOString(),
-  };
-
-  allProgress[lessonId] = updated;
-  writeProgressToStorage(allProgress);
-
-  void saveLessonProgressToDB(lessonId, updated);
+export function recordQuestionAttempt(lessonId: string, isCorrect: boolean): LessonProgress {
+  const timestamp = new Date().toISOString();
+  return updateLocalProgress(lessonId, (existing) => ({
+    ...existing,
+    attempted: existing.attempted + 1,
+    correct: existing.correct + (isCorrect ? 1 : 0),
+    lastPracticedAt: timestamp,
+  }));
 }
 
-async function saveLessonProgressToDB(lessonId: string, progress: LessonProgress) {
+export function recordFlashcardReview(lessonId: string, count = 1): LessonProgress {
+  if (count <= 0) {
+    return getAllProgress()[lessonId] ?? DEFAULT_PROGRESS;
+  }
+
+  const timestamp = new Date().toISOString();
+  return updateLocalProgress(lessonId, (existing) => ({
+    ...existing,
+    flashcardsReviewed: existing.flashcardsReviewed + count,
+    lastPracticedAt: timestamp,
+  }));
+}
+
+export function markLessonComplete(lessonId: string): LessonProgress {
+  const timestamp = new Date().toISOString();
+  return updateLocalProgress(lessonId, (existing) => ({
+    ...existing,
+    completed: true,
+    lastPracticedAt: existing.lastPracticedAt ?? timestamp,
+  }));
+}
+
+export async function migrateLocalStorageToDatabase(): Promise<void> {
+  const allProgress = readProgressFromStorage();
+
+  await Promise.all(
+    Object.entries(allProgress).map(([lessonId, progress]) =>
+      syncLessonProgressWithDB(lessonId, progress)
+    )
+  );
+}
+
+async function syncLessonProgressWithDB(lessonId: string, progress: LessonProgress) {
   try {
-    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
 
     if (userError) {
       console.error('Supabase user_progress error', userError);
@@ -175,12 +259,12 @@ async function saveLessonProgressToDB(lessonId: string, progress: LessonProgress
     const payload = {
       user_id: user.id,
       lesson_id: lessonId,
-      questions_attempted: progress.attempted ?? 0,
-      questions_correct: progress.correct ?? 0,
-      attempts: progress.attempted ?? 0,
-      correct: progress.correct ?? 0,
-      flashcards_reviewed: progress.flashcardsReviewed ?? null,
-      completed: progress.completed ?? false,
+      attempts: progress.attempted,
+      correct: progress.correct,
+      questions_attempted: progress.attempted,
+      questions_correct: progress.correct,
+      flashcards_reviewed: progress.flashcardsReviewed,
+      completed: progress.completed,
       last_practiced_at: timestamp,
     };
 
@@ -195,3 +279,5 @@ async function saveLessonProgressToDB(lessonId: string, progress: LessonProgress
     console.error('Supabase user_progress error', error);
   }
 }
+
+export { recordQuestionAttempt as recordAttempt };

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById } from "../lib/content";
+import { recordFlashcardReview } from "../lib/progress";
 import { RotateCcw } from "lucide-react";
 
 function shuffle<T>(arr: T[]) {
@@ -26,13 +27,15 @@ export default function PracticeFlashcards() {
   const card = deck[idx];
 
   function skip() {
+    if (deck.length === 0) return;
     setReveal(false);
     setIdx(i => (i + 1) % deck.length);
   }
 
   function handleCardClick() {
-    if (!card) return;
+    if (!card || !lessonId) return;
     if (!reveal) {
+      recordFlashcardReview(lessonId);
       setReveal(true);
     } else {
       skip();

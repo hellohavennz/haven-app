@@ -31,7 +31,8 @@ const PracticePage: React.FC = () => {
         questionsCompleted: questionStats?.attempted ?? legacyProgress?.questionsCompleted ?? 0,
         totalQuestions,
         correctAnswers: questionStats?.correct ?? legacyProgress?.correctAnswers ?? 0,
-        flashcardsReviewed: legacyProgress?.flashcardsReviewed ?? 0,
+        flashcardsReviewed:
+          questionStats?.flashcardsReviewed ?? legacyProgress?.flashcardsReviewed ?? 0,
         totalFlashcards,
       };
     });

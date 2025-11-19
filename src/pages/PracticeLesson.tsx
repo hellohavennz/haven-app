@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getLessonById } from "../lib/content";
-import { recordAttempt } from "../lib/progress";
+import { markLessonComplete, recordQuestionAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
 import type { Question } from "../types";
 
@@ -247,7 +247,7 @@ export default function PracticeLesson() {
   function check() {
     if (answer.selected === null) return;
     if (!data) return;
-    recordAttempt(data.id, isCorrect);
+    recordQuestionAttempt(data.id, isCorrect);
     setSessionStats(prev => ({
       attempted: prev.attempted + 1,
       correct: prev.correct + (isCorrect ? 1 : 0)
@@ -264,6 +264,9 @@ export default function PracticeLesson() {
       setAnswer({ selected: null, checked: false });
     } else {
       setFinished(true);
+      if (data) {
+        markLessonComplete(data.id);
+      }
     }
   }
 
