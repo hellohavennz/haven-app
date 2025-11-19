@@ -1,21 +1,8 @@
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Crown, Zap, ArrowRight, BookOpen } from 'lucide-react';
 
-type Plan = 'free' | 'plus' | 'premium';
-
 export default function Paywall() {
-  const [selectedPlan, setSelectedPlan] = useState<Plan>('free');
   const navigate = useNavigate();
-
-  const handleSelectPlan = (plan: Plan) => {
-    setSelectedPlan(plan);
-    if (plan === 'free') {
-      navigate('/signup?plan=free');
-    } else {
-      navigate('/signup', { state: { selectedPlan: plan } });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50 py-16 px-4">
@@ -35,13 +22,7 @@ export default function Paywall() {
 
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-8">
           {/* Free Plan */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'free'
-                ? 'border-gray-500 ring-4 ring-gray-100'
-                : 'border-gray-200'
-            }`}
-          >
+          <div className="group relative overflow-hidden rounded-3xl border-2 border-gray-200 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
             <div className="p-8 md:p-10">
               <div className="mb-6 flex items-start justify-between">
                 <div>
@@ -85,12 +66,8 @@ export default function Paywall() {
               </ul>
 
               <button
-                onClick={() => handleSelectPlan('free')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'free'
-                    ? 'bg-gray-900 text-white hover:bg-gray-800'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
+                onClick={() => navigate('/signup?plan=free')}
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-8 py-4 font-semibold text-white transition-all hover:bg-gray-800"
               >
                 Get Started Free
                 <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
@@ -103,13 +80,7 @@ export default function Paywall() {
           </div>
 
           {/* Haven Plus */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'plus'
-                ? 'border-teal-500 ring-4 ring-teal-100'
-                : 'border-gray-200'
-            }`}
-          >
+          <div className="group relative overflow-hidden rounded-3xl border-2 border-gray-200 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
             <div className="p-8 md:p-10">
               <div className="mb-6 flex items-start justify-between">
                 <div>
@@ -159,12 +130,11 @@ export default function Paywall() {
               </ul>
 
               <button
-                onClick={() => handleSelectPlan('plus')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'plus'
-                    ? 'bg-teal-600 text-white hover:bg-teal-700'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
+                type="button"
+                onClick={() => {
+                  // TODO: Implement Haven Plus upgrade flow when available
+                }}
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-gray-100 px-8 py-4 font-semibold text-gray-900 transition-all hover:bg-gray-200"
               >
                 Get Haven Plus
                 <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
@@ -177,13 +147,7 @@ export default function Paywall() {
           </div>
 
           {/* Haven Premium */}
-          <div
-            className={`group relative overflow-hidden rounded-3xl border-2 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
-              selectedPlan === 'premium'
-                ? 'border-amber-500 ring-4 ring-amber-100'
-                : 'border-amber-200'
-            }`}
-          >
+          <div className="group relative overflow-hidden rounded-3xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
             <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-1 text-small font-semibold text-white shadow-lg">
               MOST POPULAR
             </div>
@@ -243,12 +207,11 @@ export default function Paywall() {
               </ul>
 
               <button
-                onClick={() => handleSelectPlan('premium')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'premium'
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600'
-                    : 'bg-white text-gray-900 hover:bg-gray-50'
-                }`}
+                type="button"
+                onClick={() => {
+                  // TODO: Implement Haven Premium upgrade flow when available
+                }}
+                className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-semibold text-gray-900 transition-all hover:bg-gray-50"
               >
                 Get Haven Premium
                 <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
