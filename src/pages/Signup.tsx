@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { signUp, signInWithGoogle } from "../lib/auth";
 import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown } from "lucide-react";
+import { signUp, signInWithGoogle } from "../lib/auth";
+import { updateProfileSubscription } from "../lib/subscription";
 
 type Plan = 'free' | 'plus' | 'premium';
 
@@ -11,10 +12,11 @@ export default function Signup() {
 
   // Read plan from URL query parameter (?plan=free) or fallback to location.state
   const searchParams = new URLSearchParams(location.search);
-  const planFromQuery = searchParams.get('plan');
   const locationState = location.state as { selectedPlan?: Plan } | null;
+  const planFromState = locationState?.selectedPlan;
+  const planFromQuery = searchParams.get('plan');
 
-  const selectedPlanValue = planFromQuery ?? locationState?.selectedPlan ?? 'free';
+  const selectedPlanValue = planFromState ?? planFromQuery ?? 'free';
   const isValidPlan = (value: string): value is Plan => ['free', 'plus', 'premium'].includes(value);
   const selectedPlan: Plan = isValidPlan(selectedPlanValue) ? selectedPlanValue : 'free';
 
@@ -59,10 +61,31 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      await signUp(email, password);
+      const { user } = await signUp(email, password);
+
+      if (!user) {
+        throw new Error("Unable to complete signup. Please try again.");
+      }
+
+      const subscriptionStatus = selectedPlan === 'free' ? 'active' : 'pending';
+
+      try {
+        await updateProfileSubscription({
+          userId: user.id,
+          email,
+          tier: selectedPlan,
+          status: subscriptionStatus,
+        });
+      } catch (profileErr) {
+        console.error('Failed to update profile subscription', profileErr);
+        setError('Your account was created, but we could not save your selected plan. Please contact support.');
+        return;
+      }
+
       setSuccess(true);
       setTimeout(() => navigate("/dashboard"), 2000);
     } catch (err: unknown) {
+      console.error('Signup failed', err);
       setError(err instanceof Error ? err.message : "Failed to sign up");
     } finally {
       setLoading(false);
