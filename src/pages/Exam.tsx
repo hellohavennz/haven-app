@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Clock, FileCheck, Trophy, Target, ArrowRight, Lock } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
+import type { User } from "@supabase/supabase-js";
 
 export default function Exam() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);

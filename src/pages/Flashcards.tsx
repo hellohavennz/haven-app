@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 interface Flashcard {
@@ -77,14 +77,13 @@ const FlashcardsPage: React.FC = () => {
 
   useEffect(() => {
     if (isFlipped && currentCard && !isTransitioning) {
-      // Auto-advance after 4 seconds
       const timer = setTimeout(() => {
         handleNext();
       }, 4000);
-      
+
       return () => clearTimeout(timer);
     }
-  }, [isFlipped, currentCard, isTransitioning]);
+  }, [isFlipped, currentCard, isTransitioning, handleNext]);
 
   const handleFlip = () => {
     if (!isFlipped && !isTransitioning) {
@@ -111,30 +110,31 @@ const FlashcardsPage: React.FC = () => {
     }
   };
 
-  const handleNext = () => {
-    // Start transition - hide current card
+  const handleNext = useCallback(() => {
     setIsTransitioning(true);
-    
-    // Wait for fade out, then change card
+
     setTimeout(() => {
-      const newRemaining = remainingCards.slice(1);
-      
-      if (newRemaining.length > 0) {
-        setRemainingCards(newRemaining);
-        setCurrentCard(newRemaining[0]);
-        setIsFlipped(false);
-        
-        // Wait a bit then fade in new card
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 50);
-      } else {
-        // Finished all cards
+      setRemainingCards((prevCards) => {
+        const newRemaining = prevCards.slice(1);
+
+        if (newRemaining.length > 0) {
+          setCurrentCard(newRemaining[0]);
+          setIsFlipped(false);
+
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 50);
+
+          return newRemaining;
+        }
+
         alert(`Session Complete!\n\nYou reviewed all ${sessionStats.total} flashcards.`);
+        setTimeout(() => setIsTransitioning(false), 50);
         navigate('/practice');
-      }
+        return prevCards;
+      });
     }, 300);
-  };
+  }, [navigate, sessionStats.total]);
 
   const handleRestart = () => {
     setIsTransitioning(true);

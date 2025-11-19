@@ -9,6 +9,7 @@ export default function Paywall() {
   const navigate = useNavigate();
 
   const handleSelectPlan = (plan: Plan) => {
+    setSelectedPlan(plan);
     if (plan === 'free') {
       navigate('/signup?plan=free');
     } else {

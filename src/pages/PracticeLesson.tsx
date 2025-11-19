@@ -25,7 +25,7 @@ type ShuffledQuestion = {
 function shuffleQuestionOptions(questions: Question[]): ShuffledQuestion[] {
   return questions.map(q => {
     // Create array of option indices [0, 1, 2, 3]
-    const indices = q.options.map((_: any, i: number) => i);
+    const indices = q.options.map((_, i) => i);
     // Shuffle the indices
     const shuffledIndices = shuffle(indices);
     

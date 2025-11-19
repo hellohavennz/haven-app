@@ -12,6 +12,7 @@ import {
 
 import { getCurrentUser } from "../lib/auth";
 import { hasAccessToModule } from "../lib/access";
+import type { User } from "@supabase/supabase-js";
 
 import {
   getAllLessons,
@@ -34,7 +35,7 @@ export default function PracticeIndex() {
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [progressData, setProgressData] = useState<ProgressRecord>({});
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -81,15 +82,6 @@ export default function PracticeIndex() {
   const correctAnswers = lessonsWithQuestions.reduce(
     (sum, lesson) => sum + (progressData[lesson.id]?.correct ?? 0),
     0
-  );
-
-  const startedLessons = useMemo(
-    () =>
-      lessonsWithQuestions.filter((lesson) => {
-        const progress = progressData[lesson.id];
-        return progress && progress.attempted > 0;
-      }).length,
-    [lessonsWithQuestions, progressData]
   );
 
   const masteredLessons = useMemo(

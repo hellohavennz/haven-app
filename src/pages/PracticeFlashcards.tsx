@@ -15,7 +15,8 @@ function shuffle<T>(arr: T[]) {
 export default function PracticeFlashcards() {
   const { lessonId } = useParams();
   const data = lessonId ? getLessonById(lessonId) : null;
-  const deck = useMemo(() => shuffle(data?.flashcards ?? []), [lessonId]);
+  const flashcards = data?.flashcards;
+  const deck = useMemo(() => shuffle(flashcards ?? []), [flashcards]);
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
 

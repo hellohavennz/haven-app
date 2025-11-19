@@ -13,6 +13,7 @@ import { getLessonsForModule, getModules } from "../lib/content";
 import { getAllProgress } from "../lib/progress";
 import { getCurrentUser } from "../lib/auth";
 import { hasAccessToModule } from "../lib/access";
+import type { User } from "@supabase/supabase-js";
 
 type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 
@@ -31,7 +32,7 @@ export default function PracticeSidebar({
     modules[0]?.slug ?? null
   );
   const [progressData, setProgressData] = useState<ProgressRecord>({});
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -56,9 +57,6 @@ export default function PracticeSidebar({
 
   const coveragePercent =
     totalLessons > 0 ? Math.round((startedLessons / totalLessons) * 100) : 0;
-  const masteryPercent =
-    totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
-
   const lastPathnameRef = useRef<string | null>(null);
 
   useEffect(() => {

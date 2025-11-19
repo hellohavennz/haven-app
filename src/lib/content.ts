@@ -7,10 +7,10 @@ type LessonIndexModule = {
   lessons: string[];
 };
 
-const files = import.meta.glob("../content/lessons/*.json", { eager: true });
+const files = import.meta.glob<{ default: LessonJSON }>("../content/lessons/*.json", { eager: true });
 
 const lessonEntries = Object.values(files)
-  .map((m: any) => m?.default as LessonJSON | undefined)
+  .map((module) => module?.default)
   .filter((lesson): lesson is LessonJSON => Boolean(lesson?.id));
 
 const lessonsById = new Map<string, LessonJSON>();

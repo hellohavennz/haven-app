@@ -5,9 +5,10 @@ import { onAuthStateChange } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
 import { Menu, X, Sparkles, Crown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import type { User } from "@supabase/supabase-js";
 
 export default function Navbar() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { tier } = useSubscription();

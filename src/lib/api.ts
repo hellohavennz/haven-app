@@ -1,6 +1,29 @@
 import { supabase } from "./supabase";
 
-export async function fetchModules() {
+export type ModuleRecord = {
+  id: string;
+  slug: string;
+  title: string;
+  summary: string | null;
+  order_index: number | null;
+};
+
+export type LessonRecord = {
+  id: string;
+  title: string;
+  body: string;
+  order_index: number | null;
+};
+
+export type QuestionRecord = {
+  id: string;
+  prompt: string;
+  options: string[];
+  correct_index: number;
+  rationale: string | null;
+};
+
+export async function fetchModules(): Promise<ModuleRecord[]> {
   const { data, error } = await supabase
     .from("modules")
     .select("id, slug, title, summary, order_index")
@@ -11,10 +34,10 @@ export async function fetchModules() {
     throw new Error(`Failed to fetch modules: ${error.message}`);
   }
   
-  return data ?? [];
+  return (data as ModuleRecord[] | null) ?? [];
 }
 
-export async function fetchLessonsForModule(moduleSlug: string) {
+export async function fetchLessonsForModule(moduleSlug: string): Promise<LessonRecord[]> {
   const { data: module, error: moduleError } = await supabase
     .from("modules")
     .select("id")
@@ -37,7 +60,7 @@ export async function fetchLessonsForModule(moduleSlug: string) {
     throw new Error(`Failed to fetch lessons: ${lessonsError.message}`);
   }
   
-  return lessons ?? [];
+  return (lessons as LessonRecord[] | null) ?? [];
 }
 
 export async function fetchLessonWithQuestionsById(lessonId: string) {
@@ -62,5 +85,8 @@ export async function fetchLessonWithQuestionsById(lessonId: string) {
     throw new Error(`Failed to fetch questions: ${questionsError.message}`);
   }
 
-  return { lesson, questions: questions ?? [] };
+  return {
+    lesson: lesson as LessonRecord,
+    questions: (questions as QuestionRecord[] | null) ?? []
+  };
 }
