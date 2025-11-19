@@ -1,26 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProgress } from '../lib/progress';
+import { getAllProgress, getAllProgressFromDB } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
-
-interface LessonProgressData {
-  attempted: number;
-  correct: number;
-}
+import type { LessonProgress } from '../lib/progress';
 
 const Dashboard: React.FC = () => {
-  const [progress, setProgress] = useState<Record<string, LessonProgressData>>({});
+  const [progress, setProgress] = useState<Record<string, LessonProgress>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    getCurrentUser().then(setUser);
-    const progressData = getAllProgress();
-    setProgress(progressData);
-    setIsLoading(false);
+    let isMounted = true;
+
+    const loadProgress = async () => {
+      setIsLoading(true);
+      const currentUser = await getCurrentUser();
+
+      if (!isMounted) {
+        return;
+      }
+
+      setUser(currentUser);
+
+      if (currentUser) {
+        const dbProgress = await getAllProgressFromDB();
+
+        if (!isMounted) {
+          return;
+        }
+
+        if (dbProgress) {
+          setProgress(dbProgress);
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      const localProgress = getAllProgress();
+      if (isMounted) {
+        setProgress(localProgress);
+        setIsLoading(false);
+      }
+    };
+
+    loadProgress();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const hasFullAccess = user && user.user_metadata?.isPremium === true;
@@ -28,7 +58,7 @@ const Dashboard: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading...</div>
+        <div className="text-xl text-gray-600">Loading progress…</div>
       </div>
     );
   }
