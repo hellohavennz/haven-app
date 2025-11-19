@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles, CheckCircle2, Crown, Headphones, FileText, Zap, Trophy } from "lucide-react";
+import { BookOpen, Sparkles, CheckCircle2, Crown, Headphones, FileText, Zap, Trophy } from "lucide-react";
 
 export default function Paywall() {
   return (
@@ -19,13 +19,46 @@ export default function Paywall() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {/* Free Plan */}
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 flex flex-col transition-colors dark:border-gray-700 dark:bg-gray-900">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-4">
+                <BookOpen className="text-gray-600" size={32} />
+              </div>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Free</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Get started with core lessons</p>
+            </div>
+
+            <ul className="space-y-3 mb-8 flex-1">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="text-gray-600 dark:text-gray-300 flex-shrink-0 mt-0.5" size={20} />
+                <span className="text-gray-700 dark:text-gray-200">First lesson: Values & Principles</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="text-gray-600 dark:text-gray-300 flex-shrink-0 mt-0.5" size={20} />
+                <span className="text-gray-700 dark:text-gray-200">Sample practice questions</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="text-gray-600 dark:text-gray-300 flex-shrink-0 mt-0.5" size={20} />
+                <span className="text-gray-700 dark:text-gray-200">Lightweight progress tracking</span>
+              </li>
+            </ul>
+
+            <Link
+              to="/signup?plan=free"
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+            >
+              Get started free
+            </Link>
+          </div>
+
           {/* Plus Plan */}
-          <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative transition-colors dark:border-teal-400/40 dark:bg-gray-900">
+          <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative transition-colors dark:border-teal-400/40 dark:bg-gray-900 flex flex-col">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
               MOST POPULAR
             </div>
-            
+
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600" size={32} />
@@ -40,7 +73,7 @@ export default function Paywall() {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
                 <span className="text-gray-700 dark:text-gray-200">All 20+ comprehensive lessons</span>
@@ -71,21 +104,23 @@ export default function Paywall() {
               </li>
             </ul>
 
-            <Link
-              to="/paywall"
-              className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all"
-            >
-              Start Your Journey
-              <Sparkles size={20} />
-            </Link>
+            <div className="mt-auto">
+              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
+              <button
+                disabled
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed"
+              >
+                Coming Soon
+              </button>
+            </div>
           </div>
 
           {/* Premium Plan */}
-          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative transition-colors dark:border-amber-300/60 dark:bg-gray-900">
+          <div className="bg-white border-2 border-amber-300 rounded-2xl p-8 relative transition-colors dark:border-amber-300/60 dark:bg-gray-900 flex flex-col">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">
               COMING SOON
             </div>
-            
+
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                 <Crown className="text-amber-600" size={32} />
@@ -100,7 +135,7 @@ export default function Paywall() {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
                 <span className="text-gray-900 dark:text-gray-100 font-semibold">Everything in Haven Plus, and:</span>
@@ -135,10 +170,19 @@ export default function Paywall() {
               </li>
             </ul>
 
-            <div className="bg-amber-50 border-2 border-amber-200 dark:bg-amber-500/10 dark:border-amber-500/30 rounded-xl p-4 text-center">
-              <p className="text-sm text-amber-900 dark:text-amber-200">
-                🚀 Launching Next Month! Audio lessons coming soon.
-              </p>
+            <div className="space-y-4 mt-auto">
+              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
+              <button
+                disabled
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed"
+              >
+                Coming Soon
+              </button>
+              <div className="bg-amber-50 border-2 border-amber-200 dark:bg-amber-500/10 dark:border-amber-500/30 rounded-xl p-4 text-center">
+                <p className="text-sm text-amber-900 dark:text-amber-200">
+                  🚀 Launching Next Month! Audio lessons coming soon.
+                </p>
+              </div>
             </div>
           </div>
         </div>
