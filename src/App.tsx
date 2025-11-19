@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser } from "./lib/auth";
+import PlanCard, { type PlanCardFeature } from "./components/PlanCard";
 import {
   BookOpen,
   Brain,
@@ -132,6 +133,79 @@ const planPremiumExtras = [
   { icon: FileText, title: "Downloadable study guides", description: "PDF versions for offline study" },
   { icon: Zap, title: "Priority support", description: "Get help within 24 hours" },
   { icon: Crown, title: "Early access", description: "New features before everyone else" },
+];
+
+const freePlanFeatures: PlanCardFeature[] = [
+  {
+    key: "free-lesson",
+    content: (
+      <div className="flex items-start gap-3">
+        <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+        <span className="text-gray-700 dark:text-gray-200">First lesson (Values & Principles)</span>
+      </div>
+    ),
+  },
+  {
+    key: "free-modules",
+    content: (
+      <div className="flex items-start gap-3">
+        <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+        <span className="text-gray-700 dark:text-gray-200">2 free modules</span>
+      </div>
+    ),
+  },
+  {
+    key: "free-practice",
+    content: (
+      <div className="flex items-start gap-3">
+        <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+        <span className="text-gray-700 dark:text-gray-200">Practice questions</span>
+      </div>
+    ),
+  },
+  {
+    key: "free-progress",
+    content: (
+      <div className="flex items-start gap-3">
+        <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+        <span className="text-gray-700 dark:text-gray-200">Progress tracking</span>
+      </div>
+    ),
+  },
+];
+
+const havenPlusPlanFeatures: PlanCardFeature[] = planPlusFeatures.map(feature => ({
+  key: feature,
+  content: (
+    <div className="flex items-start gap-3">
+      <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
+      <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+    </div>
+  ),
+}));
+
+const havenPremiumPlanFeatures: PlanCardFeature[] = [
+  {
+    key: "premium-plus",
+    content: (
+      <div className="flex items-start gap-3">
+        <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+        <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
+      </div>
+    ),
+  },
+  ...planPremiumExtras.map(extra => ({
+    key: extra.title,
+    content: (
+      <div className="flex items-start gap-3">
+        <extra.icon className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
+        <div>
+          <span className="text-gray-900 dark:text-white font-semibold">{extra.title}</span>
+          <p className="text-sm text-gray-600 dark:text-gray-300">{extra.description}</p>
+        </div>
+      </div>
+    ),
+  })),
 ];
 
 const trustSignals = [
@@ -326,116 +400,63 @@ export default function App() {
             <p className="text-gray-600 dark:text-gray-300">Start free or unlock full access with lifetime plans</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-white border-2 border-gray-300 dark:bg-gray-900 dark:border-gray-700 rounded-2xl p-8 flex flex-col">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
-                  <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+            <PlanCard
+              className="border-gray-300 dark:border-gray-700"
+              name="Free"
+              price="£0"
+              description="Try Haven with the first module and core practice tools"
+              features={freePlanFeatures}
+              icon={
+                <div className="mb-4 flex justify-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+                    <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+                  </div>
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Free</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
+              }
+              buttonLabel="Get Started Free"
+              buttonVariant="dark"
+              onButtonClick={() => navigate("/signup?plan=free")}
+            />
+            <PlanCard
+              className="border-teal-300 dark:border-teal-400/40"
+              name="Haven Plus"
+              price="£9.99"
+              priceNote="one-time"
+              description="Everything you need to pass"
+              features={havenPlusPlanFeatures}
+              icon={
+                <div className="mb-4 flex justify-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl">
+                    <Sparkles className="text-teal-600" size={32} />
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Try Haven with the first module and core practice tools</p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">First lesson (Values & Principles)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">2 free modules</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Practice questions</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Progress tracking</span>
-                </li>
-              </ul>
-              <Link
-                to="/signup?plan=free"
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors mt-auto"
-              >
-                Get Started Free
-                <ArrowRight size={20} />
-              </Link>
-            </div>
-
-            {/* Haven Plus */}
-            <div className="bg-white border-2 border-teal-300 dark:bg-gray-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
-                  <Sparkles className="text-teal-600" size={32} />
+              }
+              badgeText="MOST POPULAR"
+              badgeVariant="teal"
+              highlight
+              highlightColor="teal"
+              buttonLabel="Coming Soon"
+              buttonDisabled
+            />
+            <PlanCard
+              className="border-amber-300 dark:border-amber-300/50"
+              name="Haven Premium"
+              price="£14.99"
+              priceNote="one-time"
+              description="Ultimate learning experience"
+              features={havenPremiumPlanFeatures}
+              icon={
+                <div className="mb-4 flex justify-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl">
+                    <Crown className="text-amber-600" size={32} />
+                  </div>
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£9.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">one-time</span>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Everything you need to pass</p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                {planPlusFeatures.map(feature => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700 dark:text-gray-200">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
-              <button
-                disabled
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
-              >
-                Coming Soon
-              </button>
-            </div>
-
-            {/* Haven Premium */}
-            <div className="bg-white border-2 border-amber-300 dark:bg-gray-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">COMING SOON</div>
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
-                  <Crown className="text-amber-600" size={32} />
-                </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£14.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">one-time</span>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Ultimate learning experience</p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
-                </li>
-                {planPremiumExtras.map(extra => {
-                  const Icon = extra.icon;
-                  return (
-                    <li key={extra.title} className="flex items-start gap-3">
-                      <Icon className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                      <div>
-                        <span className="text-gray-900 dark:text-white font-semibold">{extra.title}</span>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{extra.description}</p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
-              <button
-                disabled
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
-              >
-                Coming Soon
-              </button>
-            </div>
+              }
+              badgeText="COMING SOON"
+              badgeVariant="amber"
+              buttonLabel="Coming Soon"
+              buttonDisabled
+            />
           </div>
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             {trustSignals.map(signal => {
