@@ -15,7 +15,7 @@ import PracticeLesson from './pages/PracticeLesson';
 import PracticeFlashcards from './pages/PracticeFlashcards';
 import Exam from './pages/Exam';
 import Help from './pages/Help';
-import Paywall from './components/Paywall';
+import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
 
 const router = createBrowserRouter([

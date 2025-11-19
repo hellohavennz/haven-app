@@ -9,6 +9,7 @@ export default function Paywall() {
   const navigate = useNavigate();
 
   const handleSelectPlan = (plan: Plan) => {
+    setSelectedPlan(plan);
     if (plan === 'free') {
       navigate('/signup?plan=free');
     } else {
@@ -37,15 +38,15 @@ export default function Paywall() {
           <div
             className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
               selectedPlan === 'free'
-                ? 'border-gray-500 ring-4 ring-gray-100'
+                ? 'border-teal-500 ring-4 ring-teal-100'
                 : 'border-gray-200'
             }`}
           >
-            <div className="p-8 md:p-10">
+            <div className="flex h-full flex-col p-8 md:p-10">
               <div className="mb-6 flex items-start justify-between">
                 <div>
                   <div className="mb-2 flex items-center gap-2">
-                    <BookOpen className="h-6 w-6 text-gray-600" />
+                    <BookOpen className="h-6 w-6 text-teal-600" />
                     <h3 className="font-semibold text-gray-900">Free</h3>
                   </div>
                   <p className="text-gray-600">Try Haven and get started</p>
@@ -58,46 +59,48 @@ export default function Paywall() {
 
               <ul className="mb-8 space-y-4">
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
                   <span className="text-gray-700">
                     <strong>First lesson</strong> (Values & Principles)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
                   <span className="text-gray-700">
                     <strong>2 free modules</strong> to explore
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
                   <span className="text-gray-700">
                     <strong>Practice questions</strong> to test yourself
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
                   <span className="text-gray-700">
                     <strong>Progress tracking</strong> basics
                   </span>
                 </li>
               </ul>
 
-              <button
-                onClick={() => handleSelectPlan('free')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'free'
-                    ? 'bg-gray-900 text-white hover:bg-gray-800'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Get Started Free
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
+              <div className="mt-auto">
+                <button
+                  onClick={() => handleSelectPlan('free')}
+                  className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
+                    selectedPlan === 'free'
+                      ? 'bg-teal-600 text-white hover:bg-teal-700 shadow-md'
+                      : 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200'
+                  }`}
+                >
+                  Get Started Free
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                </button>
 
-              <p className="mt-4 text-center text-sm text-gray-500">
-                No credit card required
-              </p>
+                <p className="mt-4 text-center text-sm text-gray-500">
+                  No credit card required
+                </p>
+              </div>
             </div>
           </div>
 
@@ -105,15 +108,15 @@ export default function Paywall() {
           <div
             className={`group relative overflow-hidden rounded-3xl border-2 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${
               selectedPlan === 'plus'
-                ? 'border-teal-500 ring-4 ring-teal-100'
+                ? 'border-emerald-500 ring-4 ring-emerald-100'
                 : 'border-gray-200'
             }`}
           >
-            <div className="p-8 md:p-10">
+            <div className="flex h-full flex-col p-8 md:p-10">
               <div className="mb-6 flex items-start justify-between">
                 <div>
                   <div className="mb-2 flex items-center gap-2">
-                    <Zap className="h-6 w-6 text-teal-600" />
+                    <Zap className="h-6 w-6 text-emerald-600" />
                     <h3 className="font-semibold text-gray-900">Haven Plus</h3>
                   </div>
                   <p className="text-gray-600">Perfect for focused learners</p>
@@ -126,52 +129,54 @@ export default function Paywall() {
 
               <ul className="mb-8 space-y-4">
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   <span className="text-gray-700">
                     <strong>31 comprehensive lessons</strong> covering all official handbook content
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   <span className="text-gray-700">
                     <strong>500+ practice questions</strong> matching the real test format
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   <span className="text-gray-700">
                     <strong>Progress tracking</strong> to monitor your improvement
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   <span className="text-gray-700">
                     <strong>Lifetime access</strong> to all study materials
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" />
+                  <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   <span className="text-gray-700">
                     <strong>Mobile-friendly</strong> study on any device
                   </span>
                 </li>
               </ul>
 
-              <button
-                onClick={() => handleSelectPlan('plus')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'plus'
-                    ? 'bg-teal-600 text-white hover:bg-teal-700'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Get Haven Plus
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
+              <div className="mt-auto">
+                <button
+                  onClick={() => handleSelectPlan('plus')}
+                  className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
+                    selectedPlan === 'plus'
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md'
+                      : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200'
+                  }`}
+                >
+                  Get Haven Plus
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                </button>
 
-              <p className="mt-4 text-center text-sm text-gray-500">
-                One-time payment • No recurring fees
-              </p>
+                <p className="mt-4 text-center text-sm text-gray-500">
+                  One-time payment • No recurring fees
+                </p>
+              </div>
             </div>
           </div>
 
@@ -187,7 +192,7 @@ export default function Paywall() {
               MOST POPULAR
             </div>
 
-            <div className="p-8 md:p-10">
+            <div className="flex h-full flex-col p-8 md:p-10">
               <div className="mb-6 flex items-start justify-between">
                 <div>
                   <div className="mb-2 flex items-center gap-2">
@@ -241,21 +246,23 @@ export default function Paywall() {
                 </li>
               </ul>
 
-              <button
-                onClick={() => handleSelectPlan('premium')}
-                className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
-                  selectedPlan === 'premium'
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600'
-                    : 'bg-white text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                Get Haven Premium
-                <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-              </button>
+              <div className="mt-auto">
+                <button
+                  onClick={() => handleSelectPlan('premium')}
+                  className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${
+                    selectedPlan === 'premium'
+                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600'
+                      : 'bg-white text-amber-700 hover:bg-amber-50 border border-amber-200'
+                  }`}
+                >
+                  Get Haven Premium
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                </button>
 
-              <p className="mt-4 text-center text-sm text-gray-600">
-                One-time payment • Best value • No recurring fees
-              </p>
+                <p className="mt-4 text-center text-sm text-gray-600">
+                  One-time payment • Best value • No recurring fees
+                </p>
+              </div>
             </div>
           </div>
         </div>
