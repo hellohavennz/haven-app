@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Playfair Display', 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --heading-line-height: 1.25;
+  --body-line-height: 1.6;
+  --small-font-size: 0.9rem;
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-15deg); }
+}
+
+.animate-wave {
+  animation: wave 1s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    line-height: var(--body-line-height);
+    font-size: 1rem;
+    @apply bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: var(--heading-line-height);
+    margin-bottom: 0.75rem;
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.6rem);
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.3rem);
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  .display-heading,
+  .text-4xl,
+  .text-5xl,
+  .text-6xl {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: var(--heading-line-height);
+  }
+
+  p,
+  li {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: var(--body-line-height);
+    margin-bottom: 1rem;
+  }
+
+  small,
+  .text-small {
+    font-family: var(--font-body);
+    font-size: var(--small-font-size);
+    line-height: 1.5;
+  }
+
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset'],
+  label,
+  nav,
+  .ui-text {
+    font-family: var(--font-ui);
+    letter-spacing: 0.01em;
+    font-weight: 500;
+  }
+
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset'] {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}

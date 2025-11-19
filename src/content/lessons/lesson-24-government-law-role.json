@@ -1,0 +1,276 @@
+{
+  "id": "lesson-24-government-law-role",
+  "title": "The UK Government, the Law and Your Role",
+  "module_slug": "government-law-role-detailed",
+  "overview": "The United Kingdom is a constitutional monarchy and parliamentary democracy. The Monarch is Head of State; the Prime Minister leads the Government. Everyone must follow the rule of law. Citizens have rights (free speech, fair trial, vote) and responsibilities (obey law, pay taxes, help community). This balance is at the heart of British democracy.",
+  "study_sections": [
+    {
+      "heading": "Government Structure",
+      "content": "UK is constitutional monarchy—Monarch is Head of State; PM leads Government. Parliamentary democracy—laws made by elected representatives in Parliament. Monarch performs ceremonial duties but remains politically neutral."
+    },
+    {
+      "heading": "Rule of Law",
+      "content": "Rule of law means everyone must follow the law, including those in power. Law protects individual rights and maintains order and fairness. Courts and police apply and enforce law independently."
+    },
+    {
+      "heading": "Rights and Responsibilities",
+      "content": "Rights include: freedom of speech, freedom of religion, equality before law, right to vote. Responsibilities include: obeying law, paying taxes, respecting others, helping community. Government accountable to Parliament and public."
+    },
+    {
+      "heading": "Citizen Participation",
+      "content": "People can influence government through voting, petitions, and peaceful protest. Participation and respect for law keep democracy strong and fair. Understanding rights and duties supports democracy."
+    }
+  ],
+  "key_facts": [
+    "UK: constitutional monarchy & parliamentary democracy",
+    "Monarch: Head of State",
+    "PM: Head of Government",
+    "Rule of law: everyone must obey",
+    "Parliament makes laws",
+    "Rights: free speech, fair trial, vote",
+    "Responsibilities: obey law, pay taxes",
+    "Citizens influence via voting/petitions",
+    "Parliament makes and debates laws",
+    "Independent courts apply laws",
+    "Monarch: ceremonial and symbolic",
+    "Government accountable to Parliament",
+    "Magna Carta 1215 limited royal power",
+    "Human Rights Act 1998 & Equality Act 2010 protect rights",
+    "Understanding rights supports democracy"
+  ],
+  "memory_hook": "UK democracy as balance scale: one side Rights (speech, vote, fair trial), other side Responsibilities (obey law, pay taxes, help others). Monarch (ceremonial weight at top), PM (fulcrum running government), Parliament (platform making laws), Courts (base ensuring fairness). Balance = democracy!",
+  "questions": [
+    {
+      "prompt": "UK political system?",
+      "options": [
+        "Constitutional monarchy & parliamentary democracy",
+        "Absolute monarchy",
+        "Presidential republic",
+        "Military dictatorship"
+      ],
+      "correct_index": 0,
+      "explanation": "UK combines Monarch as Head of State with elected Parliament."
+    },
+    {
+      "prompt": "Who is Head of State?",
+      "options": [
+        "The Monarch",
+        "Prime Minister",
+        "Speaker",
+        "Chief Justice"
+      ],
+      "correct_index": 0,
+      "explanation": "Monarch performs ceremonial duties and symbolizes unity."
+    },
+    {
+      "prompt": "Who leads Government?",
+      "options": [
+        "Prime Minister",
+        "Monarch",
+        "Archbishop",
+        "Speaker"
+      ],
+      "correct_index": 0,
+      "explanation": "Prime Minister is Head of Government."
+    },
+    {
+      "prompt": "Rule of law means?",
+      "options": [
+        "Everyone including government must obey law",
+        "Only police follow law",
+        "Monarch can override laws",
+        "Judges make all laws"
+      ],
+      "correct_index": 0,
+      "explanation": "Rule of law ensures equality and fairness for everyone."
+    },
+    {
+      "prompt": "Who makes UK laws?",
+      "options": [
+        "Parliament",
+        "PM alone",
+        "Police",
+        "Civil Service"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament debates and passes new laws."
+    },
+    {
+      "prompt": "UK legal right?",
+      "options": [
+        "Freedom of speech",
+        "Unlimited travel abroad",
+        "Free housing for all",
+        "No taxes"
+      ],
+      "correct_index": 0,
+      "explanation": "Freedom of speech is protected under UK law."
+    },
+    {
+      "prompt": "Citizen responsibility?",
+      "options": [
+        "Obeying the law",
+        "Voting in every election (required)",
+        "Joining political party",
+        "Serving in army"
+      ],
+      "correct_index": 0,
+      "explanation": "Citizens must respect and obey UK laws."
+    },
+    {
+      "prompt": "How to influence government?",
+      "options": [
+        "Voting, petitions, peaceful protest",
+        "Ignoring elections",
+        "Joining secret groups",
+        "Avoiding taxes"
+      ],
+      "correct_index": 0,
+      "explanation": "Active participation helps democracy function."
+    },
+    {
+      "prompt": "Parliament's role?",
+      "options": [
+        "Make and debate laws",
+        "Enforce laws",
+        "Appoint judges",
+        "Police streets"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament creates and reviews legislation."
+    },
+    {
+      "prompt": "Who applies law fairly?",
+      "options": [
+        "Independent courts",
+        "Parliament",
+        "Civil Service",
+        "PM Office"
+      ],
+      "correct_index": 0,
+      "explanation": "Judiciary interprets laws without political interference."
+    },
+    {
+      "prompt": "Monarch's political role today?",
+      "options": [
+        "Ceremonial and symbolic only",
+        "Controls all policy",
+        "Chooses judges",
+        "Leads army"
+      ],
+      "correct_index": 0,
+      "explanation": "Monarch remains politically neutral."
+    },
+    {
+      "prompt": "Who holds Government to account?",
+      "options": [
+        "Parliament",
+        "Police",
+        "Supreme Court",
+        "Trade unions"
+      ],
+      "correct_index": 0,
+      "explanation": "Parliament questions and reviews government work."
+    },
+    {
+      "prompt": "Document limiting royal power?",
+      "options": [
+        "Magna Carta (1215)",
+        "Bill of Rights (1689)",
+        "Human Rights Act (1998)",
+        "Equality Act (2010)"
+      ],
+      "correct_index": 0,
+      "explanation": "Magna Carta established King was not above law."
+    },
+    {
+      "prompt": "Modern rights and equality acts?",
+      "options": [
+        "Human Rights Act 1998 & Equality Act 2010",
+        "Bill of Rights & Parliament Act",
+        "Defence Act & Civil Code",
+        "Devolution Act & Immigration Act"
+      ],
+      "correct_index": 0,
+      "explanation": "These laws ensure fairness and dignity for everyone."
+    },
+    {
+      "prompt": "Why understand rights/duties?",
+      "options": [
+        "Helps maintain fair democratic society",
+        "Makes immune from law",
+        "Reduces taxes",
+        "Gives special privileges"
+      ],
+      "correct_index": 0,
+      "explanation": "Knowledge of law supports justice and participation."
+    }
+  ],
+  "flashcards": [
+    [
+      "UK system of government",
+      "Constitutional monarchy and parliamentary democracy"
+    ],
+    [
+      "Who is Head of State",
+      "The Monarch"
+    ],
+    [
+      "Who leads Government",
+      "The Prime Minister"
+    ],
+    [
+      "What does rule of law mean",
+      "Everyone must obey the law"
+    ],
+    [
+      "Who makes laws in UK",
+      "Parliament"
+    ],
+    [
+      "One right protected by UK law",
+      "Freedom of speech"
+    ],
+    [
+      "One citizen responsibility",
+      "Obey the law"
+    ],
+    [
+      "How citizens influence government",
+      "Voting, petitions, and peaceful protest"
+    ],
+    [
+      "Parliament's main role",
+      "Make and debate laws"
+    ],
+    [
+      "Who applies laws fairly",
+      "Independent courts"
+    ],
+    [
+      "Monarch's modern role",
+      "Ceremonial and symbolic"
+    ],
+    [
+      "Who holds Government accountable",
+      "Parliament"
+    ],
+    [
+      "Document first limiting royal power",
+      "Magna Carta (1215)"
+    ],
+    [
+      "Two acts protecting rights/equality",
+      "Human Rights Act 1998 and Equality Act 2010"
+    ],
+    [
+      "Why understanding rights important",
+      "It supports democracy and fairness"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand government and law brilliantly! 🏛️",
+    "medium_score": "Good work! Review rights and responsibilities! 📚",
+    "low_score": "Government systems take time. Keep studying! 💪"
+  }
+}

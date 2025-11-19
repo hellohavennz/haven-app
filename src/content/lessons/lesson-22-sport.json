@@ -1,0 +1,236 @@
+{
+  "id": "lesson-22-sport",
+  "title": "Sport",
+  "module_slug": "society-culture-traditions",
+  "overview": "Sport is an important part of life in the United Kingdom. It promotes health, teamwork, and national pride. Many of the world's most popular sports—including football, rugby, cricket, golf, and tennis—were either invented or developed in Britain. Sport brings communities together and celebrates fair play, effort, and respect.",
+  "study_sections": [
+    {
+      "heading": "Football",
+      "content": "Most popular UK sport. Governed by Football Association (FA), founded 1863. FA Cup first played 1871—world's oldest football competition. Famous teams: Manchester United, Liverpool, Arsenal, Celtic, Rangers."
+    },
+    {
+      "heading": "Rugby and Cricket",
+      "content": "Rugby originated at Rugby School, England. Two types: Rugby Union and Rugby League. Cricket originated in England, played in Commonwealth countries. The Ashes: England vs Australia cricket series."
+    },
+    {
+      "heading": "Tennis and Golf",
+      "content": "Wimbledon Championships began 1877—oldest tennis tournament. St Andrews, Scotland is 'home of golf.' Fair play represents British sporting values."
+    },
+    {
+      "heading": "Olympics and Athletes",
+      "content": "London hosted Olympics three times: 1908, 1948, 2012. Mo Farah won two gold medals in 2012 for running. Andy Murray won Wimbledon 2013. Lewis Hamilton: multiple F1 world titles. Bradley Wiggins: first British Tour de France winner (2012)."
+    }
+  ],
+  "key_facts": [
+    "Most popular sport: football",
+    "FA governs English football",
+    "FA founded: 1863",
+    "FA Cup first played: 1871",
+    "Rugby began: Rugby School",
+    "Two rugby types: Union and League",
+    "Cricket: England vs Australia = The Ashes",
+    "Wimbledon began: 1877",
+    "Home of golf: St Andrews, Scotland",
+    "British sporting value: fair play",
+    "London Olympics: 1908, 1948, 2012",
+    "London Marathon: annual event",
+    "Oxford vs Cambridge: Boat Race",
+    "Silverstone: motor racing",
+    "Wembley: home of football",
+    "Mo Farah: 2012 Olympic golds",
+    "Andy Murray: Wimbledon 2013",
+    "Lewis Hamilton: F1 champion",
+    "Bradley Wiggins: Tour de France 2012",
+    "Sporting values: teamwork and respect"
+  ],
+  "memory_hook": "UK sports as invention timeline: 1800s (football FA 1863, rugby at Rugby School, cricket centuries old, golf at St Andrews, tennis Wimbledon 1877, FA Cup 1871), 1900s (Olympics in London 1908/1948/2012), 2000s (Murray Wimbledon 2013, Wiggins Tour 2012, Farah Olympics 2012, Hamilton F1). Fair play thread runs through all—teamwork, respect, community!",
+  "questions": [
+    {
+      "prompt": "UK's most popular sport?",
+      "options": [
+        "Football",
+        "Cricket",
+        "Tennis",
+        "Rugby"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Who governs English football?",
+      "options": [
+        "FA",
+        "Premier League",
+        "FIFA",
+        "UK Sport"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "When was FA Cup first played?",
+      "options": [
+        "1871",
+        "1908",
+        "1863",
+        "1888"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Where did rugby originate?",
+      "options": [
+        "Rugby School",
+        "Tennis Club",
+        "Golf Club",
+        "Athletics Track"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "How many rugby types?",
+      "options": [
+        "Two",
+        "Three",
+        "Four",
+        "One"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "England vs Australia cricket?",
+      "options": [
+        "The Ashes",
+        "The Trophy",
+        "The Cup",
+        "The Championship"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "When did Wimbledon begin?",
+      "options": [
+        "1877",
+        "1908",
+        "1948",
+        "1863"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "Home of golf?",
+      "options": [
+        "St Andrews, Scotland",
+        "Wembley",
+        "Cardiff",
+        "Belfast"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "London Olympics years?",
+      "options": [
+        "1908, 1948, 2012",
+        "1896, 2000",
+        "1952, 1980",
+        "1924, 1960"
+      ],
+      "correct_index": 0
+    },
+    {
+      "prompt": "British sporting value?",
+      "options": [
+        "Fair play",
+        "Winning only",
+        "Individual glory",
+        "Wealth"
+      ],
+      "correct_index": 0
+    }
+  ],
+  "flashcards": [
+    [
+      "UK's most popular sport",
+      "Football"
+    ],
+    [
+      "English football governor",
+      "The Football Association (FA)"
+    ],
+    [
+      "FA Cup first played",
+      "1871"
+    ],
+    [
+      "Rugby began where",
+      "Rugby School, England"
+    ],
+    [
+      "Main rugby types",
+      "Rugby Union and Rugby League"
+    ],
+    [
+      "England vs Australia cricket",
+      "The Ashes"
+    ],
+    [
+      "Wimbledon began",
+      "1877"
+    ],
+    [
+      "Home of golf",
+      "St Andrews, Scotland"
+    ],
+    [
+      "British sporting value",
+      "Fair play"
+    ],
+    [
+      "London Olympics years",
+      "1908, 1948, 2012"
+    ],
+    [
+      "Annual London running event",
+      "London Marathon"
+    ],
+    [
+      "Universities racing Thames",
+      "Oxford and Cambridge"
+    ],
+    [
+      "Silverstone sport",
+      "Motor racing"
+    ],
+    [
+      "Home of football stadium",
+      "Wembley Stadium"
+    ],
+    [
+      "2012 Olympic running golds",
+      "Mo Farah"
+    ],
+    [
+      "2013 Wimbledon winner",
+      "Andy Murray"
+    ],
+    [
+      "British F1 champion",
+      "Lewis Hamilton"
+    ],
+    [
+      "First British Tour de France",
+      "Bradley Wiggins"
+    ],
+    [
+      "Ashes cricket series",
+      "England and Australia"
+    ],
+    [
+      "UK sporting values",
+      "Teamwork and respect"
+    ]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know UK sport brilliantly! ⚽",
+    "medium_score": "Good work! Review sports and athletes! 📚",
+    "low_score": "Sport takes time. Keep studying! 💪"
+  }
+}
