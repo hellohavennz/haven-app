@@ -1,0 +1,103 @@
+{
+  "id": "lesson-4.6-religion",
+  "title": "Religion in the UK",
+  "module_slug": "modern-society",
+  "overview": "The UK is historically a Christian country but is today a multi-faith society. People of many different religions live and worship freely in the UK. Understanding the different faiths practised, the structure of the main Christian churches, and the patron saints of each country is important knowledge for the Life in the UK test.\n\nThis lesson covers the religious makeup of the UK, the main Christian churches, and the patron saints of England, Scotland, Wales and Northern Ireland.",
+  "study_sections": [
+    {
+      "heading": "Religion in the UK Today",
+      "content": "The UK is historically a Christian country. In the 2009 Citizenship Survey, 70% of people identified themselves as Christian. Much smaller proportions identified themselves as Muslim (4%), Hindu (2%), Sikh (1%), Jewish or Buddhist (both less than 0.5%). Around 2% of people followed another religion. In the Citizenship Survey, 21% of people said that they had no religion.\n\nThere are religious buildings for many different faiths all over the UK, including Islamic mosques, Hindu temples, Jewish synagogues, Sikh gurdwaras and Buddhist temples.\n\nEveryone has the legal right to choose their religion, or to choose not to practise a religion."
+    },
+    {
+      "heading": "The Church of England",
+      "content": "In England, there is a constitutional link between Church and state. The official Church of the state is the Church of England (called the Anglican Church in other countries and the Episcopal Church in Scotland and the United States). It is a Protestant Church and has existed since the Reformation in the 1530s.\n\nThe monarch is the head of the Church of England. The spiritual leader of the Church of England is the Archbishop of Canterbury. The monarch has the right to select the Archbishop and other senior church officials, but usually the choice is made by the Prime Minister and a committee appointed by the Church. Several Church of England bishops sit in the House of Lords."
+    },
+    {
+      "heading": "The Church of Scotland and Other Churches",
+      "content": "In Scotland, the national Church is the Church of Scotland, which is a Presbyterian Church. It is governed by ministers and elders. The chairperson of the General Assembly of the Church of Scotland is the Moderator, who is appointed for one year only and often speaks on behalf of that Church.\n\nThere is no established Church in Wales or Northern Ireland.\n\nOther Protestant Christian groups in the UK include Baptists, Methodists, Presbyterians and Quakers. There are also other denominations of Christianity, the biggest of which is Roman Catholic."
+    },
+    {
+      "heading": "The Patron Saints",
+      "content": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint. Each saint has a special day:\n\n• 1 March: St David's Day (Wales)\n• 17 March: St Patrick's Day (Northern Ireland)\n• 23 April: St George's Day (England)\n• 30 November: St Andrew's Day (Scotland)\n\nOnly Scotland and Northern Ireland have their patron saint's day as an official holiday (although in Scotland not all businesses and offices will close). Events are held across Scotland, Northern Ireland and the rest of the country, especially where there are many people of Scottish, Northern Irish and Irish heritage.\n\nWhile the patron saints' days are no longer public holidays in England and Wales, they are still celebrated. Parades and small festivals are held all over the two countries."
+    }
+  ],
+  "key_facts": [
+    "The UK is historically a Christian country.",
+    "In the 2009 Citizenship Survey, 70% of people identified as Christian.",
+    "Muslims make up 4% of the population.",
+    "Hindus make up 2% of the population.",
+    "Sikhs make up 1% of the population.",
+    "Jewish and Buddhist populations are both less than 0.5%.",
+    "21% of people said they had no religion.",
+    "Everyone has the legal right to choose their religion, or not to practise one.",
+    "The official Church of England is called the Anglican Church in other countries.",
+    "The Church of England has existed since the Reformation in the 1530s.",
+    "The monarch is the head of the Church of England.",
+    "The spiritual leader of the Church of England is the Archbishop of Canterbury.",
+    "Several Church of England bishops sit in the House of Lords.",
+    "The Church of Scotland is a Presbyterian Church.",
+    "The Moderator chairs the General Assembly of the Church of Scotland.",
+    "The Moderator is appointed for one year only.",
+    "There is no established Church in Wales or Northern Ireland.",
+    "Other Protestant groups include Baptists, Methodists, Presbyterians and Quakers.",
+    "The biggest non-Protestant Christian denomination is Roman Catholic.",
+    "St David's Day is 1 March (Wales).",
+    "St Patrick's Day is 17 March (Northern Ireland).",
+    "St George's Day is 23 April (England).",
+    "St Andrew's Day is 30 November (Scotland).",
+    "Only Scotland and Northern Ireland have patron saint days as official holidays."
+  ],
+  "memory_hook": "Remember patron saints with 'David, Patrick, George, Andrew' in date order: 1 March (Wales), 17 March (NI), 23 April (England), 30 November (Scotland). Think 'Winter to Spring to Autumn': Wales starts the year, Scotland ends it.",
+  "questions": [
+    {"prompt": "What percentage of people identified as Christian in the 2009 Citizenship Survey?", "options": ["70%", "50%", "80%", "60%"], "correct_index": 0, "explanation": "In the 2009 Citizenship Survey, 70% of people identified themselves as Christian."},
+    {"prompt": "What percentage of the UK population is Muslim?", "options": ["4%", "2%", "1%", "10%"], "correct_index": 0, "explanation": "Muslims make up 4% of the population according to the Citizenship Survey."},
+    {"prompt": "What percentage of the UK population is Hindu?", "options": ["2%", "4%", "1%", "5%"], "correct_index": 0, "explanation": "Hindus make up 2% of the population."},
+    {"prompt": "What percentage said they had no religion?", "options": ["21%", "10%", "30%", "5%"], "correct_index": 0, "explanation": "21% of people said that they had no religion."},
+    {"prompt": "What is the right of everyone in the UK regarding religion?", "options": ["The legal right to choose their religion or not to practise one", "They must follow Christianity", "They must declare a religion", "Freedom of religion only for citizens"], "correct_index": 0, "explanation": "Everyone has the legal right to choose their religion, or to choose not to practise a religion."},
+    {"prompt": "What is the Church of England called in other countries?", "options": ["The Anglican Church", "The Episcopal Church of England", "The Protestant Church", "The British Church"], "correct_index": 0, "explanation": "The Church of England is called the Anglican Church in other countries and the Episcopal Church in Scotland and the USA."},
+    {"prompt": "When did the Church of England begin?", "options": ["The Reformation in the 1530s", "The Norman Conquest in 1066", "The Glorious Revolution in 1688", "The Victorian era"], "correct_index": 0, "explanation": "The Church of England is a Protestant Church that has existed since the Reformation in the 1530s."},
+    {"prompt": "Who is the head of the Church of England?", "options": ["The monarch", "The Archbishop of Canterbury", "The Prime Minister", "The Pope"], "correct_index": 0, "explanation": "The monarch is the head of the Church of England."},
+    {"prompt": "Who is the spiritual leader of the Church of England?", "options": ["The Archbishop of Canterbury", "The monarch", "The Prime Minister", "The Moderator"], "correct_index": 0, "explanation": "The spiritual leader of the Church of England is the Archbishop of Canterbury."},
+    {"prompt": "Who sit in the House of Lords from the Church?", "options": ["Several Church of England bishops", "The Archbishop of Canterbury only", "All Church of England clergy", "No religious figures"], "correct_index": 0, "explanation": "Several Church of England bishops sit in the House of Lords."},
+    {"prompt": "What type of church is the Church of Scotland?", "options": ["Presbyterian", "Anglican", "Catholic", "Methodist"], "correct_index": 0, "explanation": "The Church of Scotland is a Presbyterian Church, governed by ministers and elders."},
+    {"prompt": "Who chairs the General Assembly of the Church of Scotland?", "options": ["The Moderator", "The Archbishop", "The monarch", "The Prime Minister"], "correct_index": 0, "explanation": "The Moderator chairs the General Assembly and is appointed for one year only."},
+    {"prompt": "Is there an established Church in Wales?", "options": ["No", "Yes, the Church of Wales", "Yes, the Anglican Church", "Yes, the Methodist Church"], "correct_index": 0, "explanation": "There is no established Church in Wales or Northern Ireland."},
+    {"prompt": "Which is the biggest non-Protestant Christian denomination in the UK?", "options": ["Roman Catholic", "Eastern Orthodox", "Coptic", "Baptist"], "correct_index": 0, "explanation": "The biggest non-Protestant Christian denomination is Roman Catholic."},
+    {"prompt": "When is St David's Day?", "options": ["1 March", "17 March", "23 April", "30 November"], "correct_index": 0, "explanation": "St David's Day is 1 March and is the patron saint's day for Wales."},
+    {"prompt": "When is St Patrick's Day?", "options": ["17 March", "1 March", "23 April", "30 November"], "correct_index": 0, "explanation": "St Patrick's Day is 17 March and is the patron saint's day for Northern Ireland."},
+    {"prompt": "When is St George's Day?", "options": ["23 April", "1 March", "17 March", "30 November"], "correct_index": 0, "explanation": "St George's Day is 23 April and is the patron saint's day for England."},
+    {"prompt": "When is St Andrew's Day?", "options": ["30 November", "23 April", "17 March", "1 March"], "correct_index": 0, "explanation": "St Andrew's Day is 30 November and is the patron saint's day for Scotland."},
+    {"prompt": "Which patron saint's days are official holidays?", "options": ["Scotland and Northern Ireland only", "All four countries", "England and Scotland only", "None of them"], "correct_index": 0, "explanation": "Only Scotland and Northern Ireland have their patron saint's day as an official holiday."},
+    {"prompt": "Who is the patron saint of Wales?", "options": ["St David", "St Patrick", "St George", "St Andrew"], "correct_index": 0, "explanation": "St David is the patron saint of Wales, celebrated on 1 March."},
+    {"prompt": "Who is the patron saint of Scotland?", "options": ["St Andrew", "St David", "St George", "St Patrick"], "correct_index": 0, "explanation": "St Andrew is the patron saint of Scotland, celebrated on 30 November."},
+    {"prompt": "Who is the patron saint of England?", "options": ["St George", "St Andrew", "St David", "St Patrick"], "correct_index": 0, "explanation": "St George is the patron saint of England, celebrated on 23 April."},
+    {"prompt": "Who is the patron saint of Northern Ireland?", "options": ["St Patrick", "St George", "St Andrew", "St David"], "correct_index": 0, "explanation": "St Patrick is the patron saint of Northern Ireland, celebrated on 17 March."}
+  ],
+  "flashcards": [
+    ["% identifying as Christian (2009)?", "70%"],
+    ["% identifying as Muslim?", "4%"],
+    ["% identifying as Hindu?", "2%"],
+    ["% identifying as Sikh?", "1%"],
+    ["% with no religion?", "21%"],
+    ["Everyone's right regarding religion?", "Legal right to choose or not practise"],
+    ["Church of England in other countries?", "Anglican Church (Episcopal in Scotland/USA)"],
+    ["Church of England established when?", "Reformation, 1530s"],
+    ["Head of Church of England?", "The monarch"],
+    ["Spiritual leader of Church of England?", "Archbishop of Canterbury"],
+    ["Church bishops in House of Lords?", "Several Church of England bishops"],
+    ["Church of Scotland type?", "Presbyterian"],
+    ["Church of Scotland chairperson?", "The Moderator (one year term)"],
+    ["Established Church in Wales?", "No"],
+    ["Biggest non-Protestant denomination?", "Roman Catholic"],
+    ["St David's Day?", "1 March (Wales)"],
+    ["St Patrick's Day?", "17 March (Northern Ireland)"],
+    ["St George's Day?", "23 April (England)"],
+    ["St Andrew's Day?", "30 November (Scotland)"],
+    ["Which patron saint days are official holidays?", "Scotland and Northern Ireland only"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know religion in the UK perfectly! ⛪",
+    "medium_score": "Good work! Remember the patron saint dates in order! 📚",
+    "low_score": "Keep studying - the patron saints and church structure are key topics! 💪"
+  }
+}

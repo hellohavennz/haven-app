@@ -1,0 +1,85 @@
+{
+  "id": "lesson-5.6-community",
+  "title": "Your Role in the Community",
+  "module_slug": "government-law-role",
+  "overview": "Becoming a British citizen or settling in the UK brings responsibilities as well as opportunities. This lesson covers the values and responsibilities of British citizens, voting rights, how to stand for office, and the many ways you can contribute to your community.",
+  "study_sections": [
+    {
+      "heading": "Values and Responsibilities",
+      "content": "Although Britain is one of the world's most diverse societies, there is a set of shared values and responsibilities that everyone can agree with:\n• To obey and respect the law\n• To be aware of and respect the rights of others\n• To treat others with fairness\n• To behave responsibly\n• To help and protect your family\n• To respect and preserve the environment\n• To treat everyone equally, regardless of sex, race, religion, age, disability, class or sexual orientation\n• To work to provide for yourself and your family\n• To help others\n• To vote in local and national government elections"
+    },
+    {
+      "heading": "Voting and Standing for Office",
+      "content": "The UK has had a fully democratic voting system since 1928. The present voting age of 18 was set in 1969. Adult citizens of the UK, and citizens of the Commonwealth and the Irish Republic who are resident in the UK, can vote in all public elections.\n\nTo vote, you must be on the electoral register. The register is updated every year in September or October.\n\nPolling stations are open from 7.00 am until 10.00 pm on election day. You receive a poll card before the election telling you where to vote. In Northern Ireland you must show photographic identification.\n\nMost citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for public office. Exceptions include members of the armed forces, civil servants and people found guilty of certain criminal offences. Members of the House of Lords may not stand for election to the House of Commons."
+    },
+    {
+      "heading": "Supporting Your Community",
+      "content": "There are many ways to get involved in your community:\n\nJury service: People on the electoral register aged 18 to 70 can be randomly selected for jury service. Everyone summoned must do it unless not eligible or they have a good reason to be excused.\n\nHelping in schools: Parents can help in classrooms, listen to children read, and help with fundraising activities. Parent-teacher associations (PTAs) often organise events.\n\nSchool governors and school boards: Governors are people from the local community who wish to contribute to children's education. They must be aged 18 or over. They set the strategic direction of the school, ensure accountability, and monitor school performance.\n\nSupporting political parties: Joining a political party is a way to demonstrate support for certain views and get involved in democracy. Political parties are particularly active at election times - members canvass by handing out leaflets or knocking on doors. You don't have to tell a canvasser how you intend to vote.\n\nHelping with local services: Opportunities to volunteer include local hospitals, youth projects, universities, housing associations, museums and arts councils. You can also volunteer with the police as a special constable or a lay representative, or apply to become a magistrate.\n\nBlood and organ donation: Giving blood takes about an hour. You can also register to be an organ donor - this makes it easier for your family to decide whether to donate your organs when you die. Living people can also donate a kidney.\n\nVolunteering: Volunteering is working for good causes without payment. Benefits include meeting new people, helping make your community better, practising English and developing work skills."
+    }
+  ],
+  "key_facts": [
+    "The UK has had a fully democratic voting system since 1928.",
+    "The voting age of 18 was set in 1969.",
+    "UK citizens and Commonwealth/Irish Republic citizens resident in the UK can vote in all public elections.",
+    "To vote, you must be on the electoral register.",
+    "The electoral register is updated every year in September or October.",
+    "Polling stations are open from 7.00 am until 10.00 pm.",
+    "In Northern Ireland, voters must show photographic identification.",
+    "Most citizens aged 18 or over can stand for public office.",
+    "Exceptions from standing for office include armed forces, civil servants, and those with certain criminal convictions.",
+    "House of Lords members cannot stand for election to the House of Commons.",
+    "People on the electoral register aged 18 to 70 can be called for jury service.",
+    "Everyone summoned for jury service must do it unless ineligible or with a good reason.",
+    "School governors must be aged 18 or over.",
+    "School governors set strategic direction, ensure accountability, and monitor school performance.",
+    "Canvassing means handing out leaflets or knocking on doors to ask for votes.",
+    "You do not have to tell a canvasser how you intend to vote.",
+    "Giving blood takes about an hour.",
+    "Volunteering is working for good causes without payment.",
+    "You can volunteer with the police as a special constable."
+  ],
+  "memory_hook": "Remember community roles: 'Jury (18-70), Governor (18+), Vote (18+). Polling stations 7am-10pm. Northern Ireland needs photo ID to vote'. Volunteering benefits: meeting people, improving community, practising English, developing skills.",
+  "questions": [
+    {"prompt": "Since when has the UK had a fully democratic voting system?", "options": ["1928", "1918", "1969", "1945"], "correct_index": 0, "explanation": "The UK has had a fully democratic voting system since 1928."},
+    {"prompt": "When was the current voting age of 18 set?", "options": ["1969", "1928", "1948", "1975"], "correct_index": 0, "explanation": "The present voting age of 18 was set in 1969."},
+    {"prompt": "Who can vote in all public elections in the UK?", "options": ["UK citizens and Commonwealth/Irish Republic citizens resident in the UK", "Only UK citizens", "All residents over 18", "All EU citizens resident in the UK"], "correct_index": 0, "explanation": "Adult citizens of the UK, and citizens of the Commonwealth and the Irish Republic who are resident in the UK, can vote in all public elections."},
+    {"prompt": "When is the electoral register updated?", "options": ["Every year in September or October", "Every year in January", "Every five years", "Every two years"], "correct_index": 0, "explanation": "The electoral register is updated every year in September or October."},
+    {"prompt": "What hours are polling stations open?", "options": ["7.00 am until 10.00 pm", "8.00 am until 8.00 pm", "9.00 am until 9.00 pm", "6.00 am until midnight"], "correct_index": 0, "explanation": "On election day, polling stations are open from 7.00 am until 10.00 pm."},
+    {"prompt": "In which part of the UK must voters show photo ID?", "options": ["Northern Ireland", "Scotland", "Wales", "London only"], "correct_index": 0, "explanation": "In Northern Ireland, voters must show photographic identification at the polling station."},
+    {"prompt": "Who can stand for public office?", "options": ["Most citizens of the UK, Irish Republic or Commonwealth aged 18 or over", "Only UK citizens", "Anyone over 21", "Only those on the electoral register"], "correct_index": 0, "explanation": "Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for public office."},
+    {"prompt": "Which of these cannot stand for the House of Commons?", "options": ["Members of the House of Lords", "MPs from small parties", "Women", "People under 25"], "correct_index": 0, "explanation": "Members of the House of Lords may not stand for election to the House of Commons."},
+    {"prompt": "What age range can be called for jury service?", "options": ["18 to 70", "18 to 65", "21 to 70", "18 to 75"], "correct_index": 0, "explanation": "Anyone on the electoral register aged 18 to 70 can be asked to do jury service."},
+    {"prompt": "Must you do jury service if summoned?", "options": ["Yes, unless ineligible or with a good reason to be excused", "No, it is voluntary", "Only if you are unemployed", "Only for serious cases"], "correct_index": 0, "explanation": "Everyone summoned to do jury service must do it unless they are not eligible or provide a good reason to be excused."},
+    {"prompt": "What is the minimum age to be a school governor?", "options": ["18", "21", "25", "No minimum age"], "correct_index": 0, "explanation": "School governors must be aged 18 or over at the date of their election or appointment."},
+    {"prompt": "What are the three key roles of school governors?", "options": ["Setting strategic direction, ensuring accountability, and monitoring school performance", "Teaching, administration and fundraising", "Finance, buildings and curriculum", "Hiring teachers, setting rules and fundraising"], "correct_index": 0, "explanation": "Governors have three key roles: setting the strategic direction, ensuring accountability, and monitoring and evaluating school performance."},
+    {"prompt": "What is canvassing?", "options": ["Handing out leaflets or knocking on doors to ask for votes", "Counting votes at elections", "Registering to vote", "Postal voting"], "correct_index": 0, "explanation": "Political party members canvass by handing out leaflets or knocking on people's doors and asking for their support."},
+    {"prompt": "Do you have to tell a canvasser how you will vote?", "options": ["No - you don't have to tell them", "Yes, if they ask directly", "Only if you are registered to vote", "Yes, it's a legal requirement"], "correct_index": 0, "explanation": "You don't have to tell a canvasser how you intend to vote if you don't want to."},
+    {"prompt": "How long does giving blood take?", "options": ["About an hour", "About 15 minutes", "About 30 minutes", "About two hours"], "correct_index": 0, "explanation": "Giving blood only takes about an hour to do."},
+    {"prompt": "What is volunteering?", "options": ["Working for good causes without payment", "Part-time paid work for charities", "Community service as a legal punishment", "Government-funded work experience"], "correct_index": 0, "explanation": "Volunteering is working for good causes without payment."},
+    {"prompt": "What can you volunteer as with the police?", "options": ["A special constable or lay representative", "A police officer", "A court official", "A prison officer"], "correct_index": 0, "explanation": "You can volunteer with the police and become a special constable or a lay (non-police) representative."}
+  ],
+  "flashcards": [
+    ["Fully democratic system since?", "1928"],
+    ["Voting age 18 set in?", "1969"],
+    ["Who can vote in all elections?", "UK citizens + Commonwealth/Irish Republic residents"],
+    ["Electoral register updated when?", "September or October each year"],
+    ["Polling station hours?", "7.00 am to 10.00 pm"],
+    ["Photo ID required to vote?", "Northern Ireland only"],
+    ["Minimum age to stand for office?", "18"],
+    ["Cannot stand for Commons?", "Members of the House of Lords"],
+    ["Jury service age range?", "18 to 70"],
+    ["Jury service compulsory?", "Yes, unless ineligible or good reason"],
+    ["School governor minimum age?", "18"],
+    ["Three governor roles?", "Strategic direction, accountability, monitoring performance"],
+    ["What is canvassing?", "Leaflets/door knocking to ask for votes"],
+    ["Must you tell canvasser your vote?", "No"],
+    ["Blood donation time?", "About an hour"],
+    ["Volunteering definition?", "Working for good causes without payment"],
+    ["Police volunteering options?", "Special constable or lay representative"]
+  ],
+  "supportive_messages": {
+    "high_score": "Brilliant! You know your rights and responsibilities as a UK citizen perfectly! 🌟",
+    "medium_score": "Good work! Review voting rights and ways to get involved in the community! 📚",
+    "low_score": "Keep going - this is the final module and you're nearly there! 💪"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "lesson-3.1-chapter-intro",
+  "title": "About This Module: A Long and Illustrious History",
+  "module_slug": "history",
+  "overview": "Welcome to Module 3: A Long and Illustrious History.\n\nThis is the largest and most fact-dense module in the course. British history from the Stone Age to the present is covered, with particular emphasis on important dates, people, battles, Acts of Parliament and major events.\n\nThe history module typically generates the most test questions, so invest significant time here.",
+  "study_sections": [
+    {
+      "heading": "What You Will Learn",
+      "content": "In this module, you will learn about:\n• The history of early Britain (Stone Age through to the Norman Conquest)\n• The medieval period (Magna Carta, Black Death, Wars of the Roses)\n• The Tudor and Stuart monarchs\n• The establishment of Parliament\n• The unification of the United Kingdom\n• The Enlightenment and Industrial Revolution\n• The Victorian Age and the British Empire\n• The First and Second World Wars\n• Britain since 1945 and the welfare state\n• Government and devolution in recent decades"
+    },
+    {
+      "heading": "How to Study History",
+      "content": "History has a lot of specific facts — dates, names, and events. Here are some tips:\n\n• Learn dates in context, not in isolation. Ask 'what happened before and after?'\n• Focus on cause and effect: why did events happen and what changed as a result?\n• Pay special attention to Acts of Parliament, key battles, and major social reforms\n• Use the memory hooks in each lesson to group related facts together\n• The lessons are arranged in reverse chronological order (most recent first), mirroring the handbook structure. If you prefer, study them in historical order (start with lesson 3.7 Early Britain)"
+    }
+  ],
+  "key_facts": [
+    "History is the most fact-dense module in the course.",
+    "You need to know specific dates, names, battles, and Acts of Parliament.",
+    "The history module lessons cover: Britain since 1945, Global Power era, 20th Century, Middle Ages, Tudors and Stuarts, and Early Britain."
+  ],
+  "memory_hook": "The 6 history lessons in chronological order: Early Britain → Middle Ages → Tudors/Stuarts → 20th Century (wars) → Global Power → Britain since 1945.",
+  "questions": [],
+  "flashcards": [],
+  "supportive_messages": {
+    "high_score": "Great start! Dive into the history lessons now! 🏰",
+    "medium_score": "Good! Use the memory hooks in each lesson to help! 📚",
+    "low_score": "Take it one lesson at a time - you've got this! 💪"
+  }
+}

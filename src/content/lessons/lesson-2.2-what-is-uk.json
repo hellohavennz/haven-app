@@ -1,0 +1,101 @@
+{
+  "id": "lesson-2.2-what-is-uk",
+  "title": "What is the UK?",
+  "module_slug": "what-is-uk",
+  "overview": "The United Kingdom is made up of four countries: England, Scotland, Wales and Northern Ireland. Understanding the structure of the UK and the differences between various terms like 'UK', 'Great Britain', and 'Britain' is essential knowledge for anyone living in or applying to become a resident of the United Kingdom.\n\nThis lesson covers the countries that make up the UK, the difference between the UK and Great Britain, Crown dependencies, British overseas territories, and how the UK is governed through Westminster Parliament and devolved administrations.",
+  "study_sections": [
+    {
+      "heading": "The Four Countries of the UK",
+      "content": "The United Kingdom is made up of four countries:\n\n1. England\n2. Scotland\n3. Wales\n4. Northern Ireland\n\nThe rest of Ireland is an independent country, separate from the UK. It is important not to confuse Northern Ireland (which is part of the UK) with the Republic of Ireland (which is independent).\n\nEach of these four countries has its own distinct identity, traditions, and in some cases, languages. However, they are all part of one United Kingdom with a shared monarch and a parliament that makes laws for the whole country."
+    },
+    {
+      "heading": "Understanding the Names: UK, Great Britain, and Britain",
+      "content": "The official name of the country is the United Kingdom of Great Britain and Northern Ireland. This full name is often shortened to 'the United Kingdom' or 'the UK'.\n\n'Great Britain' refers only to England, Scotland and Wales. It does not include Northern Ireland. This is an important distinction to understand.\n\nThe words 'Britain' or 'British' are used in the official handbook to refer to everyone in the UK, including people from Northern Ireland. So when you see 'British' it means the whole of the UK, not just Great Britain.\n\nTo summarize:\n• United Kingdom (UK) = England + Scotland + Wales + Northern Ireland\n• Great Britain = England + Scotland + Wales (does NOT include Northern Ireland)\n• Britain/British = commonly used to refer to the whole UK"
+    },
+    {
+      "heading": "Crown Dependencies",
+      "content": "There are several islands which are closely linked with the UK but are not part of it:\n\n• The Channel Islands\n• The Isle of Man\n\nThese islands have their own governments and are called 'Crown dependencies'. This means they are self-governing possessions of the British Crown, but they are not part of the United Kingdom itself. They have their own legal systems and governments, although the UK government is responsible for their defence and international relations."
+    },
+    {
+      "heading": "British Overseas Territories",
+      "content": "There are also several British overseas territories in other parts of the world. Examples include:\n\n• St Helena\n• The Falkland Islands\n\nThese territories are linked to the UK but are not a part of it. They are remnants of the British Empire and remain under British sovereignty, but they are not part of the United Kingdom itself. Like Crown dependencies, they have their own local governments."
+    },
+    {
+      "heading": "How the UK is Governed",
+      "content": "The UK is governed by the parliament sitting in Westminster (in London). This is the UK Parliament, which makes laws for the whole of the United Kingdom on matters of national importance.\n\nHowever, Scotland, Wales and Northern Ireland also have parliaments or assemblies of their own. These are called devolved administrations, and they have devolved powers in defined areas. This means that certain powers have been transferred from Westminster to these bodies to make decisions on specific matters for their own countries.\n\n• Scotland has the Scottish Parliament\n• Wales has the Senedd (Welsh Parliament)\n• Northern Ireland has the Northern Ireland Assembly\n\nThese devolved administrations can make decisions on matters such as health, education, and local government in their own countries, while Westminster Parliament retains power over issues like defence, foreign policy, and immigration for the whole UK."
+    }
+  ],
+  "key_facts": [
+    "The UK is made up of four countries: England, Scotland, Wales and Northern Ireland.",
+    "The rest of Ireland is an independent country.",
+    "The official name is the United Kingdom of Great Britain and Northern Ireland.",
+    "'Great Britain' refers only to England, Scotland and Wales, not Northern Ireland.",
+    "'Britain' or 'British' is used to refer to everyone in the UK.",
+    "The Channel Islands and the Isle of Man are Crown dependencies.",
+    "Crown dependencies are closely linked with the UK but are not part of it.",
+    "Crown dependencies have their own governments.",
+    "British overseas territories include St Helena and the Falkland Islands.",
+    "British overseas territories are linked to the UK but are not part of it.",
+    "The UK is governed by the parliament sitting in Westminster.",
+    "Scotland has the Scottish Parliament.",
+    "Wales has the Senedd (Welsh Parliament).",
+    "Northern Ireland has the Northern Ireland Assembly.",
+    "Scotland, Wales and Northern Ireland have devolved powers in defined areas.",
+    "Devolution means certain powers have been transferred from Westminster to local parliaments/assemblies."
+  ],
+  "memory_hook": "Remember 'EWSN' for the four countries: England, Wales, Scotland, Northern Ireland. Think of a compass pointing to all four parts of the UK. Also remember: Great Britain = the big island (England + Scotland + Wales), but UK = all four countries including Northern Ireland.",
+  "questions": [
+    {"prompt": "How many countries make up the United Kingdom?", "options": ["Four", "Three", "Five", "Two"], "correct_index": 0, "explanation": "The UK is made up of four countries: England, Scotland, Wales and Northern Ireland."},
+    {"prompt": "Which of these is a country in the UK?", "options": ["England", "Republic of Ireland", "Isle of Man", "Channel Islands"], "correct_index": 0, "explanation": "England is one of the four countries that make up the UK."},
+    {"prompt": "Which of these is a country in the UK?", "options": ["Scotland", "Republic of Ireland", "Isle of Man", "Jersey"], "correct_index": 0, "explanation": "Scotland is one of the four countries that make up the UK."},
+    {"prompt": "Which of these is a country in the UK?", "options": ["Wales", "Republic of Ireland", "Guernsey", "St Helena"], "correct_index": 0, "explanation": "Wales is one of the four countries that make up the UK."},
+    {"prompt": "Which of these is a country in the UK?", "options": ["Northern Ireland", "Republic of Ireland", "Isle of Man", "Falkland Islands"], "correct_index": 0, "explanation": "Northern Ireland is one of the four countries that make up the UK."},
+    {"prompt": "Is the Republic of Ireland part of the UK?", "options": ["No, the rest of Ireland is an independent country", "Yes, all of Ireland is in the UK", "Only Northern Ireland is independent", "Ireland is a Crown dependency"], "correct_index": 0, "explanation": "The rest of Ireland (the Republic of Ireland) is an independent country, separate from the UK."},
+    {"prompt": "What is the official name of the country?", "options": ["The United Kingdom of Great Britain and Northern Ireland", "Great Britain", "The British Isles", "England"], "correct_index": 0, "explanation": "The official name is the United Kingdom of Great Britain and Northern Ireland."},
+    {"prompt": "What does 'Great Britain' refer to?", "options": ["England, Scotland and Wales only", "All four countries of the UK", "The British Isles", "England only"], "correct_index": 0, "explanation": "'Great Britain' refers only to England, Scotland and Wales, not to Northern Ireland."},
+    {"prompt": "Does 'Great Britain' include Northern Ireland?", "options": ["No, it refers only to England, Scotland and Wales", "Yes, it includes all four countries", "Only sometimes", "It depends on context"], "correct_index": 0, "explanation": "'Great Britain' does not include Northern Ireland—it refers only to England, Scotland and Wales."},
+    {"prompt": "What does 'Britain' or 'British' refer to in the handbook?", "options": ["Everyone in the UK", "Only people from Great Britain", "Only people from England", "Only people from Northern Ireland"], "correct_index": 0, "explanation": "The words 'Britain' or 'British' are used in the handbook to refer to everyone in the UK."},
+    {"prompt": "Which of these is a Crown dependency?", "options": ["The Isle of Man", "Northern Ireland", "Wales", "Republic of Ireland"], "correct_index": 0, "explanation": "The Isle of Man is a Crown dependency."},
+    {"prompt": "Which of these is a Crown dependency?", "options": ["The Channel Islands", "Scotland", "Falkland Islands", "St Helena"], "correct_index": 0, "explanation": "The Channel Islands are Crown dependencies."},
+    {"prompt": "Are Crown dependencies part of the UK?", "options": ["No, they are closely linked but not part of the UK", "Yes, they are part of the UK", "Only the Isle of Man is part of the UK", "Only the Channel Islands are part of the UK"], "correct_index": 0, "explanation": "Crown dependencies are closely linked with the UK but are not part of it."},
+    {"prompt": "Do Crown dependencies have their own governments?", "options": ["Yes", "No, they are governed by Westminster", "Only the Isle of Man does", "Only the Channel Islands do"], "correct_index": 0, "explanation": "Crown dependencies have their own governments."},
+    {"prompt": "Which of these is a British overseas territory?", "options": ["St Helena", "Isle of Man", "Northern Ireland", "Scotland"], "correct_index": 0, "explanation": "St Helena is a British overseas territory."},
+    {"prompt": "Which of these is a British overseas territory?", "options": ["The Falkland Islands", "Channel Islands", "Wales", "Republic of Ireland"], "correct_index": 0, "explanation": "The Falkland Islands are a British overseas territory."},
+    {"prompt": "Are British overseas territories part of the UK?", "options": ["No, they are linked to the UK but not part of it", "Yes, they are part of the UK", "Only St Helena is part of the UK", "Only the Falkland Islands are part of the UK"], "correct_index": 0, "explanation": "British overseas territories are linked to the UK but are not a part of it."},
+    {"prompt": "Where does the UK Parliament sit?", "options": ["Westminster", "Edinburgh", "Cardiff", "Belfast"], "correct_index": 0, "explanation": "The UK is governed by the parliament sitting in Westminster (in London)."},
+    {"prompt": "Does Scotland have its own parliament?", "options": ["Yes, Scotland has the Scottish Parliament", "No, it is only governed by Westminster", "It has an assembly, not a parliament", "It shares a parliament with Wales"], "correct_index": 0, "explanation": "Scotland has the Scottish Parliament with devolved powers."},
+    {"prompt": "What is the parliament in Wales called?", "options": ["The Senedd (Welsh Parliament)", "The Welsh Assembly only", "The Scottish Parliament", "Westminster"], "correct_index": 0, "explanation": "Wales has the Senedd, also known as the Welsh Parliament."},
+    {"prompt": "Does Northern Ireland have its own assembly?", "options": ["Yes, the Northern Ireland Assembly", "No, it is only governed by Westminster", "It has a parliament, not an assembly", "It shares an assembly with Scotland"], "correct_index": 0, "explanation": "Northern Ireland has the Northern Ireland Assembly with devolved powers."},
+    {"prompt": "What does 'devolved powers' mean?", "options": ["Certain powers transferred from Westminster to local parliaments/assemblies", "All powers are controlled by Westminster", "Powers that were removed", "Powers that only apply to England"], "correct_index": 0, "explanation": "Devolution means certain powers have been transferred from Westminster to local parliaments or assemblies in defined areas."},
+    {"prompt": "What areas have devolved administrations?", "options": ["Scotland, Wales and Northern Ireland", "Only Scotland", "Only Scotland and Wales", "All four countries equally"], "correct_index": 0, "explanation": "Scotland, Wales and Northern Ireland have parliaments or assemblies with devolved powers."},
+    {"prompt": "Does England have its own devolved parliament?", "options": ["No, England is governed directly by Westminster Parliament", "Yes, England has its own parliament", "England shares Scotland's parliament", "England has an assembly"], "correct_index": 0, "explanation": "England does not have a separate devolved parliament—it is governed directly by Westminster Parliament."},
+    {"prompt": "What matters does Westminster Parliament retain power over?", "options": ["Defence, foreign policy, and immigration for the whole UK", "Only English matters", "Only Scottish matters", "Nothing, all power is devolved"], "correct_index": 0, "explanation": "Westminster retains power over matters like defence, foreign policy, and immigration for the whole UK."}
+  ],
+  "flashcards": [
+    ["How many countries in the UK?", "Four"],
+    ["What are the four countries?", "England, Scotland, Wales, Northern Ireland"],
+    ["Is Republic of Ireland part of UK?", "No, it is an independent country"],
+    ["Official name of the country?", "United Kingdom of Great Britain and Northern Ireland"],
+    ["What does Great Britain refer to?", "England, Scotland and Wales only (not Northern Ireland)"],
+    ["Does Great Britain include Northern Ireland?", "No"],
+    ["What does Britain/British refer to?", "Everyone in the UK"],
+    ["What are Crown dependencies?", "Self-governing islands closely linked with UK but not part of it"],
+    ["Name two Crown dependencies", "Channel Islands and Isle of Man"],
+    ["Do Crown dependencies have own governments?", "Yes"],
+    ["What are British overseas territories?", "Territories linked to UK but not part of it"],
+    ["Name two overseas territories", "St Helena and Falkland Islands"],
+    ["Where does UK Parliament sit?", "Westminster (London)"],
+    ["Does Scotland have own parliament?", "Yes, Scottish Parliament"],
+    ["What is Wales's parliament called?", "Senedd (Welsh Parliament)"],
+    ["Does Northern Ireland have own assembly?", "Yes, Northern Ireland Assembly"],
+    ["What are devolved powers?", "Powers transferred from Westminster to local parliaments/assemblies"],
+    ["Which areas have devolved administrations?", "Scotland, Wales, Northern Ireland"],
+    ["Does England have devolved parliament?", "No, governed directly by Westminster"],
+    ["What does Westminster control for whole UK?", "Defence, foreign policy, immigration"]
+  ],
+  "supportive_messages": {
+    "high_score": "Perfect! You understand the UK's structure brilliantly! 🇬🇧",
+    "medium_score": "Good work! Review the difference between UK and Great Britain! 📚",
+    "low_score": "Keep studying—understanding the UK's structure is important! 💪"
+  }
+}

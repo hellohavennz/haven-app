@@ -1,0 +1,91 @@
+{
+  "id": "lesson-5.5-international",
+  "title": "The UK and International Institutions",
+  "module_slug": "government-law-role",
+  "overview": "The UK plays an active role in international affairs through membership of several major organisations. This lesson covers the Commonwealth, the European Union and Brexit, the Council of Europe, the United Nations and NATO.",
+  "study_sections": [
+    {
+      "heading": "The Commonwealth",
+      "content": "The Commonwealth is an association of countries that support each other and work together towards shared goals in democracy and development. Most member states were once part of the British Empire, although a few countries which were not have also joined.\n\nThe monarch (currently King Charles III) is the ceremonial head of the Commonwealth. The Commonwealth currently has 54 member states. Membership is voluntary. The Commonwealth has no power over its members, although it can suspend membership. The Commonwealth is based on the core values of democracy, good government and the rule of law."
+    },
+    {
+      "heading": "The European Union and Brexit",
+      "content": "The European Union (EU), originally called the European Economic Community (EEC), was set up by six western European countries - Belgium, France, Germany, Italy, Luxembourg and the Netherlands - who signed the Treaty of Rome on 25 March 1957.\n\nThe UK originally decided not to join this group but became a member in 1973. The UK left the EU after the Brexit vote. Brexit officially took place at 23:00 GMT on 31 January 2020. There are now 27 EU member states.\n\nWith effect from 2024, no general principle of EU law is part of UK law."
+    },
+    {
+      "heading": "The Council of Europe",
+      "content": "The Council of Europe is separate from the EU. It has 47 member countries, including the UK, and is responsible for the protection and promotion of human rights. It has no power to make laws but draws up conventions and charters. The most well-known is the European Convention on Human Rights."
+    },
+    {
+      "heading": "The United Nations and NATO",
+      "content": "The UK is part of the United Nations (UN), an international organisation with more than 190 countries as members. The UN was set up after the Second World War and aims to prevent war and promote international peace and security. There are 15 members on the UN Security Council, which recommends action when there are international crises. The UK is one of five permanent members of the Security Council.\n\nThe UK is also a member of NATO (the North Atlantic Treaty Organization). NATO is a group of European and North American countries that have agreed to help each other if they come under attack. It also aims to maintain peace between all of its members."
+    }
+  ],
+  "key_facts": [
+    "The Commonwealth is an association of countries that support each other.",
+    "Most Commonwealth member states were once part of the British Empire.",
+    "The monarch is the ceremonial head of the Commonwealth.",
+    "The Commonwealth has 54 member states.",
+    "Commonwealth membership is voluntary.",
+    "The Commonwealth can suspend membership but has no power to make laws.",
+    "Commonwealth core values are democracy, good government and the rule of law.",
+    "The EU was originally called the European Economic Community (EEC).",
+    "Six countries signed the Treaty of Rome on 25 March 1957: Belgium, France, Germany, Italy, Luxembourg and the Netherlands.",
+    "The UK became an EU member in 1973.",
+    "Brexit officially took place at 23:00 GMT on 31 January 2020.",
+    "There are now 27 EU member states.",
+    "The Council of Europe is separate from the EU.",
+    "The Council of Europe has 47 member countries.",
+    "The Council of Europe draws up the European Convention on Human Rights.",
+    "The UN has more than 190 member countries.",
+    "The UN was set up after the Second World War.",
+    "The UN Security Council has 15 members.",
+    "The UK is one of five permanent members of the UN Security Council.",
+    "NATO members agree to help each other if they come under attack."
+  ],
+  "memory_hook": "Remember organisations: 'Commonwealth (54 members, British Empire links), EU (27 members, left 2020), Council of Europe (47 members, human rights), UN (190+ members, peace), NATO (military alliance)'. Treaty of Rome = 1957, six founding countries.",
+  "questions": [
+    {"prompt": "Who is the ceremonial head of the Commonwealth?", "options": ["The monarch (King Charles III)", "The Prime Minister", "The UN Secretary General", "The oldest member state"], "correct_index": 0, "explanation": "The monarch (currently King Charles III) is the ceremonial head of the Commonwealth."},
+    {"prompt": "How many member states does the Commonwealth have?", "options": ["54", "47", "27", "190"], "correct_index": 0, "explanation": "The Commonwealth currently has 54 member states."},
+    {"prompt": "What are the Commonwealth's core values?", "options": ["Democracy, good government and the rule of law", "Trade, defence and culture", "Peace, prosperity and freedom", "Equality, justice and liberty"], "correct_index": 0, "explanation": "The Commonwealth is based on the core values of democracy, good government and the rule of law."},
+    {"prompt": "What was the EU originally called?", "options": ["The European Economic Community (EEC)", "The European Common Market", "The Western European Union", "The European Federation"], "correct_index": 0, "explanation": "The EU was originally called the European Economic Community (EEC)."},
+    {"prompt": "Which countries signed the Treaty of Rome?", "options": ["Belgium, France, Germany, Italy, Luxembourg and the Netherlands", "UK, France, Germany and Italy", "All current EU members", "France, Germany and Belgium only"], "correct_index": 0, "explanation": "Six western European countries signed the Treaty of Rome: Belgium, France, Germany, Italy, Luxembourg and the Netherlands."},
+    {"prompt": "When was the Treaty of Rome signed?", "options": ["25 March 1957", "25 March 1973", "1 January 1958", "1963"], "correct_index": 0, "explanation": "The Treaty of Rome was signed on 25 March 1957."},
+    {"prompt": "When did the UK join the EU?", "options": ["1973", "1957", "1969", "1975"], "correct_index": 0, "explanation": "The UK originally decided not to join the EEC but became a member in 1973."},
+    {"prompt": "When did Brexit officially take place?", "options": ["23:00 GMT on 31 January 2020", "23 June 2016", "1 January 2021", "31 December 2020"], "correct_index": 0, "explanation": "Brexit officially took place at 23:00 GMT on 31 January 2020."},
+    {"prompt": "How many EU member states are there now?", "options": ["27", "28", "54", "30"], "correct_index": 0, "explanation": "There are now 27 EU member states following the UK's departure."},
+    {"prompt": "Is the Council of Europe the same as the EU?", "options": ["No - they are separate organisations", "Yes, they are the same", "The Council of Europe is part of the EU", "The EU is part of the Council of Europe"], "correct_index": 0, "explanation": "The Council of Europe is completely separate from the EU."},
+    {"prompt": "How many member countries does the Council of Europe have?", "options": ["47", "27", "54", "190"], "correct_index": 0, "explanation": "The Council of Europe has 47 member countries."},
+    {"prompt": "What is the Council of Europe responsible for?", "options": ["Protection and promotion of human rights", "Making EU laws", "Managing the European economy", "Defence of member states"], "correct_index": 0, "explanation": "The Council of Europe is responsible for the protection and promotion of human rights."},
+    {"prompt": "How many countries are members of the UN?", "options": ["More than 190", "More than 100", "54", "27"], "correct_index": 0, "explanation": "The UN is an international organisation with more than 190 countries as members."},
+    {"prompt": "Why was the UN set up?", "options": ["To prevent war and promote international peace and security", "To manage world trade", "To protect human rights", "To help developing countries"], "correct_index": 0, "explanation": "The UN was set up after the Second World War and aims to prevent war and promote international peace and security."},
+    {"prompt": "How many members does the UN Security Council have?", "options": ["15", "5", "190", "50"], "correct_index": 0, "explanation": "There are 15 members on the UN Security Council."},
+    {"prompt": "Is the UK a permanent member of the UN Security Council?", "options": ["Yes - one of five permanent members", "No", "Yes, but only temporary", "It is an observer only"], "correct_index": 0, "explanation": "The UK is one of five permanent members of the UN Security Council."},
+    {"prompt": "What does NATO require of its members?", "options": ["To help each other if they come under attack", "To share economic resources", "To maintain the same laws", "To use the same currency"], "correct_index": 0, "explanation": "NATO members have agreed to help each other if they come under attack."}
+  ],
+  "flashcards": [
+    ["Ceremonial head of Commonwealth?", "The monarch (King Charles III)"],
+    ["Commonwealth member states?", "54"],
+    ["Commonwealth membership type?", "Voluntary"],
+    ["Commonwealth core values?", "Democracy, good government, rule of law"],
+    ["EU original name?", "European Economic Community (EEC)"],
+    ["Treaty of Rome date?", "25 March 1957"],
+    ["Treaty of Rome founding countries?", "Belgium, France, Germany, Italy, Luxembourg, Netherlands"],
+    ["UK joined EU?", "1973"],
+    ["Brexit date?", "23:00 GMT, 31 January 2020"],
+    ["EU member states now?", "27"],
+    ["Council of Europe - same as EU?", "No, completely separate"],
+    ["Council of Europe members?", "47"],
+    ["Council of Europe role?", "Protection of human rights"],
+    ["UN members?", "More than 190"],
+    ["UN set up?", "After World War II (to prevent war)"],
+    ["UN Security Council members?", "15"],
+    ["UK on Security Council?", "Yes - one of 5 permanent members"],
+    ["NATO obligation?", "Help each other if attacked"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know the UK's international role perfectly! 🌍",
+    "medium_score": "Good work! Remember the key numbers: Commonwealth 54, EU 27, Council of Europe 47, UN 190+! 📚",
+    "low_score": "Keep studying - the international organisations are important for the test! 💪"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "lesson-5.1-chapter-intro",
+  "title": "About This Module: Government, Law and Your Role",
+  "module_slug": "government-law-role",
+  "overview": "Welcome to Module 5: The UK Government, the Law and Your Role.\n\nThis is a highly testable module. Understanding how the UK is governed — the monarch's role, how Parliament works, elections, devolved administrations, and the courts — is essential for both the test and for life in the UK.\n\nPay particular attention to the devolved administrations (Scotland, Wales and Northern Ireland) and the differences between various types of courts.",
+  "study_sections": [
+    {
+      "heading": "What You Will Learn",
+      "content": "In this module, you will learn about:\n• Britain as a constitutional monarchy\n• How Parliament works (House of Commons, House of Lords, the Speaker)\n• Elections, the government and the opposition\n• Devolved administrations of Scotland, Wales and Northern Ireland\n• The Commonwealth, EU (and Brexit), UN and NATO\n• British law, justice and fundamental rights\n• The courts (Magistrates, Crown Court, County Court, etc.)\n• Taxation and driving rules\n• Your role in the community as a citizen"
+    },
+    {
+      "heading": "Key Distinctions to Master",
+      "content": "The test often focuses on specific distinctions in this module. Learn these carefully:\n\n• House of Commons vs House of Lords — who is elected, who appoints whom\n• First Past the Post (MPs) vs Proportional Representation (MEPs and devolved)\n• Magistrates' Court vs Crown Court vs County Court — which handles what\n• Scotland's 15-member juries vs England's 12-member juries\n• The devolved assemblies: Scottish Parliament (129 MSPs), Welsh Assembly (60 AMs), NI Assembly (90 MLAs)\n• The Commonwealth (54 members) vs EU (27 members) vs Council of Europe (47 members)"
+    }
+  ],
+  "key_facts": [
+    "The UK is a parliamentary democracy with a constitutional monarchy.",
+    "Understanding the court system is particularly important for the test.",
+    "The devolved assembly sizes: Scotland 129 MSPs, Wales 60 AMs, Northern Ireland 90 MLAs.",
+    "Key international organisations: Commonwealth (54), EU (27), Council of Europe (47), UN (190+)."
+  ],
+  "memory_hook": "For this module, focus on the NUMBERS and DISTINCTIONS. Assembly sizes: 'Scotland 129, Wales 60, NI 90'. International bodies: 'Commonwealth 54, EU 27, Council of Europe 47, UN 190+'.",
+  "questions": [],
+  "flashcards": [],
+  "supportive_messages": {
+    "high_score": "Great start! Dive into the democracy and constitution lesson now! 🏛️",
+    "medium_score": "Good! Focus on the key distinctions in each lesson! 📚",
+    "low_score": "Take it step by step - you're almost at the finish line! 💪"
+  }
+}

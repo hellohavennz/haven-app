@@ -1,0 +1,30 @@
+{
+  "id": "lesson-2.1-chapter-intro",
+  "title": "About This Module: What is the UK?",
+  "module_slug": "what-is-uk",
+  "overview": "Welcome to Module 2: What is the UK?\n\nThis is a short but important module. Even though it is brief, there are very likely to be test questions about the differences between Great Britain, the British Isles and the UK, or what Crown Dependencies are.\n\nMake sure you read and understand all the facts presented in this module.",
+  "study_sections": [
+    {
+      "heading": "What You Will Learn",
+      "content": "In this module, you will learn about:\n• The different countries that make up the UK\n• The difference between 'Great Britain', 'the British Isles', and 'the UK'\n• Crown Dependencies and British Overseas Territories\n• How the UK is governed\n\nThough this chapter is very short, do not underestimate it. Questions about geographical and constitutional terms — such as the difference between Great Britain and the United Kingdom — are commonly tested."
+    },
+    {
+      "heading": "Key Terms to Know",
+      "content": "Before you start, familiarise yourself with these key terms:\n\n• United Kingdom (UK): England, Scotland, Wales and Northern Ireland\n• Great Britain: England, Scotland and Wales only (not Northern Ireland)\n• Crown Dependencies: Channel Islands and the Isle of Man — linked to the UK but not part of it\n• British Overseas Territories: Places like St Helena and the Falkland Islands — linked to the UK but not part of it\n• Devolved powers: Powers given to Scotland, Wales and Northern Ireland to manage certain areas of their own affairs"
+    }
+  ],
+  "key_facts": [
+    "The UK is made up of England, Scotland, Wales and Northern Ireland.",
+    "Great Britain refers only to England, Scotland and Wales — NOT Northern Ireland.",
+    "The Crown Dependencies are the Channel Islands and the Isle of Man.",
+    "Crown Dependencies have their own governments and are not part of the UK."
+  ],
+  "memory_hook": "Remember: UK = 4 nations. Great Britain = 3 (no Northern Ireland). Crown Dependencies = Channel Islands + Isle of Man (their own governments, not part of UK).",
+  "questions": [],
+  "flashcards": [],
+  "supportive_messages": {
+    "high_score": "Great! Move on to the next lesson for the full details! 🌟",
+    "medium_score": "Keep going - the next lesson has all the facts you need! 📚",
+    "low_score": "No worries - this is just an intro. The real content is in the next lesson! 💪"
+  }
+}

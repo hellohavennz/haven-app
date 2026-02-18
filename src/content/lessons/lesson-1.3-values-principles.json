@@ -1,0 +1,109 @@
+{
+  "id": "lesson-1.3-values-principles",
+  "title": "The Values and Principles of the UK",
+  "module_slug": "values-and-principles",
+  "overview": "British society is founded on fundamental values and principles which all those living in the UK should respect and support. These values are reflected in the responsibilities, rights and privileges of being a British citizen or permanent resident of the UK. They are based on history and traditions and are protected by law, customs and expectations.\n\nThe five fundamental principles of British life are democracy, the rule of law, individual liberty, tolerance of those with different faiths and beliefs, and participation in community life. Understanding these values is essential for anyone who wants to become a permanent resident or citizen of the UK. There is no place in British society for extremism or intolerance.",
+  "study_sections": [
+    {
+      "heading": "The Five Fundamental Principles",
+      "content": "British society is built on five fundamental principles that everyone living in the UK should respect and support:\n\n1. Democracy\n2. The rule of law\n3. Individual liberty\n4. Tolerance of those with different faiths and beliefs\n5. Participation in community life\n\nThese values are not just abstract ideas—they are reflected in everyday life, in how people treat each other, how laws are made and enforced, and how communities function. They are based on history and traditions and are protected by law, customs and expectations. There is no place in British society for extremism or intolerance."
+    },
+    {
+      "heading": "The Citizenship Pledge",
+      "content": "As part of the citizenship ceremony, new citizens pledge to uphold these values. The pledge is:\n\n'I will give my loyalty to the United Kingdom and respect its rights and freedoms. I will uphold its democratic values. I will observe its laws faithfully and fulfil my duties and obligations as a British citizen.'\n\nThis pledge demonstrates a commitment to British values and to being a responsible member of society. It reflects the importance of these principles in British life and the expectation that all residents will support them."
+    },
+    {
+      "heading": "Responsibilities of UK Residents",
+      "content": "Following from the fundamental principles are responsibilities which are shared by all those living in the UK. If you wish to be a permanent resident or citizen of the UK, you should:\n\n• Respect and obey the law\n• Respect the rights of others, including their right to their own opinions\n• Treat others with fairness\n• Look after yourself and your family\n• Look after the area in which you live and the environment\n\nThese responsibilities apply to everyone living in the UK, whether they are citizens, permanent residents, or temporary residents. They reflect the expectation that people will contribute positively to society and respect the rights and freedoms of others."
+    },
+    {
+      "heading": "Freedoms Offered by the UK",
+      "content": "In return for accepting these responsibilities, the UK offers important freedoms to all residents:\n\n• Freedom of belief and religion\n• Freedom of speech\n• Freedom from unfair discrimination\n• A right to a fair trial\n• A right to join in the election of a government\n\nThese freedoms are protected by law and are fundamental to life in the UK. They ensure that everyone can live their life as they choose, express their views, practice their religion (or no religion), and participate in the democratic process. These freedoms come with the responsibility to respect the same freedoms for others."
+    },
+    {
+      "heading": "Living the Values in Practice",
+      "content": "The values and principles of the UK are not just theoretical—they affect everyday life and behaviour. They mean:\n\n• Respecting the law and legal processes\n• Accepting democratic decisions even when you disagree with them\n• Allowing others to live their lives and hold their beliefs without interference\n• Treating people fairly regardless of their background, religion, or opinions\n• Contributing to your community and helping to maintain the local environment\n• Participating in democratic processes such as voting\n• Standing against extremism and intolerance\n\nBy living according to these values, residents help create a fair, peaceful, and democratic society where everyone's rights are respected and protected."
+    }
+  ],
+  "key_facts": [
+    "British society is founded on fundamental values and principles.",
+    "The five fundamental principles are: democracy, the rule of law, individual liberty, tolerance of different faiths and beliefs, and participation in community life.",
+    "These values are based on history and traditions and are protected by law, customs and expectations.",
+    "There is no place in British society for extremism or intolerance.",
+    "New citizens pledge to uphold these values in the citizenship ceremony.",
+    "The citizenship pledge includes giving loyalty to the UK, upholding democratic values, and observing laws faithfully.",
+    "Residents should respect and obey the law.",
+    "Residents should respect the rights of others, including their right to their own opinions.",
+    "Residents should treat others with fairness.",
+    "Residents should look after themselves and their families.",
+    "Residents should look after the area in which they live and the environment.",
+    "The UK offers freedom of belief and religion.",
+    "The UK offers freedom of speech.",
+    "The UK offers freedom from unfair discrimination.",
+    "The UK offers the right to a fair trial.",
+    "The UK offers the right to join in the election of a government.",
+    "These responsibilities and freedoms apply to all those living in the UK.",
+    "The values are reflected in the responsibilities, rights and privileges of being a British citizen or permanent resident."
+  ],
+  "memory_hook": "Remember the five fundamental principles with 'D-R-I-T-P': Democracy, Rule of law, Individual liberty, Tolerance, Participation. Think of it as a DRIP that waters British society—each drop represents a value that keeps society healthy and growing.",
+  "questions": [
+    {"prompt": "How many fundamental principles of British life are there?", "options": ["Five", "Three", "Seven", "Ten"], "correct_index": 0, "explanation": "There are five fundamental principles: democracy, the rule of law, individual liberty, tolerance of different faiths and beliefs, and participation in community life."},
+    {"prompt": "Which of these is a fundamental principle of British life?", "options": ["Democracy", "Wealth", "Military service", "Religious unity"], "correct_index": 0, "explanation": "Democracy is one of the five fundamental principles of British life."},
+    {"prompt": "Which of these is a fundamental principle of British life?", "options": ["The rule of law", "Economic growth", "Royal allegiance", "Cultural conformity"], "correct_index": 0, "explanation": "The rule of law is one of the five fundamental principles."},
+    {"prompt": "Which of these is a fundamental principle of British life?", "options": ["Individual liberty", "Social hierarchy", "Military strength", "Economic power"], "correct_index": 0, "explanation": "Individual liberty is one of the five fundamental principles."},
+    {"prompt": "Which of these is a fundamental principle of British life?", "options": ["Tolerance of those with different faiths and beliefs", "Religious conformity", "Cultural assimilation", "Political uniformity"], "correct_index": 0, "explanation": "Tolerance of different faiths and beliefs is one of the five fundamental principles."},
+    {"prompt": "Which of these is a fundamental principle of British life?", "options": ["Participation in community life", "Isolation from society", "Individual independence", "Private life only"], "correct_index": 0, "explanation": "Participation in community life is one of the five fundamental principles."},
+    {"prompt": "What are these fundamental values based on?", "options": ["History and traditions", "Recent legislation only", "Economic policy", "Military tradition"], "correct_index": 0, "explanation": "The fundamental values are based on history and traditions and are protected by law, customs and expectations."},
+    {"prompt": "Is there a place for extremism in British society?", "options": ["No, there is no place for extremism or intolerance", "Yes, all views are accepted", "Only political extremism is allowed", "It depends on the situation"], "correct_index": 0, "explanation": "There is no place in British society for extremism or intolerance."},
+    {"prompt": "What do new citizens do at the citizenship ceremony?", "options": ["Pledge to uphold British values", "Take a written test", "Receive a passport", "Meet the monarch"], "correct_index": 0, "explanation": "As part of the citizenship ceremony, new citizens pledge to uphold these values."},
+    {"prompt": "In the citizenship pledge, what do new citizens promise to give to the UK?", "options": ["Loyalty", "Money", "Military service", "Property"], "correct_index": 0, "explanation": "The pledge states: 'I will give my loyalty to the United Kingdom and respect its rights and freedoms.'"},
+    {"prompt": "What do new citizens pledge to uphold?", "options": ["Democratic values", "Royal traditions", "Economic policies", "Military strength"], "correct_index": 0, "explanation": "The pledge includes: 'I will uphold its democratic values.'"},
+    {"prompt": "What do new citizens pledge to observe faithfully?", "options": ["Laws", "Royal ceremonies", "Religious practices", "Economic policies"], "correct_index": 0, "explanation": "The pledge states: 'I will observe its laws faithfully.'"},
+    {"prompt": "What is a responsibility of UK residents?", "options": ["Respect and obey the law", "Attend church regularly", "Serve in the military", "Join a political party"], "correct_index": 0, "explanation": "Residents should respect and obey the law."},
+    {"prompt": "What is a responsibility of UK residents?", "options": ["Respect the rights of others, including their right to their own opinions", "Agree with all government decisions", "Follow one religion", "Avoid political discussions"], "correct_index": 0, "explanation": "Residents should respect the rights of others, including their right to their own opinions."},
+    {"prompt": "What is a responsibility of UK residents?", "options": ["Treat others with fairness", "Only associate with similar people", "Avoid diversity", "Focus only on personal gain"], "correct_index": 0, "explanation": "Residents should treat others with fairness."},
+    {"prompt": "What is a responsibility of UK residents?", "options": ["Look after yourself and your family", "Rely entirely on government support", "Avoid work", "Only think of yourself"], "correct_index": 0, "explanation": "Residents should look after themselves and their families."},
+    {"prompt": "What is a responsibility of UK residents?", "options": ["Look after the area in which you live and the environment", "Ignore local problems", "Focus only on your property", "Avoid community involvement"], "correct_index": 0, "explanation": "Residents should look after the area in which they live and the environment."},
+    {"prompt": "What freedom does the UK offer?", "options": ["Freedom of belief and religion", "Freedom from all laws", "Freedom to discriminate", "Freedom from taxes"], "correct_index": 0, "explanation": "The UK offers freedom of belief and religion."},
+    {"prompt": "What freedom does the UK offer?", "options": ["Freedom of speech", "Freedom from criticism", "Freedom to harm others", "Freedom from responsibilities"], "correct_index": 0, "explanation": "The UK offers freedom of speech."},
+    {"prompt": "What freedom does the UK offer?", "options": ["Freedom from unfair discrimination", "Freedom to discriminate", "Freedom from all rules", "Freedom from community"], "correct_index": 0, "explanation": "The UK offers freedom from unfair discrimination."},
+    {"prompt": "What right does the UK offer?", "options": ["A right to a fair trial", "A right to avoid justice", "A right to special treatment", "A right to ignore laws"], "correct_index": 0, "explanation": "The UK offers the right to a fair trial."},
+    {"prompt": "What right does the UK offer?", "options": ["A right to join in the election of a government", "A right to avoid democracy", "A right to unlimited power", "A right to special privileges"], "correct_index": 0, "explanation": "The UK offers the right to join in the election of a government."},
+    {"prompt": "Who do these responsibilities and freedoms apply to?", "options": ["All those living in the UK", "Only British citizens", "Only permanent residents", "Only people born in the UK"], "correct_index": 0, "explanation": "These responsibilities and freedoms are shared by all those living in the UK."},
+    {"prompt": "What is the relationship between responsibilities and freedoms?", "options": ["In return for accepting responsibilities, the UK offers freedoms", "They are unrelated", "Freedoms come without responsibilities", "Only citizens have freedoms"], "correct_index": 0, "explanation": "The freedoms offered by the UK come in return for accepting the responsibilities."},
+    {"prompt": "How are these values protected?", "options": ["By law, customs and expectations", "Only by law", "Only by customs", "They are not protected"], "correct_index": 0, "explanation": "These values are protected by law, customs and expectations."},
+    {"prompt": "What do these values reflect?", "options": ["The responsibilities, rights and privileges of being a British citizen or permanent resident", "Economic policy only", "Military tradition only", "Royal preferences"], "correct_index": 0, "explanation": "These values are reflected in the responsibilities, rights and privileges of being a British citizen or permanent resident."}
+  ],
+  "flashcards": [
+    ["How many fundamental principles of British life?", "Five"],
+    ["What are the five fundamental principles?", "Democracy, rule of law, individual liberty, tolerance, participation in community life"],
+    ["First fundamental principle?", "Democracy"],
+    ["Second fundamental principle?", "The rule of law"],
+    ["Third fundamental principle?", "Individual liberty"],
+    ["Fourth fundamental principle?", "Tolerance of those with different faiths and beliefs"],
+    ["Fifth fundamental principle?", "Participation in community life"],
+    ["What are British values based on?", "History and traditions"],
+    ["How are values protected?", "By law, customs and expectations"],
+    ["Is there room for extremism in UK society?", "No, there is no place for extremism or intolerance"],
+    ["What do new citizens pledge at ceremony?", "To uphold British values and observe laws faithfully"],
+    ["What is given in the citizenship pledge?", "Loyalty to the United Kingdom"],
+    ["First responsibility of residents?", "Respect and obey the law"],
+    ["Second responsibility of residents?", "Respect the rights of others, including their opinions"],
+    ["Third responsibility of residents?", "Treat others with fairness"],
+    ["Fourth responsibility of residents?", "Look after yourself and your family"],
+    ["Fifth responsibility of residents?", "Look after the area you live in and the environment"],
+    ["First freedom offered by UK?", "Freedom of belief and religion"],
+    ["Second freedom offered by UK?", "Freedom of speech"],
+    ["Third freedom offered by UK?", "Freedom from unfair discrimination"],
+    ["Fourth freedom/right offered by UK?", "Right to a fair trial"],
+    ["Fifth freedom/right offered by UK?", "Right to join in the election of a government"],
+    ["Who do responsibilities apply to?", "All those living in the UK"],
+    ["Who do freedoms apply to?", "All those living in the UK"],
+    ["What do values reflect?", "Responsibilities, rights and privileges of residents and citizens"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You understand British values perfectly! 🌟",
+    "medium_score": "Good work! Review the five fundamental principles to master this! 📚",
+    "low_score": "Keep studying the values—they're the foundation of UK society! 💪"
+  }
+}

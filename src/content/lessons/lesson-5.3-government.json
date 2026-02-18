@@ -1,0 +1,96 @@
+{
+  "id": "lesson-5.3-government",
+  "title": "The Government",
+  "module_slug": "government-law-role",
+  "overview": "This lesson covers how the UK government works - the roles of the Prime Minister, the cabinet, the opposition, political parties, the civil service and local government. It also covers the devolved administrations in Scotland, Wales and Northern Ireland.",
+  "study_sections": [
+    {
+      "heading": "The Prime Minister and Cabinet",
+      "content": "The Prime Minister (PM) is the leader of the political party in power. The official home of the Prime Minister is 10 Downing Street, in central London. The PM also has a country house outside London called Chequers.\n\nThe PM can be changed if MPs in the governing party decide to do so, or if they wish to resign. The PM usually resigns if their party loses a General Election.\n\nThe PM appoints about 20 senior MPs to become ministers in charge of departments. These include:\n• Chancellor of the Exchequer - responsible for the economy\n• Home Secretary - responsible for crime, policing and immigration\n• Foreign Secretary - responsible for managing relationships with foreign countries\n• Other ministers (called 'Secretaries of State') responsible for education, health and defence\n\nThese ministers form the cabinet, a committee which usually meets weekly and makes important decisions about government policy. Many decisions have to be debated or approved by Parliament."
+    },
+    {
+      "heading": "The Opposition and Party System",
+      "content": "The second-largest party in the House of Commons is called the opposition. The leader of the opposition usually becomes Prime Minister if their party wins the next General Election.\n\nThe leader of the opposition leads their party in pointing out the government's failures and weaknesses. An important opportunity to do this is at Prime Minister's Questions, which takes place every week while Parliament is sitting.\n\nThe leader of the opposition appoints senior opposition MPs to be 'shadow ministers'. They form the shadow cabinet and their role is to challenge the government and put forward alternative policies.\n\nAnyone aged 18 or over can stand for election as an MP. The main political parties are the Conservative Party, the Labour Party, the Liberal Democrats, and parties representing Scottish, Welsh or Northern Irish interests. MPs who don't represent a main party are called 'independents'.\n\nPressure and lobby groups are organisations which try to influence government policy. Examples include the CBI (Confederation of British Industry) which represents business, Greenpeace (environment) and Liberty (human rights)."
+    },
+    {
+      "heading": "The Civil Service and Local Government",
+      "content": "Civil servants support the government in developing and implementing its policies and delivering public services. Civil servants are chosen on merit and are politically neutral - they are not political appointees. The core values of the civil service are integrity, honesty, objectivity and impartiality.\n\nTowns, cities and rural areas are governed by democratically elected councils (local authorities). Local authorities provide a range of services and are funded by central government money and local taxes.\n\nMany local authorities appoint a mayor as the ceremonial leader. In some towns, a mayor is elected as the effective leader. London has 33 local authorities, with the Greater London Authority and Mayor of London coordinating policies across the capital.\n\nFor most local authorities, local elections for councillors are held in May every year."
+    },
+    {
+      "heading": "Devolved Administrations",
+      "content": "Since 1997, some powers have been devolved from central government. There has been a Welsh Assembly and a Scottish Parliament since 1999. There is also a Northern Ireland Assembly.\n\nPolicy and laws governing defence, foreign affairs, immigration, taxation and social security remain under central UK government control.\n\nThe Welsh Government and National Assembly for Wales is based in Cardiff. The National Assembly has 60 Assembly Members (AMs). Elections are held every four years using proportional representation. The Assembly can make laws in 20 areas including education, health and housing. Since 2011, the Assembly can pass laws without UK Parliament agreement.\n\nThe Scottish Parliament was formed in 1999 and sits in Edinburgh. There are 129 MSPs (members of the Scottish Parliament), elected by proportional representation. It can pass laws on civil and criminal law, health, education, planning and has additional tax-raising powers.\n\nThe Northern Ireland Assembly was established after the Good Friday Agreement in 1998. It has 90 elected MLAs (Members of the Legislative Assembly). It can make decisions on education, agriculture, environment, health and social services. The UK government has the power to suspend all devolved assemblies and has used it several times in Northern Ireland."
+    }
+  ],
+  "key_facts": [
+    "The PM's official home is 10 Downing Street.",
+    "The PM also has a country house called Chequers.",
+    "The Chancellor of the Exchequer is responsible for the economy.",
+    "The Home Secretary is responsible for crime, policing and immigration.",
+    "The Foreign Secretary is responsible for relationships with foreign countries.",
+    "The cabinet usually meets weekly.",
+    "The second-largest party is called the opposition.",
+    "Prime Minister's Questions takes place every week while Parliament is sitting.",
+    "The shadow cabinet challenges the government and puts forward alternative policies.",
+    "The main parties are the Conservatives, Labour, Liberal Democrats and regional parties.",
+    "Pressure and lobby groups try to influence government policy.",
+    "Civil servants are chosen on merit and are politically neutral.",
+    "Civil service core values: integrity, honesty, objectivity and impartiality.",
+    "Local elections for councillors are held in May every year.",
+    "London has 33 local authorities.",
+    "Devolution of powers began in 1997.",
+    "The Welsh Assembly and Scottish Parliament were established in 1999.",
+    "The Northern Ireland Assembly was established after the Good Friday Agreement in 1998.",
+    "The Welsh Assembly has 60 AMs and elections every four years.",
+    "Since 2011, the Welsh Assembly can pass laws without UK Parliament agreement.",
+    "The Scottish Parliament has 129 MSPs.",
+    "The Northern Ireland Assembly has 90 MLAs.",
+    "Defence, foreign affairs, immigration, taxation and social security remain under UK central control."
+  ],
+  "memory_hook": "Cabinet roles: 'Chancellor = Cash, Home = Homeland security, Foreign = Friends abroad'. Devolved numbers: Scotland 129 MSPs, Wales 60 AMs, NI 90 MLAs. All established 1999 (except NI Assembly = 1998 after Good Friday Agreement).",
+  "questions": [
+    {"prompt": "Where is the Prime Minister's official home?", "options": ["10 Downing Street", "Buckingham Palace", "Chequers", "Westminster"], "correct_index": 0, "explanation": "The official home of the Prime Minister is 10 Downing Street, in central London."},
+    {"prompt": "What is Chequers?", "options": ["The PM's country house outside London", "A cabinet meeting room", "A Parliamentary committee room", "The PM's official London residence"], "correct_index": 0, "explanation": "The PM also has a country house outside London called Chequers."},
+    {"prompt": "Who is responsible for the economy?", "options": ["Chancellor of the Exchequer", "Home Secretary", "Foreign Secretary", "Chief Secretary"], "correct_index": 0, "explanation": "The Chancellor of the Exchequer is responsible for the economy."},
+    {"prompt": "Who is responsible for crime, policing and immigration?", "options": ["Home Secretary", "Chancellor of the Exchequer", "Foreign Secretary", "Justice Secretary"], "correct_index": 0, "explanation": "The Home Secretary is responsible for crime, policing and immigration."},
+    {"prompt": "How often does the cabinet usually meet?", "options": ["Weekly", "Daily", "Monthly", "Every two weeks"], "correct_index": 0, "explanation": "The cabinet, a committee of senior ministers, usually meets weekly."},
+    {"prompt": "What is the second-largest party called?", "options": ["The opposition", "The shadow party", "The minority party", "The alternate government"], "correct_index": 0, "explanation": "The second-largest party in the House of Commons is called the opposition."},
+    {"prompt": "How often does Prime Minister's Questions take place?", "options": ["Every week while Parliament is sitting", "Every two weeks", "Monthly", "Daily"], "correct_index": 0, "explanation": "Prime Minister's Questions takes place every week while Parliament is sitting."},
+    {"prompt": "What is the shadow cabinet?", "options": ["Senior opposition MPs who challenge the government", "The cabinet when in opposition", "The PM's advisers", "A committee of the House of Lords"], "correct_index": 0, "explanation": "The shadow cabinet consists of shadow ministers appointed by the opposition leader to challenge the government."},
+    {"prompt": "Are civil servants politically neutral?", "options": ["Yes - they are chosen on merit and are politically neutral", "No - they support the governing party", "Only senior civil servants", "Only in Scotland"], "correct_index": 0, "explanation": "Civil servants are chosen on merit and are politically neutral - they are not political appointees."},
+    {"prompt": "When are most local elections held?", "options": ["In May every year", "In October every year", "Every four years", "Every five years"], "correct_index": 0, "explanation": "For most local authorities, local elections for councillors are held in May every year."},
+    {"prompt": "When did devolution of powers begin?", "options": ["1997", "1999", "1998", "2011"], "correct_index": 0, "explanation": "Since 1997, some powers have been devolved from the central government."},
+    {"prompt": "When were the Welsh Assembly and Scottish Parliament established?", "options": ["1999", "1997", "1998", "2001"], "correct_index": 0, "explanation": "There has been a Welsh Assembly and a Scottish Parliament since 1999."},
+    {"prompt": "How many AMs does the Welsh Assembly have?", "options": ["60", "129", "90", "30"], "correct_index": 0, "explanation": "The National Assembly for Wales has 60 Assembly Members (AMs)."},
+    {"prompt": "How many MSPs does the Scottish Parliament have?", "options": ["129", "60", "90", "100"], "correct_index": 0, "explanation": "There are 129 members of the Scottish Parliament (MSPs)."},
+    {"prompt": "How many MLAs does the Northern Ireland Assembly have?", "options": ["90", "60", "129", "45"], "correct_index": 0, "explanation": "The Northern Ireland Assembly has 90 elected members known as MLAs."},
+    {"prompt": "When was the Northern Ireland Assembly established?", "options": ["After the Good Friday Agreement in 1998", "In 1999", "In 1997", "In 2007"], "correct_index": 0, "explanation": "The Northern Ireland Assembly was established soon after the Belfast Agreement (Good Friday Agreement) in 1998."},
+    {"prompt": "Which areas remain under central UK government control?", "options": ["Defence, foreign affairs, immigration, taxation and social security", "Education and health", "All policy areas", "Environmental policy"], "correct_index": 0, "explanation": "Defence, foreign affairs, immigration, taxation and social security all remain under central UK government control."}
+  ],
+  "flashcards": [
+    ["PM's official home?", "10 Downing Street"],
+    ["PM's country house?", "Chequers"],
+    ["Chancellor responsible for?", "The economy"],
+    ["Home Secretary responsible for?", "Crime, policing and immigration"],
+    ["Foreign Secretary responsible for?", "Relationships with foreign countries"],
+    ["Cabinet meets how often?", "Weekly"],
+    ["Second-largest party called?", "The opposition"],
+    ["PM's Questions frequency?", "Every week Parliament is sitting"],
+    ["Shadow cabinet role?", "Challenge government, put forward alternative policies"],
+    ["Civil servants - are they neutral?", "Yes - politically neutral, chosen on merit"],
+    ["Civil service core values?", "Integrity, honesty, objectivity, impartiality"],
+    ["Local elections held when?", "May every year"],
+    ["London has how many local authorities?", "33"],
+    ["Devolution began?", "1997"],
+    ["Welsh Assembly and Scottish Parliament?", "Established 1999"],
+    ["Welsh Assembly members?", "60 AMs"],
+    ["Scottish Parliament members?", "129 MSPs"],
+    ["NI Assembly members?", "90 MLAs"],
+    ["NI Assembly established?", "1998 (Good Friday Agreement)"],
+    ["Remains under UK central control?", "Defence, foreign affairs, immigration, taxation, social security"]
+  ],
+  "supportive_messages": {
+    "high_score": "Brilliant! You know how the UK government works inside out! 🏛️",
+    "medium_score": "Good work! Review the devolved assembly numbers and cabinet roles! 📚",
+    "low_score": "Keep studying - government structure is important for the test! 💪"
+  }
+}

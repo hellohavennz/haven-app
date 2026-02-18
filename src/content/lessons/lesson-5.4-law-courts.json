@@ -1,0 +1,94 @@
+{
+  "id": "lesson-5.4-law-courts",
+  "title": "Law, Fundamental Rights and the Courts",
+  "module_slug": "government-law-role",
+  "overview": "The UK has a strong tradition of respecting individual rights and essential freedoms. This lesson covers fundamental rights protected by law, equal opportunities, the court system, and important legal principles that all residents of the UK should understand.",
+  "study_sections": [
+    {
+      "heading": "Fundamental Rights",
+      "content": "Britain has a long history of respecting individual rights. These rights have their roots in the Magna Carta, the Habeas Corpus Act and the Bill of Rights of 1689.\n\nBritish diplomats and lawyers had an important role in drafting the European Convention on Human Rights. The UK was one of the first countries to sign the Convention in 1950.\n\nSome of the principles included in the European Convention on Human Rights are:\n• Right to life\n• Prohibition of torture\n• Prohibition of slavery and forced labour\n• Right to liberty and security\n• Right to a fair trial\n• Freedom of thought, conscience and religion\n• Freedom of expression (speech)\n\nThe Human Rights Act 1998 incorporated the European Convention on Human Rights into UK law. The government, public bodies and the courts must follow the principles of the Convention."
+    },
+    {
+      "heading": "Equal Opportunities and Key Laws",
+      "content": "UK laws ensure that people are not treated unfairly in any area of life or work because of their age, disability, sex, pregnancy and maternity, race, religion or belief, sexuality or marital status.\n\nDomestic violence is a serious crime in the UK. Anyone who is violent towards their partner can be prosecuted. Any man who forces a woman to have sex, including a husband, can be charged with rape.\n\nFemale genital mutilation (FGM) is illegal in the UK. Practising FGM or taking a girl or woman abroad for FGM is a criminal offence.\n\nForced marriage is also illegal. A marriage should be entered into with the full and free consent of both parties. Arranged marriages (where both agree) are acceptable. Forcing another person to marry is a criminal offence. Forced Marriage Protection Orders were introduced in 2008 for England, Wales and Northern Ireland.\n\nIncome tax must be paid on wages, profits, pensions and other income. Money raised pays for roads, education, police and the armed forces. For employed people, tax is deducted through PAYE (Pay As You Earn). Self-employed people pay through self-assessment.\n\nNational Insurance contributions are paid by almost everyone in work. The money pays for state benefits and services including the state retirement pension and the NHS."
+    },
+    {
+      "heading": "The Court System - Criminal Courts",
+      "content": "Judges are responsible for interpreting the law and ensuring trials are conducted fairly. The government cannot interfere with this.\n\nIn England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal offences go to a Justice of the Peace Court. Magistrates are members of the local community, usually unpaid and without legal qualifications.\n\nIn England, Wales and Northern Ireland, serious offences are tried in a Crown Court with a judge and jury of 12 members. In Scotland, serious cases are heard in a Sheriff Court, and the most serious (such as murder) at a High Court. In Scotland a jury has 15 members. Scotland also has a third verdict: 'not proven' (in addition to 'guilty' and 'not guilty').\n\nFor accused persons aged 10 to 17 in England, Wales and Northern Ireland, cases are normally heard in a Youth Court. In Scotland, the Children's Hearings System is used. Members of the public are not allowed in Youth Courts."
+    },
+    {
+      "heading": "Civil Courts",
+      "content": "County Courts deal with civil disputes including debt, personal injury, family matters, breaches of contract and divorce. In Scotland, most civil matters are dealt with in the Sheriff Court. More serious civil cases go to the High Court (England, Wales and NI) or the Court of Session in Edinburgh (Scotland).\n\nThe small claims procedure helps people settle minor disputes informally without a lawyer. This is used for claims of less than £10,000 in England and Wales, and less than £5,000 in Scotland and Northern Ireland. The hearing is held in front of a judge in an ordinary room with people sitting around a table."
+    }
+  ],
+  "key_facts": [
+    "Fundamental rights have roots in the Magna Carta, Habeas Corpus Act and Bill of Rights 1689.",
+    "The UK was one of the first countries to sign the European Convention on Human Rights in 1950.",
+    "The Human Rights Act 1998 incorporated the European Convention into UK law.",
+    "UK law protects people from discrimination based on age, disability, sex, race, religion, sexuality and more.",
+    "Domestic violence is a serious crime - anyone can be prosecuted.",
+    "FGM is illegal in the UK.",
+    "Forced marriage is a criminal offence.",
+    "Forced Marriage Protection Orders were introduced in 2008.",
+    "Income tax is paid through PAYE for employees.",
+    "Self-employed people pay tax through self-assessment.",
+    "National Insurance funds state benefits and the NHS.",
+    "Judges are independent of the government.",
+    "Minor criminal cases in England, Wales and NI go to a Magistrates' Court.",
+    "Minor criminal cases in Scotland go to a Justice of the Peace Court.",
+    "Serious offences in England, Wales and NI go to a Crown Court with a jury of 12.",
+    "In Scotland, serious cases go to a Sheriff Court or High Court with a jury of 15.",
+    "Scotland has a third verdict: 'not proven'.",
+    "Youth Courts handle cases for accused persons aged 10-17.",
+    "Members of the public are not allowed in Youth Courts.",
+    "Small claims: under £10,000 in England/Wales; under £5,000 in Scotland/NI.",
+    "County Courts handle civil disputes in England, Wales and NI.",
+    "The Court of Session is Scotland's highest civil court."
+  ],
+  "memory_hook": "Courts: 'Minor → Magistrates (or JP in Scotland), Serious → Crown (or Sheriff), Youth → Youth Court'. Jury sizes: England/Wales/NI = 12, Scotland = 15. Small claims limits: England £10,000, Scotland/NI £5,000. Remember Scotland's unique 'not proven' verdict.",
+  "questions": [
+    {"prompt": "When did the UK sign the European Convention on Human Rights?", "options": ["1950", "1998", "1689", "1948"], "correct_index": 0, "explanation": "The UK was one of the first countries to sign the Convention in 1950."},
+    {"prompt": "What did the Human Rights Act 1998 do?", "options": ["Incorporated the European Convention on Human Rights into UK law", "Created new human rights for UK citizens", "Replaced the Magna Carta", "Set up the Human Rights Commission"], "correct_index": 0, "explanation": "The Human Rights Act 1998 incorporated the European Convention on Human Rights into UK law."},
+    {"prompt": "Is forced marriage legal in the UK?", "options": ["No - it is a criminal offence", "Yes, if the family agrees", "Yes, in some religious contexts", "It is not covered by UK law"], "correct_index": 0, "explanation": "Forcing another person to marry is a criminal offence in the UK."},
+    {"prompt": "Is FGM legal in the UK?", "options": ["No - it is illegal, including taking a girl abroad for FGM", "Yes, if done medically", "It is not regulated", "Only illegal for children"], "correct_index": 0, "explanation": "Female genital mutilation is illegal in the UK. Practising FGM or taking a girl/woman abroad for it is a criminal offence."},
+    {"prompt": "What is PAYE?", "options": ["Pay As You Earn - income tax deducted from employees' wages", "Pay After Year End", "A type of National Insurance", "A benefit payment system"], "correct_index": 0, "explanation": "For most people, income tax is automatically taken from their wages through the PAYE system."},
+    {"prompt": "What does National Insurance pay for?", "options": ["State benefits and services including the pension and NHS", "Roads and defence", "Education only", "Local council services"], "correct_index": 0, "explanation": "National Insurance contributions pay for state benefits and services such as the state retirement pension and the NHS."},
+    {"prompt": "Are judges independent of the government?", "options": ["Yes - the government cannot interfere with the judiciary", "No - they are appointed by the government", "Only in criminal cases", "Only senior judges"], "correct_index": 0, "explanation": "Judges are responsible for interpreting the law and ensuring fair trials - the government cannot interfere with this."},
+    {"prompt": "Where do minor criminal cases go in England and Wales?", "options": ["Magistrates' Court", "Crown Court", "Youth Court", "High Court"], "correct_index": 0, "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court."},
+    {"prompt": "Where do minor criminal cases go in Scotland?", "options": ["Justice of the Peace Court", "Magistrates' Court", "Sheriff Court", "High Court"], "correct_index": 0, "explanation": "In Scotland, minor criminal offences go to a Justice of the Peace Court."},
+    {"prompt": "How many members does a jury have in England and Wales?", "options": ["12", "15", "10", "9"], "correct_index": 0, "explanation": "In England, Wales and Northern Ireland a jury has 12 members."},
+    {"prompt": "How many members does a jury have in Scotland?", "options": ["15", "12", "10", "9"], "correct_index": 0, "explanation": "In Scotland a jury has 15 members."},
+    {"prompt": "What is Scotland's unique third verdict?", "options": ["Not proven", "Unproven", "Insufficient evidence", "Case dismissed"], "correct_index": 0, "explanation": "In Scotland, a third verdict of 'not proven' is possible in addition to 'guilty' and 'not guilty'."},
+    {"prompt": "Where are cases for 10-17 year olds heard in England?", "options": ["Youth Court", "Magistrates' Court", "Crown Court", "Family Court"], "correct_index": 0, "explanation": "If an accused person is aged 10 to 17 in England, Wales and NI, the case is normally heard in a Youth Court."},
+    {"prompt": "Can the public watch Youth Court proceedings?", "options": ["No - members of the public are not allowed in Youth Courts", "Yes, it's open to the public", "Only parents of the accused", "Only legal professionals"], "correct_index": 0, "explanation": "Members of the public are not allowed in Youth Courts."},
+    {"prompt": "What is the small claims limit in England and Wales?", "options": ["Less than £10,000", "Less than £5,000", "Less than £15,000", "Less than £1,000"], "correct_index": 0, "explanation": "The small claims procedure is used for claims of less than £10,000 in England and Wales."},
+    {"prompt": "What is the small claims limit in Scotland?", "options": ["Less than £5,000", "Less than £10,000", "Less than £15,000", "Less than £1,000"], "correct_index": 0, "explanation": "In Scotland and Northern Ireland the small claims procedure is used for claims of less than £5,000."},
+    {"prompt": "What does the Court of Session deal with?", "options": ["Serious civil cases in Scotland", "Criminal cases in Scotland", "All Scottish cases", "Appeals only"], "correct_index": 0, "explanation": "More serious civil cases in Scotland are dealt with in the Court of Session in Edinburgh."}
+  ],
+  "flashcards": [
+    ["UK signed European Convention?", "1950"],
+    ["Human Rights Act?", "1998 (incorporated Convention into UK law)"],
+    ["Forced marriage?", "Criminal offence"],
+    ["Forced Marriage Protection Orders?", "Introduced 2008"],
+    ["FGM in UK?", "Illegal"],
+    ["PAYE meaning?", "Pay As You Earn (income tax for employees)"],
+    ["National Insurance funds?", "State benefits, pension, NHS"],
+    ["Judges independent?", "Yes, government cannot interfere"],
+    ["Minor cases England/Wales?", "Magistrates' Court"],
+    ["Minor cases Scotland?", "Justice of the Peace Court"],
+    ["Serious cases England/Wales?", "Crown Court"],
+    ["Jury size England/Wales/NI?", "12 members"],
+    ["Jury size Scotland?", "15 members"],
+    ["Scotland's extra verdict?", "Not proven"],
+    ["Youth Court age range?", "10-17 years old"],
+    ["Public in Youth Courts?", "Not allowed"],
+    ["Small claims England/Wales?", "Under £10,000"],
+    ["Small claims Scotland/NI?", "Under £5,000"],
+    ["Scotland's civil court?", "Court of Session (serious cases)"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know UK law and the courts brilliantly! ⚖️",
+    "medium_score": "Good work! Focus on the different courts and their roles! 📚",
+    "low_score": "Keep studying - knowing the legal system is important for the test! 💪"
+  }
+}

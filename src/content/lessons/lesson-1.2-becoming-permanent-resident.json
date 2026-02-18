@@ -1,0 +1,74 @@
+{
+  "id": "lesson-1.2-becoming-permanent-resident",
+  "title": "Becoming a Permanent Resident",
+  "module_slug": "values-and-principles",
+  "overview": "To apply to become a permanent resident or citizen of the UK, you must demonstrate both your English language skills and your knowledge of life in the UK. This lesson covers the requirements for permanent residency, how the Life in the UK test works, and the fundamental values and responsibilities that all UK residents are expected to uphold.",
+  "study_sections": [
+    {
+      "heading": "Requirements for Permanent Residency",
+      "content": "To apply to become a permanent resident or citizen of the UK, you will need to:\n• Speak and read English\n• Have a good understanding of life in the UK\n\nThere are two ways to be tested on these requirements:\n\n1. Take the Life in the UK test. The questions require an understanding of English at ESOL Entry Level 3, so there is no need to take a separate English language test. People on work visas (including Tier 1 and Tier 2 of the points-based system) normally must pass the Life in the UK test to become permanent residents.\n\n2. Pass an ESOL course in English with Citizenship. You will need to take this course if your standard of English is below ESOL Entry Level 3.\n\nFor settlement or permanent residence you must pass the Life in the UK test AND produce acceptable evidence of speaking and listening skills in English at B1 of the Common European Framework of Reference (equivalent to ESOL Entry Level 3)."
+    },
+    {
+      "heading": "The Life in the UK Test",
+      "content": "The Life in the UK test consists of 24 questions about important aspects of life in the UK. Questions are based on ALL parts of the handbook. The 24 questions will be different for each person taking the test at that session.\n\nThe test is usually taken in English, although special arrangements can be made if you wish to take it in Welsh or Scottish Gaelic.\n\nYou can only take the test at a registered and approved Life in the UK test centre. There are about 60 test centres around the UK. You can only book your test online at www.lifeintheuktest.gov.uk.\n\nWhen booking, make sure you enter your details correctly. You will need to take some identification and proof of your address. If you don't take these, you will not be able to take the test.\n\nEverything you need to know to pass the test is in the official handbook. The questions are based on the whole book, including the introductory chapter."
+    },
+    {
+      "heading": "Fundamental Values and Responsibilities",
+      "content": "British society is founded on fundamental values and principles which all those living in the UK should respect and support. There is no place in British society for extremism or intolerance.\n\nThe fundamental principles of British life include:\n• Democracy\n• The rule of law\n• Individual liberty\n• Tolerance of those with different faiths and beliefs\n• Participation in community life\n\nAs part of the citizenship ceremony, new citizens make the following pledge:\n'I will give my loyalty to the United Kingdom and respect its rights and freedoms. I will uphold its democratic values. I will observe its laws faithfully and fulfil my duties and obligations as a British citizen.'\n\nIf you wish to be a permanent resident or citizen, you should:\n• Respect and obey the law\n• Respect the rights of others, including their right to their own opinions\n• Treat others with fairness\n• Look after yourself and your family\n• Look after the area in which you live and the environment\n\nIn return, the UK offers:\n• Freedom of belief and religion\n• Freedom of speech\n• Freedom from unfair discrimination\n• A right to a fair trial\n• A right to join in the election of a government"
+    }
+  ],
+  "key_facts": [
+    "To become a permanent resident you must speak and read English and have a good understanding of life in the UK.",
+    "You can meet requirements through the Life in the UK test or an ESOL course in English with Citizenship.",
+    "The Life in the UK test questions require English at ESOL Entry Level 3.",
+    "For settlement you must also show English speaking and listening skills at B1 of the Common European Framework.",
+    "The Life in the UK test has 24 questions.",
+    "Questions are based on ALL parts of the handbook.",
+    "The 24 questions are different for each person taking the test.",
+    "The test is usually taken in English but can be taken in Welsh or Scottish Gaelic.",
+    "There are about 60 test centres around the UK.",
+    "You can only book the test online at www.lifeintheuktest.gov.uk.",
+    "You must bring identification and proof of your address to the test.",
+    "The fundamental principles of British life are: democracy, rule of law, individual liberty, tolerance, and participation in community life.",
+    "New citizens make a pledge at the citizenship ceremony.",
+    "There is no place in British society for extremism or intolerance."
+  ],
+  "memory_hook": "Test facts: '24 questions, ALL the handbook, 60 centres, book online'. Five fundamental principles: 'Democracy, Rule of law, Individual liberty, Tolerance, Participation' - remember DRITP or 'Don't Restrict Individual Thinking - Participate!'",
+  "questions": [
+    {"prompt": "What do you need to apply to become a permanent UK resident?", "options": ["Speak and read English AND understand life in the UK", "Only pass the Life in the UK test", "Only speak English", "Only have lived in the UK for 5 years"], "correct_index": 0, "explanation": "To apply to become a permanent resident, you need to speak and read English and have a good understanding of life in the UK."},
+    {"prompt": "How many questions are in the Life in the UK test?", "options": ["24", "20", "30", "40"], "correct_index": 0, "explanation": "The Life in the UK test consists of 24 questions about important aspects of life in the UK."},
+    {"prompt": "Are the questions the same for everyone at the same test session?", "options": ["No - the 24 questions are different for each person", "Yes - everyone gets the same questions", "Only partially different", "They are the same within each test centre"], "correct_index": 0, "explanation": "The 24 questions will be different for each person taking the test at that session."},
+    {"prompt": "Which parts of the handbook are test questions based on?", "options": ["ALL parts of the handbook", "Only the history sections", "Only the government and law sections", "The handbook except the introduction"], "correct_index": 0, "explanation": "Questions are based on ALL parts of the handbook, including the introductory chapter."},
+    {"prompt": "What language is the test usually taken in?", "options": ["English (though Welsh or Scottish Gaelic possible)", "Any language you choose", "Only English", "Your native language with a translator"], "correct_index": 0, "explanation": "The test is usually taken in English, although special arrangements can be made for Welsh or Scottish Gaelic."},
+    {"prompt": "How many test centres are there in the UK?", "options": ["About 60", "About 30", "About 100", "About 600"], "correct_index": 0, "explanation": "There are about 60 registered and approved Life in the UK test centres around the UK."},
+    {"prompt": "How do you book the Life in the UK test?", "options": ["Online only, at www.lifeintheuktest.gov.uk", "By phone only", "By post", "At your local council office"], "correct_index": 0, "explanation": "You can only book your test online, at www.lifeintheuktest.gov.uk."},
+    {"prompt": "What must you bring to the test?", "options": ["Identification and proof of your address", "Only your booking confirmation", "Your passport and birth certificate", "A photograph only"], "correct_index": 0, "explanation": "You will need to take some identification and proof of your address to the test."},
+    {"prompt": "What are the fundamental principles of British life?", "options": ["Democracy, rule of law, individual liberty, tolerance, and participation in community life", "Liberty, equality and fraternity", "Freedom, justice and democracy", "Honesty, fairness, tolerance and hard work"], "correct_index": 0, "explanation": "The five fundamental principles are democracy, the rule of law, individual liberty, tolerance of different faiths and beliefs, and participation in community life."},
+    {"prompt": "Is there a place in British society for extremism?", "options": ["No - there is no place for extremism or intolerance", "Yes, as long as it is peaceful", "It depends on the type", "Only political extremism is banned"], "correct_index": 0, "explanation": "There is no place in British society for extremism or intolerance."},
+    {"prompt": "What do new citizens pledge at the citizenship ceremony?", "options": ["Loyalty to the UK, to uphold democratic values, and to observe its laws faithfully", "To learn English", "To pay taxes", "To support the monarch"], "correct_index": 0, "explanation": "New citizens pledge: 'I will give my loyalty to the United Kingdom... I will uphold its democratic values. I will observe its laws faithfully...'"},
+    {"prompt": "What freedom does the UK offer its residents?", "options": ["Freedom of belief and religion, speech, from unfair discrimination, and a right to fair trial", "Complete freedom from all laws", "Freedom to earn any income", "Freedom from paying taxes"], "correct_index": 0, "explanation": "The UK offers freedom of belief and religion, freedom of speech, freedom from unfair discrimination, a right to a fair trial, and a right to join in elections."},
+    {"prompt": "What English level are test questions written at?", "options": ["ESOL Entry Level 3", "ESOL Entry Level 2", "GCSE level", "University level"], "correct_index": 0, "explanation": "The questions are written to require understanding of English at ESOL Entry Level 3."},
+    {"prompt": "What additional English requirement exists for settlement?", "options": ["Evidence of speaking and listening at B1 of the Common European Framework", "A separate English exam", "A GCSE in English", "No additional requirement"], "correct_index": 0, "explanation": "For settlement, you must also produce evidence of speaking and listening skills in English at B1 of the Common European Framework (equivalent to ESOL Entry Level 3)."}
+  ],
+  "flashcards": [
+    ["Requirements to apply for permanent residence?", "Speak/read English + good understanding of life in UK"],
+    ["Number of test questions?", "24"],
+    ["Same questions for everyone?", "No - different for each person"],
+    ["Questions based on which parts?", "ALL parts of the handbook"],
+    ["Test language?", "Usually English (Welsh/Gaelic possible)"],
+    ["Number of test centres?", "About 60"],
+    ["How to book test?", "Online only - lifeintheuktest.gov.uk"],
+    ["What to bring to test?", "ID and proof of address"],
+    ["5 fundamental principles?", "Democracy, Rule of law, Individual liberty, Tolerance, Participation"],
+    ["Place for extremism?", "No - no place for extremism or intolerance"],
+    ["Citizenship ceremony pledge?", "Loyalty, uphold democratic values, observe laws faithfully"],
+    ["Freedoms the UK offers?", "Belief/religion, speech, from discrimination, fair trial, vote"],
+    ["Test English level?", "ESOL Entry Level 3"],
+    ["Settlement extra requirement?", "English speaking/listening at B1 (Common European Framework)"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know everything about the test and UK values! 🌟",
+    "medium_score": "Good work! Review the test format and the 5 fundamental principles! 📚",
+    "low_score": "Keep studying - these are some of the most important basics! 💪"
+  }
+}

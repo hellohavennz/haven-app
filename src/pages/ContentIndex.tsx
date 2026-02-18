@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 import { getCurrentUser } from "../lib/auth";
-import { hasAccessToModule } from "../lib/access";
+import { hasAccessToModuleSync } from "../lib/access"; // FIXED: Use sync version
 
 import {
   getAllLessons,
@@ -240,7 +240,8 @@ export default function ContentIndex() {
               nextUpLesson,
               callToActionLabel,
             }) => {
-              const hasAccess = hasAccessToModule(module.slug, user);
+              // FIXED: Use sync version with user object
+              const hasAccess = hasAccessToModuleSync(module.slug, user);
               const isLocked = !hasAccess;
 
               return (

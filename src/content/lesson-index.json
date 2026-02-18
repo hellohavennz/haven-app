@@ -1,98 +1,98 @@
 {
   "modules": [
     {
-      "slug": "life-in-uk-overview",
-      "title": "Life in the UK Overview",
+      "slug": "values-and-principles",
+      "title": "Values and Principles",
       "lessons": [
-        "lesson-1-values-principles",
-        "lesson-2-becoming-responsible-citizen",
-        "lesson-3-long-illustrious-history",
-        "lesson-4-modern-thriving-society",
-        "lesson-5-government-law-your-role",
-        "lesson-6-uk-wider-world"
+        "lesson-1.1-chapter-intro",
+        "lesson-1.2-becoming-permanent-resident",
+        "lesson-1.3-values-principles",
+        "lesson-1.4-taking-the-test"
       ]
     },
     {
-      "slug": "british-history-depth",
-      "title": "British History in Depth",
+      "slug": "what-is-uk",
+      "title": "What is the UK?",
       "lessons": [
-        "lesson-7-long-illustrious-history-part2",
-        "lesson-8-britain-20th-century-today",
-        "lesson-9-britain-since-1945",
-        "lesson-10-changing-society-uk-since-2000"
+        "lesson-2.1-chapter-intro",
+        "lesson-2.2-what-is-uk"
       ]
     },
     {
-      "slug": "government-law-citizenship",
-      "title": "Government, Law and Citizenship",
+      "slug": "history",
+      "title": "A Long and Illustrious History",
       "lessons": [
-        "lesson-11-government-democracy-law-making",
-        "lesson-12-government-law-your-role",
-        "lesson-13-uk-international-institutions",
-        "lesson-14-citizenship-participation",
-        "lesson-15-uk-institutions-involvement"
+        "lesson-3.1-chapter-intro",
+        "lesson-3.2-britain-since-1945",
+        "lesson-3.2b-inventions-people",
+        "lesson-3.3-global-power",
+        "lesson-3.4-20th-century",
+        "lesson-3.5-middle-ages",
+        "lesson-3.6-tudors-stuarts",
+        "lesson-3.7-early-britain"
       ]
     },
     {
-      "slug": "society-culture-traditions",
-      "title": "Society, Culture and Traditions",
+      "slug": "modern-society",
+      "title": "A Modern, Thriving Society",
       "lessons": [
-        "lesson-16-modern-thriving-society-part2",
-        "lesson-17-arts-culture",
-        "lesson-18-customs-traditions",
-        "lesson-19-leisure",
-        "lesson-20-places-of-interest",
-        "lesson-21-religion",
-        "lesson-22-sport",
-        "lesson-23-uk-today"
+        "lesson-4.1-chapter-intro",
+        "lesson-4.2-arts-culture",
+        "lesson-4.3-customs-traditions",
+        "lesson-4.4-leisure-places",
+        "lesson-4.6-religion",
+        "lesson-4.7-sport",
+        "lesson-4.8-uk-today"
       ]
     },
     {
-      "slug": "government-law-role-detailed",
-      "title": "Government, Law and Your Role (Detailed)",
+      "slug": "government-law-role",
+      "title": "Government, Law and Your Role",
       "lessons": [
-        "lesson-24-government-law-role",
-        "lesson-25-development-democracy",
-        "lesson-26-british-constitution",
-        "lesson-27-fundamental-principles",
-        "lesson-28-respecting-law",
-        "lesson-29-the-government",
-        "lesson-30-uk-international-institutions",
-        "lesson-31-role-in-community"
+        "lesson-5.1-chapter-intro",
+        "lesson-5.2-democracy-constitution",
+        "lesson-5.3-government",
+        "lesson-5.4-law-courts",
+        "lesson-5.5-international",
+        "lesson-5.5-respecting-law",
+        "lesson-5.6-community",
+        "lesson-supplement-gaps"
       ]
     }
   ],
   "lessons": [
-    {"id": "lesson-1-values-principles", "title": "The Values and Principles of the UK", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-2-becoming-responsible-citizen", "title": "Becoming a Responsible Citizen", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-3-long-illustrious-history", "title": "A Long and Illustrious History", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-4-modern-thriving-society", "title": "A Modern, Thriving Society", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-5-government-law-your-role", "title": "The UK Government, the Law and Your Role", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-6-uk-wider-world", "title": "The UK and the Wider World", "module_slug": "life-in-uk-overview"},
-    {"id": "lesson-7-long-illustrious-history-part2", "title": "A Long and Illustrious History (Part 2)", "module_slug": "british-history-depth"},
-    {"id": "lesson-8-britain-20th-century-today", "title": "Britain in the 20th Century and Today", "module_slug": "british-history-depth"},
-    {"id": "lesson-9-britain-since-1945", "title": "Britain Since 1945", "module_slug": "british-history-depth"},
-    {"id": "lesson-10-changing-society-uk-since-2000", "title": "A Changing Society: The UK Since 2000", "module_slug": "british-history-depth"},
-    {"id": "lesson-11-government-democracy-law-making", "title": "The UK Government, Democracy and How Laws Are Made", "module_slug": "government-law-citizenship"},
-    {"id": "lesson-12-government-law-your-role", "title": "The UK Government, the Law and Your Role", "module_slug": "government-law-citizenship"},
-    {"id": "lesson-13-uk-international-institutions", "title": "The UK and International Institutions", "module_slug": "government-law-citizenship"},
-    {"id": "lesson-14-citizenship-participation", "title": "Citizenship and Participation in Public Life", "module_slug": "government-law-citizenship"},
-    {"id": "lesson-15-uk-institutions-involvement", "title": "The UK, Its Institutions and Your Involvement", "module_slug": "government-law-citizenship"},
-    {"id": "lesson-16-modern-thriving-society-part2", "title": "A Modern, Thriving Society (Part 2)", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-17-arts-culture", "title": "Arts and Culture", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-18-customs-traditions", "title": "Customs and Traditions", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-19-leisure", "title": "Leisure", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-20-places-of-interest", "title": "Places of Interest", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-21-religion", "title": "Religion", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-22-sport", "title": "Sport", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-23-uk-today", "title": "The UK Today", "module_slug": "society-culture-traditions"},
-    {"id": "lesson-24-government-law-role", "title": "The UK Government, the Law and Your Role", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-25-development-democracy", "title": "The Development of British Democracy", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-26-british-constitution", "title": "The British Constitution", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-27-fundamental-principles", "title": "Fundamental Principles", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-28-respecting-law", "title": "Respecting the Law", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-29-the-government", "title": "The Government", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-30-uk-international-institutions", "title": "The UK and International Institutions", "module_slug": "government-law-role-detailed"},
-    {"id": "lesson-31-role-in-community", "title": "Your Role in the Community", "module_slug": "government-law-role-detailed"}
+    {"id": "lesson-1.1-chapter-intro", "title": "About This Module: Values and Principles", "module_slug": "values-and-principles"},
+    {"id": "lesson-1.2-becoming-permanent-resident", "title": "Becoming a Permanent Resident", "module_slug": "values-and-principles"},
+    {"id": "lesson-1.3-values-principles", "title": "The Values and Principles of the UK", "module_slug": "values-and-principles"},
+    {"id": "lesson-1.4-taking-the-test", "title": "Taking the Life in the UK Test", "module_slug": "values-and-principles"},
+    
+    {"id": "lesson-2.1-chapter-intro", "title": "About This Module: What is the UK?", "module_slug": "what-is-uk"},
+    {"id": "lesson-2.2-what-is-uk", "title": "What is the UK?", "module_slug": "what-is-uk"},
+    
+    {"id": "lesson-3.1-chapter-intro", "title": "About This Module: A Long and Illustrious History", "module_slug": "history"},
+    {"id": "lesson-3.2-britain-since-1945", "title": "Britain Since 1945", "module_slug": "history"},
+    {"id": "lesson-3.2b-inventions-people", "title": "Great British Inventions and Notable People", "module_slug": "history"},
+    {"id": "lesson-3.3-global-power", "title": "A Global Power: The Victorian Age and the Empire", "module_slug": "history"},
+    {"id": "lesson-3.4-20th-century", "title": "The 20th Century: WWI, WWII and the Great Depression", "module_slug": "history"},
+    {"id": "lesson-3.5-middle-ages", "title": "The Middle Ages", "module_slug": "history"},
+    {"id": "lesson-3.6-tudors-stuarts", "title": "The Tudors and Stuarts", "module_slug": "history"},
+    {"id": "lesson-3.7-early-britain", "title": "Early Britain", "module_slug": "history"},
+    
+    {"id": "lesson-4.1-chapter-intro", "title": "About This Module: A Modern, Thriving Society", "module_slug": "modern-society"},
+    {"id": "lesson-4.2-arts-culture", "title": "Arts and Culture", "module_slug": "modern-society"},
+    {"id": "lesson-4.3-customs-traditions", "title": "Customs and Traditions", "module_slug": "modern-society"},
+    {"id": "lesson-4.4-leisure-places", "title": "Leisure and Places of Interest", "module_slug": "modern-society"},
+    {"id": "lesson-4.6-religion", "title": "Religion", "module_slug": "modern-society"},
+    {"id": "lesson-4.7-sport", "title": "Sport", "module_slug": "modern-society"},
+    {"id": "lesson-4.8-uk-today", "title": "The UK Today", "module_slug": "modern-society"},
+    
+    {"id": "lesson-5.1-chapter-intro", "title": "About This Module: Government, Law and Your Role", "module_slug": "government-law-role"},
+    {"id": "lesson-5.2-democracy-constitution", "title": "Democracy and the Constitution", "module_slug": "government-law-role"},
+    {"id": "lesson-5.3-government", "title": "The Government", "module_slug": "government-law-role"},
+    {"id": "lesson-5.4-law-courts", "title": "Law, Fundamental Rights and the Courts", "module_slug": "government-law-role"},
+    {"id": "lesson-5.5-international", "title": "The UK and International Institutions", "module_slug": "government-law-role"},
+    {"id": "lesson-5.5-respecting-law", "title": "Respecting the Law", "module_slug": "government-law-role"},
+    {"id": "lesson-5.6-community", "title": "Your Role in the Community", "module_slug": "government-law-role"},
+    {"id": "lesson-supplement-gaps", "title": "Key Facts: Driving, Dylan Thomas, and Victorian Britain", "module_slug": "government-law-role"}
   ]
 }

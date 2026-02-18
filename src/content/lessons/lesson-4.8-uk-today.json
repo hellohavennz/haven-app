@@ -1,0 +1,110 @@
+{
+  "id": "lesson-4.8-uk-today",
+  "title": "The UK Today",
+  "module_slug": "modern-society",
+  "overview": "The UK today is a diverse, multicultural society. Understanding the UK's population, capital cities, currency, languages and commitment to equality is essential knowledge for the Life in the UK test.\n\nThis lesson covers the UK's nations and capital cities, currency, languages and dialects, population, ethnic diversity, and the equal rights of men and women.",
+  "study_sections": [
+    {
+      "heading": "The Nations and Capital Cities",
+      "content": "The UK is located in the north west of Europe. The longest distance on the mainland is from John O'Groats on the north coast of Scotland to Land's End in the south-west corner of England - about 870 miles (approximately 1,400 kilometres).\n\nThe capital cities are:\n• London - capital of the UK and England\n• Edinburgh - capital of Scotland\n• Cardiff - capital of Wales\n• Belfast - capital of Northern Ireland\n\nMajor cities include:\nEngland: London, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Manchester, Bradford, Newcastle upon Tyne, Plymouth, Southampton, Norwich\nWales: Cardiff, Swansea, Newport\nScotland: Edinburgh, Glasgow, Dundee, Aberdeen\nNorthern Ireland: Belfast"
+    },
+    {
+      "heading": "UK Currency",
+      "content": "The currency in the UK is the pound sterling (symbol £). There are 100 pence in a pound.\n\nCoins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2\nNotes: £5, £10, £20, £50\n\nNorthern Ireland and Scotland have their own banknotes, which are valid everywhere in the UK. However, shops and businesses do not have to accept them."
+    },
+    {
+      "heading": "Languages and Dialects",
+      "content": "There are many variations in language in the different parts of the UK. The English language has many accents and dialects.\n\nIn Wales, many people speak Welsh - a completely different language from English - and it is taught in schools and universities.\n\nIn Scotland, Gaelic is spoken in some parts of the Highlands and Islands.\n\nIn Northern Ireland, some people speak Irish Gaelic."
+    },
+    {
+      "heading": "Population",
+      "content": "The UK population has grown significantly over time:\n• 1600: Just over 4 million\n• 1700: 5 million\n• 1801: 8 million\n• 1851: 20 million\n• 1901: 40 million\n• 1951: 50 million\n• 1998: 57 million\n• 2005: Just under 60 million\n• 2010: Just over 62 million\n• 2022: Estimated 67.6 million\n\nPopulation growth has been faster in more recent years. Migration into the UK and longer life expectancy have played a part.\n\nThe population is very unequally distributed: England makes up approximately 84% of the total population, Scotland just over 8%, Wales around 5%, and Northern Ireland less than 3%.\n\nPeople in the UK are living longer than ever before due to improved living standards and better health care. There are now a record number of people aged 85 and over."
+    },
+    {
+      "heading": "Ethnic Diversity",
+      "content": "The UK today is a more diverse society than it was 100 years ago, in both ethnic and religious terms. Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK.\n\nThe UK continues to be a multinational and multiracial society with a rich and varied culture. The UK population is ethnically diverse and changing rapidly, especially in large cities such as London.\n\nIn surveys, the most common ethnic description chosen is white, which includes people of European, Australian, Canadian, New Zealand and American descent. Other significant groups are those of Asian, black and mixed descent.\n\nThere are people in the UK with ethnic origins from all over the world."
+    },
+    {
+      "heading": "An Equal Society",
+      "content": "Within the UK, it is a legal requirement that men and women should not be discriminated against because of their gender or because they are, or are not, married. They have equal rights to work, own property, marry and divorce. If they are married, both parents are equally responsible for their children.\n\nWomen in Britain today make up about half of the workforce. On average, girls leave school with better qualifications than boys. More women than men study at university.\n\nEmployment opportunities for women are much greater than they were in the past. Women work in all sectors of the economy, and there are now more women in high-level positions than ever before."
+    }
+  ],
+  "key_facts": [
+    "The longest mainland distance is from John O'Groats to Land's End - about 870 miles (1,400 km).",
+    "London is the capital of both the UK and England.",
+    "Edinburgh is the capital of Scotland.",
+    "Cardiff is the capital of Wales.",
+    "Belfast is the capital of Northern Ireland.",
+    "The UK currency is the pound sterling (£).",
+    "There are 100 pence in a pound.",
+    "Coins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2.",
+    "Notes: £5, £10, £20, £50.",
+    "Northern Ireland and Scotland have their own banknotes, valid everywhere but shops don't have to accept them.",
+    "Welsh is taught in schools and universities in Wales.",
+    "Gaelic is spoken in parts of the Scottish Highlands and Islands.",
+    "Irish Gaelic is spoken by some people in Northern Ireland.",
+    "The UK population in 2022 was estimated at 67.6 million.",
+    "England makes up approximately 84% of the UK population.",
+    "Scotland makes up just over 8% of the UK population.",
+    "Wales makes up around 5% of the UK population.",
+    "Northern Ireland makes up less than 3% of the UK population.",
+    "Nearly 10% of the population has a parent or grandparent born outside the UK.",
+    "Men and women have equal rights to work, own property, marry and divorce.",
+    "Women make up about half of the workforce.",
+    "On average, girls leave school with better qualifications than boys.",
+    "More women than men study at university."
+  ],
+  "memory_hook": "Capital cities: 'London, Edinburgh, Cardiff, Belfast' - remember 'LECB' or think of them going from south to north: London (England/UK), Cardiff (Wales), Belfast (NI), Edinburgh (Scotland). Population: 67.6 million in 2022, with England = 84% of total.",
+  "questions": [
+    {"prompt": "What is the capital city of the UK?", "options": ["London", "Edinburgh", "Cardiff", "Belfast"], "correct_index": 0, "explanation": "London is the capital city of both the UK and England."},
+    {"prompt": "What is the capital of Scotland?", "options": ["Edinburgh", "Glasgow", "Aberdeen", "Dundee"], "correct_index": 0, "explanation": "Edinburgh is the capital city of Scotland."},
+    {"prompt": "What is the capital of Wales?", "options": ["Cardiff", "Swansea", "Newport", "Wrexham"], "correct_index": 0, "explanation": "Cardiff is the capital city of Wales."},
+    {"prompt": "What is the capital of Northern Ireland?", "options": ["Belfast", "Londonderry", "Newry", "Armagh"], "correct_index": 0, "explanation": "Belfast is the capital city of Northern Ireland."},
+    {"prompt": "What is the UK currency?", "options": ["The pound sterling (£)", "The Euro", "The British dollar", "The crown"], "correct_index": 0, "explanation": "The currency in the UK is the pound sterling, symbol £."},
+    {"prompt": "How many pence are in a pound?", "options": ["100", "10", "1000", "50"], "correct_index": 0, "explanation": "There are 100 pence in a pound."},
+    {"prompt": "Which coins are available in the UK?", "options": ["1p, 2p, 5p, 10p, 20p, 50p, £1 and £2", "1p, 5p, 10p, 50p and £1 only", "1p, 2p, 10p, 50p, £1, £2 and £5", "1p, 5p, 10p, 20p and £1 only"], "correct_index": 0, "explanation": "UK coins are: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2."},
+    {"prompt": "Which notes are available in the UK?", "options": ["£5, £10, £20 and £50", "£1, £5, £10 and £20", "£5, £10, £20, £50 and £100", "£10, £20 and £50 only"], "correct_index": 0, "explanation": "UK notes are: £5, £10, £20 and £50."},
+    {"prompt": "Are Scottish and Northern Irish banknotes valid in the whole UK?", "options": ["Yes, but shops don't have to accept them", "No, only in their own countries", "Yes, and all shops must accept them", "No, they are not valid outside their region"], "correct_index": 0, "explanation": "Northern Ireland and Scotland have their own banknotes, valid everywhere in the UK, but shops don't have to accept them."},
+    {"prompt": "Is Welsh taught in schools?", "options": ["Yes, it is taught in schools and universities in Wales", "No, only spoken at home", "Only in primary schools", "Only in universities"], "correct_index": 0, "explanation": "Welsh is taught in schools and universities in Wales."},
+    {"prompt": "Where is Gaelic spoken in Scotland?", "options": ["Parts of the Highlands and Islands", "Across all of Scotland", "Only in Edinburgh", "Only in Glasgow"], "correct_index": 0, "explanation": "Gaelic is spoken in some parts of the Scottish Highlands and Islands."},
+    {"prompt": "What was the estimated UK population in 2022?", "options": ["67.6 million", "60 million", "70 million", "57 million"], "correct_index": 0, "explanation": "In 2022 the UK population was estimated at 67.6 million."},
+    {"prompt": "What proportion of the UK population lives in England?", "options": ["Approximately 84%", "Approximately 70%", "Approximately 90%", "Approximately 75%"], "correct_index": 0, "explanation": "England makes up approximately 84% of the total UK population."},
+    {"prompt": "What proportion of the UK population lives in Scotland?", "options": ["Just over 8%", "About 15%", "About 5%", "About 12%"], "correct_index": 0, "explanation": "Scotland makes up just over 8% of the total UK population."},
+    {"prompt": "What proportion of the UK population lives in Wales?", "options": ["Around 5%", "Around 8%", "Around 10%", "Around 3%"], "correct_index": 0, "explanation": "Wales makes up around 5% of the UK population."},
+    {"prompt": "What proportion of the UK population lives in Northern Ireland?", "options": ["Less than 3%", "Around 5%", "Around 8%", "Around 10%"], "correct_index": 0, "explanation": "Northern Ireland makes up less than 3% of the UK population."},
+    {"prompt": "What percentage of UK residents have a parent or grandparent born outside the UK?", "options": ["Nearly 10%", "Nearly 20%", "Nearly 5%", "Nearly 30%"], "correct_index": 0, "explanation": "Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK."},
+    {"prompt": "Do men and women have equal rights to own property in the UK?", "options": ["Yes, they have equal rights", "No, only men can own property", "Only if married", "It depends on the situation"], "correct_index": 0, "explanation": "It is a legal requirement in the UK that men and women have equal rights to work, own property, marry and divorce."},
+    {"prompt": "What proportion of the UK workforce are women?", "options": ["About half", "About a quarter", "About a third", "About two thirds"], "correct_index": 0, "explanation": "Women in Britain today make up about half of the workforce."},
+    {"prompt": "How do girls' school qualifications compare to boys' on average?", "options": ["Girls leave with better qualifications than boys on average", "Boys leave with better qualifications", "They are equal", "It varies by subject only"], "correct_index": 0, "explanation": "On average, girls leave school with better qualifications than boys."},
+    {"prompt": "Do more men or women study at university?", "options": ["More women than men study at university", "More men than women", "Equal numbers", "It depends on the subject"], "correct_index": 0, "explanation": "More women than men study at university in the UK."},
+    {"prompt": "What is the distance from John O'Groats to Land's End?", "options": ["About 870 miles (approximately 1,400 km)", "About 500 miles", "About 1,200 miles", "About 700 miles"], "correct_index": 0, "explanation": "The longest mainland distance from John O'Groats to Land's End is about 870 miles or approximately 1,400 kilometres."}
+  ],
+  "flashcards": [
+    ["Capital of UK?", "London"],
+    ["Capital of Scotland?", "Edinburgh"],
+    ["Capital of Wales?", "Cardiff"],
+    ["Capital of Northern Ireland?", "Belfast"],
+    ["UK currency?", "Pound sterling (£)"],
+    ["Pence in a pound?", "100"],
+    ["UK coins?", "1p, 2p, 5p, 10p, 20p, 50p, £1, £2"],
+    ["UK notes?", "£5, £10, £20, £50"],
+    ["Scottish/NI banknotes valid?", "Yes, but shops don't have to accept them"],
+    ["Welsh language taught?", "Yes, in schools and universities in Wales"],
+    ["Gaelic spoken where in Scotland?", "Parts of Highlands and Islands"],
+    ["UK population 2022?", "Estimated 67.6 million"],
+    ["England % of UK population?", "Approximately 84%"],
+    ["Scotland % of UK population?", "Just over 8%"],
+    ["Wales % of UK population?", "Around 5%"],
+    ["Northern Ireland % of population?", "Less than 3%"],
+    ["% with parent/grandparent born abroad?", "Nearly 10%"],
+    ["Men and women equal rights?", "Yes - work, property, marriage, divorce"],
+    ["Women in workforce?", "About half"],
+    ["Girls vs boys at school?", "Girls leave with better qualifications on average"],
+    ["University - more men or women?", "More women than men study at university"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know the UK today perfectly! 🇬🇧",
+    "medium_score": "Good work! Review the population figures and capital cities! 📚",
+    "low_score": "Keep studying - these facts about modern Britain are important! 💪"
+  }
+}

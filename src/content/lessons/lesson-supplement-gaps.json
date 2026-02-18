@@ -1,0 +1,68 @@
+{
+  "id": "lesson-supplement-gaps",
+  "title": "Key Facts: Driving, Dylan Thomas, and Victorian Britain",
+  "module_slug": "government-law-role",
+  "overview": "This supplementary lesson covers important facts from three areas that appear in the handbook but aren't covered in detail elsewhere: driving rules and requirements, the Welsh poet Dylan Thomas, and some key Victorian-era facts including the Great Exhibition and the Victoria Cross.",
+  "study_sections": [
+    {
+      "heading": "Driving in the UK",
+      "content": "In the UK, you must be at least 17 years old to drive a car or motorcycle. You must pass both a theory test (multiple choice and hazard perception) and a practical driving test. You need to be at least 16 years old to ride a moped.\n\nDrivers can use their driving licence until they are 70 years old. After that, the licence is valid for three years at a time.\n\nIn Northern Ireland, a newly qualified driver must display an 'R' plate (for restricted driver) for one year after passing the test.\n\nIf your driving licence is from an EU country, Iceland, Liechtenstein or Norway, you can drive in the UK for as long as your licence is valid. If you have a licence from any other country, you may use it in the UK for up to 12 months.\n\nYour car must be registered at the DVLA (Driver and Vehicle Licensing Agency). You must pay annual road tax. If your vehicle is over three years old, you must take it for an MOT test every year. It is a serious criminal offence to drive without insurance."
+    },
+    {
+      "heading": "Dylan Thomas",
+      "content": "Dylan Thomas (1914-53) was a Welsh poet. He is particularly known for his work Under Milk Wood, a play for voices. He also wrote the poem Do Not Go Gentle into that Good Night. His work is celebrated in Wales and throughout the English-speaking world."
+    },
+    {
+      "heading": "Victorian Britain - Key Facts",
+      "content": "In 1851, the Great Exhibition opened in Hyde Park in London. It was held in the Crystal Palace, a huge building made of steel and glass. Exhibits ranged from huge machines to handmade goods. Countries from all over the world showed their goods, but most of the objects were made in Britain. The Great Exhibition showcased Britain's position as the world's leading industrial nation.\n\nThe Victoria Cross medal was introduced by Queen Victoria during the Crimean War. It honours acts of valour by soldiers. It continues to be the highest award for bravery in the face of the enemy.\n\nThe National Citizen Service programme gives 16- and 17-year-olds the opportunity to enjoy outdoor activities, develop their skills and take part in a community project."
+    }
+  ],
+  "key_facts": [
+    "You must be at least 17 to drive a car or motorcycle in the UK.",
+    "You must be at least 16 to ride a moped.",
+    "You must pass a theory test and a practical driving test.",
+    "Driving licences are valid until age 70, then renewed every 3 years.",
+    "In Northern Ireland, new drivers must display an 'R' plate for one year.",
+    "EU/Iceland/Liechtenstein/Norway licences are valid in the UK as long as the licence is valid.",
+    "Licences from all other countries are valid in the UK for up to 12 months only.",
+    "Cars must be registered at the DVLA.",
+    "Vehicles over 3 years old must have an annual MOT test.",
+    "Driving without insurance is a serious criminal offence.",
+    "Dylan Thomas was a Welsh poet, known for Under Milk Wood.",
+    "The Great Exhibition opened in Hyde Park in 1851, held in the Crystal Palace.",
+    "The Victoria Cross was introduced by Queen Victoria during the Crimean War.",
+    "The National Citizen Service is for 16 and 17-year-olds."
+  ],
+  "memory_hook": "Driving ages: '17 for car, 16 for moped'. Licence expires at 70 (then every 3 years). MOT needed if vehicle over 3 years old. NI = 'R' plate for 1 year. Dylan Thomas = Welsh poet, Under Milk Wood.",
+  "questions": [
+    {"prompt": "What is the minimum age to drive a car in the UK?", "options": ["17", "16", "18", "15"], "correct_index": 0, "explanation": "You must be at least 17 years old to drive a car or motorcycle in the UK."},
+    {"prompt": "What is the minimum age to ride a moped?", "options": ["16", "17", "18", "15"], "correct_index": 0, "explanation": "You need to be at least 16 years old to ride a moped."},
+    {"prompt": "Until what age is a UK driving licence valid?", "options": ["70 (then renewed every 3 years)", "65", "Until you give it up", "80"], "correct_index": 0, "explanation": "Drivers can use their driving licence until they are 70 years old. After that, the licence is valid for three years at a time."},
+    {"prompt": "What must new drivers display in Northern Ireland?", "options": ["An 'R' plate for one year", "An 'L' plate for six months", "A 'P' plate for one year", "Nothing special"], "correct_index": 0, "explanation": "In Northern Ireland, a newly qualified driver must display an 'R' plate (for restricted driver) for one year after passing the test."},
+    {"prompt": "How long can you drive in the UK on a non-EU licence?", "options": ["Up to 12 months", "Indefinitely", "6 months", "3 months"], "correct_index": 0, "explanation": "If you have a driving licence from any country other than EU/Iceland/Liechtenstein/Norway, you may use it in the UK for up to 12 months."},
+    {"prompt": "When must a vehicle have an MOT test?", "options": ["Every year if the vehicle is over 3 years old", "Every 2 years", "Only when it breaks down", "Every year regardless of age"], "correct_index": 0, "explanation": "If your vehicle is over three years old, you must take it for an MOT test every year."},
+    {"prompt": "Who was Dylan Thomas?", "options": ["A Welsh poet, known for Under Milk Wood", "An English novelist", "A Scottish dramatist", "An Irish poet"], "correct_index": 0, "explanation": "Dylan Thomas was a Welsh poet, particularly known for Under Milk Wood and Do Not Go Gentle into that Good Night."},
+    {"prompt": "What was the Great Exhibition?", "options": ["An 1851 showcase in Hyde Park, in the Crystal Palace, showcasing British and world goods", "A Victorian art fair", "A trade fair held every 10 years", "A display of military power"], "correct_index": 0, "explanation": "In 1851, the Great Exhibition opened in Hyde Park in the Crystal Palace. It showcased goods from Britain and around the world."},
+    {"prompt": "What is the Victoria Cross?", "options": ["A medal for acts of valour by soldiers, introduced by Queen Victoria during the Crimean War", "A medal for Olympic achievement", "An award for public service", "A royal honour for civilians"], "correct_index": 0, "explanation": "The Victoria Cross was introduced by Queen Victoria during the Crimean War. It honours acts of valour by soldiers."},
+    {"prompt": "What is the National Citizen Service?", "options": ["A programme for 16 and 17-year-olds to develop skills and do community projects", "Compulsory military service", "A volunteer police scheme", "A government employment programme"], "correct_index": 0, "explanation": "The National Citizen Service programme gives 16- and 17-year-olds the opportunity to enjoy outdoor activities, develop skills and take part in a community project."}
+  ],
+  "flashcards": [
+    ["Minimum driving age (car)?", "17"],
+    ["Minimum age for moped?", "16"],
+    ["Driving licence valid until?", "Age 70 (then 3-yearly)"],
+    ["NI new driver requirement?", "'R' plate for 1 year"],
+    ["Non-EU licence valid in UK?", "Up to 12 months"],
+    ["MOT needed when?", "Every year if vehicle over 3 years old"],
+    ["Driving without insurance?", "Serious criminal offence"],
+    ["Vehicle must be registered with?", "DVLA"],
+    ["Dylan Thomas?", "Welsh poet - Under Milk Wood"],
+    ["Great Exhibition - when/where?", "1851, Hyde Park, Crystal Palace"],
+    ["Victoria Cross?", "Bravery medal, introduced by Queen Victoria (Crimean War)"],
+    ["National Citizen Service?", "Programme for 16-17 year olds"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You've covered all the supplementary content! 🌟",
+    "medium_score": "Good work! Review the driving rules carefully! 📚",
+    "low_score": "Keep going - these facts round out your test preparation! 💪"
+  }
+}

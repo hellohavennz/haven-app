@@ -1,0 +1,87 @@
+{
+  "id": "lesson-5.5-respecting-law",
+  "title": "Respecting the Law",
+  "module_slug": "government-law-role",
+  "overview": "One of the most important responsibilities of all residents in the UK is to know and obey the law. This lesson covers the distinction between criminal and civil law, specific criminal and civil offences, the duties of the police, and the UK's approach to terrorism and extremism.",
+  "study_sections": [
+    {
+      "heading": "Criminal Law and Civil Law",
+      "content": "Every person in the UK receives equal treatment under the law — it applies in the same way to everyone, regardless of who they are or where they are from.\n\nLaws can be divided into two types:\n\nCriminal law relates to crimes, which are usually investigated by the police or another authority, and are punished by the courts.\n\nCivil law is used to settle disputes between individuals or groups.\n\nExamples of criminal laws include:\n• Carrying a weapon: it is a criminal offence to carry a weapon of any kind, even for self-defence. This includes a gun, a knife or anything made or adapted to cause injury.\n• Drugs: selling or buying drugs such as heroin, cocaine, ecstasy and cannabis is illegal.\n• Racial crime: it is a criminal offence to cause harassment, alarm or distress to someone because of their religion or ethnic origin.\n• Selling tobacco: it is illegal to sell tobacco products to anyone under 18.\n• Smoking in public places: it is against the law to smoke tobacco products in nearly every enclosed public place.\n• Buying alcohol: it is a criminal offence to sell alcohol to anyone under 18, or to buy alcohol for someone under 18. (Exception: people aged 16 or over can drink alcohol with a meal in a hotel or restaurant.)\n\nExamples of civil laws include:\n• Housing law: disputes between landlords and tenants over repairs and eviction\n• Consumer rights: disputes about faulty goods or services\n• Employment law: disputes over wages, unfair dismissal or workplace discrimination\n• Debt: people may be taken to court if they owe money"
+    },
+    {
+      "heading": "The Police and Their Duties",
+      "content": "The job of the police in the UK is to:\n• Protect life and property\n• Prevent disturbances (keeping the peace)\n• Prevent and detect crime\n\nThe police are organised into separate police forces headed by Chief Constables. They are independent of the government.\n\nIn November 2012, the public elected Police and Crime Commissioners (PCCs) in England and Wales. PCCs are directly elected individuals responsible for delivering an efficient and effective police force. They set local police priorities and the local policing budget, and appoint the Chief Constable.\n\nPolice Officers must themselves obey the law. They must not misuse their authority, make false statements, be rude or abusive, or commit racial discrimination. If police officers are corrupt or misuse their authority, they are severely punished.\n\nPolice Officers are supported by Police Community Support Officers (PCSOs). PCSOs usually patrol the streets, work with the public, and support police officers at crime scenes and major events.\n\nIf you are arrested, a police officer will tell you the reason for your arrest and you will be able to seek legal advice.\n\nComplaints about the police can be made by going to a police station or writing to the Chief Constable. Complaints can also be made to an independent body: the Independent Police Complaints Commission (England and Wales), the Police Complaints Commissioner for Scotland, or the Police Ombudsman for Northern Ireland."
+    },
+    {
+      "heading": "Terrorism and Extremism",
+      "content": "The UK faces a range of terrorist threats. All terrorist groups try to radicalise and recruit people to their cause. It is important that all citizens feel safe, including feeling safe from all kinds of extremism — defined as vocal or active opposition to fundamental British values. This includes religious extremism and far-right extremism.\n\nIf you think someone is trying to persuade you to join an extremist or terrorist cause, you should notify your local police force."
+    }
+  ],
+  "key_facts": [
+    "Every person in the UK receives equal treatment under the law.",
+    "Criminal law covers crimes investigated by the police and punished by the courts.",
+    "Civil law is used to settle disputes between individuals or groups.",
+    "It is a criminal offence to carry a weapon of any kind, even for self-defence.",
+    "Selling or buying drugs such as heroin, cocaine, ecstasy and cannabis is illegal.",
+    "It is illegal to sell tobacco products to anyone under 18.",
+    "It is against the law to smoke in nearly every enclosed public place.",
+    "It is a criminal offence to sell alcohol to anyone under 18.",
+    "It is a criminal offence to buy alcohol for someone under 18.",
+    "People aged 16 or over can drink alcohol with a meal in a hotel or restaurant.",
+    "Housing law, consumer rights, employment law and debt are examples of civil law.",
+    "The three duties of the police are: protect life and property, prevent disturbances, prevent and detect crime.",
+    "Police forces are headed by Chief Constables and are independent of government.",
+    "Police and Crime Commissioners (PCCs) were elected in England and Wales in November 2012.",
+    "PCCs set local police priorities and budget, and appoint the Chief Constable.",
+    "PCSOs (Police Community Support Officers) support police officers.",
+    "Complaints about police can go to the Independent Police Complaints Commission (England and Wales).",
+    "Extremism is defined as vocal or active opposition to fundamental British values.",
+    "If someone tries to recruit you to an extremist cause, notify your local police."
+  ],
+  "memory_hook": "Police 3 duties: 'Protect life, Prevent disturbance, Prevent/detect crime'. Criminal vs Civil: 'Criminal = police investigate and courts punish; Civil = disputes between people'. Alcohol age rules: sell to under-18 = criminal offence; 16+ can drink with a meal.",
+  "questions": [
+    {"prompt": "What is the difference between criminal and civil law?", "options": ["Criminal law covers crimes punished by courts; civil law settles disputes between people", "Criminal law is more serious than civil law", "Criminal law involves prison; civil law involves fines", "They are the same thing"], "correct_index": 0, "explanation": "Criminal law relates to crimes investigated by police and punished by courts. Civil law settles disputes between individuals or groups."},
+    {"prompt": "Is it legal to carry a knife for self-defence?", "options": ["No - it is a criminal offence to carry any weapon, even for self-defence", "Yes, if you have a licence", "Yes, for self-defence only", "Only in certain areas"], "correct_index": 0, "explanation": "It is a criminal offence to carry a weapon of any kind, even if it is for self-defence."},
+    {"prompt": "Is it illegal to sell tobacco to a 17-year-old?", "options": ["Yes - it is illegal to sell tobacco to anyone under 18", "No - they can buy it with parental consent", "Only cigarettes, not other tobacco", "No - the age limit is 16"], "correct_index": 0, "explanation": "It is illegal to sell tobacco products to anyone under the age of 18."},
+    {"prompt": "What are the three duties of the police?", "options": ["Protect life and property, prevent disturbances, prevent and detect crime", "Arrest criminals, investigate crimes, appear in court", "Patrol streets, respond to calls, keep records", "Protect the government, keep order, investigate fraud"], "correct_index": 0, "explanation": "The three duties of the police are to protect life and property, prevent disturbances (keep the peace), and prevent and detect crime."},
+    {"prompt": "Are police forces independent of the government?", "options": ["Yes - police forces are independent of the government", "No - they report to the Home Secretary", "Only local police forces", "Only in Scotland"], "correct_index": 0, "explanation": "The police are organised into separate police forces headed by Chief Constables and are independent of the government."},
+    {"prompt": "What are Police and Crime Commissioners (PCCs)?", "options": ["Directly elected individuals who oversee local police forces in England and Wales", "Senior police officers", "Government-appointed officials", "Members of Parliament responsible for policing"], "correct_index": 0, "explanation": "PCCs are directly elected individuals responsible for an efficient and effective police force in their area. They were first elected in November 2012."},
+    {"prompt": "What do PCCs do?", "options": ["Set local police priorities, set the budget, and appoint the Chief Constable", "Arrest criminals and lead investigations", "Make new laws about policing", "Only deal with complaints about police"], "correct_index": 0, "explanation": "PCCs set local police priorities and the local policing budget, and appoint the Chief Constable."},
+    {"prompt": "What are PCSOs?", "options": ["Police Community Support Officers who support police officers", "Senior police commanders", "A type of private security officer", "Government inspectors of police"], "correct_index": 0, "explanation": "PCSOs (Police Community Support Officers) usually patrol the streets, work with the public, and support police officers at crime scenes and major events."},
+    {"prompt": "Where can you complain about the police in England and Wales?", "options": ["The Independent Police Complaints Commission", "The Home Office", "The House of Commons", "The Prime Minister's Office"], "correct_index": 0, "explanation": "Complaints about the police in England and Wales can be made to the Independent Police Complaints Commission."},
+    {"prompt": "What is extremism defined as?", "options": ["Vocal or active opposition to fundamental British values", "Any political protest", "Only violent action", "Any criticism of government policy"], "correct_index": 0, "explanation": "Extremism is defined as vocal or active opposition to fundamental British values, including religious extremism and far-right extremism."},
+    {"prompt": "What should you do if someone tries to recruit you to an extremist cause?", "options": ["Notify your local police force", "Contact your local MP", "Report it to the Home Office", "Ignore them"], "correct_index": 0, "explanation": "If you think someone is trying to persuade you to join an extremist or terrorist cause, you should notify your local police force."},
+    {"prompt": "What is an example of civil law?", "options": ["A dispute between a landlord and tenant over repairs", "A knife crime", "Drug dealing", "Racial harassment"], "correct_index": 0, "explanation": "Housing law - disputes between landlords and tenants over repairs and eviction - is an example of civil law."},
+    {"prompt": "What is an example of criminal law?", "options": ["Carrying a weapon for self-defence", "A dispute over faulty goods", "An unfair dismissal from work", "A debt owed between friends"], "correct_index": 0, "explanation": "Carrying a weapon of any kind, even for self-defence, is a criminal offence."},
+    {"prompt": "Can a 16-year-old drink alcohol in a restaurant?", "options": ["Yes - with a meal, if with someone over 18", "No - not until 18", "Yes, anytime", "Only soft drinks"], "correct_index": 0, "explanation": "People aged 16 or over can drink wine or beer with a meal in a hotel or restaurant if with someone over 18."},
+    {"prompt": "Is it a criminal offence to sell alcohol to an 18-year-old?", "options": ["No - it is only illegal to sell to those under 18", "Yes, it requires a licence", "Only in Scotland", "Yes, under 21 is illegal"], "correct_index": 0, "explanation": "It is a criminal offence to sell alcohol to anyone under 18. Selling to an 18-year-old is perfectly legal."},
+    {"prompt": "Where can complaints about Scottish police be made?", "options": ["The Police Complaints Commissioner for Scotland", "The Independent Police Complaints Commission", "The Scottish Parliament", "The Chief Constable only"], "correct_index": 0, "explanation": "In Scotland, complaints about the police can be made to the Police Complaints Commissioner for Scotland."}
+  ],
+  "flashcards": [
+    ["Criminal law definition?", "Crimes investigated by police, punished by courts"],
+    ["Civil law definition?", "Settles disputes between individuals or groups"],
+    ["Carrying a weapon - legal?", "No - criminal offence even for self-defence"],
+    ["Selling tobacco to under-18?", "Illegal"],
+    ["Smoking in public places?", "Against the law in nearly every enclosed public place"],
+    ["Selling alcohol to under-18?", "Criminal offence"],
+    ["Buying alcohol for under-18?", "Criminal offence"],
+    ["16-year-old and alcohol?", "Can drink wine/beer with a meal if with someone over 18"],
+    ["3 police duties?", "Protect life/property, prevent disturbance, prevent/detect crime"],
+    ["Police independent of?", "The government"],
+    ["What are PCCs?", "Directly elected - set priorities, budget, appoint Chief Constable"],
+    ["When were PCCs elected?", "November 2012 (England and Wales)"],
+    ["What are PCSOs?", "Police Community Support Officers"],
+    ["Police complaints - England/Wales?", "Independent Police Complaints Commission"],
+    ["Police complaints - Scotland?", "Police Complaints Commissioner for Scotland"],
+    ["Police complaints - NI?", "Police Ombudsman for Northern Ireland"],
+    ["Extremism definition?", "Vocal or active opposition to fundamental British values"],
+    ["Extremist recruitment - what to do?", "Notify your local police force"],
+    ["Housing dispute = which law?", "Civil law"],
+    ["Employment dispute = which law?", "Civil law"]
+  ],
+  "supportive_messages": {
+    "high_score": "Excellent! You know UK law and the police inside out! ⚖️",
+    "medium_score": "Good work! Review the criminal vs civil law examples! 📚",
+    "low_score": "Keep studying - knowing the law is essential for the test! 💪"
+  }
+}
