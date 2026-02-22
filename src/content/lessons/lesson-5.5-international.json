@@ -60,7 +60,7 @@
     {"prompt": "How many countries are members of the UN?", "options": ["More than 190", "More than 100", "54", "27"], "correct_index": 0, "explanation": "The UN is an international organisation with more than 190 countries as members."},
     {"prompt": "Why was the UN set up?", "options": ["To prevent war and promote international peace and security", "To manage world trade", "To protect human rights", "To help developing countries"], "correct_index": 0, "explanation": "The UN was set up after the Second World War and aims to prevent war and promote international peace and security."},
     {"prompt": "How many members does the UN Security Council have?", "options": ["15", "5", "190", "50"], "correct_index": 0, "explanation": "There are 15 members on the UN Security Council."},
-    {"prompt": "Is the UK a permanent member of the UN Security Council?", "options": ["Yes - one of five permanent members", "No", "Yes, but only temporary", "It is an observer only"], "correct_index": 0, "explanation": "The UK is one of five permanent members of the UN Security Council."},
+    {"prompt": "What is the UK's status on the UN Security Council?", "options": ["One of five permanent members", "The UK is not a member of the Security Council", "A temporary member only", "An observer only"], "correct_index": 0, "explanation": "The UK is one of five permanent members of the UN Security Council."},
     {"prompt": "What does NATO require of its members?", "options": ["To help each other if they come under attack", "To share economic resources", "To maintain the same laws", "To use the same currency"], "correct_index": 0, "explanation": "NATO members have agreed to help each other if they come under attack."}
   ],
   "flashcards": [
