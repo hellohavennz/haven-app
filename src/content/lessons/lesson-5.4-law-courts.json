@@ -66,7 +66,7 @@
     {"prompt": "What does the Court of Session deal with?", "options": ["Serious civil cases in Scotland", "Criminal cases in Scotland", "All Scottish cases", "Appeals only"], "correct_index": 0, "explanation": "More serious civil cases in Scotland are dealt with in the Court of Session in Edinburgh."}
   ],
   "flashcards": [
-    ["UK signed European Convention?", "1950"],
+    ["When did the UK sign the European Convention on Human Rights?", "1950"],
     ["Human Rights Act?", "1998 (incorporated Convention into UK law)"],
     ["Forced marriage?", "Criminal offence"],
     ["Forced Marriage Protection Orders?", "Introduced 2008"],

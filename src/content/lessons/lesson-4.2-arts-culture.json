@@ -88,7 +88,7 @@
     {"prompt": "How many Oscars has Nick Park won for animation?", "options": ["Four, including three for Wallace and Gromit films", "One", "Two", "Three"], "correct_index": 0, "explanation": "Nick Park has won four Oscars for his animated films, including three for films featuring Wallace and Gromit."}
   ],
   "flashcards": [
-    ["Proms organised by whom since 1927?", "The BBC"],
+    ["Who has organised the Proms since 1927?", "The BBC"],
     ["Henry Purcell's role?", "Organist at Westminster Abbey (1659-95)"],
     ["Handel became British citizen?", "1727"],
     ["Handel's Easter work?", "Messiah"],

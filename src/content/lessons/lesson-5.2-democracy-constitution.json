@@ -87,7 +87,7 @@
     {"prompt": "Who can vote in all public elections in the UK?", "options": ["UK citizens, and Commonwealth/Irish Republic citizens resident in the UK", "Only UK citizens", "All EU citizens resident in the UK", "Anyone over 18 living in the UK"], "correct_index": 0, "explanation": "Adult citizens of the UK, and citizens of the Commonwealth and the Irish Republic resident in the UK, can vote in all public elections."}
   ],
   "flashcards": [
-    ["Voting age reduced to 18?", "1969"],
+    ["When was the voting age reduced to 18?", "1969"],
     ["Women first given the vote?", "1918 (women over 30)"],
     ["All adults got the vote?", "1928 (over 21)"],
     ["Who were the Chartists?", "Voting reform campaigners, 1830s-1840s"],

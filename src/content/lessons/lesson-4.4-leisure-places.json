@@ -86,7 +86,7 @@
     {"prompt": "How many national parks are in England, Wales and Scotland?", "options": ["15", "10", "20", "12"], "correct_index": 0, "explanation": "There are 15 national parks in England, Wales and Scotland."}
   ],
   "flashcards": [
-    ["Films first shown publicly in UK?", "1896"],
+    ["When were films first shown publicly in the UK?", "1896"],
     ["Charlie Chaplin famous for?", "Tramp character in silent movies"],
     ["Highest-grossing UK film franchises?", "Harry Potter and James Bond"],
     ["BAFTA equivalent of?", "The Oscars"],
