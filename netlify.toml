@@ -1,0 +1,38 @@
+# ── Build ────────────────────────────────────────────────────────────────────
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# ── SPA fallback (client-side routing) ───────────────────────────────────────
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Security headers ──────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    # Prevent MIME-type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Block the site from being embedded in an iframe (clickjacking)
+    X-Frame-Options = "DENY"
+
+    # Limit referrer info sent to third parties
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Restrict access to browser APIs the app doesn't need
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+    # Enforce HTTPS for 2 years once deployed on a real domain
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+    # Content Security Policy
+    # - script-src 'self'          → only scripts from this origin
+    # - style-src 'self' 'unsafe-inline' → Tailwind/React may inject inline styles
+    # - connect-src                → Supabase REST + WebSocket (realtime)
+    # - img-src data:              → base64 images used by some UI libraries
+    # - frame-src / object-src     → nothing embedded
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
