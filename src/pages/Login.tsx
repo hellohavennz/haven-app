@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signIn, signInWithGoogle } from "../lib/auth";
 import { LogIn, AlertCircle } from "lucide-react";
 
@@ -9,6 +9,8 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as any)?.from?.pathname ?? '/dashboard';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ export default function Login() {
 
     try {
       await signIn(email, password);
-      navigate("/dashboard");
+      navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.message || "Failed to sign in");
     } finally {

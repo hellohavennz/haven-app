@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 import RootLayout from './layouts/RootLayout';
+import RequireAuth from './components/RequireAuth';
 import App from './App';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -23,20 +24,28 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
+      // Public routes
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'content', element: <ContentIndex /> },
-      { path: 'content/:lessonId', element: <ContentLesson /> },
-      { path: 'practice', element: <PracticeIndex /> },
-      { path: 'practice/:lessonId', element: <PracticeLesson /> },
-      { path: 'practice/:lessonId/questions', element: <PracticeLesson /> },
-      { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
-      { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
-      { path: 'exam', element: <Exam /> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
+
+      // Protected routes — redirect to /login if not authenticated
+      {
+        element: <RequireAuth />,
+        children: [
+          { path: 'dashboard', element: <Dashboard /> },
+          { path: 'content', element: <ContentIndex /> },
+          { path: 'content/:lessonId', element: <ContentLesson /> },
+          { path: 'practice', element: <PracticeIndex /> },
+          { path: 'practice/:lessonId', element: <PracticeLesson /> },
+          { path: 'practice/:lessonId/questions', element: <PracticeLesson /> },
+          { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
+          { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
+          { path: 'exam', element: <Exam /> },
+        ],
+      },
     ],
   },
 ]);
