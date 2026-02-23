@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 
 import { getCurrentUser } from "../lib/auth";
-import { hasAccessToModuleSync } from "../lib/access"; // FIXED: Use sync version
+import { hasAccessToModuleSync } from "../lib/access";
+import { useSubscription } from "../lib/subscription";
 
 import {
   getAllLessons,
@@ -35,6 +36,7 @@ export default function ContentIndex() {
   const allLessons = useMemo(() => getAllLessons(), []);
   const [progressData, setProgressData] = useState<ProgressRecord>({});
   const [user, setUser] = useState<any>(null);
+  const { tier } = useSubscription();
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -241,7 +243,7 @@ export default function ContentIndex() {
               callToActionLabel,
             }) => {
               // FIXED: Use sync version with user object
-              const hasAccess = hasAccessToModuleSync(module.slug, user);
+              const hasAccess = hasAccessToModuleSync(module.slug, user, tier);
               const isLocked = !hasAccess;
 
               return (

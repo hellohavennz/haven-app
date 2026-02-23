@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Clock, FileCheck, Trophy, Target, ArrowRight, Lock } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
+import { useSubscription } from "../lib/subscription";
 
 export default function Exam() {
   const [user, setUser] = useState<any>(null);
+  const { tier } = useSubscription();
 
   useEffect(() => {
     getCurrentUser().then(setUser);
   }, []);
 
-  const hasAccess = user && user.user_metadata?.isPremium === true;
+  const hasAccess = user && (tier === 'plus' || tier === 'premium');
 
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">

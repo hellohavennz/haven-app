@@ -4,6 +4,7 @@ import { getAllProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight } from 'lucide-react';
+import { useSubscription } from '../lib/subscription';
 
 interface LessonProgressData {
   attempted: number;
@@ -14,6 +15,7 @@ const Dashboard: React.FC = () => {
   const [progress, setProgress] = useState<Record<string, LessonProgressData>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
+  const { tier, isLoading: tierLoading } = useSubscription();
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -22,9 +24,9 @@ const Dashboard: React.FC = () => {
     setIsLoading(false);
   }, []);
 
-  const hasFullAccess = user && user.user_metadata?.isPremium === true;
+  const hasFullAccess = user && (tier === 'plus' || tier === 'premium');
 
-  if (isLoading) {
+  if (isLoading || tierLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-xl text-gray-600">Loading...</div>

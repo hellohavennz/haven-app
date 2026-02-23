@@ -1,4 +1,4 @@
-import { checkSubscriptionStatus } from './subscription';
+import { checkSubscriptionStatus, SubscriptionTier } from './subscription';
 
 // Define which modules are free vs paid
 const FREE_MODULES = [
@@ -25,19 +25,19 @@ export async function hasAccessToModule(moduleSlug: string, user: any): Promise<
   return tier === 'plus' || tier === 'premium';
 }
 
-// Synchronous version for immediate checks (uses user object directly)
-export function hasAccessToModuleSync(moduleSlug: string, user: any): boolean {
+// Synchronous version for immediate checks.
+// Pass the tier from useSubscription() — do NOT use user_metadata,
+// which can be self-modified by any authenticated user.
+export function hasAccessToModuleSync(moduleSlug: string, user: any, tier: SubscriptionTier = 'free'): boolean {
   // Not logged in = no access
   if (!user) {
     return false;
   }
-  
+
   // Free modules always accessible
   if (FREE_MODULES.includes(moduleSlug)) {
     return true;
   }
-  
-  // Check tier from user metadata (for immediate rendering)
-  const tier = user.user_metadata?.tier || 'free';
+
   return tier === 'plus' || tier === 'premium';
 }
