@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { getLessonsForModule, getModules } from "../lib/content";
-import { getAllProgress } from "../lib/progress";
+import { useProgress } from "../lib/progress";
 import { getCurrentUser } from "../lib/auth";
 import { hasAccessToModule } from "../lib/access";
 
@@ -30,12 +30,13 @@ export default function PracticeSidebar({
   const [expandedModule, setExpandedModule] = useState<string | null>(
     modules[0]?.slug ?? null
   );
-  const [progressData, setProgressData] = useState<ProgressRecord>({});
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
   }, []);
+
+  const progressData = useProgress(user?.id);
 
   const totalLessons = modules.reduce((sum, module) => sum + module.count, 0);
 
@@ -61,13 +62,6 @@ export default function PracticeSidebar({
 
   const lastPathnameRef = useRef<string | null>(null);
 
-  useEffect(() => {
-    try {
-      setProgressData(getAllProgress());
-    } catch (error) {
-      console.error("Failed to load practice progress", error);
-    }
-  }, [location.pathname]);
 
   useEffect(() => {
     const pathname = location.pathname;

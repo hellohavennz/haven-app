@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProgress } from '../lib/progress';
+import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight } from 'lucide-react';
@@ -12,17 +12,18 @@ interface LessonProgressData {
 }
 
 const Dashboard: React.FC = () => {
-  const [progress, setProgress] = useState<Record<string, LessonProgressData>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const { tier, isLoading: tierLoading } = useSubscription();
 
   useEffect(() => {
-    getCurrentUser().then(setUser);
-    const progressData = getAllProgress();
-    setProgress(progressData);
-    setIsLoading(false);
+    getCurrentUser().then(u => {
+      setUser(u);
+      setIsLoading(false);
+    });
   }, []);
+
+  const progress = useProgress(user?.id);
 
   const hasFullAccess = user && (tier === 'plus' || tier === 'premium');
 

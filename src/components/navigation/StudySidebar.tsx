@@ -9,7 +9,7 @@ import {
   Trophy
 } from "lucide-react";
 import { getLessonsForModule, getModules } from "../../lib/content";
-import { getAllProgress } from "../../lib/progress";
+import { useProgress } from "../../lib/progress";
 import { getCurrentUser } from "../../lib/auth";
 import { hasAccessToModule } from "../../lib/access";
 
@@ -24,12 +24,13 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const location = useLocation();
   const modules = useMemo(() => getModules(), []);
   const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.slug ?? null);
-  const [progressData, setProgressData] = useState<ProgressRecord>({});
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
   }, []);
+
+  const progressData = useProgress(user?.id);
 
   const totalLessons = modules.reduce((sum, module) => sum + module.count, 0);
 
@@ -73,14 +74,6 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
     });
   }, [location.pathname, modules]);
 
-  useEffect(() => {
-    try {
-      const progress = getAllProgress();
-      setProgressData(progress);
-    } catch (error) {
-      console.error("Failed to load lesson progress", error);
-    }
-  }, [location.pathname]);
 
   const toggleModule = (slug: string) => {
     setExpandedModule((current) => (current === slug ? null : slug));

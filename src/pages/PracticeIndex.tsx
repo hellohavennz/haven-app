@@ -18,7 +18,7 @@ import {
   getLessonsForModule,
   getModules,
 } from "../lib/content";
-import { getAllProgress } from "../lib/progress";
+import { useProgress } from "../lib/progress";
 
 type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 
@@ -33,37 +33,13 @@ function getAccuracy(progress?: { attempted: number; correct: number }) {
 export default function PracticeIndex() {
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
-  const [progressData, setProgressData] = useState<ProgressRecord>({});
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
   }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const syncProgress = () => {
-      try {
-        setProgressData(getAllProgress());
-      } catch (error) {
-        console.error("Failed to read practice progress", error);
-      }
-    };
-
-    syncProgress();
-
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key === "lesson-progress") {
-        syncProgress();
-      }
-    };
-
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+  const progressData = useProgress(user?.id);
 
   const lessonsWithQuestions = useMemo(
     () => allLessons.filter((lesson) => (lesson.questions?.length ?? 0) > 0),
