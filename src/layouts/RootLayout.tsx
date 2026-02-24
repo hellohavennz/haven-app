@@ -10,6 +10,8 @@ import AskPippa from "../components/AskPippa";
 import { preloadContent } from "../lib/content";
 import { checkSubscriptionStatus } from "../lib/subscription";
 import { preloadOnboarding } from "../lib/onboarding";
+import { recordLoginEvent } from "../lib/adminApi";
+import { supabase } from "../lib/supabase";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -18,7 +20,13 @@ export default function RootLayout() {
 
   useEffect(() => {
     Promise.all([preloadContent(), checkSubscriptionStatus(), preloadOnboarding()])
-      .then(() => setContentReady(true))
+      .then(() => {
+        setContentReady(true);
+        // Fire-and-forget: record today's login for DAU/WAU/MAU tracking
+        supabase.auth.getUser().then(({ data }) => {
+          if (data.user) recordLoginEvent(data.user.id);
+        });
+      })
       .catch(err => {
         console.error('Failed to load content:', err);
         setContentReady(true); // unblock the UI even on error

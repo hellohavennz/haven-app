@@ -21,6 +21,7 @@ import Welcome from './pages/Welcome';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import Profile from './pages/Profile';
+import Admin from './pages/Admin';
 import { ThemeProvider } from './context/ThemeContext';
 
 const router = createBrowserRouter([
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
           { path: 'exam/drill', element: <ExamDrill /> },
           { path: 'welcome', element: <Welcome /> },
           { path: 'profile', element: <Profile /> },
+          { path: 'admin', element: <Admin /> },
         ],
       },
     ],
