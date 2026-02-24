@@ -175,7 +175,7 @@ BEGIN
         (SELECT count(*) FROM public.user_progress up WHERE up.user_id = p.id AND up.completed = true)  AS lessons_completed,
         (SELECT count(*) FROM public.exam_attempts ea WHERE ea.user_id = p.id)                           AS total_exams,
         (SELECT count(*) FROM public.exam_attempts ea WHERE ea.user_id = p.id AND ea.passed = true)      AS exams_passed,
-        (SELECT round(100.0 * avg(correct::float / total), 1) FROM public.exam_attempts ea WHERE ea.user_id = p.id) AS avg_exam_score
+        (SELECT round(avg(correct::numeric / total), 1) * 100 FROM public.exam_attempts ea WHERE ea.user_id = p.id) AS avg_exam_score
       FROM public.profiles p
       JOIN auth.users au ON au.id = p.id
       ORDER BY p.created_at DESC
@@ -205,11 +205,11 @@ BEGIN
       FROM public.exam_attempts
     ),
     'avg_score_pct',        (
-      SELECT round(100.0 * avg(correct::float / total), 1)
+      SELECT round((100.0 * avg(correct::numeric / total))::numeric, 1)
       FROM public.exam_attempts
     ),
     'avg_duration_seconds', (
-      SELECT round(avg(duration_seconds))
+      SELECT round(avg(duration_seconds)::numeric)
       FROM public.exam_attempts
     ),
     'recent',               (
