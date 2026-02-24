@@ -1,11 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
-import { getLessonById } from '../lib/content';
+import { getLessonById, getAllLessons } from '../lib/content';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ContentLesson: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const lesson = lessonId ? getLessonById(lessonId) : null;
+  const allLessons = getAllLessons();
+  const currentIndex = allLessons.findIndex(l => l.id === lessonId);
+  const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
+  const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
 
   if (!lesson) {
     return (
@@ -77,6 +82,41 @@ const ContentLesson: React.FC = () => {
             Flashcards
           </Link>
         </div>
+
+        {/* Prev / Next lesson navigation */}
+        {(prevLesson || nextLesson) && (
+          <div className="mt-10 border-t border-gray-200 dark:border-gray-800 pt-6 grid grid-cols-2 gap-4">
+            {prevLesson ? (
+              <Link
+                to={`/content/${prevLesson.id}`}
+                className="group flex flex-col gap-0.5 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 hover:border-teal-300 hover:bg-teal-50 dark:hover:border-teal-700 dark:hover:bg-teal-900/20 transition-colors"
+              >
+                <span className="flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  Previous
+                </span>
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                  {prevLesson.title}
+                </span>
+              </Link>
+            ) : <div />}
+
+            {nextLesson ? (
+              <Link
+                to={`/content/${nextLesson.id}`}
+                className="group flex flex-col gap-0.5 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 text-right hover:border-teal-300 hover:bg-teal-50 dark:hover:border-teal-700 dark:hover:bg-teal-900/20 transition-colors"
+              >
+                <span className="flex items-center gap-1 justify-end text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                  Next
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </span>
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                  {nextLesson.title}
+                </span>
+              </Link>
+            ) : <div />}
+          </div>
+        )}
       </div>
     </div>
   );
