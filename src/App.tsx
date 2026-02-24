@@ -124,7 +124,7 @@ const planPlusFeatures = [
   "All flashcards for every lesson",
   "2 mock exams (45 min timer)",
   "Progress tracking",
-  "Resit Support if you fail",
+  "Resit Support — 1 free month if you fail",
 ];
 
 const planPremiumExtras = [
@@ -137,7 +137,7 @@ const planPremiumExtras = [
 
 const trustSignals = [
   { icon: Clock, title: "Instant Access", description: "Start learning immediately after purchase" },
-  { icon: Award, title: "Resit Support", description: "Fail after completing the course? We cover your resit" },
+  { icon: Award, title: "Resit Support", description: "Fail after completing the course? Get 1 month free to keep studying" },
   { icon: CheckCircle2, title: "Cancel Anytime", description: "No long-term commitment required" },
 ];
 

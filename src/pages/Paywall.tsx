@@ -143,7 +143,7 @@ export default function Paywall() {
                 'All flashcards for every lesson',
                 '2 mock exams (45 min timer)',
                 'Progress tracking',
-                'Resit Support if you fail',
+                'Resit Support — 1 free month if you fail',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
