@@ -9,6 +9,7 @@ import StudySidebar from "../components/navigation/StudySidebar";
 import AskPippa from "../components/AskPippa";
 import { preloadContent } from "../lib/content";
 import { checkSubscriptionStatus } from "../lib/subscription";
+import { preloadOnboarding } from "../lib/onboarding";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -16,7 +17,7 @@ export default function RootLayout() {
   const [contentReady, setContentReady] = useState(false);
 
   useEffect(() => {
-    Promise.all([preloadContent(), checkSubscriptionStatus()])
+    Promise.all([preloadContent(), checkSubscriptionStatus(), preloadOnboarding()])
       .then(() => setContentReady(true))
       .catch(err => {
         console.error('Failed to load content:', err);

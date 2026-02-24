@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Check, Sparkles, Crown, Zap, ArrowRight, BookOpen, BadgeCheck } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
+import { useEffect, useState } from 'react';
+import { getCurrentUser } from '../lib/auth';
 
 type Plan = 'free' | 'plus' | 'premium';
 
@@ -13,6 +15,11 @@ function isUpgrade(current: Plan, target: Plan) {
 export default function Paywall() {
   const navigate = useNavigate();
   const { tier: currentTier, isLoading } = useSubscription();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    getCurrentUser().then(u => setIsLoggedIn(!!u));
+  }, []);
 
   function handleSelectPlan(plan: Plan) {
     if (plan === currentTier) return;
@@ -129,14 +136,16 @@ export default function Paywall() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-gray-600">
-            Already have an account?{' '}
-            <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
-              Log in here
-            </Link>
-          </p>
-        </div>
+        {!isLoggedIn && (
+          <div className="mt-12 text-center">
+            <p className="text-gray-600">
+              Already have an account?{' '}
+              <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
+                Log in here
+              </Link>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

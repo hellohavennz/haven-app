@@ -40,6 +40,31 @@ export function getDaysUntilExam(): number | null {
   return diff > 0 ? diff : null;
 }
 
+/** Hydrates localStorage from Supabase if the user has completed onboarding but localStorage is empty. */
+export async function preloadOnboarding(): Promise<void> {
+  if (isOnboardingComplete()) return; // already in localStorage
+
+  try {
+    const user = await getCurrentUser();
+    if (!user) return;
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('onboarding_complete, exam_date, study_goal')
+      .eq('id', user.id)
+      .single();
+
+    if (profile?.onboarding_complete) {
+      const data: OnboardingData = {
+        examDate: profile.exam_date ?? null,
+        studyGoal: (profile.study_goal as StudyGoal) ?? 'regular',
+        completedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+  } catch { /* ignore */ }
+}
+
 export async function saveOnboarding(
   examDate: string | null,
   studyGoal: StudyGoal
