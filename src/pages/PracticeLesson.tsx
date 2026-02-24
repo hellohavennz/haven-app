@@ -4,6 +4,7 @@ import { getLessonById } from "../lib/content";
 import { recordAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
 import type { Question } from "../types";
+import ReportButton from "../components/ReportButton";
 
 function shuffle<T>(arr: T[]): T[] {
   const shuffled = arr.slice();
@@ -522,6 +523,13 @@ export default function PracticeLesson() {
               >
                 {currentQIdx < totalQuestions - 1 ? "Next Question →" : "See Results →"}
               </button>
+              <div className="flex justify-center pt-1">
+                <ReportButton
+                  lessonId={data.id}
+                  contentType="question"
+                  contentRef={String(currentQIdx)}
+                />
+              </div>
             </div>
           )}
         </div>

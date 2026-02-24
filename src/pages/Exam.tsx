@@ -8,6 +8,8 @@ import {
   ArrowRight,
   CheckCircle2,
   XCircle,
+  Shuffle,
+  Lock,
 } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
@@ -24,7 +26,8 @@ export default function Exam() {
     setHistory(getExamHistory());
   }, []);
 
-  const hasAccess = user && (tier === "plus" || tier === "premium");
+  const hasPlus = user && (tier === "plus" || tier === "premium");
+  const hasPremium = user && tier === "premium";
   const readiness = getReadinessStatus(history);
   const recentHistory = history.slice(0, 5);
 
@@ -71,19 +74,33 @@ export default function Exam() {
         </div>
       )}
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* Mock Exam 1 */}
+      <div className="grid gap-6 md:grid-cols-3">
+        {/* Mock Exam 1 — Plus + Premium */}
         <ExamCard
           title="Mock Exam 1"
-          description="Full practice test covering all topics. 45 minutes. Pass with 75% or higher."
-          hasAccess={hasAccess}
+          description="Full practice test covering all topics. Same 24 questions every time — great for revision."
+          hasAccess={hasPlus}
+          examLink="/exam/take?type=static-1"
+          badge={null}
         />
 
-        {/* Mock Exam 2 */}
+        {/* Mock Exam 2 — Plus + Premium */}
         <ExamCard
           title="Mock Exam 2"
-          description="Second full practice test with all-new questions. Perfect for final preparation."
-          hasAccess={hasAccess}
+          description="A second fixed set of 24 questions. Perfect for checking your coverage after Exam 1."
+          hasAccess={hasPlus}
+          examLink="/exam/take?type=static-2"
+          badge={null}
+        />
+
+        {/* Dynamic Exam — Premium only */}
+        <ExamCard
+          title="Dynamic Exam"
+          description="Unlimited randomised exams — different questions every time. Ideal for ongoing practice."
+          hasAccess={hasPremium}
+          examLink="/exam/take?type=dynamic"
+          badge="Premium"
+          lockedLabel="Premium only"
         />
       </div>
 
@@ -163,11 +180,11 @@ export default function Exam() {
             <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
-                <span>Questions are randomly selected from the official test bank</span>
+                <span>Mock Exam 1 and 2 use fixed question sets — same questions every time</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
-                <span>No negative marking - wrong answers don't reduce your score</span>
+                <span>No negative marking — wrong answers don't reduce your score</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
@@ -179,12 +196,6 @@ export default function Exam() {
               </li>
             </ul>
           </div>
-
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            Our mock exams are designed to replicate the actual test experience, helping you
-            prepare with confidence. Practice as many times as you need until you consistently
-            score 75% or higher.
-          </p>
         </div>
       </div>
     </div>
@@ -195,23 +206,38 @@ function ExamCard({
   title,
   description,
   hasAccess,
+  examLink,
+  badge,
+  lockedLabel,
 }: {
   title: string;
   description: string;
   hasAccess: boolean | null;
+  examLink: string;
+  badge: string | null;
+  lockedLabel?: string;
 }) {
+  const isDynamic = examLink.includes("dynamic");
+
   return (
-    <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900">
-      <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700 dark:bg-purple-900/30 dark:text-purple-200">
-        24 Questions
-      </div>
+    <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 flex flex-col">
+      {badge && !hasAccess && (
+        <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
+          <Lock className="h-3 w-3" />
+          {badge}
+        </div>
+      )}
 
       <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
-        <FileCheck className="h-7 w-7 text-white" />
+        {isDynamic ? (
+          <Shuffle className="h-7 w-7 text-white" />
+        ) : (
+          <FileCheck className="h-7 w-7 text-white" />
+        )}
       </div>
 
       <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">{title}</h3>
-      <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">{description}</p>
+      <p className="mb-6 text-sm text-gray-600 dark:text-gray-300 flex-1">{description}</p>
 
       <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
         <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
@@ -226,8 +252,8 @@ function ExamCard({
 
       {hasAccess ? (
         <Link
-          to="/exam/take"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
+          to={examLink}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg mt-auto"
         >
           Start Exam
           <ArrowRight className="h-4 w-4" />
@@ -235,9 +261,9 @@ function ExamCard({
       ) : (
         <Link
           to="/paywall"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800 mt-auto dark:bg-gray-700 dark:hover:bg-gray-600"
         >
-          Sign up to unlock
+          {lockedLabel ? `Upgrade to unlock` : "Sign up to unlock"}
           <ArrowRight className="h-4 w-4" />
         </Link>
       )}

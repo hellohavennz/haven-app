@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
   Clock,
   CheckCircle2,
@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import {
   selectExamQuestions,
+  selectStaticExamQuestions,
   saveExamAttempt,
   getExamHistory,
   syncExamHistory,
@@ -47,10 +48,24 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
+type ExamType = "static-1" | "static-2" | "dynamic";
+
 export default function ExamSession() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { tier, isLoading: subLoading } = useSubscription();
   const hasAccess = tier === "plus" || tier === "premium";
+
+  // Determine exam type from URL ?type=static-1|static-2|dynamic
+  const rawType = searchParams.get("type") ?? "dynamic";
+  const examType: ExamType =
+    rawType === "static-1" ? "static-1"
+    : rawType === "static-2" ? "static-2"
+    : "dynamic";
+
+  const isStaticExam = examType === "static-1" || examType === "static-2";
+  // Dynamic exams require Premium
+  const hasDynamicAccess = tier === "premium";
 
   const [phase, setPhase] = useState<Phase>("ready");
   const [mode, setMode] = useState<ExamMode>("strict");
@@ -110,7 +125,14 @@ export default function ExamSession() {
   }, [phase, mode]);
 
   function startExam() {
-    const qs = selectExamQuestions();
+    let qs: ExamQuestion[];
+    if (examType === "static-1") {
+      qs = selectStaticExamQuestions(1);
+    } else if (examType === "static-2") {
+      qs = selectStaticExamQuestions(2);
+    } else {
+      qs = selectExamQuestions();
+    }
     setQuestions(qs);
     setAnswers(Array(qs.length).fill(null));
     setCurrentIdx(0);
@@ -118,6 +140,8 @@ export default function ExamSession() {
     setTimesUp(false);
     setStartTime(Date.now());
     setShowReview(false);
+    // Static exams always use strict mode (real exam simulation)
+    if (isStaticExam) setMode("strict");
     setPhase("in-progress");
   }
 
@@ -181,18 +205,26 @@ export default function ExamSession() {
   const currentQ = questions[currentIdx];
 
   // ── PAYWALL ──────────────────────────────────────────────────────────────
-  if (!subLoading && !hasAccess) {
+  // Static exams require Plus or Premium; dynamic requires Premium
+  const needsUpgrade = !subLoading && (
+    !hasAccess ||
+    (!isStaticExam && !hasDynamicAccess)
+  );
+
+  if (needsUpgrade) {
+    const isDynamicLocked = hasAccess && !hasDynamicAccess && !isStaticExam;
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center space-y-6">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/40">
           <Trophy className="h-10 w-10 text-purple-600 dark:text-purple-300" />
         </div>
         <h1 className="font-semibold text-gray-900 dark:text-white">
-          Unlock Mock Exams
+          {isDynamicLocked ? "Upgrade to Premium" : "Unlock Mock Exams"}
         </h1>
         <p className="text-gray-600 dark:text-gray-300">
-          Full mock exams are available on Plus and Premium plans. Upgrade to
-          simulate the real Life in the UK test with timed, weighted questions.
+          {isDynamicLocked
+            ? "Dynamic exams with unlimited randomised question sets are a Premium feature."
+            : "Full mock exams are available on Plus and Premium plans. Upgrade to simulate the real Life in the UK test with timed, weighted questions."}
         </p>
         <Link
           to="/paywall"
@@ -214,13 +246,23 @@ export default function ExamSession() {
 
   // ── READY SCREEN ─────────────────────────────────────────────────────────
   if (phase === "ready") {
+    const examTitle =
+      examType === "static-1" ? "Mock Exam 1"
+      : examType === "static-2" ? "Mock Exam 2"
+      : "Dynamic Exam";
+
     return (
       <div ref={scrollRef} className="mx-auto max-w-2xl space-y-8 px-4 py-10">
         <div className="space-y-3 text-center">
-          <h1 className="font-semibold text-gray-900 dark:text-white">Mock Exam</h1>
+          <h1 className="font-semibold text-gray-900 dark:text-white">{examTitle}</h1>
           <p className="text-gray-600 dark:text-gray-300">
             24 questions · 45 minutes · 75% to pass (18/24)
           </p>
+          {isStaticExam && (
+            <p className="text-xs text-gray-400 dark:text-gray-500">
+              Fixed question set — same 24 questions every time
+            </p>
+          )}
         </div>
 
         {/* Stats */}
@@ -239,43 +281,51 @@ export default function ExamSession() {
           ))}
         </div>
 
-        {/* Mode selection */}
-        <div className="space-y-3">
-          <p className="font-semibold text-gray-900 dark:text-white">Choose exam mode</p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <button
-              onClick={() => setMode("strict")}
-              className={`rounded-xl border-2 p-5 text-left transition-all ${
-                mode === "strict"
-                  ? "border-purple-500 bg-purple-50 dark:bg-purple-900/20"
-                  : "border-gray-200 bg-white hover:border-purple-300 dark:border-gray-700 dark:bg-gray-900"
-              }`}
-            >
-              <div className="mb-1 font-semibold text-gray-900 dark:text-white">
-                Strict Mode
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Auto-submits when 45 minutes expires. Real exam simulation.
-              </p>
-            </button>
-            <button
-              onClick={() => setMode("relaxed")}
-              className={`rounded-xl border-2 p-5 text-left transition-all ${
-                mode === "relaxed"
-                  ? "border-teal-500 bg-teal-50 dark:bg-teal-900/20"
-                  : "border-gray-200 bg-white hover:border-teal-300 dark:border-gray-700 dark:bg-gray-900"
-              }`}
-            >
-              <div className="mb-1 font-semibold text-gray-900 dark:text-white">
-                Relaxed Mode
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Warns when 5 minutes remain but never auto-submits. Finish at
-                your own pace.
-              </p>
-            </button>
+        {/* Mode selection — only for dynamic exams */}
+        {!isStaticExam && (
+          <div className="space-y-3">
+            <p className="font-semibold text-gray-900 dark:text-white">Choose exam mode</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <button
+                onClick={() => setMode("strict")}
+                className={`rounded-xl border-2 p-5 text-left transition-all ${
+                  mode === "strict"
+                    ? "border-purple-500 bg-purple-50 dark:bg-purple-900/20"
+                    : "border-gray-200 bg-white hover:border-purple-300 dark:border-gray-700 dark:bg-gray-900"
+                }`}
+              >
+                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
+                  Strict Mode
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Auto-submits when 45 minutes expires. Real exam simulation.
+                </p>
+              </button>
+              <button
+                onClick={() => setMode("relaxed")}
+                className={`rounded-xl border-2 p-5 text-left transition-all ${
+                  mode === "relaxed"
+                    ? "border-teal-500 bg-teal-50 dark:bg-teal-900/20"
+                    : "border-gray-200 bg-white hover:border-teal-300 dark:border-gray-700 dark:bg-gray-900"
+                }`}
+              >
+                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
+                  Relaxed Mode
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Warns when 5 minutes remain but never auto-submits. Finish at
+                  your own pace.
+                </p>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
+
+        {isStaticExam && (
+          <div className="rounded-xl border border-purple-200 bg-purple-50 p-4 text-sm text-purple-800 dark:border-purple-800 dark:bg-purple-900/20 dark:text-purple-200">
+            Mock exams always run in <strong>Strict Mode</strong> — the timer auto-submits at 45 minutes, just like the real test.
+          </div>
+        )}
 
         <button
           onClick={startExam}

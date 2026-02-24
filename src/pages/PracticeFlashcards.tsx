@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getLessonById } from "../lib/content";
-import { RotateCcw } from "lucide-react";
+import { useSubscription } from "../lib/subscription";
+import { RotateCcw, Lock, ArrowRight } from "lucide-react";
+import ReportButton from "../components/ReportButton";
+
+const FREE_CARD_LIMIT = 5;
 
 function shuffle<T>(arr: T[]) {
   const a = arr.slice();
@@ -14,19 +18,37 @@ function shuffle<T>(arr: T[]) {
 
 export default function PracticeFlashcards() {
   const { lessonId } = useParams();
+  const { tier, isLoading } = useSubscription();
   const data = lessonId ? getLessonById(lessonId) : null;
-  const deck = useMemo(() => shuffle(data?.flashcards ?? []), [lessonId]);
+  const isPremium = tier === "premium";
+
+  const allCards = data?.flashcards ?? [];
+  const totalCount = allCards.length;
+
+  // Shuffle all cards; for non-premium slice to first 5
+  const deck = useMemo(() => {
+    const shuffled = shuffle(allCards);
+    return isPremium ? shuffled : shuffled.slice(0, FREE_CARD_LIMIT);
+  }, [lessonId, isPremium]);
+
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
 
   useEffect(() => { setIdx(0); setReveal(false); }, [lessonId]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6 text-gray-900 dark:text-gray-100">Not found.</div>;
-  const card = deck[idx];
+
+  // Show upgrade card when non-premium user has exhausted their sample cards
+  const showUpgradeCard = !isLoading && !isPremium && idx >= deck.length && deck.length > 0;
+  const card = showUpgradeCard ? null : deck[idx];
 
   function skip() {
     setReveal(false);
-    setIdx(i => (i + 1) % deck.length);
+    setIdx(i => {
+      const next = i + 1;
+      // Premium users cycle; non-premium advance past the limit to trigger upgrade screen
+      return (isPremium && next >= deck.length) ? 0 : next;
+    });
   }
 
   function handleCardClick() {
@@ -61,7 +83,31 @@ export default function PracticeFlashcards() {
           </p>
         </header>
 
-        {card ? (
+        {showUpgradeCard ? (
+          /* Upgrade prompt after sample cards */
+          <div className="space-y-8">
+            <div className="relative h-96 rounded-3xl flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-dashed border-gray-600">
+              <div className="text-center space-y-5">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl">
+                  <Lock className="text-white" size={32} />
+                </div>
+                <h2 className="text-2xl font-semibold text-white leading-tight">
+                  You've seen the sample flashcards
+                </h2>
+                <p className="text-gray-300">
+                  Upgrade to Premium to unlock all {totalCount} flashcards for this lesson
+                </p>
+                <Link
+                  to="/paywall"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all"
+                >
+                  Upgrade to Premium
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        ) : card ? (
           <div className="space-y-8">
             <div
               onClick={handleCardClick}
@@ -89,7 +135,7 @@ export default function PracticeFlashcards() {
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="font-semibold text-gray-900 dark:text-gray-100">
-                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {deck.length}</span>
+                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {isPremium ? totalCount : deck.length}{!isPremium && totalCount > FREE_CARD_LIMIT ? ` (${totalCount} total)` : ""}</span>
                 </span>
                 <span className="text-gray-500 dark:text-gray-400">
                   {Math.round(((idx + 1) / deck.length) * 100)}% complete
@@ -101,8 +147,23 @@ export default function PracticeFlashcards() {
                   style={{ width: `${((idx + 1) / deck.length) * 100}%` }}
                 />
               </div>
+              {!isPremium && !isLoading && totalCount > FREE_CARD_LIMIT && (
+                <p className="text-xs text-center text-gray-400 dark:text-gray-500">
+                  Sample: {FREE_CARD_LIMIT} of {totalCount} flashcards ·{" "}
+                  <Link to="/paywall" className="text-amber-500 hover:text-amber-600 font-semibold">
+                    Unlock all →
+                  </Link>
+                </p>
+              )}
             </div>
 
+            <div className="flex justify-center pt-2">
+              <ReportButton
+                lessonId={data.id}
+                contentType="flashcard"
+                contentRef={String(idx)}
+              />
+            </div>
           </div>
         ) : (
           <div className="text-center py-12 text-gray-600 dark:text-gray-300">

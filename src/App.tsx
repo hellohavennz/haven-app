@@ -119,25 +119,25 @@ const howItWorksSteps = [
 ];
 
 const planPlusFeatures = [
-  "All 20+ comprehensive lessons",
+  "All 29 comprehensive lessons",
   "500+ practice questions",
-  "Interactive flashcards",
-  "Smart progress tracking",
-  "Full mock exams",
-  "Pass guarantee",
+  "2 mock exams (45 min timer)",
+  "Progress tracking",
+  "Sample flashcards (5 per lesson)",
 ];
 
 const planPremiumExtras = [
-  { icon: Headphones, title: "Audio lessons", description: "Listen and learn on the go" },
-  { icon: FileText, title: "Downloadable study guides", description: "PDF versions for offline study" },
-  { icon: Zap, title: "Priority support", description: "Get help within 24 hours" },
-  { icon: Crown, title: "Early access", description: "New features before everyone else" },
+  { icon: Brain, title: "All flashcards", description: "Unlimited flashcards for every lesson" },
+  { icon: Headphones, title: "AI study assistant (Pippa)", description: "Get instant answers to your questions" },
+  { icon: BarChart3, title: "Performance analytics", description: "Identify weak areas with detailed insights" },
+  { icon: FileText, title: "Offline mobile access", description: "Study anywhere, no internet needed" },
+  { icon: Zap, title: "Priority email support", description: "Get help within 24 hours" },
 ];
 
 const trustSignals = [
   { icon: Clock, title: "Instant Access", description: "Start learning immediately after purchase" },
   { icon: Award, title: "Pass Guarantee", description: "Complete course and fail? Get refunded" },
-  { icon: CheckCircle2, title: "No Subscription", description: "One payment, lifetime access forever" },
+  { icon: CheckCircle2, title: "Cancel Anytime", description: "No long-term commitment required" },
 ];
 
 export default function App() {
@@ -323,7 +323,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
             <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Choose Your Plan</h2>
-            <p className="text-gray-600 dark:text-gray-300">Start free or unlock full access with lifetime plans</p>
+            <p className="text-gray-600 dark:text-gray-300">Start free, or unlock full access</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Free Plan */}
@@ -349,11 +349,11 @@ export default function App() {
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Practice questions</span>
+                  <span className="text-gray-700 dark:text-gray-200">Practice questions (free modules only)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Progress tracking</span>
+                  <span className="text-gray-700 dark:text-gray-200">Sample flashcards (5 per lesson)</span>
                 </li>
               </ul>
               <Link
@@ -374,8 +374,8 @@ export default function App() {
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£9.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">one-time</span>
+                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
+                  <span className="text-gray-600 dark:text-gray-300">per month</span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Everything you need to pass</p>
               </div>
@@ -398,15 +398,15 @@ export default function App() {
 
             {/* Haven Premium */}
             <div className="bg-white border-2 border-amber-300 dark:bg-gray-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">COMING SOON</div>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">BEST VALUE</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                   <Crown className="text-amber-600" size={32} />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£14.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">one-time</span>
+                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
+                  <span className="text-gray-600 dark:text-gray-300">per year</span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Ultimate learning experience</p>
               </div>

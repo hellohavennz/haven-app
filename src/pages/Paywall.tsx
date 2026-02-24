@@ -1,5 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Check, Sparkles, Crown, Zap, ArrowRight, BookOpen, BadgeCheck } from 'lucide-react';
+import {
+  BookOpen,
+  Sparkles,
+  Crown,
+  CheckCircle2,
+  ArrowRight,
+  Brain,
+  BarChart3,
+  Headphones,
+  FileText,
+  Zap,
+} from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from '../lib/auth';
@@ -30,278 +41,209 @@ export default function Paywall() {
     }
   }
 
+  const isCurrent = (plan: Plan) => !isLoading && currentTier === plan;
+  const canUpgrade = (plan: Plan) => !isLoading && isUpgrade(currentTier, plan);
+
+  function ctaLabel(plan: Plan, label: string) {
+    if (isLoading) return 'Loading…';
+    if (isCurrent(plan)) return 'Current Plan';
+    return label;
+  }
+
+  function ctaClass(plan: Plan, primary: string) {
+    if (isCurrent(plan)) return 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-default';
+    if (canUpgrade(plan) || !isLoading) return primary;
+    return primary;
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50 py-16 px-4">
-      <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 px-4">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal-100 dark:bg-teal-900/40 px-4 py-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
             <Sparkles className="h-4 w-4" />
             Choose Your Plan
           </div>
-          <h1 className="mb-4 font-semibold text-gray-900">
+          <h1 className="mb-4 font-semibold text-gray-900 dark:text-white">
             Pass Your Life in the UK Test
           </h1>
-          <p className="mx-auto max-w-2xl text-gray-600">
-            Join thousands who've passed on their first try. Get instant access to comprehensive study materials, practice questions, and expert guidance.
+          <p className="mx-auto max-w-2xl text-gray-600 dark:text-gray-300">
+            Start free, or unlock full access with a Plus or Premium plan.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-8">
+        <div className="grid gap-6 md:grid-cols-3">
           {/* Free Plan */}
-          <PlanCard
-            plan="free"
-            currentTier={currentTier}
-            isLoading={isLoading}
-            accentColor="teal"
-            icon={<BookOpen className="h-6 w-6 text-teal-600" />}
-            title="Free"
-            subtitle="Try Haven and get started"
-            price="£0"
-            pricePeriod="forever"
-            features={[
-              { text: <><strong>First lesson</strong> (Values &amp; Principles)</> },
-              { text: <><strong>2 free modules</strong> to explore</> },
-              { text: <><strong>Practice questions</strong> to test yourself</> },
-              { text: <><strong>Progress tracking</strong> basics</> },
-            ]}
-            footerNote="No credit card required"
-            ctaLabel="Get Free"
-            onSelect={handleSelectPlan}
-          />
+          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-gray-200 dark:border-gray-700'}`}>
+            {isCurrent('free') && (
+              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
+                Your Plan
+              </div>
+            )}
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
+                <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+              </div>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Free</h3>
+              <div className="flex items-baseline justify-center gap-2 mb-1">
+                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">forever</p>
+            </div>
+            <ul className="space-y-3 mb-8 flex-1">
+              {[
+                'First lesson (Values & Principles)',
+                '2 free modules',
+                'Practice questions (free modules only)',
+                'Sample flashcards (5 per lesson)',
+              ].map(f => (
+                <li key={f} className="flex items-start gap-3">
+                  <CheckCircle2 className="text-gray-500 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => !isCurrent('free') && handleSelectPlan('free')}
+              disabled={isCurrent('free') || isLoading}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('free', 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200')}`}
+            >
+              {ctaLabel('free', 'Get Started Free')}
+              {!isCurrent('free') && !isLoading && <ArrowRight size={18} />}
+            </button>
+            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">No credit card required</p>
+          </div>
 
           {/* Haven Plus */}
-          <PlanCard
-            plan="plus"
-            currentTier={currentTier}
-            isLoading={isLoading}
-            accentColor="emerald"
-            icon={<Zap className="h-6 w-6 text-emerald-600" />}
-            title="Haven Plus"
-            subtitle="Perfect for focused learners"
-            price="£9.99"
-            pricePeriod="one-time payment"
-            features={[
-              { text: <><strong>31 comprehensive lessons</strong> covering all official handbook content</> },
-              { text: <><strong>500+ practice questions</strong> matching the real test format</> },
-              { text: <><strong>Mock exams</strong> to simulate the real test</> },
-              { text: <><strong>Progress tracking</strong> to monitor your improvement</> },
-              { text: <><strong>Lifetime access</strong> to all study materials</> },
-            ]}
-            footerNote="One-time payment • No recurring fees"
-            ctaLabel="Get Plus"
-            onSelect={handleSelectPlan}
-          />
+          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
+            {!isCurrent('plus') && (
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
+                MOST POPULAR
+              </div>
+            )}
+            {isCurrent('plus') && (
+              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
+                Your Plan
+              </div>
+            )}
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
+                <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
+              </div>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
+              <div className="flex items-baseline justify-center gap-2 mb-1">
+                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">per month</p>
+            </div>
+            <ul className="space-y-3 mb-8 flex-1">
+              {[
+                'All 29 comprehensive lessons',
+                '500+ practice questions',
+                '2 mock exams (45 min timer)',
+                'Progress tracking',
+                'Sample flashcards (5 per lesson)',
+              ].map(f => (
+                <li key={f} className="flex items-start gap-3">
+                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => !isCurrent('plus') && handleSelectPlan('plus')}
+              disabled={isCurrent('plus') || isLoading}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('plus', 'bg-teal-600 text-white hover:bg-teal-700')}`}
+            >
+              {ctaLabel('plus', 'Get Plus')}
+              {!isCurrent('plus') && !isLoading && <ArrowRight size={18} />}
+            </button>
+            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Cancel anytime</p>
+          </div>
 
           {/* Haven Premium */}
-          <PlanCard
-            plan="premium"
-            currentTier={currentTier}
-            isLoading={isLoading}
-            accentColor="amber"
-            icon={<Crown className="h-6 w-6 text-amber-600" />}
-            title="Haven Premium"
-            subtitle="Ultimate preparation package"
-            price="£19.99"
-            pricePeriod="one-time payment"
-            badge="MOST POPULAR"
-            features={[
-              { text: <><strong>Everything in Haven Plus</strong></> },
-              { text: <><strong>AI-powered study assistant</strong> for instant answers to your questions</> },
-              { text: <><strong>4 full-length mock exams</strong> with detailed explanations</> },
-              { text: <><strong>Interactive flashcards</strong> for quick revision</> },
-              { text: <><strong>Performance analytics</strong> to identify weak areas</> },
-              { text: <><strong>Priority email support</strong> from our expert team</> },
-            ]}
-            footerNote="One-time payment • Best value • No recurring fees"
-            ctaLabel="Get Premium"
-            onSelect={handleSelectPlan}
-          />
+          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
+            {!isCurrent('premium') && (
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">
+                BEST VALUE
+              </div>
+            )}
+            {isCurrent('premium') && (
+              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white">
+                Your Plan
+              </div>
+            )}
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-4">
+                <Crown className="text-amber-600 dark:text-amber-400" size={32} />
+              </div>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
+              <div className="flex items-baseline justify-center gap-2 mb-1">
+                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">per year</p>
+            </div>
+            <ul className="space-y-3 mb-8 flex-1">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
+                <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
+              </li>
+              {[
+                { Icon: Brain, title: 'All flashcards', desc: 'Unlimited flashcards for every lesson' },
+                { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
+                { Icon: BarChart3, title: 'Performance analytics', desc: 'Identify weak areas with detailed insights' },
+                { Icon: FileText, title: 'Offline mobile access', desc: 'Study anywhere, no internet needed' },
+                { Icon: Zap, title: 'Priority email support', desc: 'Get help within 24 hours' },
+              ].map(({ Icon, title, desc }) => (
+                <li key={title} className="flex items-start gap-3">
+                  <Icon className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
+                  <div>
+                    <span className="text-gray-900 dark:text-white font-semibold">{title}</span>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => !isCurrent('premium') && handleSelectPlan('premium')}
+              disabled={isCurrent('premium') || isLoading}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-all mt-auto ${ctaClass('premium', 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg')}`}
+            >
+              {ctaLabel('premium', 'Get Premium')}
+              {!isCurrent('premium') && !isLoading && <ArrowRight size={18} />}
+            </button>
+            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Annual plan · best value</p>
+          </div>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-16 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center">
+        {/* Trust signals */}
+        <div className="mt-16 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm">
+          <div className="grid gap-8 md:grid-cols-3 text-center">
+            <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">10,000+</div>
-              <div className="text-sm font-medium text-gray-600">Students Passed</div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Students Passed</div>
             </div>
-            <div className="text-center">
+            <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">94%</div>
-              <div className="text-sm font-medium text-gray-600">First-Time Pass Rate</div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">First-Time Pass Rate</div>
             </div>
-            <div className="text-center">
+            <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">4.9/5</div>
-              <div className="text-sm font-medium text-gray-600">Average Rating</div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Average Rating</div>
             </div>
           </div>
         </div>
 
         {!isLoggedIn && (
           <div className="mt-12 text-center">
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
-              <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
+              <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
                 Log in here
               </Link>
             </p>
           </div>
         )}
-      </div>
-    </div>
-  );
-}
-
-// ── Plan card component ───────────────────────────────────────────────────
-
-type AccentColor = 'teal' | 'emerald' | 'amber';
-
-const ACCENT: Record<AccentColor, {
-  ring: string;
-  border: string;
-  check: string;
-  btnPrimary: string;
-  btnSecondary: string;
-  badge: string;
-}> = {
-  teal: {
-    ring: 'ring-teal-100 border-teal-500',
-    border: 'border-gray-200',
-    check: 'text-teal-600',
-    btnPrimary: 'bg-teal-600 text-white hover:bg-teal-700 shadow-md',
-    btnSecondary: 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200',
-    badge: 'bg-teal-500',
-  },
-  emerald: {
-    ring: 'ring-emerald-100 border-emerald-500',
-    border: 'border-gray-200',
-    check: 'text-emerald-600',
-    btnPrimary: 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md',
-    btnSecondary: 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200',
-    badge: 'bg-emerald-500',
-  },
-  amber: {
-    ring: 'ring-amber-100 border-amber-500',
-    border: 'border-amber-200',
-    check: 'text-amber-600',
-    btnPrimary: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:from-amber-600 hover:to-orange-600',
-    btnSecondary: 'bg-white text-amber-700 hover:bg-amber-50 border border-amber-200',
-    badge: 'bg-gradient-to-r from-amber-500 to-orange-500',
-  },
-};
-
-function PlanCard({
-  plan,
-  currentTier,
-  isLoading,
-  accentColor,
-  icon,
-  title,
-  subtitle,
-  price,
-  pricePeriod,
-  features,
-  footerNote,
-  badge,
-  ctaLabel,
-  onSelect,
-}: {
-  plan: Plan;
-  currentTier: Plan;
-  isLoading: boolean;
-  accentColor: AccentColor;
-  icon: React.ReactNode;
-  title: string;
-  subtitle: string;
-  price: string;
-  pricePeriod: string;
-  features: { text: React.ReactNode }[];
-  footerNote: string;
-  badge?: string;
-  ctaLabel: string;
-  onSelect: (plan: Plan) => void;
-}) {
-  const a = ACCENT[accentColor];
-  const isCurrent = !isLoading && currentTier === plan;
-  const canUpgrade = !isLoading && isUpgrade(currentTier, plan);
-  const isActive = isCurrent || canUpgrade; // clickable
-
-  const borderClass = isCurrent
-    ? `${a.ring} ring-4`
-    : a.border;
-
-  const bgClass = accentColor === 'amber'
-    ? 'bg-gradient-to-br from-amber-50 to-orange-50'
-    : 'bg-white';
-
-  function buttonLabel() {
-    if (isLoading) return 'Loading…';
-    if (isCurrent) return 'Current Plan';
-    return ctaLabel;
-  }
-
-  function buttonClass() {
-    if (isCurrent) return 'bg-gray-100 text-gray-500 cursor-default border border-gray-200';
-    if (canUpgrade || !isLoading) return a.btnPrimary;
-    return a.btnSecondary;
-  }
-
-  return (
-    <div className={`group relative flex flex-col overflow-hidden rounded-3xl border-2 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl ${borderClass} ${bgClass}`}>
-      {/* Current plan badge */}
-      {isCurrent && (
-        <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold text-white">
-          <BadgeCheck className="h-3.5 w-3.5" />
-          Your Plan
-        </div>
-      )}
-
-      {/* Most popular badge */}
-      {badge && !isCurrent && (
-        <div className={`absolute right-4 top-4 rounded-full px-4 py-1 text-xs font-semibold text-white shadow-lg ${a.badge}`}>
-          {badge}
-        </div>
-      )}
-
-      <div className="flex flex-1 flex-col p-8 md:p-10">
-        {/* Header */}
-        <div className={`mb-6 flex items-start justify-between ${isCurrent ? 'mt-8' : ''}`}>
-          <div>
-            <div className="mb-2 flex items-center gap-2">
-              {icon}
-              <h3 className="font-semibold text-gray-900">{title}</h3>
-            </div>
-            <p className="text-gray-600">{subtitle}</p>
-          </div>
-          <div className="text-right">
-            <div className="text-4xl font-semibold text-gray-900">{price}</div>
-            <div className="text-sm text-gray-500">{pricePeriod}</div>
-          </div>
-        </div>
-
-        {/* Features */}
-        <ul className="mb-8 flex-1 space-y-4">
-          {features.map((f, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <Check className={`mt-0.5 h-5 w-5 flex-shrink-0 ${a.check}`} />
-              <span className="text-gray-700">{f.text}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Button — pinned to bottom */}
-        <div className="mt-auto">
-          <button
-            onClick={() => !isCurrent && onSelect(plan)}
-            disabled={isCurrent || isLoading}
-            className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold transition-all ${buttonClass()}`}
-          >
-            {buttonLabel()}
-            {!isCurrent && !isLoading && (
-              <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
-            )}
-          </button>
-          <p className="mt-4 text-center text-sm text-gray-500">{footerNote}</p>
-        </div>
       </div>
     </div>
   );

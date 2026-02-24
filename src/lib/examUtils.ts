@@ -97,6 +97,73 @@ export function selectExamQuestions(): ExamQuestion[] {
   });
 }
 
+// ── Seeded PRNG (mulberry32) ─────────────────────────────────────────────────
+// Returns a deterministic pseudo-random function for a given seed.
+function mulberry32(seed: number): () => number {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function seededShuffle<T>(arr: T[], rng: () => number): T[] {
+  const out = arr.slice();
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+/**
+ * Selects 24 questions using a fixed seed (1 or 2) so the same questions
+ * always appear for Mock Exam 1 / Mock Exam 2, regardless of user or device.
+ * Options within each question are NOT reshuffled — they stay in original order
+ * so the correct_index is always stable.
+ */
+export function selectStaticExamQuestions(examNumber: 1 | 2): ExamQuestion[] {
+  const rng = mulberry32(examNumber);
+  const allLessons = getAllLessons();
+
+  const byModule: Record<string, ExamQuestion[]> = {};
+  for (const lesson of allLessons) {
+    if (!lesson.questions?.length) continue;
+    const mod = lesson.module_slug;
+    if (!byModule[mod]) byModule[mod] = [];
+    for (const q of lesson.questions) {
+      byModule[mod].push({ ...q, lessonId: lesson.id, moduleSlug: mod });
+    }
+  }
+
+  const selected: ExamQuestion[] = [];
+
+  for (const [mod, count] of Object.entries(MODULE_WEIGHTS)) {
+    const pool = byModule[mod] ?? [];
+    const shuffled = seededShuffle(pool, rng);
+    selected.push(...shuffled.slice(0, Math.min(count, shuffled.length)));
+  }
+
+  // Pad if short (unlikely)
+  if (selected.length < TOTAL_QUESTIONS) {
+    const usedPrompts = new Set(selected.map(q => q.prompt));
+    const extras: ExamQuestion[] = [];
+    for (const lesson of allLessons) {
+      for (const q of lesson.questions ?? []) {
+        if (!usedPrompts.has(q.prompt)) {
+          extras.push({ ...q, lessonId: lesson.id, moduleSlug: lesson.module_slug });
+        }
+      }
+    }
+    selected.push(...seededShuffle(extras, rng).slice(0, TOTAL_QUESTIONS - selected.length));
+  }
+
+  // Deterministic question order
+  return seededShuffle(selected, rng).slice(0, TOTAL_QUESTIONS);
+}
+
 export function getExamHistory(): ExamAttempt[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);

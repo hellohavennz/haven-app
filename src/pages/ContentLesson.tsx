@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
 import { getLessonById, getAllLessons } from '../lib/content';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ReportButton from '../components/ReportButton';
 
 const ContentLesson: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
@@ -60,6 +61,11 @@ const ContentLesson: React.FC = () => {
             <p className="text-gray-800 dark:text-gray-100">{lesson.memory_hook}</p>
           </div>
         )}
+
+        {/* Report issue */}
+        <div className="mt-6 flex justify-end">
+          <ReportButton lessonId={lesson.id} contentType="lesson" />
+        </div>
 
         {/* Practice Buttons */}
         <div className="mt-8 flex gap-4 justify-center flex-wrap">
