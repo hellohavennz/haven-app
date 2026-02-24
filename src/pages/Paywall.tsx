@@ -58,6 +58,7 @@ export default function Paywall() {
               { text: <><strong>Progress tracking</strong> basics</> },
             ]}
             footerNote="No credit card required"
+            ctaLabel="Get Free"
             onSelect={handleSelectPlan}
           />
 
@@ -80,6 +81,7 @@ export default function Paywall() {
               { text: <><strong>Lifetime access</strong> to all study materials</> },
             ]}
             footerNote="One-time payment • No recurring fees"
+            ctaLabel="Get Plus"
             onSelect={handleSelectPlan}
           />
 
@@ -104,6 +106,7 @@ export default function Paywall() {
               { text: <><strong>Priority email support</strong> from our expert team</> },
             ]}
             footerNote="One-time payment • Best value • No recurring fees"
+            ctaLabel="Get Premium"
             onSelect={handleSelectPlan}
           />
         </div>
@@ -190,6 +193,7 @@ function PlanCard({
   features,
   footerNote,
   badge,
+  ctaLabel,
   onSelect,
 }: {
   plan: Plan;
@@ -204,6 +208,7 @@ function PlanCard({
   features: { text: React.ReactNode }[];
   footerNote: string;
   badge?: string;
+  ctaLabel: string;
   onSelect: (plan: Plan) => void;
 }) {
   const a = ACCENT[accentColor];
@@ -222,8 +227,7 @@ function PlanCard({
   function buttonLabel() {
     if (isLoading) return 'Loading…';
     if (isCurrent) return 'Current Plan';
-    if (canUpgrade) return `Upgrade to ${title}`;
-    return `Get ${title}`;
+    return ctaLabel;
   }
 
   function buttonClass() {
