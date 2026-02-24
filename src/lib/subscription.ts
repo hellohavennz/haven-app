@@ -11,52 +11,68 @@ export type SubscriptionStatus = {
   isLoading: boolean;
 };
 
+// Module-level cache — populated by preloadSubscription() in RootLayout
+// so useSubscription() can initialise synchronously with no flash.
+let _cachedTier: SubscriptionTier | null = null;
+
+export function clearSubscriptionCache(): void {
+  _cachedTier = null;
+}
+
 // Check subscription from profiles table (source of truth)
 export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
+  if (_cachedTier !== null) return _cachedTier;
+
   const user = await getCurrentUser();
-  
-  if (!user) return 'free';
-  
+
+  if (!user) {
+    _cachedTier = 'free';
+    return 'free';
+  }
+
   try {
-    // First, try to get tier from profiles table (most reliable)
     const { data: profile, error } = await supabase
       .from('profiles')
       .select('subscription_tier')
       .eq('id', user.id)
       .single();
-    
+
     if (!error && profile?.subscription_tier) {
-      return profile.subscription_tier as SubscriptionTier;
+      _cachedTier = profile.subscription_tier as SubscriptionTier;
+      return _cachedTier;
     }
-    
-    // Fallback to user metadata if profile doesn't exist yet
+
+    // Fallback to user metadata if profile row doesn't exist yet
     const metadata = user.user_metadata || {};
-    const tier = metadata.tier as SubscriptionTier;
-    
-    return tier || 'free';
-  } catch (error) {
-    console.error('Error checking subscription:', error);
-    
-    // Final fallback to metadata
-    const metadata = user.user_metadata || {};
-    return (metadata.tier as SubscriptionTier) || 'free';
+    _cachedTier = (metadata.tier as SubscriptionTier) || 'free';
+    return _cachedTier;
+  } catch {
+    const metadata = (await getCurrentUser())?.user_metadata || {};
+    _cachedTier = (metadata.tier as SubscriptionTier) || 'free';
+    return _cachedTier;
   }
 }
 
 export function useSubscription(): SubscriptionStatus {
-  const [tier, setTier] = useState<SubscriptionTier>('free');
-  const [isLoading, setIsLoading] = useState(true);
+  // Initialise synchronously from cache — no flash if preloaded
+  const [tier, setTier] = useState<SubscriptionTier>(() => _cachedTier ?? 'free');
+  const [isLoading, setIsLoading] = useState(() => _cachedTier === null);
 
   useEffect(() => {
+    if (_cachedTier !== null) {
+      setTier(_cachedTier);
+      setIsLoading(false);
+      return;
+    }
     checkSubscriptionStatus()
       .then(setTier)
       .finally(() => setIsLoading(false));
   }, []);
 
-  return { 
+  return {
     tier,
     hasPlus: tier === 'plus' || tier === 'premium',
     hasPremium: tier === 'premium',
-    isLoading 
+    isLoading,
   };
 }
