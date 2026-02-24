@@ -42,3 +42,18 @@ export type UserSubscription = {
   tier: SubscriptionTier;
   email?: string;
 };
+
+export type ExamQuestion = Question & {
+  lessonId: string;
+  moduleSlug: string;
+};
+
+export type ExamAttempt = {
+  id: string;               // crypto.randomUUID()
+  completedAt: string;      // ISO
+  correct: number;          // 0-24
+  total: 24;
+  passed: boolean;
+  durationSeconds: number;
+  moduleScores: Record<string, { correct: number; total: number }>;
+};

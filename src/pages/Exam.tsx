@@ -1,18 +1,32 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Clock, FileCheck, Trophy, Target, ArrowRight, Lock } from "lucide-react";
+import {
+  Clock,
+  FileCheck,
+  Trophy,
+  Target,
+  ArrowRight,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
+import { getExamHistory, getReadinessStatus } from "../lib/examUtils";
+import type { ExamAttempt } from "../types";
 
 export default function Exam() {
   const [user, setUser] = useState<any>(null);
   const { tier } = useSubscription();
+  const [history, setHistory] = useState<ExamAttempt[]>([]);
 
   useEffect(() => {
     getCurrentUser().then(setUser);
+    setHistory(getExamHistory());
   }, []);
 
-  const hasAccess = user && (tier === 'plus' || tier === 'premium');
+  const hasAccess = user && (tier === "plus" || tier === "premium");
+  const readiness = getReadinessStatus(history);
+  const recentHistory = history.slice(0, 5);
 
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
@@ -32,97 +46,78 @@ export default function Exam() {
         </p>
       </div>
 
+      {/* Readiness banner */}
+      {history.length >= 1 && (
+        <div
+          className={`rounded-2xl border px-6 py-4 text-sm ${
+            readiness.ready
+              ? "border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-300"
+              : "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300"
+          }`}
+        >
+          {readiness.ready ? (
+            <p className="font-semibold">
+              You're consistently passing — you look ready for the real test!
+            </p>
+          ) : (
+            <p>
+              <span className="font-semibold">Keep going!</span> You've passed{" "}
+              {readiness.passedCount} of your last {readiness.totalRecent} exam
+              {readiness.totalRecent !== 1 ? "s" : ""}.
+              {readiness.weakModules.length > 0 &&
+                ` Focus on: ${readiness.weakModules.join(", ")}.`}
+            </p>
+          )}
+        </div>
+      )}
+
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900">
-          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700 dark:bg-purple-900/30 dark:text-purple-200">
-            24 Questions
-          </div>
+        {/* Mock Exam 1 */}
+        <ExamCard
+          title="Mock Exam 1"
+          description="Full practice test covering all topics. 45 minutes. Pass with 75% or higher."
+          hasAccess={hasAccess}
+        />
 
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
-            <FileCheck className="h-7 w-7 text-white" />
-          </div>
-
-          <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Mock Exam 1</h3>
-          <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
-            Full practice test covering all topics. 45 minutes. Pass with 75% or higher.
-          </p>
-
-          <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
-            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-              <Clock className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-              <span>45 minutes time limit</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-              <Target className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-              <span>18/24 questions needed to pass</span>
-            </div>
-          </div>
-
-          {hasAccess ? (
-            <button
-              disabled
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-200 px-6 py-3 font-semibold text-gray-500 transition-all"
-            >
-              <Lock className="h-5 w-5" />
-              Coming Soon
-            </button>
-          ) : (
-            <Link
-              to="/paywall"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800"
-            >
-              <Lock className="h-5 w-5" />
-              Sign up to unlock
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          )}
-        </div>
-
-        <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900">
-          <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700 dark:bg-purple-900/30 dark:text-purple-200">
-            24 Questions
-          </div>
-
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
-            <FileCheck className="h-7 w-7 text-white" />
-          </div>
-
-          <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Mock Exam 2</h3>
-          <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">
-            Second full practice test with all-new questions. Perfect for final preparation.
-          </p>
-
-          <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
-            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-              <Clock className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-              <span>45 minutes time limit</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-              <Target className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-              <span>18/24 questions needed to pass</span>
-            </div>
-          </div>
-
-          {hasAccess ? (
-            <button
-              disabled
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-200 px-6 py-3 font-semibold text-gray-500 transition-all"
-            >
-              <Lock className="h-5 w-5" />
-              Coming Soon
-            </button>
-          ) : (
-            <Link
-              to="/paywall"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800"
-            >
-              <Lock className="h-5 w-5" />
-              Sign up to unlock
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          )}
-        </div>
+        {/* Mock Exam 2 */}
+        <ExamCard
+          title="Mock Exam 2"
+          description="Second full practice test with all-new questions. Perfect for final preparation."
+          hasAccess={hasAccess}
+        />
       </div>
+
+      {/* History strip */}
+      {recentHistory.length > 0 && (
+        <div className="space-y-3">
+          <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Your Recent Exams
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {recentHistory.map(a => {
+              const pct = Math.round((a.correct / a.total) * 100);
+              return (
+                <div
+                  key={a.id}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold ${
+                    a.passed
+                      ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                      : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
+                  }`}
+                  title={new Date(a.completedAt).toLocaleDateString()}
+                >
+                  {a.passed ? (
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                  ) : (
+                    <XCircle className="h-3.5 w-3.5" />
+                  )}
+                  {a.correct}/{a.total} · {pct}%
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -192,6 +187,60 @@ export default function Exam() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ExamCard({
+  title,
+  description,
+  hasAccess,
+}: {
+  title: string;
+  description: string;
+  hasAccess: boolean | null;
+}) {
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900">
+      <div className="absolute right-4 top-4 rounded-full bg-purple-100 px-3 py-1 text-small font-semibold text-purple-700 dark:bg-purple-900/30 dark:text-purple-200">
+        24 Questions
+      </div>
+
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
+        <FileCheck className="h-7 w-7 text-white" />
+      </div>
+
+      <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">{title}</h3>
+      <p className="mb-6 text-sm text-gray-600 dark:text-gray-300">{description}</p>
+
+      <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
+        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+          <Clock className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+          <span>45 minutes time limit</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+          <Target className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+          <span>18/24 questions needed to pass</span>
+        </div>
+      </div>
+
+      {hasAccess ? (
+        <Link
+          to="/exam/take"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
+        >
+          Start Exam
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      ) : (
+        <Link
+          to="/paywall"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800"
+        >
+          Sign up to unlock
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      )}
     </div>
   );
 }

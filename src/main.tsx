@@ -15,6 +15,7 @@ import PracticeIndex from './pages/PracticeIndex';
 import PracticeLesson from './pages/PracticeLesson';
 import PracticeFlashcards from './pages/PracticeFlashcards';
 import Exam from './pages/Exam';
+import ExamSession from './pages/ExamSession';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
           { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
           { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
           { path: 'exam', element: <Exam /> },
+          { path: 'exam/take', element: <ExamSession /> },
         ],
       },
     ],
