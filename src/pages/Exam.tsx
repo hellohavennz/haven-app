@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
-import { getExamHistory, getReadinessStatus } from "../lib/examUtils";
+import { getExamHistory, getReadinessStatus, MODULE_LABELS } from "../lib/examUtils";
 import type { ExamAttempt } from "../types";
 
 export default function Exam() {
@@ -65,7 +65,7 @@ export default function Exam() {
               {readiness.passedCount} of your last {readiness.totalRecent} exam
               {readiness.totalRecent !== 1 ? "s" : ""}.
               {readiness.weakModules.length > 0 &&
-                ` Focus on: ${readiness.weakModules.join(", ")}.`}
+                ` Focus on: ${readiness.weakModules.map(m => MODULE_LABELS[m] ?? m).join(", ")}.`}
             </p>
           )}
         </div>

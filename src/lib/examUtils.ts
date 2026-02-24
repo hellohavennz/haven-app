@@ -3,6 +3,14 @@ import { supabase } from './supabase';
 import { getCurrentUser } from './auth';
 import type { ExamQuestion, ExamAttempt } from '../types';
 
+export const MODULE_LABELS: Record<string, string> = {
+  'values-and-principles': 'Values & Principles',
+  'what-is-uk': 'What is the UK?',
+  'history': 'History',
+  'modern-society': 'Modern Society',
+  'government-law-role': 'Government, Law & Role',
+};
+
 // Module weighting mirrors the real Life in the UK test distribution
 const MODULE_WEIGHTS: Record<string, number> = {
   'values-and-principles': 2,

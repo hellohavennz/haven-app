@@ -20,6 +20,7 @@ import {
   getExamHistory,
   syncExamHistory,
   getReadinessStatus,
+  MODULE_LABELS,
 } from "../lib/examUtils";
 import { useSubscription } from "../lib/subscription";
 import type { ExamQuestion, ExamAttempt } from "../types";
@@ -31,14 +32,6 @@ const WARN_AT = 5 * 60;       // warn when 5 minutes remain
 
 type Phase = "ready" | "in-progress" | "results";
 type ExamMode = "strict" | "relaxed";
-
-const MODULE_LABELS: Record<string, string> = {
-  "values-and-principles": "Values & Principles",
-  "what-is-uk": "What is the UK?",
-  history: "History",
-  "modern-society": "Modern Society",
-  "government-law-role": "Government, Law & Role",
-};
 
 const MODULE_LESSON_MAP: Record<string, string> = {
   "values-and-principles": "lesson-1.3-values-principles",
