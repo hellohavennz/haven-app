@@ -140,9 +140,10 @@ export default function Paywall() {
               {[
                 'All 29 comprehensive lessons',
                 '500+ practice questions',
+                'All flashcards for every lesson',
                 '2 mock exams (45 min timer)',
                 'Progress tracking',
-                'Sample flashcards (5 per lesson)',
+                'Resit Support if you fail',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
@@ -189,9 +190,9 @@ export default function Paywall() {
                 <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
               </li>
               {[
-                { Icon: Brain, title: 'All flashcards', desc: 'Unlimited flashcards for every lesson' },
                 { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
                 { Icon: BarChart3, title: 'Performance analytics', desc: 'Identify weak areas with detailed insights' },
+                { Icon: Brain, title: 'Dynamic exams', desc: 'Unlimited randomised practice exams' },
                 { Icon: FileText, title: 'Offline mobile access', desc: 'Study anywhere, no internet needed' },
                 { Icon: Zap, title: 'Priority email support', desc: 'Get help within 24 hours' },
               ].map(({ Icon, title, desc }) => (

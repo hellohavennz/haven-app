@@ -121,22 +121,23 @@ const howItWorksSteps = [
 const planPlusFeatures = [
   "All 29 comprehensive lessons",
   "500+ practice questions",
+  "All flashcards for every lesson",
   "2 mock exams (45 min timer)",
   "Progress tracking",
-  "Sample flashcards (5 per lesson)",
+  "Resit Support if you fail",
 ];
 
 const planPremiumExtras = [
-  { icon: Brain, title: "All flashcards", description: "Unlimited flashcards for every lesson" },
   { icon: Headphones, title: "AI study assistant (Pippa)", description: "Get instant answers to your questions" },
   { icon: BarChart3, title: "Performance analytics", description: "Identify weak areas with detailed insights" },
+  { icon: Brain, title: "Dynamic exams", description: "Unlimited randomised practice exams" },
   { icon: FileText, title: "Offline mobile access", description: "Study anywhere, no internet needed" },
   { icon: Zap, title: "Priority email support", description: "Get help within 24 hours" },
 ];
 
 const trustSignals = [
   { icon: Clock, title: "Instant Access", description: "Start learning immediately after purchase" },
-  { icon: Award, title: "Pass Guarantee", description: "Complete course and fail? Get refunded" },
+  { icon: Award, title: "Resit Support", description: "Fail after completing the course? We cover your resit" },
   { icon: CheckCircle2, title: "Cancel Anytime", description: "No long-term commitment required" },
 ];
 
@@ -387,13 +388,13 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
-              <button
-                disabled
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
+              <Link
+                to="/paywall"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 transition-colors mt-auto"
               >
-                Coming Soon
-              </button>
+                Get Plus
+                <ArrowRight size={18} />
+              </Link>
             </div>
 
             {/* Haven Premium */}
@@ -428,13 +429,13 @@ export default function App() {
                   );
                 })}
               </ul>
-              {/* TODO: Wire this up to Stripe checkout / upgrade flow when payments are implemented */}
-              <button
-                disabled
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-xl font-semibold cursor-not-allowed mt-auto"
+              <Link
+                to="/paywall"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg mt-auto"
               >
-                Coming Soon
-              </button>
+                Get Premium
+                <ArrowRight size={18} />
+              </Link>
             </div>
           </div>
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">

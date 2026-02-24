@@ -8,6 +8,7 @@ import {
   ChevronUp,
   HelpCircle,
   Mail,
+  Flag,
 } from "lucide-react";
 
 type FAQItem = {
@@ -65,6 +66,11 @@ const faqs: FAQItem[] = [
     question: "Can I use this on my phone?",
     answer:
       "Absolutely! The app is fully responsive and works great on phones, tablets, and computers. Study and practice wherever you are.",
+  },
+  {
+    question: "How do I report an error or unclear content?",
+    answer:
+      "If you spot a mistake, unclear wording, or anything that doesn't look right, tap the flag icon (Report issue) that appears at the bottom of lessons, practice questions, and flashcards. Describe the problem briefly and submit — our team will review it and fix it. You need to be logged in to send a report.",
   },
 ];
 
@@ -160,6 +166,20 @@ export default function Help() {
               real test experience and helps you verify you're fully prepared.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Report issue callout */}
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 flex items-start gap-4">
+        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-red-50 dark:bg-red-900/20">
+          <Flag className="h-6 w-6 text-red-500" />
+        </div>
+        <div>
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Found an error?</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            Every lesson, practice question, and flashcard has a small <strong>Report issue</strong> link at the bottom.
+            If something looks wrong or confusing, tap it to send us a quick note — we review all reports and update the content.
+          </p>
         </div>
       </div>
 

@@ -20,16 +20,17 @@ export default function PracticeFlashcards() {
   const { lessonId } = useParams();
   const { tier, isLoading } = useSubscription();
   const data = lessonId ? getLessonById(lessonId) : null;
-  const isPremium = tier === "premium";
+  // Plus and Premium both get full flashcard access; only Free is limited
+  const hasFullAccess = tier === "plus" || tier === "premium";
 
   const allCards = data?.flashcards ?? [];
   const totalCount = allCards.length;
 
-  // Shuffle all cards; for non-premium slice to first 5
+  // Shuffle all cards; free users get first 5 only
   const deck = useMemo(() => {
     const shuffled = shuffle(allCards);
-    return isPremium ? shuffled : shuffled.slice(0, FREE_CARD_LIMIT);
-  }, [lessonId, isPremium]);
+    return hasFullAccess ? shuffled : shuffled.slice(0, FREE_CARD_LIMIT);
+  }, [lessonId, hasFullAccess]);
 
   const [idx, setIdx] = useState(0);
   const [reveal, setReveal] = useState(false);
@@ -39,15 +40,15 @@ export default function PracticeFlashcards() {
   if (!data) return <div className="max-w-3xl mx-auto p-6 text-gray-900 dark:text-gray-100">Not found.</div>;
 
   // Show upgrade card when non-premium user has exhausted their sample cards
-  const showUpgradeCard = !isLoading && !isPremium && idx >= deck.length && deck.length > 0;
+  const showUpgradeCard = !isLoading && !hasFullAccess && idx >= deck.length && deck.length > 0;
   const card = showUpgradeCard ? null : deck[idx];
 
   function skip() {
     setReveal(false);
     setIdx(i => {
       const next = i + 1;
-      // Premium users cycle; non-premium advance past the limit to trigger upgrade screen
-      return (isPremium && next >= deck.length) ? 0 : next;
+      // Full-access users cycle; free users advance past the limit to trigger upgrade screen
+      return (hasFullAccess && next >= deck.length) ? 0 : next;
     });
   }
 
@@ -95,13 +96,13 @@ export default function PracticeFlashcards() {
                   You've seen the sample flashcards
                 </h2>
                 <p className="text-gray-300">
-                  Upgrade to Premium to unlock all {totalCount} flashcards for this lesson
+                  Upgrade to Plus or Premium to unlock all {totalCount} flashcards for this lesson
                 </p>
                 <Link
                   to="/paywall"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition-all"
                 >
-                  Upgrade to Premium
+                  Upgrade to Plus
                   <ArrowRight size={18} />
                 </Link>
               </div>
@@ -135,7 +136,7 @@ export default function PracticeFlashcards() {
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="font-semibold text-gray-900 dark:text-gray-100">
-                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {isPremium ? totalCount : deck.length}{!isPremium && totalCount > FREE_CARD_LIMIT ? ` (${totalCount} total)` : ""}</span>
+                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {hasFullAccess ? totalCount : deck.length}{!hasFullAccess && totalCount > FREE_CARD_LIMIT ? ` (${totalCount} total)` : ""}</span>
                 </span>
                 <span className="text-gray-500 dark:text-gray-400">
                   {Math.round(((idx + 1) / deck.length) * 100)}% complete
@@ -147,10 +148,10 @@ export default function PracticeFlashcards() {
                   style={{ width: `${((idx + 1) / deck.length) * 100}%` }}
                 />
               </div>
-              {!isPremium && !isLoading && totalCount > FREE_CARD_LIMIT && (
+              {!hasFullAccess && !isLoading && totalCount > FREE_CARD_LIMIT && (
                 <p className="text-xs text-center text-gray-400 dark:text-gray-500">
                   Sample: {FREE_CARD_LIMIT} of {totalCount} flashcards ·{" "}
-                  <Link to="/paywall" className="text-amber-500 hover:text-amber-600 font-semibold">
+                  <Link to="/paywall" className="text-teal-500 hover:text-teal-600 font-semibold">
                     Unlock all →
                   </Link>
                 </p>
