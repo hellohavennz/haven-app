@@ -16,6 +16,8 @@ import PracticeLesson from './pages/PracticeLesson';
 import PracticeFlashcards from './pages/PracticeFlashcards';
 import Exam from './pages/Exam';
 import ExamSession from './pages/ExamSession';
+import ExamDrill from './pages/ExamDrill';
+import Welcome from './pages/Welcome';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
@@ -46,6 +48,8 @@ const router = createBrowserRouter([
           { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
           { path: 'exam', element: <Exam /> },
           { path: 'exam/take', element: <ExamSession /> },
+          { path: 'exam/drill', element: <ExamDrill /> },
+          { path: 'welcome', element: <Welcome /> },
         ],
       },
     ],

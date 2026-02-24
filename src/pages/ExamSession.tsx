@@ -12,6 +12,7 @@ import {
   Trophy,
   ChevronDown,
   ChevronUp,
+  Dumbbell,
 } from "lucide-react";
 import {
   selectExamQuestions,
@@ -739,6 +740,20 @@ export default function ExamSession() {
             <RotateCcw className="h-5 w-5" />
             Take Another Exam
           </button>
+          {finalQuestions.filter((q, i) => finalAnswers[i] !== q.correct_index).length > 0 && (
+            <button
+              onClick={() => {
+                const wrongQuestions = finalQuestions.filter(
+                  (q, i) => finalAnswers[i] !== q.correct_index
+                );
+                navigate("/exam/drill", { state: { questions: wrongQuestions } });
+              }}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-purple-400 bg-white py-4 font-semibold text-purple-700 transition-all hover:bg-purple-50 dark:bg-transparent dark:text-purple-300 dark:border-purple-700"
+            >
+              <Dumbbell className="h-5 w-5" />
+              Drill Wrong Answers ({finalQuestions.filter((q, i) => finalAnswers[i] !== q.correct_index).length})
+            </button>
+          )}
           {readiness.weakModules.length > 0 && (
             <Link
               to={`/content/${MODULE_LESSON_MAP[readiness.weakModules[0]] ?? ""}`}

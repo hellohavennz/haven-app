@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus } from '../lib/examUtils';
+import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 
 interface LessonProgressData {
@@ -14,12 +15,18 @@ interface LessonProgressData {
 }
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const { tier, isLoading: tierLoading } = useSubscription();
   const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
+  const daysUntilExam = getDaysUntilExam();
 
   useEffect(() => {
+    if (!isOnboardingComplete()) {
+      navigate('/welcome', { replace: true });
+      return;
+    }
     getCurrentUser().then(u => {
       setUser(u);
       setIsLoading(false);
@@ -129,6 +136,12 @@ const Dashboard: React.FC = () => {
             <h1 className="font-semibold text-teal-700 mb-2 dark:text-teal-400">Your Dashboard</h1>
             <p className="text-gray-600 dark:text-gray-300">{hasFullAccess ? 'Welcome back!' : 'Sample Dashboard'}</p>
           </div>
+          {daysUntilExam !== null && (
+            <div className="flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-800 dark:bg-teal-900/40 dark:text-teal-300">
+              <Target className="h-4 w-4" />
+              {daysUntilExam} day{daysUntilExam !== 1 ? 's' : ''} until your exam
+            </div>
+          )}
           {!hasFullAccess && (
             <Link
               to="/paywall"
