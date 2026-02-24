@@ -1,56 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
-
-interface Section {
-  title: string;
-  content: string;
-  key_facts: string[];
-}
-
-interface StudySection {
-  heading: string;
-  content: string;
-}
-
-interface Lesson {
-  id: string;
-  title: string;
-  module_slug: string;
-  sections?: Section[];
-  study_sections?: StudySection[];
-  overview?: string;
-  key_facts?: string[];
-  memory_hook?: string;
-}
+import { getLessonById } from '../lib/content';
 
 const ContentLesson: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
-  const [lesson, setLesson] = useState<Lesson | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadLesson = async () => {
-      try {
-        const lessonModule = await import(`../content/lessons/${lessonId}.json`);
-        setLesson(lessonModule.default as Lesson);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error loading lesson:', error);
-        setIsLoading(false);
-      }
-    };
-
-    loadLesson();
-  }, [lessonId]);
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading lesson...</div>
-      </div>
-    );
-  }
+  const lesson = lessonId ? getLessonById(lessonId) : null;
 
   if (!lesson) {
     return (

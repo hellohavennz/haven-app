@@ -7,10 +7,21 @@ import PracticeSidebar from "../components/PracticeSidebar";
 import MobileNav from "../components/navigation/MobileNav";
 import StudySidebar from "../components/navigation/StudySidebar";
 import AskPippa from "../components/AskPippa";
+import { preloadContent } from "../lib/content";
 
 export default function RootLayout() {
   const location = useLocation();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [contentReady, setContentReady] = useState(false);
+
+  useEffect(() => {
+    preloadContent()
+      .then(() => setContentReady(true))
+      .catch(err => {
+        console.error('Failed to load content:', err);
+        setContentReady(true); // unblock the UI even on error
+      });
+  }, []);
 
   const showStudySidebar = location.pathname.startsWith("/content");
   const showPracticeSidebar =
@@ -27,6 +38,14 @@ export default function RootLayout() {
       document.body.style.overflow = "";
     };
   }, [isDrawerOpen]);
+
+  if (!contentReady) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin w-10 h-10 border-4 border-teal-600 border-t-transparent rounded-full" />
+      </div>
+    );
+  }
 
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
