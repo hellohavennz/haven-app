@@ -101,7 +101,12 @@ export default function Navbar() {
             {/* Auth Buttons */}
             {user ? (
               <div className="hidden md:flex items-center gap-3">
-                <span className="text-small text-gray-600 dark:text-gray-300">Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                <Link
+                  to="/profile"
+                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                >
+                  Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
+                </Link>
                 <button
                   onClick={handleLogout}
                   className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
@@ -195,9 +200,13 @@ export default function Navbar() {
             <div className="border-t border-gray-200 pt-2 mt-2 dark:border-gray-800">
               {user ? (
                 <>
-                  <div className="px-4 py-2 text-small text-gray-600 dark:text-gray-300">
-                    Signed in as {user.user_metadata?.full_name || user.email}
-                  </div>
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
+                  </Link>
                   <button
                     onClick={() => {
                       handleLogout();
