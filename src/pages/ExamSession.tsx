@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Clock,
@@ -10,6 +10,8 @@ import {
   BookOpen,
   RotateCcw,
   Trophy,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import {
   selectExamQuestions,
@@ -23,7 +25,7 @@ import type { ExamQuestion, ExamAttempt } from "../types";
 const TOTAL_QUESTIONS = 24;
 const PASS_THRESHOLD = 18;
 const EXAM_DURATION = 45 * 60; // 45 minutes in seconds
-const WARN_AT = 5 * 60; // 5 minutes remaining
+const WARN_AT = 5 * 60;       // warn when 5 minutes remain
 
 type Phase = "ready" | "in-progress" | "results";
 type ExamMode = "strict" | "relaxed";
@@ -67,7 +69,10 @@ export default function ExamSession() {
   const [showSubmitDialog, setShowSubmitDialog] = useState(false);
   const [timesUp, setTimesUp] = useState(false);
   const [attempt, setAttempt] = useState<ExamAttempt | null>(null);
+  const [finalQuestions, setFinalQuestions] = useState<ExamQuestion[]>([]);
+  const [finalAnswers, setFinalAnswers] = useState<(number | null)[]>([]);
   const [history, setHistory] = useState<ExamAttempt[]>([]);
+  const [showReview, setShowReview] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +80,7 @@ export default function ExamSession() {
     setHistory(getExamHistory());
   }, []);
 
-  // Scroll to top on question change
+  // Scroll to top on question change or phase change
   useEffect(() => {
     if (scrollRef.current) {
       const main = scrollRef.current.closest("main");
@@ -115,6 +120,7 @@ export default function ExamSession() {
     setTimeLeft(EXAM_DURATION);
     setTimesUp(false);
     setStartTime(Date.now());
+    setShowReview(false);
     setPhase("in-progress");
   }
 
@@ -142,15 +148,12 @@ export default function ExamSession() {
   function finishExam() {
     const durationSeconds = Math.round((Date.now() - startTime) / 1000);
 
-    // Calculate module scores
     const moduleScores: Record<string, { correct: number; total: number }> = {};
     questions.forEach((q, i) => {
       const mod = q.moduleSlug;
       if (!moduleScores[mod]) moduleScores[mod] = { correct: 0, total: 0 };
       moduleScores[mod].total++;
-      if (answers[i] === q.correct_index) {
-        moduleScores[mod].correct++;
-      }
+      if (answers[i] === q.correct_index) moduleScores[mod].correct++;
     });
 
     const correct = questions.filter((q, i) => answers[i] === q.correct_index).length;
@@ -166,6 +169,9 @@ export default function ExamSession() {
       moduleScores,
     };
 
+    // Snapshot questions+answers so review is stable even after re-exam
+    setFinalQuestions([...questions]);
+    setFinalAnswers([...answers]);
     saveExamAttempt(newAttempt);
     setAttempt(newAttempt);
     setHistory(prev => [newAttempt, ...prev]);
@@ -267,8 +273,8 @@ export default function ExamSession() {
                 Relaxed Mode
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                Timer warns at 5 min but never auto-submits. Finish at your
-                own pace.
+                Warns when 5 minutes remain but never auto-submits. Finish at
+                your own pace.
               </p>
             </button>
           </div>
@@ -342,9 +348,7 @@ export default function ExamSession() {
                 key={i}
                 onClick={() => setCurrentIdx(i)}
                 className={`h-3 w-3 rounded-full transition-all ${
-                  i === currentIdx
-                    ? "ring-2 ring-purple-500 ring-offset-1"
-                    : ""
+                  i === currentIdx ? "ring-2 ring-purple-500 ring-offset-1" : ""
                 } ${
                   answers[i] !== null
                     ? "bg-purple-500"
@@ -433,7 +437,9 @@ export default function ExamSession() {
                 </h3>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                You have {unansweredCount} unanswered question{unansweredCount !== 1 ? "s" : ""}. Unanswered questions will be marked incorrect.
+                You have {unansweredCount} unanswered question
+                {unansweredCount !== 1 ? "s" : ""}. Unanswered questions will be
+                marked incorrect.
               </p>
               <div className="flex gap-3">
                 <button
@@ -607,6 +613,113 @@ export default function ExamSession() {
             </ul>
           </div>
         )}
+
+        {/* Question review */}
+        <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 overflow-hidden">
+          <button
+            onClick={() => setShowReview(v => !v)}
+            className="flex w-full items-center justify-between p-6 text-left"
+          >
+            <div>
+              <h2 className="font-semibold text-gray-900 dark:text-white">
+                Review All Answers
+              </h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {attempt.correct} correct · {attempt.total - attempt.correct} incorrect
+              </p>
+            </div>
+            {showReview ? (
+              <ChevronUp className="h-5 w-5 text-gray-400 flex-shrink-0" />
+            ) : (
+              <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+            )}
+          </button>
+
+          {showReview && (
+            <div className="border-t border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+              {finalQuestions.map((q, qi) => {
+                const userAnswer = finalAnswers[qi];
+                const isCorrect = userAnswer === q.correct_index;
+                const wasSkipped = userAnswer === null;
+
+                return (
+                  <div key={qi} className="p-5 space-y-3">
+                    {/* Question header */}
+                    <div className="flex items-start gap-3">
+                      <div
+                        className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${
+                          wasSkipped
+                            ? "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
+                            : isCorrect
+                            ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+                            : "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
+                        }`}
+                      >
+                        {qi + 1}
+                      </div>
+                      <p className="text-sm leading-relaxed text-gray-900 dark:text-gray-100">
+                        {q.prompt}
+                      </p>
+                    </div>
+
+                    {/* Options */}
+                    <div className="ml-9 space-y-2">
+                      {q.options.map((opt, oi) => {
+                        const isCorrectOpt = oi === q.correct_index;
+                        const isUserPick = oi === userAnswer;
+                        return (
+                          <div
+                            key={oi}
+                            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${
+                              isCorrectOpt
+                                ? "bg-green-50 text-green-900 border border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800"
+                                : isUserPick && !isCorrectOpt
+                                ? "bg-red-50 text-red-900 border border-red-200 dark:bg-red-900/20 dark:text-red-200 dark:border-red-800"
+                                : "text-gray-600 dark:text-gray-400"
+                            }`}
+                          >
+                            {isCorrectOpt ? (
+                              <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-green-600 dark:text-green-400" />
+                            ) : isUserPick ? (
+                              <XCircle className="h-4 w-4 flex-shrink-0 text-red-500" />
+                            ) : (
+                              <span className="h-4 w-4 flex-shrink-0" />
+                            )}
+                            {opt}
+                            {isCorrectOpt && isUserPick && (
+                              <span className="ml-auto text-xs font-semibold text-green-700 dark:text-green-400">
+                                Your answer ✓
+                              </span>
+                            )}
+                            {isUserPick && !isCorrectOpt && (
+                              <span className="ml-auto text-xs font-semibold text-red-600 dark:text-red-400">
+                                Your answer
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+
+                      {wasSkipped && (
+                        <p className="text-xs text-gray-400 dark:text-gray-500 italic">
+                          Not answered
+                        </p>
+                      )}
+
+                      {/* Explanation */}
+                      {q.explanation && (
+                        <div className="mt-1 rounded-lg bg-blue-50 border border-blue-100 px-3 py-2 text-xs leading-relaxed text-blue-900 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-200">
+                          <span className="font-semibold">Explanation: </span>
+                          {q.explanation}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
 
         {/* History strip */}
         <HistoryStrip history={history} />
