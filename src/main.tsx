@@ -20,6 +20,7 @@ import ExamDrill from './pages/ExamDrill';
 import Welcome from './pages/Welcome';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
+import Profile from './pages/Profile';
 import { ThemeProvider } from './context/ThemeContext';
 
 const router = createBrowserRouter([
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
           { path: 'exam/take', element: <ExamSession /> },
           { path: 'exam/drill', element: <ExamDrill /> },
           { path: 'welcome', element: <Welcome /> },
+          { path: 'profile', element: <Profile /> },
         ],
       },
     ],
