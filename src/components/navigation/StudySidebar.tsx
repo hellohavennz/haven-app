@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   BookOpen,
   CheckCircle2,
@@ -22,6 +22,7 @@ type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 
 export default function StudySidebar({ className = "", onNavigate }: StudySidebarProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const modules = useMemo(() => getModules(), []);
   const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.slug ?? null);
   const [user, setUser] = useState<any>(null);
@@ -76,7 +77,15 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
 
 
   const toggleModule = (slug: string) => {
+    const isExpanding = expandedModule !== slug;
     setExpandedModule((current) => (current === slug ? null : slug));
+    if (isExpanding) {
+      const firstLesson = getLessonsForModule(slug)[0];
+      if (firstLesson) {
+        navigate(`/content/${firstLesson.id}`);
+        onNavigate?.();
+      }
+    }
   };
 
   const isActiveLesson = (lessonId: string) => location.pathname.includes(lessonId);
