@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
-import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight } from 'lucide-react';
+import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
+import { getExamHistory, getReadinessStatus } from '../lib/examUtils';
+import type { ExamAttempt } from '../types';
 
 interface LessonProgressData {
   attempted: number;
@@ -15,12 +17,14 @@ const Dashboard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const { tier, isLoading: tierLoading } = useSubscription();
+  const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
 
   useEffect(() => {
     getCurrentUser().then(u => {
       setUser(u);
       setIsLoading(false);
     });
+    setExamHistory(getExamHistory());
   }, []);
 
   const progress = useProgress(user?.id);
@@ -303,6 +307,9 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
+        {/* Exam Widget */}
+        <ExamWidget history={examHistory} hasAccess={hasFullAccess} />
+
         {/* Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Keep Learning */}
@@ -371,5 +378,166 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+function ExamWidget({
+  history,
+  hasAccess,
+}: {
+  history: ExamAttempt[];
+  hasAccess: boolean;
+}) {
+  const last = history[0] ?? null;
+  const readiness = getReadinessStatus(history);
+  const recent = history.slice(0, 5);
+
+  return (
+    <div className="rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+          <FileCheck className="text-purple-600 dark:text-purple-400" size={22} />
+          Mock Exams
+        </h2>
+        <Link
+          to="/exam"
+          className="text-sm font-medium text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+        >
+          View all →
+        </Link>
+      </div>
+
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+        {/* Last result or empty state */}
+        <div className="flex-1">
+          {last ? (
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border-4 ${
+                    last.passed
+                      ? "border-green-500 bg-green-50 dark:bg-green-900/20"
+                      : "border-red-400 bg-red-50 dark:bg-red-900/20"
+                  }`}
+                >
+                  <div className="text-center">
+                    <div
+                      className={`text-lg font-bold leading-none ${
+                        last.passed
+                          ? "text-green-700 dark:text-green-300"
+                          : "text-red-600 dark:text-red-300"
+                      }`}
+                    >
+                      {last.correct}/{last.total}
+                    </div>
+                    <div
+                      className={`text-xs font-semibold ${
+                        last.passed ? "text-green-600" : "text-red-500"
+                      }`}
+                    >
+                      {Math.round((last.correct / last.total) * 100)}%
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ${
+                      last.passed
+                        ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300"
+                        : "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300"
+                    }`}
+                  >
+                    {last.passed ? (
+                      <CheckCircle2 className="h-3 w-3" />
+                    ) : (
+                      <XCircle className="h-3 w-3" />
+                    )}
+                    {last.passed ? "PASS" : "FAIL"}
+                  </div>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Last exam · {new Date(last.completedAt).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+
+              {/* Mini history strip */}
+              {recent.length > 1 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {recent.map(a => {
+                    const pct = Math.round((a.correct / a.total) * 100);
+                    return (
+                      <span
+                        key={a.id}
+                        className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+                          a.passed
+                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                            : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
+                        }`}
+                        title={new Date(a.completedAt).toLocaleDateString()}
+                      >
+                        {pct}%
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Readiness */}
+              <p
+                className={`text-sm font-medium ${
+                  readiness.ready
+                    ? "text-green-700 dark:text-green-400"
+                    : "text-gray-600 dark:text-gray-400"
+                }`}
+              >
+                {readiness.ready
+                  ? "You're consistently passing — ready for the real test!"
+                  : `${readiness.passedCount} of ${readiness.totalRecent} recent exam${readiness.totalRecent !== 1 ? "s" : ""} passed.`}
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
+                  <Trophy className="h-7 w-7 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-gray-100">
+                    No exams yet
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    24 questions · 45 min · 75% to pass
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                Take a full mock exam to see how ready you are for the real test.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* CTA */}
+        <div className="flex-shrink-0">
+          {hasAccess ? (
+            <Link
+              to="/exam/take"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-5 py-3 font-semibold text-white transition-all hover:shadow-lg"
+            >
+              {last ? "Take Another" : "Start Exam"}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          ) : (
+            <Link
+              to="/paywall"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-purple-300 px-5 py-3 font-semibold text-purple-700 transition-all hover:bg-purple-50 dark:border-purple-700 dark:text-purple-300"
+            >
+              Unlock Exams
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Dashboard;
