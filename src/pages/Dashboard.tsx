@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
-import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Clock, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck } from 'lucide-react';
+import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
-import { getExamHistory, getReadinessStatus } from '../lib/examUtils';
+import { getExamHistory, syncExamHistory, getReadinessStatus } from '../lib/examUtils';
 import type { ExamAttempt } from '../types';
 
 interface LessonProgressData {
@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
       setIsLoading(false);
     });
     setExamHistory(getExamHistory());
+    syncExamHistory().then(setExamHistory).catch(() => {});
   }, []);
 
   const progress = useProgress(user?.id);
@@ -91,6 +92,24 @@ const Dashboard: React.FC = () => {
       questionsAnswered
     };
   });
+
+  // "Continue" suggestion: weakest started lesson, or first unstarted with questions
+  const weakestLesson = allLessons
+    .filter(l => {
+      const p = progress[l.id];
+      return p && p.attempted > 0 && (p.correct / p.attempted) < 0.6;
+    })
+    .sort((a, b) => {
+      const pa = progress[a.id], pb = progress[b.id];
+      return (pa.correct / pa.attempted) - (pb.correct / pb.attempted);
+    })[0] ?? null;
+
+  const nextUnstarted = allLessons.find(
+    l => !progress[l.id] && (l.questions?.length ?? 0) > 0
+  ) ?? null;
+
+  const continueSuggestion = weakestLesson ?? nextUnstarted;
+  const continueIsWeak = !!weakestLesson;
 
   // Lesson status breakdown
   const masteredCount = masteredLessons;
@@ -352,27 +371,76 @@ const Dashboard: React.FC = () => {
             </Link>
           </div>
 
-          {/* Pro Tips */}
-          <div className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 dark:border-blue-500/40 dark:from-blue-400/10 dark:to-indigo-500/10">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-              <Clock className="text-white" size={24} />
+          {/* Your next step */}
+          {continueSuggestion ? (
+            <div className={`rounded-2xl border-2 p-6 bg-gradient-to-br ${
+              continueIsWeak
+                ? 'border-amber-200 from-amber-50 to-orange-50 dark:border-amber-500/40 dark:from-amber-400/10 dark:to-orange-500/10'
+                : 'border-blue-200 from-blue-50 to-indigo-50 dark:border-blue-500/40 dark:from-blue-400/10 dark:to-indigo-500/10'
+            }`}>
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                continueIsWeak ? 'bg-amber-500' : 'bg-blue-600'
+              }`}>
+                {continueIsWeak
+                  ? <Zap className="text-white" size={24} />
+                  : <ArrowRight className="text-white" size={24} />
+                }
+              </div>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                {continueIsWeak ? 'Needs more practice' : 'Up next'}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-1 font-medium">
+                {continueSuggestion.title}
+              </p>
+              {continueIsWeak && progress[continueSuggestion.id] && (
+                <p className="text-xs text-amber-700 dark:text-amber-400 mb-4">
+                  {Math.round((progress[continueSuggestion.id].correct / progress[continueSuggestion.id].attempted) * 100)}% accuracy — aim for 80%+
+                </p>
+              )}
+              {!continueIsWeak && (
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                  Not started yet
+                </p>
+              )}
+              <div className="flex gap-2">
+                <Link
+                  to={`/content/${continueSuggestion.id}`}
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-xl transition-all ${
+                    continueIsWeak
+                      ? 'bg-amber-500 hover:bg-amber-600'
+                      : 'bg-blue-600 hover:bg-blue-700'
+                  }`}
+                >
+                  Study
+                </Link>
+                {(continueSuggestion.questions?.length ?? 0) > 0 && (
+                  <Link
+                    to={`/practice/${continueSuggestion.id}/questions`}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl border-2 border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 transition-all"
+                  >
+                    Practice
+                  </Link>
+                )}
+              </div>
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Pro Tips</h3>
-            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-                <span>Aim for 80%+ on all lessons</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-                <span>Use flashcards daily for retention</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={16} />
-                <span>Review weak areas regularly</span>
-              </li>
-            </ul>
-          </div>
+          ) : (
+            <div className="rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 dark:border-green-500/40 dark:from-green-400/10 dark:to-emerald-500/10">
+              <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
+                <Trophy className="text-white" size={24} />
+              </div>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">All caught up!</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                Every lesson has been attempted. Keep your scores above 80% and take a mock exam when you're ready.
+              </p>
+              <Link
+                to="/exam"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 rounded-xl transition-all"
+              >
+                Take a Mock Exam
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

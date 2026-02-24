@@ -17,6 +17,7 @@ import {
   selectExamQuestions,
   saveExamAttempt,
   getExamHistory,
+  syncExamHistory,
   getReadinessStatus,
 } from "../lib/examUtils";
 import { useSubscription } from "../lib/subscription";
@@ -77,7 +78,9 @@ export default function ExamSession() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Seed from localStorage immediately, then merge with Supabase
     setHistory(getExamHistory());
+    syncExamHistory().then(setHistory).catch(() => {});
   }, []);
 
   // Scroll to top on question change or phase change

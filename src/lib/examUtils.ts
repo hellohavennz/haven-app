@@ -99,6 +99,53 @@ export function getExamHistory(): ExamAttempt[] {
   }
 }
 
+/**
+ * Fetches exam history from Supabase, merges with localStorage (dedup by id),
+ * writes the merged result back to localStorage, and returns it.
+ * Safe to call on mount — falls back to localStorage if unauthenticated or offline.
+ */
+export async function syncExamHistory(): Promise<ExamAttempt[]> {
+  const user = await getCurrentUser();
+  if (!user) return getExamHistory();
+
+  try {
+    const { data, error } = await supabase
+      .from('exam_attempts')
+      .select('id, completed_at, correct, total, passed, duration_seconds, module_scores')
+      .eq('user_id', user.id)
+      .order('completed_at', { ascending: false })
+      .limit(MAX_HISTORY);
+
+    if (error || !data) return getExamHistory();
+
+    const remote: ExamAttempt[] = data.map(row => ({
+      id: row.id,
+      completedAt: row.completed_at,
+      correct: row.correct,
+      total: row.total,
+      passed: row.passed,
+      durationSeconds: row.duration_seconds ?? 0,
+      moduleScores: row.module_scores ?? {},
+    }));
+
+    // Merge: start with remote, append any local-only entries not in remote
+    const local = getExamHistory();
+    const remoteIds = new Set(remote.map(a => a.id));
+    const localOnly = local.filter(a => !remoteIds.has(a.id));
+    const merged = [...remote, ...localOnly]
+      .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime())
+      .slice(0, MAX_HISTORY);
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    } catch { /* ignore */ }
+
+    return merged;
+  } catch {
+    return getExamHistory();
+  }
+}
+
 export function saveExamAttempt(attempt: ExamAttempt): void {
   try {
     const history = getExamHistory();
