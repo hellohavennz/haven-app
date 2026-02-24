@@ -12,6 +12,7 @@ export default function Signup() {
   const planFromQuery = searchParams.get('plan') || (location.state as any)?.selectedPlan || 'free';
   const selectedPlan = planFromQuery;
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -48,7 +49,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      await signUp(email, password);
+      await signUp(email, password, name.trim() || undefined);
       setSuccess(true);
       setTimeout(() => navigate("/dashboard"), 2000);
     } catch (err: any) {
@@ -126,6 +127,22 @@ export default function Signup() {
           )}
 
           <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                First name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="given-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                placeholder="Your first name"
+              />
+            </div>
+
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                 Email address
