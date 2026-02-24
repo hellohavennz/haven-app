@@ -450,6 +450,62 @@ export default function App() {
               );
             })}
           </div>
+
+          {/* Resit Support section */}
+          <div className="max-w-4xl mx-auto rounded-2xl border-2 border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/10 p-8 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/40">
+                <Award className="text-amber-600 dark:text-amber-400" size={28} />
+              </div>
+              <div className="flex-1 space-y-4">
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Resit Support</h3>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
+                  </p>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">To qualify, you must have:</p>
+                    <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        Completed all 29 lessons
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        Scored 75%+ on practice questions
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        Passed at least one mock exam
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">How to claim:</p>
+                    <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        Email us your test result
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        Within 14 days of your test date
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
+                        We'll add 1 free month to your account
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Available on Plus and Premium plans. Does not cover the cost of rebooking your test.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
