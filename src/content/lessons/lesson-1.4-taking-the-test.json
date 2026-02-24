@@ -111,11 +111,11 @@
     ["Must you study the entire handbook?", "Yes, questions can come from anywhere"],
     ["What are 'Check that you understand' boxes?", "Guidance on important topics (not sufficient alone)"],
     ["What is at the back of the handbook?", "Glossary of key terms"],
-    ["Where to find ESOL course info?", "Gov.uk (www.gov.uk)"],
-    ["Can you bring phone into test room?", "No"],
-    ["When should you arrive at test centre?", "At least 15 minutes early"],
-    ["What if test taken at unofficial centre?", "Results not valid"],
-    ["Special arrangements for which areas?", "Isle of Man and Channel Islands"],
+    ["Where can you find ESOL course info?", "Gov.uk (www.gov.uk)"],
+    ["Can you bring a phone into the test room?", "No"],
+    ["When should you arrive at the test centre?", "At least 15 minutes early"],
+    ["What if the test is taken at an unofficial centre?", "Results not valid"],
+    ["Which areas have special test arrangements?", "Isle of Man and Channel Islands"],
     ["What does passing demonstrate?", "Ready to become part of British society"]
   ],
   "supportive_messages": {

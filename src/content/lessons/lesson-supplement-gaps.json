@@ -47,18 +47,18 @@
     {"prompt": "What is the National Citizen Service?", "options": ["A programme for 16 and 17-year-olds to develop skills and do community projects", "Compulsory military service", "A volunteer police scheme", "A government employment programme"], "correct_index": 0, "explanation": "The National Citizen Service programme gives 16- and 17-year-olds the opportunity to enjoy outdoor activities, develop skills and take part in a community project."}
   ],
   "flashcards": [
-    ["Minimum driving age (car)?", "17"],
-    ["Minimum age for moped?", "16"],
-    ["Driving licence valid until?", "Age 70 (then 3-yearly)"],
-    ["NI new driver requirement?", "'R' plate for 1 year"],
-    ["Non-EU licence valid in UK?", "Up to 12 months"],
-    ["MOT needed when?", "Every year if vehicle over 3 years old"],
-    ["Driving without insurance?", "Serious criminal offence"],
-    ["Vehicle must be registered with?", "DVLA"],
-    ["Dylan Thomas?", "Welsh poet - Under Milk Wood"],
-    ["Great Exhibition - when/where?", "1851, Hyde Park, Crystal Palace"],
-    ["Victoria Cross?", "Bravery medal, introduced by Queen Victoria (Crimean War)"],
-    ["National Citizen Service?", "Programme for 16-17 year olds"]
+    ["What is the minimum driving age for a car in the UK?", "17"],
+    ["What is the minimum age to ride a moped?", "16"],
+    ["How long is a UK driving licence valid?", "Until age 70 (then renewed every 3 years)"],
+    ["What must new drivers display in Northern Ireland?", "'R' plate for one year after passing the test"],
+    ["How long is a non-EU driving licence valid in the UK?", "Up to 12 months"],
+    ["When is an MOT test required?", "Every year if the vehicle is over 3 years old"],
+    ["What is driving without insurance classified as?", "A serious criminal offence"],
+    ["Where must vehicles be registered?", "The DVLA (Driver and Vehicle Licensing Agency)"],
+    ["Who was Dylan Thomas?", "A Welsh poet (1914–53), best known for the play Under Milk Wood"],
+    ["When and where was the Great Exhibition held?", "1851, in the Crystal Palace in Hyde Park, London"],
+    ["What is the Victoria Cross?", "The highest award for bravery in the face of the enemy, introduced by Queen Victoria during the Crimean War"],
+    ["What is the National Citizen Service?", "A programme for 16 and 17-year-olds to develop skills and take part in community projects"]
   ],
   "supportive_messages": {
     "high_score": "Excellent! You've covered all the supplementary content! 🌟",
