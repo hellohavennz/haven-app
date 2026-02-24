@@ -30,6 +30,8 @@ export async function signIn(email: string, password: string) {
 }
 
 export async function signOut() {
+  const { clearSubscriptionCache } = await import('./subscription');
+  clearSubscriptionCache();
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
 }

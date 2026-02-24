@@ -26,7 +26,8 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
   const user = await getCurrentUser();
 
   if (!user) {
-    _cachedTier = 'free';
+    // Don't cache for unauthenticated users — they may log in shortly after
+    // and we need the cache to be empty so the real tier gets fetched.
     return 'free';
   }
 
