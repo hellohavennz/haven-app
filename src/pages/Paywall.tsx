@@ -176,7 +176,7 @@ export default function Paywall() {
             <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">No credit card required</p>
           </div>
 
-          {/* HavenReady Plus */}
+          {/* Haven Plus */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
             {!isCurrent('plus') && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
@@ -192,7 +192,7 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">HavenReady Plus</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
               <div className="flex items-baseline justify-center gap-2 mb-1">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
               </div>
@@ -225,7 +225,7 @@ export default function Paywall() {
             <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Cancel anytime</p>
           </div>
 
-          {/* HavenReady Premium */}
+          {/* Haven Premium */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
             {!isCurrent('premium') && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">
@@ -241,7 +241,7 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-4">
                 <Crown className="text-amber-600 dark:text-amber-400" size={32} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">HavenReady Premium</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
               <div className="flex items-baseline justify-center gap-2 mb-1">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
               </div>
@@ -250,7 +250,7 @@ export default function Paywall() {
             <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                <span className="text-gray-900 dark:text-white font-semibold">Everything in HavenReady Plus, and:</span>
+                <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
               </li>
               {[
                 { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
@@ -309,7 +309,7 @@ export default function Paywall() {
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Resit Support</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  If you genuinely prepare with HavenReady and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
+                  If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">

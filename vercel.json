@@ -2,7 +2,11 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "redirects": [
-    { "source": "/", "destination": "/uk", "permanent": false }
+    { "source": "/", "destination": "/uk", "permanent": false },
+    { "source": "/nz", "destination": "/uk", "permanent": false },
+    { "source": "/nz/:path*", "destination": "/uk/:path*", "permanent": false },
+    { "source": "/au", "destination": "/uk", "permanent": false },
+    { "source": "/au/:path*", "destination": "/uk/:path*", "permanent": false }
   ],
   "rewrites": [
     { "source": "/uk", "destination": "/index.html" },

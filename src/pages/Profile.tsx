@@ -8,8 +8,8 @@ import { supabase } from '../lib/supabase';
 
 const TIER_LABELS: Record<string, string> = {
   free: 'Free',
-  plus: 'HavenReady Plus',
-  premium: 'HavenReady Premium',
+  plus: 'Haven Plus',
+  premium: 'Haven Premium',
 };
 
 const TIER_COLORS: Record<string, string> = {

@@ -27,13 +27,13 @@ export default function Signup() {
       color: 'gray'
     },
     plus: {
-      name: 'HavenReady Plus',
+      name: 'Haven Plus',
       price: '£9.99',
       icon: Zap,
       color: 'teal'
     },
     premium: {
-      name: 'HavenReady Premium',
+      name: 'Haven Premium',
       price: '£19.99',
       icon: Crown,
       color: 'amber'

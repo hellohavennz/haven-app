@@ -19,6 +19,26 @@
   to     = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/nz"
+  to   = "/uk"
+  status = 302
+
+[[redirects]]
+  from = "/nz/*"
+  to   = "/uk/:splat"
+  status = 302
+
+[[redirects]]
+  from = "/au"
+  to   = "/uk"
+  status = 302
+
+[[redirects]]
+  from = "/au/*"
+  to   = "/uk/:splat"
+  status = 302
+
 # ── Security headers ──────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"
