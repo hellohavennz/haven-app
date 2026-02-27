@@ -136,10 +136,10 @@ export default function Paywall() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Free Plan */}
-          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-gray-200 dark:border-gray-700'}`}>
+          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-gray-200 dark:border-gray-700'}`}>
             {isCurrent('free') && (
-              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
-                Your Plan
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+                YOUR PLAN
               </div>
             )}
             <div className="text-center mb-6">
@@ -178,16 +178,9 @@ export default function Paywall() {
 
           {/* Haven Plus */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
-            {!isCurrent('plus') && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
-                MOST POPULAR
-              </div>
-            )}
-            {isCurrent('plus') && (
-              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
-                Your Plan
-              </div>
-            )}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+              {isCurrent('plus') ? 'YOUR PLAN' : 'MOST POPULAR'}
+            </div>
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
@@ -227,16 +220,9 @@ export default function Paywall() {
 
           {/* Haven Premium */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
-            {!isCurrent('premium') && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">
-                BEST VALUE
-              </div>
-            )}
-            {isCurrent('premium') && (
-              <div className="mb-4 inline-flex self-center items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white">
-                Your Plan
-              </div>
-            )}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+              {isCurrent('premium') ? 'YOUR PLAN' : 'BEST VALUE'}
+            </div>
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-4">
                 <Crown className="text-amber-600 dark:text-amber-400" size={32} />
