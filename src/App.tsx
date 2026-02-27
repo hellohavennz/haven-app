@@ -18,6 +18,7 @@ import {
   TrendingUp,
   Headphones,
   FileText,
+  ChevronDown,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import TestimonialCarousel from "./components/TestimonialCarousel";
@@ -189,7 +190,14 @@ export default function App() {
               <Star size={20} />
             </a>
           </div>
-          <p className="mt-6 text-sm text-gray-500 dark:text-gray-300">✓ Try the first lesson free • ✓ No credit card required • ✓ Pass guarantee</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-300">
+            <span className="whitespace-nowrap">✓ Try the first lesson free</span>
+            <span className="whitespace-nowrap">✓ No credit card required</span>
+            <span className="whitespace-nowrap">✓ Pass guarantee</span>
+          </div>
+          <div className="hidden md:flex justify-center mt-10">
+            <ChevronDown size={28} className="animate-bounce text-gray-400 dark:text-gray-500" />
+          </div>
         </div>
       </section>
 
