@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
-import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck } from 'lucide-react';
-import { useSubscription } from '../lib/subscription';
+import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
+import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus } from '../lib/examUtils';
 import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
@@ -16,10 +16,12 @@ interface LessonProgressData {
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const { tier, isLoading: tierLoading } = useSubscription();
   const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
+  const [upgradeBanner, setUpgradeBanner] = useState<string | null>(null);
   const daysUntilExam = getDaysUntilExam();
 
   useEffect(() => {
@@ -33,6 +35,21 @@ const Dashboard: React.FC = () => {
     });
     setExamHistory(getExamHistory());
     syncExamHistory().then(setExamHistory).catch(() => {});
+
+    // Handle post-checkout redirect
+    const params = new URLSearchParams(location.search);
+    if (params.get('upgraded') === '1') {
+      clearSubscriptionCache();
+      checkSubscriptionStatus().then(freshTier => {
+        const label =
+          freshTier === 'premium' ? 'HavenReady Premium' :
+          freshTier === 'plus' ? 'HavenReady Plus' :
+          'your new plan';
+        setUpgradeBanner(`You're now on ${label}!`);
+      });
+      navigate(location.pathname, { replace: true });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const progress = useProgress(user?.id);
@@ -130,6 +147,23 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto space-y-8 text-gray-900 dark:text-gray-100">
+        {/* Upgrade success banner */}
+        {upgradeBanner && (
+          <div className="flex items-center justify-between gap-4 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 dark:border-teal-700 dark:bg-teal-900/20">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-teal-600 dark:text-teal-400" />
+              <p className="font-semibold text-teal-800 dark:text-teal-200">{upgradeBanner}</p>
+            </div>
+            <button
+              onClick={() => setUpgradeBanner(null)}
+              className="flex-shrink-0 text-teal-600 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-200"
+              aria-label="Dismiss"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, BadgeCheck, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
+import { User, Mail, BadgeCheck, CheckCircle2, AlertCircle, ArrowRight, CreditCard, Loader2 } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
+import { supabase } from '../lib/supabase';
 
 const TIER_LABELS: Record<string, string> = {
   free: 'Free',
@@ -24,6 +25,8 @@ export default function Profile() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState('');
+  const [portalLoading, setPortalLoading] = useState(false);
+  const [portalError, setPortalError] = useState('');
 
   useEffect(() => {
     getCurrentUser().then(u => {
@@ -51,6 +54,31 @@ export default function Profile() {
       setError(err.message || 'Failed to save name');
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleManageSubscription() {
+    setPortalLoading(true);
+    setPortalError('');
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) throw new Error('Not authenticated');
+
+      const res = await fetch('/.netlify/functions/create-portal-session', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || 'Failed to open billing portal');
+      }
+
+      const { url } = await res.json();
+      window.location.href = url;
+    } catch (err: any) {
+      setPortalError(err.message || 'Something went wrong. Please try again.');
+      setPortalLoading(false);
     }
   }
 
@@ -162,6 +190,45 @@ export default function Profile() {
           )}
         </div>
       </div>
+
+      {/* Manage subscription — only for paying users */}
+      {(tier === 'plus' || tier === 'premium') && (
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-4 dark:border-gray-800 dark:bg-gray-900">
+          <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+            <CreditCard className="h-5 w-5 text-teal-600" />
+            Subscription
+          </h2>
+
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Manage your billing, download invoices, or cancel your subscription via the Stripe customer portal.
+          </p>
+
+          {portalError && (
+            <div className="flex items-center gap-2 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              {portalError}
+            </div>
+          )}
+
+          <button
+            onClick={handleManageSubscription}
+            disabled={portalLoading}
+            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 disabled:opacity-40"
+          >
+            {portalLoading ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Opening portal…
+              </>
+            ) : (
+              <>
+                <CreditCard className="h-4 w-4" />
+                Manage Subscription
+              </>
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

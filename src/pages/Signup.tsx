@@ -51,7 +51,11 @@ export default function Signup() {
     try {
       await signUp(email, password, name.trim() || undefined);
       setSuccess(true);
-      setTimeout(() => navigate("/dashboard"), 2000);
+      const dest =
+        selectedPlan === 'plus' || selectedPlan === 'premium'
+          ? `/paywall?checkout=${selectedPlan}`
+          : '/dashboard';
+      setTimeout(() => navigate(dest), 2000);
     } catch (err: any) {
       setError(err.message || "Failed to sign up");
     } finally {
@@ -180,16 +184,11 @@ export default function Signup() {
             </div>
           </div>
 
-          <div className="rounded-xl border-2 border-gray-200 bg-gray-50 p-4 mb-4">
-            <p className="text-sm text-gray-700 mb-2">Payment Information</p>
-            <p className="text-small text-gray-600 mb-3">
-              Payment processing will be added soon. For now, creating an account will give you free access to {plan.name}.
-            </p>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-600">Total due today:</span>
-              <span className="text-xl font-semibold text-gray-900">{plan.price}</span>
+          {(selectedPlan === 'plus' || selectedPlan === 'premium') && (
+            <div className="rounded-xl border-2 border-teal-100 bg-teal-50 p-4 mb-4 text-sm text-teal-800">
+              After creating your account you'll be taken to our secure payment page to complete your {plan.name} subscription.
             </div>
-          </div>
+          )}
 
           <button
             type="submit"

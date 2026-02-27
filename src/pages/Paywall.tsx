@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   BookOpen,
   Sparkles,
@@ -11,10 +11,12 @@ import {
   FileText,
   Zap,
   Award,
+  Loader2,
 } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from '../lib/auth';
+import { supabase } from '../lib/supabase';
 
 type Plan = 'free' | 'plus' | 'premium';
 
@@ -26,19 +28,71 @@ function isUpgrade(current: Plan, target: Plan) {
 
 export default function Paywall() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { tier: currentTier, isLoading } = useSubscription();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [checkingOut, setCheckingOut] = useState<Plan | null>(null);
+  const [checkoutError, setCheckoutError] = useState('');
 
   useEffect(() => {
     getCurrentUser().then(u => setIsLoggedIn(!!u));
   }, []);
 
-  function handleSelectPlan(plan: Plan) {
+  // Handle ?checkout=plus|premium after signup redirect
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const checkoutPlan = params.get('checkout') as Plan | null;
+    if (checkoutPlan && (checkoutPlan === 'plus' || checkoutPlan === 'premium')) {
+      getCurrentUser().then(u => {
+        if (u) {
+          handleSelectPlan(checkoutPlan, u);
+        }
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleSelectPlan(plan: Plan, overrideUser?: any) {
     if (plan === currentTier) return;
+
     if (plan === 'free') {
       navigate('/signup?plan=free');
-    } else {
-      navigate('/signup', { state: { selectedPlan: plan } });
+      return;
+    }
+
+    const user = overrideUser ?? (await getCurrentUser());
+
+    if (!user) {
+      navigate(`/signup?plan=${plan}`);
+      return;
+    }
+
+    setCheckingOut(plan);
+    setCheckoutError('');
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan,
+          userId: user.id,
+          email: user.email,
+          token: session?.access_token,
+        }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || 'Checkout failed');
+      }
+
+      const { url } = await res.json();
+      window.location.href = url;
+    } catch (err: any) {
+      setCheckoutError(err.message || 'Something went wrong. Please try again.');
+      setCheckingOut(null);
     }
   }
 
@@ -48,6 +102,7 @@ export default function Paywall() {
   function ctaLabel(plan: Plan, label: string) {
     if (isLoading) return 'Loading…';
     if (isCurrent(plan)) return 'Current Plan';
+    if (checkingOut === plan) return 'Redirecting…';
     return label;
   }
 
@@ -72,6 +127,12 @@ export default function Paywall() {
             Start free, or unlock full access with a Plus or Premium plan.
           </p>
         </div>
+
+        {checkoutError && (
+          <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+            {checkoutError}
+          </div>
+        )}
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Free Plan */}
@@ -153,12 +214,13 @@ export default function Paywall() {
               ))}
             </ul>
             <button
-              onClick={() => !isCurrent('plus') && handleSelectPlan('plus')}
-              disabled={isCurrent('plus') || isLoading}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('plus', 'bg-teal-600 text-white hover:bg-teal-700')}`}
+              onClick={() => !isCurrent('plus') && !checkingOut && handleSelectPlan('plus')}
+              disabled={isCurrent('plus') || isLoading || !!checkingOut}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('plus', 'bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-70')}`}
             >
+              {checkingOut === 'plus' && <Loader2 className="animate-spin" size={18} />}
               {ctaLabel('plus', 'Get Plus')}
-              {!isCurrent('plus') && !isLoading && <ArrowRight size={18} />}
+              {!isCurrent('plus') && !isLoading && checkingOut !== 'plus' && <ArrowRight size={18} />}
             </button>
             <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Cancel anytime</p>
           </div>
@@ -207,12 +269,13 @@ export default function Paywall() {
               ))}
             </ul>
             <button
-              onClick={() => !isCurrent('premium') && handleSelectPlan('premium')}
-              disabled={isCurrent('premium') || isLoading}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-all mt-auto ${ctaClass('premium', 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg')}`}
+              onClick={() => !isCurrent('premium') && !checkingOut && handleSelectPlan('premium')}
+              disabled={isCurrent('premium') || isLoading || !!checkingOut}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-all mt-auto ${ctaClass('premium', 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg disabled:opacity-70')}`}
             >
+              {checkingOut === 'premium' && <Loader2 className="animate-spin" size={18} />}
               {ctaLabel('premium', 'Get Premium')}
-              {!isCurrent('premium') && !isLoading && <ArrowRight size={18} />}
+              {!isCurrent('premium') && !isLoading && checkingOut !== 'premium' && <ArrowRight size={18} />}
             </button>
             <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Annual plan · best value</p>
           </div>
