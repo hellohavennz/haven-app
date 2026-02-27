@@ -174,13 +174,13 @@ export default function Signup() {
                 type="password"
                 autoComplete="new-password"
                 required
-                minLength={6}
+                minLength={8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="••••••••"
               />
-              <p className="mt-1 text-small text-gray-500">Must be at least 6 characters</p>
+              <p className="mt-1 text-small text-gray-500">Must be at least 8 characters</p>
             </div>
           </div>
 
