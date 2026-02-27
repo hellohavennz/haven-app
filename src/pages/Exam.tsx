@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
-import { getExamHistory, getReadinessStatus, MODULE_LABELS } from "../lib/examUtils";
+import { getExamHistory, getReadinessStatus, getExamsThisMonth, MODULE_LABELS } from "../lib/examUtils";
 import type { ExamAttempt } from "../types";
 
 export default function Exam() {
@@ -28,6 +28,8 @@ export default function Exam() {
 
   const hasPlus = user && (tier === "plus" || tier === "premium");
   const hasPremium = user && tier === "premium";
+  const examsThisMonth = getExamsThisMonth(history);
+  const plusLimitReached = hasPlus && !hasPremium && examsThisMonth >= 2;
   const readiness = getReadinessStatus(history);
   const recentHistory = history.slice(0, 5);
 
@@ -82,6 +84,8 @@ export default function Exam() {
           hasAccess={hasPlus}
           examLink="/exam/take?type=static-1"
           badge={null}
+          limitReached={plusLimitReached}
+          examsThisMonth={examsThisMonth}
         />
 
         {/* Mock Exam 2 — Plus + Premium */}
@@ -91,6 +95,8 @@ export default function Exam() {
           hasAccess={hasPlus}
           examLink="/exam/take?type=static-2"
           badge={null}
+          limitReached={plusLimitReached}
+          examsThisMonth={examsThisMonth}
         />
 
         {/* Dynamic Exam — Premium only */}
@@ -209,6 +215,8 @@ function ExamCard({
   examLink,
   badge,
   lockedLabel,
+  limitReached,
+  examsThisMonth,
 }: {
   title: string;
   description: string;
@@ -216,6 +224,8 @@ function ExamCard({
   examLink: string;
   badge: string | null;
   lockedLabel?: string;
+  limitReached?: boolean;
+  examsThisMonth?: number;
 }) {
   const isDynamic = examLink.includes("dynamic");
 
@@ -250,7 +260,16 @@ function ExamCard({
         </div>
       </div>
 
-      {hasAccess ? (
+      {hasAccess && limitReached ? (
+        <div className="mt-auto space-y-2">
+          <div className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-6 py-3 font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
+            {examsThisMonth}/2 used this month
+          </div>
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500">
+            Resets 1st of next month · <Link to="/paywall" className="text-teal-600 hover:underline dark:text-teal-400">Upgrade for unlimited</Link>
+          </p>
+        </div>
+      ) : hasAccess ? (
         <Link
           to={examLink}
           className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg mt-auto"

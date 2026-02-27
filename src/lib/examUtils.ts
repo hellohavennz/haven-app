@@ -260,6 +260,14 @@ export type ReadinessStatus = {
   weakModules: string[];
 };
 
+export function getExamsThisMonth(history: ExamAttempt[]): number {
+  const now = new Date();
+  return history.filter(a => {
+    const d = new Date(a.completedAt);
+    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  }).length;
+}
+
 export function getReadinessStatus(history: ExamAttempt[]): ReadinessStatus {
   const last5 = history.slice(0, 5);
   const passedCount = last5.filter(a => a.passed).length;

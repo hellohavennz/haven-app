@@ -123,7 +123,7 @@ const planPlusFeatures = [
   "All 29 comprehensive lessons",
   "500+ practice questions",
   "All flashcards for every lesson",
-  "2 mock exams (45 min timer)",
+  "2 mock exams per month",
   "Progress tracking",
   "Resit Support — 1 free month if you fail",
 ];
@@ -195,7 +195,7 @@ export default function App() {
             <span className="whitespace-nowrap">✓ No credit card required</span>
             <span className="whitespace-nowrap">✓ Pass guarantee</span>
           </div>
-          <div className="hidden md:flex justify-center mt-10">
+          <div className="flex justify-center mt-10">
             <ChevronDown size={28} className="animate-bounce text-gray-400 dark:text-gray-500" />
           </div>
         </div>
@@ -382,9 +382,9 @@ export default function App() {
                   <Sparkles className="text-teal-600" size={32} />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
+                <div className="flex items-baseline justify-center gap-1.5 mb-2">
                   <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">per month</span>
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/month</span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Everything you need to pass</p>
               </div>
@@ -413,9 +413,9 @@ export default function App() {
                   <Crown className="text-amber-600" size={32} />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
+                <div className="flex items-baseline justify-center gap-1.5 mb-2">
                   <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">every 6 months</span>
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/6 months</span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Ultimate learning experience</p>
               </div>

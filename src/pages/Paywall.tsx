@@ -186,17 +186,17 @@ export default function Paywall() {
                 <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
               </div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
-              <div className="flex items-baseline justify-center gap-2 mb-1">
+              <div className="flex items-baseline justify-center gap-1.5 mb-1">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/month</span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">per month</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               {[
                 'All 29 comprehensive lessons',
                 '500+ practice questions',
                 'All flashcards for every lesson',
-                '2 mock exams (45 min timer)',
+                '2 mock exams per month',
                 'Progress tracking',
                 'Resit Support — 1 free month if you fail',
               ].map(f => (
@@ -228,10 +228,10 @@ export default function Paywall() {
                 <Crown className="text-amber-600 dark:text-amber-400" size={32} />
               </div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
-              <div className="flex items-baseline justify-center gap-2 mb-1">
+              <div className="flex items-baseline justify-center gap-1.5 mb-1">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/6 months</span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">every 6 months</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
