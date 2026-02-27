@@ -3,9 +3,19 @@
   command = "npm run build"
   publish = "dist"
 
-# ── SPA fallback (client-side routing) ───────────────────────────────────────
+# ── Routing ───────────────────────────────────────────────────────────────────
 [[redirects]]
-  from   = "/*"
+  from   = "/"
+  to     = "/uk"
+  status = 302
+
+[[redirects]]
+  from   = "/uk"
+  to     = "/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/uk/*"
   to     = "/index.html"
   status = 200
 

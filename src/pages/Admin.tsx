@@ -523,7 +523,7 @@ export default function Admin() {
           <Shield className="text-white dark:text-gray-900" size={20} />
         </div>
         <div>
-          <h1 className="font-semibold text-gray-900 dark:text-white">Haven Admin</h1>
+          <h1 className="font-semibold text-gray-900 dark:text-white">HavenReady Admin</h1>
           <p className="text-xs text-gray-500 dark:text-gray-400">{ADMIN_EMAIL}</p>
         </div>
       </div>

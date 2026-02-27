@@ -72,7 +72,7 @@ export default function Home() {
 
         <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-6 text-center dark:from-emerald-900/30 dark:to-teal-900/30">
           <div className="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400">94%</div>
-          <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Haven User Pass Rate</div>
+          <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">HavenReady User Pass Rate</div>
           <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">Above national average</div>
         </div>
 

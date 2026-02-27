@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename: '/uk' });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

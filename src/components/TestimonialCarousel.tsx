@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
     location: "Manchester",
     country: "Nigeria",
     rating: 5,
-    text: "I was so nervous about the test, but Haven made everything clear and simple. The plain-English explanations helped me understand British history and culture properly. I passed on my first attempt with 22/24!",
+    text: "I was so nervous about the test, but HavenReady made everything clear and simple. The plain-English explanations helped me understand British history and culture properly. I passed on my first attempt with 22/24!",
     result: "Passed first try with 22/24",
   },
   {
@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     location: "Birmingham",
     country: "India",
     rating: 5,
-    text: "The practice questions were exactly like the real test. I studied for just two weeks using Haven, 30 minutes each day during my commute. The flashcards were perfect for quick revision. Highly recommend!",
+    text: "The practice questions were exactly like the real test. I studied for just two weeks using HavenReady, 30 minutes each day during my commute. The flashcards were perfect for quick revision. Highly recommend!",
     result: "Passed after 2 weeks of study",
   },
   {
@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
     location: "London",
     country: "Philippines",
     rating: 5,
-    text: "As a working mum with two children, I didn't have much time to study. Haven's mobile-friendly design meant I could practice during my lunch break. The progress tracker kept me motivated. Thank you!",
+    text: "As a working mum with two children, I didn't have much time to study. HavenReady's mobile-friendly design meant I could practice during my lunch break. The progress tracker kept me motivated. Thank you!",
     result: "Passed while working full-time",
   },
   {
@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
     location: "Edinburgh",
     country: "China",
     rating: 5,
-    text: "I failed my first test using another study guide. Haven was different - the questions felt more realistic and the explanations actually helped me understand, not just memorize. Passed the second time with confidence.",
+    text: "I failed my first test using another study guide. HavenReady was different - the questions felt more realistic and the explanations actually helped me understand, not just memorize. Passed the second time with confidence.",
     result: "Passed on second attempt",
   },
   {
@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     location: "Bristol",
     country: "Romania",
     rating: 5,
-    text: "The mock exams were brilliant for building confidence. I kept scoring 80%+ on Haven's tests, so I knew I was ready for the real thing. The £9.99 was the best money I've spent on my UK journey.",
+    text: "The mock exams were brilliant for building confidence. I kept scoring 80%+ on HavenReady's tests, so I knew I was ready for the real thing. The £9.99 was the best money I've spent on my UK journey.",
     result: "Scored 23/24 on real test",
   },
 ];

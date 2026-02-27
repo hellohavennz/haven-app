@@ -7,8 +7,8 @@ import { useSubscription } from '../lib/subscription';
 
 const TIER_LABELS: Record<string, string> = {
   free: 'Free',
-  plus: 'Haven Plus',
-  premium: 'Haven Premium',
+  plus: 'HavenReady Plus',
+  premium: 'HavenReady Premium',
 };
 
 const TIER_COLORS: Record<string, string> = {

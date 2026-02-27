@@ -165,7 +165,7 @@ const Dashboard: React.FC = () => {
                   This is a Sample Dashboard
                 </h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-200">
-                  Upgrade to Haven Plus to unlock your personalized dashboard with real-time progress tracking, performance analytics, and study recommendations tailored just for you.
+                  Upgrade to HavenReady Plus to unlock your personalized dashboard with real-time progress tracking, performance analytics, and study recommendations tailored just for you.
                 </p>
                 <div className="flex flex-wrap gap-3 text-sm text-gray-600 dark:text-gray-300">
                   <div className="flex items-center gap-2">

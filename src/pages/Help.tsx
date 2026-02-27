@@ -114,12 +114,12 @@ export default function Help() {
         </h1>
 
         <p className="text-gray-600 dark:text-gray-200">
-          Everything you need to know about using Haven to prepare for your Life in the UK test.
+          Everything you need to know about using HavenReady to prepare for your Life in the UK test.
         </p>
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
-        <h2 className="mb-6 font-semibold text-gray-900 dark:text-white">How to Use Haven</h2>
+        <h2 className="mb-6 font-semibold text-gray-900 dark:text-white">How to Use HavenReady</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">

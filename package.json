@@ -1,9 +1,9 @@
 {
-  "name": "haven-app",
+  "name": "havenready-app",
   "private": true,
   "version": "1.0.0",
   "description": "Citizenship test preparation platform - Life in the UK Test",
-  "author": "Haven",
+  "author": "HavenReady",
   "type": "module",
   "scripts": {
     "dev": "vite",

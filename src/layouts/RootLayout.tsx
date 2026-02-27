@@ -86,7 +86,7 @@ export default function RootLayout() {
             <span className="sr-only">Open navigation</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="font-heading font-semibold">Haven</div>
+          <div className="font-heading font-semibold">HavenReady</div>
           <div className="h-6 w-6" aria-hidden="true" />
         </header>
       )}
@@ -114,7 +114,7 @@ export default function RootLayout() {
       {!showAnySidebar && (
         <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
           <div className="mx-auto max-w-6xl px-4 py-8 text-center">
-            <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
+            <p>© {new Date().getFullYear()} HavenReady • Learn calmly. Pass confidently.</p>
           </div>
         </footer>
       )}

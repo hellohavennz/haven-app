@@ -1,8 +1,12 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/", "destination": "/uk", "permanent": false }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/uk", "destination": "/index.html" },
+    { "source": "/uk/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

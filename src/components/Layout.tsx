@@ -45,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
                 <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-semibold text-xl">H</span>
                 </div>
-                <span className="text-xl font-semibold text-gray-900">Haven</span>
+                <span className="text-xl font-semibold text-gray-900">HavenReady</span>
               </Link>
             </div>
 

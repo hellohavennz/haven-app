@@ -46,7 +46,7 @@ export default function Navbar() {
               <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-heading font-semibold text-lg">H</span>
               </div>
-              <span className="font-heading font-semibold text-xl text-gray-900 dark:text-white">Haven</span>
+              <span className="font-heading font-semibold text-xl text-gray-900 dark:text-white">HavenReady</span>
             </Link>
 
             {/* Main Navigation - Desktop */}

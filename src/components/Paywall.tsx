@@ -30,7 +30,7 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600" size={32} />
               </div>
-              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Haven Plus</h2>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">HavenReady Plus</h2>
               <div className="flex items-baseline justify-center gap-2 mb-2">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£9.99</span>
                 <span className="text-gray-600 dark:text-gray-300">one-time</span>
@@ -90,7 +90,7 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                 <Crown className="text-amber-600" size={32} />
               </div>
-              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Haven Premium</h2>
+              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">HavenReady Premium</h2>
               <div className="flex items-baseline justify-center gap-2 mb-2">
                 <span className="text-5xl font-semibold text-gray-900 dark:text-white">£14.99</span>
                 <span className="text-gray-600 dark:text-gray-300">one-time</span>
@@ -103,7 +103,7 @@ export default function Paywall() {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                <span className="text-gray-900 dark:text-gray-100 font-semibold">Everything in Haven Plus, and:</span>
+                <span className="text-gray-900 dark:text-gray-100 font-semibold">Everything in HavenReady Plus, and:</span>
               </li>
               <li className="flex items-start gap-3">
                 <Headphones className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />

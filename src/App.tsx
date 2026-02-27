@@ -37,7 +37,7 @@ const heroStats: IconStat[] = [
   {
     icon: TrendingUp,
     value: "95%",
-    label: "Haven User Pass Rate",
+    label: "HavenReady User Pass Rate",
     background: "bg-amber-100",
     iconColor: "text-amber-600",
     helperText: "vs 68.5% average",
@@ -293,7 +293,7 @@ export default function App() {
       <section className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Loved by Thousands of Test Takers</h2>
-          <p className="text-gray-600 dark:text-gray-300">Real stories from people who passed with Haven</p>
+          <p className="text-gray-600 dark:text-gray-300">Real stories from people who passed with HavenReady</p>
         </div>
         <TestimonialCarousel />
       </section>
@@ -337,7 +337,7 @@ export default function App() {
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Try Haven with the first module and core practice tools</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Try HavenReady with the first module and core practice tools</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start gap-3">
@@ -366,14 +366,14 @@ export default function App() {
               </Link>
             </div>
 
-            {/* Haven Plus */}
+            {/* HavenReady Plus */}
             <div className="bg-white border-2 border-teal-300 dark:bg-gray-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                   <Sparkles className="text-teal-600" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">HavenReady Plus</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
                   <span className="text-gray-600 dark:text-gray-300">per month</span>
@@ -397,14 +397,14 @@ export default function App() {
               </Link>
             </div>
 
-            {/* Haven Premium */}
+            {/* HavenReady Premium */}
             <div className="bg-white border-2 border-amber-300 dark:bg-gray-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">BEST VALUE</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                   <Crown className="text-amber-600" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">HavenReady Premium</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
                   <span className="text-gray-600 dark:text-gray-300">per year</span>
@@ -414,7 +414,7 @@ export default function App() {
               <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
+                  <span className="text-gray-900 dark:text-white font-semibold">Everything in HavenReady Plus, and:</span>
                 </li>
                 {planPremiumExtras.map(extra => {
                   const Icon = extra.icon;
@@ -461,7 +461,7 @@ export default function App() {
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Resit Support</h3>
                   <p className="text-gray-700 dark:text-gray-300">
-                    If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
+                    If you genuinely prepare with HavenReady and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
