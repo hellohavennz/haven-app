@@ -243,9 +243,9 @@ export default function Paywall() {
               </div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
               <div className="flex items-baseline justify-center gap-2 mb-1">
-                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
+                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">per year</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">every 6 months</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
@@ -277,7 +277,7 @@ export default function Paywall() {
               {ctaLabel('premium', 'Get Premium')}
               {!isCurrent('premium') && !isLoading && checkingOut !== 'premium' && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Annual plan · best value</p>
+            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">6-month plan · best value</p>
           </div>
         </div>
 

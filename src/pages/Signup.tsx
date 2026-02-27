@@ -34,7 +34,7 @@ export default function Signup() {
     },
     premium: {
       name: 'Haven Premium',
-      price: '£19.99',
+      price: '£24.99',
       icon: Crown,
       color: 'amber'
     }

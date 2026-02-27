@@ -406,8 +406,8 @@ export default function App() {
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£19.99</span>
-                  <span className="text-gray-600 dark:text-gray-300">per year</span>
+                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
+                  <span className="text-gray-600 dark:text-gray-300">every 6 months</span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Ultimate learning experience</p>
               </div>
