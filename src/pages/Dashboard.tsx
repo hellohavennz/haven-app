@@ -5,7 +5,7 @@ import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
 import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
-import { getExamHistory, syncExamHistory, getReadinessStatus } from '../lib/examUtils';
+import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
 import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 
@@ -378,7 +378,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Exam Widget */}
-        <ExamWidget history={examHistory} hasAccess={hasFullAccess} />
+        <ExamWidget history={examHistory} hasAccess={hasFullAccess} tier={tier} />
 
         {/* Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -501,13 +501,17 @@ const Dashboard: React.FC = () => {
 function ExamWidget({
   history,
   hasAccess,
+  tier,
 }: {
   history: ExamAttempt[];
   hasAccess: boolean;
+  tier: string;
 }) {
   const last = history[0] ?? null;
   const readiness = getReadinessStatus(history);
   const recent = history.slice(0, 5);
+  const examsThisMonth = getExamsThisMonth(history);
+  const plusLimitReached = tier === 'plus' && examsThisMonth >= 2;
 
   return (
     <div className="rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
@@ -515,6 +519,15 @@ function ExamWidget({
         <h2 className="font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
           <FileCheck className="text-purple-600 dark:text-purple-400" size={22} />
           Mock Exams
+          {tier === 'plus' && (
+            <span className={`text-xs font-semibold rounded-full px-2.5 py-0.5 ${
+              plusLimitReached
+                ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
+                : 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
+            }`}>
+              {examsThisMonth}/2 this month
+            </span>
+          )}
         </h2>
         <Link
           to="/exam"
@@ -636,7 +649,14 @@ function ExamWidget({
 
         {/* CTA */}
         <div className="flex-shrink-0">
-          {hasAccess ? (
+          {hasAccess && plusLimitReached ? (
+            <div className="text-center space-y-1">
+              <div className="inline-flex items-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-5 py-3 font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
+                Limit reached
+              </div>
+              <p className="text-xs text-gray-400 dark:text-gray-500">Resets next month</p>
+            </div>
+          ) : hasAccess ? (
             <Link
               to="/exam/take"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-5 py-3 font-semibold text-white transition-all hover:shadow-lg"
