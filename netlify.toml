@@ -8,6 +8,7 @@
   from   = "/"
   to     = "/uk"
   status = 302
+  force  = true
 
 [[redirects]]
   from   = "/uk"
