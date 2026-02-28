@@ -100,7 +100,10 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
         evidence_path: path,
         status: 'pending',
       });
-      if (insertError) throw new Error(insertError.message);
+      if (insertError) {
+        if (insertError.code === '23505') throw new Error('You already have a claim under review. Please wait for it to be processed.');
+        throw new Error(insertError.message);
+      }
 
       setClaim({ status: 'pending', admin_notes: null });
       setSubmitDone(true);
@@ -121,7 +124,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
   const STATUS_TEXT: Record<string, string> = {
     pending:  "Your application is under review. We'll process it within 2 business days.",
     approved: 'Approved! 30 days have been added before your next billing date — no action needed.',
-    rejected: 'Unfortunately your application was not approved.',
+    rejected: 'Unfortunately your application was not approved. You may resubmit with updated evidence below.',
   };
 
   return (
@@ -149,8 +152,8 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
         </div>
       )}
 
-      {/* Eligibility + form — only if no existing claim */}
-      {!claim && (
+      {/* Eligibility + form — hidden while pending/approved; shown again after rejection */}
+      {(!claim || claim.status === 'rejected') && (
         <>
           {/* Live eligibility check */}
           <div className="rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 p-4 space-y-2.5">
