@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Users, Flag, Trophy, BarChart3, CheckCircle2, XCircle,
   Clock, TrendingUp, AlertTriangle, RefreshCw, ChevronDown, ChevronUp,
-  Calendar, Shield,
+  Calendar, Shield, FileCheck, ExternalLink, Loader2,
 } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import {
@@ -12,15 +12,21 @@ import {
   fetchAdminUsers,
   fetchAdminExamStats,
   updateReportStatus,
+  fetchResitClaims,
+  approveResitClaim,
+  rejectResitClaim,
+  getEvidenceUrl,
   type AdminOverview,
   type ContentReport,
   type AdminUser,
   type ExamStats,
+  type ResitClaim,
 } from '../lib/adminApi';
+import { supabase } from '../lib/supabase';
 
 const ADMIN_EMAIL = 'hello.haven.nz@gmail.com';
 
-type Tab = 'overview' | 'reports' | 'users' | 'exams';
+type Tab = 'overview' | 'reports' | 'users' | 'exams' | 'resit';
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -465,6 +471,181 @@ function ExamsTab() {
   );
 }
 
+// ── Resit claims tab ──────────────────────────────────────────────────────
+function ResitTab() {
+  const [status, setStatus] = useState<'pending' | 'approved' | 'rejected' | 'all'>('pending');
+  const [claims, setClaims] = useState<ResitClaim[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [acting, setActing] = useState<string | null>(null);
+  const [rejectNotes, setRejectNotes] = useState<Record<string, string>>({});
+  const [showReject, setShowReject] = useState<string | null>(null);
+
+  function load(s: typeof status) {
+    setStatus(s);
+    setLoading(true);
+    setError(null);
+    fetchResitClaims(s)
+      .then(setClaims)
+      .catch(e => setError(e.message))
+      .finally(() => setLoading(false));
+  }
+
+  useEffect(() => { load('pending'); }, []);
+
+  async function handleApprove(claim: ResitClaim) {
+    setActing(claim.id);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const { stripeExtended } = await approveResitClaim(claim.id, session!.access_token);
+      setClaims(prev => prev.filter(c => c.id !== claim.id));
+      if (!stripeExtended) {
+        alert(`Approved, but no active Stripe subscription found for this user — you'll need to extend manually.`);
+      }
+    } catch (e: any) {
+      alert(`Error: ${e.message}`);
+    } finally {
+      setActing(null);
+    }
+  }
+
+  async function handleReject(claim: ResitClaim) {
+    setActing(claim.id);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      await rejectResitClaim(claim.id, session!.access_token, rejectNotes[claim.id]);
+      setClaims(prev => prev.filter(c => c.id !== claim.id));
+      setShowReject(null);
+    } catch (e: any) {
+      alert(`Error: ${e.message}`);
+    } finally {
+      setActing(null);
+    }
+  }
+
+  const FILTERS: { label: string; value: typeof status }[] = [
+    { label: 'Pending', value: 'pending' },
+    { label: 'Approved', value: 'approved' },
+    { label: 'Rejected', value: 'rejected' },
+    { label: 'All', value: 'all' },
+  ];
+
+  const STATUS_CHIP: Record<string, string> = {
+    pending:  'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
+    approved: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300',
+    rejected: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300',
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2 flex-wrap">
+        {FILTERS.map(f => (
+          <button
+            key={f.value}
+            onClick={() => load(f.value)}
+            className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
+              status === f.value
+                ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      {loading && <Spinner />}
+      {error && <ErrorMsg msg={error} />}
+      {!loading && !error && claims.length === 0 && (
+        <p className="py-12 text-center text-gray-500 dark:text-gray-400">No {status === 'all' ? '' : status} claims.</p>
+      )}
+
+      <div className="space-y-3">
+        {claims.map(claim => (
+          <div key={claim.id} className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 p-5 space-y-3">
+            <div className="flex items-start justify-between gap-3 flex-wrap">
+              <div>
+                <p className="font-semibold text-gray-900 dark:text-white text-sm">
+                  {claim.user_email ?? claim.user_id}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                  Submitted {timeAgo(claim.created_at)}
+                  {claim.reviewed_at && ` · Reviewed ${timeAgo(claim.reviewed_at)}`}
+                </p>
+              </div>
+              <span className={`rounded-full px-3 py-0.5 text-xs font-semibold ${STATUS_CHIP[claim.status]}`}>
+                {claim.status}
+              </span>
+            </div>
+
+            {claim.admin_notes && (
+              <p className="text-xs text-gray-600 dark:text-gray-400 italic">{claim.admin_notes}</p>
+            )}
+
+            <div className="flex items-center gap-3 flex-wrap">
+              <a
+                href={getEvidenceUrl(claim.evidence_path)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <ExternalLink size={12} />
+                View evidence
+              </a>
+
+              {claim.status === 'pending' && (
+                <>
+                  <button
+                    onClick={() => handleApprove(claim)}
+                    disabled={!!acting}
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-green-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-green-700 disabled:opacity-50 transition-colors"
+                  >
+                    {acting === claim.id ? <Loader2 size={12} className="animate-spin" /> : <CheckCircle2 size={12} />}
+                    Approve (+30 days)
+                  </button>
+
+                  {showReject === claim.id ? (
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      <input
+                        type="text"
+                        value={rejectNotes[claim.id] ?? ''}
+                        onChange={e => setRejectNotes(prev => ({ ...prev, [claim.id]: e.target.value }))}
+                        placeholder="Rejection reason (optional)"
+                        className="flex-1 min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs dark:bg-gray-800 dark:text-white"
+                      />
+                      <button
+                        onClick={() => handleReject(claim)}
+                        disabled={!!acting}
+                        className="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700 disabled:opacity-50"
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        onClick={() => setShowReject(null)}
+                        className="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setShowReject(claim.id)}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 dark:border-red-800 px-3 py-1.5 text-xs font-semibold text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                    >
+                      <XCircle size={12} />
+                      Reject
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────
 function Spinner() {
   return (
@@ -513,6 +694,7 @@ export default function Admin() {
     { id: 'reports',  label: 'Reports',  icon: Flag },
     { id: 'users',    label: 'Users',    icon: Users },
     { id: 'exams',    label: 'Exams',    icon: Trophy },
+    { id: 'resit',    label: 'Resit',    icon: FileCheck },
   ];
 
   return (
@@ -554,6 +736,7 @@ export default function Admin() {
       {tab === 'reports'  && <ReportsTab />}
       {tab === 'users'    && <UsersTab />}
       {tab === 'exams'    && <ExamsTab />}
+      {tab === 'resit'    && <ResitTab />}
     </div>
   );
 }

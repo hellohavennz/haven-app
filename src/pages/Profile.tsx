@@ -1,10 +1,205 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, BadgeCheck, CheckCircle2, AlertCircle, ArrowRight, CreditCard, Loader2 } from 'lucide-react';
+import { User, Mail, BadgeCheck, CheckCircle2, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
 import { supabase } from '../lib/supabase';
+
+// ── Resit Support ─────────────────────────────────────────────────────────
+
+const PREREQUISITES = [
+  'I have completed all 29 lessons',
+  'I have scored 75%+ on practice questions across all topics',
+  'I have passed at least one mock exam',
+  'My Life in the UK test was within the last 14 days and I did not pass',
+];
+
+function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail: string }) {
+  const [claim, setClaim] = useState<{ status: string; admin_notes: string | null } | null | 'loading'>('loading');
+  const [checked, setChecked] = useState<boolean[]>(PREREQUISITES.map(() => false));
+  const [file, setFile] = useState<File | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitDone, setSubmitDone] = useState(false);
+
+  useEffect(() => {
+    supabase
+      .from('resit_claims')
+      .select('status, admin_notes')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .then(({ data }) => {
+        setClaim(data?.[0] ?? null);
+      });
+  }, [userId]);
+
+  const allChecked = checked.every(Boolean);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!file || !allChecked) return;
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const ext = file.name.split('.').pop() ?? 'jpg';
+      const path = `${userId}/${Date.now()}.${ext}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('resit-evidence')
+        .upload(path, file, { contentType: file.type });
+      if (uploadError) throw new Error(uploadError.message);
+
+      const { error: insertError } = await supabase.from('resit_claims').insert({
+        user_id: userId,
+        user_email: userEmail,
+        evidence_path: path,
+        status: 'pending',
+      });
+      if (insertError) throw new Error(insertError.message);
+
+      setClaim({ status: 'pending', admin_notes: null });
+      setSubmitDone(true);
+    } catch (err: any) {
+      setSubmitError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (claim === 'loading') return null;
+
+  const STATUS_STYLES: Record<string, string> = {
+    pending:  'border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-900/10',
+    approved: 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/10',
+    rejected: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/10',
+  };
+  const STATUS_TEXT: Record<string, string> = {
+    pending:  'Your application is under review. We\'ll process it within 2 business days.',
+    approved: 'Approved! Your subscription has been extended by 30 days at no charge.',
+    rejected: 'Unfortunately your application was not approved.',
+  };
+
+  return (
+    <div className="rounded-2xl border border-amber-200 bg-amber-50 dark:border-amber-800/50 dark:bg-amber-900/10 p-6 space-y-5">
+      <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+        <Award className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+        Resit Support
+      </h2>
+
+      <p className="text-sm text-gray-700 dark:text-gray-300">
+        If you studied with Haven and still didn't pass, we'll extend your subscription by{' '}
+        <strong>30 days free</strong> so you can keep studying and book a resit.
+      </p>
+
+      {/* Existing claim status */}
+      {claim && (
+        <div className={`rounded-xl border p-4 text-sm ${STATUS_STYLES[claim.status] ?? ''}`}>
+          <p className="font-semibold text-gray-900 dark:text-white capitalize mb-1">
+            Status: {claim.status}
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">{STATUS_TEXT[claim.status]}</p>
+          {claim.admin_notes && claim.status === 'rejected' && (
+            <p className="mt-2 text-gray-600 dark:text-gray-400 italic">{claim.admin_notes}</p>
+          )}
+        </div>
+      )}
+
+      {/* Application form — only if no existing claim */}
+      {!claim && (
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Prerequisites */}
+          <div className="space-y-3">
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">
+              To qualify, please confirm all of the following:
+            </p>
+            {PREREQUISITES.map((text, i) => (
+              <label key={i} className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={checked[i]}
+                  onChange={e => {
+                    const next = [...checked];
+                    next[i] = e.target.checked;
+                    setChecked(next);
+                  }}
+                  className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                />
+                <span className="text-sm text-gray-700 dark:text-gray-300">{text}</span>
+              </label>
+            ))}
+          </div>
+
+          {/* Evidence upload */}
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-900 dark:text-white">
+              Upload your test result letter or screen
+            </label>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              JPG, PNG, WEBP or PDF · max 10 MB
+            </p>
+            <label className={`flex items-center gap-3 rounded-xl border-2 border-dashed px-4 py-5 cursor-pointer transition-colors ${
+              file
+                ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
+                : 'border-gray-300 hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600'
+            }`}>
+              <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
+              <span className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                {file ? file.name : 'Click to choose a file'}
+              </span>
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
+                className="sr-only"
+                onChange={e => setFile(e.target.files?.[0] ?? null)}
+              />
+            </label>
+          </div>
+
+          {submitError && (
+            <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              {submitError}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={!allChecked || !file || submitting}
+            className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-6 py-3 font-semibold text-white transition-all hover:bg-amber-700 disabled:opacity-40"
+          >
+            {submitting ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Submitting…
+              </>
+            ) : (
+              <>
+                <Award className="h-4 w-4" />
+                Submit Application
+              </>
+            )}
+          </button>
+
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            We review applications within 2 business days. If approved, your next billing date will be pushed forward by 30 days automatically — you don't need to do anything.
+          </p>
+        </form>
+      )}
+
+      {submitDone && (
+        <div className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-300">
+          <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+          Application submitted! We'll review it within 2 business days.
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Main profile page ─────────────────────────────────────────────────────
 
 const TIER_LABELS: Record<string, string> = {
   free: 'Free',
@@ -190,6 +385,11 @@ export default function Profile() {
           )}
         </div>
       </div>
+
+      {/* Resit Support — only for paying users */}
+      {(tier === 'plus' || tier === 'premium') && user && (
+        <ResitSupportSection userId={user.id} userEmail={user.email} />
+      )}
 
       {/* Manage subscription — only for paying users */}
       {(tier === 'plus' || tier === 'premium') && (

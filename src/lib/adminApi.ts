@@ -86,6 +86,62 @@ export async function fetchAdminExamStats(): Promise<ExamStats> {
   return data as ExamStats;
 }
 
+// ── Resit claims ─────────────────────────────────────────────────────────
+
+export type ResitClaim = {
+  id: string;
+  user_id: string;
+  user_email: string | null;
+  status: 'pending' | 'approved' | 'rejected';
+  evidence_path: string;
+  admin_notes: string | null;
+  created_at: string;
+  reviewed_at: string | null;
+};
+
+export async function fetchResitClaims(
+  status: 'pending' | 'approved' | 'rejected' | 'all' = 'pending',
+): Promise<ResitClaim[]> {
+  let query = supabase
+    .from('resit_claims')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (status !== 'all') query = query.eq('status', status);
+  const { data, error } = await query;
+  if (error) throw error;
+  return (data ?? []) as ResitClaim[];
+}
+
+export async function approveResitClaim(
+  claimId: string,
+  token: string,
+): Promise<{ stripeExtended: boolean }> {
+  const res = await fetch('/.netlify/functions/approve-resit-claim', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ claim_id: claimId }),
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+export async function rejectResitClaim(
+  claimId: string,
+  token: string,
+  adminNotes?: string,
+): Promise<void> {
+  const res = await fetch('/.netlify/functions/reject-resit-claim', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ claim_id: claimId, admin_notes: adminNotes }),
+  });
+  if (!res.ok) throw new Error(await res.text());
+}
+
+export function getEvidenceUrl(path: string): string {
+  return supabase.storage.from('resit-evidence').getPublicUrl(path).data.publicUrl;
+}
+
 /** Fire-and-forget — records today's login for the current user. */
 export function recordLoginEvent(userId: string): void {
   const today = new Date().toISOString().split('T')[0];
