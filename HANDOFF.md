@@ -30,6 +30,7 @@ _Last updated: 2026-02-28_
 | Payments | Stripe (Checkout + Customer Portal + Webhooks) |
 | Charts | Recharts (admin portal only, separate bundle chunk) |
 | PWA | `vite-plugin-pwa` + Workbox — service worker, web manifest, 25 precached entries |
+| AI | Anthropic Claude Haiku (`claude-haiku-4-5-20251001`) via `@anthropic-ai/sdk` — powers Pippa |
 | Build / CI | Netlify auto-deploy on `main` push |
 
 ---
@@ -92,6 +93,7 @@ _Last updated: 2026-02-28_
 | `approve-resit-claim.ts` | Admin-only: approves a resit claim, extends Stripe `trial_end` by 30 days |
 | `reject-resit-claim.ts` | Admin-only: rejects a resit claim with optional admin notes |
 | `admin-user-action.ts` | Admin-only: freeze, unfreeze, or delete a user account |
+| `ask-pippa.ts` | Premium-only: verifies tier, calls Claude Haiku with Pippa system prompt + user study context, returns plain-text reply |
 
 All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin functions additionally verify `jwt.email === 'hello.haven.nz@gmail.com'`.
 
@@ -158,6 +160,20 @@ Phase 2 (offline study + IndexedDB progress queue) — not yet built.
 
 ---
 
+## Pippa AI (AskPippa)
+
+Available to Premium subscribers only. Floating teal button bottom-right on all pages.
+
+- **Component** — `src/components/AskPippa.tsx` — chat panel, message history (session only, not persisted), auto-scroll, dark mode
+- **Function** — `netlify/functions/ask-pippa.ts` — verifies JWT + Premium tier, calls `claude-haiku-4-5-20251001`
+- **Context** — reads user's weak/strong lesson areas from localStorage progress and passes to Claude as context for personalised answers
+- **System prompt** — defines Pippa as calm, warm, plain-English study assistant for the Life in the UK test. No markdown formatting.
+- **Auth** — JWT verified server-side; tier checked against `profiles.subscription_tier`; returns 401 (unauth) or 403 (not Premium) if rejected
+- **Cost** — Claude Haiku, ~$0.001 per conversation. Set a spend cap at console.anthropic.com → Settings → Limits.
+- **E2E test** — `scripts/test-ask-pippa.ts` — run with `npx tsx scripts/test-ask-pippa.ts`. Tests: real reply, conversation history, free user rejection, unauthenticated rejection.
+
+---
+
 ## Resit Support system
 
 End-to-end feature for users who fail their test — available to Plus and Premium subscribers.
@@ -209,6 +225,7 @@ STRIPE_SECRET_KEY            # server-only
 STRIPE_WEBHOOK_SECRET        # whsec_... from Stripe dashboard
 STRIPE_PLUS_PRICE_ID         # price_... for Plus monthly
 STRIPE_PREMIUM_PRICE_ID      # price_... for Premium 6-monthly
+ANTHROPIC_API_KEY            # server-only, used by ask-pippa function
 ```
 
 **Stripe webhook endpoint:**
@@ -242,6 +259,7 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 |---|---|---|
 | `scripts/test-resit-flow.ts` | Full resit claim flow against live site | `npx tsx scripts/test-resit-flow.ts` |
 | `scripts/test-forgot-password.ts` | Forgot password → recovery token → password update | `npx tsx scripts/test-forgot-password.ts` |
+| `scripts/test-ask-pippa.ts` | Pippa AI — real reply, conversation history, free/unauth rejection | `npx tsx scripts/test-ask-pippa.ts` |
 
 ---
 
@@ -251,5 +269,4 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Resit one-per-account enforcement** — currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
 - **PWA Phase 2** — offline study: cache lesson content on first load, queue progress writes to IndexedDB, sync when back online.
 - **Email reminders** — notify users when their test date is approaching. Supabase cron + edge functions.
-- **Pippa AI (AskPippa)** — floating button exists for Premium users; backend (Claude API via Netlify function) not yet built.
 - **Dynamic exam** — adaptive exam mode for Premium; selects questions based on weak areas.
