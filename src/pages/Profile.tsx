@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, BadgeCheck, CheckCircle2, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload } from 'lucide-react';
+import { User, Mail, BadgeCheck, CheckCircle2, XCircle, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
@@ -8,41 +8,83 @@ import { supabase } from '../lib/supabase';
 
 // ── Resit Support ─────────────────────────────────────────────────────────
 
-const PREREQUISITES = [
-  'I have completed all 29 lessons',
-  'I have scored 75%+ on practice questions across all topics',
-  'I have passed at least one mock exam',
-  'My Life in the UK test was within the last 14 days and I did not pass',
-];
+// 24 = 29 total lessons minus 5 chapter intros that have no practice questions
+const LESSONS_REQUIRED = 24;
+const SCORE_REQUIRED = 75;
+
+type EligibilityStats = {
+  lessonsCompleted: number;
+  avgScore: number;
+  examsPassed: number;
+};
+
+function EligRow({ passed, label, value, hint }: {
+  passed: boolean; label: string; value: string; hint?: string;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      {passed
+        ? <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+        : <XCircle className="h-4 w-4 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+      }
+      <div className="flex-1 min-w-0">
+        <span className="text-sm text-gray-700 dark:text-gray-300">{label}</span>
+        <span className={`ml-2 text-sm font-semibold ${passed ? 'text-green-700 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+          {value}
+        </span>
+        {hint && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{hint}</p>}
+      </div>
+    </div>
+  );
+}
 
 function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail: string }) {
   const [claim, setClaim] = useState<{ status: string; admin_notes: string | null } | null | 'loading'>('loading');
-  const [checked, setChecked] = useState<boolean[]>(PREREQUISITES.map(() => false));
+  const [eligibility, setEligibility] = useState<EligibilityStats | null>(null);
+  const [eligLoading, setEligLoading] = useState(true);
+  const [confirmedDate, setConfirmedDate] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [submitDone, setSubmitDone] = useState(false);
 
   useEffect(() => {
+    // Existing claim
     supabase
       .from('resit_claims')
       .select('status, admin_notes')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(1)
-      .then(({ data }) => {
-        setClaim(data?.[0] ?? null);
-      });
+      .then(({ data }) => setClaim(data?.[0] ?? null));
+
+    // Eligibility stats — both queries in parallel
+    Promise.all([
+      supabase.from('user_progress').select('completed, score, attempts').eq('user_id', userId),
+      supabase.from('exam_attempts').select('id', { count: 'exact', head: true }).eq('user_id', userId).eq('passed', true),
+    ]).then(([progressResult, examsResult]) => {
+      const rows = progressResult.data ?? [];
+      const lessonsCompleted = rows.filter(r => r.completed).length;
+      const attempted = rows.filter(r => (r.attempts ?? 0) > 0);
+      const avgScore = attempted.length > 0
+        ? Math.round(attempted.reduce((s, r) => s + (r.score ?? 0), 0) / attempted.length)
+        : 0;
+      setEligibility({ lessonsCompleted, avgScore, examsPassed: examsResult.count ?? 0 });
+      setEligLoading(false);
+    });
   }, [userId]);
 
-  const allChecked = checked.every(Boolean);
+  const eligible = eligibility
+    ? eligibility.lessonsCompleted >= LESSONS_REQUIRED
+      && eligibility.avgScore >= SCORE_REQUIRED
+      && eligibility.examsPassed >= 1
+    : false;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!file || !allChecked) return;
+    if (!file || !confirmedDate || !eligible) return;
     setSubmitting(true);
     setSubmitError('');
-
     try {
       const ext = file.name.split('.').pop() ?? 'jpg';
       const path = `${userId}/${Date.now()}.${ext}`;
@@ -77,8 +119,8 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
     rejected: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/10',
   };
   const STATUS_TEXT: Record<string, string> = {
-    pending:  'Your application is under review. We\'ll process it within 2 business days.',
-    approved: 'Approved! Your subscription has been extended by 30 days at no charge.',
+    pending:  "Your application is under review. We'll process it within 2 business days.",
+    approved: 'Approved! 30 days have been added before your next billing date — no action needed.',
     rejected: 'Unfortunately your application was not approved.',
   };
 
@@ -90,8 +132,8 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
       </h2>
 
       <p className="text-sm text-gray-700 dark:text-gray-300">
-        If you studied with Haven and still didn't pass, we'll extend your subscription by{' '}
-        <strong>30 days free</strong> so you can keep studying and book a resit.
+        If you studied with Haven and still didn't pass, we'll add <strong>30 days</strong> before
+        your next billing date at no charge — works for both Plus and Premium plans.
       </p>
 
       {/* Existing claim status */}
@@ -107,93 +149,121 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
         </div>
       )}
 
-      {/* Application form — only if no existing claim */}
+      {/* Eligibility + form — only if no existing claim */}
       {!claim && (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Prerequisites */}
-          <div className="space-y-3">
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">
-              To qualify, please confirm all of the following:
+        <>
+          {/* Live eligibility check */}
+          <div className="rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 p-4 space-y-2.5">
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+              Your eligibility
             </p>
-            {PREREQUISITES.map((text, i) => (
-              <label key={i} className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={checked[i]}
-                  onChange={e => {
-                    const next = [...checked];
-                    next[i] = e.target.checked;
-                    setChecked(next);
-                  }}
-                  className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+            {eligLoading ? (
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Checking your progress…
+              </div>
+            ) : eligibility && (
+              <div className="space-y-2">
+                <EligRow
+                  passed={eligibility.lessonsCompleted >= LESSONS_REQUIRED}
+                  label="Lessons completed"
+                  value={`${eligibility.lessonsCompleted} / ${LESSONS_REQUIRED}`}
+                  hint={eligibility.lessonsCompleted < LESSONS_REQUIRED
+                    ? `Complete ${LESSONS_REQUIRED - eligibility.lessonsCompleted} more lesson${LESSONS_REQUIRED - eligibility.lessonsCompleted !== 1 ? 's' : ''}`
+                    : undefined}
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">{text}</span>
-              </label>
-            ))}
+                <EligRow
+                  passed={eligibility.avgScore >= SCORE_REQUIRED}
+                  label="Average practice score"
+                  value={`${eligibility.avgScore}%`}
+                  hint={eligibility.avgScore < SCORE_REQUIRED ? `Need ${SCORE_REQUIRED}% — keep practising` : undefined}
+                />
+                <EligRow
+                  passed={eligibility.examsPassed >= 1}
+                  label="Mock exam passed"
+                  value={eligibility.examsPassed > 0 ? `${eligibility.examsPassed} passed` : 'None yet'}
+                  hint={eligibility.examsPassed < 1 ? 'Pass at least one mock exam first' : undefined}
+                />
+              </div>
+            )}
           </div>
 
-          {/* Evidence upload */}
-          <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white">
-              Upload your test result letter or screen
-            </label>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              JPG, PNG, WEBP or PDF · max 10 MB
+          {!eligLoading && !eligible && (
+            <p className="text-sm text-amber-800 dark:text-amber-300">
+              Complete all three requirements above before applying.
             </p>
-            <label className={`flex items-center gap-3 rounded-xl border-2 border-dashed px-4 py-5 cursor-pointer transition-colors ${
-              file
-                ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
-                : 'border-gray-300 hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600'
-            }`}>
-              <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
-              <span className="text-sm text-gray-600 dark:text-gray-400 truncate">
-                {file ? file.name : 'Click to choose a file'}
-              </span>
-              <input
-                type="file"
-                accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
-                className="sr-only"
-                onChange={e => setFile(e.target.files?.[0] ?? null)}
-              />
-            </label>
-          </div>
-
-          {submitError && (
-            <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
-              <AlertCircle className="h-4 w-4 flex-shrink-0" />
-              {submitError}
-            </div>
           )}
 
-          <button
-            type="submit"
-            disabled={!allChecked || !file || submitting}
-            className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-6 py-3 font-semibold text-white transition-all hover:bg-amber-700 disabled:opacity-40"
-          >
-            {submitting ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Submitting…
-              </>
-            ) : (
-              <>
-                <Award className="h-4 w-4" />
-                Submit Application
-              </>
-            )}
-          </button>
+          {/* Application form — only unlocked when eligible */}
+          {!eligLoading && eligible && (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={confirmedDate}
+                  onChange={e => setConfirmedDate(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                />
+                <span className="text-sm text-gray-700 dark:text-gray-300">
+                  My Life in the UK test was taken within the last 14 days and I did not pass
+                </span>
+              </label>
 
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            We review applications within 2 business days. If approved, your next billing date will be pushed forward by 30 days automatically — you don't need to do anything.
-          </p>
-        </form>
-      )}
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white">
+                  Upload your test result (letter or screenshot)
+                </label>
+                <p className="text-xs text-gray-500 dark:text-gray-400">JPG, PNG, WEBP or PDF · max 10 MB</p>
+                <label className={`flex items-center gap-3 rounded-xl border-2 border-dashed px-4 py-5 cursor-pointer transition-colors ${
+                  file
+                    ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
+                    : 'border-gray-300 hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600'
+                }`}>
+                  <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                  <span className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                    {file ? file.name : 'Click to choose a file'}
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
+                    className="sr-only"
+                    onChange={e => setFile(e.target.files?.[0] ?? null)}
+                  />
+                </label>
+              </div>
 
-      {submitDone && (
-        <div className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-300">
-          <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
-          Application submitted! We'll review it within 2 business days.
-        </div>
+              {submitError && (
+                <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                  {submitError}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={!confirmedDate || !file || submitting}
+                className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-6 py-3 font-semibold text-white transition-all hover:bg-amber-700 disabled:opacity-40"
+              >
+                {submitting
+                  ? <><Loader2 className="h-4 w-4 animate-spin" />Submitting…</>
+                  : <><Award className="h-4 w-4" />Submit Application</>
+                }
+              </button>
+
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                We review applications within 2 business days. If approved, 30 days will be added
+                before your next billing date automatically — no action needed from you.
+              </p>
+            </form>
+          )}
+
+          {submitDone && (
+            <div className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-300">
+              <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+              Application submitted! We'll review it within 2 business days.
+            </div>
+          )}
+        </>
       )}
     </div>
   );
