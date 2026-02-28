@@ -247,7 +247,7 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Known pending items
 
-- **Supabase password policy** — set minimum length to 10 in Supabase Dashboard → Authentication → Password Policy (frontend already enforces this; server-side does not yet).
+- **Supabase password policy** — ✅ minimum length set to 10 (Authentication → Providers → Email). Matches frontend enforcement.
 - **Resit one-per-account enforcement** — currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
 - **PWA Phase 2** — offline study: cache lesson content on first load, queue progress writes to IndexedDB, sync when back online.
 - **Email reminders** — notify users when their test date is approaching. Supabase cron + edge functions.
