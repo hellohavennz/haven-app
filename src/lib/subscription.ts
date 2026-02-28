@@ -43,13 +43,24 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
       return _cachedTier;
     }
 
-    // Fallback to user metadata if profile row doesn't exist yet
-    const metadata = user.user_metadata || {};
-    _cachedTier = (metadata.tier as SubscriptionTier) || 'free';
+    // PGRST116 = no rows — profile row missing (trigger didn't fire). Auto-create it.
+    if (error?.code === 'PGRST116') {
+      const displayName =
+        user.user_metadata?.full_name ||
+        user.user_metadata?.name ||
+        user.email?.split('@')[0] ||
+        'User';
+      await supabase.from('profiles').insert({
+        id: user.id,
+        display_name: displayName,
+        subscription_tier: 'free',
+      });
+    }
+
+    _cachedTier = 'free';
     return _cachedTier;
   } catch {
-    const metadata = (await getCurrentUser())?.user_metadata || {};
-    _cachedTier = (metadata.tier as SubscriptionTier) || 'free';
+    _cachedTier = 'free';
     return _cachedTier;
   }
 }

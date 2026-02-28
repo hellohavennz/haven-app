@@ -1,4 +1,5 @@
 import { getAllLessons } from './content';
+import { getAllProgress } from './progress';
 import { supabase } from './supabase';
 import { getCurrentUser } from './auth';
 import type { ExamQuestion, ExamAttempt } from '../types';
@@ -162,6 +163,94 @@ export function selectStaticExamQuestions(examNumber: 1 | 2): ExamQuestion[] {
 
   // Deterministic question order
   return seededShuffle(selected, rng).slice(0, TOTAL_QUESTIONS);
+}
+
+/**
+ * Selects 24 questions for the Dynamic Exam, weighted toward the user's weak areas.
+ * Lessons with low accuracy (or never attempted) contribute more questions to the pool,
+ * so the exam focuses on what the user needs to practise most.
+ *
+ * Module distribution still mirrors the real test (MODULE_WEIGHTS) so the balance
+ * of topics is realistic. Within each module, weak-lesson questions are overrepresented.
+ *
+ * Weakness weights per lesson:
+ *   - never attempted  → weight 2 (unseen content is worth practising)
+ *   - accuracy < 60%   → weight 3 (heavily prioritised)
+ *   - accuracy 60–79%  → weight 2 (needs more work)
+ *   - accuracy ≥ 80%   → weight 1 (already solid, included normally)
+ */
+export function selectDynamicExamQuestions(): ExamQuestion[] {
+  const progress = getAllProgress();
+  const allLessons = getAllLessons();
+
+  const getWeight = (lessonId: string): number => {
+    const p = progress[lessonId];
+    if (!p || p.attempted === 0) return 2;
+    const accuracy = p.correct / p.attempted;
+    if (accuracy < 0.6) return 3;
+    if (accuracy < 0.8) return 2;
+    return 1;
+  };
+
+  // Build weighted pools per module (repeat weak-lesson questions by their weight)
+  const byModule: Record<string, ExamQuestion[]> = {};
+  for (const lesson of allLessons) {
+    if (!lesson.questions?.length) continue;
+    const mod = lesson.module_slug;
+    if (!byModule[mod]) byModule[mod] = [];
+    const weight = getWeight(lesson.id);
+    for (const q of lesson.questions) {
+      const eq: ExamQuestion = { ...q, lessonId: lesson.id, moduleSlug: mod };
+      for (let w = 0; w < weight; w++) {
+        byModule[mod].push(eq);
+      }
+    }
+  }
+
+  const selected: ExamQuestion[] = [];
+  const usedPrompts = new Set<string>();
+
+  for (const [mod, count] of Object.entries(MODULE_WEIGHTS)) {
+    const pool = shuffle(byModule[mod] ?? []);
+    let added = 0;
+    for (const q of pool) {
+      if (added >= count) break;
+      if (!usedPrompts.has(q.prompt)) {
+        selected.push(q);
+        usedPrompts.add(q.prompt);
+        added++;
+      }
+    }
+  }
+
+  // Pad from any remaining questions if short
+  if (selected.length < TOTAL_QUESTIONS) {
+    const extras: ExamQuestion[] = [];
+    for (const lesson of allLessons) {
+      for (const q of lesson.questions ?? []) {
+        if (!usedPrompts.has(q.prompt)) {
+          extras.push({ ...q, lessonId: lesson.id, moduleSlug: lesson.module_slug });
+        }
+      }
+    }
+    selected.push(...shuffle(extras).slice(0, TOTAL_QUESTIONS - selected.length));
+  }
+
+  // Shuffle question order and options within each question
+  const finalQuestions = shuffle(selected).slice(0, TOTAL_QUESTIONS);
+
+  return finalQuestions.map(q => {
+    const indices = q.options.map((_, i) => i);
+    const shuffledIndices = shuffle(indices);
+    const shuffledOptions = shuffledIndices.map(i => q.options[i]);
+    const correctAnswerText = q.options[q.correct_index];
+    const newCorrectIndex = shuffledOptions.indexOf(correctAnswerText);
+    return {
+      ...q,
+      options: shuffledOptions,
+      correct_index: newCorrectIndex,
+    };
+  });
 }
 
 export function getExamHistory(): ExamAttempt[] {

@@ -15,8 +15,8 @@ import {
   Dumbbell,
 } from "lucide-react";
 import {
-  selectExamQuestions,
   selectStaticExamQuestions,
+  selectDynamicExamQuestions,
   saveExamAttempt,
   getExamHistory,
   syncExamHistory,
@@ -131,7 +131,7 @@ export default function ExamSession() {
     } else if (examType === "static-2") {
       qs = selectStaticExamQuestions(2);
     } else {
-      qs = selectExamQuestions();
+      qs = selectDynamicExamQuestions();
     }
     setQuestions(qs);
     setAnswers(Array(qs.length).fill(null));
@@ -261,6 +261,11 @@ export default function ExamSession() {
           {isStaticExam && (
             <p className="text-xs text-gray-400 dark:text-gray-500">
               Fixed question set — same 24 questions every time
+            </p>
+          )}
+          {!isStaticExam && (
+            <p className="text-xs text-gray-400 dark:text-gray-500">
+              Questions adapt to your weak areas — different every time
             </p>
           )}
         </div>
