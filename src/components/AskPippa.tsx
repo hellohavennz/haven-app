@@ -117,11 +117,8 @@ export default function AskPippa() {
       {/* Chat panel */}
       {isOpen && (
         <div
-          className="fixed bottom-6 right-3 z-50 flex flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:right-6"
-          style={{
-            width: 'min(380px, calc(100vw - 24px))',
-            height: 'min(580px, calc(100dvh - 100px))',
-          }}
+          className="fixed bottom-6 right-3 z-50 flex w-[calc(100vw-24px)] max-w-[380px] flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:right-6"
+          style={{ height: '560px', maxHeight: 'calc(100vh - 100px)' }}
         >
           {/* Header */}
           <div className="flex flex-shrink-0 items-center justify-between rounded-t-2xl bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white">
