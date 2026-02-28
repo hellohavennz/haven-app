@@ -29,6 +29,23 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         navigateFallback: '/uk/',
         navigateFallbackDenylist: [/^\/\.netlify/],
+        // ── Phase 2: cache Supabase content API responses for offline study ──
+        // StaleWhileRevalidate: serve from cache immediately, update in background.
+        // After the first online visit all lesson content is available offline.
+        runtimeCaching: [
+          {
+            urlPattern: /https:\/\/auth\.havenstudy\.app\/rest\/v1\/(modules|lessons|study_sections|questions|flashcards)/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'haven-content-v1',
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+              },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
       },
     }),
   ],

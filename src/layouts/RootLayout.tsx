@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { Menu, WifiOff } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import PracticeSidebar from "../components/PracticeSidebar";
@@ -13,12 +13,15 @@ import { checkSubscriptionStatus, useSubscription } from "../lib/subscription";
 import { preloadOnboarding } from "../lib/onboarding";
 import { recordLoginEvent } from "../lib/adminApi";
 import { supabase } from "../lib/supabase";
+import { useOnlineStatus, syncProgressOnReconnect } from "../lib/offline";
 
 export default function RootLayout() {
   const location = useLocation();
   const { tier } = useSubscription();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [contentReady, setContentReady] = useState(false);
+  const isOnline = useOnlineStatus();
+  const wasOnlineRef = useRef(navigator.onLine);
 
   useEffect(() => {
     Promise.all([preloadContent(), checkSubscriptionStatus(), preloadOnboarding()])
@@ -34,6 +37,14 @@ export default function RootLayout() {
         setContentReady(true); // unblock the UI even on error
       });
   }, []);
+
+  // Flush any progress writes that failed while offline
+  useEffect(() => {
+    if (isOnline && !wasOnlineRef.current) {
+      syncProgressOnReconnect().catch(() => {});
+    }
+    wasOnlineRef.current = isOnline;
+  }, [isOnline]);
 
   const showStudySidebar = location.pathname.startsWith("/content");
   const showPracticeSidebar =
@@ -91,6 +102,14 @@ export default function RootLayout() {
           <div className="font-heading font-semibold">Haven</div>
           <div className="h-6 w-6" aria-hidden="true" />
         </header>
+      )}
+
+      {/* Offline banner */}
+      {!isOnline && (
+        <div className="flex flex-shrink-0 items-center justify-center gap-2 border-b border-amber-200 bg-amber-50 py-2 text-xs text-amber-700 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300">
+          <WifiOff className="h-3.5 w-3.5 flex-shrink-0" />
+          You're offline — studying from saved content
+        </div>
       )}
 
       <div className="relative flex flex-1 min-h-0">
