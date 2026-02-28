@@ -68,6 +68,16 @@ const faqs: FAQItem[] = [
       "Absolutely! The app is fully responsive and works great on phones, tablets, and computers. Study and practice wherever you are.",
   },
   {
+    question: "What is Resit Support?",
+    answer:
+      "Resit Support is included in Haven Plus and Haven Premium. If you sit the Life in the UK test and don't pass, you can submit a photo of your result letter through your Profile page. Once approved, we'll extend your subscription by one free month so you have extra time to prepare for your resit — at no charge to you.",
+  },
+  {
+    question: "What are the requirements to claim Resit Support?",
+    answer:
+      "To be eligible you must: (1) have completed all 24 study lessons, (2) have achieved an average practice score of 75% or higher across those lessons, (3) have passed at least one mock exam, and (4) have sat your real test within the last 14 days. These checks are shown automatically on your Profile page — the claim form only unlocks once all conditions are met. Each account can only claim Resit Support once.",
+  },
+  {
     question: "How do I report an error or unclear content?",
     answer:
       "If you spot a mistake, unclear wording, or anything that doesn't look right, tap the flag icon (Report issue) that appears at the bottom of lessons, practice questions, and flashcards. Describe the problem briefly and submit — our team will review it and fix it. You need to be logged in to send a report.",
