@@ -8,13 +8,14 @@ import MobileNav from "../components/navigation/MobileNav";
 import StudySidebar from "../components/navigation/StudySidebar";
 import AskPippa from "../components/AskPippa";
 import { preloadContent } from "../lib/content";
-import { checkSubscriptionStatus } from "../lib/subscription";
+import { checkSubscriptionStatus, useSubscription } from "../lib/subscription";
 import { preloadOnboarding } from "../lib/onboarding";
 import { recordLoginEvent } from "../lib/adminApi";
 import { supabase } from "../lib/supabase";
 
 export default function RootLayout() {
   const location = useLocation();
+  const { tier } = useSubscription();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [contentReady, setContentReady] = useState(false);
 
@@ -108,16 +109,15 @@ export default function RootLayout() {
           <div className={contentWrapperClasses}>
             <Outlet />
           </div>
+          {!showAnySidebar && (
+            <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
+              <div className="mx-auto max-w-6xl px-4 py-8 text-center">
+                <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
+              </div>
+            </footer>
+          )}
         </main>
       </div>
-
-      {!showAnySidebar && (
-        <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-center">
-            <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
-          </div>
-        </footer>
-      )}
 
       {showAnySidebar && <MobileNav />}
 
@@ -142,7 +142,7 @@ export default function RootLayout() {
         </>
       )}
 
-      <AskPippa />
+      {tier === 'premium' && <AskPippa />}
     </div>
   );
 }
