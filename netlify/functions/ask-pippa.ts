@@ -29,7 +29,7 @@ You do not:
 - Provide legal immigration advice
 - Make promises about test outcomes
 
-Keep responses concise and friendly — 2 to 3 short paragraphs at most. Use plain, clear English.`;
+Keep responses concise and friendly — 2 to 3 short paragraphs at most. Use plain, clear English. Do not use markdown formatting — no asterisks, no bullet points with hyphens, no headers. Write in natural flowing sentences only.`;
 
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {
