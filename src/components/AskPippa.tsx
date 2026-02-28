@@ -116,18 +116,15 @@ export default function AskPippa() {
 
       {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-0 right-0 z-50 flex flex-col bg-white shadow-2xl dark:bg-gray-900 sm:bottom-6 sm:right-6 sm:h-[600px] sm:w-[380px] sm:rounded-2xl sm:border sm:border-gray-200 dark:sm:border-gray-700"
-          style={{ height: "100dvh", width: "100vw" }}
+        <div
+          className="fixed bottom-6 right-3 z-50 flex flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:right-6"
+          style={{
+            width: 'min(380px, calc(100vw - 24px))',
+            height: 'min(580px, calc(100dvh - 100px))',
+          }}
         >
-          {/* Override fixed sizing on larger screens */}
-          <style>{`
-            @media (min-width: 640px) {
-              .pippa-panel { height: 600px !important; width: 380px !important; }
-            }
-          `}</style>
-
           {/* Header */}
-          <div className="flex flex-shrink-0 items-center justify-between rounded-t-none bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white sm:rounded-t-2xl">
+          <div className="flex flex-shrink-0 items-center justify-between rounded-t-2xl bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                 <Sparkles className="h-5 w-5" />
