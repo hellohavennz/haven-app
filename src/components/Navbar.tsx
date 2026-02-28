@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser, logout } from "../lib/auth";
 import { onAuthStateChange } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
-import { Menu, X, Sparkles, Crown } from "lucide-react";
+import { Menu, X, Sparkles, Crown, Shield } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
@@ -32,6 +32,7 @@ export default function Navbar() {
     navigate("/");
   };
 
+  const isAdmin = user?.email === 'hello.haven.nz@gmail.com';
   const showUpgrade = user && tier !== 'premium';
   const upgradeText = tier === 'plus' ? 'Upgrade to Premium' : 'Upgrade';
 
@@ -81,6 +82,15 @@ export default function Navbar() {
               >
                 Help
               </Link>
+              {isAdmin && (
+                <Link
+                  to="/admin"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                >
+                  <Shield size={15} />
+                  Admin
+                </Link>
+              )}
             </div>
           </div>
 
@@ -185,6 +195,16 @@ export default function Navbar() {
             >
               Help
             </Link>
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Shield size={15} />
+                Admin
+              </Link>
+            )}
 
             {showUpgrade && (
               <Link
