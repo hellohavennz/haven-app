@@ -44,9 +44,7 @@ export default function Navbar() {
           <div className="flex items-center gap-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-heading font-semibold text-lg">H</span>
-              </div>
+              <img src="/haven-icons/icon-384x384.png" alt="Haven" className="w-8 h-8 rounded-lg" />
               <span className="font-heading font-semibold text-xl text-gray-900 dark:text-white">Haven</span>
             </Link>
 
