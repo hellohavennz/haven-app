@@ -22,6 +22,7 @@ import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
+import ResetPassword from './pages/ResetPassword';
 import { ThemeProvider } from './context/ThemeContext';
 
 const router = createBrowserRouter([
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
+      { path: 'reset-password', element: <ResetPassword /> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
 

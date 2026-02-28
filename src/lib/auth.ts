@@ -56,6 +56,13 @@ export function onAuthStateChange(callback: (user: any) => void) {
   });
 }
 
+export async function resetPassword(email: string) {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/uk/reset-password`,
+  });
+  if (error) throw error;
+}
+
 export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
