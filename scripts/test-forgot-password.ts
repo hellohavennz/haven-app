@@ -8,7 +8,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = 'https://qnutjblhhqfzuaznarze.supabase.co';
+const SUPABASE_URL = 'https://auth.havenstudy.app';
 const SERVICE_ROLE_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFudXRqYmxoaHFmenVhem5hcnplIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTc4MjMxMywiZXhwIjoyMDc3MzU4MzEzfQ.Ysv9qI8DYtWoxKjgQjvpQ-PFqSzrBePERv9xaVRMRmc';
 const ANON_KEY =
