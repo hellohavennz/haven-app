@@ -23,6 +23,8 @@ import Paywall from './pages/Paywall';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import ResetPassword from './pages/ResetPassword';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import { ThemeProvider } from './context/ThemeContext';
 
 const router = createBrowserRouter([
@@ -35,6 +37,8 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
       { path: 'reset-password', element: <ResetPassword /> },
+      { path: 'privacy', element: <Privacy /> },
+      { path: 'terms', element: <Terms /> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
 

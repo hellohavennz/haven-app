@@ -7,6 +7,7 @@ import PracticeSidebar from "../components/PracticeSidebar";
 import MobileNav from "../components/navigation/MobileNav";
 import StudySidebar from "../components/navigation/StudySidebar";
 import AskPippa from "../components/AskPippa";
+import { Link } from "react-router-dom";
 import { preloadContent } from "../lib/content";
 import { checkSubscriptionStatus, useSubscription } from "../lib/subscription";
 import { preloadOnboarding } from "../lib/onboarding";
@@ -111,7 +112,7 @@ export default function RootLayout() {
           </div>
           {!showAnySidebar && (
             <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
-              <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center gap-3">
+              <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center gap-4">
                 <a
                   href="https://www.instagram.com/haven.study.uk/"
                   target="_blank"
@@ -125,6 +126,11 @@ export default function RootLayout() {
                     <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
                   </svg>
                 </a>
+                <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
+                  <Link to="/privacy" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Privacy Policy</Link>
+                  <span>·</span>
+                  <Link to="/terms" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Terms of Service</Link>
+                </div>
                 <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
               </div>
             </footer>
