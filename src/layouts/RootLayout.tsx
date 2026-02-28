@@ -69,7 +69,7 @@ export default function RootLayout() {
 
   const contentWrapperClasses = showAnySidebar
     ? "h-full w-full px-4 pb-28 pt-4 md:px-8 md:pb-12"
-    : "mx-auto h-full w-full max-w-6xl px-4 py-12";
+    : "mx-auto w-full max-w-6xl px-4 py-12";
 
   return (
     <div className="relative flex h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
