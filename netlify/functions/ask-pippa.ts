@@ -108,6 +108,6 @@ export const handler: Handler = async (event) => {
     };
   } catch (err: any) {
     console.error('Claude API error:', err);
-    return { statusCode: 500, body: `Claude error: ${err?.message ?? String(err)}` };
+    return { statusCode: 500, body: 'Failed to get a response. Please try again.' };
   }
 };
