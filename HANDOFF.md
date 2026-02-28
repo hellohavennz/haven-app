@@ -94,6 +94,7 @@ _Last updated: 2026-02-28 (session 2)_
 | `reject-resit-claim.ts` | Admin-only: rejects a resit claim with optional admin notes |
 | `admin-user-action.ts` | Admin-only: freeze, unfreeze, or delete a user account |
 | `ask-pippa.ts` | Premium-only: verifies tier, calls Claude Haiku with Pippa system prompt + user study context, returns plain-text reply |
+| `send-exam-reminders.ts` | **Scheduled** (daily 08:00 UTC): queries profiles for exam_date = today+7 or today+1, sends reminder emails via Resend, marks flags to prevent duplicates |
 
 All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin functions additionally verify `jwt.email === 'hello.haven.nz@gmail.com'`.
 
@@ -112,6 +113,7 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260228000007_resit_claims.sql` | `resit_claims` table + RLS + storage policy for `resit-evidence` bucket | ✅ Applied |
 | `20260228000008_admin_actions.sql` | Updates `admin_overview` (adds `daily_signups`) and `admin_get_users` (adds `banned_until`) | ✅ Applied |
 | `20260228000009_resit_one_per_account.sql` | Partial unique indexes: one `approved` per user (lifetime), one `pending` per user at a time | ✅ Applied |
+| `20260228000010_exam_reminder_flags.sql` | Adds `exam_reminder_7d_sent` + `exam_reminder_1d_sent` boolean columns to profiles | ✅ Applied |
 
 ---
 
@@ -271,4 +273,4 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Dynamic exam** — ✅ Built. Adaptive question selection weighted by weak lesson areas (`selectDynamicExamQuestions` in `examUtils.ts`).
 - **Resit one-per-account enforcement** — ✅ Enforced via partial unique indexes (`migration 000009`). One approved per user (lifetime), one pending at a time. Rejected users can resubmit.
 - **PWA Phase 2** — offline study: cache lesson content on first load, queue progress writes to IndexedDB, sync when back online.
-- **Email reminders** — notify users when their test date is approaching. Supabase cron + edge functions.
+- **Email reminders** — ✅ Built. Netlify Scheduled Function (`send-exam-reminders.ts`) runs daily at 08:00 UTC. Sends 7-day and 1-day reminder emails via Resend. Flags on `profiles` prevent duplicates; flags reset when exam date changes. **Requires setup: add `RESEND_API_KEY` to Netlify env and verify `haven.study` as a sending domain at resend.com.**

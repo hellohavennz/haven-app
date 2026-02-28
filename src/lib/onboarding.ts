@@ -84,7 +84,15 @@ export async function saveOnboarding(
     const user = await getCurrentUser();
     if (user) {
       await supabase.from('profiles').upsert(
-        { id: user.id, exam_date: examDate, study_goal: studyGoal, onboarding_complete: true },
+        {
+          id: user.id,
+          exam_date: examDate,
+          study_goal: studyGoal,
+          onboarding_complete: true,
+          // Reset reminder flags so new reminders fire for the updated date
+          exam_reminder_7d_sent: false,
+          exam_reminder_1d_sent: false,
+        },
         { onConflict: 'id' }
       );
     }
