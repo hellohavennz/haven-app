@@ -29,6 +29,7 @@ _Last updated: 2026-02-28_
 | Serverless | Netlify Functions (TypeScript, in `netlify/functions/`) |
 | Payments | Stripe (Checkout + Customer Portal + Webhooks) |
 | Charts | Recharts (admin portal only, separate bundle chunk) |
+| PWA | `vite-plugin-pwa` + Workbox — service worker, web manifest, 25 precached entries |
 | Build / CI | Netlify auto-deploy on `main` push |
 
 ---
@@ -39,6 +40,7 @@ _Last updated: 2026-02-28_
 |---|---|
 | Route definitions | `src/main.tsx` |
 | App shell + login tracking | `src/layouts/RootLayout.tsx` |
+| Auth guard (OAuth-safe) | `src/components/RequireAuth.tsx` |
 | Landing page + pricing cards | `src/App.tsx` |
 | Paywall / upgrade page | `src/pages/Paywall.tsx` |
 | User profile + Resit Support form | `src/pages/Profile.tsx` |
@@ -56,6 +58,8 @@ _Last updated: 2026-02-28_
 | Netlify functions | `netlify/functions/` |
 | DB migrations | `supabase/migrations/` |
 | E2E test scripts | `scripts/` |
+| App icons + favicon | `public/haven-icons/` |
+| OG social banner | `public/haven-icons/haven_study_banner.png` (1200×630) |
 
 ---
 
@@ -110,10 +114,47 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 
 ## Authentication
 
-- **Email + password** — standard Supabase auth
-- **Google OAuth** — live and working. Consent screen shows `auth.havenstudy.app`
-- **Forgot password** — "Forgot password?" on login page → sends reset email → `/uk/reset-password` handles the recovery token
-- **Custom auth domain** — `auth.havenstudy.app` (Supabase Pro). CNAME + TXT records in Netlify DNS. Google OAuth redirect URI: `https://auth.havenstudy.app/auth/v1/callback`
+- **Email + password** — Supabase auth. Passwords hashed with **bcrypt** (random salt per password, cost factor 10). Plaintext is never stored or accessible.
+- **Password requirements** — min 10 characters, 1 uppercase, 1 lowercase, 1 number. Enforced client-side with live checklist. ⚠️ Also set in **Supabase Dashboard → Authentication → Password Policy → minimum length = 10** to enforce server-side.
+- **Google OAuth** — live and working. Consent screen shows `auth.havenstudy.app`. Redirect goes to `/uk/dashboard`.
+- **Forgot password** — "Forgot password?" on login page → sends reset email → `/uk/reset-password` handles the recovery token.
+- **Custom auth domain** — `auth.havenstudy.app` (Supabase Pro). CNAME + TXT records in Netlify DNS. Google OAuth redirect URI: `https://auth.havenstudy.app/auth/v1/callback`.
+- **OAuth loop fix** — `RequireAuth` uses `onAuthStateChange` (not `getUser()`) so the session is established before the auth check fires.
+- **Supabase redirect URLs allowlist** — includes `https://havenstudy.app/uk/dashboard` and `https://havenstudy.app/uk/reset-password`.
+
+---
+
+## Content Security Policy
+
+Defined in `netlify.toml` **and** `vercel.json` (keep in sync).
+
+Key `connect-src` entries:
+- `https://auth.havenstudy.app` + `wss://auth.havenstudy.app` — **must be explicit**; `*.supabase.co` does NOT cover a custom domain
+- `https://*.supabase.co` + `wss://*.supabase.co`
+- `https://api.stripe.com`
+
+Key `form-action`: `https://checkout.stripe.com`
+
+---
+
+## PWA
+
+Phase 1 is live:
+- **Manifest** — `start_url: '/uk/'`, `display: 'standalone'`, theme `#0d9488`
+- **Icons** — all sizes in `public/haven-icons/` (16px → 512px + maskable)
+- **Service worker** — Workbox `generateSW`, precaches 25 entries (~3.5 MB), `navigateFallback: '/uk/'`
+- **Auto-update** — `registerType: 'autoUpdate'`
+
+Phase 2 (offline study + IndexedDB progress queue) — not yet built.
+
+---
+
+## SEO / Social
+
+- **OG tags** — `og:title`, `og:description`, `og:image`, `og:url` in `index.html`
+- **Twitter card** — `summary_large_image`
+- **OG image** — `public/haven-icons/haven_study_banner.png` (1200×630), served at `https://havenstudy.app/haven-icons/haven_study_banner.png`
+- Test link previews at: https://www.opengraph.xyz
 
 ---
 
@@ -206,7 +247,9 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Known pending items
 
-- **Resit one-per-account enforcement**: currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
-- **PWA**: `manifest.json` + service worker would enable home screen install and offline access (already advertised as a Premium feature).
-- **Email reminders**: notify users when their test date is approaching. Supabase cron + edge functions.
-- **SEO**: landing page has no `og:image` or structured data yet.
+- **Supabase password policy** — set minimum length to 10 in Supabase Dashboard → Authentication → Password Policy (frontend already enforces this; server-side does not yet).
+- **Resit one-per-account enforcement** — currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
+- **PWA Phase 2** — offline study: cache lesson content on first load, queue progress writes to IndexedDB, sync when back online.
+- **Email reminders** — notify users when their test date is approaching. Supabase cron + edge functions.
+- **Pippa AI (AskPippa)** — floating button exists for Premium users; backend (Claude API via Netlify function) not yet built.
+- **Dynamic exam** — adaptive exam mode for Premium; selects questions based on weak areas.
