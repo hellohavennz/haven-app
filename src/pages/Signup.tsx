@@ -15,9 +15,18 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordTouched, setPasswordTouched] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const passwordRules = [
+    { label: 'At least 10 characters', ok: password.length >= 10 },
+    { label: 'One uppercase letter', ok: /[A-Z]/.test(password) },
+    { label: 'One lowercase letter', ok: /[a-z]/.test(password) },
+    { label: 'One number', ok: /[0-9]/.test(password) },
+  ];
+  const passwordValid = passwordRules.every(r => r.ok);
 
   const planDetails = {
     free: {
@@ -47,6 +56,12 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     setLoading(true);
+
+    if (!passwordValid) {
+      setError("Please meet all password requirements.");
+      setLoading(false);
+      return;
+    }
 
     try {
       await signUp(email, password, name.trim() || undefined);
@@ -174,13 +189,21 @@ export default function Signup() {
                 type="password"
                 autoComplete="new-password"
                 required
-                minLength={8}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="••••••••"
               />
-              <p className="mt-1 text-small text-gray-500">Must be at least 8 characters</p>
+              {passwordTouched && (
+                <ul className="mt-2 space-y-1">
+                  {passwordRules.map(r => (
+                    <li key={r.label} className={`flex items-center gap-2 text-xs ${r.ok ? 'text-teal-600' : 'text-gray-400'}`}>
+                      <span>{r.ok ? '✓' : '○'}</span>
+                      {r.label}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 
@@ -238,10 +261,6 @@ export default function Signup() {
             </svg>
             Sign up with Google
           </button>
-
-          <p className="text-center text-sm text-gray-500 mt-4">
-            Note: Social login providers need to be configured in Supabase Dashboard
-          </p>
 
           <p className="text-center text-sm text-gray-600 mt-6">
             Already have an account?{" "}

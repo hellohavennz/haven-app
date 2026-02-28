@@ -6,10 +6,19 @@ import { KeyRound, AlertCircle, CheckCircle } from "lucide-react";
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [passwordTouched, setPasswordTouched] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [validSession, setValidSession] = useState(false);
+
+  const passwordRules = [
+    { label: 'At least 10 characters', ok: password.length >= 10 },
+    { label: 'One uppercase letter', ok: /[A-Z]/.test(password) },
+    { label: 'One lowercase letter', ok: /[a-z]/.test(password) },
+    { label: 'One number', ok: /[0-9]/.test(password) },
+  ];
+  const passwordValid = passwordRules.every(r => r.ok);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,8 +40,8 @@ export default function ResetPassword() {
     e.preventDefault();
     setError("");
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters.");
+    if (!passwordValid) {
+      setError("Please meet all password requirements.");
       return;
     }
     if (password !== confirm) {
@@ -100,10 +109,20 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                   required
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
-                  placeholder="At least 8 characters"
+                  placeholder="••••••••"
                 />
+                {passwordTouched && (
+                  <ul className="mt-2 space-y-1">
+                    {passwordRules.map(r => (
+                      <li key={r.label} className={`flex items-center gap-2 text-xs ${r.ok ? 'text-teal-600' : 'text-gray-400'}`}>
+                        <span>{r.ok ? '✓' : '○'}</span>
+                        {r.label}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               <div>
