@@ -24,9 +24,11 @@ _Last updated: 2026-02-28_
 | Frontend | React 18 + TypeScript + Vite |
 | Styling | Tailwind CSS (dark mode via `dark:` classes) |
 | Routing | React Router v6, `basename: '/uk'` |
-| Backend / DB | Supabase (PostgreSQL + RLS + Auth) |
+| Backend / DB | Supabase Pro (PostgreSQL + RLS + Auth) |
+| Auth domain | `auth.havenstudy.app` (custom Supabase domain — replaces raw project URL) |
 | Serverless | Netlify Functions (TypeScript, in `netlify/functions/`) |
 | Payments | Stripe (Checkout + Customer Portal + Webhooks) |
+| Charts | Recharts (admin portal only, separate bundle chunk) |
 | Build / CI | Netlify auto-deploy on `main` push |
 
 ---
@@ -42,13 +44,18 @@ _Last updated: 2026-02-28_
 | User profile + Resit Support form | `src/pages/Profile.tsx` |
 | Admin portal | `src/pages/Admin.tsx` |
 | Help & FAQ page | `src/pages/Help.tsx` |
+| Privacy Policy | `src/pages/Privacy.tsx` → `/uk/privacy` |
+| Terms of Service | `src/pages/Terms.tsx` → `/uk/terms` |
+| Password reset page | `src/pages/ResetPassword.tsx` → `/uk/reset-password` |
 | Subscription hook | `src/lib/subscription.ts` — `useSubscription()` → `{ tier, hasPlus, hasPremium }` |
 | Admin API (TypeScript) | `src/lib/adminApi.ts` |
+| Auth functions | `src/lib/auth.ts` — `signIn`, `signUp`, `signInWithGoogle`, `resetPassword`, etc. |
 | Exam utilities | `src/lib/examUtils.ts` — `selectStaticExamQuestions(1\|2)`, seeded PRNG |
 | Report button component | `src/components/ReportButton.tsx` |
 | Supabase client | `src/lib/supabase.ts` |
 | Netlify functions | `netlify/functions/` |
 | DB migrations | `supabase/migrations/` |
+| E2E test scripts | `scripts/` |
 
 ---
 
@@ -80,6 +87,7 @@ _Last updated: 2026-02-28_
 | `stripe-webhook.ts` | Handles `checkout.session.completed`, `customer.subscription.updated/deleted` → updates `profiles.subscription_tier` |
 | `approve-resit-claim.ts` | Admin-only: approves a resit claim, extends Stripe `trial_end` by 30 days |
 | `reject-resit-claim.ts` | Admin-only: rejects a resit claim with optional admin notes |
+| `admin-user-action.ts` | Admin-only: freeze, unfreeze, or delete a user account |
 
 All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin functions additionally verify `jwt.email === 'hello.haven.nz@gmail.com'`.
 
@@ -96,6 +104,16 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260224000005_admin_portal.sql` | Admin RPC functions (`admin_overview`, `admin_get_users`, etc.) | ✅ Applied |
 | `20260227000006_stripe_columns.sql` | Adds `stripe_customer_id`, `stripe_subscription_id` to profiles | ✅ Applied |
 | `20260228000007_resit_claims.sql` | `resit_claims` table + RLS + storage policy for `resit-evidence` bucket | ✅ Applied |
+| `20260228000008_admin_actions.sql` | Updates `admin_overview` (adds `daily_signups`) and `admin_get_users` (adds `banned_until`) | ✅ Applied |
+
+---
+
+## Authentication
+
+- **Email + password** — standard Supabase auth
+- **Google OAuth** — live and working. Consent screen shows `auth.havenstudy.app`
+- **Forgot password** — "Forgot password?" on login page → sends reset email → `/uk/reset-password` handles the recovery token
+- **Custom auth domain** — `auth.havenstudy.app` (Supabase Pro). CNAME + TXT records in Netlify DNS. Google OAuth redirect URI: `https://auth.havenstudy.app/auth/v1/callback`
 
 ---
 
@@ -119,19 +137,19 @@ End-to-end feature for users who fail their test — available to Plus and Premi
 
 **Storage:** `resit-evidence` bucket (public). Evidence paths: `{user_id}/{filename}`.
 
-**Test script:** `scripts/test-resit-flow.ts` — run with `npx tsx scripts/test-resit-flow.ts`. Tests all 8 steps end-to-end against the live site. Last run: 11/11 passed.
+**Test script:** `scripts/test-resit-flow.ts` — run with `npx tsx scripts/test-resit-flow.ts`. Last run: 11/11 passed.
 
 ---
 
 ## Admin portal (`/uk/admin`)
 
-Accessible only to `hello.haven.nz@gmail.com`. Five tabs:
+Accessible only to `hello.haven.nz@gmail.com`. Link appears in navbar when logged in as that account. Five tabs:
 
 | Tab | What it shows |
 |---|---|
-| Overview | Users by tier, signups 7d/30d, DAU/WAU/MAU, 30-day login chart, open reports, exam pass rate, upcoming test dates |
+| Overview | Users by tier, signups 7d/30d, DAU/WAU/MAU, recharts AreaChart (daily logins + new accounts, daily/weekly toggle), open reports, exam pass rate, upcoming test dates |
 | Reports | Content reports (flag icon on lessons/questions/flashcards), triage open → reviewed → resolved |
-| Users | All users with tier, progress, exam stats. Filter by tier or engagement (doing well / struggling) |
+| Users | All users with tier, progress, exam stats. Freeze/unfreeze (Supabase ban) + delete with confirm modal. Filter by tier or engagement |
 | Exams | Pass rate, avg score, avg duration, 50 most recent attempts |
 | Resit | Pending/approved/rejected resit claims, approve/reject with notes |
 
@@ -142,14 +160,14 @@ Accessible only to `hello.haven.nz@gmail.com`. Five tabs:
 **Netlify environment (set in Netlify UI → Site config → Environment variables):**
 
 ```
-VITE_SUPABASE_URL
-VITE_SUPABASE_KEY           # anon key
-SUPABASE_SERVICE_ROLE_KEY   # server-only, used in Netlify functions
-VITE_STRIPE_PUBLISHABLE_KEY # safe for browser
-STRIPE_SECRET_KEY           # server-only
-STRIPE_WEBHOOK_SECRET       # whsec_... from Stripe dashboard
-STRIPE_PLUS_PRICE_ID        # price_... for Plus monthly
-STRIPE_PREMIUM_PRICE_ID     # price_... for Premium 6-monthly
+VITE_SUPABASE_URL            # https://auth.havenstudy.app (custom domain)
+VITE_SUPABASE_KEY            # anon key
+SUPABASE_SERVICE_ROLE_KEY    # server-only, used in Netlify functions
+VITE_STRIPE_PUBLISHABLE_KEY  # safe for browser
+STRIPE_SECRET_KEY            # server-only
+STRIPE_WEBHOOK_SECRET        # whsec_... from Stripe dashboard
+STRIPE_PLUS_PRICE_ID         # price_... for Plus monthly
+STRIPE_PREMIUM_PRICE_ID      # price_... for Premium 6-monthly
 ```
 
 **Stripe webhook endpoint:**
@@ -162,23 +180,34 @@ STRIPE_PREMIUM_PRICE_ID     # price_... for Premium 6-monthly
 The app uses a single `RootLayout` with sticky navbar + scrollable `<main>`:
 
 ```
-div.h-screen.flex-col          ← viewport height, no document scroll
-  Navbar                       ← fixed at top
-  div.flex-1.min-h-0           ← fills remaining height
-    aside (sidebar, if any)    ← sidebar pages only
+div.h-screen.flex-col           ← viewport height, no document scroll
+  Navbar                        ← fixed at top (Admin link visible to admin only)
+  div.flex-1.min-h-0            ← fills remaining height
+    aside (sidebar, if any)     ← sidebar pages only
     main.flex-1.overflow-y-auto ← all scrolling happens here
-      div (content wrapper)    ← Outlet + page content
-      footer                   ← scrolls with content
-  AskPippa                     ← Premium only, fixed floating button
-  MobileNav                    ← sidebar pages only
+      div (content wrapper)     ← Outlet + page content (no h-full)
+      footer                    ← Instagram icon · Privacy · Terms · copyright
+  AskPippa                      ← Premium only, fixed floating button
+  MobileNav                     ← sidebar pages only
 ```
 
-Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar truly sticky — the document never grows taller than the viewport.
+Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar truly sticky. Content wrapper must NOT have `h-full` or the footer renders mid-page.
+
+---
+
+## E2E test scripts
+
+| Script | What it tests | Run with |
+|---|---|---|
+| `scripts/test-resit-flow.ts` | Full resit claim flow against live site | `npx tsx scripts/test-resit-flow.ts` |
+| `scripts/test-forgot-password.ts` | Forgot password → recovery token → password update | `npx tsx scripts/test-forgot-password.ts` |
 
 ---
 
 ## Known pending items
 
-- **Support email**: `support@haven.study` is used in `src/pages/Help.tsx` — set up the inbox once the domain is fully configured.
-- **Google Auth CSP** (if added): update `netlify.toml` + `vercel.json` to add `https://accounts.google.com` to `connect-src` and `frame-src`.
-- **Resit one-per-account enforcement**: currently relies on admin discretion; a DB constraint could be added to `resit_claims` if abuse becomes an issue.
+- **Support email inbox**: `support@haven.study` is used throughout — set up the inbox.
+- **Resit one-per-account enforcement**: currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
+- **PWA**: `manifest.json` + service worker would enable home screen install and offline access (already advertised as a Premium feature).
+- **Email reminders**: notify users when their test date is approaching. Supabase cron + edge functions.
+- **SEO**: landing page has no `og:image` or structured data yet.
