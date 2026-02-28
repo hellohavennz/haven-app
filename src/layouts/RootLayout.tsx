@@ -71,7 +71,7 @@ export default function RootLayout() {
     : "mx-auto h-full w-full max-w-6xl px-4 py-12";
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
+    <div className="relative flex h-screen flex-col bg-gradient-to-br from-gray-50 via-white to-teal-50 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
       <div className={showAnySidebar ? "hidden md:block" : undefined}>
         <Navbar />
       </div>

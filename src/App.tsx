@@ -85,8 +85,8 @@ const productFeatures: FeatureCard[] = [
   },
   {
     icon: Award,
-    title: "Pass Guarantee",
-    description: "Complete the course and fail? Get your money back. We're that confident.",
+    title: "Resit Support",
+    description: "Prepare with Haven and still don't pass? Get 1 free month of access to keep studying for your resit.",
     gradient: "from-amber-500 to-amber-600",
   },
 ];
@@ -193,7 +193,7 @@ export default function App() {
           <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-300">
             <span className="whitespace-nowrap">✓ Try the first lesson free</span>
             <span className="whitespace-nowrap">✓ No credit card required</span>
-            <span className="whitespace-nowrap">✓ Pass guarantee</span>
+            <span className="whitespace-nowrap">✓ Resit support</span>
           </div>
           <div className="flex justify-center mt-10">
             <ChevronDown size={28} className="animate-bounce text-gray-400 dark:text-gray-500" />
@@ -392,7 +392,14 @@ export default function App() {
                 {planPlusFeatures.map(feature => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                    {feature.startsWith('Resit Support') ? (
+                      <span className="text-gray-700 dark:text-gray-200">
+                        <a href="#resit-support" className="text-teal-600 hover:underline dark:text-teal-400">Resit Support</a>
+                        {' — 1 free month if you fail'}
+                      </span>
+                    ) : (
+                      <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -460,7 +467,7 @@ export default function App() {
           </div>
 
           {/* Resit Support section */}
-          <div className="max-w-4xl mx-auto rounded-2xl border-2 border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/10 p-8 md:p-10">
+          <div id="resit-support" className="max-w-4xl mx-auto rounded-2xl border-2 border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/10 p-8 md:p-10">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
               <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/40">
                 <Award className="text-amber-600 dark:text-amber-400" size={28} />

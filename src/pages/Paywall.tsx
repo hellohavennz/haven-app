@@ -202,7 +202,14 @@ export default function Paywall() {
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                  {f.startsWith('Resit Support') ? (
+                    <span className="text-gray-700 dark:text-gray-200">
+                      <a href="#resit-support" className="text-teal-600 hover:underline dark:text-teal-400">Resit Support</a>
+                      {' — 1 free month if you fail'}
+                    </span>
+                  ) : (
+                    <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -286,7 +293,7 @@ export default function Paywall() {
         </div>
 
         {/* Resit Support section */}
-        <div className="mt-8 rounded-2xl border-2 border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/10 p-8 md:p-10">
+        <div id="resit-support" className="mt-8 rounded-2xl border-2 border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/10 p-8 md:p-10">
           <div className="flex flex-col md:flex-row md:items-start gap-6">
             <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-900/40">
               <Award className="text-amber-600 dark:text-amber-400" size={28} />
