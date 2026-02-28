@@ -96,6 +96,7 @@ export default function Signup() {
           </div>
           <h2 className="font-semibold text-gray-900">Account created!</h2>
           <p className="text-gray-600">Check your email to verify your account, then you can start learning.</p>
+          <p className="text-sm text-gray-400">Can't see it? Check your spam or junk folder.</p>
         </div>
       </div>
     );
