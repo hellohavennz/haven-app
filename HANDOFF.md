@@ -206,7 +206,6 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Known pending items
 
-- **Support email inbox**: `support@haven.study` is used throughout — set up the inbox.
 - **Resit one-per-account enforcement**: currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
 - **PWA**: `manifest.json` + service worker would enable home screen install and offline access (already advertised as a Premium feature).
 - **Email reminders**: notify users when their test date is approaching. Supabase cron + edge functions.
