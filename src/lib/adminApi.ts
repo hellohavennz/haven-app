@@ -9,6 +9,7 @@ export type AdminOverview = {
   wau: number;
   mau: number;
   daily_logins: { date: string; count: number }[];
+  daily_signups: { date: string; count: number }[];
   open_reports: number;
   exam_attempts: number;
   exam_pass_rate: number | null;
@@ -35,6 +36,7 @@ export type AdminUser = {
   exam_date: string | null;
   created_at: string;
   last_sign_in_at: string | null;
+  banned_until: string | null;
   lessons_completed: number;
   total_exams: number;
   exams_passed: number;
@@ -140,6 +142,19 @@ export async function rejectResitClaim(
 
 export function getEvidenceUrl(path: string): string {
   return supabase.storage.from('resit-evidence').getPublicUrl(path).data.publicUrl;
+}
+
+export async function adminUserAction(
+  action: 'freeze' | 'unfreeze' | 'delete',
+  userId: string,
+  token: string,
+): Promise<void> {
+  const res = await fetch('/.netlify/functions/admin-user-action', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ action, user_id: userId }),
+  });
+  if (!res.ok) throw new Error(await res.text());
 }
 
 /** Fire-and-forget — records today's login for the current user. */
