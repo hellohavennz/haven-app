@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-02-28_
+_Last updated: 2026-02-28 (session 2)_
 
 ---
 
@@ -266,7 +266,8 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 ## Known pending items
 
 - **Supabase password policy** — ✅ minimum length set to 10 (Authentication → Providers → Email). Matches frontend enforcement.
+- **Missing profile safeguard** — ✅ `checkSubscriptionStatus()` auto-creates the profile row on PGRST116 so users are never stuck with no DB row.
+- **Dynamic exam** — ✅ Built. Adaptive question selection weighted by weak lesson areas (`selectDynamicExamQuestions` in `examUtils.ts`).
 - **Resit one-per-account enforcement** — currently relies on admin discretion; a DB unique constraint on `(user_id, status='approved')` could be added if abuse becomes an issue.
 - **PWA Phase 2** — offline study: cache lesson content on first load, queue progress writes to IndexedDB, sync when back online.
 - **Email reminders** — notify users when their test date is approaching. Supabase cron + edge functions.
-- **Dynamic exam** — adaptive exam mode for Premium; selects questions based on weak areas.
