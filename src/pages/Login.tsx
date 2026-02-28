@@ -214,11 +214,7 @@ export default function Login() {
               Sign in with Google
             </button>
 
-            <p className="text-center text-sm text-gray-500 mt-4">
-              Note: Social login providers need to be configured in Supabase Dashboard
-            </p>
-
-            <p className="text-center text-sm text-gray-600 mt-6">
+              <p className="text-center text-sm text-gray-600 mt-6">
               Don't have an account?{" "}
               <Link to="/paywall" className="font-semibold text-teal-600 hover:text-teal-700">
                 View plans and sign up

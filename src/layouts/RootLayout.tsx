@@ -111,7 +111,20 @@ export default function RootLayout() {
           </div>
           {!showAnySidebar && (
             <footer className="border-t border-gray-200 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
-              <div className="mx-auto max-w-6xl px-4 py-8 text-center">
+              <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center gap-3">
+                <a
+                  href="https://www.instagram.com/haven.study.uk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Haven on Instagram"
+                  className="text-gray-400 hover:text-pink-500 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </a>
                 <p>© {new Date().getFullYear()} Haven • Learn calmly. Pass confidently.</p>
               </div>
             </footer>
