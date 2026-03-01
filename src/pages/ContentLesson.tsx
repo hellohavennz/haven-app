@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
 import { getLessonById, getAllLessons } from '../lib/content';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAllProgress, markLessonRead } from '../lib/progress';
+import { CheckCircle2, Circle, ChevronLeft, ChevronRight } from 'lucide-react';
 import ReportButton from '../components/ReportButton';
 
 const ContentLesson: React.FC = () => {
@@ -12,6 +13,23 @@ const ContentLesson: React.FC = () => {
   const currentIndex = allLessons.findIndex(l => l.id === lessonId);
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
+
+  const [isRead, setIsRead] = useState(false);
+
+  // Sync read state from localStorage whenever the lesson changes
+  useEffect(() => {
+    if (lessonId) {
+      const p = getAllProgress()[lessonId];
+      setIsRead(p?.read === true);
+    }
+  }, [lessonId]);
+
+  const handleMarkRead = () => {
+    if (!lessonId) return;
+    const next = !isRead;
+    setIsRead(next);
+    markLessonRead(lessonId, next);
+  };
 
   if (!lesson) {
     return (
@@ -42,7 +60,7 @@ const ContentLesson: React.FC = () => {
         </div>
 
         {/* Lesson Content */}
-        <LessonContent 
+        <LessonContent
           sections={lesson.sections}
           study_sections={lesson.study_sections}
           overview={lesson.overview}
@@ -67,9 +85,34 @@ const ContentLesson: React.FC = () => {
           <ReportButton lessonId={lesson.id} contentType="lesson" />
         </div>
 
+        {/* Mark as read toggle */}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={handleMarkRead}
+            className={[
+              'flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all',
+              isRead
+                ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-900/50'
+                : 'border-2 border-gray-200 text-gray-600 hover:border-teal-400 hover:text-teal-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-teal-500 dark:hover:text-teal-300',
+            ].join(' ')}
+          >
+            {isRead ? (
+              <>
+                <CheckCircle2 className="h-5 w-5" />
+                Marked as read — tap to undo
+              </>
+            ) : (
+              <>
+                <Circle className="h-5 w-5" />
+                Mark as read
+              </>
+            )}
+          </button>
+        </div>
+
         {/* Practice Buttons — only shown for lessons that have content */}
         {((lesson.questions?.length ?? 0) > 0 || (lesson.flashcards?.length ?? 0) > 0) ? (
-          <div className="mt-8 flex gap-4 justify-center flex-wrap">
+          <div className="mt-6 flex gap-4 justify-center flex-wrap">
             <Link
               to={`/practice/${lessonId}/questions`}
               className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex items-center"
@@ -90,7 +133,7 @@ const ContentLesson: React.FC = () => {
             </Link>
           </div>
         ) : (
-          <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
             This is a module overview — practice questions and flashcards are in the individual lessons below.
           </p>
         )}

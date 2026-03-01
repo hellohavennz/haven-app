@@ -18,7 +18,7 @@ type StudySidebarProps = {
   onNavigate?: () => void;
 };
 
-type ProgressRecord = Record<string, { attempted: number; correct: number }>;
+type ProgressRecord = Record<string, { attempted: number; correct: number; read?: boolean }>;
 
 export default function StudySidebar({ className = "", onNavigate }: StudySidebarProps) {
   const location = useLocation();
@@ -36,7 +36,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const totalLessons = modules.reduce((sum, module) => sum + module.count, 0);
 
   const startedLessons = useMemo(
-    () => Object.values(progressData).filter(progress => progress.attempted > 0).length,
+    () => Object.values(progressData).filter(progress => progress.attempted > 0 || progress.read === true).length,
     [progressData]
   );
 
@@ -93,10 +93,17 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const getLessonStatus = (lessonId: string) => {
     const progress = progressData[lessonId];
 
-    if (!progress || progress.attempted === 0) {
+    if (!progress || (progress.attempted === 0 && !progress.read)) {
       return {
         badge: "New",
         badgeClass: "bg-gray-100 text-gray-600"
+      };
+    }
+
+    if (progress.attempted === 0 && progress.read) {
+      return {
+        badge: "Read",
+        badgeClass: "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300"
       };
     }
 

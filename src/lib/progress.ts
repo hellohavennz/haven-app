@@ -10,11 +10,13 @@ export interface UserProgress {
   attempts: number;
   correct_answers: number;
   last_attempt_date: string;
+  lesson_read: boolean;
 }
 
 export interface LessonProgress {
   attempted: number;
   correct: number;
+  read?: boolean;
 }
 
 const PROGRESS_KEY = 'lesson-progress';
@@ -64,8 +66,9 @@ export function getAllProgress(): Record<string, LessonProgress> {
   return stored ? JSON.parse(stored) : {};
 }
 
+// ── Persist helpers ───────────────────────────────────────────────────────────
+
 // Upsert the current localStorage state for one lesson to Supabase.
-// Called after every recordAttempt — runs in the background.
 async function persistToSupabase(lessonId: string): Promise<void> {
   const user = await getCurrentUser();
   if (!user) return;
@@ -83,11 +86,14 @@ async function persistToSupabase(lessonId: string): Promise<void> {
       correct_answers: p.correct,
       score,
       completed: score >= 80,
+      lesson_read: p.read ?? false,
       last_attempt_date: new Date().toISOString(),
     },
     { onConflict: 'user_id,lesson_id' }
   );
 }
+
+// ── Public write API ──────────────────────────────────────────────────────────
 
 export function recordAttempt(lessonId: string, isCorrect: boolean): void {
   const stored = localStorage.getItem(PROGRESS_KEY);
@@ -103,27 +109,42 @@ export function recordAttempt(lessonId: string, isCorrect: boolean): void {
   }
 
   localStorage.setItem(PROGRESS_KEY, JSON.stringify(allProgress));
-
-  // Notify same-tab listeners (storage event only fires cross-tab by default)
   window.dispatchEvent(new StorageEvent('storage', { key: PROGRESS_KEY }));
-
-  // Persist to Supabase in the background
   persistToSupabase(lessonId).catch(console.error);
 }
+
+/**
+ * Toggle the "read" flag for a lesson. Persists to localStorage immediately
+ * and syncs to Supabase in the background.
+ */
+export function markLessonRead(lessonId: string, read: boolean): void {
+  const stored = localStorage.getItem(PROGRESS_KEY);
+  const allProgress: Record<string, LessonProgress> = stored ? JSON.parse(stored) : {};
+
+  if (!allProgress[lessonId]) {
+    allProgress[lessonId] = { attempted: 0, correct: 0 };
+  }
+  allProgress[lessonId].read = read;
+
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(allProgress));
+  window.dispatchEvent(new StorageEvent('storage', { key: PROGRESS_KEY }));
+  persistToSupabase(lessonId).catch(console.error);
+}
+
+// ── useProgress hook ──────────────────────────────────────────────────────────
 
 /**
  * Hook that returns progress for all lessons.
  *
  * On mount (when userId is known):
  * - Fetches from Supabase; Supabase wins over localStorage
- * - If Supabase is empty, migrates any existing localStorage data up to Supabase
+ * - If Supabase is empty, migrates any existing localStorage data up
  *
  * Stays in sync with localStorage for same-tab and cross-tab updates.
  */
 export function useProgress(userId?: string): Record<string, LessonProgress> {
   const [progressData, setProgressData] = useState<Record<string, LessonProgress>>(getAllProgress);
 
-  // Load from Supabase when userId becomes available
   useEffect(() => {
     if (!userId) return;
 
@@ -140,6 +161,7 @@ export function useProgress(userId?: string): Record<string, LessonProgress> {
             correct_answers: p.correct,
             score: p.attempted > 0 ? Math.round((p.correct / p.attempted) * 100) : 0,
             completed: p.attempted > 0 && p.correct / p.attempted >= 0.8,
+            lesson_read: p.read ?? false,
             last_attempt_date: new Date().toISOString(),
           }));
 
@@ -158,6 +180,7 @@ export function useProgress(userId?: string): Record<string, LessonProgress> {
           merged[row.lesson_id] = {
             attempted: row.attempts,
             correct: row.correct_answers,
+            read: row.lesson_read ?? false,
           };
         });
 

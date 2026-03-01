@@ -21,7 +21,7 @@ import {
 } from "../lib/content";
 import { useProgress } from "../lib/progress";
 
-type ProgressRecord = Record<string, { attempted: number; correct: number }>;
+type ProgressRecord = Record<string, { attempted: number; correct: number; read?: boolean }>;
 
 function getAccuracy(progress?: { attempted: number; correct: number }) {
   if (!progress || progress.attempted === 0) {
@@ -49,7 +49,7 @@ export default function ContentIndex() {
     () =>
       allLessons.filter((lesson) => {
         const progress = progressData[lesson.id];
-        return progress && progress.attempted > 0;
+        return progress && (progress.attempted > 0 || progress.read === true);
       }).length,
     [allLessons, progressData]
   );
@@ -86,7 +86,7 @@ export default function ContentIndex() {
       const lessons = getLessonsForModule(module.slug);
       const started = lessons.filter((lesson) => {
         const progress = progressData[lesson.id];
-        return progress && progress.attempted > 0;
+        return progress && (progress.attempted > 0 || progress.read === true);
       });
 
       const mastered = lessons.filter((lesson) => {
