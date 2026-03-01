@@ -140,7 +140,7 @@ export default function Paywall() {
           {/* Free Plan */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-gray-200 dark:border-gray-700'}`}>
             {isCurrent('free') && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
                 YOUR PLAN
               </div>
             )}
@@ -180,7 +180,7 @@ export default function Paywall() {
 
           {/* Haven Plus */}
           <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
               {isCurrent('plus') ? 'YOUR PLAN' : 'MOST POPULAR'}
             </div>
             <div className="text-center mb-6">
@@ -206,7 +206,7 @@ export default function Paywall() {
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
                   {f.startsWith('Resit Support') ? (
                     <span className="text-gray-700 dark:text-gray-200">
-                      <a href="#resit-support" className="text-teal-600 hover:underline dark:text-teal-400">Resit Support</a>
+                      <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
                       {' — 1 free month if you fail'}
                     </span>
                   ) : (

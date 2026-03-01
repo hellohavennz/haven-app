@@ -376,7 +376,7 @@ export default function App() {
 
             {/* Haven Plus */}
             <div className="bg-white border-2 border-teal-300 dark:bg-gray-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                   <Sparkles className="text-teal-600" size={32} />
@@ -394,7 +394,7 @@ export default function App() {
                     <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
                     {feature.startsWith('Resit Support') ? (
                       <span className="text-gray-700 dark:text-gray-200">
-                        <a href="#resit-support" className="text-teal-600 hover:underline dark:text-teal-400">Resit Support</a>
+                        <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
                         {' — 1 free month if you fail'}
                       </span>
                     ) : (
@@ -405,7 +405,7 @@ export default function App() {
               </ul>
               <Link
                 to="/paywall"
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 transition-colors mt-auto"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-teal-700 text-white rounded-xl font-semibold hover:bg-teal-800 transition-colors mt-auto"
               >
                 Get Plus
                 <ArrowRight size={18} />

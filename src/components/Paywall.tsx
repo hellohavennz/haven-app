@@ -22,7 +22,7 @@ export default function Paywall() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Plus Plan */}
           <div className="bg-white border-2 border-teal-300 rounded-2xl p-8 relative transition-colors dark:border-teal-400/40 dark:bg-gray-900">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full">
               MOST POPULAR
             </div>
             

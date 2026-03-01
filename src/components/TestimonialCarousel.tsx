@@ -151,7 +151,7 @@ export default function TestimonialCarousel() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all ${
+            className={`h-2 rounded-full transition-all p-2 box-content ${
               index === currentIndex
                 ? "w-8 bg-teal-600"
                 : "w-2 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600"
