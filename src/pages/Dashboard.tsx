@@ -645,10 +645,41 @@ function ExamWidget({
   const recent = history.slice(0, 5);
   const examsThisMonth = getExamsThisMonth(history);
   const plusLimitReached = tier === 'plus' && examsThisMonth >= 2;
+  const bestPct = history.length > 0
+    ? Math.max(...history.map(a => Math.round((a.correct / a.total) * 100)))
+    : null;
+
+  const Cta = () => (
+    hasAccess && plusLimitReached ? (
+      <div className="text-center">
+        <span className="inline-flex items-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-5 py-2.5 text-sm font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
+          Limit reached
+        </span>
+        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">Resets next month</p>
+      </div>
+    ) : hasAccess ? (
+      <Link
+        to="/exam/take"
+        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg"
+      >
+        {last ? 'Take Another' : 'Start Exam'}
+        <ArrowRight className="h-4 w-4" />
+      </Link>
+    ) : (
+      <Link
+        to="/paywall"
+        className="inline-flex items-center gap-2 rounded-xl border-2 border-purple-300 px-5 py-2.5 text-sm font-semibold text-purple-700 transition-all hover:bg-purple-50 dark:border-purple-700 dark:text-purple-300"
+      >
+        Unlock Exams
+        <ArrowRight className="h-4 w-4" />
+      </Link>
+    )
+  );
 
   return (
     <div className="rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
-      <div className="flex items-center justify-between mb-6">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5">
         <h2 className="font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
           <FileCheck className="text-purple-600 dark:text-purple-400" size={22} />
           Mock Exams
@@ -670,144 +701,78 @@ function ExamWidget({
         </Link>
       </div>
 
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-        {/* Last result or empty state */}
-        <div className="flex-1">
-          {last ? (
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border-4 ${
-                    last.passed
-                      ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                      : "border-red-400 bg-red-50 dark:bg-red-900/20"
-                  }`}
-                >
-                  <div className="text-center">
-                    <div
-                      className={`text-lg font-bold leading-none ${
-                        last.passed
-                          ? "text-green-700 dark:text-green-300"
-                          : "text-red-600 dark:text-red-300"
-                      }`}
-                    >
-                      {last.correct}/{last.total}
-                    </div>
-                    <div
-                      className={`text-xs font-semibold ${
-                        last.passed ? "text-green-600" : "text-red-500"
-                      }`}
-                    >
-                      {Math.round((last.correct / last.total) * 100)}%
-                    </div>
-                  </div>
-                </div>
-                <div>
+      {last ? (
+        <>
+          {/* Three stats spread evenly */}
+          <div className="grid grid-cols-3 divide-x divide-gray-100 dark:divide-gray-700/50 mb-5">
+            {/* Last score */}
+            <div className="flex flex-col items-center gap-1 px-2">
+              <span className={`text-2xl font-bold tabular-nums ${
+                last.passed ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'
+              }`}>
+                {Math.round((last.correct / last.total) * 100)}%
+              </span>
+              <span className="text-xs text-gray-400 dark:text-gray-500">Last score</span>
+              <span className={`inline-flex items-center gap-1 text-xs font-semibold ${
+                last.passed ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'
+              }`}>
+                {last.passed ? <CheckCircle2 size={11} /> : <XCircle size={11} />}
+                {last.passed ? 'Pass' : 'Fail'}
+              </span>
+            </div>
+
+            {/* Best score */}
+            <div className="flex flex-col items-center gap-1 px-2">
+              <span className="text-2xl font-bold tabular-nums text-gray-900 dark:text-gray-100">
+                {bestPct}%
+              </span>
+              <span className="text-xs text-gray-400 dark:text-gray-500">Best score</span>
+              <span className="text-xs text-gray-400 dark:text-gray-500">
+                {history.length} attempt{history.length !== 1 ? 's' : ''}
+              </span>
+            </div>
+
+            {/* Recent results */}
+            <div className="flex flex-col items-center gap-1 px-2">
+              <div className="flex items-center gap-1 h-8">
+                {recent.map(a => (
                   <div
-                    className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ${
-                      last.passed
-                        ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300"
-                        : "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300"
-                    }`}
-                  >
-                    {last.passed ? (
-                      <CheckCircle2 className="h-3 w-3" />
-                    ) : (
-                      <XCircle className="h-3 w-3" />
-                    )}
-                    {last.passed ? "PASS" : "FAIL"}
-                  </div>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                    Last exam · {new Date(last.completedAt).toLocaleDateString()}
-                  </p>
-                </div>
+                    key={a.id}
+                    title={`${Math.round((a.correct / a.total) * 100)}%`}
+                    className={`h-4 w-4 rounded-full ${a.passed ? 'bg-green-500' : 'bg-red-400'}`}
+                  />
+                ))}
               </div>
-
-              {/* Mini history strip */}
-              {recent.length > 1 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {recent.map(a => {
-                    const pct = Math.round((a.correct / a.total) * 100);
-                    return (
-                      <span
-                        key={a.id}
-                        className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                          a.passed
-                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
-                            : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
-                        }`}
-                        title={new Date(a.completedAt).toLocaleDateString()}
-                      >
-                        {pct}%
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Readiness */}
-              <p
-                className={`text-sm font-medium ${
-                  readiness.ready
-                    ? "text-green-700 dark:text-green-400"
-                    : "text-gray-600 dark:text-gray-400"
-                }`}
-              >
-                {readiness.ready
-                  ? "You're consistently passing — ready for the real test!"
-                  : `${readiness.passedCount} of ${readiness.totalRecent} recent exam${readiness.totalRecent !== 1 ? "s" : ""} passed.`}
-              </p>
+              <span className="text-xs text-gray-400 dark:text-gray-500">Recent</span>
+              <span className={`text-xs font-medium ${
+                readiness.ready ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'
+              }`}>
+                {readiness.ready ? '✓ Ready' : `${readiness.passedCount}/${readiness.totalRecent} passed`}
+              </span>
             </div>
-          ) : (
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-                  <Trophy className="h-7 w-7 text-purple-600 dark:text-purple-400" />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 dark:text-gray-100">
-                    No exams yet
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    24 questions · 45 min · 75% to pass
-                  </p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Take a full mock exam to see how ready you are for the real test.
-              </p>
+          </div>
+
+          <div className="flex justify-end">
+            <Cta />
+          </div>
+        </>
+      ) : (
+        /* Empty state */
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-purple-100 dark:bg-purple-900/30">
+              <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-400" />
             </div>
-          )}
+            <div>
+              <p className="font-semibold text-gray-900 dark:text-gray-100">No exams yet</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">24 questions · 45 min · 75% to pass</p>
+            </div>
+          </div>
+          <div className="flex-shrink-0">
+            <Cta />
+          </div>
         </div>
-
-        {/* CTA */}
-        <div className="flex-shrink-0">
-          {hasAccess && plusLimitReached ? (
-            <div className="text-center space-y-1">
-              <div className="inline-flex items-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-5 py-3 font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
-                Limit reached
-              </div>
-              <p className="text-xs text-gray-400 dark:text-gray-500">Resets next month</p>
-            </div>
-          ) : hasAccess ? (
-            <Link
-              to="/exam/take"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-5 py-3 font-semibold text-white transition-all hover:shadow-lg"
-            >
-              {last ? "Take Another" : "Start Exam"}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          ) : (
-            <Link
-              to="/paywall"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-purple-300 px-5 py-3 font-semibold text-purple-700 transition-all hover:bg-purple-50 dark:border-purple-700 dark:text-purple-300"
-            >
-              Unlock Exams
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          )}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
