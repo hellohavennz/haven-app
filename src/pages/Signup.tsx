@@ -84,6 +84,13 @@ export default function Signup() {
     try {
       const data = await signUp(email, password, name.trim() || undefined);
 
+      // Fire-and-forget welcome email
+      fetch('/.netlify/functions/send-welcome-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name: name.trim() || undefined }),
+      }).catch(() => {});
+
       if ((selectedPlan === 'plus' || selectedPlan === 'premium') && data.user) {
         // Go straight to Stripe — skip the paywall detour
         setLoadingStep('checkout');

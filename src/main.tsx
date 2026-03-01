@@ -25,6 +25,7 @@ const ExamDrill        = lazy(() => import('./pages/ExamDrill'));
 const Welcome          = lazy(() => import('./pages/Welcome'));
 const Profile          = lazy(() => import('./pages/Profile'));
 const Admin            = lazy(() => import('./pages/Admin'));
+const Analytics        = lazy(() => import('./pages/Analytics'));
 const ResetPassword    = lazy(() => import('./pages/ResetPassword'));
 const Privacy          = lazy(() => import('./pages/Privacy'));
 const Terms            = lazy(() => import('./pages/Terms'));
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
           { path: 'exam/drill', element: <Suspense fallback={<Fallback />}><ExamDrill /></Suspense> },
           { path: 'welcome', element: <Suspense fallback={<Fallback />}><Welcome /></Suspense> },
           { path: 'profile', element: <Suspense fallback={<Fallback />}><Profile /></Suspense> },
+          { path: 'analytics', element: <Suspense fallback={<Fallback />}><Analytics /></Suspense> },
           { path: 'admin', element: <Suspense fallback={<Fallback />}><Admin /></Suspense> },
         ],
       },

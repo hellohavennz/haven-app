@@ -8,8 +8,8 @@ import {
   Brain,
   BarChart3,
   Headphones,
-  FileText,
-  Zap,
+  Bell,
+  Smartphone,
   Award,
   Loader2,
 } from 'lucide-react';
@@ -251,8 +251,8 @@ export default function Paywall() {
                 { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
                 { Icon: BarChart3, title: 'Performance analytics', desc: 'Identify weak areas with detailed insights' },
                 { Icon: Brain, title: 'Dynamic exams', desc: 'Unlimited randomised practice exams' },
-                { Icon: FileText, title: 'Offline mobile access', desc: 'Study anywhere, no internet needed' },
-                { Icon: Zap, title: 'Priority email support', desc: 'Get help within 24 hours' },
+                { Icon: Bell, title: 'Exam reminders', desc: 'Alerts 7 days and 1 day before your test' },
+                { Icon: Smartphone, title: 'Install to home screen', desc: 'Works offline — study anywhere, no internet needed' },
               ].map(({ Icon, title, desc }) => (
                 <li key={title} className="flex items-start gap-3">
                   <Icon className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />

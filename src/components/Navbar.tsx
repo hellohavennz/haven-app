@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser, logout } from "../lib/auth";
 import { onAuthStateChange } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
-import { Menu, X, Sparkles, Crown, Shield } from "lucide-react";
+import { Menu, X, Sparkles, Crown, Shield, BarChart3 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
@@ -82,6 +82,15 @@ export default function Navbar() {
               >
                 Help
               </Link>
+              {tier === 'premium' && (
+                <Link
+                  to="/analytics"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                >
+                  <BarChart3 size={15} />
+                  Analytics
+                </Link>
+              )}
               {isAdmin && (
                 <Link
                   to="/admin"
@@ -196,6 +205,16 @@ export default function Navbar() {
             >
               Help
             </Link>
+            {tier === 'premium' && (
+              <Link
+                to="/analytics"
+                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <BarChart3 size={15} />
+                Analytics
+              </Link>
+            )}
             {isAdmin && (
               <Link
                 to="/admin"
