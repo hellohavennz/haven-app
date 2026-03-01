@@ -20,6 +20,7 @@ export default function RootLayout() {
   const { tier } = useSubscription();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pippaOpen, setPippaOpen] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
   const [contentReady, setContentReady] = useState(false);
   const isOnline = useOnlineStatus();
   const wasOnlineRef = useRef(navigator.onLine);
@@ -54,6 +55,10 @@ export default function RootLayout() {
 
   useEffect(() => {
     setIsDrawerOpen(false);
+    // Scroll the main content area back to the top on every route change.
+    // React Router's scroll restoration only tracks window.scrollY; the
+    // scrollable element here is <main>, so we manage it ourselves.
+    mainRef.current?.scrollTo({ top: 0 });
   }, [location.pathname]);
 
   useEffect(() => {
@@ -80,8 +85,11 @@ export default function RootLayout() {
     <PracticeSidebar onNavigate={closeDrawer} />
   ) : null;
 
+  // min-h-full (not h-full) lets the wrapper grow with its content so that
+  // pb-28 actually adds scroll space below the last element instead of being
+  // absorbed into a fixed-height box that stops flush with the viewport.
   const contentWrapperClasses = showAnySidebar
-    ? "h-full w-full px-4 pb-28 pt-4 md:px-8 md:pb-12"
+    ? "min-h-full w-full px-4 pb-28 pt-4 md:px-8 md:pb-12"
     : "mx-auto w-full max-w-6xl px-4 py-12";
 
   return (
@@ -126,7 +134,7 @@ export default function RootLayout() {
           </aside>
         )}
 
-        <main className="flex-1 overflow-y-auto">
+        <main ref={mainRef} className="flex-1 overflow-y-auto">
           <div className={contentWrapperClasses}>
             <Outlet />
           </div>
