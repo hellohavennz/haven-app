@@ -66,4 +66,4 @@
     # - connect-src                → Supabase REST + WebSocket (realtime)
     # - img-src data:              → base64 images used by some UI libraries
     # - frame-src / object-src     → nothing embedded
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://auth.havenstudy.app wss://auth.havenstudy.app https://*.supabase.co wss://*.supabase.co https://api.stripe.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://auth.havenstudy.app wss://auth.havenstudy.app https://*.supabase.co wss://*.supabase.co https://api.stripe.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com"
