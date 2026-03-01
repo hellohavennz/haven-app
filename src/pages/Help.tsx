@@ -10,7 +10,9 @@ import {
   HelpCircle,
   Mail,
   Flag,
+  BookMarked,
 } from "lucide-react";
+import { keyFactGroups } from '../data/keyFacts';
 
 type FAQItem = {
   question: string;
@@ -118,12 +120,14 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 
 export default function Help() {
   usePageTitle('Help & Support', 'Answers to common questions about Haven Study, plus contact details if you need more support.');
+  const [activeTab, setActiveTab] = useState<'help' | 'facts'>('help');
+
   return (
-    <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
+    <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
       <div className="space-y-4 text-center">
         <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700 dark:bg-teal-900/30 dark:text-teal-100">
           <HelpCircle className="h-4 w-4" />
-          Need Help?
+          Help & Resources
         </div>
 
         <h1 className="font-semibold text-gray-900 dark:text-white">
@@ -131,9 +135,66 @@ export default function Help() {
         </h1>
 
         <p className="text-gray-600 dark:text-gray-200">
-          Everything you need to know about using Haven to prepare for your Life in the UK test.
+          Everything you need to know about using Haven, plus a full key facts reference for quick revision.
         </p>
       </div>
+
+      {/* Tabs */}
+      <div className="flex gap-1 rounded-xl border border-gray-200 bg-gray-100 p-1 dark:border-gray-800 dark:bg-gray-900">
+        <button
+          onClick={() => setActiveTab('help')}
+          className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
+            activeTab === 'help'
+              ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-800 dark:text-white'
+              : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+          }`}
+        >
+          <HelpCircle className="h-4 w-4" />
+          Help & FAQ
+        </button>
+        <button
+          onClick={() => setActiveTab('facts')}
+          className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
+            activeTab === 'facts'
+              ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-800 dark:text-white'
+              : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+          }`}
+        >
+          <BookMarked className="h-4 w-4" />
+          Key Facts & Dates
+        </button>
+      </div>
+
+      {activeTab === 'facts' && (
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-teal-200 bg-teal-50 px-6 py-4 dark:border-teal-900/50 dark:bg-teal-900/20">
+            <p className="text-sm text-teal-800 dark:text-teal-200 leading-relaxed">
+              A summary of key dates and facts extracted from the e-publication <em>Life in the United Kingdom: A Guide for New Residents, 3rd Edition</em>. We recommend reading the full source material for context — these facts are for quick revision only.
+            </p>
+          </div>
+          {keyFactGroups.map((group) => (
+            <div key={group.heading} className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 overflow-hidden">
+              <div className="flex items-center gap-3 border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-gray-800 dark:bg-gray-800/60">
+                <span className="text-xl" role="img" aria-label="">{group.emoji}</span>
+                <h2 className="font-semibold text-gray-900 dark:text-white">{group.heading}</h2>
+              </div>
+              <ul className="divide-y divide-gray-50 dark:divide-gray-800">
+                {group.facts.map((fact, i) => (
+                  <li key={i} className="flex items-start gap-3 px-6 py-3">
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-[10px] font-bold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
+                      {i + 1}
+                    </span>
+                    <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{fact}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {activeTab === 'help' && (
+      <div className="space-y-12">
 
       <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
         <h2 className="mb-6 font-semibold text-gray-900 dark:text-white">How to Use Haven</h2>
@@ -282,6 +343,8 @@ export default function Help() {
           </li>
         </ul>
       </div>
+      </div>
+      )}
     </div>
   );
 }
