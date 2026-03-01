@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
 import { getLessonById, getAllLessons } from '../lib/content';
 import { getAllProgress, markLessonRead } from '../lib/progress';
-import { CheckCircle2, Circle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { CheckCircle2, Circle, ChevronLeft, ChevronRight, ClipboardList, Layers } from 'lucide-react';
 import ReportButton from '../components/ReportButton';
 
 const ContentLesson: React.FC = () => {
@@ -16,7 +16,6 @@ const ContentLesson: React.FC = () => {
 
   const [isRead, setIsRead] = useState(false);
 
-  // Sync read state from localStorage whenever the lesson changes
   useEffect(() => {
     if (lessonId) {
       const p = getAllProgress()[lessonId];
@@ -42,9 +41,14 @@ const ContentLesson: React.FC = () => {
     );
   }
 
+  const hasQuestions = (lesson.questions?.length ?? 0) > 0;
+  const hasFlashcards = (lesson.flashcards?.length ?? 0) > 0;
+  const hasPractice = hasQuestions || hasFlashcards;
+
   return (
     <div className="min-h-screen bg-white py-8 px-4 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <div className="max-w-5xl mx-auto">
+
         {/* Header */}
         <div className="mb-8">
           <Link
@@ -80,98 +84,93 @@ const ContentLesson: React.FC = () => {
           </div>
         )}
 
-        {/* Report issue */}
-        <div className="mt-6 flex justify-end">
-          <ReportButton lessonId={lesson.id} contentType="lesson" />
-        </div>
+        {/* ── Lesson footer ──────────────────────────────────── */}
+        <div className="mt-10 space-y-4">
 
-        {/* Mark as read toggle */}
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={handleMarkRead}
-            className={[
-              'flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all',
-              isRead
-                ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-900/50'
-                : 'border-2 border-gray-200 text-gray-600 hover:border-teal-400 hover:text-teal-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-teal-500 dark:hover:text-teal-300',
-            ].join(' ')}
-          >
-            {isRead ? (
-              <>
-                <CheckCircle2 className="h-5 w-5" />
-                Marked as read — tap to undo
-              </>
-            ) : (
-              <>
-                <Circle className="h-5 w-5" />
-                Mark as read
-              </>
-            )}
-          </button>
-        </div>
+          {/* Practice section */}
+          {hasPractice && (
+            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-3">
+                Practise this lesson
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {hasQuestions && (
+                  <Link
+                    to={`/practice/${lessonId}/questions`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-all text-sm"
+                  >
+                    <ClipboardList className="h-4 w-4" />
+                    Practice Questions
+                  </Link>
+                )}
+                {hasFlashcards && (
+                  <Link
+                    to={`/practice/${lessonId}/flashcards`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-teal-600 dark:border-teal-500 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 font-semibold rounded-xl transition-all text-sm"
+                  >
+                    <Layers className="h-4 w-4" />
+                    Flashcards
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
 
-        {/* Practice Buttons — only shown for lessons that have content */}
-        {((lesson.questions?.length ?? 0) > 0 || (lesson.flashcards?.length ?? 0) > 0) ? (
-          <div className="mt-6 flex gap-4 justify-center flex-wrap">
-            <Link
-              to={`/practice/${lessonId}/questions`}
-              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex items-center"
+          {/* Mark as read + Report — utility row */}
+          <div className="flex items-center justify-between">
+            <button
+              onClick={handleMarkRead}
+              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                isRead
+                  ? 'text-emerald-600 dark:text-emerald-400'
+                  : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300'
+              }`}
             >
-              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-              Practice Questions
-            </Link>
-            <Link
-              to={`/practice/${lessonId}/flashcards`}
-              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 flex items-center"
-            >
-              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              Flashcards
-            </Link>
+              {isRead
+                ? <CheckCircle2 className="h-4 w-4" />
+                : <Circle className="h-4 w-4" />
+              }
+              {isRead ? 'Marked as read' : 'Mark as read'}
+            </button>
+            <ReportButton lessonId={lesson.id} contentType="lesson" />
           </div>
-        ) : (
-          <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-            This is a module overview — practice questions and flashcards are in the individual lessons below.
-          </p>
-        )}
 
-        {/* Prev / Next lesson navigation */}
-        {(prevLesson || nextLesson) && (
-          <div className="mt-10 border-t border-gray-200 dark:border-gray-700 pt-6 grid grid-cols-2 gap-4">
-            {prevLesson ? (
-              <Link
-                to={`/content/${prevLesson.id}`}
-                className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
-              >
-                <span className="flex items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  <ChevronLeft className="w-3.5 h-3.5" />
-                  Previous
-                </span>
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
-                  {prevLesson.title}
-                </span>
-              </Link>
-            ) : <div />}
+          {/* Prev / Next navigation */}
+          {(prevLesson || nextLesson) && (
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-4 grid grid-cols-2 gap-3">
+              {prevLesson ? (
+                <Link
+                  to={`/content/${prevLesson.id}`}
+                  className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
+                >
+                  <span className="flex items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                    Previous
+                  </span>
+                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                    {prevLesson.title}
+                  </span>
+                </Link>
+              ) : <div />}
 
-            {nextLesson ? (
-              <Link
-                to={`/content/${nextLesson.id}`}
-                className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
-              >
-                <span className="flex items-center gap-1 justify-end text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Next
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </span>
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
-                  {nextLesson.title}
-                </span>
-              </Link>
-            ) : <div />}
-          </div>
-        )}
+              {nextLesson ? (
+                <Link
+                  to={`/content/${nextLesson.id}`}
+                  className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
+                >
+                  <span className="flex items-center gap-1 justify-end text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                    Next
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                    {nextLesson.title}
+                  </span>
+                </Link>
+              ) : <div />}
+            </div>
+          )}
+
+        </div>
       </div>
     </div>
   );
