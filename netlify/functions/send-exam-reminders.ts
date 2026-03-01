@@ -13,7 +13,7 @@
  *   3. Add RESEND_API_KEY to Netlify environment variables
  */
 
-import type { Config } from '@netlify/functions';
+import type { Handler } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 
 const FROM = 'Haven <reminders@haven.study>';
@@ -159,11 +159,12 @@ function oneDayEmail(): { subject: string; html: string } {
 }
 
 // ── Main handler ─────────────────────────────────────────────────────────────
+// Schedule is defined in netlify.toml: [functions.send-exam-reminders] schedule = "0 8 * * *"
 
-export default async function sendExamReminders() {
+export const handler: Handler = async () => {
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not set — skipping reminder run');
-    return new Response('RESEND_API_KEY not configured', { status: 500 });
+    return { statusCode: 500, body: 'RESEND_API_KEY not configured' };
   }
 
   const supabase = createClient(
@@ -236,9 +237,9 @@ export default async function sendExamReminders() {
   }
 
   console.log(`Reminder run complete — sent: ${sent}, errors: ${errors}`);
-  return new Response(JSON.stringify({ sent, errors }), { status: 200 });
-}
-
-export const config: Config = {
-  schedule: '0 8 * * *', // daily at 08:00 UTC
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sent, errors }),
+  };
 };
