@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signUp, signInWithGoogle } from "../lib/auth";
-import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown } from "lucide-react";
+import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown, Eye, EyeOff } from "lucide-react";
 
 export default function Signup() {
   const location = useLocation();
@@ -14,11 +14,16 @@ export default function Signup() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [confirmEmailTouched, setConfirmEmailTouched] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const emailMismatch = confirmEmailTouched && confirmEmail !== "" && email !== confirmEmail;
 
   const passwordRules = [
     { label: 'At least 10 characters', ok: password.length >= 10 },
@@ -57,8 +62,15 @@ export default function Signup() {
     setError("");
     setLoading(true);
 
+    if (email !== confirmEmail) {
+      setError("Email addresses don't match.");
+      setLoading(false);
+      return;
+    }
+
     if (!passwordValid) {
       setError("Please meet all password requirements.");
+      setPasswordTouched(true);
       setLoading(false);
       return;
     }
@@ -181,25 +193,63 @@ export default function Signup() {
             </div>
 
             <div>
+              <label htmlFor="confirm-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                Confirm email address
+              </label>
+              <input
+                id="confirm-email"
+                name="confirm-email"
+                type="email"
+                autoComplete="off"
+                required
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
+                onBlur={() => setConfirmEmailTouched(true)}
+                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-0 transition-colors ${
+                  emailMismatch
+                    ? 'border-red-400 focus:border-red-500'
+                    : 'border-gray-200 focus:border-teal-500'
+                }`}
+                placeholder="you@example.com"
+              />
+              {emailMismatch && (
+                <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1.5">
+                  <AlertCircle size={14} className="flex-shrink-0" />
+                  Email addresses don't match
+                </p>
+              )}
+            </div>
+
+            <div>
               <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={password}
-                onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
-                placeholder="••••••••"
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  required
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
+                  className="w-full px-4 py-3 pr-11 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(v => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {passwordTouched && (
                 <ul className="mt-2 space-y-1">
                   {passwordRules.map(r => (
-                    <li key={r.label} className={`flex items-center gap-2 text-xs ${r.ok ? 'text-teal-600' : 'text-gray-400'}`}>
-                      <span>{r.ok ? '✓' : '○'}</span>
+                    <li key={r.label} className={`flex items-center gap-2 text-xs font-medium ${r.ok ? 'text-teal-600' : 'text-red-500'}`}>
+                      <span>{r.ok ? '✓' : '✗'}</span>
                       {r.label}
                     </li>
                   ))}
