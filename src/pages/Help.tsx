@@ -112,7 +112,7 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 }
 
 export default function Help() {
-  usePageTitle('Help & Support');
+  usePageTitle('Help & Support', 'Answers to common questions about Haven Study, plus contact details if you need more support.');
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
       <div className="space-y-4 text-center">

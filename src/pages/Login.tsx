@@ -5,7 +5,7 @@ import { LogIn, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react";
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Login() {
-  usePageTitle('Log in');
+  usePageTitle('Log in', 'Log in to Haven Study to continue your Life in the UK test preparation.');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

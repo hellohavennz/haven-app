@@ -33,7 +33,7 @@ function getAccuracy(progress?: { attempted: number; correct: number }) {
 }
 
 export default function ContentIndex() {
-  usePageTitle('Study');
+  usePageTitle('Study', 'All Life in the UK study lessons organised by topic. Read, revise, and mark lessons complete.');
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [user, setUser] = useState<any>(null);

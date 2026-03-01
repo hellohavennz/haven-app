@@ -5,7 +5,7 @@ import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown, Eye, EyeOff } from "lu
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Signup() {
-  usePageTitle('Sign up');
+  usePageTitle('Sign up', 'Create your free Haven Study account and start preparing for the Life in the UK test today.');
   const location = useLocation();
   const navigate = useNavigate();
 

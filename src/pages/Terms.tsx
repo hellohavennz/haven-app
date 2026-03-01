@@ -1,7 +1,7 @@
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Terms() {
-  usePageTitle('Terms of Service');
+  usePageTitle('Terms of Service', 'Haven Study\'s terms of service — the rules and conditions for using Haven Study.');
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 space-y-8 text-gray-700 dark:text-gray-300">
       <div>

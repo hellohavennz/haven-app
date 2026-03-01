@@ -288,7 +288,7 @@ const TIER_COLORS: Record<string, string> = {
 };
 
 export default function Profile() {
-  usePageTitle('Profile');
+  usePageTitle('Profile', 'Manage your Haven Study account, subscription, and personal details.');
   const [user, setUser] = useState<any>(null);
   const { tier } = useSubscription();
   const [name, setName] = useState('');

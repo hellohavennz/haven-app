@@ -28,7 +28,7 @@ function isUpgrade(current: Plan, target: Plan) {
 }
 
 export default function Paywall() {
-  usePageTitle('Pricing');
+  usePageTitle('Pricing', 'Choose the Haven Study plan that\'s right for you. Start free or unlock unlimited practice, mock exams, and flashcards with Haven Plus or Premium.');
   const navigate = useNavigate();
   const location = useLocation();
   const { tier: currentTier, isLoading } = useSubscription();

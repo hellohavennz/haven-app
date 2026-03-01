@@ -32,7 +32,7 @@ function getAccuracy(progress?: { attempted: number; correct: number }) {
 }
 
 export default function PracticeIndex() {
-  usePageTitle('Practice');
+  usePageTitle('Practice', 'Practice Life in the UK test questions lesson by lesson. Track your scores and improve your weakest topics.');
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [user, setUser] = useState<any>(null);

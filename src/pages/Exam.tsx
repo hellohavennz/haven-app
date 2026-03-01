@@ -18,7 +18,7 @@ import type { ExamAttempt } from "../types";
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Exam() {
-  usePageTitle('Mock Exam');
+  usePageTitle('Mock Exam', 'Take a full 24-question mock Life in the UK test. Timed, randomised, with instant detailed results.');
   const [user, setUser] = useState<any>(null);
   const { tier } = useSubscription();
   const [history, setHistory] = useState<ExamAttempt[]>([]);

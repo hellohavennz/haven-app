@@ -16,7 +16,7 @@ interface LessonProgressData {
 }
 
 const Dashboard: React.FC = () => {
-  usePageTitle('Dashboard');
+  usePageTitle('Dashboard', 'Your Haven Study dashboard. Track your progress, review results, and continue studying.');
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
