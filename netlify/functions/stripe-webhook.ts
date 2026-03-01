@@ -45,11 +45,12 @@ export const handler: Handler = async (event) => {
 
       if (!userId || !plan) break;
 
-      await supabase.from('profiles').update({
+      await supabase.from('profiles').upsert({
+        id: userId,
         subscription_tier: plan,
         stripe_customer_id: session.customer as string,
         stripe_subscription_id: session.subscription as string,
-      }).eq('id', userId);
+      }, { onConflict: 'id' });
 
       break;
     }
@@ -63,10 +64,11 @@ export const handler: Handler = async (event) => {
       const tier = priceId ? priceToTier(priceId) : null;
       if (!tier) break;
 
-      await supabase.from('profiles').update({
+      await supabase.from('profiles').upsert({
+        id: userId,
         subscription_tier: tier,
         stripe_subscription_id: sub.id,
-      }).eq('id', userId);
+      }, { onConflict: 'id' });
 
       break;
     }
@@ -76,10 +78,11 @@ export const handler: Handler = async (event) => {
       const userId = sub.metadata?.userId;
       if (!userId) break;
 
-      await supabase.from('profiles').update({
+      await supabase.from('profiles').upsert({
+        id: userId,
         subscription_tier: 'free',
         stripe_subscription_id: null,
-      }).eq('id', userId);
+      }, { onConflict: 'id' });
 
       break;
     }
