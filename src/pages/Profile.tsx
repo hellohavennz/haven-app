@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, BadgeCheck, CheckCircle2, XCircle, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload } from 'lucide-react';
+import { User, Mail, BadgeCheck, CheckCircle2, XCircle, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
@@ -325,6 +325,52 @@ export default function Profile() {
     }
   }
 
+  // ── Change password ──────────────────────────────────────────────────────
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordSaving, setPasswordSaving] = useState(false);
+  const [passwordSaved, setPasswordSaved] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+
+  const passwordRules = [
+    { label: 'At least 10 characters', ok: newPassword.length >= 10 },
+    { label: 'One uppercase letter', ok: /[A-Z]/.test(newPassword) },
+    { label: 'One lowercase letter', ok: /[a-z]/.test(newPassword) },
+    { label: 'One number', ok: /[0-9]/.test(newPassword) },
+  ];
+  const passwordValid = passwordRules.every(r => r.ok);
+
+  async function handleChangePassword(e: React.FormEvent) {
+    e.preventDefault();
+    setPasswordError('');
+    if (!passwordValid) {
+      setPasswordTouched(true);
+      setPasswordError('Please meet all password requirements.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError('Passwords do not match.');
+      return;
+    }
+    setPasswordSaving(true);
+    try {
+      const { error: updateError } = await supabase.auth.updateUser({ password: newPassword });
+      if (updateError) throw updateError;
+      setPasswordSaved(true);
+      setNewPassword('');
+      setConfirmPassword('');
+      setPasswordTouched(false);
+      setTimeout(() => setPasswordSaved(false), 3000);
+    } catch (err: any) {
+      setPasswordError(err.message || 'Failed to update password.');
+    } finally {
+      setPasswordSaving(false);
+    }
+  }
+
   async function handleManageSubscription() {
     setPortalLoading(true);
     setPortalError('');
@@ -416,6 +462,100 @@ export default function Profile() {
             className="rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 disabled:opacity-40"
           >
             {saving ? 'Saving…' : 'Save Name'}
+          </button>
+        </form>
+      </div>
+
+      {/* Change password */}
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5 dark:border-gray-800 dark:bg-gray-900">
+        <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+          <KeyRound className="h-5 w-5 text-teal-600" />
+          Change Password
+        </h2>
+
+        <form onSubmit={handleChangePassword} className="space-y-4">
+          <div>
+            <label htmlFor="new-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              New password
+            </label>
+            <div className="relative">
+              <input
+                id="new-password"
+                type={showNewPassword ? 'text' : 'password'}
+                autoComplete="new-password"
+                required
+                value={newPassword}
+                onChange={e => { setNewPassword(e.target.value); setPasswordTouched(true); }}
+                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 pr-11 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                onClick={() => setShowNewPassword(v => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label={showNewPassword ? 'Hide password' : 'Show password'}
+              >
+                {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+            {passwordTouched && (
+              <ul className="mt-2 space-y-1">
+                {passwordRules.map(r => (
+                  <li key={r.label} className={`flex items-center gap-2 text-xs font-medium ${r.ok ? 'text-teal-600' : 'text-red-500'}`}>
+                    <span>{r.ok ? '✓' : '✗'}</span>
+                    {r.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Confirm new password
+            </label>
+            <div className="relative">
+              <input
+                id="confirm-password"
+                type={showConfirmPassword ? 'text' : 'password'}
+                autoComplete="new-password"
+                required
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 pr-11 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(v => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+              >
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+          </div>
+
+          {passwordError && (
+            <div className="flex items-center gap-2 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              {passwordError}
+            </div>
+          )}
+
+          {passwordSaved && (
+            <div className="flex items-center gap-2 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800 dark:bg-green-900/20 dark:border-green-800 dark:text-green-300">
+              <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+              Password updated!
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={passwordSaving || !newPassword}
+            className="rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 disabled:opacity-40"
+          >
+            {passwordSaving ? 'Saving…' : 'Update Password'}
           </button>
         </form>
       </div>
