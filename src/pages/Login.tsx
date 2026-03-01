@@ -57,33 +57,33 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
-            <LogIn className="text-teal-600" size={32} />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
+            <LogIn className="text-teal-600 dark:text-teal-400" size={32} />
           </div>
-          <h2 className="font-semibold text-gray-900">Welcome back</h2>
-          <p className="mt-2 text-gray-600">Sign in to continue your learning journey</p>
+          <h2 className="font-semibold text-gray-900 dark:text-white">Welcome back</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">Sign in to continue your learning journey</p>
         </div>
 
         {forgotMode ? (
           <form className="mt-8 space-y-6" onSubmit={handleForgotPassword}>
             {error && (
-              <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 flex items-start gap-3">
-                <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
-                <p className="text-sm text-red-900">{error}</p>
+              <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-4 flex items-start gap-3">
+                <AlertCircle className="text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" size={20} />
+                <p className="text-sm text-red-900 dark:text-red-300">{error}</p>
               </div>
             )}
 
             {resetSent ? (
-              <div className="bg-teal-50 border-2 border-teal-200 rounded-xl p-4 flex items-start gap-3">
-                <CheckCircle className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
-                <p className="text-sm text-teal-900">
+              <div className="bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-200 dark:border-teal-800 rounded-xl p-4 flex items-start gap-3">
+                <CheckCircle className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
+                <p className="text-sm text-teal-900 dark:text-teal-200">
                   Check your inbox — we've sent a password reset link to <strong>{email}</strong>.
                 </p>
               </div>
             ) : (
               <>
                 <div>
-                  <label htmlFor="reset-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="reset-email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                     Email address
                   </label>
                   <input
@@ -93,7 +93,7 @@ export default function Login() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -108,11 +108,11 @@ export default function Login() {
               </>
             )}
 
-            <p className="text-center text-sm text-gray-600">
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
               <button
                 type="button"
                 onClick={() => { setForgotMode(false); setResetSent(false); setError(""); }}
-                className="font-semibold text-teal-600 hover:text-teal-700"
+                className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300"
               >
                 Back to sign in
               </button>
@@ -121,15 +121,15 @@ export default function Login() {
         ) : (
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 flex items-start gap-3">
-                <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
-                <p className="text-sm text-red-900">{error}</p>
+              <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-4 flex items-start gap-3">
+                <AlertCircle className="text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" size={20} />
+                <p className="text-sm text-red-900 dark:text-red-300">{error}</p>
               </div>
             )}
 
             <div className="space-y-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                   Email address
                 </label>
                 <input
@@ -140,20 +140,20 @@ export default function Login() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                   placeholder="you@example.com"
                 />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
+                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
                     Password
                   </label>
                   <button
                     type="button"
                     onClick={() => { setForgotMode(true); setError(""); }}
-                    className="text-sm font-semibold text-teal-600 hover:text-teal-700"
+                    className="text-sm font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300"
                   >
                     Forgot password?
                   </button>
@@ -167,13 +167,13 @@ export default function Login() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-3 pr-11 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(v => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -192,17 +192,17 @@ export default function Login() {
 
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200">Or continue with</span>
+                <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or continue with</span>
               </div>
             </div>
 
             <button
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white border-2 border-gray-300 rounded-xl font-semibold text-gray-700 dark:text-gray-900 hover:bg-gray-50 transition-all"
+              className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path
@@ -225,9 +225,9 @@ export default function Login() {
               Sign in with Google
             </button>
 
-              <p className="text-center text-sm text-gray-600 mt-6">
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
               Don't have an account?{" "}
-              <Link to="/paywall" className="font-semibold text-teal-600 hover:text-teal-700">
+              <Link to="/paywall" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
                 View plans and sign up
               </Link>
             </p>

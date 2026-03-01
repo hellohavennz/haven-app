@@ -281,7 +281,7 @@ const TIER_LABELS: Record<string, string> = {
 };
 
 const TIER_COLORS: Record<string, string> = {
-  free: 'bg-gray-100 text-gray-700',
+  free: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
   plus: 'bg-emerald-100 text-emerald-700',
   premium: 'bg-amber-100 text-amber-700',
 };
@@ -492,7 +492,7 @@ export default function Profile() {
               <button
                 type="button"
                 onClick={() => setShowNewPassword(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                 aria-label={showNewPassword ? 'Hide password' : 'Show password'}
               >
                 {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -528,7 +528,7 @@ export default function Profile() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
               >
                 {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}

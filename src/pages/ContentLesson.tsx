@@ -140,17 +140,17 @@ const ContentLesson: React.FC = () => {
 
         {/* Prev / Next lesson navigation */}
         {(prevLesson || nextLesson) && (
-          <div className="mt-10 border-t border-gray-200 dark:border-gray-800 pt-6 grid grid-cols-2 gap-4">
+          <div className="mt-10 border-t border-gray-200 dark:border-gray-700 pt-6 grid grid-cols-2 gap-4">
             {prevLesson ? (
               <Link
                 to={`/content/${prevLesson.id}`}
-                className="group flex flex-col gap-0.5 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 hover:border-teal-300 hover:bg-teal-50 dark:hover:border-teal-700 dark:hover:bg-teal-900/20 transition-colors"
+                className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
               >
-                <span className="flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                <span className="flex items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   <ChevronLeft className="w-3.5 h-3.5" />
                   Previous
                 </span>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
                   {prevLesson.title}
                 </span>
               </Link>
@@ -159,13 +159,13 @@ const ContentLesson: React.FC = () => {
             {nextLesson ? (
               <Link
                 to={`/content/${nextLesson.id}`}
-                className="group flex flex-col gap-0.5 rounded-xl border border-gray-200 dark:border-gray-800 px-4 py-3 text-right hover:border-teal-300 hover:bg-teal-50 dark:hover:border-teal-700 dark:hover:bg-teal-900/20 transition-colors"
+                className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
               >
-                <span className="flex items-center gap-1 justify-end text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                <span className="flex items-center gap-1 justify-end text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   Next
                   <ChevronRight className="w-3.5 h-3.5" />
                 </span>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
                   {nextLesson.title}
                 </span>
               </Link>

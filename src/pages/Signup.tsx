@@ -103,12 +103,12 @@ export default function Signup() {
     return (
       <div className="min-h-screen flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full text-center space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-            <CheckCircle2 className="text-green-600" size={48} />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">
+            <CheckCircle2 className="text-green-600 dark:text-green-400" size={48} />
           </div>
-          <h2 className="font-semibold text-gray-900">Account created!</h2>
-          <p className="text-gray-600">Check your email to verify your account, then you can start learning.</p>
-          <p className="text-sm text-gray-400">Can't see it? Check your spam or junk folder.</p>
+          <h2 className="font-semibold text-gray-900 dark:text-white">Account created!</h2>
+          <p className="text-gray-600 dark:text-gray-300">Check your email to verify your account, then you can start learning.</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">Can't see it? Check your spam or junk folder.</p>
         </div>
       </div>
     );
@@ -118,33 +118,33 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
-            <UserPlus className="text-teal-600" size={32} />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
+            <UserPlus className="text-teal-600 dark:text-teal-400" size={32} />
           </div>
-          <h2 className="font-semibold text-gray-900">Create your account</h2>
-          <p className="mt-2 text-gray-600">Start your journey to passing the test</p>
+          <h2 className="font-semibold text-gray-900 dark:text-white">Create your account</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">Start your journey to passing the test</p>
 
           <div className={`mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-3 ${
             selectedPlan === 'premium'
-              ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300'
+              ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300 dark:from-amber-900/30 dark:to-orange-900/30 dark:border-amber-700'
               : selectedPlan === 'free'
-              ? 'bg-gray-100 border-2 border-gray-300'
-              : 'bg-teal-50 border-2 border-teal-200'
+              ? 'bg-gray-100 border-2 border-gray-300 dark:bg-gray-800 dark:border-gray-600'
+              : 'bg-teal-50 border-2 border-teal-200 dark:bg-teal-900/30 dark:border-teal-700'
           }`}>
             <PlanIcon className={`h-5 w-5 ${
               selectedPlan === 'premium'
-                ? 'text-amber-600'
+                ? 'text-amber-600 dark:text-amber-400'
                 : selectedPlan === 'free'
-                ? 'text-gray-600'
-                : 'text-teal-600'
+                ? 'text-gray-600 dark:text-gray-400'
+                : 'text-teal-600 dark:text-teal-400'
             }`} />
-            <span className="font-semibold text-gray-900">{plan.name}</span>
-            <span className="mx-2 text-gray-400">•</span>
-            <span className="font-semibold text-gray-900">{plan.price}</span>
+            <span className="font-semibold text-gray-900 dark:text-white">{plan.name}</span>
+            <span className="mx-2 text-gray-400 dark:text-gray-500">•</span>
+            <span className="font-semibold text-gray-900 dark:text-white">{plan.price}</span>
           </div>
 
-          <p className="mt-3 text-sm text-gray-500">
-            <Link to="/paywall" className="text-teal-600 hover:text-teal-700 font-medium">
+          <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+            <Link to="/paywall" className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 font-medium">
               Change plan
             </Link>
           </p>
@@ -152,15 +152,15 @@ export default function Signup() {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 flex items-start gap-3">
-              <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
-              <p className="text-sm text-red-900">{error}</p>
+            <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-4 flex items-start gap-3">
+              <AlertCircle className="text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" size={20} />
+              <p className="text-sm text-red-900 dark:text-red-300">{error}</p>
             </div>
           )}
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 First name
               </label>
               <input
@@ -170,13 +170,13 @@ export default function Signup() {
                 autoComplete="given-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="Your first name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Email address
               </label>
               <input
@@ -187,13 +187,13 @@ export default function Signup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="confirm-email" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="confirm-email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Confirm email address
               </label>
               <input
@@ -205,15 +205,15 @@ export default function Signup() {
                 value={confirmEmail}
                 onChange={(e) => setConfirmEmail(e.target.value)}
                 onBlur={() => setConfirmEmailTouched(true)}
-                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-0 transition-colors ${
+                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-0 transition-colors dark:bg-gray-800 dark:text-white ${
                   emailMismatch
-                    ? 'border-red-400 focus:border-red-500'
-                    : 'border-gray-200 focus:border-teal-500'
+                    ? 'border-red-400 focus:border-red-500 dark:border-red-600'
+                    : 'border-gray-200 focus:border-teal-500 dark:border-gray-700'
                 }`}
                 placeholder="you@example.com"
               />
               {emailMismatch && (
-                <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1.5">
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
                   <AlertCircle size={14} className="flex-shrink-0" />
                   Email addresses don't match
                 </p>
@@ -221,7 +221,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -233,13 +233,13 @@ export default function Signup() {
                   required
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
-                  className="w-full px-4 py-3 pr-11 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(v => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -248,7 +248,7 @@ export default function Signup() {
               {passwordTouched && (
                 <ul className="mt-2 space-y-1">
                   {passwordRules.map(r => (
-                    <li key={r.label} className={`flex items-center gap-2 text-xs font-medium ${r.ok ? 'text-teal-600' : 'text-red-500'}`}>
+                    <li key={r.label} className={`flex items-center gap-2 text-xs font-medium ${r.ok ? 'text-teal-600 dark:text-teal-400' : 'text-red-500 dark:text-red-400'}`}>
                       <span>{r.ok ? '✓' : '✗'}</span>
                       {r.label}
                     </li>
@@ -259,7 +259,7 @@ export default function Signup() {
           </div>
 
           {(selectedPlan === 'plus' || selectedPlan === 'premium') && (
-            <div className="rounded-xl border-2 border-teal-100 bg-teal-50 p-4 mb-4 text-sm text-teal-800">
+            <div className="rounded-xl border-2 border-teal-100 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/20 p-4 mb-4 text-sm text-teal-800 dark:text-teal-200">
               After creating your account you'll be taken to our secure payment page to complete your {plan.name} subscription.
             </div>
           )}
@@ -271,7 +271,7 @@ export default function Signup() {
               selectedPlan === 'premium'
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500'
                 : selectedPlan === 'free'
-                ? 'bg-gray-900'
+                ? 'bg-gray-900 dark:bg-gray-700'
                 : 'bg-gradient-to-r from-teal-600 to-teal-700'
             }`}
           >
@@ -280,17 +280,17 @@ export default function Signup() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">Or sign up with</span>
+              <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or sign up with</span>
             </div>
           </div>
 
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white border-2 border-gray-300 rounded-xl font-semibold text-gray-700 hover:bg-gray-50 transition-all"
+            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path
@@ -313,9 +313,9 @@ export default function Signup() {
             Sign up with Google
           </button>
 
-          <p className="text-center text-sm text-gray-600 mt-6">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
             Already have an account?{" "}
-            <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
+            <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
               Sign in
             </Link>
           </p>

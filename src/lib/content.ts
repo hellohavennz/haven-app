@@ -76,8 +76,19 @@ export async function preloadContent(): Promise<void> {
       const questionsByLesson  = groupBy(questions  ?? [], q  => q.lesson_id);
       const flashcardsByLesson = groupBy(flashcards ?? [], fc => fc.lesson_id);
 
-      // Build LessonJSON array (already ordered by order_index from DB)
-      _lessons = (lessons ?? []).map(lesson => {
+      // Build LessonJSON array — sort by module order first, then by lesson
+      // order_index within the module. Without this, per-module order_index
+      // values (1,2,3 per module) would interleave lessons across chapters.
+      const sortedLessons = [...(lessons ?? [])].sort((a, b) => {
+        const modA = moduleById.get(a.module_id);
+        const modB = moduleById.get(b.module_id);
+        const modOrderA = modA?.order_index ?? 0;
+        const modOrderB = modB?.order_index ?? 0;
+        if (modOrderA !== modOrderB) return modOrderA - modOrderB;
+        return a.order_index - b.order_index;
+      });
+
+      _lessons = sortedLessons.map(lesson => {
         const mod = moduleById.get(lesson.module_id);
 
         return {
@@ -115,7 +126,7 @@ export async function preloadContent(): Promise<void> {
         slug:     mod.slug,
         title:    mod.title,
         is_free:  mod.is_free,
-        lessonIds: (lessons ?? [])
+        lessonIds: sortedLessons
           .filter(l => l.module_id === mod.id)
           .map(l => l.id),
       }));

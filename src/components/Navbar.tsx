@@ -43,8 +43,10 @@ export default function Navbar() {
           {/* Left: Logo + Main Nav */}
           <div className="flex items-center gap-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <img src="/haven-icons/icon-384x384.png" alt="Haven" className="w-8 h-8 rounded-lg" />
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 bg-teal-600">
+                <img src="/haven-icons/icon-512x512.png" alt="Haven" className="w-full h-full" />
+              </div>
               <span className="font-heading font-semibold text-xl text-gray-900 dark:text-white">Haven</span>
             </Link>
 
