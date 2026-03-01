@@ -19,9 +19,6 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import * as dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
-dotenv.config({ path: '.env' });
 
 const SUPABASE_URL = 'https://auth.havenstudy.app';
 const SERVICE_ROLE_KEY =

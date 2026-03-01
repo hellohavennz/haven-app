@@ -263,6 +263,7 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 | `scripts/test-resit-flow.ts` | Full resit claim flow against live site | `npx tsx scripts/test-resit-flow.ts` |
 | `scripts/test-forgot-password.ts` | Forgot password → recovery token → password update | `npx tsx scripts/test-forgot-password.ts` |
 | `scripts/test-ask-pippa.ts` | Pippa AI — real reply, conversation history, free/unauth rejection | `npx tsx scripts/test-ask-pippa.ts` |
+| `scripts/test-email-reminders.ts` | Exam reminder emails — creates test users, runs reminder loop, checks DB flags, verifies idempotency | `npx tsx --env-file=.env scripts/test-email-reminders.ts` |
 
 ---
 

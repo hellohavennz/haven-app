@@ -119,6 +119,27 @@ export default function PracticeLesson() {
     );
   }
 
+  const hasFlashcards = (data.flashcards?.length ?? 0) > 0;
+
+  if (showChoice && !hasQuestions && !hasFlashcards) {
+    return (
+      <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
+        <div className="space-y-6 text-center">
+          <h1 className="font-semibold text-gray-900 dark:text-gray-100">Module Overview</h1>
+          <p className="text-gray-600 dark:text-gray-300">
+            This is an introductory overview — practice questions and flashcards are inside the individual lessons.
+          </p>
+          <Link
+            to={`/content/${data.id}`}
+            className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:opacity-90 transition-all"
+          >
+            Back to lesson
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (showChoice) {
     return (
       <div ref={contentRef} className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">

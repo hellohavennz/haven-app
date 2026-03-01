@@ -167,8 +167,16 @@ export default function PracticeFlashcards() {
             </div>
           </div>
         ) : (
-          <div className="text-center py-12 text-gray-600 dark:text-gray-300">
-            No flashcards available for this lesson yet.
+          <div className="space-y-6 text-center py-12">
+            <p className="text-gray-600 dark:text-gray-300">
+              This is a module overview — no flashcards here. The individual lessons each have their own flashcards.
+            </p>
+            <Link
+              to={`/content/${data.id}`}
+              className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:opacity-90 transition-all"
+            >
+              Back to lesson
+            </Link>
           </div>
         )}
       </div>
