@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
 import { getLessonById, getAllLessons } from '../lib/content';
+import { usePageTitle } from '../hooks/usePageTitle';
 import { getAllProgress, markLessonRead } from '../lib/progress';
 import { CheckCircle2, Circle, ChevronLeft, ChevronRight, ClipboardList, Layers } from 'lucide-react';
 import ReportButton from '../components/ReportButton';
@@ -9,6 +10,7 @@ import ReportButton from '../components/ReportButton';
 const ContentLesson: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const lesson = lessonId ? getLessonById(lessonId) : null;
+  usePageTitle(lesson?.title);
   const allLessons = getAllLessons();
   const currentIndex = allLessons.findIndex(l => l.id === lessonId);
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;

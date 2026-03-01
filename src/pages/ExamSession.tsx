@@ -25,6 +25,7 @@ import {
 } from "../lib/examUtils";
 import { useSubscription } from "../lib/subscription";
 import type { ExamQuestion, ExamAttempt } from "../types";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const TOTAL_QUESTIONS = 24;
 const PASS_THRESHOLD = 18;
@@ -51,6 +52,7 @@ function formatTime(seconds: number): string {
 type ExamType = "static-1" | "static-2" | "dynamic";
 
 export default function ExamSession() {
+  usePageTitle('Mock Exam');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { tier, isLoading: subLoading } = useSubscription();

@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { KeyRound, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function ResetPassword() {
+  usePageTitle('Reset Password');
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);

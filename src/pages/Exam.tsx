@@ -15,8 +15,10 @@ import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
 import { getExamHistory, getReadinessStatus, getExamsThisMonth, MODULE_LABELS } from "../lib/examUtils";
 import type { ExamAttempt } from "../types";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Exam() {
+  usePageTitle('Mock Exam');
   const [user, setUser] = useState<any>(null);
   const { tier } = useSubscription();
   const [history, setHistory] = useState<ExamAttempt[]>([]);

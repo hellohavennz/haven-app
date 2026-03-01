@@ -27,6 +27,7 @@ import {
   type ResitClaim,
 } from '../lib/adminApi';
 import { supabase } from '../lib/supabase';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const ADMIN_EMAIL = 'hello.haven.nz@gmail.com';
 
@@ -843,6 +844,7 @@ function ErrorMsg({ msg }: { msg: string }) {
 
 // ── Main admin page ───────────────────────────────────────────────────────
 export default function Admin() {
+  usePageTitle('Admin');
   const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>('reports');
   const [checking, setChecking] = useState(true);

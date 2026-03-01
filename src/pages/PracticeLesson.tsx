@@ -5,6 +5,7 @@ import { recordAttempt } from "../lib/progress";
 import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
 import type { Question } from "../types";
 import ReportButton from "../components/ReportButton";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 function shuffle<T>(arr: T[]): T[] {
   const shuffled = arr.slice();
@@ -53,6 +54,7 @@ export default function PracticeLesson() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
   const data = lessonId ? getLessonById(lessonId) : null;
+  usePageTitle(data?.title);
   
   // Shuffle questions AND shuffle options within each question
   const shuffledQuestions = useMemo(() => {

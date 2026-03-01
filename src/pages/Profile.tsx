@@ -5,6 +5,7 @@ import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
 import { supabase } from '../lib/supabase';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 // ── Resit Support ─────────────────────────────────────────────────────────
 
@@ -287,6 +288,7 @@ const TIER_COLORS: Record<string, string> = {
 };
 
 export default function Profile() {
+  usePageTitle('Profile');
   const [user, setUser] = useState<any>(null);
   const { tier } = useSubscription();
   const [name, setName] = useState('');

@@ -4,6 +4,7 @@ import { getLessonById } from "../lib/content";
 import { useSubscription } from "../lib/subscription";
 import { RotateCcw, Lock, ArrowRight } from "lucide-react";
 import ReportButton from "../components/ReportButton";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const FREE_CARD_LIMIT = 5;
 
@@ -20,6 +21,7 @@ export default function PracticeFlashcards() {
   const { lessonId } = useParams();
   const { tier, isLoading } = useSubscription();
   const data = lessonId ? getLessonById(lessonId) : null;
+  usePageTitle(data?.title ? `${data.title} — Flashcards` : 'Flashcards');
   // Plus and Premium both get full flashcard access; only Free is limited
   const hasFullAccess = tier === "plus" || tier === "premium";
 

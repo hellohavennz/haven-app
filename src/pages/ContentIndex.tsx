@@ -20,6 +20,7 @@ import {
   getModules,
 } from "../lib/content";
 import { useProgress } from "../lib/progress";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type ProgressRecord = Record<string, { attempted: number; correct: number; read?: boolean }>;
 
@@ -32,6 +33,7 @@ function getAccuracy(progress?: { attempted: number; correct: number }) {
 }
 
 export default function ContentIndex() {
+  usePageTitle('Study');
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [user, setUser] = useState<any>(null);

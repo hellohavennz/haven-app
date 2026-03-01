@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePageTitle } from '../hooks/usePageTitle';
 import {
   BookOpen,
   Brain,
@@ -111,6 +112,7 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 }
 
 export default function Help() {
+  usePageTitle('Help & Support');
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
       <div className="space-y-4 text-center">

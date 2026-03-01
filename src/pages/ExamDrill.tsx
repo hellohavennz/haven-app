@@ -3,10 +3,12 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { CheckCircle2, XCircle, RotateCcw, ArrowRight } from 'lucide-react';
 import type { ExamQuestion } from '../types';
 import { shuffle } from '../lib/examUtils';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type DrillState = { questions: ExamQuestion[] };
 
 export default function ExamDrill() {
+  usePageTitle('Drill — Missed Questions');
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as DrillState | null;

@@ -8,6 +8,7 @@ import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from
 import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
 import { isOnboardingComplete, getDaysUntilExam, getOnboardingData } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 interface LessonProgressData {
   attempted: number;
@@ -15,6 +16,7 @@ interface LessonProgressData {
 }
 
 const Dashboard: React.FC = () => {
+  usePageTitle('Dashboard');
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);

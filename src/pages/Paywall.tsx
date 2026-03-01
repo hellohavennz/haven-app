@@ -17,6 +17,7 @@ import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from '../lib/auth';
 import { supabase } from '../lib/supabase';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type Plan = 'free' | 'plus' | 'premium';
 
@@ -27,6 +28,7 @@ function isUpgrade(current: Plan, target: Plan) {
 }
 
 export default function Paywall() {
+  usePageTitle('Pricing');
   const navigate = useNavigate();
   const location = useLocation();
   const { tier: currentTier, isLoading } = useSubscription();

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /uk/
+Allow: /uk/login
+Allow: /uk/signup
+Allow: /uk/paywall
+Allow: /uk/help
+Allow: /uk/privacy
+Allow: /uk/terms
+
+Disallow: /uk/dashboard
+Disallow: /uk/content
+Disallow: /uk/practice
+Disallow: /uk/exam
+Disallow: /uk/welcome
+Disallow: /uk/profile
+Disallow: /uk/admin
+Disallow: /uk/reset-password
+
+Sitemap: https://havenstudy.app/sitemap.xml

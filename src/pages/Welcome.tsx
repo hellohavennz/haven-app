@@ -4,6 +4,7 @@ import { Calendar, Zap, BookOpen, Flame, ArrowRight, CheckCircle2, Target, Clock
 import { saveOnboarding, type StudyGoal } from '../lib/onboarding';
 import { getCurrentUser } from '../lib/auth';
 import { getAllLessons } from '../lib/content';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const STUDY_GOALS: { value: StudyGoal; label: string; detail: string; icon: React.ReactNode }[] = [
   {
@@ -33,6 +34,7 @@ const GOAL_LABELS: Record<StudyGoal, string> = {
 };
 
 export default function Welcome() {
+  usePageTitle('Welcome');
   const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [examDate, setExamDate] = useState('');

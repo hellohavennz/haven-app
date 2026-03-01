@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signUp, signInWithGoogle } from "../lib/auth";
 import { UserPlus, AlertCircle, CheckCircle2, Zap, Crown, Eye, EyeOff } from "lucide-react";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Signup() {
+  usePageTitle('Sign up');
   const location = useLocation();
   const navigate = useNavigate();
 

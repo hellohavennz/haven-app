@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signIn, signInWithGoogle, resetPassword } from "../lib/auth";
 import { LogIn, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Login() {
+  usePageTitle('Log in');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

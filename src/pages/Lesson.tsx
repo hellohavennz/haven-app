@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type Q = {
   id: string;
@@ -13,6 +14,7 @@ type Q = {
 export default function Lesson() {
   const { lessonId } = useParams();
   const [title, setTitle] = useState("");
+  usePageTitle(title || undefined);
   const [body, setBody] = useState("");
   const [qs, setQs] = useState<Q[]>([]);
   const [i, setI] = useState(0);
