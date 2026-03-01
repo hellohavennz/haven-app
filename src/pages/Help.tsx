@@ -10,6 +10,7 @@ import {
   HelpCircle,
   Mail,
   Flag,
+  Smartphone,
 } from "lucide-react";
 
 type FAQItem = {
@@ -193,6 +194,64 @@ export default function Help() {
             If something looks wrong or confusing, tap it to send us a quick note — we review all reports and update the content.
           </p>
         </div>
+      </div>
+
+      {/* Install to Home Screen */}
+      <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
+            <Smartphone className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+          </div>
+          <div>
+            <h2 className="font-semibold text-gray-900 dark:text-white">Install to Home Screen</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Access Haven like an app — no App Store needed</p>
+          </div>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {/* iPhone / iPad */}
+          <div className="rounded-xl bg-gray-50 dark:bg-gray-800 p-5">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+              <span className="text-lg">🍎</span> iPhone / iPad
+            </h3>
+            <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">1.</span>Open Haven in <strong>Safari</strong></li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">2.</span>Tap the <strong>Share</strong> button at the bottom of the screen (box with an arrow)</li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">3.</span>Scroll down and tap <strong>Add to Home Screen</strong></li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">4.</span>Tap <strong>Add</strong> to confirm</li>
+            </ol>
+          </div>
+
+          {/* Android */}
+          <div className="rounded-xl bg-gray-50 dark:bg-gray-800 p-5">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+              <span className="text-lg">🤖</span> Android
+            </h3>
+            <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">1.</span>Open Haven in <strong>Chrome</strong></li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">2.</span>Tap the <strong>⋮ menu</strong> in the top-right corner</li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">3.</span>Tap <strong>Add to Home Screen</strong> or <strong>Install app</strong></li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">4.</span>Tap <strong>Install</strong> to confirm</li>
+            </ol>
+          </div>
+
+          {/* Desktop */}
+          <div className="rounded-xl bg-gray-50 dark:bg-gray-800 p-5">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+              <span className="text-lg">💻</span> Desktop
+            </h3>
+            <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">1.</span>Open Haven in <strong>Chrome</strong> or <strong>Edge</strong></li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">2.</span>Look for the <strong>install icon</strong> (⊕) at the right end of the address bar</li>
+              <li className="flex gap-2"><span className="font-semibold text-teal-600 dark:text-teal-400 flex-shrink-0">3.</span>Click it and then click <strong>Install</strong></li>
+            </ol>
+            <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">No install icon? Try the browser menu → <strong>Install Haven</strong></p>
+          </div>
+        </div>
+
+        <p className="mt-5 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800 pt-4">
+          Once installed, Haven works offline — lessons are cached so you can study anywhere, even without an internet connection.
+        </p>
       </div>
 
       <div className="space-y-4">
