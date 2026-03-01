@@ -18,14 +18,135 @@ interface LessonContentProps {
   study_sections?: StudySection[];
 }
 
+// ── Content renderer ──────────────────────────────────────────────────────────
+// Splits on double-newlines to get blocks, then further parses each block for
+// bullet lines (•) and numbered lines (1. 2. 3.) so they render as proper lists
+// instead of collapsing onto a single line in HTML.
+
+const isBulletLine = (line: string) => line.trim().startsWith('•');
+const isNumberedLine = (line: string) => /^\s*\d+\./.test(line);
+
+function renderContent(text: string): React.ReactNode {
+  const blocks = text.split('\n\n');
+
+  return (
+    <div className="space-y-4">
+      {blocks.map((block, blockIdx) => {
+        const lines = block.split('\n').filter(l => l.trim() !== '');
+        if (lines.length === 0) return null;
+
+        const allBullets = lines.every(isBulletLine);
+        const allNumbered = lines.every(isNumberedLine);
+
+        // ── Pure bullet list ────────────────────────────────────────────────
+        if (allBullets) {
+          return (
+            <ul key={blockIdx} className="space-y-2">
+              {lines.map((line, i) => (
+                <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-200">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-500" />
+                  <span className="leading-relaxed">{line.trim().replace(/^•\s*/, '')}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        // ── Pure numbered list ──────────────────────────────────────────────
+        if (allNumbered) {
+          return (
+            <ol key={blockIdx} className="space-y-2">
+              {lines.map((line, i) => (
+                <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
+                  <span className="flex-shrink-0 min-w-[1.4rem] font-semibold text-teal-600 dark:text-teal-400 leading-relaxed">
+                    {line.match(/^\s*(\d+)\./)?.[1]}.
+                  </span>
+                  <span className="leading-relaxed">{line.trim().replace(/^\d+\.\s*/, '')}</span>
+                </li>
+              ))}
+            </ol>
+          );
+        }
+
+        // ── Mixed block: prose text + bullets/numbers interleaved ───────────
+        if (lines.some(l => isBulletLine(l) || isNumberedLine(l))) {
+          // Group consecutive lines of the same type into segments
+          type SegType = 'text' | 'bullet' | 'numbered';
+          const segments: { type: SegType; lines: string[] }[] = [];
+
+          for (const line of lines) {
+            const type: SegType = isBulletLine(line)
+              ? 'bullet'
+              : isNumberedLine(line)
+              ? 'numbered'
+              : 'text';
+
+            if (segments.length === 0 || segments[segments.length - 1].type !== type) {
+              segments.push({ type, lines: [line] });
+            } else {
+              segments[segments.length - 1].lines.push(line);
+            }
+          }
+
+          return (
+            <div key={blockIdx} className="space-y-2">
+              {segments.map((seg, sIdx) => {
+                if (seg.type === 'bullet') {
+                  return (
+                    <ul key={sIdx} className="space-y-2">
+                      {seg.lines.map((line, i) => (
+                        <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-200">
+                          <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-500" />
+                          <span className="leading-relaxed">{line.trim().replace(/^•\s*/, '')}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+                if (seg.type === 'numbered') {
+                  return (
+                    <ol key={sIdx} className="space-y-2">
+                      {seg.lines.map((line, i) => (
+                        <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
+                          <span className="flex-shrink-0 min-w-[1.4rem] font-semibold text-teal-600 dark:text-teal-400 leading-relaxed">
+                            {line.match(/^\s*(\d+)\./)?.[1]}.
+                          </span>
+                          <span className="leading-relaxed">{line.trim().replace(/^\d+\.\s*/, '')}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  );
+                }
+                // Plain text lines within a mixed block
+                return seg.lines.map((line, i) => (
+                  <p key={`${sIdx}-${i}`} className="text-gray-700 leading-relaxed dark:text-gray-200">
+                    {line}
+                  </p>
+                ));
+              })}
+            </div>
+          );
+        }
+
+        // ── Plain paragraph ─────────────────────────────────────────────────
+        return (
+          <p key={blockIdx} className="text-gray-700 leading-relaxed dark:text-gray-200">
+            {lines.join(' ')}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Key Facts tile ────────────────────────────────────────────────────────────
+
 const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextFact = () => {
-    setCurrentIndex((prev) => (prev + 1) % facts.length);
-  };
-
   if (facts.length === 0) return null;
+
+  const nextFact = () => setCurrentIndex((prev) => (prev + 1) % facts.length);
 
   return (
     <div
@@ -67,31 +188,27 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
   );
 };
 
+// ── Main component ────────────────────────────────────────────────────────────
+
 const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_facts, study_sections }) => {
   const factsPerSection = study_sections && key_facts ? Math.ceil(key_facts.length / study_sections.length) : 0;
 
   if (study_sections) {
     return (
       <div className="space-y-8">
-        {/* Overview Section */}
+        {/* Overview */}
         {overview && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
             <div className="bg-[#0D9488] px-6 py-4">
               <h2 className="font-semibold text-white">Overview</h2>
             </div>
             <div className="p-6">
-              <div className="prose prose-lg max-w-none">
-                {overview.split('\n\n').map((paragraph, pIndex) => (
-                  <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              {renderContent(overview)}
             </div>
           </div>
         )}
 
-        {/* Study Sections with Key Facts after each */}
+        {/* Study sections with key facts interleaved */}
         {study_sections.map((section, index) => {
           const startIdx = index * factsPerSection;
           const endIdx = Math.min(startIdx + factsPerSection, key_facts?.length || 0);
@@ -99,7 +216,6 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
 
           return (
             <div key={index}>
-              {/* Study Section */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
                 {section.heading && (
                   <div className="bg-[#0D9488] px-6 py-4">
@@ -107,23 +223,16 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
                   </div>
                 )}
                 <div className="p-6">
-                  <div className="prose prose-lg max-w-none">
-                    {section.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
+                  {renderContent(section.content)}
                 </div>
               </div>
 
-              {/* Key Facts Tile after this section */}
               {sectionFacts.length > 0 && <KeyFactTile facts={sectionFacts} />}
             </div>
           );
         })}
 
-        {/* Remaining Key Facts if any */}
+        {/* Overflow key facts */}
         {key_facts && key_facts.length > study_sections.length * factsPerSection && (
           <KeyFactTile facts={key_facts.slice(study_sections.length * factsPerSection)} />
         )}
@@ -141,13 +250,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
                 <h2 className="font-semibold text-white">{section.title}</h2>
               </div>
               <div className="p-6">
-                <div className="prose prose-lg max-w-none mb-6">
-                  {section.content.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex} className="mb-4 text-gray-700 leading-relaxed dark:text-gray-200">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+                {renderContent(section.content)}
               </div>
             </div>
             {section.key_facts && section.key_facts.length > 0 && (
