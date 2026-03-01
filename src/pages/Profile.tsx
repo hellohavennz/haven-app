@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, BadgeCheck, CheckCircle2, XCircle, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload, KeyRound, Eye, EyeOff } from 'lucide-react';
+import { User, Mail, BadgeCheck, CheckCircle2, XCircle, AlertCircle, ArrowRight, CreditCard, Loader2, Award, Upload, KeyRound, Eye, EyeOff, BarChart3 } from 'lucide-react';
 import { getCurrentUser } from '../lib/auth';
 import { updateDisplayName } from '../lib/auth';
 import { useSubscription } from '../lib/subscription';
@@ -600,6 +600,25 @@ export default function Profile() {
           )}
         </div>
       </div>
+
+      {/* Analytics — Premium only */}
+      {tier === 'premium' && (
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-3 dark:border-gray-800 dark:bg-gray-900">
+          <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+            <BarChart3 className="h-5 w-5 text-teal-600" />
+            Performance Analytics
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            See your accuracy by module, exam history, and weak areas that need more practice.
+          </p>
+          <Link
+            to="/analytics"
+            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-teal-700"
+          >
+            View Analytics <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      )}
 
       {/* Resit Support — only for paying users */}
       {(tier === 'plus' || tier === 'premium') && user && (

@@ -36,7 +36,7 @@ const faqs: FAQItem[] = [
   {
     question: "Can I track my progress?",
     answer:
-      "Yes! The Dashboard shows your overall progress, including lessons completed, practice accuracy, and areas that need improvement. Each lesson also tracks your individual performance.",
+      "Yes! The Dashboard shows your overall progress, including lessons completed, practice accuracy, and areas that need improvement. Each lesson also shows two separate indicators: a 'Read' badge appears once you click 'Mark as read' at the bottom of a lesson, and a percentage (e.g. 90%) shows your practice accuracy — how many questions you answered correctly in that lesson's practice session. These are independent: reading a lesson doesn't affect your practice score, and doing practice questions doesn't mark a lesson as read.",
   },
   {
     question: "Do I need to complete the lessons in order?",
