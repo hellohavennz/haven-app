@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
@@ -15,17 +15,21 @@ import PracticeIndex from './pages/PracticeIndex';
 import PracticeLesson from './pages/PracticeLesson';
 import PracticeFlashcards from './pages/PracticeFlashcards';
 import Exam from './pages/Exam';
-import ExamSession from './pages/ExamSession';
-import ExamDrill from './pages/ExamDrill';
-import Welcome from './pages/Welcome';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
-import Profile from './pages/Profile';
-import Admin from './pages/Admin';
-import ResetPassword from './pages/ResetPassword';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
 import { ThemeProvider } from './context/ThemeContext';
+
+// Lazy-loaded: not on the critical path for any first page load
+const ExamSession      = lazy(() => import('./pages/ExamSession'));
+const ExamDrill        = lazy(() => import('./pages/ExamDrill'));
+const Welcome          = lazy(() => import('./pages/Welcome'));
+const Profile          = lazy(() => import('./pages/Profile'));
+const Admin            = lazy(() => import('./pages/Admin'));
+const ResetPassword    = lazy(() => import('./pages/ResetPassword'));
+const Privacy          = lazy(() => import('./pages/Privacy'));
+const Terms            = lazy(() => import('./pages/Terms'));
+
+const Fallback = () => <div className="min-h-screen" />;
 
 const router = createBrowserRouter([
   {
@@ -36,9 +40,9 @@ const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
-      { path: 'reset-password', element: <ResetPassword /> },
-      { path: 'privacy', element: <Privacy /> },
-      { path: 'terms', element: <Terms /> },
+      { path: 'reset-password', element: <Suspense fallback={<Fallback />}><ResetPassword /></Suspense> },
+      { path: 'privacy', element: <Suspense fallback={<Fallback />}><Privacy /></Suspense> },
+      { path: 'terms', element: <Suspense fallback={<Fallback />}><Terms /></Suspense> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
 
@@ -55,11 +59,11 @@ const router = createBrowserRouter([
           { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
           { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
           { path: 'exam', element: <Exam /> },
-          { path: 'exam/take', element: <ExamSession /> },
-          { path: 'exam/drill', element: <ExamDrill /> },
-          { path: 'welcome', element: <Welcome /> },
-          { path: 'profile', element: <Profile /> },
-          { path: 'admin', element: <Admin /> },
+          { path: 'exam/take', element: <Suspense fallback={<Fallback />}><ExamSession /></Suspense> },
+          { path: 'exam/drill', element: <Suspense fallback={<Fallback />}><ExamDrill /></Suspense> },
+          { path: 'welcome', element: <Suspense fallback={<Fallback />}><Welcome /></Suspense> },
+          { path: 'profile', element: <Suspense fallback={<Fallback />}><Profile /></Suspense> },
+          { path: 'admin', element: <Suspense fallback={<Fallback />}><Admin /></Suspense> },
         ],
       },
     ],
