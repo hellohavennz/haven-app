@@ -6,7 +6,7 @@ import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
 import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
-import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
+import { isOnboardingComplete, getDaysUntilExam, getOnboardingData } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 
 interface LessonProgressData {
@@ -23,6 +23,19 @@ const Dashboard: React.FC = () => {
   const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
   const [upgradeBanner, setUpgradeBanner] = useState<string | null>(null);
   const daysUntilExam = getDaysUntilExam();
+  const onboardingData = getOnboardingData();
+
+  // Detect first dashboard visit — stored in localStorage so it's only true once
+  const [isFirstVisit] = useState(() => {
+    try {
+      const visited = localStorage.getItem('haven-dashboard-visited');
+      if (!visited) {
+        localStorage.setItem('haven-dashboard-visited', '1');
+        return true;
+      }
+      return false;
+    } catch { return false; }
+  });
 
   useEffect(() => {
     if (!isOnboardingComplete()) {
@@ -169,28 +182,146 @@ const Dashboard: React.FC = () => {
           <div>
             <h1 className="font-semibold text-teal-700 mb-2 dark:text-teal-400">Your Dashboard</h1>
             <p className="text-gray-600 dark:text-gray-300">
-              {hasFullAccess
-                ? `Welcome back${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`
-                : 'Sample Dashboard'}
+              {isFirstVisit
+                ? `Welcome${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`
+                : `Welcome back${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`}
             </p>
           </div>
-          {daysUntilExam !== null && (
-            <div className="flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-800 dark:bg-teal-900/40 dark:text-teal-300">
-              <Target className="h-4 w-4" />
-              {daysUntilExam} day{daysUntilExam !== 1 ? 's' : ''} until your exam
-            </div>
-          )}
-          {!hasFullAccess && (
-            <Link
-              to="/paywall"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90"
-            >
-              <Sparkles className="h-5 w-5" />
-              Upgrade for Full Dashboard
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          )}
+          <div className="flex items-center gap-3">
+            {daysUntilExam !== null && (
+              <div className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
+                daysUntilExam <= 7
+                  ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'
+                  : daysUntilExam <= 30
+                  ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300'
+                  : 'bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300'
+              }`}>
+                <Target className="h-4 w-4" />
+                {daysUntilExam} day{daysUntilExam !== 1 ? 's' : ''} to go
+              </div>
+            )}
+            {!hasFullAccess && (
+              <Link
+                to="/paywall"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90"
+              >
+                <Sparkles className="h-5 w-5" />
+                Upgrade for Full Dashboard
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
+          </div>
         </div>
+
+        {/* Getting Started — shown until user has started at least one lesson */}
+        {lessonsStarted === 0 && examHistory.length === 0 && (
+          <div className="rounded-2xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-6 dark:border-teal-700 dark:from-teal-900/20 dark:to-emerald-900/20">
+            <div className="flex items-start gap-5">
+              <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-600">
+                <BookOpen className="h-7 w-7 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h2 className="font-semibold text-gray-900 dark:text-white mb-1">
+                  Ready to start learning?
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  Work through each lesson, practise the questions, then take a mock exam when you're ready. You've got this.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {continueSuggestion ? (
+                    <Link
+                      to={`/content/${continueSuggestion.id}`}
+                      className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-700 transition-all"
+                    >
+                      Start Lesson 1
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : null}
+                  <Link
+                    to="/content"
+                    className="inline-flex items-center gap-2 rounded-xl border-2 border-teal-300 dark:border-teal-700 px-5 py-2.5 text-sm font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/30 transition-all"
+                  >
+                    Browse all lessons
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-5 border-t border-teal-200 dark:border-teal-700 grid grid-cols-3 gap-4 text-center">
+              {[
+                { icon: <BookOpen className="h-5 w-5" />, step: '1', label: 'Study', detail: 'Read each lesson' },
+                { icon: <Target className="h-5 w-5" />, step: '2', label: 'Practice', detail: 'Answer questions' },
+                { icon: <Star className="h-5 w-5" />, step: '3', label: 'Exam', detail: 'Take a mock test' },
+              ].map(({ icon, step, label, detail }) => (
+                <div key={label}>
+                  <div className="flex justify-center mb-1.5 text-teal-600 dark:text-teal-400">{icon}</div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-0.5">Step {step}</p>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{label}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Study plan widget — shown when exam date is set */}
+        {daysUntilExam !== null && (() => {
+          const pacePerDay = onboardingData?.studyGoal === 'intensive' ? 4 : onboardingData?.studyGoal === 'regular' ? 2 : 1;
+          const lessonsLeft = notStartedCount;
+          const requiredPace = lessonsLeft > 0 ? Math.ceil(lessonsLeft / daysUntilExam) : 0;
+          const onTrack = requiredPace <= pacePerDay;
+          return (
+            <div className="rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${
+                    daysUntilExam <= 7 ? 'bg-red-100 dark:bg-red-900/30' :
+                    daysUntilExam <= 30 ? 'bg-amber-100 dark:bg-amber-900/30' :
+                    'bg-teal-100 dark:bg-teal-900/30'
+                  }`}>
+                    <Target className={`h-5 w-5 ${
+                      daysUntilExam <= 7 ? 'text-red-600 dark:text-red-400' :
+                      daysUntilExam <= 30 ? 'text-amber-600 dark:text-amber-400' :
+                      'text-teal-600 dark:text-teal-400'
+                    }`} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white">
+                      {daysUntilExam} day{daysUntilExam !== 1 ? 's' : ''} until your exam
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {lessonsLeft > 0
+                        ? `${lessonsLeft} lesson${lessonsLeft !== 1 ? 's' : ''} remaining`
+                        : 'All lessons started — keep practising!'}
+                    </p>
+                  </div>
+                </div>
+                {lessonsLeft > 0 && (
+                  <div className="text-right flex-shrink-0">
+                    <p className={`font-semibold text-sm ${onTrack ? 'text-teal-600 dark:text-teal-400' : 'text-amber-600 dark:text-amber-400'}`}>
+                      {onTrack ? 'On track' : 'Pick up the pace'}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      ~{requiredPace} lesson{requiredPace !== 1 ? 's' : ''}/day needed
+                    </p>
+                  </div>
+                )}
+              </div>
+              <div className="mt-4 h-2 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+                <div
+                  className={`h-full rounded-full transition-all ${
+                    completionRate >= 80 ? 'bg-green-500' :
+                    completionRate >= 40 ? 'bg-teal-500' : 'bg-teal-400'
+                  }`}
+                  style={{ width: `${Math.max(completionRate, 2)}%` }}
+                />
+              </div>
+              <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500">
+                {completionRate}% of lessons started
+              </p>
+            </div>
+          );
+        })()}
 
         {!hasFullAccess && (
           <div className="rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50 p-6 dark:border-amber-400 dark:from-amber-400/10 dark:to-orange-500/10">
