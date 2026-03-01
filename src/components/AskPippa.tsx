@@ -9,6 +9,18 @@ interface Message {
   content: string;
 }
 
+interface AskPippaProps {
+  /** Controlled open state — managed by parent */
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  /**
+   * When true, the floating trigger button is hidden on mobile (sm and below).
+   * Set this when a MobileNav tab is handling the trigger instead.
+   */
+  hideMobileFloatingBtn?: boolean;
+}
+
 const WELCOME: Message = {
   role: "assistant",
   content:
@@ -41,8 +53,7 @@ function buildUserContext(): string {
   return lines.join("\n");
 }
 
-export default function AskPippa() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBtn }: AskPippaProps) {
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -63,7 +74,6 @@ export default function AskPippa() {
     const text = input.trim();
     if (!text || loading) return;
 
-    // Capture history before state update (excludes static welcome)
     const historyToSend = messages.slice(1);
     const context = buildUserContext();
 
@@ -94,7 +104,7 @@ export default function AskPippa() {
 
       const data = await res.json();
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
-    } catch (err: any) {
+    } catch {
       setError("Sorry, I couldn't connect just now. Please try again.");
     } finally {
       setLoading(false);
@@ -103,25 +113,37 @@ export default function AskPippa() {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating trigger button — desktop always, mobile only when MobileNav isn't handling it */}
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl"
+          onClick={onOpen}
+          className={[
+            "fixed bottom-6 right-6 z-50 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
+            hideMobileFloatingBtn ? "hidden md:flex" : "flex",
+          ].join(" ")}
           aria-label="Open Ask Pippa chat"
         >
           <MessageCircle className="h-7 w-7" />
         </button>
       )}
 
-      {/* Chat panel */}
+      {/* Chat panel
+          Mobile  → fixed inset-0 (full screen)
+          Desktop → fixed popup anchored bottom-right  */}
       {isOpen && (
         <div
-          className="fixed bottom-6 right-3 z-50 flex w-[calc(100vw-24px)] max-w-[380px] flex-col rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:right-6"
-          style={{ height: '560px', maxHeight: 'calc(100vh - 100px)' }}
+          className={[
+            // shared
+            "fixed z-50 flex flex-col bg-white dark:bg-gray-900",
+            // mobile: full screen
+            "inset-0",
+            // desktop: popup panel
+            "md:inset-auto md:bottom-6 md:right-3 md:h-[560px] md:w-[calc(100vw-24px)] md:max-w-[380px] md:rounded-2xl md:border md:border-gray-200 md:shadow-2xl dark:md:border-gray-700",
+          ].join(" ")}
+          style={{ maxHeight: undefined }}
         >
           {/* Header */}
-          <div className="flex flex-shrink-0 items-center justify-between rounded-t-2xl bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white">
+          <div className="flex flex-shrink-0 items-center justify-between rounded-none bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white md:rounded-t-2xl">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                 <Sparkles className="h-5 w-5" />
@@ -132,8 +154,8 @@ export default function AskPippa() {
               </div>
             </div>
             <button
-              onClick={() => setIsOpen(false)}
-              className="rounded-lg p-1 transition-colors hover:bg-white/20"
+              onClick={onClose}
+              className="rounded-lg p-2 transition-colors hover:bg-white/20"
               aria-label="Close chat"
             >
               <X className="h-5 w-5" />
@@ -164,7 +186,6 @@ export default function AskPippa() {
               </div>
             ))}
 
-            {/* Loading indicator */}
             {loading && (
               <div className="flex gap-2">
                 <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 mt-1">
@@ -183,10 +204,11 @@ export default function AskPippa() {
             <div ref={bottomRef} />
           </div>
 
-          {/* Input */}
+          {/* Input — extra bottom padding for mobile home-indicator */}
           <form
             onSubmit={handleSubmit}
             className="flex-shrink-0 border-t border-gray-200 p-4 dark:border-gray-700"
+            style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
           >
             <div className="flex gap-2">
               <input

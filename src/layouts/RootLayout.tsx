@@ -19,6 +19,7 @@ export default function RootLayout() {
   const location = useLocation();
   const { tier } = useSubscription();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [pippaOpen, setPippaOpen] = useState(false);
   const [contentReady, setContentReady] = useState(false);
   const isOnline = useOnlineStatus();
   const wasOnlineRef = useRef(navigator.onLine);
@@ -157,7 +158,13 @@ export default function RootLayout() {
         </main>
       </div>
 
-      {showAnySidebar && <MobileNav />}
+      {showAnySidebar && (
+        <MobileNav
+          isPremium={tier === 'premium'}
+          pippaOpen={pippaOpen}
+          onOpenPippa={() => setPippaOpen(true)}
+        />
+      )}
 
       {showAnySidebar && drawerSidebar && (
         <>
@@ -180,7 +187,14 @@ export default function RootLayout() {
         </>
       )}
 
-      {tier === 'premium' && <AskPippa />}
+      {tier === 'premium' && (
+        <AskPippa
+          isOpen={pippaOpen}
+          onOpen={() => setPippaOpen(true)}
+          onClose={() => setPippaOpen(false)}
+          hideMobileFloatingBtn={showAnySidebar}
+        />
+      )}
     </div>
   );
 }
