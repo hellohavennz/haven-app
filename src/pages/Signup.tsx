@@ -25,6 +25,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingStep, setLoadingStep] = useState<'signup' | 'checkout'>('signup');
 
   const passwordMismatch = confirmPasswordTouched && confirmPassword !== "" && password !== confirmPassword;
 
@@ -65,6 +66,7 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     setLoading(true);
+    setLoadingStep('signup');
 
     if (password !== confirmPassword) {
       setError("Passwords don't match.");
@@ -80,16 +82,26 @@ export default function Signup() {
     }
 
     try {
-      await signUp(email, password, name.trim() || undefined);
-      setSuccess(true);
-      const dest =
-        selectedPlan === 'plus' || selectedPlan === 'premium'
-          ? `/paywall?checkout=${selectedPlan}`
-          : '/dashboard';
-      setTimeout(() => navigate(dest), 2000);
+      const data = await signUp(email, password, name.trim() || undefined);
+
+      if ((selectedPlan === 'plus' || selectedPlan === 'premium') && data.user) {
+        // Go straight to Stripe — skip the paywall detour
+        setLoadingStep('checkout');
+        const res = await fetch('/.netlify/functions/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ plan: selectedPlan, userId: data.user.id, email: data.user.email }),
+        });
+        if (!res.ok) throw new Error((await res.text()) || 'Checkout setup failed');
+        const { url } = await res.json();
+        window.location.href = url;
+        // Don't setLoading(false) — we're navigating away
+      } else {
+        setSuccess(true);
+        setTimeout(() => navigate('/dashboard'), 2000);
+      }
     } catch (err: any) {
       setError(err.message || "Failed to sign up");
-    } finally {
       setLoading(false);
     }
   };
@@ -289,7 +301,9 @@ export default function Signup() {
                 : 'bg-gradient-to-r from-teal-600 to-teal-700'
             }`}
           >
-            {loading ? "Creating account..." : `Continue with ${plan.name}`}
+            {loading
+            ? loadingStep === 'checkout' ? 'Redirecting to checkout…' : 'Creating account…'
+            : `Continue with ${plan.name}`}
           </button>
 
           <div className="relative my-6">
