@@ -16,22 +16,24 @@ export default function Signup() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
-  const [confirmEmailTouched, setConfirmEmailTouched] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const emailMismatch = confirmEmailTouched && confirmEmail !== "" && email !== confirmEmail;
+  const passwordMismatch = confirmPasswordTouched && confirmPassword !== "" && password !== confirmPassword;
 
   const passwordRules = [
     { label: 'At least 10 characters', ok: password.length >= 10 },
     { label: 'One uppercase letter', ok: /[A-Z]/.test(password) },
     { label: 'One lowercase letter', ok: /[a-z]/.test(password) },
     { label: 'One number', ok: /[0-9]/.test(password) },
+    { label: 'One special character', ok: /[!@#$%^&*()\-_+=[\]{};':"\\|<>?,./`~]/.test(password) },
   ];
   const passwordValid = passwordRules.every(r => r.ok);
 
@@ -44,7 +46,7 @@ export default function Signup() {
     },
     plus: {
       name: 'Haven Plus',
-      price: '£9.99',
+      price: '£4.99',
       icon: Zap,
       color: 'teal'
     },
@@ -64,8 +66,8 @@ export default function Signup() {
     setError("");
     setLoading(true);
 
-    if (email !== confirmEmail) {
-      setError("Email addresses don't match.");
+    if (password !== confirmPassword) {
+      setError("Passwords don't match.");
       setLoading(false);
       return;
     }
@@ -195,34 +197,6 @@ export default function Signup() {
             </div>
 
             <div>
-              <label htmlFor="confirm-email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                Confirm email address
-              </label>
-              <input
-                id="confirm-email"
-                name="confirm-email"
-                type="email"
-                autoComplete="off"
-                required
-                value={confirmEmail}
-                onChange={(e) => setConfirmEmail(e.target.value)}
-                onBlur={() => setConfirmEmailTouched(true)}
-                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-0 transition-colors dark:bg-gray-800 dark:text-white ${
-                  emailMismatch
-                    ? 'border-red-400 focus:border-red-500 dark:border-red-600'
-                    : 'border-gray-200 focus:border-teal-500 dark:border-gray-700'
-                }`}
-                placeholder="you@example.com"
-              />
-              {emailMismatch && (
-                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
-                  <AlertCircle size={14} className="flex-shrink-0" />
-                  Email addresses don't match
-                </p>
-              )}
-            </div>
-
-            <div>
               <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 Password
               </label>
@@ -256,6 +230,44 @@ export default function Signup() {
                     </li>
                   ))}
                 </ul>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="confirm-password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                Confirm password
+              </label>
+              <div className="relative">
+                <input
+                  id="confirm-password"
+                  name="confirm-password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordTouched(true); }}
+                  onBlur={() => setConfirmPasswordTouched(true)}
+                  className={`w-full px-4 py-3 pr-11 border-2 rounded-xl focus:ring-0 transition-colors dark:bg-gray-800 dark:text-white ${
+                    passwordMismatch
+                      ? 'border-red-400 focus:border-red-500 dark:border-red-600'
+                      : 'border-gray-200 focus:border-teal-500 dark:border-gray-700'
+                  }`}
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(v => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                >
+                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+              {passwordMismatch && (
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1.5">
+                  <AlertCircle size={14} className="flex-shrink-0" />
+                  Passwords don't match
+                </p>
               )}
             </div>
           </div>
