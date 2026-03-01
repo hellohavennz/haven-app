@@ -41,6 +41,20 @@ function welcomeHtml(firstName: string): string {
                style="display:inline-block;background:linear-gradient(135deg,#0d9488,#10b981);color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;">
               Go to your Dashboard
             </a>
+
+            <table cellpadding="0" cellspacing="0" style="margin-top:28px;width:100%;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;">
+              <tr>
+                <td style="padding:16px 20px;">
+                  <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#166534;">📱 Tip: Install Haven on your phone</p>
+                  <p style="margin:0 0 10px;font-size:13px;color:#374151;line-height:1.5;">Add Haven to your home screen for quick access — no App Store needed, and it works offline.</p>
+                  <p style="margin:0;font-size:13px;color:#374151;line-height:1.6;">
+                    <strong>iPhone/iPad:</strong> Safari → Share button → Add to Home Screen<br>
+                    <strong>Android:</strong> Chrome → ⋮ menu → Add to Home Screen<br>
+                    <strong>Desktop:</strong> Look for the ⊕ icon in the address bar
+                  </p>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
