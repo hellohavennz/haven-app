@@ -163,7 +163,10 @@ export default function PracticeSidebar({
             const hasAccess = hasAccessToModule(module.slug, user);
             const isLocked = !hasAccess;
 
-            const masteredInModule = lessons.filter((lesson) => {
+            const practiceableLessons = lessons.filter(
+              l => (l.questions?.length ?? 0) > 0 || (l.flashcards?.length ?? 0) > 0
+            );
+            const masteredInModule = practiceableLessons.filter((lesson) => {
               const progress = progressData[lesson.id];
               if (!progress || progress.attempted === 0) return false;
               return progress.correct / progress.attempted >= 0.8;
@@ -193,7 +196,7 @@ export default function PracticeSidebar({
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
                       <div className="text-small text-slate-500 dark:text-slate-300">
-                        {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
+                        {isLocked ? 'Locked' : `${masteredInModule}/${practiceableLessons.length} completed`}
                       </div>
                     </div>
                   </div>
@@ -201,7 +204,9 @@ export default function PracticeSidebar({
 
                 {isExpanded && !isLocked && (
                   <div className="mt-1 space-y-0.5 pl-3">
-                    {lessons.map((lesson) => {
+                    {lessons
+                      .filter(lesson => (lesson.questions?.length ?? 0) > 0 || (lesson.flashcards?.length ?? 0) > 0)
+                      .map((lesson) => {
                       const status = getLessonStatus(lesson.id);
                       const active = activeLessonId === lesson.id;
 
