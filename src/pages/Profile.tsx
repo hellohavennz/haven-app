@@ -124,7 +124,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
   };
   const STATUS_TEXT: Record<string, string> = {
     pending:  "Your application is under review. We'll process it within 2 business days.",
-    approved: 'Approved! 30 days have been added before your next billing date — no action needed.',
+    approved: 'Approved! 30 days have been added before your next billing date. No action needed.',
     rejected: 'Unfortunately your application was not approved. You may resubmit with updated evidence below.',
   };
 
@@ -137,7 +137,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
 
       <p className="text-sm text-slate-700 dark:text-slate-300">
         If you studied with Haven and still didn't pass, we'll add <strong>30 days</strong> before
-        your next billing date at no charge — works for both Plus and Premium plans.
+        your next billing date at no charge. Works for both Plus and Premium plans.
       </p>
 
       {/* Existing claim status */}
@@ -180,7 +180,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
                   passed={eligibility.avgScore >= SCORE_REQUIRED}
                   label="Average practice score"
                   value={`${eligibility.avgScore}%`}
-                  hint={eligibility.avgScore < SCORE_REQUIRED ? `Need ${SCORE_REQUIRED}% — keep practising` : undefined}
+                  hint={eligibility.avgScore < SCORE_REQUIRED ? `Need ${SCORE_REQUIRED}%. Keep practising.` : undefined}
                 />
                 <EligRow
                   passed={eligibility.examsPassed >= 1}
@@ -256,7 +256,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
 
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 We review applications within 2 business days. If approved, 30 days will be added
-                before your next billing date automatically — no action needed from you.
+                before your next billing date automatically. No action needed from you.
               </p>
             </form>
           )}

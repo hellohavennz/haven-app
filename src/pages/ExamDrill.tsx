@@ -8,7 +8,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 type DrillState = { questions: ExamQuestion[] };
 
 export default function ExamDrill() {
-  usePageTitle('Drill — Missed Questions');
+  usePageTitle('Drill: Missed Questions');
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as DrillState | null;
@@ -199,7 +199,7 @@ export default function ExamDrill() {
               ? 'bg-green-100 text-green-900 dark:bg-green-900/30 dark:text-green-200'
               : 'bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200'
           }`}>
-            {isCorrect ? 'Correct!' : `Incorrect — the answer is: ${currentQ.options[currentQ.correct_index]}`}
+            {isCorrect ? 'Correct!' : `Incorrect. The answer is: ${currentQ.options[currentQ.correct_index]}`}
           </div>
         )}
 

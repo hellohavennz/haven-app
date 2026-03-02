@@ -24,7 +24,7 @@ interface AskPippaProps {
 const WELCOME: Message = {
   role: "assistant",
   content:
-    "Hi! I'm Pippa, your personal study assistant. Ask me anything about the Life in the UK test — history, laws, culture, or how to remember tricky facts. I'm here to help! 🌿",
+    "Hi! I'm Pippa, your personal study assistant. Ask me anything about the Life in the UK test: history, laws, culture, or how to remember tricky facts. I'm here to help! 🌿",
 };
 
 function buildUserContext(): string {
@@ -48,7 +48,7 @@ function buildUserContext(): string {
   const lines: string[] = [];
   if (strong.length) lines.push(`Strong areas: ${strong.join(", ")}`);
   if (weak.length) lines.push(`Needs more practice: ${weak.join(", ")}`);
-  if (!lines.length) lines.push("No practice data yet — just getting started.");
+  if (!lines.length) lines.push("No practice data yet. Just getting started.");
 
   return lines.join("\n");
 }

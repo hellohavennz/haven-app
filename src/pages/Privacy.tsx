@@ -1,7 +1,7 @@
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Privacy() {
-  usePageTitle('Privacy Policy', 'Haven Study\'s privacy policy — how we collect, use, and protect your personal data.');
+  usePageTitle('Privacy Policy', 'Haven Study\'s privacy policy: how we collect, use, and protect your personal data.');
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 space-y-8 text-slate-700 dark:text-slate-300">
       <div>
@@ -20,13 +20,13 @@ export default function Privacy() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">1. Data we collect</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
-          <li><strong>Account data</strong> — your name and email address when you register.</li>
-          <li><strong>Study progress</strong> — which lessons you have completed, practice question scores, flashcard activity, and mock exam results.</li>
-          <li><strong>Login activity</strong> — the dates on which you sign in, used to calculate usage statistics for our internal dashboard.</li>
-          <li><strong>Exam date</strong> — your intended Life in the UK test date, if you choose to enter it.</li>
-          <li><strong>Payment data</strong> — billing details are processed by Stripe and never stored on our servers. We receive only a subscription status and customer reference.</li>
-          <li><strong>Resit Support evidence</strong> — if you submit a Resit Support claim, you upload a photo of your test result letter. This is stored securely and deleted once your claim is resolved.</li>
-          <li><strong>Technical data</strong> — standard server logs including IP address, browser type, and pages visited.</li>
+          <li><strong>Account data:</strong> your name and email address when you register.</li>
+          <li><strong>Study progress:</strong> which lessons you have completed, practice question scores, flashcard activity, and mock exam results.</li>
+          <li><strong>Login activity:</strong> the dates on which you sign in, used to calculate usage statistics for our internal dashboard.</li>
+          <li><strong>Exam date:</strong> your intended Life in the UK test date, if you choose to enter it.</li>
+          <li><strong>Payment data:</strong> billing details are processed by Stripe and never stored on our servers. We receive only a subscription status and customer reference.</li>
+          <li><strong>Resit Support evidence:</strong> if you submit a Resit Support claim, you upload a photo of your test result letter. This is stored securely and deleted once your claim is resolved.</li>
+          <li><strong>Technical data:</strong> standard server logs including IP address, browser type, and pages visited.</li>
         </ul>
       </section>
 
@@ -46,10 +46,10 @@ export default function Privacy() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">3. Third-party services</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
-          <li><strong>Supabase</strong> — database and authentication hosting (EU region).</li>
-          <li><strong>Stripe</strong> — payment processing. Stripe's privacy policy applies to payment data.</li>
-          <li><strong>Netlify</strong> — website hosting and serverless functions.</li>
-          <li><strong>Google Sign-In</strong> — optional third-party authentication. Google's privacy policy applies if you use this option.</li>
+          <li><strong>Supabase:</strong> database and authentication hosting (EU region).</li>
+          <li><strong>Stripe:</strong> payment processing. Stripe's privacy policy applies to payment data.</li>
+          <li><strong>Netlify:</strong> website hosting and serverless functions.</li>
+          <li><strong>Google Sign-In:</strong> optional third-party authentication. Google's privacy policy applies if you use this option.</li>
         </ul>
       </section>
 

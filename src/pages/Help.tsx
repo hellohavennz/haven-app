@@ -39,7 +39,7 @@ const faqs: FAQItem[] = [
   {
     question: "Can I track my progress?",
     answer:
-      "Yes! The Dashboard shows your overall progress, including lessons completed, practice accuracy, and areas that need improvement. Each lesson also shows two separate indicators: a 'Read' badge appears once you click 'Mark as read' at the bottom of a lesson, and a percentage (e.g. 90%) shows your practice accuracy — how many questions you answered correctly in that lesson's practice session. These are independent: reading a lesson doesn't affect your practice score, and doing practice questions doesn't mark a lesson as read.",
+      "Yes! The Dashboard shows your overall progress, including lessons completed, practice accuracy, and areas that need improvement. Each lesson also shows two separate indicators: a 'Read' badge appears once you click 'Mark as read' at the bottom of a lesson, and a percentage (e.g. 90%) shows your practice accuracy, meaning how many questions you answered correctly in that lesson's practice session. These are independent: reading a lesson doesn't affect your practice score, and doing practice questions doesn't mark a lesson as read.",
   },
   {
     question: "Do I need to complete the lessons in order?",
@@ -74,22 +74,22 @@ const faqs: FAQItem[] = [
   {
     question: "How do I install Haven on my phone or computer?",
     answer:
-      "Haven can be installed like an app — no App Store needed. On iPhone or iPad: open the site in Safari, tap the Share button (box with arrow) at the bottom of the screen, then tap 'Add to Home Screen' and confirm. On Android: open in Chrome, tap the ⋮ menu in the top-right corner, then tap 'Add to Home Screen' or 'Install app'. On desktop (Chrome or Edge): look for the install icon (⊕) at the right end of the address bar and click Install. Once installed, Haven works offline — lessons are cached so you can study anywhere, even without an internet connection.",
+      "Haven can be installed like an app, no App Store needed. On iPhone or iPad: open the site in Safari, tap the Share button (box with arrow) at the bottom of the screen, then tap 'Add to Home Screen' and confirm. On Android: open in Chrome, tap the ⋮ menu in the top-right corner, then tap 'Add to Home Screen' or 'Install app'. On desktop (Chrome or Edge): look for the install icon (⊕) at the right end of the address bar and click Install. Once installed, Haven works offline; lessons are cached so you can study anywhere, even without an internet connection.",
   },
   {
     question: "What is Resit Support?",
     answer:
-      "Resit Support is included in Haven Plus and Haven Premium. If you sit the Life in the UK test and don't pass, you can submit a photo of your result letter through your Profile page. Once approved, we'll extend your subscription by one free month so you have extra time to prepare for your resit — at no charge to you.",
+      "Resit Support is included in Haven Plus and Haven Premium. If you sit the Life in the UK test and don't pass, you can submit a photo of your result letter through your Profile page. Once approved, we'll extend your subscription by one free month so you have extra time to prepare for your resit, at no charge to you.",
   },
   {
     question: "What are the requirements to claim Resit Support?",
     answer:
-      "To be eligible you must: (1) have completed all 24 study lessons, (2) have achieved an average practice score of 75% or higher across those lessons, (3) have passed at least one mock exam, and (4) have sat your real test within the last 14 days. These checks are shown automatically on your Profile page — the claim form only unlocks once all conditions are met. Each account can only claim Resit Support once.",
+      "To be eligible you must: (1) have completed all 24 study lessons, (2) have achieved an average practice score of 75% or higher across those lessons, (3) have passed at least one mock exam, and (4) have sat your real test within the last 14 days. These checks are shown automatically on your Profile page; the claim form only unlocks once all conditions are met. Each account can only claim Resit Support once.",
   },
   {
     question: "How do I report an error or unclear content?",
     answer:
-      "If you spot a mistake, unclear wording, or anything that doesn't look right, tap the flag icon (Report issue) that appears at the bottom of lessons, practice questions, and flashcards. Describe the problem briefly and submit — our team will review it and fix it. You need to be logged in to send a report.",
+      "If you spot a mistake, unclear wording, or anything that doesn't look right, tap the flag icon (Report issue) that appears at the bottom of lessons, practice questions, and flashcards. Describe the problem briefly and submit. Our team will review it and fix it. You need to be logged in to send a report.",
   },
 ];
 
@@ -186,7 +186,7 @@ export default function Help() {
         <div className="space-y-6">
           <div className="rounded-2xl border border-teal-200 bg-teal-50 px-6 py-4 dark:border-teal-900/50 dark:bg-teal-900/20">
             <p className="text-sm text-teal-800 dark:text-teal-200 leading-relaxed">
-              A summary of key dates and facts extracted from the e-publication <em>Life in the United Kingdom: A Guide for New Residents, 3rd Edition</em>. We recommend reading the full source material for context — these facts are for quick revision only.
+              A summary of key dates and facts extracted from the e-publication <em>Life in the United Kingdom: A Guide for New Residents, 3rd Edition</em>. We recommend reading the full source material for context; these facts are for quick revision only.
             </p>
           </div>
           {keyFactGroups.map((group) => (
@@ -273,7 +273,7 @@ export default function Help() {
           <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Found an error?</h3>
           <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Every lesson, practice question, and flashcard has a small <strong>Report issue</strong> link at the bottom.
-            If something looks wrong or confusing, tap it to send us a quick note — we review all reports and update the content.
+            If something looks wrong or confusing, tap it to send us a quick note. We review all reports and update the content.
           </p>
         </div>
       </div>

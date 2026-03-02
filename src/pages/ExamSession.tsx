@@ -262,12 +262,12 @@ export default function ExamSession() {
           </p>
           {isStaticExam && (
             <p className="text-xs text-slate-400 dark:text-slate-500">
-              Fixed question set — same 24 questions every time
+              Fixed question set, same 24 questions every time
             </p>
           )}
           {!isStaticExam && (
             <p className="text-xs text-slate-400 dark:text-slate-500">
-              Questions adapt to your weak areas — different every time
+              Questions adapt to your weak areas, different every time
             </p>
           )}
         </div>
@@ -330,7 +330,7 @@ export default function ExamSession() {
 
         {isStaticExam && (
           <div className="rounded-xl border border-purple-200 bg-purple-50 p-4 text-sm text-purple-800 dark:border-purple-800 dark:bg-purple-900/20 dark:text-purple-200">
-            Mock exams always run in <strong>Strict Mode</strong> — the timer auto-submits at 45 minutes, just like the real test.
+            Mock exams always run in <strong>Strict Mode</strong>: the timer auto-submits at 45 minutes, just like the real test.
           </div>
         )}
 
@@ -383,7 +383,7 @@ export default function ExamSession() {
           {/* Time's up banner (relaxed mode) */}
           {timesUp && (
             <div className="rounded-xl bg-red-50 border border-red-200 p-3 text-sm text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
-              Time's up — finish when ready and click Submit.
+              Time's up. Finish when ready and click Submit.
             </div>
           )}
 
@@ -584,7 +584,7 @@ export default function ExamSession() {
             }`}
           >
             {readiness.ready
-              ? `You've passed ${readiness.passedCount} of your last ${readiness.totalRecent} exams — you're ready for the real test!`
+              ? `You've passed ${readiness.passedCount} of your last ${readiness.totalRecent} exams. You're ready for the real test!`
               : `${readiness.passedCount} of your last ${readiness.totalRecent} exam${readiness.totalRecent !== 1 ? "s" : ""} passed. Keep practising to build confidence.`}
           </div>
         )}

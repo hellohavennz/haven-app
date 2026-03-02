@@ -32,7 +32,7 @@ export default function Instagram() {
         </div>
 
         <h1 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(2rem, 8vw, 2.8rem)', fontWeight: 400, lineHeight: 1.2, color: styles.text, marginBottom: 16, maxWidth: 480, margin: '0 auto 16px' }}>
-          Pass the Life in the UK Test — First Time
+          Pass the Life in the UK Test, First Time
         </h1>
         <p style={{ fontSize: 17, color: styles.textMuted, lineHeight: 1.6, maxWidth: 400, margin: '0 auto 32px' }}>
           Calm, structured study that fits your life. 29 lessons, 590+ practice questions, and AI-powered support.
@@ -189,7 +189,7 @@ export default function Instagram() {
           <blockquote style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', color: styles.text, fontWeight: 400, lineHeight: 1.4, margin: '0 0 16px', fontStyle: 'italic' }}>
             "I passed first time after studying with Haven for just three weeks. The lessons are clear and the practice questions really prepared me."
           </blockquote>
-          <div style={{ fontSize: 13, color: styles.textMuted, fontWeight: 600 }}>Priya S. — Passed October 2025</div>
+          <div style={{ fontSize: 13, color: styles.textMuted, fontWeight: 600 }}>Priya S. · Passed October 2025</div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 4, marginTop: 8 }}>
             {[1,2,3,4,5].map(i => <span key={i} style={{ color: styles.gold, fontSize: 16 }}>★</span>)}
           </div>

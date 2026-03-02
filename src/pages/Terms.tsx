@@ -1,7 +1,7 @@
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Terms() {
-  usePageTitle('Terms of Service', 'Haven Study\'s terms of service — the rules and conditions for using Haven Study.');
+  usePageTitle('Terms of Service', 'Haven Study\'s terms of service: the rules and conditions for using Haven Study.');
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 space-y-8 text-slate-700 dark:text-slate-300">
       <div>
@@ -37,9 +37,9 @@ export default function Terms() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">3. Subscriptions and payments</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
-          <li><strong>Free plan</strong> — access to the first two modules at no charge.</li>
-          <li><strong>Haven Plus</strong> — £4.99/month, billed monthly. Full access to all lessons, practice questions, flashcards, and 2 mock exams per month.</li>
-          <li><strong>Haven Premium</strong> — £24.99 every 6 months. Everything in Plus, plus dynamic exams, Pippa AI, performance analytics, and offline access.</li>
+          <li><strong>Free plan:</strong> access to the first two modules at no charge.</li>
+          <li><strong>Haven Plus:</strong> £4.99/month, billed monthly. Full access to all lessons, practice questions, flashcards, and 2 mock exams per month.</li>
+          <li><strong>Haven Premium:</strong> £24.99 every 6 months. Everything in Plus, plus dynamic exams, Pippa AI, performance analytics, and offline access.</li>
           <li>Payments are processed by Stripe. By subscribing you authorise recurring charges to your payment method.</li>
           <li>You may cancel your subscription at any time via your Profile page. Access continues until the end of the current billing period.</li>
           <li>Prices are shown inclusive of any applicable taxes.</li>
@@ -87,7 +87,7 @@ export default function Terms() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">7. Intellectual property</h2>
         <p className="text-sm leading-relaxed">
-          All content in the Service — including lessons, questions, flashcards, and software —
+          All content in the Service, including lessons, questions, flashcards, and software,
           is owned by Haven or its licensors. The official Life in the UK study material is
           published by the Home Office and is used in accordance with Open Government Licence v3.0.
         </p>

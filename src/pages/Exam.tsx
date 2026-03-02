@@ -64,7 +64,7 @@ export default function Exam() {
         >
           {readiness.ready ? (
             <p className="font-semibold">
-              You're consistently passing — you look ready for the real test!
+              You're consistently passing. You look ready for the real test!
             </p>
           ) : (
             <p>
@@ -82,7 +82,7 @@ export default function Exam() {
         {/* Mock Exam 1 — Plus + Premium */}
         <ExamCard
           title="Mock Exam 1"
-          description="Full practice test covering all topics. Same 24 questions every time — great for revision."
+          description="Full practice test covering all topics. Same 24 questions every time, great for revision."
           hasAccess={hasPlus}
           examLink="/exam/take?type=static-1"
           badge={null}
@@ -104,7 +104,7 @@ export default function Exam() {
         {/* Dynamic Exam — Premium only */}
         <ExamCard
           title="Dynamic Exam"
-          description="Unlimited randomised exams — different questions every time. Ideal for ongoing practice."
+          description="Unlimited randomised exams, with different questions every time. Ideal for ongoing practice."
           hasAccess={hasPremium}
           examLink="/exam/take?type=dynamic"
           badge="Premium"
@@ -188,11 +188,11 @@ export default function Exam() {
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
-                <span>Mock Exam 1 and 2 use fixed question sets — same questions every time</span>
+                <span>Mock Exam 1 and 2 use fixed question sets, same questions every time</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
-                <span>No negative marking — wrong answers don't reduce your score</span>
+                <span>No negative marking, wrong answers don't reduce your score</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>

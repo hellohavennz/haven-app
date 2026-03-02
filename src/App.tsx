@@ -126,7 +126,7 @@ const planPlusFeatures = [
   "All flashcards for every lesson",
   "2 mock exams per month",
   "Progress tracking",
-  "Resit Support — 1 free month if you fail",
+  "Resit Support: 1 free month if you fail",
 ];
 
 const planPremiumExtras = [
@@ -228,7 +228,7 @@ export default function App() {
           </div>
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
             <strong className="text-slate-900 dark:text-white">Built around the official test syllabus.</strong>{' '}
-            Every Haven lesson covers the material from <em>Life in the United Kingdom: A Guide for New Residents</em> — structured into clear lessons with memory hooks, practice questions, and flashcards. Use Haven alongside the official guide for the best chance of passing.
+            Every Haven lesson covers the material from <em>Life in the United Kingdom: A Guide for New Residents</em>, structured into clear lessons with memory hooks, practice questions, and flashcards. Use Haven alongside the official guide for the best chance of passing.
           </p>
         </div>
       </section>
@@ -409,7 +409,7 @@ export default function App() {
                     {feature.startsWith('Resit Support') ? (
                       <span className="text-slate-700 dark:text-slate-200">
                         <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                        {' — 1 free month if you fail'}
+                        {': 1 free month if you fail'}
                       </span>
                     ) : (
                       <span className="text-slate-700 dark:text-slate-200">{feature}</span>
@@ -490,7 +490,7 @@ export default function App() {
                 <div>
                   <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
                   <p className="text-slate-700 dark:text-slate-300">
-                    If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
+                    If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit, at no extra charge.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">

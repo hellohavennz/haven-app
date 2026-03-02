@@ -122,9 +122,9 @@ function emailHtml({
 
 function sevenDayEmail(): { subject: string; html: string } {
   return {
-    subject: 'Your Life in the UK test is in 7 days — final prep tips',
+    subject: 'Your Life in the UK test is in 7 days: final prep tips',
     html: emailHtml({
-      heading: 'One week to go — you\'ve got this!',
+      heading: 'One week to go. You\'ve got this!',
       intro: 'Your Life in the UK test is coming up in 7 days. Here\'s how to make the most of this final week:',
       tips: [
         'Take a full mock exam today to see where you stand',
@@ -141,14 +141,14 @@ function sevenDayEmail(): { subject: string; html: string } {
 
 function oneDayEmail(): { subject: string; html: string } {
   return {
-    subject: 'Your Life in the UK test is tomorrow — good luck!',
+    subject: 'Your Life in the UK test is tomorrow. Good luck!',
     html: emailHtml({
-      heading: 'Tomorrow\'s the day — you\'re ready!',
+      heading: 'Tomorrow\'s the day. You\'re ready!',
       intro: 'Your Life in the UK test is tomorrow. Here are a few last-minute tips to help you do your best:',
       tips: [
         'Do a quick flashcard session to refresh key facts',
         'Remember: 18 out of 24 correct (75%) is the pass mark',
-        'You have 45 minutes — read each question carefully',
+        'You have 45 minutes, so read each question carefully',
         'If you\'re unsure, rule out wrong answers and make your best guess',
         'Get a good night\'s sleep and eat well before you go',
       ],

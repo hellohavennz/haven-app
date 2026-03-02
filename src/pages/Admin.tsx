@@ -137,7 +137,7 @@ function ActivityChart({
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-          Logins &amp; new accounts — last 30 days
+          Logins &amp; new accounts: last 30 days
         </p>
         <div className="flex gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 p-0.5">
           {(['Daily', 'Weekly'] as const).map(label => (
@@ -679,7 +679,7 @@ function ResitTab() {
       const { stripeExtended } = await approveResitClaim(claim.id, session!.access_token);
       setClaims(prev => prev.filter(c => c.id !== claim.id));
       if (!stripeExtended) {
-        alert(`Approved, but no active Stripe subscription found for this user — you'll need to extend manually.`);
+        alert(`Approved, but no active Stripe subscription found for this user. You'll need to extend manually.`);
       }
     } catch (e: any) {
       alert(`Error: ${e.message}`);

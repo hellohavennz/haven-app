@@ -324,8 +324,8 @@ export default function PracticeLesson() {
     const supportiveMessage = isHighScore
       ? supportiveMessages.high_score ?? "You've mastered this topic! Keep up the great work!"
       : isMediumScore
-        ? supportiveMessages.medium_score ?? "Solid progress—target the questions you missed to reach mastery."
-        : supportiveMessages.low_score ?? "Keep going—review the key facts and try another round.";
+        ? supportiveMessages.medium_score ?? "Solid progress. Target the questions you missed to reach mastery."
+        : supportiveMessages.low_score ?? "Keep going. Review the key facts and try another round.";
 
     const highlightVariant = isHighScore
       ? {

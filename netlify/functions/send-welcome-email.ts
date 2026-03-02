@@ -31,10 +31,10 @@ function welcomeHtml(firstName: string): string {
             </p>
 
             <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Study</strong> — read through each lesson at your own pace</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Practice</strong> — answer questions and review flashcards</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Exam</strong> — take a mock test when you feel ready</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Ask Pippa</strong> — your AI study assistant is always here to help</td></tr>
+              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Study:</strong> read through each lesson at your own pace</td></tr>
+              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Practice:</strong> answer questions and review flashcards</td></tr>
+              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Exam:</strong> take a mock test when you feel ready</td></tr>
+              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Ask Pippa:</strong> your AI study assistant is always here to help</td></tr>
             </table>
 
             <a href="${APP_URL}/dashboard"
@@ -46,7 +46,7 @@ function welcomeHtml(firstName: string): string {
               <tr>
                 <td style="padding:16px 20px;">
                   <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#166534;">📱 Tip: Install Haven on your phone</p>
-                  <p style="margin:0 0 10px;font-size:13px;color:#374151;line-height:1.5;">Add Haven to your home screen for quick access — no App Store needed, and it works offline.</p>
+                  <p style="margin:0 0 10px;font-size:13px;color:#374151;line-height:1.5;">Add Haven to your home screen for quick access. No App Store needed, and it works offline.</p>
                   <p style="margin:0;font-size:13px;color:#374151;line-height:1.6;">
                     <strong>iPhone/iPad:</strong> Safari → Share button → Add to Home Screen<br>
                     <strong>Android:</strong> Chrome → ⋮ menu → Add to Home Screen<br>

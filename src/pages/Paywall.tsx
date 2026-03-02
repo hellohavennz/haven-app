@@ -200,14 +200,14 @@ export default function Paywall() {
                 'All flashcards for every lesson',
                 '2 mock exams per month',
                 'Progress tracking',
-                'Resit Support — 1 free month if you fail',
+                'Resit Support: 1 free month if you fail',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
                   {f.startsWith('Resit Support') ? (
                     <span className="text-slate-700 dark:text-slate-200">
                       <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                      {' — 1 free month if you fail'}
+                      {': 1 free month if you fail'}
                     </span>
                   ) : (
                     <span className="text-slate-700 dark:text-slate-200">{f}</span>
@@ -252,7 +252,7 @@ export default function Paywall() {
                 { Icon: BarChart3, title: 'Performance analytics', desc: 'Identify weak areas with detailed insights' },
                 { Icon: Brain, title: 'Dynamic exams', desc: 'Unlimited randomised practice exams' },
                 { Icon: Bell, title: 'Exam reminders', desc: 'Alerts 7 days and 1 day before your test' },
-                { Icon: Smartphone, title: 'Install to home screen', desc: 'Works offline — study anywhere, no internet needed' },
+                { Icon: Smartphone, title: 'Install to home screen', desc: 'Works offline. Study anywhere, no internet needed.' },
               ].map(({ Icon, title, desc }) => (
                 <li key={title} className="flex items-start gap-3">
                   <Icon className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
@@ -304,7 +304,7 @@ export default function Paywall() {
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
                 <p className="text-slate-700 dark:text-slate-300">
-                  If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
+                  If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit, at no extra charge.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">

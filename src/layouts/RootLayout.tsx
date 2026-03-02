@@ -118,7 +118,7 @@ export default function RootLayout() {
       {!isOnline && (
         <div className="flex flex-shrink-0 items-center justify-center gap-2 border-b border-amber-200 bg-amber-50 py-2 text-xs text-amber-700 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300">
           <WifiOff className="h-3.5 w-3.5 flex-shrink-0" />
-          You're offline — studying from saved content
+          You're offline. Studying from saved content.
         </div>
       )}
 

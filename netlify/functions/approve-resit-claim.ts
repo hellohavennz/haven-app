@@ -57,15 +57,15 @@ export const handler: Handler = async (event) => {
           proration_behavior: 'none',
         });
         stripeExtended = true;
-        adminNotes = 'Approved — Stripe subscription extended by 30 days';
+        adminNotes = 'Approved: Stripe subscription extended by 30 days';
       } else {
-        adminNotes = `Approved — subscription status is "${sub.status}", manual extension required`;
+        adminNotes = `Approved: subscription status is "${sub.status}", manual extension required`;
       }
     } catch (e: any) {
-      adminNotes = `Approved — Stripe error: ${e.message}. Manual extension needed.`;
+      adminNotes = `Approved: Stripe error: ${e.message}. Manual extension needed.`;
     }
   } else {
-    adminNotes = 'Approved — no active Stripe subscription found, manual extension needed';
+    adminNotes = 'Approved: no active Stripe subscription found, manual extension needed';
   }
 
   await supabase

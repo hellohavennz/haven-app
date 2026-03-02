@@ -295,7 +295,7 @@ const Dashboard: React.FC = () => {
                     <p className="text-sm text-slate-500 dark:text-slate-400">
                       {lessonsLeft > 0
                         ? `${lessonsLeft} lesson${lessonsLeft !== 1 ? 's' : ''} remaining`
-                        : 'All lessons started — keep practising!'}
+                        : 'All lessons started. Keep practising!'}
                     </p>
                   </div>
                 </div>
@@ -579,7 +579,7 @@ const Dashboard: React.FC = () => {
               </p>
               {continueIsWeak && progress[continueSuggestion.id] && (
                 <p className="text-xs text-amber-700 dark:text-amber-400 mb-4">
-                  {Math.round((progress[continueSuggestion.id].correct / progress[continueSuggestion.id].attempted) * 100)}% accuracy — aim for 80%+
+                  {Math.round((progress[continueSuggestion.id].correct / progress[continueSuggestion.id].attempted) * 100)}% accuracy. Aim for 80%+
                 </p>
               )}
               {!continueIsWeak && (

@@ -79,7 +79,7 @@ export default function Login() {
               <div className="bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-200 dark:border-teal-800 rounded-xl p-4 flex items-start gap-3">
                 <CheckCircle className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
                 <p className="text-sm text-teal-900 dark:text-teal-200">
-                  Check your inbox — we've sent a password reset link to <strong>{email}</strong>.
+                  Check your inbox. We've sent a password reset link to <strong>{email}</strong>.
                 </p>
               </div>
             ) : (

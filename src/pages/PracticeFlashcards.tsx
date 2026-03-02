@@ -21,7 +21,7 @@ export default function PracticeFlashcards() {
   const { lessonId } = useParams();
   const { tier, isLoading } = useSubscription();
   const data = lessonId ? getLessonById(lessonId) : null;
-  usePageTitle(data?.title ? `${data.title} — Flashcards` : 'Flashcards');
+  usePageTitle(data?.title ? `${data.title} | Flashcards` : 'Flashcards');
   // Plus and Premium both get full flashcard access; only Free is limited
   const hasFullAccess = tier === "plus" || tier === "premium";
 
@@ -171,7 +171,7 @@ export default function PracticeFlashcards() {
         ) : (
           <div className="space-y-6 text-center py-12">
             <p className="text-slate-600 dark:text-slate-300">
-              This is a module overview — no flashcards here. The individual lessons each have their own flashcards.
+              This is a module overview with no flashcards. The individual lessons each have their own flashcards.
             </p>
             <Link
               to={`/content/${data.id}`}
