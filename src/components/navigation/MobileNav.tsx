@@ -13,7 +13,20 @@ interface MobileNavProps {
 export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileNavProps) {
   const location = useLocation();
   const firstLessonId = useMemo(() => getAllLessons()[0]?.id, []);
-  const flashcardsPath = firstLessonId ? `/practice/${firstLessonId}/flashcards` : "/practice";
+
+  // If the user is on a lesson-specific page, extract that lesson ID so
+  // Practice and Flashcards links go directly to that lesson's content.
+  // Covers: /content/:id  /practice/:id  /practice/:id/questions
+  //         /practice/:id/flashcards  /flashcards/:id
+  const contextLessonId = useMemo(() => {
+    const match = location.pathname.match(/\/(content|practice|flashcards)\/([^/]+)/);
+    return match?.[2] ?? null;
+  }, [location.pathname]);
+
+  const practicePath = contextLessonId ? `/practice/${contextLessonId}` : "/practice";
+  const flashcardsPath = contextLessonId
+    ? `/practice/${contextLessonId}/flashcards`
+    : firstLessonId ? `/practice/${firstLessonId}/flashcards` : "/practice";
 
   // Hidden while Pippa is full-screen
   if (pippaOpen) return null;
@@ -43,7 +56,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
         </NavLink>
 
         <NavLink
-          to="/practice"
+          to={practicePath}
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
