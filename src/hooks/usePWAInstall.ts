@@ -1,16 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   detectPlatform,
+  getDeferredPrompt,
+  clearDeferredPrompt,
   hasDismissedInstall,
   isStandaloneMode,
   recordInstallDismissal,
   type InstallPlatform,
 } from '../lib/pwaInstall';
-
-interface BeforeInstallPromptEvent extends Event {
-  prompt(): Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
-}
 
 export interface UsePWAInstallResult {
   shouldShow: boolean;
@@ -25,10 +22,8 @@ export function usePWAInstall(): UsePWAInstallResult {
   const platform = detectPlatform();
   const [shouldShow, setShouldShow] = useState(false);
   const [showIOSInstructions, setShowIOSInstructions] = useState(false);
-  const promptRef = useRef<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
-    // Never show if already installed or recently dismissed
     if (isStandaloneMode() || hasDismissedInstall()) return;
 
     if (platform === 'ios') {
@@ -36,17 +31,18 @@ export function usePWAInstall(): UsePWAInstallResult {
       return;
     }
 
-    // Android and desktop: wait for the browser to offer install
-    const onBeforeInstall = (e: Event) => {
-      e.preventDefault();
-      promptRef.current = e as BeforeInstallPromptEvent;
+    // Check if the event was captured before React mounted
+    if (getDeferredPrompt()) {
+      setShouldShow(true);
+      return;
+    }
+
+    // Fall-through: event hasn't fired yet — listen for it
+    const onBeforeInstall = () => {
+      // pwaInstall.ts already called e.preventDefault() and stored the event
       setShouldShow(true);
     };
-
-    const onInstalled = () => {
-      promptRef.current = null;
-      setShouldShow(false);
-    };
+    const onInstalled = () => setShouldShow(false);
 
     window.addEventListener('beforeinstallprompt', onBeforeInstall);
     window.addEventListener('appinstalled', onInstalled);
@@ -63,11 +59,12 @@ export function usePWAInstall(): UsePWAInstallResult {
       return;
     }
 
-    if (!promptRef.current) return;
+    const prompt = getDeferredPrompt();
+    if (!prompt) return;
 
-    await promptRef.current.prompt();
-    const { outcome } = await promptRef.current.userChoice;
-    promptRef.current = null;
+    await prompt.prompt();
+    const { outcome } = await prompt.userChoice;
+    clearDeferredPrompt();
 
     if (outcome === 'accepted') {
       setShouldShow(false);

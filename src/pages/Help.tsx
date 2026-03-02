@@ -192,7 +192,6 @@ export default function Help() {
           {keyFactGroups.map((group) => (
             <div key={group.heading} className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
               <div className="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800/60">
-                <span className="text-xl" role="img" aria-label="">{group.emoji}</span>
                 <h2 className="font-semibold text-slate-900 dark:text-white">{group.heading}</h2>
               </div>
               <ul className="divide-y divide-gray-50 dark:divide-gray-800">

@@ -4,6 +4,38 @@ const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
 export type InstallPlatform = 'ios' | 'android' | 'desktop';
 
+export interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
+// ── Early capture ──────────────────────────────────────────────────────────
+// beforeinstallprompt can fire before React mounts. Because Dashboard (and
+// therefore this module) is eagerly imported in main.tsx, this module-level
+// code runs before createRoot(), so the listener is registered in time.
+
+let _deferred: BeforeInstallPromptEvent | null = null;
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    _deferred = e as BeforeInstallPromptEvent;
+  });
+  window.addEventListener('appinstalled', () => {
+    _deferred = null;
+  });
+}
+
+export function getDeferredPrompt(): BeforeInstallPromptEvent | null {
+  return _deferred;
+}
+
+export function clearDeferredPrompt(): void {
+  _deferred = null;
+}
+
+// ── Platform detection ─────────────────────────────────────────────────────
+
 export function detectPlatform(): InstallPlatform {
   if (typeof navigator === 'undefined') return 'desktop';
   const ua = navigator.userAgent;
@@ -19,6 +51,8 @@ export function isStandaloneMode(): boolean {
     (navigator as any).standalone === true
   );
 }
+
+// ── Dismissal persistence ──────────────────────────────────────────────────
 
 export function hasDismissedInstall(): boolean {
   try {
