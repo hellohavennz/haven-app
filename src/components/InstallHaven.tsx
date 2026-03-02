@@ -155,11 +155,6 @@ export default function InstallHaven() {
         aria-label="Install Haven"
         className="flex gap-4 rounded-2xl border border-teal-100 bg-teal-50 px-5 py-4 dark:border-teal-800/50 dark:bg-teal-900/20"
       >
-        {/* App icon */}
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl bg-teal-600">
-          <img src="/haven-icons/icon-512x512.png" alt="" className="h-full w-full" />
-        </div>
-
         {/* Text + actions */}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
