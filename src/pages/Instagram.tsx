@@ -114,7 +114,7 @@ export default function Instagram() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: styles.text }}>Free</div>
-                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Get started, no commitment</div>
+                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Try it free · upgrade for full access</div>
               </div>
               <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 28, color: styles.text }}>£0</div>
             </div>
@@ -126,7 +126,7 @@ export default function Instagram() {
               ))}
             </ul>
             <Link to="/signup" style={{ display: 'block', textAlign: 'center', background: styles.sageLight, color: styles.sage, padding: '12px', borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
-              Start Free
+              Try Free
             </Link>
           </div>
 
@@ -205,9 +205,9 @@ export default function Instagram() {
           Join thousands of people who've passed the Life in the UK test with Haven.
         </p>
         <Link to="/signup" style={{ display: 'inline-block', background: styles.white, color: styles.sage, padding: '14px 36px', borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: 'none' }}>
-          Start Studying Free
+          Try Haven Free
         </Link>
-        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, marginTop: 14 }}>Free forever · No credit card needed</p>
+        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, marginTop: 14 }}>Try free · No credit card required</p>
       </section>
 
       {/* Footer */}
