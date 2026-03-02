@@ -62,7 +62,10 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Only scroll to bottom once a conversation has started — not on initial welcome message
+    if (messages.length > 1 || loading) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages, loading]);
 
   useEffect(() => {
@@ -135,8 +138,9 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           className={[
             // shared
             "fixed z-50 flex flex-col bg-white dark:bg-slate-900",
-            // mobile: full screen
-            "inset-0",
+            // mobile: full screen — use 100dvh so panel shrinks when keyboard opens,
+            // keeping the header and welcome message visible above the keyboard
+            "inset-x-0 top-0 h-[100dvh]",
             // desktop: popup panel
             "md:inset-auto md:bottom-6 md:right-3 md:h-[560px] md:w-[calc(100vw-24px)] md:max-w-[380px] md:rounded-2xl md:border md:border-slate-200 md:shadow-2xl dark:md:border-slate-700",
           ].join(" ")}
