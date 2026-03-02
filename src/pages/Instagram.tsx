@@ -144,7 +144,7 @@ export default function Instagram() {
               </div>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {['All 29 lessons', '500+ practice questions', '2 mock exams per month', 'Resit support'].map(f => (
+              {['All 29 lessons', '590+ practice questions', '610+ flashcards', '2 mock exams per month', 'Resit support'].map(f => (
                 <li key={f} style={{ fontSize: 14, color: styles.textMuted, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: styles.sage, fontWeight: 700 }}>✓</span> {f}
                 </li>
