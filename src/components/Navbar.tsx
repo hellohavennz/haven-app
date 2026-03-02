@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getCurrentUser, logout } from "../lib/auth";
 import { onAuthStateChange } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
@@ -10,7 +10,13 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { tier } = useSubscription();
+
+  const isStudyArea = ['/content', '/practice', '/flashcards'].some(p =>
+    location.pathname.startsWith(p)
+  );
+  const logoHref = isStudyArea ? '/dashboard' : '/';
 
   useEffect(() => {
     // Get initial user
@@ -43,7 +49,7 @@ export default function Navbar() {
           {/* Left: Logo + Main Nav */}
           <div className="flex items-center gap-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5">
+            <Link to={logoHref} className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 bg-teal-600">
                 <img src="/haven-icons/icon-512x512.png" alt="Haven" className="w-full h-full" />
               </div>
