@@ -74,8 +74,8 @@ export default function ResetPassword() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
             <KeyRound className="text-teal-600" size={32} />
           </div>
-          <h2 className="font-semibold text-gray-900 dark:text-white">Set a new password</h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
+          <h2 className="font-semibold text-slate-900 dark:text-white">Set a new password</h2>
+          <p className="mt-2 text-slate-600 dark:text-slate-300">
             Choose a new password for your account.
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function ResetPassword() {
 
             <div className="space-y-4">
               <div>
-                <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                   New password
                 </label>
                 <div className="relative">
@@ -116,13 +116,13 @@ export default function ResetPassword() {
                     required
                     value={password}
                     onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
-                    className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 pr-11 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(v => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -141,7 +141,7 @@ export default function ResetPassword() {
               </div>
 
               <div>
-                <label htmlFor="confirm" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                <label htmlFor="confirm" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                   Confirm new password
                 </label>
                 <div className="relative">
@@ -152,13 +152,13 @@ export default function ResetPassword() {
                     required
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
-                    className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 pr-11 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirm(v => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                     aria-label={showConfirm ? "Hide password" : "Show password"}
                   >
                     {showConfirm ? <EyeOff size={20} /> : <Eye size={20} />}

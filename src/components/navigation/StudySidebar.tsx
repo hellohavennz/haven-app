@@ -96,7 +96,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
     if (!progress || (progress.attempted === 0 && !progress.read)) {
       return {
         badge: "New",
-        badgeClass: "bg-gray-100 text-gray-600"
+        badgeClass: "bg-slate-100 text-slate-600"
       };
     }
 
@@ -125,7 +125,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   return (
     <aside
       aria-label="Study navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-gray-200 bg-white text-gray-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-gray-100 ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-slate-200 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-slate-800 dark:bg-slate-900 dark:text-gray-100 ${className}`}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
@@ -179,21 +179,21 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
                       ? "bg-teal-50 text-teal-900 dark:bg-teal-900/20 dark:text-teal-100"
-                      : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800"
+                      : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     {isLocked ? (
-                      <Lock className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                      <Lock className="h-4 w-4 flex-shrink-0 text-slate-400" />
                     ) : isExpanded ? (
                       <ChevronDown className="h-4 w-4 flex-shrink-0 text-teal-600" />
                     ) : (
-                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-slate-400" />
                     )}
-                    <BookOpen className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-teal-600'}`} />
+                    <BookOpen className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-slate-400' : 'text-teal-600'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
-                      <div className="text-small text-gray-500 dark:text-gray-300">
+                      <div className="text-small text-slate-500 dark:text-slate-300">
                         {isLocked ? 'Locked' : `${masteredInModule}/${lessons.length} completed`}
                       </div>
                     </div>
@@ -213,7 +213,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
                               ? "bg-teal-100 font-medium text-teal-900 dark:bg-teal-900/30 dark:text-teal-100"
-                              : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800"
+                              : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
                           }`}
                           onClick={onNavigate}
                         >

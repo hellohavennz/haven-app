@@ -29,11 +29,11 @@ function EligRow({ passed, label, value, hint }: {
         : <XCircle className="h-4 w-4 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
       }
       <div className="flex-1 min-w-0">
-        <span className="text-sm text-gray-700 dark:text-gray-300">{label}</span>
+        <span className="text-sm text-slate-700 dark:text-slate-300">{label}</span>
         <span className={`ml-2 text-sm font-semibold ${passed ? 'text-green-700 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
           {value}
         </span>
-        {hint && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{hint}</p>}
+        {hint && <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{hint}</p>}
       </div>
     </div>
   );
@@ -130,12 +130,12 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
 
   return (
     <div className="rounded-2xl border border-amber-200 bg-amber-50 dark:border-amber-800/50 dark:bg-amber-900/10 p-6 space-y-5">
-      <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+      <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
         <Award className="h-5 w-5 text-amber-600 dark:text-amber-400" />
         Resit Support
       </h2>
 
-      <p className="text-sm text-gray-700 dark:text-gray-300">
+      <p className="text-sm text-slate-700 dark:text-slate-300">
         If you studied with Haven and still didn't pass, we'll add <strong>30 days</strong> before
         your next billing date at no charge — works for both Plus and Premium plans.
       </p>
@@ -143,12 +143,12 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
       {/* Existing claim status */}
       {claim && (
         <div className={`rounded-xl border p-4 text-sm ${STATUS_STYLES[claim.status] ?? ''}`}>
-          <p className="font-semibold text-gray-900 dark:text-white capitalize mb-1">
+          <p className="font-semibold text-slate-900 dark:text-white capitalize mb-1">
             Status: {claim.status}
           </p>
-          <p className="text-gray-700 dark:text-gray-300">{STATUS_TEXT[claim.status]}</p>
+          <p className="text-slate-700 dark:text-slate-300">{STATUS_TEXT[claim.status]}</p>
           {claim.admin_notes && claim.status === 'rejected' && (
-            <p className="mt-2 text-gray-600 dark:text-gray-400 italic">{claim.admin_notes}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-400 italic">{claim.admin_notes}</p>
           )}
         </div>
       )}
@@ -157,12 +157,12 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
       {(!claim || claim.status === 'rejected') && (
         <>
           {/* Live eligibility check */}
-          <div className="rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 p-4 space-y-2.5">
-            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+          <div className="rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900 p-4 space-y-2.5">
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">
               Your eligibility
             </p>
             {eligLoading ? (
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Checking your progress…
               </div>
@@ -206,25 +206,25 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
                   type="checkbox"
                   checked={confirmedDate}
                   onChange={e => setConfirmedDate(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                  className="mt-0.5 h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm text-slate-700 dark:text-slate-300">
                   My Life in the UK test was taken within the last 14 days and I did not pass
                 </span>
               </label>
 
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-900 dark:text-white">
+                <label className="block text-sm font-semibold text-slate-900 dark:text-white">
                   Upload your test result (letter or screenshot)
                 </label>
-                <p className="text-xs text-gray-500 dark:text-gray-400">JPG, PNG, WEBP or PDF · max 10 MB</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">JPG, PNG, WEBP or PDF · max 10 MB</p>
                 <label className={`flex items-center gap-3 rounded-xl border-2 border-dashed px-4 py-5 cursor-pointer transition-colors ${
                   file
                     ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
-                    : 'border-gray-300 hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600'
+                    : 'border-slate-300 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600'
                 }`}>
-                  <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                  <span className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                  <Upload className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  <span className="text-sm text-slate-600 dark:text-slate-400 truncate">
                     {file ? file.name : 'Click to choose a file'}
                   </span>
                   <input
@@ -254,7 +254,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
                 }
               </button>
 
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 We review applications within 2 business days. If approved, 30 days will be added
                 before your next billing date automatically — no action needed from you.
               </p>
@@ -282,7 +282,7 @@ const TIER_LABELS: Record<string, string> = {
 };
 
 const TIER_COLORS: Record<string, string> = {
-  free: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+  free: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
   plus: 'bg-emerald-100 text-emerald-700',
   premium: 'bg-amber-100 text-amber-700',
 };
@@ -404,7 +404,7 @@ export default function Profile() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-8 px-4 py-10">
-      <h1 className="font-semibold text-gray-900 dark:text-white">Profile</h1>
+      <h1 className="font-semibold text-slate-900 dark:text-white">Profile</h1>
 
       {/* Avatar + name */}
       <div className="flex items-center gap-5">
@@ -412,23 +412,23 @@ export default function Profile() {
           {initials}
         </div>
         <div>
-          <p className="font-semibold text-gray-900 dark:text-white">
+          <p className="font-semibold text-slate-900 dark:text-white">
             {user?.user_metadata?.full_name || 'No name set'}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{user?.email}</p>
         </div>
       </div>
 
       {/* Edit name */}
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5 dark:border-gray-800 dark:bg-gray-900">
-        <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-5 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
           <User className="h-5 w-5 text-teal-600" />
           Display Name
         </h2>
 
         <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
               First name
             </label>
             <input
@@ -437,9 +437,9 @@ export default function Profile() {
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder="Your first name"
-              className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             />
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               This is how we'll greet you in the app.
             </p>
           </div>
@@ -469,15 +469,15 @@ export default function Profile() {
       </div>
 
       {/* Change password */}
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5 dark:border-gray-800 dark:bg-gray-900">
-        <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-5 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
           <KeyRound className="h-5 w-5 text-teal-600" />
           Change Password
         </h2>
 
         <form onSubmit={handleChangePassword} className="space-y-4">
           <div>
-            <label htmlFor="new-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="new-password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
               New password
             </label>
             <div className="relative">
@@ -488,13 +488,13 @@ export default function Profile() {
                 required
                 value={newPassword}
                 onChange={e => { setNewPassword(e.target.value); setPasswordTouched(true); }}
-                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 pr-11 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 pr-11 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 placeholder="••••••••"
               />
               <button
                 type="button"
                 onClick={() => setShowNewPassword(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                 aria-label={showNewPassword ? 'Hide password' : 'Show password'}
               >
                 {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -513,7 +513,7 @@ export default function Profile() {
           </div>
 
           <div>
-            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="confirm-password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
               Confirm new password
             </label>
             <div className="relative">
@@ -524,13 +524,13 @@ export default function Profile() {
                 required
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
-                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 pr-11 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 pr-11 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 placeholder="••••••••"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
               >
                 {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -563,19 +563,19 @@ export default function Profile() {
       </div>
 
       {/* Account info */}
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-4 dark:border-gray-800 dark:bg-gray-900">
-        <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
           <Mail className="h-5 w-5 text-teal-600" />
           Account
         </h2>
 
         <div className="space-y-3 text-sm">
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-gray-400">Email</span>
-            <span className="font-medium text-gray-900 dark:text-white">{user?.email}</span>
+            <span className="text-slate-600 dark:text-slate-400">Email</span>
+            <span className="font-medium text-slate-900 dark:text-white">{user?.email}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-gray-400">Plan</span>
+            <span className="text-slate-600 dark:text-slate-400">Plan</span>
             <div className="flex items-center gap-2">
               <span className={`rounded-full px-3 py-0.5 text-xs font-semibold ${TIER_COLORS[tier] ?? TIER_COLORS.free}`}>
                 {TIER_LABELS[tier] ?? 'Free'}
@@ -592,7 +592,7 @@ export default function Profile() {
           </div>
           {user?.email_confirmed_at && (
             <div className="flex items-center justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Email verified</span>
+              <span className="text-slate-600 dark:text-slate-400">Email verified</span>
               <span className="flex items-center gap-1 text-xs font-semibold text-green-700 dark:text-green-400">
                 <BadgeCheck className="h-4 w-4" /> Verified
               </span>
@@ -603,12 +603,12 @@ export default function Profile() {
 
       {/* Analytics — Premium only */}
       {tier === 'premium' && (
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-3 dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3 dark:border-slate-800 dark:bg-slate-900">
+          <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-teal-600" />
             Performance Analytics
           </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             See your accuracy by module, exam history, and weak areas that need more practice.
           </p>
           <Link
@@ -627,13 +627,13 @@ export default function Profile() {
 
       {/* Manage subscription — only for paying users */}
       {(tier === 'plus' || tier === 'premium') && (
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-4 dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 dark:border-slate-800 dark:bg-slate-900">
+          <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <CreditCard className="h-5 w-5 text-teal-600" />
             Subscription
           </h2>
 
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Manage your billing, download invoices, or cancel your subscription via the Stripe customer portal.
           </p>
 

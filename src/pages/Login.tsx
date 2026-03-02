@@ -62,8 +62,8 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
             <LogIn className="text-teal-600 dark:text-teal-400" size={32} />
           </div>
-          <h2 className="font-semibold text-gray-900 dark:text-white">Welcome back</h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">Sign in to continue your learning journey</p>
+          <h2 className="font-semibold text-slate-900 dark:text-white">Welcome back</h2>
+          <p className="mt-2 text-slate-600 dark:text-slate-300">Sign in to continue your learning journey</p>
         </div>
 
         {forgotMode ? (
@@ -85,7 +85,7 @@ export default function Login() {
             ) : (
               <>
                 <div>
-                  <label htmlFor="reset-email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                  <label htmlFor="reset-email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                     Email address
                   </label>
                   <input
@@ -95,7 +95,7 @@ export default function Login() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -110,7 +110,7 @@ export default function Login() {
               </>
             )}
 
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-center text-sm text-slate-600 dark:text-slate-400">
               <button
                 type="button"
                 onClick={() => { setForgotMode(false); setResetSent(false); setError(""); }}
@@ -131,7 +131,7 @@ export default function Login() {
 
             <div className="space-y-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                   Email address
                 </label>
                 <input
@@ -142,14 +142,14 @@ export default function Login() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                   placeholder="you@example.com"
                 />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  <label htmlFor="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Password
                   </label>
                   <button
@@ -169,13 +169,13 @@ export default function Login() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3 pr-11 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(v => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -194,17 +194,17 @@ export default function Login() {
 
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
+                <div className="w-full border-t border-slate-300 dark:border-slate-700"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or continue with</span>
+                <span className="px-4 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">Or continue with</span>
               </div>
             </div>
 
             <button
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+              className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-gray-700 transition-all"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path
@@ -227,7 +227,7 @@ export default function Login() {
               Sign in with Google
             </button>
 
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+            <p className="text-center text-sm text-slate-600 dark:text-slate-400 mt-6">
               Don't have an account?{" "}
               <Link to="/paywall" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
                 View plans and sign up

@@ -46,7 +46,7 @@ function JumpToFirstLessonButton({ slug }: { slug: string }) {
   if (!href) {
     return (
       <button
-        className="px-3 py-2 rounded bg-gray-900 text-white"
+        className="px-3 py-2 rounded bg-slate-900 text-white"
         onClick={() => goDynamic(slug, setHref)}
       >
         Open Module

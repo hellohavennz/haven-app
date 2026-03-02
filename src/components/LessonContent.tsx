@@ -43,7 +43,7 @@ function renderContent(text: string): React.ReactNode {
           return (
             <ul key={blockIdx} className="space-y-2">
               {lines.map((line, i) => (
-                <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-200">
+                <li key={i} className="flex items-start gap-2 text-slate-700 dark:text-slate-200">
                   <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-500" />
                   <span className="leading-relaxed">{line.trim().replace(/^•\s*/, '')}</span>
                 </li>
@@ -57,7 +57,7 @@ function renderContent(text: string): React.ReactNode {
           return (
             <ol key={blockIdx} className="space-y-2">
               {lines.map((line, i) => (
-                <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
+                <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
                   <span className="flex-shrink-0 min-w-[1.4rem] font-semibold text-teal-600 dark:text-teal-400 leading-relaxed">
                     {line.match(/^\s*(\d+)\./)?.[1]}.
                   </span>
@@ -95,7 +95,7 @@ function renderContent(text: string): React.ReactNode {
                   return (
                     <ul key={sIdx} className="space-y-2">
                       {seg.lines.map((line, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-200">
+                        <li key={i} className="flex items-start gap-2 text-slate-700 dark:text-slate-200">
                           <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-500" />
                           <span className="leading-relaxed">{line.trim().replace(/^•\s*/, '')}</span>
                         </li>
@@ -107,7 +107,7 @@ function renderContent(text: string): React.ReactNode {
                   return (
                     <ol key={sIdx} className="space-y-2">
                       {seg.lines.map((line, i) => (
-                        <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-200">
+                        <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-200">
                           <span className="flex-shrink-0 min-w-[1.4rem] font-semibold text-teal-600 dark:text-teal-400 leading-relaxed">
                             {line.match(/^\s*(\d+)\./)?.[1]}.
                           </span>
@@ -119,7 +119,7 @@ function renderContent(text: string): React.ReactNode {
                 }
                 // Plain text lines within a mixed block
                 return seg.lines.map((line, i) => (
-                  <p key={`${sIdx}-${i}`} className="text-gray-700 leading-relaxed dark:text-gray-200">
+                  <p key={`${sIdx}-${i}`} className="text-slate-700 leading-relaxed dark:text-slate-200">
                     {line}
                   </p>
                 ));
@@ -130,7 +130,7 @@ function renderContent(text: string): React.ReactNode {
 
         // ── Plain paragraph ─────────────────────────────────────────────────
         return (
-          <p key={blockIdx} className="text-gray-700 leading-relaxed dark:text-gray-200">
+          <p key={blockIdx} className="text-slate-700 leading-relaxed dark:text-slate-200">
             {lines.join(' ')}
           </p>
         );
@@ -169,7 +169,7 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
       </div>
 
       <div className="relative overflow-hidden">
-        <p className="text-gray-800 dark:text-gray-100 text-base leading-relaxed animate-fadeIn">
+        <p className="text-slate-800 dark:text-gray-100 text-base leading-relaxed animate-fadeIn">
           {facts[currentIndex]}
         </p>
       </div>
@@ -198,7 +198,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
       <div className="space-y-8">
         {/* Overview */}
         {overview && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
             <div className="bg-[#0D9488] px-6 py-4">
               <h2 className="font-semibold text-white">Overview</h2>
             </div>
@@ -216,7 +216,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
 
           return (
             <div key={index}>
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
                 {section.heading && (
                   <div className="bg-[#0D9488] px-6 py-4">
                     <h2 className="font-semibold text-white">{section.heading}</h2>
@@ -245,7 +245,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
       <div className="space-y-8">
         {sections.map((section, index) => (
           <div key={index}>
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden dark:bg-gray-900 dark:border-gray-800">
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
               <div className="bg-[#0D9488] px-6 py-4">
                 <h2 className="font-semibold text-white">{section.title}</h2>
               </div>
@@ -263,7 +263,7 @@ const LessonContent: React.FC<LessonContentProps> = ({ sections, overview, key_f
   }
 
   return (
-    <div className="text-center text-gray-500 py-8 dark:text-gray-300">
+    <div className="text-center text-slate-500 py-8 dark:text-slate-300">
       No content available for this lesson.
     </div>
   );

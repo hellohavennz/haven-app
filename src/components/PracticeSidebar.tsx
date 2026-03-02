@@ -102,7 +102,7 @@ export default function PracticeSidebar({
     if (!progress || progress.attempted === 0) {
       return {
         badge: "New",
-        badgeClass: "bg-gray-100 text-gray-600"
+        badgeClass: "bg-slate-100 text-slate-600"
       };
     }
 
@@ -124,7 +124,7 @@ export default function PracticeSidebar({
   return (
     <aside
       aria-label="Practice navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-blue-100 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-slate-100 ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-blue-100 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 ${className}`}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
@@ -183,13 +183,13 @@ export default function PracticeSidebar({
                 >
                   <div className="flex items-center gap-2">
                     {isLocked ? (
-                      <Lock className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                      <Lock className="h-4 w-4 flex-shrink-0 text-slate-400" />
                     ) : isExpanded ? (
                       <ChevronDown className="h-4 w-4 flex-shrink-0 text-blue-500" />
                     ) : (
                       <ChevronRight className="h-4 w-4 flex-shrink-0 text-blue-300" />
                     )}
-                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-blue-500'}`} />
+                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-slate-400' : 'text-blue-500'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
                       <div className="text-small text-slate-500 dark:text-slate-300">

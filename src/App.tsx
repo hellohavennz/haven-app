@@ -164,7 +164,7 @@ export default function App() {
   }
 
   return (
-    <div className="space-y-20 pb-20 min-h-screen text-gray-900 transition-colors bg-white dark:bg-gray-950 dark:text-gray-100">
+    <div className="space-y-20 pb-20 min-h-screen text-slate-900 transition-colors bg-white dark:bg-gray-950 dark:text-gray-100">
       <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-white dark:from-gray-900 dark:via-slate-950 dark:to-gray-900 -mx-4 px-4 py-20 md:py-32">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="relative max-w-5xl mx-auto text-center">
@@ -172,12 +172,12 @@ export default function App() {
             <Sparkles size={16} />
             <span>Pass Your Life in the UK Test with Confidence</span>
           </div>
-          <h1 className="font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
+          <h1 className="font-semibold text-slate-900 dark:text-white mb-6 leading-tight">
             Study Calmly.
             <br />
             <span className="bg-gradient-to-r from-teal-700 to-teal-400 bg-clip-text text-transparent">Pass Confidently.</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-200 mb-10 max-w-3xl mx-auto leading-relaxed">
             Master the official Life in the UK handbook with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -185,23 +185,23 @@ export default function App() {
               Start Learning Free
               <ArrowRight size={24} />
             </Link>
-            <a href="#pricing" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 rounded-xl font-semibold hover:bg-gray-50 transition-all">
+            <a href="#pricing" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-300 text-slate-700 dark:border-slate-600 dark:text-gray-100 dark:hover:bg-slate-800 rounded-xl font-semibold hover:bg-slate-50 transition-all">
               View Plans
               <Star size={20} />
             </a>
           </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-300">
+          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-300">
             <span className="whitespace-nowrap">✓ Try the first lesson free</span>
             <span className="whitespace-nowrap">✓ No credit card required</span>
             <span className="whitespace-nowrap">✓ Resit support</span>
           </div>
           <div className="flex justify-center mt-10">
-            <ChevronDown size={28} className="animate-bounce text-gray-400 dark:text-gray-500" />
+            <ChevronDown size={28} className="animate-bounce text-slate-400 dark:text-slate-500" />
           </div>
         </div>
       </section>
 
-      <section className="-mx-4 px-4 py-16 bg-slate-50 dark:bg-gray-900/60">
+      <section className="-mx-4 px-4 py-16 bg-slate-50 dark:bg-slate-900/60">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           {heroStats.map(stat => {
             const Icon = stat.icon;
@@ -210,9 +210,9 @@ export default function App() {
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${stat.background}`}>
                   <Icon className={stat.iconColor} size={32} />
                 </div>
-                <div className="text-4xl font-semibold text-gray-900 dark:text-white mb-2">{stat.value}</div>
-                <p className="text-gray-600 dark:text-gray-200">{stat.label}</p>
-                {stat.helperText && <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">{stat.helperText}</p>}
+                <div className="text-4xl font-semibold text-slate-900 dark:text-white mb-2">{stat.value}</div>
+                <p className="text-slate-600 dark:text-slate-200">{stat.label}</p>
+                {stat.helperText && <p className="text-sm text-slate-500 dark:text-slate-300 mt-1">{stat.helperText}</p>}
               </div>
             );
           })}
@@ -221,19 +221,19 @@ export default function App() {
 
       <section className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Everything You Need to Pass</h2>
-          <p className="text-gray-600 dark:text-gray-300">Comprehensive study tools designed for success</p>
+          <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Everything You Need to Pass</h2>
+          <p className="text-slate-600 dark:text-slate-300">Comprehensive study tools designed for success</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {productFeatures.map(feature => {
             const Icon = feature.icon;
             return (
-              <div key={feature.title} className="bg-white border-2 border-gray-200 dark:border-gray-800 dark:bg-gray-900 rounded-2xl p-6 hover:border-teal-300 transition-all">
+              <div key={feature.title} className="bg-white border-2 border-slate-200 dark:border-slate-800 dark:bg-slate-900 rounded-2xl p-6 hover:border-teal-300 transition-all">
                 <div className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4`}>
                   <Icon className="text-white" size={24} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300">{feature.description}</p>
               </div>
             );
           })}
@@ -250,7 +250,7 @@ export default function App() {
                 <span>Smart Dashboard</span>
               </div>
               <h2 className="font-semibold mb-6">Track Every Step of Your Journey</h2>
-              <p className="text-gray-300 mb-8">
+              <p className="text-slate-300 mb-8">
                 Your personal dashboard shows exactly where you are, what you've mastered, and what needs more practice. Never wonder if you're ready for the test.
               </p>
               <ul className="space-y-3 mb-8">
@@ -263,32 +263,32 @@ export default function App() {
               </ul>
               <Link
                 to="/content"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 dark:bg-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 dark:bg-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
               >
                 Try It Free
                 <ArrowRight size={20} />
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-white rounded-2xl dark:bg-gray-900 p-6 transform rotate-2 hover:rotate-0 transition-transform">
+              <div className="bg-white rounded-2xl dark:bg-slate-900 p-6 transform rotate-2 hover:rotate-0 transition-transform">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-gray-600 dark:text-gray-200">Your Progress</span>
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-200">Your Progress</span>
                     <span className="text-3xl font-semibold text-teal-600">68%</span>
                   </div>
-                  <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
                     <div className="h-3 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full" style={{ width: '68%' }}></div>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div className="bg-green-50 dark:bg-emerald-500/10 rounded-xl p-4">
                       <Trophy className="text-green-600 mb-2" size={24} />
-                      <div className="text-2xl font-semibold text-gray-900 dark:text-white">12</div>
-                      <div className="text-small text-gray-600 dark:text-gray-300">Mastered</div>
+                      <div className="text-2xl font-semibold text-slate-900 dark:text-white">12</div>
+                      <div className="text-small text-slate-600 dark:text-slate-300">Mastered</div>
                     </div>
                     <div className="bg-blue-50 dark:bg-blue-500/10 rounded-xl p-4">
                       <Target className="text-blue-600 mb-2" size={24} />
-                      <div className="text-2xl font-semibold text-gray-900 dark:text-white">85%</div>
-                      <div className="text-small text-gray-600 dark:text-gray-300">Accuracy</div>
+                      <div className="text-2xl font-semibold text-slate-900 dark:text-white">85%</div>
+                      <div className="text-small text-slate-600 dark:text-slate-300">Accuracy</div>
                     </div>
                   </div>
                 </div>
@@ -300,17 +300,17 @@ export default function App() {
 
       <section className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Loved by Thousands of Test Takers</h2>
-          <p className="text-gray-600 dark:text-gray-300">Real stories from people who passed with Haven</p>
+          <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Loved by Thousands of Test Takers</h2>
+          <p className="text-slate-600 dark:text-slate-300">Real stories from people who passed with Haven</p>
         </div>
         <TestimonialCarousel />
       </section>
 
-      <section className="-mx-4 px-4 py-20 bg-slate-100 dark:bg-gray-900/40">
+      <section className="-mx-4 px-4 py-20 bg-slate-100 dark:bg-slate-900/40">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-semibold text-gray-900 dark:text-white mb-4">How It Works</h2>
-            <p className="text-gray-600 dark:text-gray-200">Four simple steps to test success</p>
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">How It Works</h2>
+            <p className="text-slate-600 dark:text-slate-200">Four simple steps to test success</p>
           </div>
           <div className="space-y-8">
             {howItWorksSteps.map((step, index) => (
@@ -319,8 +319,8 @@ export default function App() {
                   {index + 1}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{step.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-200">{step.description}</p>
+                  <h3 className="font-semibold text-slate-900 dark:text-white mb-2">{step.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-200">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -331,43 +331,43 @@ export default function App() {
       <section id="pricing" className="-mx-4 px-4 py-20 bg-white dark:bg-gray-950/40">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
-            <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Choose Your Plan</h2>
-            <p className="text-gray-600 dark:text-gray-300">Start free, or unlock full access</p>
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Choose Your Plan</h2>
+            <p className="text-slate-600 dark:text-slate-300">Start free, or unlock full access</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Free Plan */}
-            <div className="bg-white border-2 border-gray-300 dark:bg-gray-900 dark:border-gray-700 rounded-2xl p-8 flex flex-col">
+            <div className="bg-white border-2 border-slate-300 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-8 flex flex-col">
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
-                  <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4">
+                  <BookOpen className="text-slate-600 dark:text-slate-400" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Free</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Free</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
+                  <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Try Haven with the first module and core practice tools</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">Try Haven with the first module and core practice tools</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">First lesson (Values & Principles)</span>
+                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-slate-700 dark:text-slate-200">First lesson (Values & Principles)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">2 free modules</span>
+                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-slate-700 dark:text-slate-200">2 free modules</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Practice questions (free modules only)</span>
+                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-slate-700 dark:text-slate-200">Practice questions (free modules only)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">Sample flashcards (5 per lesson)</span>
+                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-slate-700 dark:text-slate-200">Sample flashcards (5 per lesson)</span>
                 </li>
               </ul>
               <Link
                 to="/signup?plan=free"
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors mt-auto"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-xl font-semibold hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors mt-auto"
               >
                 Get Started Free
                 <ArrowRight size={20} />
@@ -375,30 +375,30 @@ export default function App() {
             </div>
 
             {/* Haven Plus */}
-            <div className="bg-white border-2 border-teal-300 dark:bg-gray-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
+            <div className="bg-white border-2 border-teal-300 dark:bg-slate-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
                   <Sparkles className="text-teal-600" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
                 <div className="flex items-baseline justify-center gap-1.5 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
-                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/month</span>
+                  <span className="text-5xl font-semibold text-slate-900 dark:text-white">£4.99</span>
+                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/month</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Everything you need to pass</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">Everything you need to pass</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 {planPlusFeatures.map(feature => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
                     {feature.startsWith('Resit Support') ? (
-                      <span className="text-gray-700 dark:text-gray-200">
+                      <span className="text-slate-700 dark:text-slate-200">
                         <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
                         {' — 1 free month if you fail'}
                       </span>
                     ) : (
-                      <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                      <span className="text-slate-700 dark:text-slate-200">{feature}</span>
                     )}
                   </li>
                 ))}
@@ -413,23 +413,23 @@ export default function App() {
             </div>
 
             {/* Haven Premium */}
-            <div className="bg-white border-2 border-amber-300 dark:bg-gray-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
+            <div className="bg-white border-2 border-amber-300 dark:bg-slate-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">BEST VALUE</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
                   <Crown className="text-amber-600" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Premium</h3>
                 <div className="flex items-baseline justify-center gap-1.5 mb-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
-                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/6 months</span>
+                  <span className="text-5xl font-semibold text-slate-900 dark:text-white">£24.99</span>
+                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/6 months</span>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Ultimate learning experience</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">Ultimate learning experience</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
+                  <span className="text-slate-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
                 </li>
                 {planPremiumExtras.map(extra => {
                   const Icon = extra.icon;
@@ -437,8 +437,8 @@ export default function App() {
                     <li key={extra.title} className="flex items-start gap-3">
                       <Icon className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
                       <div>
-                        <span className="text-gray-900 dark:text-white font-semibold">{extra.title}</span>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{extra.description}</p>
+                        <span className="text-slate-900 dark:text-white font-semibold">{extra.title}</span>
+                        <p className="text-sm text-slate-600 dark:text-slate-300">{extra.description}</p>
                       </div>
                     </li>
                   );
@@ -459,8 +459,8 @@ export default function App() {
               return (
                 <div key={signal.title}>
                   <Icon className="text-teal-600 mx-auto mb-3" size={32} />
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{signal.title}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{signal.description}</p>
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-2">{signal.title}</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{signal.description}</p>
                 </div>
               );
             })}
@@ -474,15 +474,15 @@ export default function App() {
               </div>
               <div className="flex-1 space-y-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Resit Support</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
+                  <p className="text-slate-700 dark:text-slate-300">
                     If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">To qualify, you must have:</p>
-                    <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">To qualify, you must have:</p>
+                    <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
                         Completed all 29 lessons
@@ -498,8 +498,8 @@ export default function App() {
                     </ul>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">How to claim:</p>
-                    <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">How to claim:</p>
+                    <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
                         Email us your test result
@@ -515,7 +515,7 @@ export default function App() {
                     </ul>
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Available on Plus and Premium plans. Does not cover the cost of rebooking your test.
                 </p>
               </div>

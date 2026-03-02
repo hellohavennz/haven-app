@@ -34,8 +34,8 @@ const ContentLesson: React.FC = () => {
 
   if (!lesson) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-8 text-gray-900 dark:text-gray-100">
-        <h1 className="font-semibold text-gray-900 mb-4 dark:text-gray-100">Lesson Not Found</h1>
+      <div className="max-w-4xl mx-auto px-4 py-8 text-slate-900 dark:text-gray-100">
+        <h1 className="font-semibold text-slate-900 mb-4 dark:text-gray-100">Lesson Not Found</h1>
         <Link to="/content" className="text-teal-600 hover:text-teal-700 font-semibold dark:text-teal-300 dark:hover:text-teal-200">
           ← Back to Study
         </Link>
@@ -48,7 +48,7 @@ const ContentLesson: React.FC = () => {
   const hasPractice = hasQuestions || hasFlashcards;
 
   return (
-    <div className="min-h-screen bg-white py-8 px-4 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <div className="min-h-screen bg-white py-8 px-4 text-slate-900 dark:bg-gray-950 dark:text-gray-100">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
@@ -62,7 +62,7 @@ const ContentLesson: React.FC = () => {
             </svg>
             Back to Study
           </Link>
-          <h1 className="font-semibold text-gray-900 mt-2 dark:text-gray-100">{lesson.title}</h1>
+          <h1 className="font-semibold text-slate-900 mt-2 dark:text-gray-100">{lesson.title}</h1>
         </div>
 
         {/* Lesson Content */}
@@ -82,7 +82,7 @@ const ContentLesson: React.FC = () => {
               </svg>
               Memory Hook
             </h3>
-            <p className="text-gray-800 dark:text-gray-100">{lesson.memory_hook}</p>
+            <p className="text-slate-800 dark:text-gray-100">{lesson.memory_hook}</p>
           </div>
         )}
 
@@ -91,8 +91,8 @@ const ContentLesson: React.FC = () => {
 
           {/* Practice section */}
           {hasPractice && (
-            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-3">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500 mb-3">
                 Practise this lesson
               </p>
               <div className="flex flex-wrap gap-3">
@@ -125,7 +125,7 @@ const ContentLesson: React.FC = () => {
               className={`flex items-center gap-2 text-sm font-medium transition-colors ${
                 isRead
                   ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300'
+                  : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300'
               }`}
             >
               {isRead
@@ -139,17 +139,17 @@ const ContentLesson: React.FC = () => {
 
           {/* Prev / Next navigation */}
           {(prevLesson || nextLesson) && (
-            <div className="border-t border-gray-200 dark:border-gray-700 pt-4 grid grid-cols-2 gap-3">
+            <div className="border-t border-slate-200 dark:border-slate-700 pt-4 grid grid-cols-2 gap-3">
               {prevLesson ? (
                 <Link
                   to={`/content/${prevLesson.id}`}
-                  className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
+                  className="group flex flex-col gap-1 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-4 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
                 >
-                  <span className="flex items-center gap-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  <span className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
                     <ChevronLeft className="w-3.5 h-3.5" />
                     Previous
                   </span>
-                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                  <span className="text-sm font-semibold text-slate-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
                     {prevLesson.title}
                   </span>
                 </Link>
@@ -158,13 +158,13 @@ const ContentLesson: React.FC = () => {
               {nextLesson ? (
                 <Link
                   to={`/content/${nextLesson.id}`}
-                  className="group flex flex-col gap-1 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
+                  className="group flex flex-col gap-1 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
                 >
-                  <span className="flex items-center gap-1 justify-end text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  <span className="flex items-center gap-1 justify-end text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
                     Next
                     <ChevronRight className="w-3.5 h-3.5" />
                   </span>
-                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
+                  <span className="text-sm font-semibold text-slate-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
                     {nextLesson.title}
                   </span>
                 </Link>

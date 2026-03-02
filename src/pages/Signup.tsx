@@ -129,9 +129,9 @@ export default function Signup() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">
             <CheckCircle2 className="text-green-600 dark:text-green-400" size={48} />
           </div>
-          <h2 className="font-semibold text-gray-900 dark:text-white">Account created!</h2>
-          <p className="text-gray-600 dark:text-gray-300">Check your email to verify your account, then you can start learning.</p>
-          <p className="text-sm text-gray-400 dark:text-gray-500">Can't see it? Check your spam or junk folder.</p>
+          <h2 className="font-semibold text-slate-900 dark:text-white">Account created!</h2>
+          <p className="text-slate-600 dark:text-slate-300">Check your email to verify your account, then you can start learning.</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500">Can't see it? Check your spam or junk folder.</p>
         </div>
       </div>
     );
@@ -144,29 +144,29 @@ export default function Signup() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
             <UserPlus className="text-teal-600 dark:text-teal-400" size={32} />
           </div>
-          <h2 className="font-semibold text-gray-900 dark:text-white">Create your account</h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">Start your journey to passing the test</p>
+          <h2 className="font-semibold text-slate-900 dark:text-white">Create your account</h2>
+          <p className="mt-2 text-slate-600 dark:text-slate-300">Start your journey to passing the test</p>
 
           <div className={`mt-6 inline-flex items-center gap-2 rounded-xl px-4 py-3 ${
             selectedPlan === 'premium'
               ? 'bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300 dark:from-amber-900/30 dark:to-orange-900/30 dark:border-amber-700'
               : selectedPlan === 'free'
-              ? 'bg-gray-100 border-2 border-gray-300 dark:bg-gray-800 dark:border-gray-600'
+              ? 'bg-slate-100 border-2 border-slate-300 dark:bg-slate-800 dark:border-slate-600'
               : 'bg-teal-50 border-2 border-teal-200 dark:bg-teal-900/30 dark:border-teal-700'
           }`}>
             <PlanIcon className={`h-5 w-5 ${
               selectedPlan === 'premium'
                 ? 'text-amber-600 dark:text-amber-400'
                 : selectedPlan === 'free'
-                ? 'text-gray-600 dark:text-gray-400'
+                ? 'text-slate-600 dark:text-slate-400'
                 : 'text-teal-600 dark:text-teal-400'
             }`} />
-            <span className="font-semibold text-gray-900 dark:text-white">{plan.name}</span>
-            <span className="mx-2 text-gray-400 dark:text-gray-500">•</span>
-            <span className="font-semibold text-gray-900 dark:text-white">{plan.price}</span>
+            <span className="font-semibold text-slate-900 dark:text-white">{plan.name}</span>
+            <span className="mx-2 text-slate-400 dark:text-slate-500">•</span>
+            <span className="font-semibold text-slate-900 dark:text-white">{plan.price}</span>
           </div>
 
-          <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
             <Link to="/paywall" className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 font-medium">
               Change plan
             </Link>
@@ -183,7 +183,7 @@ export default function Signup() {
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 First name
               </label>
               <input
@@ -193,13 +193,13 @@ export default function Signup() {
                 autoComplete="given-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="Your first name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 Email address
               </label>
               <input
@@ -210,13 +210,13 @@ export default function Signup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -228,13 +228,13 @@ export default function Signup() {
                   required
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setPasswordTouched(true); }}
-                  className="w-full px-4 py-3 pr-11 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 pr-11 border-2 border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-xl focus:border-teal-500 focus:ring-0 transition-colors"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(v => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -253,7 +253,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label htmlFor="confirm-password" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="confirm-password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 Confirm password
               </label>
               <div className="relative">
@@ -266,17 +266,17 @@ export default function Signup() {
                   value={confirmPassword}
                   onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordTouched(true); }}
                   onBlur={() => setConfirmPasswordTouched(true)}
-                  className={`w-full px-4 py-3 pr-11 border-2 rounded-xl focus:ring-0 transition-colors dark:bg-gray-800 dark:text-white ${
+                  className={`w-full px-4 py-3 pr-11 border-2 rounded-xl focus:ring-0 transition-colors dark:bg-slate-800 dark:text-white ${
                     passwordMismatch
                       ? 'border-red-400 focus:border-red-500 dark:border-red-600'
-                      : 'border-gray-200 focus:border-teal-500 dark:border-gray-700'
+                      : 'border-slate-200 focus:border-teal-500 dark:border-slate-700'
                   }`}
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(v => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                   aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -304,7 +304,7 @@ export default function Signup() {
               selectedPlan === 'premium'
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500'
                 : selectedPlan === 'free'
-                ? 'bg-gray-900 dark:bg-gray-700'
+                ? 'bg-slate-900 dark:bg-gray-700'
                 : 'bg-gradient-to-r from-teal-600 to-teal-700'
             }`}
           >
@@ -315,17 +315,17 @@ export default function Signup() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
+              <div className="w-full border-t border-slate-300 dark:border-slate-700"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Or sign up with</span>
+              <span className="px-4 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">Or sign up with</span>
             </div>
           </div>
 
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+            className="w-full flex items-center justify-center gap-3 px-8 py-3 bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-gray-700 transition-all"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path
@@ -348,7 +348,7 @@ export default function Signup() {
             Sign up with Google
           </button>
 
-          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+          <p className="text-center text-sm text-slate-600 dark:text-slate-400 mt-6">
             Already have an account?{" "}
             <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
               Sign in

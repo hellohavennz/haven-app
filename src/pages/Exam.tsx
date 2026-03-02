@@ -43,11 +43,11 @@ export default function Exam() {
           Test Your Knowledge
         </div>
 
-        <h1 className="font-semibold text-gray-900 dark:text-white">
+        <h1 className="font-semibold text-slate-900 dark:text-white">
           Practice Exams
         </h1>
 
-        <p className="text-gray-600 dark:text-gray-200">
+        <p className="text-slate-600 dark:text-slate-200">
           Simulate the real Life in the UK test with full-length practice exams.
           Get instant results and detailed explanations for every question.
         </p>
@@ -115,7 +115,7 @@ export default function Exam() {
       {/* History strip */}
       {recentHistory.length > 0 && (
         <div className="space-y-3">
-          <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300">
             Your Recent Exams
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -144,13 +144,13 @@ export default function Exam() {
         </div>
       )}
 
-      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-teal-100 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
+      <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-teal-50 to-teal-100 p-8 dark:border-slate-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="space-y-2">
-            <h3 className="font-semibold text-gray-900 dark:text-white">
+            <h3 className="font-semibold text-slate-900 dark:text-white">
               Not ready for a full exam yet?
             </h3>
-            <p className="text-gray-600 dark:text-gray-200">
+            <p className="text-slate-600 dark:text-slate-200">
               Keep practicing individual lessons and build your confidence first.
             </p>
           </div>
@@ -173,19 +173,19 @@ export default function Exam() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900">
-        <h2 className="mb-4 font-semibold text-gray-900 dark:text-white">About the Exam</h2>
+      <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="mb-4 font-semibold text-slate-900 dark:text-white">About the Exam</h2>
 
-        <div className="space-y-4 text-gray-700 dark:text-gray-200">
+        <div className="space-y-4 text-slate-700 dark:text-slate-200">
           <p>
             The Life in the UK test consists of 24 multiple-choice questions about British
             traditions, history, and everyday life. You'll have 45 minutes to complete the test,
             and you need to answer at least 18 questions correctly (75%) to pass.
           </p>
 
-          <div className="rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">What to Expect:</h3>
-            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
+          <div className="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+            <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">What to Expect:</h3>
+            <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-200">
               <li className="flex items-start gap-2">
                 <span className="text-teal-600">•</span>
                 <span>Mock Exam 1 and 2 use fixed question sets — same questions every time</span>
@@ -232,7 +232,7 @@ function ExamCard({
   const isDynamic = examLink.includes("dynamic");
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 flex flex-col">
+    <div className="group relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-white p-8 transition-all hover:border-purple-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 flex flex-col">
       {badge && !hasAccess && (
         <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
           <Lock className="h-3 w-3" />
@@ -248,26 +248,26 @@ function ExamCard({
         )}
       </div>
 
-      <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">{title}</h3>
-      <p className="mb-6 text-sm text-gray-600 dark:text-gray-300 flex-1">{description}</p>
+      <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">{title}</h3>
+      <p className="mb-6 text-sm text-slate-600 dark:text-slate-300 flex-1">{description}</p>
 
-      <div className="mb-6 space-y-2 rounded-xl bg-gray-50 p-4 dark:bg-gray-800">
-        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-          <Clock className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+      <div className="mb-6 space-y-2 rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+        <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
+          <Clock className="h-4 w-4 text-slate-500 dark:text-slate-300" />
           <span>45 minutes time limit</span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
-          <Target className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+        <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
+          <Target className="h-4 w-4 text-slate-500 dark:text-slate-300" />
           <span>18/24 questions needed to pass</span>
         </div>
       </div>
 
       {hasAccess && limitReached ? (
         <div className="mt-auto space-y-2">
-          <div className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-6 py-3 font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
+          <div className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-6 py-3 font-semibold text-slate-400 dark:text-slate-500 cursor-not-allowed">
             {examsThisMonth}/2 used this month
           </div>
-          <p className="text-center text-xs text-gray-400 dark:text-gray-500">
+          <p className="text-center text-xs text-slate-400 dark:text-slate-500">
             Resets 1st of next month · <Link to="/paywall" className="text-teal-600 hover:underline dark:text-teal-400">Upgrade for unlimited</Link>
           </p>
         </div>
@@ -282,7 +282,7 @@ function ExamCard({
       ) : (
         <Link
           to="/paywall"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 font-semibold text-white transition-all hover:bg-gray-800 mt-auto dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white transition-all hover:bg-slate-800 mt-auto dark:bg-gray-700 dark:hover:bg-gray-600"
         >
           {lockedLabel ? `Upgrade to unlock` : "Sign up to unlock"}
           <ArrowRight className="h-4 w-4" />

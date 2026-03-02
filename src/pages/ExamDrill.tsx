@@ -38,7 +38,7 @@ export default function ExamDrill() {
   if (!questions.length) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center space-y-4">
-        <p className="text-gray-600 dark:text-gray-300">No questions to drill.</p>
+        <p className="text-slate-600 dark:text-slate-300">No questions to drill.</p>
         <Link
           to="/exam"
           className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white"
@@ -95,10 +95,10 @@ export default function ExamDrill() {
         </div>
 
         <div className="space-y-2">
-          <h1 className="font-semibold text-gray-900 dark:text-white">
+          <h1 className="font-semibold text-slate-900 dark:text-white">
             {allRight ? 'Perfect drill!' : pct >= 60 ? 'Good progress!' : 'Keep at it!'}
           </h1>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-slate-600 dark:text-slate-300">
             {allRight
               ? 'You got every question right. Those answers are locked in.'
               : `You got ${correctCount} of ${total} right. Run the drill again to reinforce the ones you missed.`}
@@ -114,7 +114,7 @@ export default function ExamDrill() {
               setCorrectCount(0);
               setFinished(false);
             }}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-200 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 px-6 py-3 font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200"
           >
             <RotateCcw className="h-4 w-4" />
             Drill Again
@@ -136,14 +136,14 @@ export default function ExamDrill() {
       {/* Header */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+          <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
             Question {currentIdx + 1} of {total}
           </span>
           <span className="rounded-full bg-purple-100 px-3 py-0.5 text-xs font-semibold text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">
             Drill session
           </span>
         </div>
-        <div className="h-2 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
+        <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
           <div
             className="h-2 rounded-full bg-purple-500 transition-all"
             style={{ width: `${((currentIdx + 1) / total) * 100}%` }}
@@ -152,8 +152,8 @@ export default function ExamDrill() {
       </div>
 
       {/* Question card */}
-      <div className="rounded-2xl border-2 border-gray-200 bg-white p-6 space-y-5 dark:border-gray-800 dark:bg-gray-900">
-        <p className="leading-relaxed text-gray-900 dark:text-gray-100">
+      <div className="rounded-2xl border-2 border-slate-200 bg-white p-6 space-y-5 dark:border-slate-800 dark:bg-slate-900">
+        <p className="leading-relaxed text-slate-900 dark:text-gray-100">
           {currentQ.prompt}
         </p>
 
@@ -172,10 +172,10 @@ export default function ExamDrill() {
                         ? 'border-green-500 bg-green-50 text-green-900 dark:bg-green-900/20 dark:text-green-200'
                         : isPicked
                         ? 'border-red-400 bg-red-50 text-red-900 dark:bg-red-900/20 dark:text-red-200'
-                        : 'border-gray-100 text-gray-400 dark:border-gray-800 dark:text-gray-500'
+                        : 'border-slate-100 text-slate-400 dark:border-slate-800 dark:text-slate-500'
                       : isPicked
                       ? 'border-purple-500 bg-purple-50 text-purple-900 dark:bg-purple-900/20 dark:text-purple-100'
-                      : 'border-gray-200 hover:border-purple-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800'
+                      : 'border-slate-200 hover:border-purple-300 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800'
                   }`}
                 >
                   <span className="flex items-center gap-3">

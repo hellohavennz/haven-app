@@ -37,7 +37,7 @@ export default function Navbar() {
   const upgradeText = tier === 'plus' ? 'Upgrade to Premium' : 'Upgrade';
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 dark:bg-gray-950 dark:border-gray-800 font-ui">
+    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 dark:bg-gray-950 dark:border-slate-800 font-ui">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Left: Logo + Main Nav */}
@@ -47,45 +47,45 @@ export default function Navbar() {
               <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 bg-teal-600">
                 <img src="/haven-icons/icon-512x512.png" alt="Haven" className="w-full h-full" />
               </div>
-              <span className="font-heading font-semibold text-xl text-gray-900 dark:text-white">Haven</span>
+              <span className="font-heading font-semibold text-xl text-slate-900 dark:text-white">Haven</span>
             </Link>
 
             {/* Main Navigation - Desktop */}
             <div className="hidden md:flex items-center gap-1">
               <Link
                 to="/content"
-                className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Study
               </Link>
               <Link
                 to="/practice"
-                className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Practice
               </Link>
               <Link
                 to="/exam"
-                className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Exam
               </Link>
               <Link
                 to="/dashboard"
-                className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Dashboard
               </Link>
               <Link
                 to="/help"
-                className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Help
               </Link>
               {tier === 'premium' && (
                 <Link
                   to="/analytics"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <BarChart3 size={15} />
                   Analytics
@@ -94,7 +94,7 @@ export default function Navbar() {
               {isAdmin && (
                 <Link
                   to="/admin"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Shield size={15} />
                   Admin
@@ -110,7 +110,7 @@ export default function Navbar() {
             {showUpgrade && (
               <Link
                 to="/paywall"
-                className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-base hover:opacity-90 transition-all"
+                className="hidden md:flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg font-semibold text-base hover:bg-amber-600 transition-colors"
               >
                 {tier === 'plus' ? <Crown size={16} /> : <Sparkles size={16} />}
                 {upgradeText}
@@ -122,13 +122,13 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-3">
                 <Link
                   to="/profile"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   Sign Out
                 </button>
@@ -137,7 +137,7 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   Sign In
                 </Link>
@@ -153,7 +153,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="md:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               aria-label="Open menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -164,43 +164,43 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
-          <div className="flex items-center justify-between px-4 pt-4 pb-3 text-sm text-gray-600 dark:text-gray-300">
+        <div className="md:hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-gray-950">
+          <div className="flex items-center justify-between px-4 pt-4 pb-3 text-sm text-slate-600 dark:text-slate-300">
             <span>Appearance</span>
             <ThemeToggle size="sm" />
           </div>
           <div className="px-4 pb-4 space-y-2">
             <Link
               to="/content"
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Study
             </Link>
             <Link
               to="/practice"
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Practice
             </Link>
             <Link
               to="/exam"
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Exam
             </Link>
             <Link
               to="/dashboard"
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Dashboard
             </Link>
             <Link
               to="/help"
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+              className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
               onClick={() => setMobileMenuOpen(false)}
             >
               Help
@@ -208,7 +208,7 @@ export default function Navbar() {
             {tier === 'premium' && (
               <Link
                 to="/analytics"
-                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <BarChart3 size={15} />
@@ -218,7 +218,7 @@ export default function Navbar() {
             {isAdmin && (
               <Link
                 to="/admin"
-                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                className="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Shield size={15} />
@@ -229,7 +229,7 @@ export default function Navbar() {
             {showUpgrade && (
               <Link
                 to="/paywall"
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold text-base"
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg font-semibold text-base hover:bg-amber-600 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {tier === 'plus' ? <Crown size={16} /> : <Sparkles size={16} />}
@@ -237,12 +237,12 @@ export default function Navbar() {
               </Link>
             )}
 
-            <div className="border-t border-gray-200 pt-2 mt-2 dark:border-gray-800">
+            <div className="border-t border-slate-200 pt-2 mt-2 dark:border-slate-800">
               {user ? (
                 <>
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-teal-50 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                    className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
@@ -252,7 +252,7 @@ export default function Navbar() {
                       handleLogout();
                       setMobileMenuOpen(false);
                     }}
-                    className="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                    className="block w-full text-left px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                   >
                     Sign Out
                   </button>
@@ -261,7 +261,7 @@ export default function Navbar() {
                 <>
                   <Link
                     to="/login"
-                    className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg dark:text-gray-200 dark:hover:bg-gray-800"
+                    className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Sign In

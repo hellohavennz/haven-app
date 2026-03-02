@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
   if (isLoading || tierLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading...</div>
+        <div className="text-xl text-slate-600">Loading...</div>
       </div>
     );
   }
@@ -160,8 +160,8 @@ const Dashboard: React.FC = () => {
   const notStartedCount = totalLessons - lessonsStarted;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 dark:bg-gray-950">
-      <div className="max-w-7xl mx-auto space-y-8 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-cream py-10 px-4 dark:bg-gray-950">
+      <div className="max-w-7xl mx-auto space-y-8 text-slate-900 dark:text-gray-100">
         {/* Upgrade success banner */}
         {upgradeBanner && (
           <div className="flex items-start justify-between gap-4 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 dark:border-teal-700 dark:bg-teal-900/20">
@@ -182,8 +182,8 @@ const Dashboard: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="font-semibold text-teal-700 mb-2 dark:text-teal-400">Your Dashboard</h1>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h1 className="font-semibold text-slate-900 mb-2 dark:text-white">Your Dashboard</h1>
+            <p className="text-slate-600 dark:text-slate-300">
               {isFirstVisit
                 ? `Welcome${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`
                 : `Welcome back${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`}
@@ -217,16 +217,16 @@ const Dashboard: React.FC = () => {
 
         {/* Getting Started — shown until user has started at least one lesson */}
         {lessonsStarted === 0 && examHistory.length === 0 && (
-          <div className="rounded-2xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-teal-100 p-6 dark:border-teal-700 dark:from-teal-900/20 dark:to-teal-900/30">
+          <div className="rounded-2xl border border-teal-200 bg-teal-50 p-6 dark:border-teal-700 dark:bg-teal-900/20">
             <div className="flex items-start gap-5">
               <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-600">
                 <BookOpen className="h-7 w-7 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h2 className="font-semibold text-gray-900 dark:text-white mb-1">
+                <h2 className="font-semibold text-slate-900 dark:text-white mb-1">
                   Ready to start learning?
                 </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                   Work through each lesson, practise the questions, then take a mock exam when you're ready. You've got this.
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -257,9 +257,9 @@ const Dashboard: React.FC = () => {
               ].map(({ icon, step, label, detail }) => (
                 <div key={label}>
                   <div className="flex justify-center mb-1.5 text-teal-600 dark:text-teal-400">{icon}</div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-0.5">Step {step}</p>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{label}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{detail}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500 mb-0.5">Step {step}</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{label}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{detail}</p>
                 </div>
               ))}
             </div>
@@ -273,7 +273,7 @@ const Dashboard: React.FC = () => {
           const requiredPace = lessonsLeft > 0 ? Math.ceil(lessonsLeft / daysUntilExam) : 0;
           const onTrack = requiredPace <= pacePerDay;
           return (
-            <div className="rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5">
+            <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${
@@ -288,10 +288,10 @@ const Dashboard: React.FC = () => {
                     }`} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">
+                    <p className="font-semibold text-slate-900 dark:text-white">
                       {daysUntilExam} day{daysUntilExam !== 1 ? 's' : ''} until your exam
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
                       {lessonsLeft > 0
                         ? `${lessonsLeft} lesson${lessonsLeft !== 1 ? 's' : ''} remaining`
                         : 'All lessons started — keep practising!'}
@@ -303,13 +303,13 @@ const Dashboard: React.FC = () => {
                     <p className={`font-semibold text-sm ${onTrack ? 'text-teal-600 dark:text-teal-400' : 'text-amber-600 dark:text-amber-400'}`}>
                       {onTrack ? 'On track' : 'Pick up the pace'}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
                       ~{requiredPace} lesson{requiredPace !== 1 ? 's' : ''}/day needed
                     </p>
                   </div>
                 )}
               </div>
-              <div className="mt-4 h-2 w-full rounded-full bg-gray-100 dark:bg-gray-800">
+              <div className="mt-4 h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800">
                 <div
                   className={`h-full rounded-full transition-all ${
                     completionRate >= 80 ? 'bg-green-500' :
@@ -318,7 +318,7 @@ const Dashboard: React.FC = () => {
                   style={{ width: `${Math.max(completionRate, 2)}%` }}
                 />
               </div>
-              <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500">
+              <p className="mt-1.5 text-xs text-slate-400 dark:text-slate-500">
                 {completionRate}% of lessons started
               </p>
             </div>
@@ -326,19 +326,19 @@ const Dashboard: React.FC = () => {
         })()}
 
         {!hasFullAccess && (
-          <div className="rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50 p-6 dark:border-amber-400 dark:from-amber-400/10 dark:to-orange-500/10">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 dark:border-amber-700 dark:bg-amber-900/10">
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white">
                 <Sparkles className="h-6 w-6" />
               </div>
               <div className="flex-1">
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">
+                <h3 className="mb-2 font-semibold text-slate-900 dark:text-gray-100">
                   This is a Sample Dashboard
                 </h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-200">
+                <p className="mb-4 text-slate-700 dark:text-slate-200">
                   Upgrade to Haven Plus to unlock your personalized dashboard with real-time progress tracking, performance analytics, and study recommendations tailored just for you.
                 </p>
-                <div className="flex flex-wrap gap-3 text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex flex-wrap gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-teal-600" />
                     <span>Real progress tracking</span>
@@ -358,7 +358,7 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {/* Overall Accuracy */}
           <div className="bg-teal-600 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
@@ -406,8 +406,8 @@ const Dashboard: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Lesson Status */}
-          <div className="lg:col-span-1 rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
-            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-6">Lesson Status</h2>
+          <div className="lg:col-span-1 rounded-2xl bg-white p-6 border border-slate-200 dark:border-slate-800 dark:bg-slate-900/80">
+            <h2 className="font-semibold text-slate-900 dark:text-gray-100 mb-6">Lesson Status</h2>
 
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-48 h-48">
@@ -417,7 +417,7 @@ const Dashboard: React.FC = () => {
                     cy="96"
                     r="80"
                     fill="none"
-                    stroke="#E5E7EB"
+                    stroke="#DDE5E2"
                     strokeWidth="16"
                   />
                   <circle
@@ -431,8 +431,8 @@ const Dashboard: React.FC = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-4xl font-semibold text-gray-900 dark:text-gray-100">{masteredCount}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">of {totalLessons}</div>
+                  <div className="text-4xl font-semibold text-slate-900 dark:text-gray-100">{masteredCount}</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">of {totalLessons}</div>
                 </div>
               </div>
             </div>
@@ -441,37 +441,37 @@ const Dashboard: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Mastered (80%+)</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Mastered (80%+)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{masteredCount}</span>
+                <span className="font-semibold text-slate-900 dark:text-gray-100">{masteredCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Good (60-79%)</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Good (60-79%)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{goodCount}</span>
+                <span className="font-semibold text-slate-900 dark:text-gray-100">{goodCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Needs Work (&lt;60%)</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Needs Work (&lt;60%)</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{needsWorkCount}</span>
+                <span className="font-semibold text-slate-900 dark:text-gray-100">{needsWorkCount}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Not Started</span>
+                  <div className="w-3 h-3 rounded-full bg-slate-300"></div>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Not Started</span>
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{notStartedCount}</span>
+                <span className="font-semibold text-slate-900 dark:text-gray-100">{notStartedCount}</span>
               </div>
             </div>
           </div>
 
           {/* Performance by Module */}
-          <div className="lg:col-span-2 rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
-            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-2">
+          <div className="lg:col-span-2 rounded-2xl bg-white p-6 border border-slate-200 dark:border-slate-800 dark:bg-slate-900/80">
+            <h2 className="font-semibold text-slate-900 dark:text-gray-100 mb-6 flex items-center gap-2">
               <Target className="text-teal-600" size={24} />
               Performance by Module
             </h2>
@@ -481,25 +481,25 @@ const Dashboard: React.FC = () => {
                 <div key={module.slug}>
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <div className="font-semibold text-gray-900 dark:text-gray-100">{module.title}</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                      <div className="font-semibold text-slate-900 dark:text-gray-100">{module.title}</div>
+                      <div className="text-sm text-slate-600 dark:text-slate-300">
                         {module.masteredCount}/{module.totalLessons} mastered • {module.questionsAnswered} questions
                       </div>
                     </div>
                     <div className={`text-2xl font-semibold ${
                       module.avgPercentage >= 80 ? 'text-green-600' :
                       module.avgPercentage >= 60 ? 'text-yellow-600' :
-                      module.avgPercentage > 0 ? 'text-gray-400' : 'text-gray-300'
+                      module.avgPercentage > 0 ? 'text-slate-400' : 'text-slate-300'
                     }`}>
                       {module.avgPercentage > 0 ? `${module.avgPercentage}%` : '—'}
                     </div>
                   </div>
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-800">
+                  <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden dark:bg-slate-800">
                     <div
                       className={`h-full rounded-full transition-all ${
                         module.avgPercentage >= 80 ? 'bg-green-500' :
                         module.avgPercentage >= 60 ? 'bg-yellow-500' :
-                        module.avgPercentage > 0 ? 'bg-red-400' : 'bg-gray-300'
+                        module.avgPercentage > 0 ? 'bg-red-400' : 'bg-slate-300'
                       }`}
                       style={{ width: `${module.avgPercentage}%` }}
                     />
@@ -516,12 +516,12 @@ const Dashboard: React.FC = () => {
         {/* Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Keep Learning */}
-          <div className="rounded-2xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-cyan-50 p-6 dark:border-teal-500/40 dark:from-teal-400/10 dark:to-cyan-400/10">
+          <div className="rounded-2xl border border-teal-200 bg-teal-50 p-6 dark:border-teal-500/40 dark:bg-teal-900/10">
             <div className="w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center mb-4">
               <BookOpen className="text-white" size={24} />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Keep Learning</h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <h3 className="font-semibold text-slate-900 dark:text-gray-100 mb-2">Keep Learning</h3>
+            <p className="text-slate-700 dark:text-slate-300 mb-4">
               {notStartedCount} lessons waiting for you. Every lesson brings you closer to success!
             </p>
             <Link
@@ -536,19 +536,19 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Great Work */}
-          <div className="rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 dark:border-green-500/40 dark:from-emerald-400/10 dark:to-green-500/10">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900/50">
             <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
               <CheckCircle className="text-white" size={24} />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Great Work!</h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <h3 className="font-semibold text-slate-900 dark:text-gray-100 mb-2">Great Work!</h3>
+            <p className="text-slate-700 dark:text-slate-300 mb-4">
               {needsReview === 0
                 ? "No lessons below 60%! You're making excellent progress across the board."
                 : `${needsReview} lesson${needsReview > 1 ? 's' : ''} need${needsReview === 1 ? 's' : ''} more practice. Keep going!`}
             </p>
             <Link
               to="/practice"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-all"
             >
               Keep Practicing
               <Trophy size={20} />
@@ -557,10 +557,10 @@ const Dashboard: React.FC = () => {
 
           {/* Your next step */}
           {continueSuggestion ? (
-            <div className={`rounded-2xl border-2 p-6 bg-gradient-to-br ${
+            <div className={`rounded-2xl border p-6 ${
               continueIsWeak
-                ? 'border-amber-200 from-amber-50 to-orange-50 dark:border-amber-500/40 dark:from-amber-400/10 dark:to-orange-500/10'
-                : 'border-blue-200 from-blue-50 to-indigo-50 dark:border-blue-500/40 dark:from-blue-400/10 dark:to-indigo-500/10'
+                ? 'border-amber-200 bg-amber-50 dark:border-amber-700 dark:bg-amber-900/10'
+                : 'border-blue-100 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/10'
             }`}>
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
                 continueIsWeak ? 'bg-amber-500' : 'bg-blue-600'
@@ -570,10 +570,10 @@ const Dashboard: React.FC = () => {
                   : <ArrowRight className="text-white" size={24} />
                 }
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              <h3 className="font-semibold text-slate-900 dark:text-gray-100 mb-1">
                 {continueIsWeak ? 'Needs more practice' : 'Up next'}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-1 font-medium">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-1 font-medium">
                 {continueSuggestion.title}
               </p>
               {continueIsWeak && progress[continueSuggestion.id] && (
@@ -582,7 +582,7 @@ const Dashboard: React.FC = () => {
                 </p>
               )}
               {!continueIsWeak && (
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
                   Not started yet
                 </p>
               )}
@@ -600,7 +600,7 @@ const Dashboard: React.FC = () => {
                 {(continueSuggestion.questions?.length ?? 0) > 0 && (
                   <Link
                     to={`/practice/${continueSuggestion.id}/questions`}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl border-2 border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 transition-all"
                   >
                     Practice
                   </Link>
@@ -608,17 +608,17 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 dark:border-green-500/40 dark:from-green-400/10 dark:to-emerald-500/10">
+            <div className="rounded-2xl border border-teal-200 bg-teal-50 p-6 dark:border-teal-700 dark:bg-teal-900/10">
               <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4">
                 <Trophy className="text-white" size={24} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">All caught up!</h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+              <h3 className="font-semibold text-slate-900 dark:text-gray-100 mb-2">All caught up!</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                 Every lesson has been attempted. Keep your scores above 80% and take a mock exam when you're ready.
               </p>
               <Link
                 to="/exam"
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 rounded-xl transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-all"
               >
                 Take a Mock Exam
                 <ArrowRight size={16} />
@@ -652,10 +652,10 @@ function ExamWidget({
   const Cta = () => (
     hasAccess && plusLimitReached ? (
       <div className="text-center">
-        <span className="inline-flex items-center gap-2 rounded-xl bg-gray-100 dark:bg-gray-800 px-5 py-2.5 text-sm font-semibold text-gray-400 dark:text-gray-500 cursor-not-allowed">
+        <span className="inline-flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-5 py-2.5 text-sm font-semibold text-slate-400 dark:text-slate-500 cursor-not-allowed">
           Limit reached
         </span>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">Resets next month</p>
+        <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">Resets next month</p>
       </div>
     ) : hasAccess ? (
       <Link
@@ -677,10 +677,10 @@ function ExamWidget({
   );
 
   return (
-    <div className="rounded-2xl bg-white p-6 shadow-lg dark:border dark:border-gray-800 dark:bg-gray-900/80">
+    <div className="rounded-2xl bg-white p-6 border border-slate-200 dark:border-slate-800 dark:bg-slate-900/80">
       {/* Header */}
       <div className="flex items-center justify-between mb-5">
-        <h2 className="font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+        <h2 className="font-semibold text-slate-900 dark:text-gray-100 flex items-center gap-2">
           <FileCheck className="text-purple-600 dark:text-purple-400" size={22} />
           Mock Exams
           {tier === 'plus' && (
@@ -712,7 +712,7 @@ function ExamWidget({
               }`}>
                 {Math.round((last.correct / last.total) * 100)}%
               </span>
-              <span className="text-xs text-gray-400 dark:text-gray-500">Last score</span>
+              <span className="text-xs text-slate-400 dark:text-slate-500">Last score</span>
               <span className={`inline-flex items-center gap-1 text-xs font-semibold ${
                 last.passed ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'
               }`}>
@@ -723,11 +723,11 @@ function ExamWidget({
 
             {/* Best score */}
             <div className="flex flex-col items-center gap-1 px-2">
-              <span className="text-2xl font-bold tabular-nums text-gray-900 dark:text-gray-100">
+              <span className="text-2xl font-bold tabular-nums text-slate-900 dark:text-gray-100">
                 {bestPct}%
               </span>
-              <span className="text-xs text-gray-400 dark:text-gray-500">Best score</span>
-              <span className="text-xs text-gray-400 dark:text-gray-500">
+              <span className="text-xs text-slate-400 dark:text-slate-500">Best score</span>
+              <span className="text-xs text-slate-400 dark:text-slate-500">
                 {history.length} attempt{history.length !== 1 ? 's' : ''}
               </span>
             </div>
@@ -743,9 +743,9 @@ function ExamWidget({
                   />
                 ))}
               </div>
-              <span className="text-xs text-gray-400 dark:text-gray-500">Recent</span>
+              <span className="text-xs text-slate-400 dark:text-slate-500">Recent</span>
               <span className={`text-xs font-medium ${
-                readiness.ready ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'
+                readiness.ready ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'
               }`}>
                 {readiness.ready ? '✓ Ready' : `${readiness.passedCount}/${readiness.totalRecent} passed`}
               </span>
@@ -764,8 +764,8 @@ function ExamWidget({
               <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <p className="font-semibold text-gray-900 dark:text-gray-100">No exams yet</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">24 questions · 45 min · 75% to pass</p>
+              <p className="font-semibold text-slate-900 dark:text-gray-100">No exams yet</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">24 questions · 45 min · 75% to pass</p>
             </div>
           </div>
           <div className="flex-shrink-0">

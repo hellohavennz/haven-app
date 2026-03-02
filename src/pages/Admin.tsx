@@ -66,7 +66,7 @@ const STATUS_COLOURS: Record<string, string> = {
 };
 
 const TIER_COLOURS: Record<string, string> = {
-  free:    'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+  free:    'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
   plus:    'bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300',
   premium: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
 };
@@ -76,12 +76,12 @@ function StatCard({ label, value, sub, accent = false, alert = false }: {
   label: string; value: string | number; sub?: string; accent?: boolean; alert?: boolean;
 }) {
   return (
-    <div className={`rounded-2xl border p-5 ${alert ? 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/10' : 'border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900'}`}>
-      <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">{label}</p>
-      <p className={`text-3xl font-bold ${alert ? 'text-red-600 dark:text-red-400' : accent ? 'text-teal-600 dark:text-teal-400' : 'text-gray-900 dark:text-white'}`}>
+    <div className={`rounded-2xl border p-5 ${alert ? 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/10' : 'border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900'}`}>
+      <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">{label}</p>
+      <p className={`text-3xl font-bold ${alert ? 'text-red-600 dark:text-red-400' : accent ? 'text-teal-600 dark:text-teal-400' : 'text-slate-900 dark:text-white'}`}>
         {value ?? '—'}
       </p>
-      {sub && <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{sub}</p>}
+      {sub && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{sub}</p>}
     </div>
   );
 }
@@ -131,23 +131,23 @@ function ActivityChart({
     signups: signupMap[date] ?? 0,
   }));
 
-  if (!chartData.length) return <p className="text-sm text-gray-400">No activity data yet</p>;
+  if (!chartData.length) return <p className="text-sm text-slate-400">No activity data yet</p>;
 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+        <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
           Logins &amp; new accounts — last 30 days
         </p>
-        <div className="flex gap-1 rounded-lg bg-gray-100 dark:bg-gray-800 p-0.5">
+        <div className="flex gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 p-0.5">
           {(['Daily', 'Weekly'] as const).map(label => (
             <button
               key={label}
               onClick={() => setWeekly(label === 'Weekly')}
               className={`rounded-md px-3 py-1 text-xs font-semibold transition-colors ${
                 (label === 'Weekly') === weekly
-                  ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? 'bg-white dark:bg-gray-700 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
               }`}
             >
               {label}
@@ -206,7 +206,7 @@ function OverviewTab() {
     <div className="space-y-8">
       {/* Users */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Users</h2>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Users</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <StatCard label="Total" value={data.total_users} accent />
           <StatCard label="Free" value={tier.free ?? 0} />
@@ -217,7 +217,7 @@ function OverviewTab() {
 
       {/* Signups */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Signups</h2>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Signups</h2>
         <div className="grid grid-cols-2 gap-3">
           <StatCard label="Last 7 days" value={data.new_7d} />
           <StatCard label="Last 30 days" value={data.new_30d} />
@@ -226,20 +226,20 @@ function OverviewTab() {
 
       {/* Activity */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Activity</h2>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Activity</h2>
         <div className="grid grid-cols-3 gap-3 mb-4">
           <StatCard label="Today (DAU)" value={data.dau} />
           <StatCard label="This week (WAU)" value={data.wau} />
           <StatCard label="This month (MAU)" value={data.mau} />
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 p-5">
+        <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-5">
           <ActivityChart logins={data.daily_logins} signups={data.daily_signups ?? []} />
         </div>
       </section>
 
       {/* Alerts + exams */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Highlights</h2>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Highlights</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <StatCard label="Open reports" value={data.open_reports} alert={data.open_reports > 0} sub="need review" />
           <StatCard label="Exam attempts" value={data.exam_attempts} />
@@ -299,14 +299,14 @@ function ReportsTab() {
             onClick={() => load(f.value)}
             className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
               status === f.value
-                ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-gray-700'
             }`}
           >
             {f.label}
           </button>
         ))}
-        <button onClick={() => load(status)} className="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" title="Refresh">
+        <button onClick={() => load(status)} className="ml-auto text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" title="Refresh">
           <RefreshCw size={16} />
         </button>
       </div>
@@ -314,7 +314,7 @@ function ReportsTab() {
       {loading && <Spinner />}
       {error && <ErrorMsg msg={error} />}
       {!loading && !error && reports.length === 0 && (
-        <p className="text-center py-12 text-gray-500 dark:text-gray-400">No {status === 'all' ? '' : status} reports.</p>
+        <p className="text-center py-12 text-slate-500 dark:text-slate-400">No {status === 'all' ? '' : status} reports.</p>
       )}
 
       {!loading && reports.length > 0 && (
@@ -322,7 +322,7 @@ function ReportsTab() {
           {reports.map(r => {
             const isOpen = expanded === r.id;
             return (
-              <div key={r.id} className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 overflow-hidden">
+              <div key={r.id} className="rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
                 <button
                   onClick={() => setExpanded(isOpen ? null : r.id)}
                   className="w-full text-left p-4 flex items-start gap-3"
@@ -336,20 +336,20 @@ function ReportsTab() {
                         {r.status}
                       </span>
                       {r.lesson_id && (
-                        <span className="text-xs text-gray-500 dark:text-gray-400 truncate">{r.lesson_id}{r.content_ref != null ? ` · #${r.content_ref}` : ''}</span>
+                        <span className="text-xs text-slate-500 dark:text-slate-400 truncate">{r.lesson_id}{r.content_ref != null ? ` · #${r.content_ref}` : ''}</span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-800 dark:text-gray-200 line-clamp-1">{r.message}</p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500">
+                    <p className="text-sm text-slate-800 dark:text-slate-200 line-clamp-1">{r.message}</p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500">
                       {r.user_email ?? 'anonymous'} · {timeAgo(r.created_at)}
                     </p>
                   </div>
-                  {isOpen ? <ChevronUp size={16} className="text-gray-400 flex-shrink-0 mt-1" /> : <ChevronDown size={16} className="text-gray-400 flex-shrink-0 mt-1" />}
+                  {isOpen ? <ChevronUp size={16} className="text-slate-400 flex-shrink-0 mt-1" /> : <ChevronDown size={16} className="text-slate-400 flex-shrink-0 mt-1" />}
                 </button>
 
                 {isOpen && (
-                  <div className="border-t border-gray-100 dark:border-gray-800 px-4 pb-4 pt-3 space-y-3">
-                    <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{r.message}</p>
+                  <div className="border-t border-slate-100 dark:border-slate-800 px-4 pb-4 pt-3 space-y-3">
+                    <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">{r.message}</p>
                     <div className="flex gap-2">
                       {r.status !== 'reviewed' && r.status !== 'resolved' && (
                         <button
@@ -444,7 +444,7 @@ function UsersTab() {
           {(['all', 'free', 'plus', 'premium'] as const).map(t => (
             <button key={t} onClick={() => setTierFilter(t)}
               className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors capitalize ${
-                tierFilter === t ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+                tierFilter === t ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
               }`}
             >{t}</button>
           ))}
@@ -453,12 +453,12 @@ function UsersTab() {
           {([['all', 'All'], ['well', 'Doing well'], ['struggling', 'Struggling']] as const).map(([v, l]) => (
             <button key={v} onClick={() => setEngFilter(v)}
               className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                engFilter === v ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+                engFilter === v ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300'
               }`}
             >{l}</button>
           ))}
         </div>
-        <span className="text-xs text-gray-500 dark:text-gray-400 ml-auto">{filtered.length} user{filtered.length !== 1 ? 's' : ''}</span>
+        <span className="text-xs text-slate-500 dark:text-slate-400 ml-auto">{filtered.length} user{filtered.length !== 1 ? 's' : ''}</span>
       </div>
 
       {loading && <Spinner />}
@@ -467,28 +467,28 @@ function UsersTab() {
       {!loading && !error && (
         <div className="space-y-2">
           {filtered.length === 0 && (
-            <p className="text-center py-12 text-gray-500 dark:text-gray-400">No users match these filters.</p>
+            <p className="text-center py-12 text-slate-500 dark:text-slate-400">No users match these filters.</p>
           )}
           {filtered.map(u => {
             const eng = engagementLabel(u);
             const frozen = u.banned_until != null && new Date(u.banned_until) > new Date();
             const busy = acting === u.id;
             return (
-              <div key={u.id} className={`rounded-xl border p-4 bg-white dark:bg-gray-900 ${
+              <div key={u.id} className={`rounded-xl border p-4 bg-white dark:bg-slate-900 ${
                 frozen
                   ? 'border-blue-200 dark:border-blue-800'
                   : eng === 'struggling'
                     ? 'border-red-200 dark:border-red-800'
-                    : 'border-gray-200 dark:border-gray-800'
+                    : 'border-slate-200 dark:border-slate-800'
               }`}>
                 <div className="flex items-start gap-3 flex-wrap">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                      <span className="font-semibold text-sm text-gray-900 dark:text-white truncate">
+                      <span className="font-semibold text-sm text-slate-900 dark:text-white truncate">
                         {u.display_name ?? u.email}
                       </span>
                       {u.display_name && (
-                        <span className="text-xs text-gray-400 dark:text-gray-500 truncate">{u.email}</span>
+                        <span className="text-xs text-slate-400 dark:text-slate-500 truncate">{u.email}</span>
                       )}
                       {frozen && (
                         <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
@@ -500,7 +500,7 @@ function UsersTab() {
                       <span className={`rounded-full px-2 py-0.5 text-xs font-semibold capitalize ${TIER_COLOURS[u.subscription_tier] ?? ''}`}>
                         {u.subscription_tier}
                       </span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                      <span className="text-xs text-slate-500 dark:text-slate-400">
                         {u.lessons_completed} lessons · {u.total_exams} exam{u.total_exams !== 1 ? 's' : ''} · {u.exams_passed} passed
                       </span>
                       {u.avg_exam_score != null && (
@@ -516,7 +516,7 @@ function UsersTab() {
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                    <div className="text-right text-xs text-gray-400 dark:text-gray-500 space-y-0.5">
+                    <div className="text-right text-xs text-slate-400 dark:text-slate-500 space-y-0.5">
                       {u.exam_date && (
                         <div className="flex items-center gap-1 justify-end text-teal-600 dark:text-teal-400 font-medium">
                           <Calendar size={11} />
@@ -560,24 +560,24 @@ function UsersTab() {
 
       {/* Delete confirmation modal */}
       {confirmDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 px-4">
-          <div className="w-full max-w-sm rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 shadow-xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 px-4">
+          <div className="w-full max-w-sm rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-6 shadow-xl space-y-4">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 dark:bg-red-900/30">
                 <Trash2 className="text-red-600 dark:text-red-400" size={20} />
               </div>
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white">Delete account?</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">This cannot be undone.</p>
+                <p className="font-semibold text-slate-900 dark:text-white">Delete account?</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">This cannot be undone.</p>
               </div>
             </div>
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-slate-700 dark:text-slate-300">
               Permanently delete <strong>{confirmDelete.display_name ?? confirmDelete.email}</strong> and all their data?
             </p>
             <div className="flex gap-2 justify-end">
               <button
                 onClick={() => setConfirmDelete(null)}
-                className="rounded-lg border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 Cancel
               </button>
@@ -624,20 +624,20 @@ function ExamsTab() {
       </div>
 
       <div>
-        <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Recent attempts</h2>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Recent attempts</h2>
         {data.recent.length === 0 && (
-          <p className="text-center py-12 text-gray-500 dark:text-gray-400">No exam attempts yet.</p>
+          <p className="text-center py-12 text-slate-500 dark:text-slate-400">No exam attempts yet.</p>
         )}
         <div className="space-y-2">
           {data.recent.map(a => (
-            <div key={a.id} className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 px-4 py-3 flex items-center gap-3">
+            <div key={a.id} className="rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 px-4 py-3 flex items-center gap-3">
               {a.passed
                 ? <CheckCircle2 className="text-green-500 flex-shrink-0" size={18} />
                 : <XCircle className="text-red-400 flex-shrink-0" size={18} />
               }
               <div className="flex-1 min-w-0">
-                <span className="text-sm font-medium text-gray-900 dark:text-white truncate block">{a.user_email}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">{formatDate(a.completed_at)} · {formatDuration(a.duration_seconds)}</span>
+                <span className="text-sm font-medium text-slate-900 dark:text-white truncate block">{a.user_email}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">{formatDate(a.completed_at)} · {formatDuration(a.duration_seconds)}</span>
               </div>
               <span className={`text-sm font-bold ${a.passed ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
                 {a.correct}/{a.total} ({Math.round(a.correct / a.total * 100)}%)
@@ -724,8 +724,8 @@ function ResitTab() {
             onClick={() => load(f.value)}
             className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
               status === f.value
-                ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-gray-700'
             }`}
           >
             {f.label}
@@ -736,18 +736,18 @@ function ResitTab() {
       {loading && <Spinner />}
       {error && <ErrorMsg msg={error} />}
       {!loading && !error && claims.length === 0 && (
-        <p className="py-12 text-center text-gray-500 dark:text-gray-400">No {status === 'all' ? '' : status} claims.</p>
+        <p className="py-12 text-center text-slate-500 dark:text-slate-400">No {status === 'all' ? '' : status} claims.</p>
       )}
 
       <div className="space-y-3">
         {claims.map(claim => (
-          <div key={claim.id} className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 p-5 space-y-3">
+          <div key={claim.id} className="rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-5 space-y-3">
             <div className="flex items-start justify-between gap-3 flex-wrap">
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm">
+                <p className="font-semibold text-slate-900 dark:text-white text-sm">
                   {claim.user_email ?? claim.user_id}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Submitted {timeAgo(claim.created_at)}
                   {claim.reviewed_at && ` · Reviewed ${timeAgo(claim.reviewed_at)}`}
                 </p>
@@ -758,7 +758,7 @@ function ResitTab() {
             </div>
 
             {claim.admin_notes && (
-              <p className="text-xs text-gray-600 dark:text-gray-400 italic">{claim.admin_notes}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 italic">{claim.admin_notes}</p>
             )}
 
             <div className="flex items-center gap-3 flex-wrap">
@@ -766,7 +766,7 @@ function ResitTab() {
                 href={getEvidenceUrl(claim.evidence_path)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <ExternalLink size={12} />
                 View evidence
@@ -790,7 +790,7 @@ function ResitTab() {
                         value={rejectNotes[claim.id] ?? ''}
                         onChange={e => setRejectNotes(prev => ({ ...prev, [claim.id]: e.target.value }))}
                         placeholder="Rejection reason (optional)"
-                        className="flex-1 min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-xs dark:bg-gray-800 dark:text-white"
+                        className="flex-1 min-w-0 rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-xs dark:bg-slate-800 dark:text-white"
                       />
                       <button
                         onClick={() => handleReject(claim)}
@@ -801,7 +801,7 @@ function ResitTab() {
                       </button>
                       <button
                         onClick={() => setShowReject(null)}
-                        className="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                        className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
                       >
                         Cancel
                       </button>
@@ -881,17 +881,17 @@ export default function Admin() {
     <div className="mx-auto max-w-5xl px-4 py-8 space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-900 dark:bg-gray-100">
-          <Shield className="text-white dark:text-gray-900" size={20} />
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 dark:bg-slate-100">
+          <Shield className="text-white dark:text-slate-900" size={20} />
         </div>
         <div>
-          <h1 className="font-semibold text-gray-900 dark:text-white">Haven Admin</h1>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{ADMIN_EMAIL}</p>
+          <h1 className="font-semibold text-slate-900 dark:text-white">Haven Admin</h1>
+          <p className="text-xs text-slate-500 dark:text-slate-400">{ADMIN_EMAIL}</p>
         </div>
       </div>
 
       {/* Tab nav */}
-      <div className="flex gap-1 rounded-xl bg-gray-100 dark:bg-gray-800 p-1">
+      <div className="flex gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
         {TABS.map(t => {
           const Icon = t.icon;
           return (
@@ -900,8 +900,8 @@ export default function Admin() {
               onClick={() => setTab(t.id)}
               className={`flex-1 flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition-all ${
                 tab === t.id
-                  ? 'bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-sm'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <Icon size={15} />

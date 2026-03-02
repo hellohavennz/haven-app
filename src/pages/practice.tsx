@@ -54,8 +54,8 @@ const PracticePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="font-semibold text-gray-900 mb-2">Practice</h1>
-      <p className="text-gray-600 mb-8">
+      <h1 className="font-semibold text-slate-900 mb-2">Practice</h1>
+      <p className="text-slate-600 mb-8">
         Test your knowledge with questions and flashcards for each lesson
       </p>
 
@@ -79,7 +79,7 @@ const PracticePage: React.FC = () => {
           return (
             <div
               key={lesson.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-slate-200"
             >
               {/* Header with gradient */}
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
@@ -90,17 +90,17 @@ const PracticePage: React.FC = () => {
               </div>
 
               {/* Progress Stats */}
-              <div className="p-6 bg-gray-50">
+              <div className="p-6 bg-slate-50">
                 <div className="space-y-4">
                   {/* Questions Progress */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">Questions</span>
-                      <span className="text-sm font-semibold text-gray-900">
+                      <span className="text-sm font-medium text-slate-700">Questions</span>
+                      <span className="text-sm font-semibold text-slate-900">
                         {lessonProgress.questionsCompleted}/{lessonProgress.totalQuestions ?? '—'}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-slate-200 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full transition-all duration-300 ${getProgressColor(questionsProgress)}`}
                         style={{ width: `${questionsProgress}%` }}
@@ -112,10 +112,10 @@ const PracticePage: React.FC = () => {
                   {lessonProgress.questionsCompleted > 0 && (
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Success Rate</span>
-                        <span className="text-sm font-semibold text-gray-900">{successRate}%</span>
+                        <span className="text-sm font-medium text-slate-700">Success Rate</span>
+                        <span className="text-sm font-semibold text-slate-900">{successRate}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-slate-200 rounded-full h-2">
                         <div
                           className={`h-2 rounded-full transition-all duration-300 ${getProgressColor(successRate)}`}
                           style={{ width: `${successRate}%` }}
@@ -127,12 +127,12 @@ const PracticePage: React.FC = () => {
                   {/* Flashcards Progress */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">Flashcards</span>
-                      <span className="text-sm font-semibold text-gray-900">
+                      <span className="text-sm font-medium text-slate-700">Flashcards</span>
+                      <span className="text-sm font-semibold text-slate-900">
                         {lessonProgress.flashcardsReviewed}/{lessonProgress.totalFlashcards ?? '—'}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-slate-200 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full transition-all duration-300 bg-purple-500`}
                         style={{ width: `${flashcardsProgress}%` }}

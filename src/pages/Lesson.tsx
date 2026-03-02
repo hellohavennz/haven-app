@@ -56,7 +56,7 @@ export default function Lesson() {
     <div className="max-w-3xl mx-auto p-6 space-y-6">
       <h1 className="font-semibold tracking-tight text-[#0F4C5C]">{title}</h1>
 
-      <article className="bg-white border rounded-xl p-5 leading-relaxed text-gray-800 space-y-3">
+      <article className="bg-white border rounded-xl p-5 leading-relaxed text-slate-800 space-y-3">
         {body.split("\n").map((line, idx) => {
           const trimmed = line.trim();
           if (!trimmed) return <div key={idx} className="h-1" />;
@@ -81,7 +81,7 @@ export default function Lesson() {
             {q.options.map((opt, idx) => (
               <li key={idx}>
                 <button
-                  className={`w-full text-left p-2 rounded border ${selected===idx ? "bg-gray-100" : ""}`}
+                  className={`w-full text-left p-2 rounded border ${selected===idx ? "bg-slate-100" : ""}`}
                   onClick={() => state==="ask" && answer(idx)}
                   disabled={state==="feedback"}
                 >

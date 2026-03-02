@@ -20,9 +20,9 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Left side - Logo and mobile sidebar toggle */}
@@ -31,7 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
               {sidebar && (
                 <button
                   onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-                  className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  className="lg:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                   aria-label="Toggle lesson menu"
                 >
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
                 <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-semibold text-xl">H</span>
                 </div>
-                <span className="text-xl font-semibold text-gray-900">Haven</span>
+                <span className="text-xl font-semibold text-slate-900">Haven</span>
               </Link>
             </div>
 
@@ -58,7 +58,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive(link.path)
                       ? 'bg-teal-50 text-teal-700'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      : 'text-slate-700 hover:bg-slate-100'
                   }`}
                 >
                   {link.label}
@@ -70,7 +70,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
             <div className="flex items-center gap-3">
               {/* Desktop Auth Buttons */}
               <div className="hidden md:flex items-center gap-3">
-                <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
+                <button className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900">
                   Sign In
                 </button>
                 <button className="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors">
@@ -81,7 +81,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
               {/* Mobile Main Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                className="md:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                 aria-label="Toggle main menu"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -98,7 +98,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
 
         {/* Mobile Main Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="md:hidden border-t border-slate-200 bg-white">
             <div className="px-4 py-3 space-y-1">
               {navigationLinks.map((link) => (
                 <Link
@@ -108,14 +108,14 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
                   className={`block px-4 py-3 rounded-lg text-base font-medium ${
                     isActive(link.path)
                       ? 'bg-teal-50 text-teal-700'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      : 'text-slate-700 hover:bg-slate-100'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-3 border-t border-gray-200 space-y-2">
-                <button className="w-full px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg text-left">
+              <div className="pt-3 border-t border-slate-200 space-y-2">
+                <button className="w-full px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-lg text-left">
                   Sign In
                 </button>
                 <button className="w-full px-4 py-3 text-base font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700">
@@ -133,7 +133,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
         {sidebar && (
           <>
             {/* Desktop Sidebar */}
-            <aside className="hidden lg:block w-64 bg-white border-r border-gray-200 min-h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto">
+            <aside className="hidden lg:block w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto">
               {sidebar}
             </aside>
 
@@ -147,7 +147,7 @@ const Layout: React.FC<LayoutProps> = ({ children, sidebar }) => {
                 />
                 
                 {/* Sidebar */}
-                <aside className="lg:hidden fixed left-0 top-16 bottom-0 w-64 bg-white border-r border-gray-200 z-50 overflow-y-auto">
+                <aside className="lg:hidden fixed left-0 top-16 bottom-0 w-64 bg-white border-r border-slate-200 z-50 overflow-y-auto">
                   {sidebar}
                 </aside>
               </>

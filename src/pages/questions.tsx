@@ -142,7 +142,7 @@ const QuestionsPage: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading questions...</div>
+        <div className="text-xl text-slate-600">Loading questions...</div>
       </div>
     );
   }
@@ -150,7 +150,7 @@ const QuestionsPage: React.FC = () => {
   if (!currentQuestion) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="font-semibold text-gray-900 mb-4">No Questions Available</h1>
+        <h1 className="font-semibold text-slate-900 mb-4">No Questions Available</h1>
         <button
           onClick={() => navigate('/practice')}
           className="text-blue-600 hover:text-blue-800 font-semibold"
@@ -178,9 +178,9 @@ const QuestionsPage: React.FC = () => {
             </svg>
             Back to Practice
           </button>
-          <h1 className="font-semibold text-gray-900 mb-2">{lessonTitle}</h1>
+          <h1 className="font-semibold text-slate-900 mb-2">{lessonTitle}</h1>
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <p className="text-gray-600">
+            <p className="text-slate-600">
               Question {sessionStats.attempted + 1} of {sessionStats.total}
             </p>
             <div className="flex gap-4">
@@ -200,7 +200,7 @@ const QuestionsPage: React.FC = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-gray-200 rounded-full h-3 mb-8 shadow-inner">
+        <div className="w-full bg-slate-200 rounded-full h-3 mb-8 shadow-inner">
           <div
             className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
@@ -209,7 +209,7 @@ const QuestionsPage: React.FC = () => {
 
         {/* Question Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
-          <h2 className="font-semibold text-gray-900 mb-6">
+          <h2 className="font-semibold text-slate-900 mb-6">
             {currentQuestion.prompt}
           </h2>
 
@@ -222,13 +222,13 @@ const QuestionsPage: React.FC = () => {
               let buttonClass = 'w-full text-left p-4 rounded-xl border-2 transition-all duration-200 font-medium ';
               
               if (!showResult) {
-                buttonClass += 'border-gray-300 hover:border-blue-500 hover:bg-blue-50 bg-white';
+                buttonClass += 'border-slate-300 hover:border-blue-500 hover:bg-blue-50 bg-white';
               } else if (isCorrect) {
                 buttonClass += 'border-green-500 bg-green-50 text-green-900';
               } else if (isSelected && !isCorrect) {
                 buttonClass += 'border-red-500 bg-red-50 text-red-900';
               } else {
-                buttonClass += 'border-gray-300 bg-gray-50 text-gray-600';
+                buttonClass += 'border-slate-300 bg-slate-50 text-slate-600';
               }
 
               return (
@@ -287,7 +287,7 @@ const QuestionsPage: React.FC = () => {
                 <h3 className={`font-semibold mb-2 ${ selectedAnswer === currentQuestion.correct_index ? 'text-green-900' : 'text-red-900' }`}> {selectedAnswer === currentQuestion.correct_index ? 'Correct!' : 'Incorrect'} </h3> <p className={ selectedAnswer === currentQuestion.correct_index ? 'text-green-800' : 'text-red-800' }> {currentQuestion.explanation} </p> </div> </div> </div> )} {/* Action Buttons */} <div className="flex justify-between items-center">
           <button
             onClick={handleRestart}
-            className="flex items-center px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-gray-300"
+            className="flex items-center px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-slate-300"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

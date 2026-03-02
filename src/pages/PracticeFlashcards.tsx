@@ -39,7 +39,7 @@ export default function PracticeFlashcards() {
 
   useEffect(() => { setIdx(0); setReveal(false); }, [lessonId]);
 
-  if (!data) return <div className="max-w-3xl mx-auto p-6 text-gray-900 dark:text-gray-100">Not found.</div>;
+  if (!data) return <div className="max-w-3xl mx-auto p-6 text-slate-900 dark:text-gray-100">Not found.</div>;
 
   // Show upgrade card when non-premium user has exhausted their sample cards
   const showUpgradeCard = !isLoading && !hasFullAccess && idx >= deck.length && deck.length > 0;
@@ -64,7 +64,7 @@ export default function PracticeFlashcards() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 pb-32 text-gray-900 dark:text-gray-100 md:pb-8">
+    <div className="max-w-2xl mx-auto px-4 py-8 pb-32 text-slate-900 dark:text-gray-100 md:pb-8">
       <div className="space-y-8">
         <header className="space-y-4">
           <div className="flex items-center justify-between">
@@ -73,7 +73,7 @@ export default function PracticeFlashcards() {
                 <RotateCcw size={16} />
                 <span>Flashcards</span>
               </div>
-              <h1 className="font-semibold text-gray-900 dark:text-gray-100">
+              <h1 className="font-semibold text-slate-900 dark:text-gray-100">
                 {data.title}
               </h1>
             </div>
@@ -81,7 +81,7 @@ export default function PracticeFlashcards() {
               ← Back
             </Link>
           </div>
-          <p className="text-gray-600 leading-relaxed dark:text-gray-300">
+          <p className="text-slate-600 leading-relaxed dark:text-slate-300">
             Tap the card to reveal the answer, then tap again to continue.
           </p>
         </header>
@@ -89,7 +89,7 @@ export default function PracticeFlashcards() {
         {showUpgradeCard ? (
           /* Upgrade prompt after sample cards */
           <div className="space-y-8">
-            <div className="relative h-96 rounded-3xl flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-dashed border-gray-600">
+            <div className="relative h-96 rounded-3xl flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-dashed border-slate-600">
               <div className="text-center space-y-5">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl">
                   <Lock className="text-white" size={32} />
@@ -97,7 +97,7 @@ export default function PracticeFlashcards() {
                 <h2 className="text-2xl font-semibold text-white leading-tight">
                   You've seen the sample flashcards
                 </h2>
-                <p className="text-gray-300">
+                <p className="text-slate-300">
                   Upgrade to Plus or Premium to unlock all {totalCount} flashcards for this lesson
                 </p>
                 <Link
@@ -137,21 +137,21 @@ export default function PracticeFlashcards() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-semibold text-gray-900 dark:text-gray-100">
-                  Card {idx + 1} <span className="text-gray-500 dark:text-gray-400">of {hasFullAccess ? totalCount : deck.length}{!hasFullAccess && totalCount > FREE_CARD_LIMIT ? ` (${totalCount} total)` : ""}</span>
+                <span className="font-semibold text-slate-900 dark:text-gray-100">
+                  Card {idx + 1} <span className="text-slate-500 dark:text-slate-400">of {hasFullAccess ? totalCount : deck.length}{!hasFullAccess && totalCount > FREE_CARD_LIMIT ? ` (${totalCount} total)` : ""}</span>
                 </span>
-                <span className="text-gray-500 dark:text-gray-400">
+                <span className="text-slate-500 dark:text-slate-400">
                   {Math.round(((idx + 1) / deck.length) * 100)}% complete
                 </span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-800">
+              <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden dark:bg-slate-800">
                 <div
                   className="h-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all duration-300"
                   style={{ width: `${((idx + 1) / deck.length) * 100}%` }}
                 />
               </div>
               {!hasFullAccess && !isLoading && totalCount > FREE_CARD_LIMIT && (
-                <p className="text-xs text-center text-gray-400 dark:text-gray-500">
+                <p className="text-xs text-center text-slate-400 dark:text-slate-500">
                   Sample: {FREE_CARD_LIMIT} of {totalCount} flashcards ·{" "}
                   <Link to="/paywall" className="text-teal-500 hover:text-teal-600 font-semibold">
                     Unlock all →
@@ -170,7 +170,7 @@ export default function PracticeFlashcards() {
           </div>
         ) : (
           <div className="space-y-6 text-center py-12">
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-slate-600 dark:text-slate-300">
               This is a module overview — no flashcards here. The individual lessons each have their own flashcards.
             </p>
             <Link

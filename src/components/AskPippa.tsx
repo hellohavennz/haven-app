@@ -134,11 +134,11 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
         <div
           className={[
             // shared
-            "fixed z-50 flex flex-col bg-white dark:bg-gray-900",
+            "fixed z-50 flex flex-col bg-white dark:bg-slate-900",
             // mobile: full screen
             "inset-0",
             // desktop: popup panel
-            "md:inset-auto md:bottom-6 md:right-3 md:h-[560px] md:w-[calc(100vw-24px)] md:max-w-[380px] md:rounded-2xl md:border md:border-gray-200 md:shadow-2xl dark:md:border-gray-700",
+            "md:inset-auto md:bottom-6 md:right-3 md:h-[560px] md:w-[calc(100vw-24px)] md:max-w-[380px] md:rounded-2xl md:border md:border-slate-200 md:shadow-2xl dark:md:border-slate-700",
           ].join(" ")}
           style={{ maxHeight: undefined }}
         >
@@ -178,7 +178,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
                   className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-teal-600 text-white rounded-tr-sm"
-                      : "bg-gray-100 text-gray-800 rounded-tl-sm dark:bg-gray-800 dark:text-gray-100"
+                      : "bg-slate-100 text-slate-800 rounded-tl-sm dark:bg-slate-800 dark:text-gray-100"
                   }`}
                 >
                   {msg.content}
@@ -191,7 +191,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
                 <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 mt-1">
                   <Sparkles className="h-4 w-4 text-white" />
                 </div>
-                <div className="rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-3 dark:bg-gray-800">
+                <div className="rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-3 dark:bg-slate-800">
                   <Loader2 className="h-4 w-4 animate-spin text-teal-600" />
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           {/* Input — extra bottom padding for mobile home-indicator */}
           <form
             onSubmit={handleSubmit}
-            className="flex-shrink-0 border-t border-gray-200 p-4 dark:border-gray-700"
+            className="flex-shrink-0 border-t border-slate-200 p-4 dark:border-slate-700"
             style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
           >
             <div className="flex gap-2">
@@ -218,7 +218,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything…"
                 disabled={loading}
-                className="flex-1 rounded-xl border border-gray-300 px-4 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+                className="flex-1 rounded-xl border border-slate-300 px-4 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-gray-400"
               />
               <button
                 type="submit"

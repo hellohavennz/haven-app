@@ -109,7 +109,7 @@ export default function Paywall() {
   }
 
   function ctaClass(plan: Plan, primary: string) {
-    if (isCurrent(plan)) return 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-default';
+    if (isCurrent(plan)) return 'bg-slate-200 dark:bg-gray-700 text-slate-500 dark:text-slate-400 cursor-default';
     if (canUpgrade(plan) || !isLoading) return primary;
     return primary;
   }
@@ -122,10 +122,10 @@ export default function Paywall() {
             <Sparkles className="h-4 w-4" />
             Choose Your Plan
           </div>
-          <h1 className="mb-4 font-semibold text-gray-900 dark:text-white">
+          <h1 className="mb-4 font-semibold text-slate-900 dark:text-white">
             Pass Your Life in the UK Test
           </h1>
-          <p className="mx-auto max-w-2xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300">
             Start free, or unlock full access with a Plus or Premium plan.
           </p>
         </div>
@@ -138,21 +138,21 @@ export default function Paywall() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Free Plan */}
-          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-gray-200 dark:border-gray-700'}`}>
+          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-slate-200 dark:border-slate-700'}`}>
             {isCurrent('free') && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
                 YOUR PLAN
               </div>
             )}
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
-                <BookOpen className="text-gray-600 dark:text-gray-400" size={32} />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4">
+                <BookOpen className="text-slate-600 dark:text-slate-400" size={32} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Free</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Free</h3>
               <div className="flex items-baseline justify-center gap-2 mb-1">
-                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£0</span>
+                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">forever</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">forever</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               {[
@@ -162,24 +162,24 @@ export default function Paywall() {
                 'Sample flashcards (5 per lesson)',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-gray-500 dark:text-gray-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                  <CheckCircle2 className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                  <span className="text-slate-700 dark:text-slate-200">{f}</span>
                 </li>
               ))}
             </ul>
             <button
               onClick={() => !isCurrent('free') && handleSelectPlan('free')}
               disabled={isCurrent('free') || isLoading}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('free', 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200')}`}
+              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('free', 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200')}`}
             >
               {ctaLabel('free', 'Get Started Free')}
               {!isCurrent('free') && !isLoading && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">No credit card required</p>
+            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">No credit card required</p>
           </div>
 
           {/* Haven Plus */}
-          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
+          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
               {isCurrent('plus') ? 'YOUR PLAN' : 'MOST POPULAR'}
             </div>
@@ -187,10 +187,10 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
                 <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Plus</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
-                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£4.99</span>
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/month</span>
+                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£4.99</span>
+                <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/month</span>
               </div>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
@@ -205,12 +205,12 @@ export default function Paywall() {
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
                   {f.startsWith('Resit Support') ? (
-                    <span className="text-gray-700 dark:text-gray-200">
+                    <span className="text-slate-700 dark:text-slate-200">
                       <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
                       {' — 1 free month if you fail'}
                     </span>
                   ) : (
-                    <span className="text-gray-700 dark:text-gray-200">{f}</span>
+                    <span className="text-slate-700 dark:text-slate-200">{f}</span>
                   )}
                 </li>
               ))}
@@ -224,11 +224,11 @@ export default function Paywall() {
               {ctaLabel('plus', 'Get Plus')}
               {!isCurrent('plus') && !isLoading && checkingOut !== 'plus' && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">Cancel anytime</p>
+            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Cancel anytime</p>
           </div>
 
           {/* Haven Premium */}
-          <div className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
+          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full whitespace-nowrap">
               {isCurrent('premium') ? 'YOUR PLAN' : 'BEST VALUE'}
             </div>
@@ -236,16 +236,16 @@ export default function Paywall() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-4">
                 <Crown className="text-amber-600 dark:text-amber-400" size={32} />
               </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Haven Premium</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Premium</h3>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
-                <span className="text-5xl font-semibold text-gray-900 dark:text-white">£24.99</span>
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/6 months</span>
+                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£24.99</span>
+                <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/6 months</span>
               </div>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                <span className="text-gray-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
+                <span className="text-slate-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
               </li>
               {[
                 { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
@@ -257,8 +257,8 @@ export default function Paywall() {
                 <li key={title} className="flex items-start gap-3">
                   <Icon className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
                   <div>
-                    <span className="text-gray-900 dark:text-white font-semibold">{title}</span>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{desc}</p>
+                    <span className="text-slate-900 dark:text-white font-semibold">{title}</span>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">{desc}</p>
                   </div>
                 </li>
               ))}
@@ -272,24 +272,24 @@ export default function Paywall() {
               {ctaLabel('premium', 'Get Premium')}
               {!isCurrent('premium') && !isLoading && checkingOut !== 'premium' && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-gray-400 dark:text-gray-500">6-month plan · best value</p>
+            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">6-month plan · best value</p>
           </div>
         </div>
 
         {/* Trust signals */}
-        <div className="mt-16 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm">
+        <div className="mt-16 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm">
           <div className="grid gap-8 md:grid-cols-3 text-center">
             <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">10,000+</div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Students Passed</div>
+              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Students Passed</div>
             </div>
             <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">94%</div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">First-Time Pass Rate</div>
+              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">First-Time Pass Rate</div>
             </div>
             <div>
               <div className="mb-3 text-4xl font-semibold text-teal-600">4.9/5</div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Average Rating</div>
+              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Average Rating</div>
             </div>
           </div>
         </div>
@@ -302,15 +302,15 @@ export default function Paywall() {
             </div>
             <div className="flex-1 space-y-4">
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Resit Support</h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
+                <p className="text-slate-700 dark:text-slate-300">
                   If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit — at no extra charge.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">To qualify, you must have:</p>
-                  <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">To qualify, you must have:</p>
+                  <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
                       Completed all 29 lessons
@@ -326,8 +326,8 @@ export default function Paywall() {
                   </ul>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">How to claim:</p>
-                  <ul className="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">How to claim:</p>
+                  <ul className="space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
                       Email us your test result
@@ -343,7 +343,7 @@ export default function Paywall() {
                   </ul>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Available on Plus and Premium plans. Does not cover the cost of rebooking your test.
               </p>
             </div>
@@ -352,7 +352,7 @@ export default function Paywall() {
 
         {!isLoggedIn && (
           <div className="mt-12 text-center">
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Already have an account?{' '}
               <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300">
                 Log in here

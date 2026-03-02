@@ -43,7 +43,7 @@
     font-family: var(--font-body);
     line-height: var(--body-line-height);
     font-size: 1rem;
-    @apply bg-cream text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100;
+    @apply bg-cream text-slate-900 transition-colors duration-300 dark:bg-gray-950 dark:text-gray-100;
   }
 
   body::before {
@@ -65,7 +65,7 @@
     font-weight: 600;
     line-height: var(--heading-line-height);
     margin-bottom: 0.75rem;
-    @apply text-gray-900 dark:text-gray-100;
+    @apply text-slate-900 dark:text-gray-100;
   }
 
   h1 {

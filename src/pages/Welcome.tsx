@@ -72,8 +72,8 @@ export default function Welcome() {
         {/* Progress bar */}
         <div className="flex items-center gap-3">
           <div className="h-1.5 flex-1 rounded-full bg-teal-500" />
-          <div className={`h-1.5 flex-1 rounded-full transition-all ${step >= 2 ? 'bg-teal-500' : 'bg-gray-200 dark:bg-gray-800'}`} />
-          <div className={`h-1.5 flex-1 rounded-full transition-all ${step === 3 ? 'bg-teal-500' : 'bg-gray-200 dark:bg-gray-800'}`} />
+          <div className={`h-1.5 flex-1 rounded-full transition-all ${step >= 2 ? 'bg-teal-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
+          <div className={`h-1.5 flex-1 rounded-full transition-all ${step === 3 ? 'bg-teal-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
         </div>
 
         {/* Step 1 — Exam date */}
@@ -83,25 +83,25 @@ export default function Welcome() {
               <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-semibold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
                 Step 1 of 2
               </div>
-              <h1 className="font-semibold text-gray-900 dark:text-white">
+              <h1 className="font-semibold text-slate-900 dark:text-white">
                 When's your exam?
               </h1>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-slate-600 dark:text-slate-300">
                 We'll count down the days and help you pace your study.
               </p>
             </div>
 
             <div className="space-y-4">
               <div
-                className={`rounded-2xl border-2 bg-white p-6 transition-all dark:bg-gray-900 ${
+                className={`rounded-2xl border-2 bg-white p-6 transition-all dark:bg-slate-900 ${
                   !skipDate
                     ? 'border-teal-500'
-                    : 'border-gray-200 dark:border-gray-800'
+                    : 'border-slate-200 dark:border-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <Calendar className="h-5 w-5 text-teal-600 dark:text-teal-400" />
-                  <span className="font-semibold text-gray-900 dark:text-white">
+                  <span className="font-semibold text-slate-900 dark:text-white">
                     Choose a date
                   </span>
                 </div>
@@ -110,20 +110,20 @@ export default function Welcome() {
                   min={today}
                   value={examDate}
                   onChange={e => { setExamDate(e.target.value); setSkipDate(false); }}
-                  className="w-full rounded-xl border-2 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 focus:border-teal-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
               </div>
 
               <button
                 onClick={() => { setSkipDate(true); setExamDate(''); }}
-                className={`w-full rounded-2xl border-2 bg-white p-4 text-left transition-all dark:bg-gray-900 ${
+                className={`w-full rounded-2xl border-2 bg-white p-4 text-left transition-all dark:bg-slate-900 ${
                   skipDate
                     ? 'border-teal-500'
-                    : 'border-gray-200 hover:border-gray-300 dark:border-gray-800'
+                    : 'border-slate-200 hover:border-slate-300 dark:border-slate-800'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-medium text-gray-700 dark:text-gray-200">
+                  <span className="font-medium text-slate-700 dark:text-slate-200">
                     I haven't booked my exam yet
                   </span>
                   {skipDate && <CheckCircle2 className="h-5 w-5 text-teal-600" />}
@@ -149,10 +149,10 @@ export default function Welcome() {
               <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-semibold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
                 Step 2 of 2
               </div>
-              <h1 className="font-semibold text-gray-900 dark:text-white">
+              <h1 className="font-semibold text-slate-900 dark:text-white">
                 How much time can you study?
               </h1>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-slate-600 dark:text-slate-300">
                 Be honest — a little every day beats cramming.
               </p>
             </div>
@@ -162,26 +162,26 @@ export default function Welcome() {
                 <button
                   key={goal.value}
                   onClick={() => setStudyGoal(goal.value)}
-                  className={`flex w-full items-center gap-4 rounded-2xl border-2 bg-white p-5 text-left transition-all dark:bg-gray-900 ${
+                  className={`flex w-full items-center gap-4 rounded-2xl border-2 bg-white p-5 text-left transition-all dark:bg-slate-900 ${
                     studyGoal === goal.value
                       ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
-                      : 'border-gray-200 hover:border-teal-300 dark:border-gray-800'
+                      : 'border-slate-200 hover:border-teal-300 dark:border-slate-800'
                   }`}
                 >
                   <div
                     className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${
                       studyGoal === goal.value
                         ? 'bg-teal-600 text-white'
-                        : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300'
+                        : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'
                     }`}
                   >
                     {goal.icon}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">
+                    <div className="font-semibold text-slate-900 dark:text-white">
                       {goal.label}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <div className="text-sm text-slate-500 dark:text-slate-400">
                       {goal.detail}
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export default function Welcome() {
             <div className="flex gap-3">
               <button
                 onClick={() => setStep(1)}
-                className="rounded-xl border-2 border-gray-200 px-6 py-4 font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200"
+                className="rounded-xl border-2 border-slate-200 px-6 py-4 font-semibold text-slate-700 transition-all hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200"
               >
                 Back
               </button>
@@ -218,24 +218,24 @@ export default function Welcome() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">
                 <CheckCircle2 className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h1 className="font-semibold text-gray-900 dark:text-white">
+              <h1 className="font-semibold text-slate-900 dark:text-white">
                 You're all set{userName ? `, ${userName}` : ''}!
               </h1>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-slate-600 dark:text-slate-300">
                 Here's your study plan. You can update these any time in your profile.
               </p>
             </div>
 
             {/* Summary cards */}
             <div className="space-y-3">
-              <div className="flex items-center gap-4 rounded-2xl border-2 border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+              <div className="flex items-center gap-4 rounded-2xl border-2 border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
                   <Calendar className="h-5 w-5 text-teal-600 dark:text-teal-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">Exam date</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Exam date</p>
                   {formattedExamDate ? (
-                    <p className="font-semibold text-gray-900 dark:text-white">
+                    <p className="font-semibold text-slate-900 dark:text-white">
                       {formattedExamDate}
                       {daysUntilExam !== null && (
                         <span className="ml-2 text-sm font-normal text-teal-600 dark:text-teal-400">
@@ -244,18 +244,18 @@ export default function Welcome() {
                       )}
                     </p>
                   ) : (
-                    <p className="font-semibold text-gray-900 dark:text-white">Not booked yet</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">Not booked yet</p>
                   )}
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 rounded-2xl border-2 border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+              <div className="flex items-center gap-4 rounded-2xl border-2 border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
                   <Clock className="h-5 w-5 text-teal-600 dark:text-teal-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">Study pace</p>
-                  <p className="font-semibold text-gray-900 dark:text-white">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Study pace</p>
+                  <p className="font-semibold text-slate-900 dark:text-white">
                     {studyGoal ? GOAL_LABELS[studyGoal] : ''}
                   </p>
                 </div>
@@ -286,7 +286,7 @@ export default function Welcome() {
 
               <button
                 onClick={() => navigate('/dashboard', { replace: true })}
-                className="w-full rounded-xl border-2 border-gray-200 py-3 font-semibold text-gray-600 transition-all hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="w-full rounded-xl border-2 border-slate-200 py-3 font-semibold text-slate-600 transition-all hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 Go to Dashboard
               </button>
@@ -299,10 +299,10 @@ export default function Welcome() {
                 { icon: <Target className="h-5 w-5" />, label: 'Practice', detail: 'Answer questions' },
                 { icon: <CheckCircle2 className="h-5 w-5" />, label: 'Exam', detail: 'Test yourself' },
               ].map(({ icon, label, detail }) => (
-                <div key={label} className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-3 text-center">
+                <div key={label} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 text-center">
                   <div className="flex justify-center mb-1.5 text-teal-600 dark:text-teal-400">{icon}</div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{label}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{detail}</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{label}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{detail}</p>
                 </div>
               ))}
             </div>

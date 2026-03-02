@@ -97,22 +97,22 @@ function FAQAccordion({ item }: { item: FAQItem }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white transition-all hover:border-teal-300 dark:border-gray-800 dark:bg-gray-900">
+    <div className="rounded-xl border border-slate-200 bg-white transition-all hover:border-teal-300 dark:border-slate-800 dark:bg-slate-900">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between p-6 text-left"
       >
-        <span className="pr-4 font-semibold text-gray-900 dark:text-white">{item.question}</span>
+        <span className="pr-4 font-semibold text-slate-900 dark:text-white">{item.question}</span>
         {isOpen ? (
           <ChevronUp className="h-5 w-5 flex-shrink-0 text-teal-500" />
         ) : (
-          <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500" />
+          <ChevronDown className="h-5 w-5 flex-shrink-0 text-slate-400 dark:text-slate-500" />
         )}
       </button>
 
       {isOpen && (
-        <div className="border-t border-gray-100 px-6 pb-6 pt-4 dark:border-gray-800">
-          <p className="leading-relaxed text-gray-600 dark:text-gray-200">{item.answer}</p>
+        <div className="border-t border-slate-100 px-6 pb-6 pt-4 dark:border-slate-800">
+          <p className="leading-relaxed text-slate-600 dark:text-slate-200">{item.answer}</p>
         </div>
       )}
     </div>
@@ -138,23 +138,23 @@ export default function Help() {
           Help & Resources
         </div>
 
-        <h1 className="font-semibold text-gray-900 dark:text-white">
+        <h1 className="font-semibold text-slate-900 dark:text-white">
           Help & Support
         </h1>
 
-        <p className="text-gray-600 dark:text-gray-200">
+        <p className="text-slate-600 dark:text-slate-200">
           Everything you need to know about using Haven, plus a full key facts reference for quick revision.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 rounded-xl border border-gray-200 bg-gray-100 p-1 dark:border-gray-800 dark:bg-gray-900">
+      <div className="flex gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1 dark:border-slate-800 dark:bg-slate-900">
         <button
           onClick={() => setActiveTab('help')}
           className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
             activeTab === 'help'
-              ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-800 dark:text-white'
-              : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+              ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white'
+              : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
         >
           <HelpCircle className="h-4 w-4" />
@@ -164,8 +164,8 @@ export default function Help() {
           onClick={() => setActiveTab('facts')}
           className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
             activeTab === 'facts'
-              ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-800 dark:text-white'
-              : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+              ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white'
+              : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
         >
           <BookMarked className="h-4 w-4" />
@@ -181,10 +181,10 @@ export default function Help() {
             </p>
           </div>
           {keyFactGroups.map((group) => (
-            <div key={group.heading} className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 overflow-hidden">
-              <div className="flex items-center gap-3 border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-gray-800 dark:bg-gray-800/60">
+            <div key={group.heading} className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
+              <div className="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800/60">
                 <span className="text-xl" role="img" aria-label="">{group.emoji}</span>
-                <h2 className="font-semibold text-gray-900 dark:text-white">{group.heading}</h2>
+                <h2 className="font-semibold text-slate-900 dark:text-white">{group.heading}</h2>
               </div>
               <ul className="divide-y divide-gray-50 dark:divide-gray-800">
                 {group.facts.map((fact, i) => (
@@ -192,7 +192,7 @@ export default function Help() {
                     <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-[10px] font-bold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
                       {i + 1}
                     </span>
-                    <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{fact}</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{fact}</span>
                   </li>
                 ))}
               </ul>
@@ -204,50 +204,50 @@ export default function Help() {
       {activeTab === 'help' && (
       <div className="space-y-12">
 
-      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
-        <h2 className="mb-6 font-semibold text-gray-900 dark:text-white">How to Use Haven</h2>
+      <div className="rounded-2xl border border-slate-200 bg-teal-50 p-8 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="mb-6 font-semibold text-slate-900 dark:text-white">How to Use Haven</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-slate-800 dark:bg-slate-900">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
               <BookOpen className="h-6 w-6 text-teal-600 dark:text-teal-200" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">1. Study Lessons</h3>
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">1. Study Lessons</h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Start by reading through the lessons in Study mode. Each lesson covers essential
               facts you need to know, organized by topic. Take your time to understand and absorb
               the information.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-slate-800 dark:bg-slate-900">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 dark:bg-emerald-900/40">
               <Brain className="h-6 w-6 text-emerald-600 dark:text-emerald-200" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">2. Practice Questions</h3>
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">2. Practice Questions</h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Test your knowledge with realistic practice questions. Get instant feedback and
               detailed explanations. Keep practicing until you consistently score 75% or higher.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-slate-800 dark:bg-slate-900">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-900/40">
               <BarChart3 className="h-6 w-6 text-sky-600 dark:text-sky-200" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">3. Track Progress</h3>
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">3. Track Progress</h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Monitor your progress on the Dashboard. See which topics you've mastered and which
               need more work. Focus your study time where it matters most.
             </p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-gray-800 dark:bg-gray-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm dark:border dark:border-slate-800 dark:bg-slate-900">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/40">
               <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-200" />
             </div>
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">4. Take Mock Exams</h3>
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <h3 className="mb-2 font-semibold text-slate-900 dark:text-white">4. Take Mock Exams</h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               When you're ready, take a full mock exam under timed conditions. This simulates the
               real test experience and helps you verify you're fully prepared.
             </p>
@@ -256,13 +256,13 @@ export default function Help() {
       </div>
 
       {/* Report issue callout */}
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 flex items-start gap-4">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 flex items-start gap-4">
         <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-red-50 dark:bg-red-900/20">
           <Flag className="h-6 w-6 text-red-500" />
         </div>
         <div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Found an error?</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Found an error?</h3>
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Every lesson, practice question, and flashcard has a small <strong>Report issue</strong> link at the bottom.
             If something looks wrong or confusing, tap it to send us a quick note — we review all reports and update the content.
           </p>
@@ -270,7 +270,7 @@ export default function Help() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="font-semibold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+        <h2 className="font-semibold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
 
         <div className="space-y-3">
           {faqs.map((faq, index) => (
@@ -279,15 +279,15 @@ export default function Help() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900">
+      <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
           <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-600">
             <Mail className="h-8 w-8 text-white" />
           </div>
 
           <div className="flex-1 space-y-2">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Still have questions?</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h3 className="font-semibold text-slate-900 dark:text-white">Still have questions?</h3>
+            <p className="text-slate-600 dark:text-slate-300">
               Can't find the answer you're looking for? Our support team is here to help.
             </p>
           </div>
@@ -301,9 +301,9 @@ export default function Help() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-gray-50 p-6 dark:border dark:border-gray-800 dark:bg-gray-900">
-        <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">Tips for Success</h3>
-        <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-200">
+      <div className="rounded-xl bg-slate-50 p-6 dark:border dark:border-slate-800 dark:bg-slate-900">
+        <h3 className="mb-4 font-semibold text-slate-900 dark:text-white">Tips for Success</h3>
+        <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
           <li className="flex items-start gap-3">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-small font-semibold text-teal-600 dark:bg-teal-900/40 dark:text-teal-100">
               1

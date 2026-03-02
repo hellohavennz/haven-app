@@ -8,10 +8,10 @@ export default function PaywallScreen() {
         <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full mb-6 shadow-lg">
           <Lock className="text-white" size={36} />
         </div>
-        <h1 className="font-semibold text-gray-900 mb-4">
+        <h1 className="font-semibold text-slate-900 mb-4">
           Unlock Full Access
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-slate-600 max-w-2xl mx-auto">
           Get unlimited access to all lessons, practice questions, and flashcards. 
           Pass your Life in the UK test with confidence.
         </p>
@@ -22,8 +22,8 @@ export default function PaywallScreen() {
         <div className="bg-gradient-to-br from-white to-teal-50 border-2 border-teal-200 rounded-2xl p-8 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="font-semibold text-gray-900">Premium Access</h3>
-              <p className="text-gray-600">Complete test preparation</p>
+              <h3 className="font-semibold text-slate-900">Premium Access</h3>
+              <p className="text-slate-600">Complete test preparation</p>
             </div>
             <div className="flex items-center gap-2">
               <Star className="text-amber-500 fill-amber-500" size={24} />
@@ -34,10 +34,10 @@ export default function PaywallScreen() {
 
           <div className="mb-6">
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-semibold text-gray-900">£29</span>
-              <span className="text-gray-600">one-time</span>
+              <span className="text-5xl font-semibold text-slate-900">£29</span>
+              <span className="text-slate-600">one-time</span>
             </div>
-            <p className="text-sm text-gray-500 mt-1">Lifetime access • No subscription</p>
+            <p className="text-sm text-slate-500 mt-1">Lifetime access • No subscription</p>
           </div>
 
           <Link
@@ -48,27 +48,27 @@ export default function PaywallScreen() {
           </Link>
 
           <div className="space-y-3">
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>All {/* Total lesson count will be dynamic */} lessons unlocked</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>Unlimited practice questions</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>Interactive flashcards</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>Progress tracking & dashboard</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>Full mock exams</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 text-slate-700">
               <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
               <span>Money-back guarantee</span>
             </div>
@@ -78,32 +78,32 @@ export default function PaywallScreen() {
 
       {/* Why Premium */}
       <div className="grid md:grid-cols-3 gap-6 mb-12">
-        <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
+        <div className="bg-white border-2 border-slate-200 rounded-xl p-6 text-center">
           <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Zap className="text-teal-600" size={24} />
           </div>
-          <h3 className="font-semibold text-gray-900 mb-2">Comprehensive Coverage</h3>
-          <p className="text-sm text-gray-600">
+          <h3 className="font-semibold text-slate-900 mb-2">Comprehensive Coverage</h3>
+          <p className="text-sm text-slate-600">
             Every topic from the official handbook, rewritten in plain English
           </p>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
+        <div className="bg-white border-2 border-slate-200 rounded-xl p-6 text-center">
           <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Trophy className="text-green-600" size={24} />
           </div>
-          <h3 className="font-semibold text-gray-900 mb-2">Proven Results</h3>
-          <p className="text-sm text-gray-600">
+          <h3 className="font-semibold text-slate-900 mb-2">Proven Results</h3>
+          <p className="text-sm text-slate-600">
             Practice questions mirror the real test. Pass with confidence.
           </p>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
+        <div className="bg-white border-2 border-slate-200 rounded-xl p-6 text-center">
           <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Star className="text-blue-600" size={24} />
           </div>
-          <h3 className="font-semibold text-gray-900 mb-2">One-Time Payment</h3>
-          <p className="text-sm text-gray-600">
+          <h3 className="font-semibold text-slate-900 mb-2">One-Time Payment</h3>
+          <p className="text-sm text-slate-600">
             Pay once, learn forever. No recurring fees or hidden costs.
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function PaywallScreen() {
 
       {/* Free Preview Notice */}
       <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 text-center">
-        <p className="text-gray-700">
+        <p className="text-slate-700">
           <span className="font-semibold">Enjoying the free preview?</span> You've tried 2 lessons. 
           Upgrade now to access all content and pass your test.
         </p>

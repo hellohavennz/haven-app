@@ -17,18 +17,18 @@ function pct(correct: number, attempted: number) {
 function AccuracyBar({ value, size = 'md' }: { value: number | null; size?: 'sm' | 'md' }) {
   const h = size === 'sm' ? 'h-1.5' : 'h-2';
   if (value === null) {
-    return <div className={`${h} rounded-full bg-gray-100 dark:bg-gray-800`} />;
+    return <div className={`${h} rounded-full bg-slate-100 dark:bg-slate-800`} />;
   }
   const color = value >= 80 ? 'bg-green-500' : value >= 60 ? 'bg-amber-400' : 'bg-red-400';
   return (
-    <div className={`${h} rounded-full bg-gray-100 dark:bg-gray-800`}>
+    <div className={`${h} rounded-full bg-slate-100 dark:bg-slate-800`}>
       <div className={`${h} rounded-full ${color} transition-all`} style={{ width: `${value}%` }} />
     </div>
   );
 }
 
 function StatusBadge({ value }: { value: number | null }) {
-  if (value === null) return <span className="text-xs text-gray-400">Not started</span>;
+  if (value === null) return <span className="text-xs text-slate-400">Not started</span>;
   if (value >= 80) return <span className="text-xs font-semibold text-green-700 dark:text-green-400">Mastered</span>;
   if (value >= 60) return <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">Needs work</span>;
   return <span className="text-xs font-semibold text-red-600 dark:text-red-400">Weak area</span>;
@@ -71,8 +71,8 @@ export default function Analytics() {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-amber-100 dark:bg-amber-900/30 mb-6">
             <Lock className="text-amber-600 dark:text-amber-400" size={36} />
           </div>
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">Performance Analytics</h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
+          <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-3">Performance Analytics</h1>
+          <p className="text-slate-600 dark:text-slate-300 mb-8">
             Detailed insights into your weak areas, module accuracy, and exam history are available on Haven Premium.
           </p>
           <Link
@@ -82,7 +82,7 @@ export default function Analytics() {
             <Crown size={18} />
             Upgrade to Premium
           </Link>
-          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
             <Link to="/dashboard" className="text-teal-600 hover:text-teal-700 dark:text-teal-400">← Back to Dashboard</Link>
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function Analytics() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-8 px-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-gray-950 py-8 px-4">
       <div className="mx-auto max-w-4xl space-y-8">
 
         {/* Header */}
@@ -136,8 +136,8 @@ export default function Analytics() {
             <BarChart3 className="text-amber-600 dark:text-amber-400" size={24} />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Performance Analytics</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Your weak areas, module accuracy, and exam history</p>
+            <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">Performance Analytics</h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Your weak areas, module accuracy, and exam history</p>
           </div>
         </div>
 
@@ -149,19 +149,19 @@ export default function Analytics() {
             { label: 'Exams taken', value: examsCount.toString(), sub: examsCount === 0 ? 'None yet' : `${passCount} passed` },
             { label: 'Exam pass rate', value: passRate !== null ? `${passRate}%` : '—', sub: examsCount > 0 ? `${passCount} of ${examsCount}` : 'No exams yet' },
           ].map(s => (
-            <div key={s.label} className="rounded-2xl bg-white dark:bg-gray-900 dark:border dark:border-gray-800 p-5 shadow-sm">
-              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{s.value}</div>
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-300">{s.label}</div>
-              <div className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{s.sub}</div>
+            <div key={s.label} className="rounded-2xl bg-white dark:bg-slate-900 dark:border dark:border-slate-800 p-5 shadow-sm">
+              <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{s.value}</div>
+              <div className="text-sm font-medium text-slate-600 dark:text-slate-300">{s.label}</div>
+              <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{s.sub}</div>
             </div>
           ))}
         </div>
 
         {/* Module breakdown */}
-        <div className="rounded-2xl bg-white dark:bg-gray-900 dark:border dark:border-gray-800 shadow-sm overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
-            <h2 className="font-semibold text-gray-900 dark:text-white">Module Breakdown</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Click a module to see lesson detail</p>
+        <div className="rounded-2xl bg-white dark:bg-slate-900 dark:border dark:border-slate-800 shadow-sm overflow-hidden">
+          <div className="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h2 className="font-semibold text-slate-900 dark:text-white">Module Breakdown</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Click a module to see lesson detail</p>
           </div>
 
           <div className="divide-y divide-gray-50 dark:divide-gray-800">
@@ -171,18 +171,18 @@ export default function Analytics() {
                 <div key={mod.slug}>
                   <button
                     onClick={() => toggleModule(mod.slug)}
-                    className="w-full text-left px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                    className="w-full text-left px-6 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
                   >
                     <div className="flex items-center gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-1.5">
-                          <span className="font-medium text-gray-900 dark:text-gray-100 text-sm">{mod.label}</span>
+                          <span className="font-medium text-slate-900 dark:text-gray-100 text-sm">{mod.label}</span>
                           <div className="flex items-center gap-3 ml-4 flex-shrink-0">
-                            <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                            <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                               {mod.accuracy !== null ? `${mod.accuracy}%` : '—'}
                             </span>
-                            <span className="text-xs text-gray-400">{mod.mastered}/{mod.lessons.length} mastered</span>
-                            {expanded ? <ChevronDown size={16} className="text-gray-400" /> : <ChevronRight size={16} className="text-gray-400" />}
+                            <span className="text-xs text-slate-400">{mod.mastered}/{mod.lessons.length} mastered</span>
+                            {expanded ? <ChevronDown size={16} className="text-slate-400" /> : <ChevronRight size={16} className="text-slate-400" />}
                           </div>
                         </div>
                         <AccuracyBar value={mod.accuracy} />
@@ -191,24 +191,24 @@ export default function Analytics() {
                   </button>
 
                   {expanded && (
-                    <div className="bg-gray-50 dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800">
+                    <div className="bg-slate-50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
                       {mod.lessons.map(lesson => {
                         const p = progress[lesson.id];
                         const accuracy = p ? pct(p.correct, p.attempted) : null;
                         return (
-                          <div key={lesson.id} className="px-8 py-3 border-b last:border-0 border-gray-100 dark:border-gray-800/50">
+                          <div key={lesson.id} className="px-8 py-3 border-b last:border-0 border-slate-100 dark:border-slate-800/50">
                             <div className="flex items-center justify-between gap-4 mb-1">
-                              <span className="text-sm text-gray-700 dark:text-gray-200 flex-1 min-w-0 truncate">{lesson.title}</span>
+                              <span className="text-sm text-slate-700 dark:text-slate-200 flex-1 min-w-0 truncate">{lesson.title}</span>
                               <div className="flex items-center gap-3 flex-shrink-0">
                                 <StatusBadge value={accuracy} />
                                 {accuracy !== null && (
-                                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 w-10 text-right">{accuracy}%</span>
+                                  <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 w-10 text-right">{accuracy}%</span>
                                 )}
                               </div>
                             </div>
                             <AccuracyBar value={accuracy} size="sm" />
                             {p && p.attempted > 0 && (
-                              <p className="text-xs text-gray-400 mt-1">{p.correct}/{p.attempted} correct</p>
+                              <p className="text-xs text-slate-400 mt-1">{p.correct}/{p.attempted} correct</p>
                             )}
                           </div>
                         );
@@ -222,14 +222,14 @@ export default function Analytics() {
         </div>
 
         {/* Exam history */}
-        <div className="rounded-2xl bg-white dark:bg-gray-900 dark:border dark:border-gray-800 shadow-sm overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
-            <h2 className="font-semibold text-gray-900 dark:text-white">Exam History</h2>
+        <div className="rounded-2xl bg-white dark:bg-slate-900 dark:border dark:border-slate-800 shadow-sm overflow-hidden">
+          <div className="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+            <h2 className="font-semibold text-slate-900 dark:text-white">Exam History</h2>
           </div>
 
           {examHistory.length === 0 ? (
             <div className="px-6 py-12 text-center">
-              <p className="text-gray-500 dark:text-gray-400 mb-4">No exams taken yet.</p>
+              <p className="text-slate-500 dark:text-slate-400 mb-4">No exams taken yet.</p>
               <Link to="/exam" className="inline-flex items-center gap-2 bg-purple-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-purple-700 transition-colors">
                 Start your first exam
               </Link>
@@ -252,10 +252,10 @@ export default function Analytics() {
                       {/* Details */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                          <span className="text-sm font-medium text-slate-900 dark:text-gray-100">
                             {attempt.correct}/{attempt.total} correct
                           </span>
-                          <div className="flex items-center gap-3 text-xs text-gray-400 flex-shrink-0">
+                          <div className="flex items-center gap-3 text-xs text-slate-400 flex-shrink-0">
                             {attempt.durationSeconds > 0 && (
                               <span className="flex items-center gap-1"><Clock size={12} />{formatDuration(attempt.durationSeconds)}</span>
                             )}
@@ -310,7 +310,7 @@ export default function Analytics() {
                         <Link
                           key={l.id}
                           to={`/practice/${l.id}`}
-                          className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-900 border border-red-200 dark:border-red-800 rounded-lg px-3 py-1.5 text-sm text-red-800 dark:text-red-300 hover:border-red-400 transition-colors"
+                          className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-red-200 dark:border-red-800 rounded-lg px-3 py-1.5 text-sm text-red-800 dark:text-red-300 hover:border-red-400 transition-colors"
                         >
                           {l.title}
                           <span className="font-semibold">{accuracy}%</span>

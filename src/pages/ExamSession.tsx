@@ -220,10 +220,10 @@ export default function ExamSession() {
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/40">
           <Trophy className="h-10 w-10 text-purple-600 dark:text-purple-300" />
         </div>
-        <h1 className="font-semibold text-gray-900 dark:text-white">
+        <h1 className="font-semibold text-slate-900 dark:text-white">
           {isDynamicLocked ? "Upgrade to Premium" : "Unlock Mock Exams"}
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-slate-600 dark:text-slate-300">
           {isDynamicLocked
             ? "Dynamic exams with unlimited randomised question sets are a Premium feature."
             : "Full mock exams are available on Plus and Premium plans. Upgrade to simulate the real Life in the UK test with timed, weighted questions."}
@@ -237,7 +237,7 @@ export default function ExamSession() {
         <div>
           <button
             onClick={() => navigate("/exam")}
-            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
           >
             ← Back to Exams
           </button>
@@ -256,24 +256,24 @@ export default function ExamSession() {
     return (
       <div ref={scrollRef} className="mx-auto max-w-2xl space-y-8 px-4 py-10">
         <div className="space-y-3 text-center">
-          <h1 className="font-semibold text-gray-900 dark:text-white">{examTitle}</h1>
-          <p className="text-gray-600 dark:text-gray-300">
+          <h1 className="font-semibold text-slate-900 dark:text-white">{examTitle}</h1>
+          <p className="text-slate-600 dark:text-slate-300">
             24 questions · 45 minutes · 75% to pass (18/24)
           </p>
           {isStaticExam && (
-            <p className="text-xs text-gray-400 dark:text-gray-500">
+            <p className="text-xs text-slate-400 dark:text-slate-500">
               Fixed question set — same 24 questions every time
             </p>
           )}
           {!isStaticExam && (
-            <p className="text-xs text-gray-400 dark:text-gray-500">
+            <p className="text-xs text-slate-400 dark:text-slate-500">
               Questions adapt to your weak areas — different every time
             </p>
           )}
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+        <div className="grid grid-cols-3 gap-4 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
           {[
             { label: "Questions", value: "24" },
             { label: "Time Limit", value: "45 min" },
@@ -283,7 +283,7 @@ export default function ExamSession() {
               <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
                 {value}
               </div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">{label}</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">{label}</div>
             </div>
           ))}
         </div>
@@ -291,20 +291,20 @@ export default function ExamSession() {
         {/* Mode selection — only for dynamic exams */}
         {!isStaticExam && (
           <div className="space-y-3">
-            <p className="font-semibold text-gray-900 dark:text-white">Choose exam mode</p>
+            <p className="font-semibold text-slate-900 dark:text-white">Choose exam mode</p>
             <div className="grid gap-4 sm:grid-cols-2">
               <button
                 onClick={() => setMode("strict")}
                 className={`rounded-xl border-2 p-5 text-left transition-all ${
                   mode === "strict"
                     ? "border-purple-500 bg-purple-50 dark:bg-purple-900/20"
-                    : "border-gray-200 bg-white hover:border-purple-300 dark:border-gray-700 dark:bg-gray-900"
+                    : "border-slate-200 bg-white hover:border-purple-300 dark:border-slate-700 dark:bg-slate-900"
                 }`}
               >
-                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
+                <div className="mb-1 font-semibold text-slate-900 dark:text-white">
                   Strict Mode
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
                   Auto-submits when 45 minutes expires. Real exam simulation.
                 </p>
               </button>
@@ -313,13 +313,13 @@ export default function ExamSession() {
                 className={`rounded-xl border-2 p-5 text-left transition-all ${
                   mode === "relaxed"
                     ? "border-teal-500 bg-teal-50 dark:bg-teal-900/20"
-                    : "border-gray-200 bg-white hover:border-teal-300 dark:border-gray-700 dark:bg-gray-900"
+                    : "border-slate-200 bg-white hover:border-teal-300 dark:border-slate-700 dark:bg-slate-900"
                 }`}
               >
-                <div className="mb-1 font-semibold text-gray-900 dark:text-white">
+                <div className="mb-1 font-semibold text-slate-900 dark:text-white">
                   Relaxed Mode
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
                   Warns when 5 minutes remain but never auto-submits. Finish at
                   your own pace.
                 </p>
@@ -344,7 +344,7 @@ export default function ExamSession() {
         <div className="text-center">
           <button
             onClick={() => navigate("/exam")}
-            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
           >
             ← Back to Exams
           </button>
@@ -362,7 +362,7 @@ export default function ExamSession() {
         {/* Header */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
               Question {currentIdx + 1} of {questions.length}
             </span>
             {/* Timer */}
@@ -372,7 +372,7 @@ export default function ExamSession() {
                   ? "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
                   : isWarning
                   ? "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
-                  : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                  : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"
               }`}
             >
               <Clock className="h-3.5 w-3.5" />
@@ -406,7 +406,7 @@ export default function ExamSession() {
                 } ${
                   answers[i] !== null
                     ? "bg-purple-500"
-                    : "bg-gray-200 dark:bg-gray-700"
+                    : "bg-slate-200 dark:bg-gray-700"
                 }`}
                 title={`Question ${i + 1}${answers[i] !== null ? " (answered)" : ""}`}
               />
@@ -415,8 +415,8 @@ export default function ExamSession() {
         </div>
 
         {/* Question card */}
-        <div className="rounded-2xl border-2 border-gray-200 bg-white p-6 space-y-5 dark:border-gray-800 dark:bg-gray-900">
-          <p className="leading-relaxed text-gray-900 dark:text-gray-100">
+        <div className="rounded-2xl border-2 border-slate-200 bg-white p-6 space-y-5 dark:border-slate-800 dark:bg-slate-900">
+          <p className="leading-relaxed text-slate-900 dark:text-gray-100">
             {currentQ.prompt}
           </p>
           <ul className="space-y-3">
@@ -427,7 +427,7 @@ export default function ExamSession() {
                   className={`w-full rounded-xl border-2 p-4 text-left font-medium transition-all ${
                     selectedAnswer === i
                       ? "border-purple-500 bg-purple-50 text-purple-900 dark:bg-purple-900/20 dark:text-purple-100"
-                      : "border-gray-200 hover:border-purple-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+                      : "border-slate-200 hover:border-purple-300 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
                   }`}
                 >
                   {opt}
@@ -442,7 +442,7 @@ export default function ExamSession() {
           <button
             onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
             disabled={currentIdx === 0}
-            className="flex items-center gap-1 rounded-xl border-2 border-gray-200 px-4 py-3 font-semibold text-gray-700 transition-all hover:bg-gray-50 disabled:opacity-40 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+            className="flex items-center gap-1 rounded-xl border-2 border-slate-200 px-4 py-3 font-semibold text-slate-700 transition-all hover:bg-slate-50 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             <ChevronLeft className="h-4 w-4" />
             Prev
@@ -451,7 +451,7 @@ export default function ExamSession() {
           {currentIdx < questions.length - 1 ? (
             <button
               onClick={() => setCurrentIdx(i => Math.min(questions.length - 1, i + 1))}
-              className="flex flex-1 items-center justify-center gap-1 rounded-xl bg-gray-900 px-4 py-3 font-semibold text-white transition-all hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600"
+              className="flex flex-1 items-center justify-center gap-1 rounded-xl bg-slate-900 px-4 py-3 font-semibold text-white transition-all hover:bg-slate-800 dark:bg-gray-700 dark:hover:bg-gray-600"
             >
               Next
               <ChevronRight className="h-4 w-4" />
@@ -476,21 +476,21 @@ export default function ExamSession() {
         </div>
 
         {/* Progress stat */}
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-center text-sm text-slate-500 dark:text-slate-400">
           {answeredCount} of {questions.length} answered
         </p>
 
         {/* Submit confirmation dialog */}
         {showSubmitDialog && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-            <div className="w-full max-w-sm rounded-2xl bg-white p-6 space-y-4 shadow-2xl dark:bg-gray-900">
+            <div className="w-full max-w-sm rounded-2xl bg-white p-6 space-y-4 shadow-2xl dark:bg-slate-900">
               <div className="flex items-center gap-3">
                 <AlertTriangle className="h-6 w-6 text-amber-500 flex-shrink-0" />
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-slate-900 dark:text-white">
                   {unansweredCount} question{unansweredCount !== 1 ? "s" : ""} unanswered
                 </h3>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 You have {unansweredCount} unanswered question
                 {unansweredCount !== 1 ? "s" : ""}. Unanswered questions will be
                 marked incorrect.
@@ -498,7 +498,7 @@ export default function ExamSession() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowSubmitDialog(false)}
-                  className="flex-1 rounded-xl border-2 border-gray-200 py-3 font-semibold text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200"
+                  className="flex-1 rounded-xl border-2 border-slate-200 py-3 font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200"
                 >
                   Go Back
                 </button>
@@ -569,7 +569,7 @@ export default function ExamSession() {
             {attempt.passed ? "PASS" : "FAIL"}
           </div>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Time taken: {mins}m {secs.toString().padStart(2, "0")}s
           </p>
         </div>
@@ -590,8 +590,8 @@ export default function ExamSession() {
         )}
 
         {/* Module breakdown */}
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-4 dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="font-semibold text-gray-900 dark:text-white">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 dark:border-slate-800 dark:bg-slate-900">
+          <h2 className="font-semibold text-slate-900 dark:text-white">
             Module Breakdown
           </h2>
           <div className="space-y-3">
@@ -601,7 +601,7 @@ export default function ExamSession() {
               return (
                 <div key={mod} className="space-y-1">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-700 dark:text-gray-200">
+                    <span className="text-slate-700 dark:text-slate-200">
                       {MODULE_LABELS[mod] ?? mod}
                     </span>
                     <span
@@ -616,7 +616,7 @@ export default function ExamSession() {
                       {score.correct}/{score.total} ({modPct}%)
                     </span>
                   </div>
-                  <div className="h-2 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                     <div
                       className={`h-2 rounded-full ${
                         modPct >= 75
@@ -651,14 +651,14 @@ export default function ExamSession() {
                   </span>
                   <Link
                     to={`/content/${MODULE_LESSON_MAP[mod] ?? ""}`}
-                    className="rounded-lg bg-white border border-amber-300 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-50 dark:bg-gray-900 dark:border-amber-700 dark:text-amber-300"
+                    className="rounded-lg bg-white border border-amber-300 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-50 dark:bg-slate-900 dark:border-amber-700 dark:text-amber-300"
                   >
                     <BookOpen className="inline h-3 w-3 mr-1" />
                     Study
                   </Link>
                   <Link
                     to={`/practice/${MODULE_LESSON_MAP[mod] ?? ""}/questions`}
-                    className="rounded-lg bg-white border border-amber-300 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-50 dark:bg-gray-900 dark:border-amber-700 dark:text-amber-300"
+                    className="rounded-lg bg-white border border-amber-300 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-50 dark:bg-slate-900 dark:border-amber-700 dark:text-amber-300"
                   >
                     Practice
                   </Link>
@@ -669,28 +669,28 @@ export default function ExamSession() {
         )}
 
         {/* Question review */}
-        <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 overflow-hidden">
+        <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 overflow-hidden">
           <button
             onClick={() => setShowReview(v => !v)}
             className="flex w-full items-center justify-between p-6 text-left"
           >
             <div>
-              <h2 className="font-semibold text-gray-900 dark:text-white">
+              <h2 className="font-semibold text-slate-900 dark:text-white">
                 Review All Answers
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-slate-500 dark:text-slate-400">
                 {attempt.correct} correct · {attempt.total - attempt.correct} incorrect
               </p>
             </div>
             {showReview ? (
-              <ChevronUp className="h-5 w-5 text-gray-400 flex-shrink-0" />
+              <ChevronUp className="h-5 w-5 text-slate-400 flex-shrink-0" />
             ) : (
-              <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+              <ChevronDown className="h-5 w-5 text-slate-400 flex-shrink-0" />
             )}
           </button>
 
           {showReview && (
-            <div className="border-t border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+            <div className="border-t border-slate-100 dark:border-slate-800 divide-y divide-gray-100 dark:divide-gray-800">
               {finalQuestions.map((q, qi) => {
                 const userAnswer = finalAnswers[qi];
                 const isCorrect = userAnswer === q.correct_index;
@@ -703,7 +703,7 @@ export default function ExamSession() {
                       <div
                         className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${
                           wasSkipped
-                            ? "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
+                            ? "bg-slate-200 text-slate-600 dark:bg-gray-700 dark:text-slate-300"
                             : isCorrect
                             ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
                             : "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
@@ -711,7 +711,7 @@ export default function ExamSession() {
                       >
                         {qi + 1}
                       </div>
-                      <p className="text-sm leading-relaxed text-gray-900 dark:text-gray-100">
+                      <p className="text-sm leading-relaxed text-slate-900 dark:text-gray-100">
                         {q.prompt}
                       </p>
                     </div>
@@ -729,7 +729,7 @@ export default function ExamSession() {
                                 ? "bg-green-50 text-green-900 border border-green-200 dark:bg-green-900/20 dark:text-green-200 dark:border-green-800"
                                 : isUserPick && !isCorrectOpt
                                 ? "bg-red-50 text-red-900 border border-red-200 dark:bg-red-900/20 dark:text-red-200 dark:border-red-800"
-                                : "text-gray-600 dark:text-gray-400"
+                                : "text-slate-600 dark:text-slate-400"
                             }`}
                           >
                             {isCorrectOpt ? (
@@ -755,7 +755,7 @@ export default function ExamSession() {
                       })}
 
                       {wasSkipped && (
-                        <p className="text-xs text-gray-400 dark:text-gray-500 italic">
+                        <p className="text-xs text-slate-400 dark:text-slate-500 italic">
                           Not answered
                         </p>
                       )}
@@ -828,7 +828,7 @@ function HistoryStrip({ history }: { history: ExamAttempt[] }) {
 
   return (
     <div className="space-y-2">
-      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+      <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
         Recent Exams
       </p>
       <div className="flex flex-wrap gap-2">

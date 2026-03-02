@@ -7,12 +7,12 @@ export default function Lesson1Content() {
         <h1 className="font-semibold tracking-tight text-[#0F4C5C]">
           {data.title}
         </h1>
-        <p className="text-gray-700">{data.overview}</p>
+        <p className="text-slate-700">{data.overview}</p>
       </header>
 
       <section>
         <h2 className="font-semibold mb-3">Key Facts to Remember</h2>
-        <ul className="list-disc pl-6 space-y-1 text-gray-800">
+        <ul className="list-disc pl-6 space-y-1 text-slate-800">
           {data.key_facts.map((f, i) => (
             <li key={i}>{f}</li>
           ))}
@@ -21,7 +21,7 @@ export default function Lesson1Content() {
 
       <section className="bg-white border rounded-xl p-4">
         <h3 className="font-semibold mb-2">Memory Hook</h3>
-        <p className="text-gray-700">{data.memory_hook}</p>
+        <p className="text-slate-700">{data.memory_hook}</p>
       </section>
 
       <section>
@@ -29,7 +29,7 @@ export default function Lesson1Content() {
         <ol className="list-decimal pl-6 space-y-4">
           {data.questions.map((q, i) => (
             <li key={i} className="bg-white border rounded-xl p-4">
-              <p className="text-gray-900">{q.prompt}</p>
+              <p className="text-slate-900">{q.prompt}</p>
               <ul className="list-disc pl-6 mt-2">
                 {q.options.map((opt, j) => (
                   <li key={j}>
@@ -48,9 +48,9 @@ export default function Lesson1Content() {
         <div className="grid md:grid-cols-2 gap-3">
           {data.flashcards.map(([q, a], i) => (
             <div key={i} className="bg-white border rounded-xl p-4">
-              <div className="text-sm text-gray-500">Q</div>
+              <div className="text-sm text-slate-500">Q</div>
               <div className="font-medium">{q}</div>
-              <div className="mt-2 text-sm text-gray-500">A</div>
+              <div className="mt-2 text-sm text-slate-500">A</div>
               <div>{a}</div>
             </div>
           ))}

@@ -21,7 +21,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
   return (
     <nav
       aria-label="Primary mobile navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur md:hidden dark:border-gray-800 dark:bg-gray-950/90"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur md:hidden dark:border-slate-800 dark:bg-gray-950/90"
     >
       <div
         className="mx-auto flex max-w-xl items-stretch justify-between gap-1 px-4 pt-2"
@@ -34,7 +34,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
               isActive || location.pathname.startsWith("/content")
                 ? "text-teal-600 dark:text-teal-300"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100",
+                : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100",
             ].join(" ")
           }
         >
@@ -50,7 +50,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
               (isActive || location.pathname.startsWith("/practice")) &&
                 !location.pathname.includes("/flashcards")
                 ? "text-teal-600 dark:text-teal-300"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100",
+                : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100",
             ].join(" ")
           }
         >
@@ -65,7 +65,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
               isActive || location.pathname.includes("/flashcards")
                 ? "text-teal-600 dark:text-teal-300"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100",
+                : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100",
             ].join(" ")
           }
         >
@@ -76,7 +76,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
         {isPremium && (
           <button
             onClick={onOpenPippa}
-            className="flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100"
+            className="flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100"
           >
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
             <span>Pippa</span>
@@ -90,7 +90,7 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
               isActive || location.pathname.startsWith("/dashboard")
                 ? "text-teal-600 dark:text-teal-300"
-                : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100",
+                : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100",
             ].join(" ")
           }
         >
