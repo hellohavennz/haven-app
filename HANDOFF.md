@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-02 (session 3)_
+_Last updated: 2026-03-02 (session 4)_
 
 ---
 
@@ -287,11 +287,20 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
+## Session 4 changes (2026-03-02)
+
+- **Dashboard exam widget mobile** — Empty state ("No exams yet") now stacks `flex-col` on mobile, `sm:flex-row` on desktop. Prevents icon + text + CTA from cramming onto one line.
+- **Key Fact tile icon** — Removed clipboard SVG from the "Key Fact" heading in `src/components/LessonContent.tsx`. Label remains, icon gone.
+- **Navbar logo** — Logo now links to `/dashboard` when the user is on `/content`, `/practice`, or `/flashcards`; links to `/` (marketing homepage) everywhere else. Logic in `src/components/Navbar.tsx` using `useLocation`.
+- **Module tile small locks** — Removed `h-3 w-3` `<Lock>` icons from beside "Module X" label on locked tiles in `ContentIndex.tsx` and `PracticeIndex.tsx`. Larger lock icon in tile corner/body unchanged.
+
+---
+
 ## Next session — tasks queued
 
-No queued tasks as of session 3. All items from the March 2026 backlog are complete.
+No queued tasks as of session 4.
 
 Potential future work (not yet requested):
-- PWA manifest `theme-color` still uses old teal hex `#0d9488` — could update to sage `#7B9E87` for PWA title bar on Android
-- `study_goal` column in Supabase `profiles` table is now unused (field removed from app) — could be dropped via migration if desired
+- PWA manifest `theme-color` still uses old teal hex `#0d9488` — could update for PWA title bar on Android
+- `study_goal` column in Supabase `profiles` table is now unused — could be dropped via migration
 - Resend domain verification for exam reminder emails (operational prerequisite, not a code change)
