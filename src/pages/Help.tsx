@@ -131,7 +131,7 @@ export default function Help() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setShowScrollTop(!entry.isIntersecting),
-      { threshold: 0 }
+      { root: document.querySelector('main'), threshold: 0 }
     );
     if (sentinelRef.current) observer.observe(sentinelRef.current);
     return () => observer.disconnect();
@@ -140,7 +140,7 @@ export default function Help() {
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
       {/* Sentinel: observed by IntersectionObserver to detect scroll position */}
-      <div ref={sentinelRef} className="absolute top-0" aria-hidden="true" />
+      <div ref={sentinelRef} aria-hidden="true" />
       <div className="space-y-4 text-center">
         <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700 dark:bg-teal-900/30 dark:text-teal-100">
           <HelpCircle className="h-4 w-4" />
