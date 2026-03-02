@@ -240,9 +240,6 @@ export default function ContentIndex() {
                         <p className="text-small uppercase tracking-[0.35em] text-teal-500">
                           Module {module.order + 1}
                         </p>
-                        {isLocked && (
-                          <Lock className="h-3 w-3 text-slate-400 dark:text-slate-500" />
-                        )}
                       </div>
                       <h3 className="mt-2 font-semibold text-slate-900 dark:text-gray-100">
                         {module.title}
