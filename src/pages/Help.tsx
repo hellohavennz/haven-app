@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePageTitle } from '../hooks/usePageTitle';
 import {
   BookOpen,
@@ -11,6 +11,7 @@ import {
   Mail,
   Flag,
   BookMarked,
+  ArrowUp,
 } from "lucide-react";
 import { keyFactGroups } from '../data/keyFacts';
 
@@ -121,6 +122,13 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 export default function Help() {
   usePageTitle('Help & Support', 'Answers to common questions about Haven Study, plus contact details if you need more support.');
   const [activeTab, setActiveTab] = useState<'help' | 'facts'>('help');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
@@ -344,6 +352,17 @@ export default function Help() {
         </ul>
       </div>
       </div>
+      )}
+
+      {/* Scroll to top */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-teal-600 text-white shadow-lg transition hover:bg-teal-700"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </button>
       )}
     </div>
   );

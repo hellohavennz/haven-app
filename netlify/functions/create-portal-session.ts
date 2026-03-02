@@ -39,14 +39,33 @@ export const handler: Handler = async (event) => {
 
   const siteUrl = process.env.URL ?? 'http://localhost:8888';
 
-  const portalSession = await stripe.billingPortal.sessions.create({
-    customer: customerId,
-    return_url: `${siteUrl}/uk/profile`,
-  });
+  try {
+    const portalSession = await stripe.billingPortal.sessions.create({
+      customer: customerId,
+      return_url: `${siteUrl}/uk/profile`,
+    });
 
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ url: portalSession.url }),
-  };
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: portalSession.url }),
+    };
+  } catch (err: any) {
+    // Stripe customer no longer exists (e.g. test/live mode mismatch or deleted customer)
+    if (err?.code === 'resource_missing') {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          error: 'billing_account_not_found',
+          message: 'We could not find your billing account. Please contact support at support@haven.study so we can fix this for you.',
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      };
+    }
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'stripe_error', message: err?.message ?? 'Unexpected error' }),
+      headers: { 'Content-Type': 'application/json' },
+    };
+  }
 };

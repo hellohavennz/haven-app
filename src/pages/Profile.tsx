@@ -386,8 +386,8 @@ export default function Profile() {
       });
 
       if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || 'Failed to open billing portal');
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.message || 'Failed to open billing portal');
       }
 
       const { url } = await res.json();
