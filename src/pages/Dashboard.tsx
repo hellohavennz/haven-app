@@ -755,7 +755,7 @@ function ExamWidget({
         </>
       ) : (
         /* Empty state */
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-purple-100 dark:bg-purple-900/30">
               <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-400" />
@@ -765,7 +765,7 @@ function ExamWidget({
               <p className="text-sm text-slate-500 dark:text-slate-400">24 questions · 45 min · 75% to pass</p>
             </div>
           </div>
-          <div className="flex-shrink-0">
+          <div className="sm:flex-shrink-0">
             <Cta />
           </div>
         </div>

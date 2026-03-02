@@ -154,11 +154,7 @@ const KeyFactTile: React.FC<{ facts: string[] }> = ({ facts }) => {
       className="bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 rounded-xl p-6 border-2 border-teal-300 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all duration-300 my-8 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 dark:border-teal-500/40"
     >
       <div className="flex items-start justify-between mb-3">
-        <h3 className="font-semibold text-teal-900 dark:text-teal-100 flex items-center">
-          <svg className="w-5 h-5 mr-2 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-            <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-          </svg>
+        <h3 className="font-semibold text-teal-900 dark:text-teal-100">
           Key Fact
         </h3>
         {facts.length > 1 && (

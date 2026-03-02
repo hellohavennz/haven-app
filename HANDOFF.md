@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-02-28 (session 2)_
+_Last updated: 2026-03-02 (session 3)_
 
 ---
 
@@ -275,25 +275,23 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Resit one-per-account enforcement** — ✅ Enforced via partial unique indexes (`migration 000009`). One approved per user (lifetime), one pending at a time. Rejected users can resubmit.
 - **PWA Phase 2** — ✅ Built. Three-layer offline strategy: (1) Workbox `runtimeCaching` (`StaleWhileRevalidate`, 7-day TTL) caches all 5 Supabase content API endpoints transparently after first online visit; (2) `content-snapshot-v1` in localStorage provides a second fallback for cold service worker; (3) `syncProgressOnReconnect()` batch-upserts all localStorage progress to Supabase on reconnect. Offline banner shown in `RootLayout` when `navigator.onLine` is false.
 - **Email reminders** — ✅ Built. Netlify Scheduled Function (`send-exam-reminders.ts`) runs daily at 08:00 UTC. Sends 7-day and 1-day reminder emails via Resend. Flags on `profiles` prevent duplicates; flags reset when exam date changes. **Requires setup: add `RESEND_API_KEY` to Netlify env and verify `haven.study` as a sending domain at resend.com.**
+- **Visual rebrand** — ✅ Done (session 3, v2). Design v2 palette: teal-500 `#5F9D86` (brand), amber-500 `#C9973F` (gold accent), cream `#FAF7F2` (page bg), app-bg `#F4F7F5`, warm green-grey slate neutrals. Fonts: Montserrat (headings 600/700) + Source Sans 3 (body/UI 400/600/700). Rollback tag: `pre-design-v2` (commit `07ea806`). Dark mode unchanged. See MEMORY.md design system section for full palette.
+- **Instagram landing page** — ✅ Done (session 3). Standalone at `/uk/instagram`. No app navbar/footer. Prices: Free £0 / Plus £4.99/mo / Premium £24.99/6mo. Route is top-level in `main.tsx`, outside `RootLayout`.
+- **Monthly-rotating exam questions** — ✅ Done (session 3). Static exam 1 and 2 now use a month+year component in their seed so questions rotate each calendar month while remaining deterministic within a month.
+- **"handbook" / "chapters" language** — ✅ Done (session 3). UI/marketing copy updated to use "test syllabus" / "modules". Factual lesson content about the official book left intact. Chapter intros updated to say "module".
+- **Homepage syllabus alignment callout** — ✅ Done (session 3). Added `ShieldCheck` section between stats bar and features on `App.tsx`, plus `✓ Built around the official test syllabus` trust badge in hero strip.
+- **Mobile study menu** — ✅ Fixed (session 3). Tapping a module heading on mobile now only expands/collapses the list; drawer stays open. Desktop still auto-navigates to first lesson on expand. Signal: `onNavigate` prop defined = mobile context.
+- **Dashboard mobile header** — ✅ Fixed (session 3). Header now stacks vertically on mobile (`flex-col sm:flex-row`). Upgrade button text shortened to "Upgrade to Plus".
+- **iOS date picker** — ✅ Fixed (session 3). `overflow-hidden` on tile container; `[color-scheme:light] dark:[color-scheme:dark]` on the `<input type="date">` prevents the blank-input / overflow issue on iOS Safari.
+- **Onboarding study goal step removed** — ✅ Done (session 3). Step 2 (study time dedication) removed from `Welcome.tsx`. Onboarding is now 2 steps: exam date → all set. `studyGoal` made optional in `OnboardingData` type for backward-compat; field no longer written to localStorage or Supabase. `Dashboard.tsx` pacing widget simplified to show raw lessons/day needed.
 
 ---
 
-## Next session — tasks queued (March 2026)
+## Next session — tasks queued
 
-### 1. Visual rebrand — calm warm aesthetic
-User has a reference HTML file (Instagram landing page design) with a colour palette and fonts they like.
+No queued tasks as of session 3. All items from the March 2026 backlog are complete.
 
-- Replace the current teal-dominant palette with a calm, warm scheme based on the reference file
-- Update fonts project-wide to match the reference file
-- Keep colour variation where needed (highlights, CTAs, stat panels, badges, progress bars) — use a complementary palette, not monochrome
-- Apply consistently across ALL pages (dark mode variants too)
-- Reference file: user will paste the HTML directly into chat
-
-### 2. Instagram landing page — new route
-- Standalone marketing page at `/uk/instagram` (or `/uk/ig`)
-- Based on the calm warm reference HTML file the user provides
-- Prices must match current tiers: Free £0 / Plus £4.99/mo / Premium £24.99/6mo
-- Optimised for mobile (Instagram traffic is mostly mobile)
-- Same calm warm aesthetic as the rebrand above
-
-**Status: waiting for user to paste the reference HTML file into chat.**
+Potential future work (not yet requested):
+- PWA manifest `theme-color` still uses old teal hex `#0d9488` — could update to sage `#7B9E87` for PWA title bar on Android
+- `study_goal` column in Supabase `profiles` table is now unused (field removed from app) — could be dropped via migration if desired
+- Resend domain verification for exam reminder emails (operational prerequisite, not a code change)
