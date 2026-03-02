@@ -45,19 +45,19 @@ export default {
           900: '#17201E',
           950: '#0F1614',
         },
-        // Practice section — softer blue
+        // Practice section — muted periwinkle blue
         blue: {
-          50:  '#F2F6FF',
-          100: '#E5EDFF',
-          200: '#CCDAFF',
-          300: '#99B5FF',
-          400: '#6690F0',
-          500: '#3B6FD8',
-          600: '#2F5BC7',
-          700: '#2449A3',
-          800: '#1C3780',
-          900: '#152660',
-          950: '#0D1A40',
+          50:  '#F0F4FD',
+          100: '#DDE7F9',
+          200: '#BACEF3',
+          300: '#8FAAEB',
+          400: '#6589DA',
+          500: '#4A6FC9',
+          600: '#3C5DB5',
+          700: '#2F4C96',
+          800: '#243B78',
+          900: '#1A2C5B',
+          950: '#0F1B3A',
         },
         // Orange — warm bronze (unchanged)
         orange: {
