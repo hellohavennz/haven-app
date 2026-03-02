@@ -89,7 +89,7 @@ export default function PracticeFlashcards() {
         {showUpgradeCard ? (
           /* Upgrade prompt after sample cards */
           <div className="space-y-8">
-            <div className="relative h-96 rounded-3xl flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-dashed border-slate-600">
+            <div className="relative h-96 rounded-3xl flex items-center justify-center p-8 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-dashed border-slate-600">
               <div className="text-center space-y-5">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl">
                   <Lock className="text-white" size={32} />

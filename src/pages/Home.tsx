@@ -127,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="rounded-3xl bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-12 text-white md:px-12">
+      <section className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 px-6 py-12 text-white md:px-12">
         <div className="mx-auto max-w-3xl text-center space-y-6">
           <h2 className="font-semibold">Simple Path to Success</h2>
           <p className="text-slate-300">

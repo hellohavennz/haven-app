@@ -241,7 +241,7 @@ export default function App() {
       </section>
 
       <section className="max-w-6xl mx-auto">
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500 rounded-full blur-3xl opacity-20"></div>
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>

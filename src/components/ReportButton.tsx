@@ -100,7 +100,7 @@ export default function ReportButton({ lessonId, contentType, contentRef }: Prop
                   onChange={e => setMessage(e.target.value)}
                   placeholder="Describe the issue…"
                   rows={4}
-                  className="w-full rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm text-slate-900 dark:text-gray-100 placeholder-gray-400 focus:border-teal-400 focus:outline-none resize-none"
+                  className="w-full rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 focus:border-teal-400 focus:outline-none resize-none"
                   autoFocus
                 />
                 <div className="flex gap-3">
