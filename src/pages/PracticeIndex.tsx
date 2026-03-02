@@ -171,18 +171,18 @@ export default function PracticeIndex() {
   }, [modules, progressData]);
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-16 dark:bg-slate-950">
+    <div className="min-h-screen bg-blue-50 pb-16 dark:bg-slate-950">
       <div className="mx-auto w-full max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
-        <header className="rounded-3xl bg-slate-600 p-8 text-white shadow-lg">
+        <header className="rounded-3xl bg-blue-600 p-8 text-white shadow-lg">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.35em] text-slate-200">
+              <p className="text-sm uppercase tracking-[0.35em] text-blue-100">
                 Practice dashboard
               </p>
               <h1 className="font-semibold">
                 Track your quiz mastery across every module
               </h1>
-              <p className="max-w-xl text-sm text-slate-100/90 md:text-base">
+              <p className="max-w-xl text-sm text-blue-50/90 md:text-base">
                 See how many questions you&apos;ve attempted, where you&apos;re mastering the material,
                 and jump straight into the next lesson that needs review.
               </p>
@@ -191,9 +191,9 @@ export default function PracticeIndex() {
             {nextLesson && (
               <Link
                 to={`/practice/${nextLesson.id}`}
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-md transition hover:text-slate-900"
+                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-md transition hover:text-blue-900"
               >
-                <Brain className="h-5 w-5 text-slate-500" />
+                <Brain className="h-5 w-5 text-blue-500" />
                 <span>
                   Continue practice: <span className="font-semibold">{nextLesson.title}</span>
                 </span>
@@ -204,7 +204,7 @@ export default function PracticeIndex() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-blue-100">
                 <span>Questions attempted</span>
                 <span>{attemptedQuestions}</span>
               </div>
@@ -220,7 +220,7 @@ export default function PracticeIndex() {
             </div>
 
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-blue-100">
                 <span>Accuracy</span>
                 <span>{overallAccuracyPercent !== null ? `${overallAccuracyPercent}%` : "—"}</span>
               </div>
@@ -231,7 +231,7 @@ export default function PracticeIndex() {
             </div>
 
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-blue-100">
                 <span>Lessons mastered</span>
                 <span>
                   {masteredLessons}/{lessonsWithQuestions.length}
@@ -255,8 +255,8 @@ export default function PracticeIndex() {
 
         <section className="mt-10 space-y-6">
           <div className="flex items-center gap-3">
-            <BarChart3 className="h-5 w-5 text-sky-600" />
-            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Module progress</h2>
+            <BarChart3 className="h-5 w-5 text-blue-600" />
+            <h2 className="font-semibold text-blue-900 dark:text-blue-100">Module progress</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -275,14 +275,14 @@ export default function PracticeIndex() {
               return (
                 <article
                   key={module.slug}
-                  className={`group relative overflow-hidden rounded-3xl border bg-white p-6 shadow-sm transition hover:shadow-lg dark:bg-gray-900 dark:border-gray-800 dark:hover:shadow-gray-900/40 ${isLocked ? 'border-gray-200 opacity-75 dark:border-gray-800/70' : 'border-slate-200'}`}
+                  className={`group relative overflow-hidden rounded-3xl border bg-white p-6 shadow-sm transition hover:shadow-lg dark:bg-gray-900 dark:border-gray-800 dark:hover:shadow-gray-900/40 ${isLocked ? 'border-gray-200 opacity-75 dark:border-gray-800/70' : 'border-blue-100'}`}
                 >
-                  <div className={`absolute inset-x-0 top-0 h-1.5 ${isLocked ? 'bg-gray-300' : 'bg-slate-400'}`} />
+                  <div className={`absolute inset-x-0 top-0 h-1.5 ${isLocked ? 'bg-gray-300' : 'bg-blue-400'}`} />
                   <div className="space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-1 flex-1">
                         <div className="flex items-center gap-2">
-                          <p className="text-small uppercase tracking-[0.35em] text-slate-400">
+                          <p className="text-small uppercase tracking-[0.35em] text-blue-400">
                             Module
                           </p>
                           {isLocked && <Lock className="h-3 w-3 text-gray-400" />}
@@ -294,7 +294,7 @@ export default function PracticeIndex() {
                             : "Practice questions coming soon"}
                         </p>
                       </div>
-                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${isLocked ? 'bg-gray-100 text-gray-400 dark:bg-gray-800/60 dark:text-gray-500' : 'bg-slate-100 text-slate-500 dark:bg-gray-800 dark:text-slate-200'}`}>
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${isLocked ? 'bg-gray-100 text-gray-400 dark:bg-gray-800/60 dark:text-gray-500' : 'bg-blue-50 text-blue-500 dark:bg-blue-900/20 dark:text-blue-300'}`}>
                         {isLocked ? <Lock className="h-6 w-6" /> : <Brain className="h-6 w-6" />}
                       </div>
                     </div>
@@ -319,24 +319,24 @@ export default function PracticeIndex() {
                     ) : hasPractice ? (
                       <div className="space-y-4">
                         <div>
-                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-blue-500 dark:text-blue-300">
                             <span>Question coverage</span>
                             <span>{coveragePercent}%</span>
                           </div>
-                          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-blue-100 dark:bg-blue-900/30">
                             <div
-                              className="h-2 rounded-full bg-slate-600"
+                              className="h-2 rounded-full bg-blue-500"
                               style={{ width: `${coveragePercent}%` }}
                             />
                           </div>
                         </div>
 
                         <div>
-                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                          <div className="flex items-center justify-between text-small uppercase tracking-wide text-blue-500 dark:text-blue-300">
                             <span>Accuracy</span>
                             <span>{accuracyPercent !== null ? `${accuracyPercent}%` : "—"}</span>
                           </div>
-                          <div className="mt-2 flex items-center gap-2 text-small text-slate-500 dark:text-slate-300">
+                          <div className="mt-2 flex items-center gap-2 text-small text-blue-500 dark:text-blue-300">
                             <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                             <span>
                               {summary.masteredCount}/{summary.lessons.length} lessons mastered
@@ -344,14 +344,14 @@ export default function PracticeIndex() {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-900">
-                          <p className="text-small uppercase tracking-wide text-slate-500 dark:text-slate-300">
+                        <div className="rounded-2xl bg-blue-50 p-4 dark:bg-blue-950">
+                          <p className="text-small uppercase tracking-wide text-blue-500 dark:text-blue-300">
                             Next focus
                           </p>
-                          <div className="mt-1 flex items-start gap-2 text-sm text-slate-700 dark:text-slate-200">
+                          <div className="mt-1 flex items-start gap-2 text-sm text-blue-700 dark:text-blue-200">
                             {nextUpLesson ? (
                               <>
-                                <Circle className="mt-0.5 h-3 w-3 flex-shrink-0 text-slate-400" />
+                                <Circle className="mt-0.5 h-3 w-3 flex-shrink-0 text-blue-300" />
                                 <span>{nextUpLesson.title}</span>
                               </>
                             ) : (
@@ -360,7 +360,7 @@ export default function PracticeIndex() {
                           </div>
 
                           <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-                            <span className="rounded-full bg-slate-200 px-3 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-100">
+                            <span className="rounded-full bg-blue-100 px-3 py-1 text-blue-700 dark:bg-blue-900/30 dark:text-blue-100">
                               {summary.startedCount} started
                             </span>
                             <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700 dark:bg-emerald-200/20 dark:text-emerald-300">
@@ -371,7 +371,7 @@ export default function PracticeIndex() {
                           {nextUpLesson && summary.callToActionLabel && (
                             <Link
                               to={`/practice/${nextUpLesson.id}`}
-                              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 transition hover:text-cyan-600 dark:text-sky-300 dark:hover:text-cyan-300"
+                              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
                             >
                               {summary.callToActionLabel}
                               <ArrowRight className="h-4 w-4" />
@@ -380,9 +380,9 @@ export default function PracticeIndex() {
                         </div>
                       </div>
                     ) : (
-                      <div className="rounded-2xl bg-slate-50 p-6 text-sm text-slate-600 dark:bg-slate-900 dark:text-slate-300">
-                        <p className="text-slate-700 dark:text-slate-100">Practice sets in progress</p>
-                        <p className="mt-2 text-slate-500 dark:text-slate-300">
+                      <div className="rounded-2xl bg-blue-50 p-6 text-sm text-blue-700 dark:bg-blue-950 dark:text-blue-200">
+                        <p className="text-blue-800 dark:text-blue-100">Practice sets in progress</p>
+                        <p className="mt-2 text-blue-500 dark:text-blue-200">
                           We&apos;re preparing quizzes and flashcards for this module. Check back soon to train here.
                         </p>
                       </div>

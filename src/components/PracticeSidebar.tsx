@@ -124,26 +124,26 @@ export default function PracticeSidebar({
   return (
     <aside
       aria-label="Practice navigation"
-      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-slate-200 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-slate-100 ${className}`}
+      className={`h-screen w-72 flex-shrink-0 overflow-y-auto border-r border-blue-100 bg-white text-slate-900 md:sticky md:top-0 scrollbar-hide dark:border-gray-800 dark:bg-gray-900 dark:text-slate-100 ${className}`}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
       }}
     >
       <div className="space-y-6 p-4 pb-32">
-        <div className="rounded-2xl bg-slate-600 p-5 text-white shadow-sm">
+        <div className="rounded-2xl bg-blue-600 p-5 text-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20">
               <Target className="h-5 w-5" />
             </div>
             <div className="text-right">
               <div className="text-2xl font-semibold">{masteredLessons}</div>
-              <div className="text-small text-slate-200">Mastered</div>
+              <div className="text-small text-blue-100">Mastered</div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-small text-slate-200">
+            <div className="flex items-center justify-between text-small text-blue-100">
               <span>Progress</span>
               <span>{coveragePercent}%</span>
             </div>
@@ -177,19 +177,19 @@ export default function PracticeSidebar({
                     isLocked
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
-                      ? "bg-slate-100 text-slate-900 dark:bg-slate-800/40 dark:text-slate-100"
-                      : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
+                      ? "bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-100"
+                      : "text-slate-700 hover:bg-blue-50 dark:text-slate-200 dark:hover:bg-blue-900/10"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     {isLocked ? (
                       <Lock className="h-4 w-4 flex-shrink-0 text-gray-400" />
                     ) : isExpanded ? (
-                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-slate-500" />
+                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-blue-500" />
                     ) : (
-                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-slate-400" />
+                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-blue-300" />
                     )}
-                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-slate-500'}`} />
+                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-blue-500'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
                       <div className="text-small text-slate-500 dark:text-slate-300">
@@ -211,8 +211,8 @@ export default function PracticeSidebar({
                           to={`/practice/${lesson.id}`}
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
-                              ? "bg-slate-200 font-medium text-slate-900 dark:bg-slate-800/60 dark:text-slate-100"
-                              : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
+                              ? "bg-blue-100 font-medium text-blue-900 dark:bg-blue-900/30 dark:text-blue-100"
+                              : "text-slate-700 hover:bg-blue-50 dark:text-slate-200 dark:hover:bg-blue-900/10"
                           }`}
                           onClick={onNavigate}
                         >
