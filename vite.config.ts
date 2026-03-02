@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['haven-icons/favicon.ico', 'haven-icons/icon-512x512.png'],
+      includeAssets: ['haven-icons/favicon.ico', 'haven-icons/icon-192x192.png', 'haven-icons/icon-512x512.png'],
       manifest: {
         name: 'Haven Study',
         short_name: 'Haven',
@@ -19,6 +19,7 @@ export default defineConfig({
         start_url: '/uk/',
         scope: '/uk/',
         icons: [
+          { src: 'haven-icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
           { src: 'haven-icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
           { src: 'haven-icons/icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
