@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePageTitle } from '../hooks/usePageTitle';
 import {
   BookOpen,
@@ -123,15 +123,24 @@ export default function Help() {
   usePageTitle('Help & Support', 'Answers to common questions about Haven Study, plus contact details if you need more support.');
   const [activeTab, setActiveTab] = useState<'help' | 'facts'>('help');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
+  // The scroll container is <main overflow-y-auto> in RootLayout, not window.
+  // Use IntersectionObserver on a sentinel at the top of the page — fires
+  // whenever the sentinel leaves the viewport regardless of which element scrolls.
   useEffect(() => {
-    const onScroll = () => setShowScrollTop(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowScrollTop(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    if (sentinelRef.current) observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
+      {/* Sentinel: observed by IntersectionObserver to detect scroll position */}
+      <div ref={sentinelRef} className="absolute top-0" aria-hidden="true" />
       <div className="space-y-4 text-center">
         <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-700 dark:bg-teal-900/30 dark:text-teal-100">
           <HelpCircle className="h-4 w-4" />
@@ -357,7 +366,7 @@ export default function Help() {
       {/* Scroll to top */}
       {showScrollTop && (
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' })}
           className="fixed bottom-24 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-teal-600 text-white shadow-lg transition hover:bg-teal-700"
           aria-label="Back to top"
         >
