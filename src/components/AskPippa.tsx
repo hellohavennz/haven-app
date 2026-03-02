@@ -60,6 +60,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
   const [error, setError] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Only scroll to bottom once a conversation has started — not on initial welcome message
@@ -70,6 +71,38 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
 
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 100);
+  }, [isOpen]);
+
+  // iOS Safari shifts fixed elements when the keyboard opens instead of
+  // resizing the viewport. Use the visualViewport API to track the actual
+  // visible area and resize the panel to match, keeping the header and
+  // welcome message visible above the keyboard at all times.
+  useEffect(() => {
+    if (!isOpen) return;
+    const vv = window.visualViewport;
+    if (!vv) return;
+
+    const syncViewport = () => {
+      if (window.innerWidth >= 768) return; // desktop: CSS handles sizing
+      const el = panelRef.current;
+      if (!el) return;
+      el.style.top = `${vv.offsetTop}px`;
+      el.style.height = `${vv.height}px`;
+    };
+
+    syncViewport();
+    vv.addEventListener("resize", syncViewport);
+    vv.addEventListener("scroll", syncViewport);
+
+    return () => {
+      vv.removeEventListener("resize", syncViewport);
+      vv.removeEventListener("scroll", syncViewport);
+      // Reset so CSS takes over again when closed/reopened
+      if (panelRef.current) {
+        panelRef.current.style.top = "";
+        panelRef.current.style.height = "";
+      }
+    };
   }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -135,16 +168,16 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           Desktop → fixed popup anchored bottom-right  */}
       {isOpen && (
         <div
+          ref={panelRef}
           className={[
             // shared
             "fixed z-50 flex flex-col bg-white dark:bg-slate-900",
-            // mobile: full screen — use 100dvh so panel shrinks when keyboard opens,
-            // keeping the header and welcome message visible above the keyboard
-            "inset-x-0 top-0 h-[100dvh]",
+            // mobile: full screen — JS (visualViewport) overrides top/height
+            // to track the visible area as the keyboard opens/closes
+            "inset-x-0 top-0 h-screen",
             // desktop: popup panel
             "md:inset-auto md:bottom-6 md:right-3 md:h-[560px] md:w-[calc(100vw-24px)] md:max-w-[380px] md:rounded-2xl md:border md:border-slate-200 md:shadow-2xl dark:md:border-slate-700",
           ].join(" ")}
-          style={{ maxHeight: undefined }}
         >
           {/* Header */}
           <div className="flex flex-shrink-0 items-center justify-between rounded-none bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white md:rounded-t-2xl">
