@@ -140,7 +140,7 @@ export default function ContentIndex() {
   return (
     <div className="min-h-screen bg-slate-50 pb-16 text-slate-900 transition-colors dark:bg-gray-950 dark:text-slate-100">
       <div className="mx-auto w-full max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
-        <header className="rounded-3xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 p-8 text-white shadow-lg dark:from-teal-600 dark:via-emerald-700 dark:to-emerald-800">
+        <header className="rounded-3xl bg-teal-600 dark:bg-teal-700 p-8 text-white shadow-lg">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.35em] text-teal-100">
@@ -157,9 +157,9 @@ export default function ContentIndex() {
             {nextLesson && (
               <Link
                 to={`/content/${nextLesson.id}`}
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-teal-700 shadow-md transition hover:text-emerald-600"
+                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-teal-700 shadow-md transition hover:text-teal-800"
               >
-                <Sparkles className="h-5 w-5 text-emerald-500" />
+                <Sparkles className="h-5 w-5 text-teal-500" />
                 <span>
                   Continue: <span className="font-semibold">{nextLesson.title}</span>
                 </span>
@@ -297,7 +297,7 @@ export default function ContentIndex() {
                           {startedCount === 0 ? "Not started" : "Keep going"}
                         </span>
                         <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 shadow-sm dark:bg-gray-900">
-                          <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                          <CheckCircle2 className="h-3 w-3 text-teal-500" />
                           {masteredCount} mastered
                         </span>
                       </div>
@@ -318,7 +318,7 @@ export default function ContentIndex() {
                   ) : nextUpLesson ? (
                     <Link
                       to={`/content/${nextUpLesson.id}`}
-                      className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 transition hover:text-emerald-600 dark:text-emerald-400"
+                      className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 transition hover:text-teal-800 dark:text-emerald-400"
                     >
                       {callToActionLabel}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

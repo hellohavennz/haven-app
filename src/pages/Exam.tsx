@@ -144,7 +144,7 @@ export default function Exam() {
         </div>
       )}
 
-      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
+      <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-teal-50 to-teal-100 p-8 dark:border-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="space-y-2">
             <h3 className="font-semibold text-gray-900 dark:text-white">
@@ -164,7 +164,7 @@ export default function Exam() {
             </Link>
             <Link
               to="/practice"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
             >
               Practice Questions
               <ArrowRight className="h-5 w-5" />
@@ -240,7 +240,7 @@ function ExamCard({
         </div>
       )}
 
-      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-400">
         {isDynamic ? (
           <Shuffle className="h-7 w-7 text-white" />
         ) : (
@@ -274,7 +274,7 @@ function ExamCard({
       ) : hasAccess ? (
         <Link
           to={examLink}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg mt-auto"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-500 hover:bg-purple-600 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg mt-auto"
         >
           Start Exam
           <ArrowRight className="h-4 w-4" />

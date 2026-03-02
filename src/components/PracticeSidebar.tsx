@@ -131,19 +131,19 @@ export default function PracticeSidebar({
       }}
     >
       <div className="space-y-6 p-4 pb-32">
-        <div className="rounded-2xl bg-teal-600 p-5 text-white shadow-sm">
+        <div className="rounded-2xl bg-slate-600 p-5 text-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20">
               <Target className="h-5 w-5" />
             </div>
             <div className="text-right">
               <div className="text-2xl font-semibold">{masteredLessons}</div>
-              <div className="text-small text-teal-100">Mastered</div>
+              <div className="text-small text-slate-200">Mastered</div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-small text-teal-100">
+            <div className="flex items-center justify-between text-small text-slate-200">
               <span>Progress</span>
               <span>{coveragePercent}%</span>
             </div>
@@ -177,7 +177,7 @@ export default function PracticeSidebar({
                     isLocked
                       ? "cursor-not-allowed opacity-60"
                       : isExpanded
-                      ? "bg-teal-50 text-teal-900 dark:bg-teal-900/20 dark:text-teal-100"
+                      ? "bg-slate-100 text-slate-900 dark:bg-slate-800/40 dark:text-slate-100"
                       : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
                   }`}
                 >
@@ -185,11 +185,11 @@ export default function PracticeSidebar({
                     {isLocked ? (
                       <Lock className="h-4 w-4 flex-shrink-0 text-gray-400" />
                     ) : isExpanded ? (
-                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-teal-600" />
+                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-slate-500" />
                     ) : (
                       <ChevronRight className="h-4 w-4 flex-shrink-0 text-slate-400" />
                     )}
-                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-teal-600'}`} />
+                    <Brain className={`h-4 w-4 flex-shrink-0 ${isLocked ? 'text-gray-400' : 'text-slate-500'}`} />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold truncate">{module.title}</div>
                       <div className="text-small text-slate-500 dark:text-slate-300">
@@ -211,7 +211,7 @@ export default function PracticeSidebar({
                           to={`/practice/${lesson.id}`}
                           className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
                             active
-                              ? "bg-teal-100 font-medium text-teal-900 dark:bg-teal-900/30 dark:text-teal-100"
+                              ? "bg-slate-200 font-medium text-slate-900 dark:bg-slate-800/60 dark:text-slate-100"
                               : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-gray-800"
                           }`}
                           onClick={onNavigate}

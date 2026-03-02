@@ -173,16 +173,16 @@ export default function PracticeIndex() {
   return (
     <div className="min-h-screen bg-slate-50 pb-16 dark:bg-slate-950">
       <div className="mx-auto w-full max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
-        <header className="rounded-3xl bg-teal-600 p-8 text-white shadow-lg">
+        <header className="rounded-3xl bg-slate-600 p-8 text-white shadow-lg">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.35em] text-teal-100">
+              <p className="text-sm uppercase tracking-[0.35em] text-slate-200">
                 Practice dashboard
               </p>
               <h1 className="font-semibold">
                 Track your quiz mastery across every module
               </h1>
-              <p className="max-w-xl text-sm text-teal-50/90 md:text-base">
+              <p className="max-w-xl text-sm text-slate-100/90 md:text-base">
                 See how many questions you&apos;ve attempted, where you&apos;re mastering the material,
                 and jump straight into the next lesson that needs review.
               </p>
@@ -191,9 +191,9 @@ export default function PracticeIndex() {
             {nextLesson && (
               <Link
                 to={`/practice/${nextLesson.id}`}
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-teal-700 shadow-md transition hover:text-teal-800"
+                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-md transition hover:text-slate-900"
               >
-                <Brain className="h-5 w-5 text-teal-500" />
+                <Brain className="h-5 w-5 text-slate-500" />
                 <span>
                   Continue practice: <span className="font-semibold">{nextLesson.title}</span>
                 </span>
@@ -204,7 +204,7 @@ export default function PracticeIndex() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-teal-100">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
                 <span>Questions attempted</span>
                 <span>{attemptedQuestions}</span>
               </div>
@@ -220,7 +220,7 @@ export default function PracticeIndex() {
             </div>
 
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-teal-100">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
                 <span>Accuracy</span>
                 <span>{overallAccuracyPercent !== null ? `${overallAccuracyPercent}%` : "—"}</span>
               </div>
@@ -231,7 +231,7 @@ export default function PracticeIndex() {
             </div>
 
             <div className="rounded-2xl bg-white/15 p-5">
-              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-teal-100">
+              <div className="flex items-center justify-between text-sm uppercase tracking-wider text-slate-200">
                 <span>Lessons mastered</span>
                 <span>
                   {masteredLessons}/{lessonsWithQuestions.length}
@@ -277,7 +277,7 @@ export default function PracticeIndex() {
                   key={module.slug}
                   className={`group relative overflow-hidden rounded-3xl border bg-white p-6 shadow-sm transition hover:shadow-lg dark:bg-gray-900 dark:border-gray-800 dark:hover:shadow-gray-900/40 ${isLocked ? 'border-gray-200 opacity-75 dark:border-gray-800/70' : 'border-slate-200'}`}
                 >
-                  <div className={`absolute inset-x-0 top-0 h-1.5 ${isLocked ? 'bg-gray-300' : 'bg-teal-500'}`} />
+                  <div className={`absolute inset-x-0 top-0 h-1.5 ${isLocked ? 'bg-gray-300' : 'bg-slate-400'}`} />
                   <div className="space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-1 flex-1">
@@ -325,7 +325,7 @@ export default function PracticeIndex() {
                           </div>
                           <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                             <div
-                              className="h-2 rounded-full bg-teal-600"
+                              className="h-2 rounded-full bg-slate-600"
                               style={{ width: `${coveragePercent}%` }}
                             />
                           </div>
