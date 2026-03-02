@@ -98,7 +98,7 @@ export default function Paywall() {
     }
   }
 
-  const isCurrent = (plan: Plan) => !isLoading && currentTier === plan;
+  const isCurrent = (plan: Plan) => !isLoading && isLoggedIn && currentTier === plan;
   const canUpgrade = (plan: Plan) => !isLoading && isUpgrade(currentTier, plan);
 
   function ctaLabel(plan: Plan, label: string) {
