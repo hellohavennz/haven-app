@@ -134,7 +134,7 @@ export default function Welcome() {
             <button
               onClick={() => setStep(2)}
               disabled={!examDate && !skipDate}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
             >
               Next
               <ArrowRight className="h-4 w-4" />
@@ -202,7 +202,7 @@ export default function Welcome() {
               <button
                 onClick={finish}
                 disabled={!studyGoal || saving}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
               >
                 {saving ? 'Saving…' : "Let's go"}
                 {!saving && <ArrowRight className="h-4 w-4" />}
@@ -267,7 +267,7 @@ export default function Welcome() {
               {firstLesson ? (
                 <Link
                   to={`/content/${firstLesson.id}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 py-4 font-semibold text-white transition-all hover:shadow-lg"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg"
                 >
                   <BookOpen className="h-5 w-5" />
                   Start Lesson 1
@@ -276,7 +276,7 @@ export default function Welcome() {
               ) : (
                 <Link
                   to="/content"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 py-4 font-semibold text-white transition-all hover:shadow-lg"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg"
                 >
                   <BookOpen className="h-5 w-5" />
                   Browse Lessons

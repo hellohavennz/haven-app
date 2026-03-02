@@ -14,6 +14,7 @@ import { preloadOnboarding } from "../lib/onboarding";
 import { recordLoginEvent } from "../lib/adminApi";
 import { supabase } from "../lib/supabase";
 import { useOnlineStatus, syncProgressOnReconnect } from "../lib/offline";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -109,7 +110,7 @@ export default function RootLayout() {
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="font-heading font-semibold">Haven</div>
-          <div className="h-6 w-6" aria-hidden="true" />
+          <ThemeToggle size="sm" />
         </header>
       )}
 

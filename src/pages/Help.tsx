@@ -273,7 +273,7 @@ export default function Help() {
 
       <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-800 dark:bg-gray-900">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-500">
+          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-600">
             <Mail className="h-8 w-8 text-white" />
           </div>
 
@@ -286,7 +286,7 @@ export default function Help() {
 
           <a
             href="mailto:support@haven.study"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 px-6 py-3 font-semibold text-white transition-all hover:shadow-lg"
           >
             Contact Support
           </a>

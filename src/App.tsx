@@ -175,7 +175,7 @@ export default function App() {
           <h1 className="font-semibold text-gray-900 dark:text-white mb-6 leading-tight">
             Study Calmly.
             <br />
-            <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Pass Confidently.</span>
+            <span className="bg-gradient-to-r from-teal-700 to-teal-400 bg-clip-text text-transparent">Pass Confidently.</span>
           </h1>
           <p className="text-gray-600 dark:text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
             Master the official Life in the UK handbook with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.

@@ -275,3 +275,25 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Resit one-per-account enforcement** — ✅ Enforced via partial unique indexes (`migration 000009`). One approved per user (lifetime), one pending at a time. Rejected users can resubmit.
 - **PWA Phase 2** — ✅ Built. Three-layer offline strategy: (1) Workbox `runtimeCaching` (`StaleWhileRevalidate`, 7-day TTL) caches all 5 Supabase content API endpoints transparently after first online visit; (2) `content-snapshot-v1` in localStorage provides a second fallback for cold service worker; (3) `syncProgressOnReconnect()` batch-upserts all localStorage progress to Supabase on reconnect. Offline banner shown in `RootLayout` when `navigator.onLine` is false.
 - **Email reminders** — ✅ Built. Netlify Scheduled Function (`send-exam-reminders.ts`) runs daily at 08:00 UTC. Sends 7-day and 1-day reminder emails via Resend. Flags on `profiles` prevent duplicates; flags reset when exam date changes. **Requires setup: add `RESEND_API_KEY` to Netlify env and verify `haven.study` as a sending domain at resend.com.**
+
+---
+
+## Next session — tasks queued (March 2026)
+
+### 1. Visual rebrand — calm warm aesthetic
+User has a reference HTML file (Instagram landing page design) with a colour palette and fonts they like.
+
+- Replace the current teal-dominant palette with a calm, warm scheme based on the reference file
+- Update fonts project-wide to match the reference file
+- Keep colour variation where needed (highlights, CTAs, stat panels, badges, progress bars) — use a complementary palette, not monochrome
+- Apply consistently across ALL pages (dark mode variants too)
+- Reference file: user will paste the HTML directly into chat
+
+### 2. Instagram landing page — new route
+- Standalone marketing page at `/uk/instagram` (or `/uk/ig`)
+- Based on the calm warm reference HTML file the user provides
+- Prices must match current tiers: Free £0 / Plus £4.99/mo / Premium £24.99/6mo
+- Optimised for mobile (Instagram traffic is mostly mobile)
+- Same calm warm aesthetic as the rebrand above
+
+**Status: waiting for user to paste the reference HTML file into chat.**

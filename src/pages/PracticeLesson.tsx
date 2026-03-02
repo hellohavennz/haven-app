@@ -111,7 +111,7 @@ export default function PracticeLesson() {
             </Link>
             <Link
               to={`/practice/${lessonId}/flashcards`}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:opacity-90 transition-all"
+              className="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
             >
               Open Flashcards
             </Link>
@@ -133,7 +133,7 @@ export default function PracticeLesson() {
           </p>
           <Link
             to={`/content/${data.id}`}
-            className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:opacity-90 transition-all"
+            className="inline-block px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
           >
             Back to lesson
           </Link>
@@ -162,7 +162,7 @@ export default function PracticeLesson() {
               className="group bg-white border-2 border-gray-200 hover:border-teal-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left disabled:opacity-60 disabled:cursor-not-allowed dark:bg-gray-900 dark:border-gray-800 dark:hover:border-teal-400/80"
             >
               <div className="space-y-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-teal-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Brain className="text-white" size={32} />
                 </div>
                 <div>
@@ -202,7 +202,7 @@ export default function PracticeLesson() {
               className="group bg-white border-2 border-gray-200 hover:border-emerald-400 rounded-2xl p-8 transition-all duration-200 hover:shadow-xl text-left dark:bg-gray-900 dark:border-gray-800 dark:hover:border-emerald-400/80"
             >
               <div className="space-y-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Zap className="text-white" size={32} />
                 </div>
                 <div>
@@ -438,7 +438,7 @@ export default function PracticeLesson() {
           </Link>
           <button
             onClick={retry}
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all"
+            className="px-8 py-4 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
           >
             Try Again
           </button>
@@ -512,7 +512,7 @@ export default function PracticeLesson() {
 
           {!answer.checked ? (
             <button
-              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-4 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={check}
               disabled={answer.selected === null}
             >
@@ -542,7 +542,7 @@ export default function PracticeLesson() {
               )}
               <button
                 onClick={next}
-                className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-400 text-white font-semibold hover:opacity-90 transition-all"
+                className="w-full px-6 py-4 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
               >
                 {currentQIdx < totalQuestions - 1 ? "Next Question →" : "See Results →"}
               </button>

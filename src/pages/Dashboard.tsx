@@ -205,7 +205,7 @@ const Dashboard: React.FC = () => {
             {!hasFullAccess && (
               <Link
                 to="/paywall"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all"
               >
                 <Sparkles className="h-5 w-5" />
                 Upgrade for Full Dashboard
@@ -217,7 +217,7 @@ const Dashboard: React.FC = () => {
 
         {/* Getting Started — shown until user has started at least one lesson */}
         {lessonsStarted === 0 && examHistory.length === 0 && (
-          <div className="rounded-2xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-6 dark:border-teal-700 dark:from-teal-900/20 dark:to-emerald-900/20">
+          <div className="rounded-2xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-teal-100 p-6 dark:border-teal-700 dark:from-teal-900/20 dark:to-teal-900/30">
             <div className="flex items-start gap-5">
               <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-600">
                 <BookOpen className="h-7 w-7 text-white" />
@@ -360,7 +360,7 @@ const Dashboard: React.FC = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Overall Accuracy */}
-          <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-teal-600 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <Star className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Overall</span>
@@ -371,36 +371,36 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Mastered */}
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-amber-600 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <Trophy className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Mastered</span>
             </div>
             <div className="text-5xl font-semibold mb-2">{masteredLessons}</div>
-            <div className="text-green-100 font-medium">Lessons at 80%+</div>
-            <div className="text-sm text-green-100 mt-1">Out of {totalLessons} total</div>
+            <div className="text-amber-100 font-medium">Lessons at 80%+</div>
+            <div className="text-sm text-amber-100 mt-1">Out of {totalLessons} total</div>
           </div>
 
           {/* Progress */}
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-teal-700 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <TrendingUp className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Progress</span>
             </div>
             <div className="text-5xl font-semibold mb-2">{completionRate}%</div>
-            <div className="text-blue-100 font-medium">Completion Rate</div>
-            <div className="text-sm text-blue-100 mt-1">{lessonsStarted}/{totalLessons} lessons started</div>
+            <div className="text-teal-100 font-medium">Completion Rate</div>
+            <div className="text-sm text-teal-100 mt-1">{lessonsStarted}/{totalLessons} lessons started</div>
           </div>
 
           {/* Focus */}
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-amber-700 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <Zap className="w-8 h-8" />
               <span className="text-sm bg-white/20 px-3 py-1 rounded-full font-medium">Focus</span>
             </div>
             <div className="text-5xl font-semibold mb-2">{needsReview}</div>
-            <div className="text-orange-100 font-medium">Need Review</div>
-            <div className="text-sm text-orange-100 mt-1">Below 60% accuracy</div>
+            <div className="text-amber-100 font-medium">Need Review</div>
+            <div className="text-sm text-amber-100 mt-1">Below 60% accuracy</div>
           </div>
         </div>
 

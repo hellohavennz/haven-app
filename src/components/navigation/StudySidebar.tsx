@@ -132,7 +132,7 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
       }}
     >
       <div className="space-y-6 p-4 pb-32">
-        <div className="rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-500 p-5 text-white shadow-sm">
+        <div className="rounded-2xl bg-teal-600 p-5 text-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20">
               <Trophy className="h-5 w-5" />
