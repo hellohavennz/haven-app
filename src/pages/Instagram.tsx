@@ -16,7 +16,7 @@ const styles = {
 
 export default function Instagram() {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", background: styles.cream, color: styles.text, minHeight: '100vh' }}>
+    <div style={{ fontFamily: "'Source Sans 3', system-ui, sans-serif", background: styles.cream, color: styles.text, minHeight: '100vh' }}>
 
       {/* Hero */}
       <section style={{ background: `linear-gradient(160deg, ${styles.sageLight} 0%, ${styles.cream} 60%)`, padding: '56px 24px 48px', textAlign: 'center' }}>
@@ -28,10 +28,10 @@ export default function Instagram() {
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
-          <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 22, color: styles.text, fontWeight: 400, letterSpacing: '-0.01em' }}>Haven Study</span>
+          <span style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 22, color: styles.text, fontWeight: 400, letterSpacing: '-0.01em' }}>Haven Study</span>
         </div>
 
-        <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2rem, 8vw, 2.8rem)', fontWeight: 400, lineHeight: 1.2, color: styles.text, marginBottom: 16, maxWidth: 480, margin: '0 auto 16px' }}>
+        <h1 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(2rem, 8vw, 2.8rem)', fontWeight: 400, lineHeight: 1.2, color: styles.text, marginBottom: 16, maxWidth: 480, margin: '0 auto 16px' }}>
           Pass the Life in the UK Test — First Time
         </h1>
         <p style={{ fontSize: 17, color: styles.textMuted, lineHeight: 1.6, maxWidth: 400, margin: '0 auto 32px' }}>
@@ -52,7 +52,7 @@ export default function Instagram() {
             { value: '610+', label: 'Flashcards' },
           ].map(stat => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 26, color: styles.white, fontWeight: 400 }}>{stat.value}</div>
+              <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 26, color: styles.white, fontWeight: 400 }}>{stat.value}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{stat.label}</div>
             </div>
           ))}
@@ -61,7 +61,7 @@ export default function Instagram() {
 
       {/* Features */}
       <section style={{ padding: '48px 24px', maxWidth: 540, margin: '0 auto' }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 32, color: styles.text }}>
+        <h2 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 32, color: styles.text }}>
           Everything you need to prepare
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -82,7 +82,7 @@ export default function Instagram() {
 
       {/* Modules */}
       <section style={{ padding: '0 24px 48px', maxWidth: 540, margin: '0 auto' }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 24, color: styles.text }}>
+        <h2 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 24, color: styles.text }}>
           5 complete modules
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -103,7 +103,7 @@ export default function Instagram() {
 
       {/* Pricing */}
       <section style={{ padding: '0 24px 56px', maxWidth: 540, margin: '0 auto' }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 8, color: styles.text }}>
+        <h2 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 400, textAlign: 'center', marginBottom: 8, color: styles.text }}>
           Simple, honest pricing
         </h2>
         <p style={{ textAlign: 'center', color: styles.textMuted, fontSize: 15, marginBottom: 28 }}>Start free, upgrade when you're ready</p>
@@ -116,7 +116,7 @@ export default function Instagram() {
                 <div style={{ fontWeight: 700, fontSize: 16, color: styles.text }}>Free</div>
                 <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Try it free · upgrade for full access</div>
               </div>
-              <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 28, color: styles.text }}>£0</div>
+              <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text }}>£0</div>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
               {['2 free modules', '5 flashcards per session', 'Progress tracking'].map(f => (
@@ -139,7 +139,7 @@ export default function Instagram() {
                 <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Full access, monthly</div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 28, color: styles.text }}>£4.99</div>
+                <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text }}>£4.99</div>
                 <div style={{ fontSize: 12, color: styles.textMuted }}>per month</div>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function Instagram() {
                 <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginTop: 2 }}>Everything, for 6 months</div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 28, color: styles.white }}>£24.99</div>
+                <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.white }}>£24.99</div>
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>6 months</div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function Instagram() {
       <section style={{ background: styles.white, padding: '40px 24px', borderTop: `1px solid ${styles.creamDark}`, borderBottom: `1px solid ${styles.creamDark}` }}>
         <div style={{ maxWidth: 480, margin: '0 auto', textAlign: 'center' }}>
           <div style={{ fontSize: 32, marginBottom: 12 }}>🌿</div>
-          <blockquote style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', color: styles.text, fontWeight: 400, lineHeight: 1.4, margin: '0 0 16px', fontStyle: 'italic' }}>
+          <blockquote style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', color: styles.text, fontWeight: 400, lineHeight: 1.4, margin: '0 0 16px', fontStyle: 'italic' }}>
             "I passed first time after studying with Haven for just three weeks. The lessons are clear and the practice questions really prepared me."
           </blockquote>
           <div style={{ fontSize: 13, color: styles.textMuted, fontWeight: 600 }}>Priya S. — Passed October 2025</div>
@@ -198,7 +198,7 @@ export default function Instagram() {
 
       {/* Final CTA */}
       <section style={{ background: `linear-gradient(160deg, ${styles.sage} 0%, ${styles.sageDark} 100%)`, padding: '56px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.6rem, 6vw, 2.2rem)', fontWeight: 400, color: styles.white, marginBottom: 12, lineHeight: 1.2 }}>
+        <h2 style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 'clamp(1.6rem, 6vw, 2.2rem)', fontWeight: 400, color: styles.white, marginBottom: 12, lineHeight: 1.2 }}>
           Ready to pass your test?
         </h2>
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 16, marginBottom: 32, maxWidth: 360, margin: '0 auto 32px' }}>

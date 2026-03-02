@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-heading: 'DM Serif Display', 'Georgia', serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Montserrat', 'Georgia', serif;
+  --font-body: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --heading-line-height: 1.25;
   --body-line-height: 1.6;
   --small-font-size: 0.9rem;

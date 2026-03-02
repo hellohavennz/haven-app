@@ -53,10 +53,10 @@ export default {
         cream: '#FBF8F3',
       },
       fontFamily: {
-        heading: ['DM Serif Display', 'var(--font-heading)', 'Georgia', 'serif'],
-        body: ['Plus Jakarta Sans', 'var(--font-body)', 'system-ui', 'sans-serif'],
-        ui: ['Plus Jakarta Sans', 'var(--font-ui)', 'system-ui', 'sans-serif'],
-        sans: ['Plus Jakarta Sans', 'var(--font-body)', 'system-ui', 'sans-serif'],
+        heading: ['Montserrat', 'var(--font-heading)', 'Georgia', 'serif'],
+        body: ['Source Sans 3', 'var(--font-body)', 'system-ui', 'sans-serif'],
+        ui: ['Source Sans 3', 'var(--font-ui)', 'system-ui', 'sans-serif'],
+        sans: ['Source Sans 3', 'var(--font-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         sm: ['0.9rem', { lineHeight: '1.5' }],
