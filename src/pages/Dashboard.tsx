@@ -9,6 +9,7 @@ import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth 
 import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 import { usePageTitle } from '../hooks/usePageTitle';
+import InstallHaven from '../components/InstallHaven';
 
 interface LessonProgressData {
   attempted: number;
@@ -161,6 +162,9 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-cream py-10 px-4 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto space-y-8 text-slate-900 dark:text-gray-100">
+        {/* PWA install prompt */}
+        <InstallHaven />
+
         {/* Upgrade success banner */}
         {upgradeBanner && (
           <div className="flex items-start justify-between gap-4 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 dark:border-teal-700 dark:bg-teal-900/20">
