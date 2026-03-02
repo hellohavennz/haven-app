@@ -165,7 +165,7 @@ export default function App() {
 
   return (
     <div className="space-y-20 pb-20 min-h-screen text-gray-900 transition-colors bg-white dark:bg-gray-950 dark:text-gray-100">
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-cyan-50 dark:from-gray-900 dark:via-slate-950 dark:to-gray-900 -mx-4 px-4 py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-white dark:from-gray-900 dark:via-slate-950 dark:to-gray-900 -mx-4 px-4 py-20 md:py-32">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-100 rounded-full text-sm font-semibold mb-6">

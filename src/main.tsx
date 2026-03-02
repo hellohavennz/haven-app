@@ -18,6 +18,7 @@ import Exam from './pages/Exam';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
+import Instagram from './pages/Instagram';
 
 // Lazy-loaded: not on the critical path for any first page load
 const ExamSession      = lazy(() => import('./pages/ExamSession'));
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: 'terms', element: <Suspense fallback={<Fallback />}><Terms /></Suspense> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
+      { path: 'instagram', element: <Instagram /> },
 
       // Protected routes — redirect to /login if not authenticated
       {
