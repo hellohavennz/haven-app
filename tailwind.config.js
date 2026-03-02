@@ -18,6 +18,20 @@ export default {
           800: '#31574A',
           900: '#244238',
         },
+        // Emerald — aliased to match teal so study/content greens are consistent.
+        // Default Tailwind emerald (#059669) clashes with our sage palette.
+        emerald: {
+          50:  '#F4F7F5',
+          100: '#E6EFEA',
+          200: '#C7DAD1',
+          300: '#A7C5B8',
+          400: '#7FAF9D',
+          500: '#5F9D86',
+          600: '#4E8571',
+          700: '#3F6D5D',
+          800: '#31574A',
+          900: '#244238',
+        },
         // Accent — refined gold
         amber: {
           50:  '#FDF9F0',

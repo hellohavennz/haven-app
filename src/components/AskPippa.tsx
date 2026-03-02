@@ -154,7 +154,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
         <button
           onClick={onOpen}
           className={[
-            "fixed bottom-6 right-6 z-50 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
+            "fixed bottom-6 right-6 z-50 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
             hideMobileFloatingBtn ? "hidden md:flex" : "flex",
           ].join(" ")}
           aria-label="Open Ask Pippa chat"
@@ -180,7 +180,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           ].join(" ")}
         >
           {/* Header */}
-          <div className="flex flex-shrink-0 items-center justify-between rounded-none bg-gradient-to-br from-teal-500 to-emerald-500 p-4 text-white md:rounded-t-2xl">
+          <div className="flex flex-shrink-0 items-center justify-between rounded-none bg-gradient-to-br from-teal-400 to-teal-700 p-4 text-white md:rounded-t-2xl">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                 <Sparkles className="h-5 w-5" />
@@ -207,7 +207,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
                 className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 mt-1">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 mt-1">
                     <Sparkles className="h-4 w-4 text-white" />
                   </div>
                 )}
@@ -225,7 +225,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
 
             {loading && (
               <div className="flex gap-2">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 mt-1">
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 mt-1">
                   <Sparkles className="h-4 w-4 text-white" />
                 </div>
                 <div className="rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-3 dark:bg-slate-800">

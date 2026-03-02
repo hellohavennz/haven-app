@@ -251,7 +251,7 @@ const FlashcardsPage: React.FC = () => {
                 transform: 'rotateY(180deg)'
               }}
             >
-              <div className="w-full h-full bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center text-white">
+              <div className="w-full h-full bg-gradient-to-br from-teal-500 to-teal-800 rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center text-white">
                 <div className="text-sm font-semibold uppercase tracking-wide mb-4 opacity-90">
                   Answer
                 </div>
