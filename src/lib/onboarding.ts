@@ -7,7 +7,7 @@ export type StudyGoal = 'light' | 'regular' | 'intensive';
 
 export type OnboardingData = {
   examDate: string | null; // ISO date string (YYYY-MM-DD) or null
-  studyGoal: StudyGoal;
+  studyGoal?: StudyGoal;   // optional — kept for backward-compat with existing localStorage data
   completedAt: string;
 };
 
@@ -50,14 +50,13 @@ export async function preloadOnboarding(): Promise<void> {
 
     const { data: profile } = await supabase
       .from('profiles')
-      .select('onboarding_complete, exam_date, study_goal')
+      .select('onboarding_complete, exam_date')
       .eq('id', user.id)
       .single();
 
     if (profile?.onboarding_complete) {
       const data: OnboardingData = {
         examDate: profile.exam_date ?? null,
-        studyGoal: (profile.study_goal as StudyGoal) ?? 'regular',
         completedAt: new Date().toISOString(),
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -65,13 +64,9 @@ export async function preloadOnboarding(): Promise<void> {
   } catch { /* ignore */ }
 }
 
-export async function saveOnboarding(
-  examDate: string | null,
-  studyGoal: StudyGoal
-): Promise<void> {
+export async function saveOnboarding(examDate: string | null): Promise<void> {
   const data: OnboardingData = {
     examDate,
-    studyGoal,
     completedAt: new Date().toISOString(),
   };
 
@@ -87,7 +82,6 @@ export async function saveOnboarding(
         {
           id: user.id,
           exam_date: examDate,
-          study_goal: studyGoal,
           onboarding_complete: true,
           // Reset reminder flags so new reminders fire for the updated date
           exam_reminder_7d_sent: false,

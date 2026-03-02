@@ -79,11 +79,12 @@ export default function StudySidebar({ className = "", onNavigate }: StudySideba
   const toggleModule = (slug: string) => {
     const isExpanding = expandedModule !== slug;
     setExpandedModule((current) => (current === slug ? null : slug));
-    if (isExpanding) {
+    // On desktop (no onNavigate), also jump to the first lesson when expanding.
+    // On mobile drawer (onNavigate is defined), just expand — let the user pick a lesson.
+    if (isExpanding && !onNavigate) {
       const firstLesson = getLessonsForModule(slug)[0];
       if (firstLesson) {
         navigate(`/content/${firstLesson.id}`);
-        onNavigate?.();
       }
     }
   };

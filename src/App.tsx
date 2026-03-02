@@ -19,6 +19,7 @@ import {
   Headphones,
   FileText,
   ChevronDown,
+  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import TestimonialCarousel from "./components/TestimonialCarousel";
@@ -56,7 +57,7 @@ const productFeatures: FeatureCard[] = [
   {
     icon: BookOpen,
     title: "Plain-English Lessons",
-    description: "Every topic from the official handbook, rewritten clearly with memory hooks and key facts.",
+    description: "Every topic you need for the test, explained clearly with memory hooks and key facts.",
     gradient: "from-teal-500 to-teal-600",
   },
   {
@@ -101,7 +102,7 @@ const howItWorksSteps = [
   {
     title: "Study Each Lesson",
     description:
-      "Read through our plain-English lessons covering every topic from the official handbook. Each lesson includes key facts and memory hooks.",
+      "Read through our plain-English lessons covering every topic you need to pass. Each lesson includes key facts and memory hooks.",
   },
   {
     title: "Practice Questions",
@@ -178,7 +179,7 @@ export default function App() {
             <span className="bg-gradient-to-r from-teal-700 to-teal-400 bg-clip-text text-transparent">Pass Confidently.</span>
           </h1>
           <p className="text-slate-600 dark:text-slate-200 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Master the official Life in the UK handbook with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
+            Master every topic in the Life in the UK test with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/content" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all">
@@ -194,6 +195,7 @@ export default function App() {
             <span className="whitespace-nowrap">✓ Try the first lesson free</span>
             <span className="whitespace-nowrap">✓ No credit card required</span>
             <span className="whitespace-nowrap">✓ Resit support</span>
+            <span className="whitespace-nowrap">✓ Built around the official test syllabus</span>
           </div>
           <div className="flex justify-center mt-10">
             <ChevronDown size={28} className="animate-bounce text-slate-400 dark:text-slate-500" />
@@ -216,6 +218,18 @@ export default function App() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="-mx-4 px-4 py-5 bg-teal-50 dark:bg-teal-950/30 border-y border-teal-100 dark:border-teal-900/50">
+        <div className="max-w-3xl mx-auto flex items-start sm:items-center gap-4">
+          <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-900/60 flex items-center justify-center">
+            <ShieldCheck className="text-teal-700 dark:text-teal-400" size={20} />
+          </div>
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <strong className="text-slate-900 dark:text-white">Built around the official test syllabus.</strong>{' '}
+            Every Haven lesson covers the material from <em>Life in the United Kingdom: A Guide for New Residents</em> — structured into clear lessons with memory hooks, practice questions, and flashcards. Use Haven alongside the official guide for the best chance of passing.
+          </p>
         </div>
       </section>
 

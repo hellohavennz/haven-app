@@ -120,13 +120,16 @@ function seededShuffle<T>(arr: T[], rng: () => number): T[] {
 }
 
 /**
- * Selects 24 questions using a fixed seed (1 or 2) so the same questions
- * always appear for Mock Exam 1 / Mock Exam 2, regardless of user or device.
+ * Selects 24 questions using a deterministic seed based on exam number + current
+ * year/month, so the same questions appear for all users within a given month but
+ * rotate to a new (randomised) set when the month rolls over.
  * Options within each question are NOT reshuffled — they stay in original order
  * so the correct_index is always stable.
  */
 export function selectStaticExamQuestions(examNumber: 1 | 2): ExamQuestion[] {
-  const rng = mulberry32(examNumber);
+  const now = new Date();
+  const monthSeed = examNumber * 100000 + now.getFullYear() * 12 + now.getMonth();
+  const rng = mulberry32(monthSeed);
   const allLessons = getAllLessons();
 
   const byModule: Record<string, ExamQuestion[]> = {};

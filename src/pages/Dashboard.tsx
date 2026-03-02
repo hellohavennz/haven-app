@@ -6,7 +6,7 @@ import { getCurrentUser } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
 import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
-import { isOnboardingComplete, getDaysUntilExam, getOnboardingData } from '../lib/onboarding';
+import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 import { usePageTitle } from '../hooks/usePageTitle';
 
@@ -25,7 +25,6 @@ const Dashboard: React.FC = () => {
   const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
   const [upgradeBanner, setUpgradeBanner] = useState<string | null>(null);
   const daysUntilExam = getDaysUntilExam();
-  const onboardingData = getOnboardingData();
 
   // Detect first dashboard visit — stored in localStorage so it's only true once
   const [isFirstVisit] = useState(() => {
@@ -180,7 +179,7 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="font-semibold text-slate-900 mb-2 dark:text-white">Your Dashboard</h1>
             <p className="text-slate-600 dark:text-slate-300">
@@ -189,7 +188,7 @@ const Dashboard: React.FC = () => {
                 : `Welcome back${user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!`}
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {daysUntilExam !== null && (
               <div className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
                 daysUntilExam <= 7
@@ -205,10 +204,10 @@ const Dashboard: React.FC = () => {
             {!hasFullAccess && (
               <Link
                 to="/paywall"
-                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all"
               >
-                <Sparkles className="h-5 w-5" />
-                Upgrade for Full Dashboard
+                <Sparkles className="h-4 w-4" />
+                Upgrade to Plus
                 <ArrowRight className="h-4 w-4" />
               </Link>
             )}
@@ -268,10 +267,8 @@ const Dashboard: React.FC = () => {
 
         {/* Study plan widget — shown when exam date is set */}
         {daysUntilExam !== null && (() => {
-          const pacePerDay = onboardingData?.studyGoal === 'intensive' ? 4 : onboardingData?.studyGoal === 'regular' ? 2 : 1;
           const lessonsLeft = notStartedCount;
           const requiredPace = lessonsLeft > 0 ? Math.ceil(lessonsLeft / daysUntilExam) : 0;
-          const onTrack = requiredPace <= pacePerDay;
           return (
             <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
               <div className="flex items-center justify-between gap-4">
@@ -298,13 +295,13 @@ const Dashboard: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                {lessonsLeft > 0 && (
+                {lessonsLeft > 0 && requiredPace > 0 && (
                   <div className="text-right flex-shrink-0">
-                    <p className={`font-semibold text-sm ${onTrack ? 'text-teal-600 dark:text-teal-400' : 'text-amber-600 dark:text-amber-400'}`}>
-                      {onTrack ? 'On track' : 'Pick up the pace'}
+                    <p className="font-semibold text-sm text-slate-700 dark:text-slate-300">
+                      ~{requiredPace} lesson{requiredPace !== 1 ? 's' : ''}/day
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      ~{requiredPace} lesson{requiredPace !== 1 ? 's' : ''}/day needed
+                      to finish in time
                     </p>
                   </div>
                 )}

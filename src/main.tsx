@@ -34,6 +34,9 @@ const Terms            = lazy(() => import('./pages/Terms'));
 const Fallback = () => <div className="min-h-screen" />;
 
 const router = createBrowserRouter([
+  // Standalone — no app layout, navbar, or footer
+  { path: '/instagram', element: <Instagram /> },
+
   {
     path: '/',
     element: <RootLayout />,
@@ -47,7 +50,6 @@ const router = createBrowserRouter([
       { path: 'terms', element: <Suspense fallback={<Fallback />}><Terms /></Suspense> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
-      { path: 'instagram', element: <Instagram /> },
 
       // Protected routes — redirect to /login if not authenticated
       {

@@ -1,45 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Calendar, Zap, BookOpen, Flame, ArrowRight, CheckCircle2, Target, Clock } from 'lucide-react';
-import { saveOnboarding, type StudyGoal } from '../lib/onboarding';
+import { Calendar, BookOpen, ArrowRight, CheckCircle2, Target } from 'lucide-react';
+import { saveOnboarding } from '../lib/onboarding';
 import { getCurrentUser } from '../lib/auth';
 import { getAllLessons } from '../lib/content';
 import { usePageTitle } from '../hooks/usePageTitle';
 
-const STUDY_GOALS: { value: StudyGoal; label: string; detail: string; icon: React.ReactNode }[] = [
-  {
-    value: 'light',
-    label: 'Light',
-    detail: '~15 min a day',
-    icon: <BookOpen className="h-6 w-6" />,
-  },
-  {
-    value: 'regular',
-    label: 'Regular',
-    detail: '~30 min a day',
-    icon: <Zap className="h-6 w-6" />,
-  },
-  {
-    value: 'intensive',
-    label: 'Intensive',
-    detail: '1+ hour a day',
-    icon: <Flame className="h-6 w-6" />,
-  },
-];
-
-const GOAL_LABELS: Record<StudyGoal, string> = {
-  light: 'Light — ~15 min a day',
-  regular: 'Regular — ~30 min a day',
-  intensive: 'Intensive — 1+ hour a day',
-};
 
 export default function Welcome() {
   usePageTitle('Welcome');
   const navigate = useNavigate();
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [step, setStep] = useState<1 | 2>(1);
   const [examDate, setExamDate] = useState('');
   const [skipDate, setSkipDate] = useState(false);
-  const [studyGoal, setStudyGoal] = useState<StudyGoal | null>(null);
   const [saving, setSaving] = useState(false);
   const [userName, setUserName] = useState('');
 
@@ -59,11 +32,10 @@ export default function Welcome() {
     : null;
 
   async function finish() {
-    if (!studyGoal) return;
     setSaving(true);
-    await saveOnboarding(skipDate ? null : examDate || null, studyGoal);
+    await saveOnboarding(skipDate ? null : examDate || null);
     setSaving(false);
-    setStep(3);
+    setStep(2);
   }
 
   return (
@@ -72,28 +44,24 @@ export default function Welcome() {
         {/* Progress bar */}
         <div className="flex items-center gap-3">
           <div className="h-1.5 flex-1 rounded-full bg-teal-500" />
-          <div className={`h-1.5 flex-1 rounded-full transition-all ${step >= 2 ? 'bg-teal-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
-          <div className={`h-1.5 flex-1 rounded-full transition-all ${step === 3 ? 'bg-teal-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
+          <div className={`h-1.5 flex-1 rounded-full transition-all ${step === 2 ? 'bg-teal-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
         </div>
 
         {/* Step 1 — Exam date */}
         {step === 1 && (
           <div className="space-y-8">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-semibold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
-                Step 1 of 2
-              </div>
               <h1 className="font-semibold text-slate-900 dark:text-white">
                 When's your exam?
               </h1>
               <p className="text-slate-600 dark:text-slate-300">
-                We'll count down the days and help you pace your study.
+                We'll count down the days and keep you on pace.
               </p>
             </div>
 
             <div className="space-y-4">
               <div
-                className={`rounded-2xl border-2 bg-white p-6 transition-all dark:bg-slate-900 ${
+                className={`overflow-hidden rounded-2xl border-2 bg-white p-6 transition-all dark:bg-slate-900 ${
                   !skipDate
                     ? 'border-teal-500'
                     : 'border-slate-200 dark:border-slate-800'
@@ -110,7 +78,7 @@ export default function Welcome() {
                   min={today}
                   value={examDate}
                   onChange={e => { setExamDate(e.target.value); setSkipDate(false); }}
-                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-teal-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white [color-scheme:light] dark:[color-scheme:dark]"
                 />
               </div>
 
@@ -132,87 +100,18 @@ export default function Welcome() {
             </div>
 
             <button
-              onClick={() => setStep(2)}
-              disabled={!examDate && !skipDate}
+              onClick={finish}
+              disabled={(!examDate && !skipDate) || saving}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
             >
-              Next
-              <ArrowRight className="h-4 w-4" />
+              {saving ? 'Saving…' : 'Continue'}
+              {!saving && <ArrowRight className="h-4 w-4" />}
             </button>
           </div>
         )}
 
-        {/* Step 2 — Study goal */}
+        {/* Step 2 — You're all set */}
         {step === 2 && (
-          <div className="space-y-8">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-semibold text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
-                Step 2 of 2
-              </div>
-              <h1 className="font-semibold text-slate-900 dark:text-white">
-                How much time can you study?
-              </h1>
-              <p className="text-slate-600 dark:text-slate-300">
-                Be honest — a little every day beats cramming.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {STUDY_GOALS.map(goal => (
-                <button
-                  key={goal.value}
-                  onClick={() => setStudyGoal(goal.value)}
-                  className={`flex w-full items-center gap-4 rounded-2xl border-2 bg-white p-5 text-left transition-all dark:bg-slate-900 ${
-                    studyGoal === goal.value
-                      ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
-                      : 'border-slate-200 hover:border-teal-300 dark:border-slate-800'
-                  }`}
-                >
-                  <div
-                    className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${
-                      studyGoal === goal.value
-                        ? 'bg-teal-600 text-white'
-                        : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'
-                    }`}
-                  >
-                    {goal.icon}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 dark:text-white">
-                      {goal.label}
-                    </div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                      {goal.detail}
-                    </div>
-                  </div>
-                  {studyGoal === goal.value && (
-                    <CheckCircle2 className="ml-auto h-5 w-5 flex-shrink-0 text-teal-600" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={() => setStep(1)}
-                className="rounded-xl border-2 border-slate-200 px-6 py-4 font-semibold text-slate-700 transition-all hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200"
-              >
-                Back
-              </button>
-              <button
-                onClick={finish}
-                disabled={!studyGoal || saving}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-700 py-4 font-semibold text-white transition-all hover:shadow-lg disabled:opacity-40"
-              >
-                {saving ? 'Saving…' : "Let's go"}
-                {!saving && <ArrowRight className="h-4 w-4" />}
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Step 3 — You're all set */}
-        {step === 3 && (
           <div className="space-y-8">
             <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">
@@ -222,7 +121,7 @@ export default function Welcome() {
                 You're all set{userName ? `, ${userName}` : ''}!
               </h1>
               <p className="text-slate-600 dark:text-slate-300">
-                Here's your study plan. You can update these any time in your profile.
+                You're ready to start. Good luck!
               </p>
             </div>
 
@@ -249,17 +148,6 @@ export default function Welcome() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 rounded-2xl border-2 border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
-                  <Clock className="h-5 w-5 text-teal-600 dark:text-teal-400" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Study pace</p>
-                  <p className="font-semibold text-slate-900 dark:text-white">
-                    {studyGoal ? GOAL_LABELS[studyGoal] : ''}
-                  </p>
-                </div>
-              </div>
             </div>
 
             {/* CTAs */}

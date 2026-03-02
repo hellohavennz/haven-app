@@ -66,7 +66,7 @@ export default function Instagram() {
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           {[
-            { icon: '📖', title: 'Guided Lessons', desc: '29 lessons covering every chapter of the official handbook' },
+            { icon: '📖', title: 'Guided Lessons', desc: '29 lessons covering every topic on the test syllabus' },
             { icon: '✏️', title: 'Practice Questions', desc: '590+ real-style questions with instant explanations' },
             { icon: '🃏', title: 'Flashcards', desc: '610+ cards to reinforce key facts through active recall' },
             { icon: '📊', title: 'Progress Tracking', desc: 'See exactly where you stand and what to study next' },

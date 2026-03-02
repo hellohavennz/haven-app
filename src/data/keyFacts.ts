@@ -10,7 +10,7 @@ export const keyFactGroups: FactGroup[] = [
     emoji: "📝",
     facts: [
       "24 multiple-choice questions, 45 minutes to complete, 75% to pass (18 correct)",
-      "Questions drawn from ALL parts of the official handbook — not just selected chapters",
+      "Questions span the full test syllabus — every topic, not just selected areas",
       "Available in English, Welsh or Scottish Gaelic",
       "About 60 approved test centres across England, Scotland, Wales and Northern Ireland",
       "Book online only at www.lifeintheuktest.gov.uk — not by phone, post or in person",

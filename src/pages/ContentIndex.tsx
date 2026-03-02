@@ -147,7 +147,7 @@ export default function ContentIndex() {
                 Study dashboard
               </p>
               <h1 className="font-semibold">
-                Map your progress through the handbook
+                Map your progress through the syllabus
               </h1>
               <p className="max-w-xl text-sm text-teal-50/90 md:text-base">
                 Track how you&apos;re moving through each module and jump back into the next lesson whenever you&apos;re ready.

@@ -84,7 +84,7 @@ export default function PaywallScreen() {
           </div>
           <h3 className="font-semibold text-slate-900 mb-2">Comprehensive Coverage</h3>
           <p className="text-sm text-slate-600">
-            Every topic from the official handbook, rewritten in plain English
+            Every test topic covered, written in plain English
           </p>
         </div>
 
