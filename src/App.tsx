@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser } from "./lib/auth";
+import { supabase } from "./lib/supabase";
 import {
   BookOpen,
   Brain,
@@ -148,12 +149,24 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // One-shot check for existing session (e.g. user navigates back to marketing page)
     getCurrentUser().then(currentUser => {
       setLoading(false);
       if (currentUser) {
-        navigate('/dashboard');
+        navigate('/dashboard', { replace: true });
       }
     });
+
+    // Also listen for SIGNED_IN so OAuth redirects that land here still work.
+    // Supabase PKCE exchanges the ?code= param and fires SIGNED_IN asynchronously —
+    // getCurrentUser() above may run before that exchange completes.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN') {
+        navigate('/dashboard', { replace: true });
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, [navigate]);
 
   if (loading) {
