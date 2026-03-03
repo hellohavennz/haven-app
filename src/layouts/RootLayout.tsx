@@ -23,6 +23,7 @@ export default function RootLayout() {
   const [pippaOpen, setPippaOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
   const [contentReady, setContentReady] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const isOnline = useOnlineStatus();
   const wasOnlineRef = useRef(navigator.onLine);
 
@@ -32,7 +33,10 @@ export default function RootLayout() {
         setContentReady(true);
         // Fire-and-forget: record today's login for DAU/WAU/MAU tracking
         supabase.auth.getUser().then(({ data }) => {
-          if (data.user) recordLoginEvent(data.user.id);
+          if (data.user) {
+            recordLoginEvent(data.user.id);
+            setIsAdmin(data.user.email === 'hello.haven.nz@gmail.com');
+          }
         });
       })
       .catch(err => {
@@ -167,7 +171,7 @@ export default function RootLayout() {
         </main>
       </div>
 
-      {showAnySidebar && (
+      {showAnySidebar && !isAdmin && (
         <MobileNav
           isPremium={tier === 'premium'}
           pippaOpen={pippaOpen}
@@ -175,7 +179,7 @@ export default function RootLayout() {
         />
       )}
 
-      {showAnySidebar && drawerSidebar && (
+      {showAnySidebar && drawerSidebar && !isAdmin && (
         <>
           <div
             className={`fixed inset-0 z-40 bg-slate-900/40 transition-opacity duration-300 md:hidden ${
@@ -196,7 +200,7 @@ export default function RootLayout() {
         </>
       )}
 
-      {tier === 'premium' && (
+      {tier === 'premium' && !isAdmin && (
         <AskPippa
           isOpen={pippaOpen}
           onOpen={() => setPippaOpen(true)}

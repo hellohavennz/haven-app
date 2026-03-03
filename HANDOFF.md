@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-02 (session 4)_
+_Last updated: 2026-03-03 (session 5)_
 
 ---
 
@@ -114,6 +114,8 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260228000008_admin_actions.sql` | Updates `admin_overview` (adds `daily_signups`) and `admin_get_users` (adds `banned_until`) | ✅ Applied |
 | `20260228000009_resit_one_per_account.sql` | Partial unique indexes: one `approved` per user (lifetime), one `pending` per user at a time | ✅ Applied |
 | `20260228000010_exam_reminder_flags.sql` | Adds `exam_reminder_7d_sent` + `exam_reminder_1d_sent` boolean columns to profiles | ✅ Applied |
+| `20260301000011_lesson_read.sql` | — | ✅ Applied |
+| `20260301000012_drop_study_goal.sql` | Drops unused `study_goal` column from profiles | ⏳ Run in Supabase SQL editor |
 
 ---
 
@@ -287,6 +289,34 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
+## Session 5 changes (2026-03-03)
+
+- **PWA theme-color** — `index.html` meta tag updated from `#7B9E87` (old sage) to `#4E8571` (teal-600 v2). Android PWA title bar will show correct brand green after next deploy.
+- **drop_study_goal migration** — `supabase/migrations/20260301000012_drop_study_goal.sql` created. **Action required: run in Supabase SQL editor** to drop the unused `study_goal` column from `profiles`.
+- **Admin redirect** — `Dashboard.tsx` redirects admin email to `/admin` on mount, bypassing the regular dashboard entirely.
+- **Admin stripped navbar** — `Navbar.tsx` returns a minimal bar (logo + ThemeToggle only) when `isAdmin`. No nav links, no mobile hamburger, no upgrade button.
+- **Admin UI guards** — `RootLayout.tsx` adds `isAdmin` state (set from `supabase.auth.getUser()` in the preload effect). `AskPippa`, `MobileNav`, and the drawer are all hidden when `isAdmin` is true.
+- **Admin Overview: Est. MRR + Conversion rate** — Two new stat cards added to a new "Revenue" section in `OverviewTab`. MRR = `(plus × £4.99) + (premium × £24.99/6)`; conversion = paid ÷ total users.
+- **Admin Users: search box** — Text input above filter pills in `UsersTab`. Filters `email` and `display_name` case-insensitively.
+- **Admin Exams: pass/fail counts** — Pass rate stat card now includes `sub` text: "X passed · Y failed" derived from `total_attempts × pass_rate`.
+
+---
+
+## Resend domain verification (action required for email reminders)
+
+Email reminder code is complete. To activate:
+
+1. Sign up / log in at **resend.com**
+2. Add domain → enter `haven.study`
+3. Add the DNS TXT/CNAME records Resend provides to **Netlify DNS** (haven.study domain settings)
+4. Click "Verify" in Resend dashboard
+5. In **Netlify UI → Site config → Environment variables**, add `RESEND_API_KEY`
+6. Trigger a redeploy
+
+Sending address used in functions: `reminders@haven.study` (update in `send-exam-reminders.ts` and `send-welcome-email.ts` if you use a different subdomain).
+
+---
+
 ## Session 4 changes (2026-03-02)
 
 - **Dashboard exam widget mobile** — Empty state ("No exams yet") now stacks `flex-col` on mobile, `sm:flex-row` on desktop. Prevents icon + text + CTA from cramming onto one line.
@@ -298,9 +328,8 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Next session — tasks queued
 
-No queued tasks as of session 4.
+**Action required (not code changes):**
+- Run `20260301000012_drop_study_goal.sql` in Supabase SQL editor
+- Complete Resend domain verification (see "Resend domain verification" section above)
 
-Potential future work (not yet requested):
-- PWA manifest `theme-color` still uses old teal hex `#0d9488` — could update for PWA title bar on Android
-- `study_goal` column in Supabase `profiles` table is now unused — could be dropped via migration
-- Resend domain verification for exam reminder emails (operational prerequisite, not a code change)
+No code tasks queued as of session 5.

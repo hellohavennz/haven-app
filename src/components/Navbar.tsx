@@ -42,6 +42,24 @@ export default function Navbar() {
   const showUpgrade = user && tier !== 'premium';
   const upgradeText = tier === 'plus' ? 'Upgrade to Premium' : 'Upgrade';
 
+  if (isAdmin) {
+    return (
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 dark:bg-gray-950 dark:border-slate-800 font-ui">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex h-16 items-center justify-between">
+            <Link to="/admin" className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 bg-teal-600">
+                <img src="/haven-icons/icon-512x512.png" alt="Haven" className="w-full h-full" />
+              </div>
+              <span className="font-heading font-semibold text-xl text-slate-900 dark:text-white">Haven</span>
+            </Link>
+            <ThemeToggle />
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 dark:bg-gray-950 dark:border-slate-800 font-ui">
       <div className="mx-auto max-w-7xl px-4">

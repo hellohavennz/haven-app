@@ -45,6 +45,10 @@ const Dashboard: React.FC = () => {
       return;
     }
     getCurrentUser().then(u => {
+      if (u?.email === 'hello.haven.nz@gmail.com') {
+        navigate('/admin', { replace: true });
+        return;
+      }
       setUser(u);
       setIsLoading(false);
     });

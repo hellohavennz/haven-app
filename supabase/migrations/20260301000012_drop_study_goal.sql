@@ -1,0 +1,1 @@
+ALTER TABLE profiles DROP COLUMN IF EXISTS study_goal;

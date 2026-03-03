@@ -201,6 +201,12 @@ function OverviewTab() {
   if (!data) return null;
 
   const tier = data.by_tier ?? {};
+  const plusCount = tier.plus ?? 0;
+  const premiumCount = tier.premium ?? 0;
+  const estMrr = Math.round((plusCount * 4.99) + (premiumCount * (24.99 / 6)));
+  const conversionRate = data.total_users > 0
+    ? Math.round((plusCount + premiumCount) / data.total_users * 100)
+    : 0;
 
   return (
     <div className="space-y-8">
@@ -212,6 +218,15 @@ function OverviewTab() {
           <StatCard label="Free" value={tier.free ?? 0} />
           <StatCard label="Plus" value={tier.plus ?? 0} />
           <StatCard label="Premium" value={tier.premium ?? 0} />
+        </div>
+      </section>
+
+      {/* Revenue */}
+      <section>
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Revenue</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <StatCard label="Est. MRR" value={`£${estMrr}`} accent sub={`${plusCount} Plus · ${premiumCount} Premium`} />
+          <StatCard label="Conversion rate" value={`${conversionRate}%`} sub="paid ÷ total users" />
         </div>
       </section>
 
@@ -388,6 +403,7 @@ function UsersTab() {
   const [error, setError] = useState<string | null>(null);
   const [tierFilter, setTierFilter] = useState<'all' | 'free' | 'plus' | 'premium'>('all');
   const [engFilter, setEngFilter] = useState<'all' | 'well' | 'struggling'>('all');
+  const [search, setSearch] = useState('');
   const [acting, setActing] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<AdminUser | null>(null);
 
@@ -433,11 +449,25 @@ function UsersTab() {
     if (tierFilter !== 'all' && u.subscription_tier !== tierFilter) return false;
     if (engFilter === 'well' && engagementLabel(u) !== 'well') return false;
     if (engFilter === 'struggling' && engagementLabel(u) !== 'struggling') return false;
+    if (search) {
+      const q = search.toLowerCase();
+      const email = (u.email ?? '').toLowerCase();
+      const name = (u.display_name ?? '').toLowerCase();
+      if (!email.includes(q) && !name.includes(q)) return false;
+    }
     return true;
   });
 
   return (
     <div className="space-y-4">
+      {/* Search */}
+      <input
+        type="text"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        placeholder="Search by name or email…"
+        className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
       {/* Filters */}
       <div className="flex gap-4 flex-wrap items-center">
         <div className="flex gap-1.5">
@@ -614,11 +644,15 @@ function ExamsTab() {
   if (error) return <ErrorMsg msg={error} />;
   if (!data) return null;
 
+  const passedCount = data.pass_rate != null ? Math.round(data.total_attempts * data.pass_rate / 100) : null;
+  const failedCount = passedCount != null ? data.total_attempts - passedCount : null;
+  const passFailSub = passedCount != null ? `${passedCount} passed · ${failedCount} failed` : undefined;
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <StatCard label="Total attempts" value={data.total_attempts} accent />
-        <StatCard label="Pass rate" value={data.pass_rate != null ? `${data.pass_rate}%` : '—'} />
+        <StatCard label="Pass rate" value={data.pass_rate != null ? `${data.pass_rate}%` : '—'} sub={passFailSub} />
         <StatCard label="Avg score" value={data.avg_score_pct != null ? `${data.avg_score_pct}%` : '—'} />
         <StatCard label="Avg time" value={data.avg_duration_seconds != null ? formatDuration(data.avg_duration_seconds) : '—'} />
       </div>
