@@ -120,8 +120,14 @@ export default function Signup() {
   const handleGoogleSignIn = async () => {
     try {
       setError("");
+      // Persist plan across the OAuth full-page redirect so Dashboard can
+      // trigger checkout after the user returns.
+      if (selectedPlan === 'plus' || selectedPlan === 'premium') {
+        localStorage.setItem('pending_checkout_plan', selectedPlan);
+      }
       await signInWithGoogle();
     } catch (err: any) {
+      localStorage.removeItem('pending_checkout_plan');
       setError(err.message || "Failed to sign in with Google");
     }
   };

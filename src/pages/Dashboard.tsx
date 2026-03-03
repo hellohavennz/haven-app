@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
-import { getCurrentUser } from '../lib/auth';
+import { getCurrentUser, getSession } from '../lib/auth';
 import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
 import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
@@ -70,6 +70,29 @@ const Dashboard: React.FC = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // After Google OAuth the user returns as free tier; if they had selected
+  // a paid plan before OAuth, resume checkout now that we have their session.
+  useEffect(() => {
+    if (tierLoading || !user) return;
+    const pendingPlan = localStorage.getItem('pending_checkout_plan');
+    if (!pendingPlan) return;
+    localStorage.removeItem('pending_checkout_plan'); // clear before async work
+    if (tier !== 'free') return; // already paid (e.g. returning user)
+    getSession().then(session => {
+      const token = session?.access_token;
+      if (!token) return;
+      fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ plan: pendingPlan }),
+      })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => { if (data?.url) window.location.href = data.url; })
+        .catch(() => {});
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, tier, tierLoading]);
 
   const progress = useProgress(user?.id);
 
