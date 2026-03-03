@@ -62,7 +62,7 @@ export default function Instagram() {
           Pass the Life in the UK Test, First Time
         </h1>
         <p style={{ fontSize: 17, color: styles.textMuted, lineHeight: 1.6, maxWidth: 400, margin: '0 auto 32px' }}>
-          Calm, structured study that fits your life. 29 lessons, 590+ practice questions, and AI-powered support.
+          Calm, structured study that fits your life. 29 lessons, 560+ practice questions, and AI-powered support.
         </p>
         <Link to="/signup" style={{ display: 'inline-block', background: styles.teal, color: styles.white, padding: '14px 32px', borderRadius: 12, fontWeight: 600, fontSize: 16, textDecoration: 'none', letterSpacing: '0.01em' }}>
           Start Free Today
@@ -75,8 +75,8 @@ export default function Instagram() {
         <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: 480, margin: '0 auto' }}>
           {[
             { value: '29', label: 'Lessons' },
-            { value: '590+', label: 'Questions' },
-            { value: '610+', label: 'Flashcards' },
+            { value: '560+', label: 'Questions' },
+            { value: '570+', label: 'Flashcards' },
           ].map(stat => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 26, color: styles.white, fontWeight: 700 }}>{stat.value}</div>
@@ -94,8 +94,8 @@ export default function Instagram() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           {[
             { icon: <IconBook />, title: 'Guided Lessons', desc: '29 lessons covering every topic on the test syllabus' },
-            { icon: <IconBrain />, title: 'Practice Questions', desc: '590+ real-style questions with instant explanations' },
-            { icon: <IconCards />, title: 'Flashcards', desc: '610+ cards to reinforce key facts through active recall' },
+            { icon: <IconBrain />, title: 'Practice Questions', desc: '560+ real-style questions with instant explanations' },
+            { icon: <IconCards />, title: 'Flashcards', desc: '570+ cards to reinforce key facts through active recall' },
             { icon: <IconChart />, title: 'Progress Tracking', desc: 'See exactly where you stand and what to study next' },
           ].map(f => (
             <div key={f.title} style={{ background: styles.white, borderRadius: 16, padding: '20px 16px', border: `1px solid ${styles.creamDark}` }}>
@@ -194,7 +194,7 @@ export default function Instagram() {
               </div>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {['All 29 lessons', '590+ practice questions', '610+ flashcards', '2 mock exams per month', 'Resit support'].map(f => (
+              {['All 29 lessons', '560+ practice questions', '570+ flashcards', '2 mock exams per month', 'Resit support'].map(f => (
                 <li key={f} style={{ fontSize: 14, color: styles.textMuted, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: styles.teal, fontWeight: 700 }}>✓</span> {f}
                 </li>
