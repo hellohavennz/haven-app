@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-03 (session 6)_
+_Last updated: 2026-03-03 (session 7)_
 
 ---
 
@@ -117,6 +117,7 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260301000011_lesson_read.sql` | — | ✅ Applied |
 | `20260301000012_drop_study_goal.sql` | Drops unused `study_goal` column from profiles | ✅ Applied |
 | `20260303000013_admin_revenue_series.sql` | Adds `revenue_by_day` series to `admin_overview` RPC (powers MRR bar chart) | ✅ Applied |
+| `20260303000014_exam_attempts_deny_dml.sql` | Explicit DENY policies for DELETE + UPDATE on `exam_attempts` | ✅ Applied |
 
 ---
 
@@ -290,6 +291,15 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
+## Session 7 changes (2026-03-03)
+
+- **Security: `create-checkout-session`** — Now requires `Authorization: Bearer <token>`. JWT is verified via `supabase.auth.getUser()`; `userId` and `email` are derived from the verified token instead of trusting client-supplied request body fields.
+- **Security: `send-welcome-email`** — Same JWT check added. Unauthenticated callers receive 401, preventing endpoint abuse for email spam.
+- **`Signup.tsx`** — Reads `data.session.access_token` after `signUp()` and passes it as `Bearer` token in both Netlify function calls.
+- **Migration `000014`** — Explicit `FOR DELETE USING (false)` and `FOR UPDATE USING (false)` policies added to `exam_attempts`. Applied ✅.
+
+---
+
 ## Session 6 changes (2026-03-03)
 
 - **Practice UX** — Removed intermediate choice screen. `/practice` now shows per-lesson rows inside each module card, each with direct "Questions" and "Flashcards" buttons. Navigating to `/practice/:lessonId/questions` skips the choice screen and starts immediately. Accuracy dot per lesson (grey/green/yellow/red).
@@ -328,4 +338,4 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Next session — tasks queued
 
-No code tasks or operational actions queued as of session 6. All pending items resolved.
+No code tasks or operational actions queued as of session 7. All pending items resolved.
