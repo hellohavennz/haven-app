@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-03 (session 5)_
+_Last updated: 2026-03-03 (session 6)_
 
 ---
 
@@ -115,7 +115,8 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260228000009_resit_one_per_account.sql` | Partial unique indexes: one `approved` per user (lifetime), one `pending` per user at a time | ✅ Applied |
 | `20260228000010_exam_reminder_flags.sql` | Adds `exam_reminder_7d_sent` + `exam_reminder_1d_sent` boolean columns to profiles | ✅ Applied |
 | `20260301000011_lesson_read.sql` | — | ✅ Applied |
-| `20260301000012_drop_study_goal.sql` | Drops unused `study_goal` column from profiles | ⏳ Run in Supabase SQL editor |
+| `20260301000012_drop_study_goal.sql` | Drops unused `study_goal` column from profiles | ✅ Applied |
+| `20260303000013_admin_revenue_series.sql` | Adds `revenue_by_day` series to `admin_overview` RPC (powers MRR bar chart) | ✅ Applied |
 
 ---
 
@@ -276,7 +277,7 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Dynamic exam** — ✅ Built. Adaptive question selection weighted by weak lesson areas (`selectDynamicExamQuestions` in `examUtils.ts`).
 - **Resit one-per-account enforcement** — ✅ Enforced via partial unique indexes (`migration 000009`). One approved per user (lifetime), one pending at a time. Rejected users can resubmit.
 - **PWA Phase 2** — ✅ Built. Three-layer offline strategy: (1) Workbox `runtimeCaching` (`StaleWhileRevalidate`, 7-day TTL) caches all 5 Supabase content API endpoints transparently after first online visit; (2) `content-snapshot-v1` in localStorage provides a second fallback for cold service worker; (3) `syncProgressOnReconnect()` batch-upserts all localStorage progress to Supabase on reconnect. Offline banner shown in `RootLayout` when `navigator.onLine` is false.
-- **Email reminders** — ✅ Built. Netlify Scheduled Function (`send-exam-reminders.ts`) runs daily at 08:00 UTC. Sends 7-day and 1-day reminder emails via Resend. Flags on `profiles` prevent duplicates; flags reset when exam date changes. **Requires setup: add `RESEND_API_KEY` to Netlify env and verify `haven.study` as a sending domain at resend.com.**
+- **Email reminders** — ✅ Built and live. Netlify Scheduled Function (`send-exam-reminders.ts`) runs daily at 08:00 UTC. Sends 7-day and 1-day reminder emails via Resend. `haven.study` domain verified at resend.com, `RESEND_API_KEY` set in Netlify env. Flags on `profiles` prevent duplicates; flags reset when exam date changes.
 - **Visual rebrand** — ✅ Done (session 3, v2). Design v2 palette: teal-500 `#5F9D86` (brand), amber-500 `#C9973F` (gold accent), cream `#FAF7F2` (page bg), app-bg `#F4F7F5`, warm green-grey slate neutrals. Fonts: Montserrat (headings 600/700) + Source Sans 3 (body/UI 400/600/700). Rollback tag: `pre-design-v2` (commit `07ea806`). Dark mode unchanged. See MEMORY.md design system section for full palette.
 - **Instagram landing page** — ✅ Done (session 3). Standalone at `/uk/instagram`. No app navbar/footer. Prices: Free £0 / Plus £4.99/mo / Premium £24.99/6mo. Route is top-level in `main.tsx`, outside `RootLayout`.
 - **Monthly-rotating exam questions** — ✅ Done (session 3). Static exam 1 and 2 now use a month+year component in their seed so questions rotate each calendar month while remaining deterministic within a month.
@@ -286,6 +287,18 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 - **Dashboard mobile header** — ✅ Fixed (session 3). Header now stacks vertically on mobile (`flex-col sm:flex-row`). Upgrade button text shortened to "Upgrade to Plus".
 - **iOS date picker** — ✅ Fixed (session 3). `overflow-hidden` on tile container; `[color-scheme:light] dark:[color-scheme:dark]` on the `<input type="date">` prevents the blank-input / overflow issue on iOS Safari.
 - **Onboarding study goal step removed** — ✅ Done (session 3). Step 2 (study time dedication) removed from `Welcome.tsx`. Onboarding is now 2 steps: exam date → all set. `studyGoal` made optional in `OnboardingData` type for backward-compat; field no longer written to localStorage or Supabase. `Dashboard.tsx` pacing widget simplified to show raw lessons/day needed.
+
+---
+
+## Session 6 changes (2026-03-03)
+
+- **Practice UX** — Removed intermediate choice screen. `/practice` now shows per-lesson rows inside each module card, each with direct "Questions" and "Flashcards" buttons. Navigating to `/practice/:lessonId/questions` skips the choice screen and starts immediately. Accuracy dot per lesson (grey/green/yellow/red).
+- **Practice results — Next lesson** — Results screen now has three buttons: "Study notes" (→ lesson content), "Try again", and "Next lesson →" (→ next lesson's questions). Button absent on the final lesson.
+- **Admin MRR chart** — Static MRR stat replaced with `MrrCard` component: clickable bar chart cycling daily → weekly → monthly. Shows new paid subscriber revenue per period (180-day history). Powered by `revenue_by_day` field in `admin_overview` RPC.
+- **Content fixes** — 5 questions in Supabase updated via SQL to remove pronoun context-dependency ("these values", "said they had no religion" etc.). Run directly in Supabase SQL editor.
+- **Migrations applied** — `000012_drop_study_goal` and `000013_admin_revenue_series` both applied.
+- **Resend** — Domain verified, `RESEND_API_KEY` set in Netlify. Email reminders fully live.
+- **Profile backfill** — Missing profile rows created for all existing auth users. Admin Users tab now shows all accounts.
 
 ---
 
@@ -302,19 +315,6 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
-## Resend domain verification (action required for email reminders)
-
-Email reminder code is complete. To activate:
-
-1. Sign up / log in at **resend.com**
-2. Add domain → enter `haven.study`
-3. Add the DNS TXT/CNAME records Resend provides to **Netlify DNS** (haven.study domain settings)
-4. Click "Verify" in Resend dashboard
-5. In **Netlify UI → Site config → Environment variables**, add `RESEND_API_KEY`
-6. Trigger a redeploy
-
-Sending address used in functions: `reminders@haven.study` (update in `send-exam-reminders.ts` and `send-welcome-email.ts` if you use a different subdomain).
-
 ---
 
 ## Session 4 changes (2026-03-02)
@@ -328,8 +328,4 @@ Sending address used in functions: `reminders@haven.study` (update in `send-exam
 
 ## Next session — tasks queued
 
-**Action required (not code changes):**
-- Run `20260301000012_drop_study_goal.sql` in Supabase SQL editor
-- Complete Resend domain verification (see "Resend domain verification" section above)
-
-No code tasks queued as of session 5.
+No code tasks or operational actions queued as of session 6. All pending items resolved.
