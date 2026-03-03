@@ -84,20 +84,24 @@ export default function Signup() {
     try {
       const data = await signUp(email, password, name.trim() || undefined);
 
-      // Fire-and-forget welcome email
-      fetch('/.netlify/functions/send-welcome-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name: name.trim() || undefined }),
-      }).catch(() => {});
+      const accessToken = data.session?.access_token;
 
-      if ((selectedPlan === 'plus' || selectedPlan === 'premium') && data.user) {
+      // Fire-and-forget welcome email
+      if (accessToken) {
+        fetch('/.netlify/functions/send-welcome-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+          body: JSON.stringify({ email, name: name.trim() || undefined }),
+        }).catch(() => {});
+      }
+
+      if ((selectedPlan === 'plus' || selectedPlan === 'premium') && data.user && accessToken) {
         // Go straight to Stripe — skip the paywall detour
         setLoadingStep('checkout');
         const res = await fetch('/.netlify/functions/create-checkout-session', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ plan: selectedPlan, userId: data.user.id, email: data.user.email }),
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+          body: JSON.stringify({ plan: selectedPlan }),
         });
         if (!res.ok) throw new Error((await res.text()) || 'Checkout setup failed');
         const { url } = await res.json();

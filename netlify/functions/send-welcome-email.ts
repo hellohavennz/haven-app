@@ -1,4 +1,5 @@
 import type { Handler } from '@netlify/functions';
+import { createClient } from '@supabase/supabase-js';
 
 const FROM = 'Haven <hello@haven.study>';
 const APP_URL = 'https://havenstudy.app/uk';
@@ -78,6 +79,17 @@ export const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
+
+  // Verify caller is an authenticated user
+  const token = (event.headers['authorization'] ?? '').replace(/^Bearer\s+/i, '');
+  if (!token) return { statusCode: 401, body: 'Unauthorized' };
+
+  const supabase = createClient(
+    process.env.VITE_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  );
+  const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+  if (authError || !user) return { statusCode: 401, body: 'Unauthorized' };
 
   let body: { email: string; name?: string };
   try {

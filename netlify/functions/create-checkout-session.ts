@@ -14,17 +14,30 @@ export const handler: Handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  let body: { plan: string; userId: string; email: string };
+  // Verify caller is authenticated; derive userId/email from token (not client body)
+  const token = (event.headers['authorization'] ?? '').replace(/^Bearer\s+/i, '');
+  if (!token) return { statusCode: 401, body: 'Unauthorized' };
+
+  const supabaseAdmin = createClient(
+    process.env.VITE_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  );
+  const { data: { user: callerUser }, error: authError } = await supabaseAdmin.auth.getUser(token);
+  if (authError || !callerUser) return { statusCode: 401, body: 'Unauthorized' };
+
+  let body: { plan: string };
   try {
     body = JSON.parse(event.body ?? '{}');
   } catch {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
 
-  const { plan, userId, email } = body;
+  const { plan } = body;
+  const userId = callerUser.id;
+  const email = callerUser.email ?? '';
 
-  if (!plan || !userId || !email) {
-    return { statusCode: 400, body: 'Missing required fields: plan, userId, email' };
+  if (!plan) {
+    return { statusCode: 400, body: 'Missing required field: plan' };
   }
 
   const priceId = PRICE_IDS[plan];
@@ -35,12 +48,7 @@ export const handler: Handler = async (event) => {
   const siteUrl = process.env.URL ?? 'http://localhost:8888';
 
   // Look up existing Stripe customer to avoid duplicates on re-purchase
-  const supabase = createClient(
-    process.env.VITE_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  );
-
-  const { data: profile } = await supabase
+  const { data: profile } = await supabaseAdmin
     .from('profiles')
     .select('stripe_customer_id')
     .eq('id', userId)
