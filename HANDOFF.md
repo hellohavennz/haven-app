@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-03 (session 7)_
+_Last updated: 2026-03-03 (session 8)_
 
 ---
 
@@ -291,6 +291,18 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
+## Session 8 changes (2026-03-03)
+
+- **Admin logout** — Sign Out button added to admin navbar (logo + ThemeToggle + Sign Out)
+- **Google OAuth blank screen** — Root cause: Supabase Site URL and Redirect URLs not configured for `/uk`. Code fix: `App.tsx` now listens for `SIGNED_IN` event (not just one-shot `getCurrentUser()`) so PKCE code exchange is caught even if user lands on marketing page. **Still required: fix Supabase URL Configuration (see pending tasks below).**
+- **Google OAuth + paid plan** — Fixed: `Signup.tsx` now saves `pending_checkout_plan` to localStorage before launching OAuth. `Dashboard.tsx` checks on mount and triggers Stripe checkout if a pending plan exists and user is free tier.
+- **Instagram page** — Stats corrected: 590+→560+, 610+→570+ (actual counts: 563 questions, 574 flashcards)
+- **Pre-launch fixes** — Fake testimonial removed, "join thousands" claim removed, v1 sage palette→v2 teal, emoji icons→SVGs, house brand mark→actual Haven logo, Sentry installed (`@sentry/react`, initialised in `main.tsx`, disabled unless `VITE_SENTRY_DSN` is set)
+- **Security** — `create-checkout-session` and `send-welcome-email` require JWT; `exam_attempts` deny DELETE/UPDATE policies (migration 000014 applied)
+- **Docs** — README and CONTEXT_FOR_CONTENT_CREATION fully rewritten
+
+---
+
 ## Session 7 changes (2026-03-03)
 
 - **Security: `create-checkout-session`** — Now requires `Authorization: Bearer <token>`. JWT is verified via `supabase.auth.getUser()`; `userId` and `email` are derived from the verified token instead of trusting client-supplied request body fields.
@@ -338,4 +350,35 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Next session — tasks queued
 
-No code tasks or operational actions queued as of session 7. All pending items resolved.
+## Pending — Stripe live mode (BLOCKED on manual action)
+
+Stripe is still in **test mode** in production. Users cannot pay. All five variables need updating in **Netlify → Site config → Environment variables** then trigger a redeploy:
+
+| Variable | Where to get it |
+|---|---|
+| `VITE_STRIPE_PUBLISHABLE_KEY` | Stripe Dashboard → Live mode → Developers → API keys → Publishable key (`pk_live_...`) |
+| `STRIPE_SECRET_KEY` | Stripe Dashboard → Live mode → Developers → API keys → Secret key (`sk_live_...`) |
+| `STRIPE_WEBHOOK_SECRET` | Stripe Dashboard → Live mode → Developers → Webhooks → click endpoint → Reveal signing secret (`whsec_...`) |
+| `STRIPE_PLUS_PRICE_ID` | Stripe Dashboard → Live mode → Products → Haven Plus → Price ID |
+| `STRIPE_PREMIUM_PRICE_ID` | Stripe Dashboard → Live mode → Products → Haven Premium → Price ID |
+
+If the webhook endpoint doesn't exist in live mode yet, create it:
+- URL: `https://havenstudy.app/.netlify/functions/stripe-webhook`
+- Events: `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`
+
+After updating, trigger a Netlify redeploy. Then do one real test purchase to confirm end-to-end.
+
+## Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
+
+Go to **Supabase Dashboard → Authentication → URL Configuration**:
+- **Site URL** → `https://havenstudy.app/uk`
+- **Redirect URLs** → confirm `https://havenstudy.app/uk/dashboard` is listed (add if not)
+
+Without this, Google OAuth sometimes redirects to the root URL instead of `/uk/dashboard`, causing a blank screen.
+
+## Pending — Sentry activation
+
+`@sentry/react` is installed and initialised. Just needs the DSN:
+1. Sign up at sentry.io → New project → React → copy DSN
+2. Netlify → Environment variables → add `VITE_SENTRY_DSN` = DSN value
+3. Trigger redeploy
