@@ -6,7 +6,7 @@ import {
   Calendar, Shield, FileCheck, ExternalLink, Loader2, Snowflake, Trash2,
 } from 'lucide-react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import { getCurrentUser } from '../lib/auth';
 import {
@@ -183,6 +183,104 @@ function ActivityChart({
   );
 }
 
+// ── MRR card with cycling bar chart ───────────────────────────────────────
+type RevenueMode = 'daily' | 'weekly' | 'monthly';
+
+function aggregateWeekly(daily: { date: string; revenue: number }[]) {
+  const weeks: Record<string, number> = {};
+  for (const { date, revenue } of daily) {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(d);
+    monday.setDate(diff);
+    const key = monday.toISOString().split('T')[0];
+    weeks[key] = Math.round(((weeks[key] ?? 0) + revenue) * 100) / 100;
+  }
+  return Object.entries(weeks)
+    .map(([date, revenue]) => ({ date, revenue }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function aggregateMonthly(daily: { date: string; revenue: number }[]) {
+  const months: Record<string, number> = {};
+  for (const { date, revenue } of daily) {
+    const key = date.slice(0, 7);
+    months[key] = Math.round(((months[key] ?? 0) + revenue) * 100) / 100;
+  }
+  return Object.entries(months)
+    .map(([date, revenue]) => ({ date, revenue }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function MrrCard({ currentMrr, revenueByDay, plusCount, premiumCount }: {
+  currentMrr: number;
+  revenueByDay: { date: string; revenue: number }[];
+  plusCount: number;
+  premiumCount: number;
+}) {
+  const [mode, setMode] = useState<RevenueMode>('daily');
+
+  const MODES: RevenueMode[] = ['daily', 'weekly', 'monthly'];
+  const MODE_LABELS: Record<RevenueMode, string> = {
+    daily:   'Daily · 30 days',
+    weekly:  'Weekly · 12 weeks',
+    monthly: 'Monthly · 6 months',
+  };
+
+  function cycleMode() {
+    setMode(m => MODES[(MODES.indexOf(m) + 1) % MODES.length]);
+  }
+
+  function shortLabel(date: string) {
+    const d = new Date(date);
+    if (mode === 'monthly') return d.toLocaleString('en-GB', { month: 'short' });
+    return `${d.getDate()}/${d.getMonth() + 1}`;
+  }
+
+  const aggregated =
+    mode === 'weekly'  ? aggregateWeekly(revenueByDay) :
+    mode === 'monthly' ? aggregateMonthly(revenueByDay) :
+    revenueByDay.slice(-30);
+
+  const chartData = aggregated.map(d => ({ label: shortLabel(d.date), revenue: d.revenue }));
+
+  return (
+    <div
+      onClick={cycleMode}
+      className="col-span-2 rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-5 cursor-pointer select-none hover:border-teal-300 dark:hover:border-teal-700 transition-colors"
+    >
+      <div className="flex items-start justify-between mb-3">
+        <div>
+          <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Est. MRR</p>
+          <p className="text-3xl font-bold text-teal-600 dark:text-teal-400">£{currentMrr}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{plusCount} Plus · {premiumCount} Premium</p>
+        </div>
+        <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 rounded-full px-2.5 py-1 capitalize">
+          {mode}
+        </span>
+      </div>
+      {chartData.length > 0 ? (
+        <ResponsiveContainer width="100%" height={80}>
+          <BarChart data={chartData} margin={{ top: 0, right: 0, left: -28, bottom: 0 }}>
+            <XAxis dataKey="label" tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} interval="preserveStartEnd" />
+            <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} tickLine={false} axisLine={false} tickFormatter={v => `£${v}`} allowDecimals={false} />
+            <Tooltip
+              formatter={(v: number) => [`£${v.toFixed(2)}`, 'New revenue']}
+              contentStyle={{ fontSize: 11, borderRadius: 6, border: '1px solid #e5e7eb' }}
+              itemStyle={{ color: '#374151' }}
+            />
+            <Bar dataKey="revenue" fill="#5F9D86" radius={[2, 2, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      ) : (
+        <p className="text-xs text-slate-400 dark:text-slate-500 py-6 text-center">No paid subscriber data yet</p>
+      )}
+      <p className="text-xs text-slate-400 dark:text-slate-500 mt-2 text-center">{MODE_LABELS[mode]} · click to cycle</p>
+    </div>
+  );
+}
+
 // ── Overview tab ──────────────────────────────────────────────────────────
 function OverviewTab() {
   const [data, setData] = useState<AdminOverview | null>(null);
@@ -224,8 +322,13 @@ function OverviewTab() {
       {/* Revenue */}
       <section>
         <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Revenue</h2>
-        <div className="grid grid-cols-2 gap-3">
-          <StatCard label="Est. MRR" value={`£${estMrr}`} accent sub={`${plusCount} Plus · ${premiumCount} Premium`} />
+        <div className="grid grid-cols-3 gap-3">
+          <MrrCard
+            currentMrr={estMrr}
+            revenueByDay={data.revenue_by_day ?? []}
+            plusCount={plusCount}
+            premiumCount={premiumCount}
+          />
           <StatCard label="Conversion rate" value={`${conversionRate}%`} sub="paid ÷ total users" />
         </div>
       </section>

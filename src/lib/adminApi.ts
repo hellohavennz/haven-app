@@ -10,6 +10,7 @@ export type AdminOverview = {
   mau: number;
   daily_logins: { date: string; count: number }[];
   daily_signups: { date: string; count: number }[];
+  revenue_by_day: { date: string; revenue: number }[];
   open_reports: number;
   exam_attempts: number;
   exam_pass_rate: number | null;
