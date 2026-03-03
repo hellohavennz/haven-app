@@ -5,9 +5,9 @@ import {
   BarChart3,
   Brain,
   CheckCircle2,
-  Circle,
   Lock,
   Target,
+  Zap,
 } from "lucide-react";
 
 import { getCurrentUser } from "../lib/auth";
@@ -190,7 +190,7 @@ export default function PracticeIndex() {
 
             {nextLesson && (
               <Link
-                to={`/practice/${nextLesson.id}`}
+                to={`/practice/${nextLesson.id}/questions`}
                 className="group inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-md transition hover:text-blue-900"
               >
                 <Brain className="h-5 w-5 text-blue-500" />
@@ -343,39 +343,44 @@ export default function PracticeIndex() {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl bg-blue-50 p-4 dark:bg-blue-950">
-                          <p className="text-small uppercase tracking-wide text-blue-500 dark:text-blue-300">
-                            Next focus
-                          </p>
-                          <div className="mt-1 flex items-start gap-2 text-sm text-blue-700 dark:text-blue-200">
-                            {nextUpLesson ? (
-                              <>
-                                <Circle className="mt-0.5 h-3 w-3 flex-shrink-0 text-blue-300" />
-                                <span>{nextUpLesson.title}</span>
-                              </>
-                            ) : (
-                              <span>All practice in this module mastered 🎉</span>
-                            )}
-                          </div>
-
-                          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-                            <span className="rounded-full bg-blue-100 px-3 py-1 text-blue-700 dark:bg-blue-900/30 dark:text-blue-100">
-                              {summary.startedCount} started
-                            </span>
-                            <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700 dark:bg-emerald-200/20 dark:text-emerald-300">
-                              {summary.masteredCount} mastered
-                            </span>
-                          </div>
-
-                          {nextUpLesson && summary.callToActionLabel && (
-                            <Link
-                              to={`/practice/${nextUpLesson.id}`}
-                              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
-                            >
-                              {summary.callToActionLabel}
-                              <ArrowRight className="h-4 w-4" />
-                            </Link>
-                          )}
+                        <div className="mt-1 divide-y divide-blue-50 dark:divide-slate-800">
+                          {summary.lessons.map(lesson => {
+                            const acc = getAccuracy(progressData[lesson.id]);
+                            const hasQs = (lesson.questions?.length ?? 0) > 0;
+                            const hasFlashcards = (lesson.flashcards?.length ?? 0) > 0;
+                            return (
+                              <div key={lesson.id} className="flex items-center gap-2 py-2">
+                                <div className={`h-2 w-2 flex-shrink-0 rounded-full ${
+                                  acc === null ? 'bg-slate-200 dark:bg-slate-700' :
+                                  acc >= 0.8   ? 'bg-green-500' :
+                                  acc >= 0.6   ? 'bg-yellow-500' : 'bg-red-400'
+                                }`} />
+                                <span className="flex-1 min-w-0 truncate text-sm text-slate-700 dark:text-slate-200">
+                                  {lesson.title}
+                                </span>
+                                <div className="flex gap-1.5 flex-shrink-0">
+                                  {hasQs && (
+                                    <Link
+                                      to={`/practice/${lesson.id}/questions`}
+                                      className="inline-flex items-center gap-1 rounded-lg bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700 hover:bg-blue-200 transition-colors dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-900/50"
+                                    >
+                                      <Brain className="h-3 w-3" />
+                                      <span className="hidden sm:inline">Questions</span>
+                                    </Link>
+                                  )}
+                                  {hasFlashcards && (
+                                    <Link
+                                      to={`/practice/${lesson.id}/flashcards`}
+                                      className="inline-flex items-center gap-1 rounded-lg bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700 hover:bg-amber-200 transition-colors dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
+                                    >
+                                      <Zap className="h-3 w-3" />
+                                      <span className="hidden sm:inline">Flashcards</span>
+                                    </Link>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     ) : (

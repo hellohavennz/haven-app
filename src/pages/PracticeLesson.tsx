@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState, useRef } from "react";
-import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
-import { getLessonById } from "../lib/content";
+import { Link, Navigate, useParams, useNavigate, useLocation } from "react-router-dom";
+import { getLessonById, getAllLessons } from "../lib/content";
 import { recordAttempt } from "../lib/progress";
-import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap } from "lucide-react";
+import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap, ArrowRight } from "lucide-react";
 import type { Question } from "../types";
 import ReportButton from "../components/ReportButton";
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -53,9 +53,10 @@ type AnswerState = { selected: number | null; checked: boolean };
 export default function PracticeLesson() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const data = lessonId ? getLessonById(lessonId) : null;
   usePageTitle(data?.title);
-  
+
   // Shuffle questions AND shuffle options within each question
   const shuffledQuestions = useMemo(() => {
     if (!data?.questions) return [];
@@ -63,10 +64,18 @@ export default function PracticeLesson() {
     return shuffleQuestionOptions(shuffled);
   }, [data?.questions]);
   const hasQuestions = shuffledQuestions.length > 0;
-  
+
+  // Next lesson in practice order (for "Next lesson" button on results screen)
+  const nextLesson = useMemo(() => {
+    const allWithQs = getAllLessons().filter(l => (l.questions?.length ?? 0) > 0);
+    const idx = allWithQs.findIndex(l => l.id === lessonId);
+    return idx >= 0 && idx < allWithQs.length - 1 ? allWithQs[idx + 1] : null;
+  }, [lessonId]);
+
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [showChoice, setShowChoice] = useState(true);
+  // Skip choice screen when navigated directly to /questions
+  const [showChoice, setShowChoice] = useState(() => !location.pathname.endsWith('/questions'));
   const [currentQIdx, setCurrentQIdx] = useState(0);
   const [answer, setAnswer] = useState<AnswerState>({ selected: null, checked: false });
   const [sessionStats, setSessionStats] = useState({ attempted: 0, correct: 0 });
@@ -83,13 +92,13 @@ export default function PracticeLesson() {
   }, [lessonId, currentQIdx, finished]);
 
   useEffect(() => {
-    setShowChoice(true);
+    setShowChoice(!location.pathname.endsWith('/questions'));
     setCurrentQIdx(0);
     setAnswer({ selected: null, checked: false });
     setSessionStats({ attempted: 0, correct: 0 });
     setFinished(false);
     setWrongTopics([]);
-  }, [lessonId]);
+  }, [lessonId, location.pathname]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6 text-slate-900 dark:text-gray-100">Lesson not found.</div>;
 
@@ -414,19 +423,28 @@ export default function PracticeLesson() {
           )}
         </div>
 
-        <div className="flex gap-4 justify-center">
+        <div className="flex flex-wrap gap-3 justify-center">
           <Link
             to={`/content/${data.id}`}
-            className="px-8 py-4 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 transition-all dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 transition-all dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            Review Lesson
+            Study notes
           </Link>
           <button
             onClick={retry}
-            className="px-8 py-4 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
+            className="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:opacity-90 transition-all"
           >
-            Try Again
+            Try again
           </button>
+          {nextLesson && (
+            <Link
+              to={`/practice/${nextLesson.id}/questions`}
+              className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:opacity-90 transition-all inline-flex items-center gap-2"
+            >
+              Next lesson
+              <ArrowRight size={16} />
+            </Link>
+          )}
         </div>
       </div>
     );
