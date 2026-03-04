@@ -255,11 +255,11 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
                 )}
               </div>
             ) : (
-              <div className="hidden md:flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Link to="/login" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
                   Sign In
                 </Link>
-                <Link to="/paywall" className="px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-base hover:bg-teal-700 transition-colors">
+                <Link to="/paywall" className="hidden md:flex px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold text-base hover:bg-teal-700 transition-colors">
                   Sign Up
                 </Link>
               </div>
