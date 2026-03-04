@@ -58,6 +58,12 @@ export default function RootLayout() {
     location.pathname.startsWith("/practice") || location.pathname.startsWith("/flashcards");
   const showAnySidebar = showStudySidebar || showPracticeSidebar;
 
+  // Bottom nav shows on all main app pages, not just sidebar pages
+  const showMobileNav = showAnySidebar ||
+    ['/exam', '/dashboard', '/profile', '/help', '/analytics'].some(p =>
+      location.pathname.startsWith(p)
+    );
+
   useEffect(() => {
     setIsDrawerOpen(false);
     // Scroll the main content area back to the top on every route change.
@@ -171,7 +177,7 @@ export default function RootLayout() {
         </main>
       </div>
 
-      {showAnySidebar && !isAdmin && (
+      {showMobileNav && !isAdmin && (
         <MobileNav pippaOpen={pippaOpen} />
       )}
 
