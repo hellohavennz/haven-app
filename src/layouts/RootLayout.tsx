@@ -23,6 +23,7 @@ export default function RootLayout() {
   const mainRef = useRef<HTMLElement>(null);
   const [contentReady, setContentReady] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline = useOnlineStatus();
   const wasOnlineRef = useRef(navigator.onLine);
 
@@ -30,18 +31,25 @@ export default function RootLayout() {
     Promise.all([preloadContent(), checkSubscriptionStatus(), preloadOnboarding()])
       .then(() => {
         setContentReady(true);
-        // Fire-and-forget: record today's login for DAU/WAU/MAU tracking
         supabase.auth.getUser().then(({ data }) => {
           if (data.user) {
             recordLoginEvent(data.user.id);
             setIsAdmin(data.user.email === 'hello.haven.nz@gmail.com');
+            setIsLoggedIn(true);
           }
         });
       })
       .catch(err => {
         console.error('Failed to load content:', err);
-        setContentReady(true); // unblock the UI even on error
+        setContentReady(true);
       });
+
+    // Keep isLoggedIn in sync with auth state changes (e.g. logout)
+    const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session?.user);
+      if (!session?.user) setIsAdmin(false);
+    });
+    return () => authSub.unsubscribe();
   }, []);
 
   // Flush any progress writes that failed while offline
@@ -184,12 +192,12 @@ export default function RootLayout() {
         </>
       )}
 
-      {tier === 'premium' && !isAdmin && (
+      {tier === 'premium' && isLoggedIn && !isAdmin && (
         <AskPippa
           isOpen={pippaOpen}
           onOpen={() => setPippaOpen(true)}
           onClose={() => setPippaOpen(false)}
-          hideMobileFloatingBtn={showAnySidebar}
+          hideMobileFloatingBtn={location.pathname.startsWith('/exam')}
         />
       )}
     </div>

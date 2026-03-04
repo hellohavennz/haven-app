@@ -195,7 +195,7 @@ export default function App() {
             Master every topic in the Life in the UK test with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/content" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all">
+            <Link to="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all">
               Start Learning Free
               <ArrowRight size={24} />
             </Link>
@@ -203,6 +203,12 @@ export default function App() {
               View Plans
               <Star size={20} />
             </a>
+          </div>
+          <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+            Already have an account?{' '}
+            <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700 dark:text-teal-400">
+              Log in
+            </Link>
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-300">
             <span className="whitespace-nowrap">✓ Try the first lesson free</span>
