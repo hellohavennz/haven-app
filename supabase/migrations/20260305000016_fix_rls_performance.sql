@@ -175,4 +175,5 @@ CREATE POLICY "app_settings_admin_write" ON public.app_settings
 -- user_progress_user_id_lesson_id_key is the constraint index
 -- (from UNIQUE(user_id, lesson_id)); the other is a redundant copy.
 -- ----------------------------------------------------------------
-DROP INDEX IF EXISTS public.user_progress_user_lesson_unique;
+ALTER TABLE public.user_progress
+  DROP CONSTRAINT IF EXISTS user_progress_user_lesson_unique;
