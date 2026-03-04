@@ -12,6 +12,7 @@ import {
   Smartphone,
   Award,
   Loader2,
+  Tag,
 } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
@@ -35,9 +36,21 @@ export default function Paywall() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checkingOut, setCheckingOut] = useState<Plan | null>(null);
   const [checkoutError, setCheckoutError] = useState('');
+  const [sale, setSale] = useState<{ active: boolean; discount: number } | null>(null);
 
   useEffect(() => {
     getCurrentUser().then(u => setIsLoggedIn(!!u));
+  }, []);
+
+  useEffect(() => {
+    supabase
+      .from('app_settings')
+      .select('value')
+      .eq('key', 'sale')
+      .single()
+      .then(({ data }) => {
+        if (data?.value) setSale(data.value as { active: boolean; discount: number });
+      });
   }, []);
 
   // Handle ?checkout=plus|premium after signup redirect
@@ -76,13 +89,11 @@ export default function Paywall() {
       const { data: { session } } = await supabase.auth.getSession();
       const res = await fetch('/.netlify/functions/create-checkout-session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          plan,
-          userId: user.id,
-          email: user.email,
-          token: session?.access_token,
-        }),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.access_token}`,
+        },
+        body: JSON.stringify({ plan }),
       });
 
       if (!res.ok) {
@@ -129,6 +140,15 @@ export default function Paywall() {
             Start free, or unlock full access with a Plus or Premium plan.
           </p>
         </div>
+
+        {sale?.active && (
+          <div className="mb-8 flex items-center justify-center gap-3 rounded-2xl border border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/20 px-6 py-4">
+            <Tag className="text-amber-600 dark:text-amber-400 flex-shrink-0" size={20} />
+            <p className="font-semibold text-amber-900 dark:text-amber-200">
+              Limited time: {sale.discount}% off all plans — discount applied automatically at checkout
+            </p>
+          </div>
+        )}
 
         {checkoutError && (
           <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
@@ -189,7 +209,12 @@ export default function Paywall() {
               </div>
               <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
-                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£4.99</span>
+                {sale?.active && (
+                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">£4.99</span>
+                )}
+                <span className="text-5xl font-semibold text-slate-900 dark:text-white">
+                  {sale?.active ? `£${(4.99 * (1 - sale.discount / 100)).toFixed(2)}` : '£4.99'}
+                </span>
                 <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/month</span>
               </div>
             </div>
@@ -238,7 +263,12 @@ export default function Paywall() {
               </div>
               <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Premium</h3>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
-                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£24.99</span>
+                {sale?.active && (
+                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">£24.99</span>
+                )}
+                <span className="text-5xl font-semibold text-slate-900 dark:text-white">
+                  {sale?.active ? `£${(24.99 * (1 - sale.discount / 100)).toFixed(2)}` : '£24.99'}
+                </span>
                 <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/6 months</span>
               </div>
             </div>

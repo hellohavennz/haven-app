@@ -4,6 +4,7 @@ import {
   Users, Flag, Trophy, BarChart3, CheckCircle2, XCircle,
   Clock, TrendingUp, AlertTriangle, RefreshCw, ChevronDown, ChevronUp,
   Calendar, Shield, FileCheck, ExternalLink, Loader2, Snowflake, Trash2,
+  Settings, Tag,
 } from 'lucide-react';
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -31,7 +32,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 
 const ADMIN_EMAIL = 'hello.haven.nz@gmail.com';
 
-type Tab = 'overview' | 'reports' | 'users' | 'exams' | 'resit';
+type Tab = 'overview' | 'reports' | 'users' | 'exams' | 'resit' | 'settings';
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -979,6 +980,167 @@ function ErrorMsg({ msg }: { msg: string }) {
   );
 }
 
+// ── Settings tab ──────────────────────────────────────────────────────────
+type SaleSetting = { active: boolean; discount: number };
+
+function SettingsTab() {
+  const [sale, setSale] = useState<SaleSetting>({ active: false, discount: 10 });
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    supabase
+      .from('app_settings')
+      .select('value')
+      .eq('key', 'sale')
+      .single()
+      .then(({ data, error: err }) => {
+        if (err) { setError('Failed to load settings'); }
+        else if (data?.value) {
+          const v = data.value as SaleSetting;
+          setSale({ active: v.active ?? false, discount: v.discount || 10 });
+        }
+        setLoading(false);
+      });
+  }, []);
+
+  async function handleSave() {
+    setSaving(true);
+    setSaved(false);
+    setError('');
+    const { error: err } = await supabase
+      .from('app_settings')
+      .upsert({ key: 'sale', value: sale }, { onConflict: 'key' });
+    setSaving(false);
+    if (err) { setError(err.message); }
+    else { setSaved(true); setTimeout(() => setSaved(false), 3000); }
+  }
+
+  if (loading) return (
+    <div className="flex justify-center py-16">
+      <div className="h-8 w-8 animate-spin rounded-full border-4 border-teal-600 border-t-transparent" />
+    </div>
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Sale toggle card */}
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-900/30">
+            <Tag className="text-amber-600 dark:text-amber-400" size={18} />
+          </div>
+          <div>
+            <h2 className="font-semibold text-slate-900 dark:text-white">Site-wide Sale</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              When active, a discount is auto-applied to all new subscriptions at checkout.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-5">
+          {/* Toggle */}
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium text-slate-900 dark:text-white">Sale active</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                {sale.active ? `${sale.discount}% off is being applied to all checkouts` : 'No discount is active — users can enter promo codes manually'}
+              </p>
+            </div>
+            <button
+              onClick={() => setSale(s => ({ ...s, active: !s.active }))}
+              className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none ${
+                sale.active ? 'bg-teal-600' : 'bg-slate-300 dark:bg-slate-600'
+              }`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
+                  sale.active ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Discount level — only shown when active */}
+          {sale.active && (
+            <div>
+              <p className="mb-3 font-medium text-slate-900 dark:text-white">Discount level</p>
+              <div className="flex gap-3">
+                {([10, 20, 30] as const).map(pct => (
+                  <button
+                    key={pct}
+                    onClick={() => setSale(s => ({ ...s, discount: pct }))}
+                    className={`flex-1 rounded-xl border-2 py-3 text-sm font-semibold transition-all ${
+                      sale.discount === pct
+                        ? 'border-teal-600 bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-500'
+                        : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600'
+                    }`}
+                  >
+                    {pct}% off
+                  </button>
+                ))}
+              </div>
+              <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                Make sure the matching Stripe coupon is set: <code className="font-mono">STRIPE_COUPON_{sale.discount}</code> env var.
+              </p>
+            </div>
+          )}
+
+          {/* Promo codes info box */}
+          {!sale.active && (
+            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Promo codes (manual entry)</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                When no sale is active, Stripe's checkout shows a promo code field. Users can enter codes you've created in your Stripe dashboard (e.g. HAVEN10, HAVEN20, HAVEN30).
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-6 flex items-center gap-4">
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-teal-700 disabled:opacity-60 transition-colors"
+          >
+            {saving && <Loader2 className="animate-spin" size={15} />}
+            {saving ? 'Saving…' : 'Save settings'}
+          </button>
+          {saved && (
+            <span className="flex items-center gap-1.5 text-sm font-medium text-teal-700 dark:text-teal-400">
+              <CheckCircle2 size={15} /> Saved
+            </span>
+          )}
+          {error && <span className="text-sm text-red-600 dark:text-red-400">{error}</span>}
+        </div>
+      </div>
+
+      {/* Stripe setup reminder */}
+      <div className="rounded-2xl border border-amber-200 dark:border-amber-700/40 bg-amber-50 dark:bg-amber-900/10 p-5">
+        <p className="text-sm font-semibold text-amber-900 dark:text-amber-200 mb-2">Stripe setup required</p>
+        <p className="text-xs text-amber-800 dark:text-amber-300 mb-3">
+          Before using discounts, create these in your Stripe Dashboard, then add as Netlify environment variables:
+        </p>
+        <div className="space-y-1">
+          {[
+            ['STRIPE_COUPON_10', '10% off coupon ID from Stripe'],
+            ['STRIPE_COUPON_20', '20% off coupon ID from Stripe'],
+            ['STRIPE_COUPON_30', '30% off coupon ID from Stripe'],
+          ].map(([key, desc]) => (
+            <div key={key} className="flex items-start gap-2 text-xs text-amber-800 dark:text-amber-300">
+              <code className="font-mono font-semibold">{key}</code>
+              <span className="text-amber-700 dark:text-amber-400">— {desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main admin page ───────────────────────────────────────────────────────
 export default function Admin() {
   usePageTitle('Admin');
@@ -1007,11 +1169,12 @@ export default function Admin() {
   if (!allowed) return null;
 
   const TABS: { id: Tab; label: string; icon: typeof Users }[] = [
-    { id: 'overview', label: 'Overview', icon: BarChart3 },
-    { id: 'reports',  label: 'Reports',  icon: Flag },
-    { id: 'users',    label: 'Users',    icon: Users },
-    { id: 'exams',    label: 'Exams',    icon: Trophy },
-    { id: 'resit',    label: 'Resit',    icon: FileCheck },
+    { id: 'overview',  label: 'Overview',  icon: BarChart3 },
+    { id: 'reports',   label: 'Reports',   icon: Flag },
+    { id: 'users',     label: 'Users',     icon: Users },
+    { id: 'exams',     label: 'Exams',     icon: Trophy },
+    { id: 'resit',     label: 'Resit',     icon: FileCheck },
+    { id: 'settings',  label: 'Settings',  icon: Settings },
   ];
 
   return (
@@ -1049,11 +1212,12 @@ export default function Admin() {
       </div>
 
       {/* Tab content */}
-      {tab === 'overview' && <OverviewTab />}
-      {tab === 'reports'  && <ReportsTab />}
-      {tab === 'users'    && <UsersTab />}
-      {tab === 'exams'    && <ExamsTab />}
-      {tab === 'resit'    && <ResitTab />}
+      {tab === 'overview'  && <OverviewTab />}
+      {tab === 'reports'   && <ReportsTab />}
+      {tab === 'users'     && <UsersTab />}
+      {tab === 'exams'     && <ExamsTab />}
+      {tab === 'resit'     && <ResitTab />}
+      {tab === 'settings'  && <SettingsTab />}
     </div>
   );
 }
