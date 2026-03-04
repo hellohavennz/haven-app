@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-04 (session 9)_
+_Last updated: 2026-03-05 (session 10)_
 
 ---
 
@@ -225,8 +225,8 @@ Accessible only to `hello.haven.nz@gmail.com`. Link appears in navbar when logge
 
 ```
 VITE_SUPABASE_URL            # https://auth.havenstudy.app (custom domain)
-VITE_SUPABASE_KEY            # anon key
-SUPABASE_SERVICE_ROLE_KEY    # server-only, used in Netlify functions
+VITE_SUPABASE_KEY            # Publishable key (haven_frontend) — baked into frontend build
+SUPABASE_SERVICE_ROLE_KEY    # Secret key (haven_netlify_functions) — server-only, Netlify functions only
 VITE_STRIPE_PUBLISHABLE_KEY  # safe for browser
 STRIPE_SECRET_KEY            # server-only
 STRIPE_WEBHOOK_SECRET        # whsec_... from Stripe dashboard
@@ -262,12 +262,16 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## E2E test scripts
 
+⚠️ Scripts are **gitignored** (`scripts/` in `.gitignore`) — local only, never committed.
+
 | Script | What it tests | Run with |
 |---|---|---|
 | `scripts/test-resit-flow.ts` | Full resit claim flow against live site | `npx tsx scripts/test-resit-flow.ts` |
 | `scripts/test-forgot-password.ts` | Forgot password → recovery token → password update | `npx tsx scripts/test-forgot-password.ts` |
 | `scripts/test-ask-pippa.ts` | Pippa AI — real reply, conversation history, free/unauth rejection | `npx tsx scripts/test-ask-pippa.ts` |
 | `scripts/test-email-reminders.ts` | Exam reminder emails — creates test users, runs reminder loop, checks DB flags, verifies idempotency | `npx tsx --env-file=.env scripts/test-email-reminders.ts` |
+
+All scripts load credentials from `.env` via a local `loadEnv()` — no hardcoded keys.
 
 ---
 
@@ -348,6 +352,22 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ---
 
+## Session 10 changes (2026-03-05)
+
+- **Security: Supabase API key rotation** — Legacy JWT-based `service_role` and `anon` keys replaced with Supabase's new API key model. New keys: `haven_netlify_functions` (Secret, replaces service_role) and `haven_frontend` (Publishable, replaces anon). All legacy JWT keys deactivated. Netlify env vars updated (`SUPABASE_SERVICE_ROLE_KEY`, `VITE_SUPABASE_KEY`). Frontend redeployed to bake in new anon key.
+- **Security: test scripts removed from git** — `test-resit-flow.ts`, `test-ask-pippa.ts`, `test-email-reminders.ts`, `test-forgot-password.ts` were tracked in git despite `scripts/` being in `.gitignore`. They contained hardcoded service_role and anon keys. Removed from git tracking (`git rm --cached`); local copies updated to load all credentials from `.env` via `loadEnv()` (same pattern as `seed.ts`). Old key values in git history are now harmless (keys deactivated).
+- **Bug fix: onboarding re-prompt on new devices** — `preloadOnboarding()` in `onboarding.ts` was only hydrating localStorage if `profile.onboarding_complete = true`. Users whose profile had `exam_date` set but the boolean unset (e.g. early users, silent upsert failure) would be re-prompted on every new device. Fixed: now also hydrates if `profile.exam_date` is non-null.
+- **Bug fix: sidebar flash for logged-out users** — Navigating to `/content` or `/practice` while logged out briefly showed the study/practice sidebar before `RequireAuth` redirected to login. Fixed in `RootLayout.tsx`: `showStudySidebar` and `showPracticeSidebar` now also require `isLoggedIn` to be true. Since `onAuthStateChange` fires before the `contentReady` spinner resolves, logged-in users see no difference.
+- **Bug fix: "Upgrade to Plus" showing for Premium account** — Root cause: Stripe `checkout.session.completed` webhook failed during key-rotation window, leaving `profiles.subscription_tier = null`. Fixed by running SQL: `UPDATE profiles SET subscription_tier = 'premium' WHERE id = (SELECT id FROM auth.users WHERE email = 'hello.haven.nz@gmail.com')`. Webhook verified working going forward.
+- **Mobile nav overhaul** — Bottom nav (`MobileNav`) now always visible on all main app pages (study, practice, flashcards, exam, dashboard, profile, help, analytics). Items: Study | Practice | Flashcards | Exam | Dashboard. Pippa tab removed from bottom nav (Pippa has its own floating button).
+- **Navbar avatar dropdown** — Hamburger menu removed. Replaced with teal initials circle that opens a dropdown: Profile, Dashboard, Analytics (Premium only), Help, Upgrade (if applicable), Sign Out. Closes on outside click and route change.
+- **Pippa floating button** — Reverted to `MessageCircle` speech bubble icon. Positioned `bottom-24 right-4 md:bottom-6 md:right-6` to clear bottom nav on mobile. Hidden on `/exam`. Only renders when `tier === 'premium' && isLoggedIn`.
+- **Help page back-to-top** — Moved to `bottom-40 right-4 md:bottom-24 md:right-6` to avoid overlap with Pippa button.
+- **Landing page fixes** — "Start Learning Free" CTA now routes to `/signup` (was `/content` which showed "Welcome Back"). Added "Already have an account? Log in" link below hero CTAs.
+- **Root redirect confirmed** — `https://havenstudy.app/` correctly 302-redirects to `/uk` via `netlify.toml`. Old keys in git history are no longer a concern (deactivated).
+
+---
+
 ## Session 9 changes (2026-03-04)
 
 - **Stripe auth header bug fixed** — `Paywall.tsx` was sending the JWT in the request body (`token:`) instead of the `Authorization: Bearer` header. This caused every checkout attempt to return 401, so Stripe was never reached. Fixed to match how `Dashboard.tsx` already does it.
@@ -365,12 +385,16 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 
 ## Next session — tasks queued
 
-## ✅ Stripe live mode — DONE
-
+### ✅ Stripe live mode — DONE
 All env vars set, webhook live, coupons created, checkout confirmed working.
-`STRIPE_SECRET_KEY` is a **restricted key** (not full secret key) — permissions: Customers write, Checkout Sessions write, Billing Portal Sessions write, Subscriptions read, Coupons read. Linked to `https://netlify.com`.
+`STRIPE_SECRET_KEY` is a **restricted key** — permissions: Customers write, Checkout Sessions write, Billing Portal Sessions write, Subscriptions read, Coupons read.
 
-## Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
+### ✅ Security hardening — DONE (session 10)
+- Legacy Supabase JWT keys (service_role + anon) deactivated
+- New API keys in use: `haven_netlify_functions` (Secret) + `haven_frontend` (Publishable)
+- Test scripts removed from git; all load creds from `.env`
+
+### Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
 Go to **Supabase Dashboard → Authentication → URL Configuration**:
 - **Site URL** → `https://havenstudy.app/uk`
@@ -378,9 +402,14 @@ Go to **Supabase Dashboard → Authentication → URL Configuration**:
 
 Without this, Google OAuth sometimes redirects to the root URL instead of `/uk/dashboard`, causing a blank screen.
 
-## Pending — Sentry activation
+### Pending — Sentry activation
 
 `@sentry/react` is installed and initialised. Just needs the DSN:
 1. Sign up at sentry.io → New project → React → copy DSN
 2. Netlify → Environment variables → add `VITE_SENTRY_DSN` = DSN value
 3. Trigger redeploy
+
+### Pending — Stripe webhook verification
+Check Stripe Dashboard → Developers → Webhooks → endpoint → Recent deliveries.
+Confirm `checkout.session.completed` shows green (200) for your test purchase.
+If red (400 / signature mismatch), resend it — your profile is already fixed via SQL so this is just to confirm future purchases auto-update `subscription_tier`.
