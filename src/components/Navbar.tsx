@@ -211,6 +211,16 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
                         <LayoutDashboard size={15} className="text-slate-400" />
                         Dashboard
                       </Link>
+                      {tier === 'premium' && (
+                        <Link
+                          to="/analytics"
+                          onClick={() => setProfileMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+                        >
+                          <BarChart3 size={15} className="text-slate-400" />
+                          Analytics
+                        </Link>
+                      )}
                       <Link
                         to="/help"
                         onClick={() => setProfileMenuOpen(false)}
