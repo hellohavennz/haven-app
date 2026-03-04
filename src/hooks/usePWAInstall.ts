@@ -26,6 +26,10 @@ export function usePWAInstall(): UsePWAInstallResult {
   useEffect(() => {
     if (isStandaloneMode() || hasDismissedInstall()) return;
 
+    // Desktop browsers (macOS/Windows) support PWA install but we only want
+    // to prompt on mobile where "install to home screen" makes sense
+    if (platform === 'desktop') return;
+
     if (platform === 'ios') {
       setShouldShow(true);
       return;
