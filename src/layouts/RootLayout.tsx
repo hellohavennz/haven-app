@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { Menu, WifiOff } from "lucide-react";
+import { WifiOff } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import PracticeSidebar from "../components/PracticeSidebar";
@@ -14,7 +14,6 @@ import { preloadOnboarding } from "../lib/onboarding";
 import { recordLoginEvent } from "../lib/adminApi";
 import { supabase } from "../lib/supabase";
 import { useOnlineStatus, syncProgressOnReconnect } from "../lib/offline";
-import ThemeToggle from "../components/ThemeToggle";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -101,28 +100,11 @@ export default function RootLayout() {
   // absorbed into a fixed-height box that stops flush with the viewport.
   const contentWrapperClasses = showAnySidebar
     ? "min-h-full w-full px-4 pb-28 pt-4 md:px-8 md:pb-12"
-    : "mx-auto w-full max-w-6xl px-4 py-12";
+    : "mx-auto w-full max-w-6xl px-4 pt-12 pb-28 md:pb-12";
 
   return (
     <div className="relative flex h-screen flex-col bg-gradient-to-br from-slate-50 via-white to-teal-50 text-slate-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
-      <div className={showAnySidebar ? "hidden md:block" : undefined}>
-        <Navbar />
-      </div>
-
-      {showAnySidebar && (
-        <header className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-gray-100 md:hidden">
-          <button
-            type="button"
-            onClick={openDrawer}
-            className="rounded-md p-2 text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-          >
-            <span className="sr-only">Open navigation</span>
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          </button>
-          <div className="font-heading font-semibold">Haven</div>
-          <ThemeToggle size="sm" />
-        </header>
-      )}
+      <Navbar onOpenDrawer={showAnySidebar ? openDrawer : undefined} />
 
       {/* Offline banner */}
       {!isOnline && (
