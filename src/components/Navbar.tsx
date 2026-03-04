@@ -6,6 +6,21 @@ import { useSubscription } from "../lib/subscription";
 import { Menu, X, Sparkles, Crown, Shield, BarChart3 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
+function getInitials(user: any): string {
+  const name = user?.user_metadata?.full_name || user?.email?.split('@')[0] || '';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  return name.slice(0, 2).toUpperCase();
+}
+
+function Avatar({ user }: { user: any }) {
+  return (
+    <div className="h-8 w-8 rounded-full bg-teal-600 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
+      {getInitials(user)}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -154,9 +169,10 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-3">
                 <Link
                   to="/profile"
-                  className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
+                  aria-label="Profile"
+                  className="rounded-full hover:opacity-80 transition-opacity"
                 >
-                  Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
+                  <Avatar user={user} />
                 </Link>
                 <button
                   onClick={handleLogout}
@@ -274,10 +290,11 @@ export default function Navbar() {
                 <>
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="flex items-center gap-3 px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Hi, {user.user_metadata?.full_name || user.email?.split('@')[0]}
+                    <Avatar user={user} />
+                    {user.user_metadata?.full_name || user.email?.split('@')[0]}
                   </Link>
                   <button
                     onClick={() => {
