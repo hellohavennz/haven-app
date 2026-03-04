@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-05 (session 10)_
+_Last updated: 2026-03-05 (session 11)_
 
 ---
 
@@ -118,6 +118,9 @@ All functions authenticate via `Authorization: Bearer <supabase_jwt>`. Admin fun
 | `20260301000012_drop_study_goal.sql` | Drops unused `study_goal` column from profiles | ✅ Applied |
 | `20260303000013_admin_revenue_series.sql` | Adds `revenue_by_day` series to `admin_overview` RPC (powers MRR bar chart) | ✅ Applied |
 | `20260303000014_exam_attempts_deny_dml.sql` | Explicit DENY policies for DELETE + UPDATE on `exam_attempts` | ✅ Applied |
+| `20260305000015_app_settings.sql` | `app_settings` table + RLS (sale toggle, discount level) | ✅ Applied |
+| `20260305000016_fix_rls_performance.sql` | Fix `auth_rls_initplan` + `multiple_permissive_policies` + drop duplicate constraint on `user_progress` | ✅ Applied |
+| `20260305000017_fix_security_warnings.sql` | `SET search_path = ''` on 9 functions; drop always-true UPDATE policy on profiles | ✅ Applied |
 
 ---
 
@@ -352,6 +355,20 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
+## Session 11 changes (2026-03-05)
+
+- **Supabase security warnings cleared** — All 11 security issues resolved:
+  - Migration `000017`: `SET search_path = ''` added to 9 public functions (`handle_new_user`, `is_admin`, `admin_overview`, `admin_get_reports`, `admin_update_report`, `admin_get_users`, `admin_get_exam_stats`, `update_updated_at_column`, `moddatetime`) to fix `function_search_path_mutable` warnings.
+  - Migration `000017`: Dropped "Service role can update all" always-true UPDATE policy on `profiles` (service role bypasses RLS anyway).
+  - Supabase Dashboard → Authentication → Settings: **Leaked password protection** (HaveIBeenPwned.org) enabled.
+- **Supabase performance warnings cleared** — All 51 performance issues resolved:
+  - Migration `000016`: Dropped all legacy duplicate RLS policies on `profiles`, `user_progress`, `exam_attempts`, `content_reports`, `login_events`, `resit_claims`, `app_settings`. Recreated canonical policies using `(select auth.uid())` pattern to fix all `auth_rls_initplan` warnings.
+  - Migration `000016`: Dropped redundant `user_progress_user_lesson_unique` constraint (was a duplicate unique constraint alongside the UNIQUE constraint index). Required `ALTER TABLE DROP CONSTRAINT` not `DROP INDEX`.
+  - Note: migration 000016 initially rolled back due to the index error (Supabase SQL Editor runs multi-statement SQL in a single transaction). Re-run of corrected migration applied all policy changes successfully.
+- **Legacy tables dropped** — `public.attempts` and `public.purchases` (unused Supabase template tables flagged by advisor) confirmed empty and dropped.
+
+---
+
 ## Session 10 changes (2026-03-05)
 
 - **Security: Supabase API key rotation** — Legacy JWT-based `service_role` and `anon` keys replaced with Supabase's new API key model. New keys: `haven_netlify_functions` (Secret, replaces service_role) and `haven_frontend` (Publishable, replaces anon). All legacy JWT keys deactivated. Netlify env vars updated (`SUPABASE_SERVICE_ROLE_KEY`, `VITE_SUPABASE_KEY`). Frontend redeployed to bake in new anon key.
@@ -389,10 +406,13 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 All env vars set, webhook live, coupons created, checkout confirmed working.
 `STRIPE_SECRET_KEY` is a **restricted key** — permissions: Customers write, Checkout Sessions write, Billing Portal Sessions write, Subscriptions read, Coupons read.
 
-### ✅ Security hardening — DONE (session 10)
+### ✅ Security hardening — DONE (sessions 10–11)
 - Legacy Supabase JWT keys (service_role + anon) deactivated
 - New API keys in use: `haven_netlify_functions` (Secret) + `haven_frontend` (Publishable)
 - Test scripts removed from git; all load creds from `.env`
+- All 11 Supabase security advisor warnings resolved (see session 11 changes)
+- All 51 Supabase performance advisor warnings resolved (see session 11 changes)
+- Leaked password protection enabled in Supabase Auth settings
 
 ### Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
