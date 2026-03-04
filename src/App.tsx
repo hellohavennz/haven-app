@@ -179,7 +179,20 @@ export default function App() {
 
   return (
     <div className="space-y-20 pb-20 min-h-screen text-slate-900 transition-colors bg-white dark:bg-gray-950 dark:text-gray-100">
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-white dark:from-gray-900 dark:via-slate-950 dark:to-gray-900 -mx-4 px-4 py-20 md:py-32">
+      {/* Minimal top nav */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur border-b border-slate-100 dark:border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+          <span className="font-bold text-teal-700 dark:text-teal-400 text-lg tracking-tight">Haven</span>
+          <Link
+            to="/login"
+            className="px-4 py-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-teal-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors"
+          >
+            Log in
+          </Link>
+        </div>
+      </header>
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-white dark:from-gray-900 dark:via-slate-950 dark:to-gray-900 -mx-4 px-4 pt-32 pb-20 md:pt-44 md:pb-32">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-100 rounded-full text-sm font-semibold mb-6">
