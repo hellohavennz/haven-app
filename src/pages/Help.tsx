@@ -366,7 +366,7 @@ export default function Help() {
       {showScrollTop && (
         <button
           onClick={() => document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-24 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-teal-600 text-white shadow-lg transition hover:bg-teal-700"
+          className="fixed bottom-40 right-4 md:bottom-24 md:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-teal-600 text-white shadow-lg transition hover:bg-teal-700"
           aria-label="Back to top"
         >
           <ArrowUp className="h-5 w-5" />
