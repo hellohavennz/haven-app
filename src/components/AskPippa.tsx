@@ -1,5 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
+import { X, Send, Loader2 } from "lucide-react";
+
+function PippaAvatar({ size = 'md' }: { size?: 'sm' | 'md' }) {
+  const dim = size === 'sm' ? 'h-8 w-8 text-xs' : 'h-10 w-10 text-sm';
+  return (
+    <div className={`${dim} flex flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 font-semibold text-white`}>
+      P
+    </div>
+  );
+}
 import { supabase } from "../lib/supabase";
 import { getAllProgress } from "../lib/progress";
 import { getAllLessons } from "../lib/content";
@@ -159,7 +168,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           ].join(" ")}
           aria-label="Open Ask Pippa chat"
         >
-          <MessageCircle className="h-7 w-7" />
+          <span className="text-2xl font-semibold">P</span>
         </button>
       )}
 
@@ -182,8 +191,8 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
           {/* Header */}
           <div className="flex flex-shrink-0 items-center justify-between rounded-none bg-gradient-to-br from-teal-400 to-teal-700 p-4 text-white md:rounded-t-2xl">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                <Sparkles className="h-5 w-5" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 font-semibold text-lg">
+                P
               </div>
               <div>
                 <h3 className="font-semibold">Ask Pippa</h3>
@@ -207,8 +216,8 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
                 className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 mt-1">
-                    <Sparkles className="h-4 w-4 text-white" />
+                  <div className="mt-1">
+                    <PippaAvatar size="sm" />
                   </div>
                 )}
                 <div
@@ -225,8 +234,8 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
 
             {loading && (
               <div className="flex gap-2">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 mt-1">
-                  <Sparkles className="h-4 w-4 text-white" />
+                <div className="mt-1">
+                  <PippaAvatar size="sm" />
                 </div>
                 <div className="rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-3 dark:bg-slate-800">
                   <Loader2 className="h-4 w-4 animate-spin text-teal-600" />
