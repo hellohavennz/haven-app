@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 
 function PippaAvatar({ size = 'md' }: { size?: 'sm' | 'md' }) {
   const dim = size === 'sm' ? 'h-8 w-8 text-xs' : 'h-10 w-10 text-sm';
@@ -163,12 +163,12 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
         <button
           onClick={onOpen}
           className={[
-            "fixed bottom-6 right-6 z-50 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
+            "fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
             hideMobileFloatingBtn ? "hidden md:flex" : "flex",
           ].join(" ")}
           aria-label="Open Ask Pippa chat"
         >
-          <span className="text-2xl font-semibold">P</span>
+          <MessageCircle className="h-6 w-6 md:h-7 md:w-7" />
         </button>
       )}
 
