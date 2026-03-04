@@ -1,16 +1,14 @@
 import { useMemo } from "react";
-import { BookOpen, CheckCircle, MessageCircle, Sparkles, User } from "lucide-react";
+import { BookOpen, CheckCircle, Sparkles, ClipboardList, LayoutDashboard } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import { getAllLessons } from "../../lib/content";
 
 interface MobileNavProps {
-  isPremium?: boolean;
   pippaOpen?: boolean;
-  onOpenPippa?: () => void;
 }
 
-export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileNavProps) {
+export default function MobileNav({ pippaOpen }: MobileNavProps) {
   const location = useLocation();
   const firstLessonId = useMemo(() => getAllLessons()[0]?.id, []);
 
@@ -86,15 +84,20 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
           <span>Flashcards</span>
         </NavLink>
 
-        {isPremium && (
-          <button
-            onClick={onOpenPippa}
-            className="flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100"
-          >
-            <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            <span>Pippa</span>
-          </button>
-        )}
+        <NavLink
+          to="/exam"
+          className={({ isActive }) =>
+            [
+              "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
+              isActive || location.pathname.startsWith("/exam")
+                ? "text-teal-600 dark:text-teal-300"
+                : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-gray-100",
+            ].join(" ")
+          }
+        >
+          <ClipboardList className="h-5 w-5" aria-hidden="true" />
+          <span>Exam</span>
+        </NavLink>
 
         <NavLink
           to="/dashboard"
@@ -107,8 +110,8 @@ export default function MobileNav({ isPremium, pippaOpen, onOpenPippa }: MobileN
             ].join(" ")
           }
         >
-          <User className="h-5 w-5" aria-hidden="true" />
-          <span>Profile</span>
+          <LayoutDashboard className="h-5 w-5" aria-hidden="true" />
+          <span>Dashboard</span>
         </NavLink>
       </div>
     </nav>

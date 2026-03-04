@@ -172,11 +172,7 @@ export default function RootLayout() {
       </div>
 
       {showAnySidebar && !isAdmin && (
-        <MobileNav
-          isPremium={tier === 'premium'}
-          pippaOpen={pippaOpen}
-          onOpenPippa={() => setPippaOpen(true)}
-        />
+        <MobileNav pippaOpen={pippaOpen} />
       )}
 
       {showAnySidebar && drawerSidebar && !isAdmin && (

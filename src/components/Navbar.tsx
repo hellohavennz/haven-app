@@ -213,11 +213,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-gray-950">
-          <div className="flex items-center justify-between px-4 pt-4 pb-3 text-sm text-slate-600 dark:text-slate-300">
-            <span>Appearance</span>
-            <ThemeToggle size="sm" />
-          </div>
-          <div className="px-4 pb-4 space-y-2">
+          <div className="px-4 py-4 space-y-2">
             <Link
               to="/content"
               className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-teal-50 rounded-lg dark:text-slate-200 dark:hover:bg-slate-800"
