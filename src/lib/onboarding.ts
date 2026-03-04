@@ -54,7 +54,7 @@ export async function preloadOnboarding(): Promise<void> {
       .eq('id', user.id)
       .single();
 
-    if (profile?.onboarding_complete) {
+    if (profile?.onboarding_complete || profile?.exam_date) {
       const data: OnboardingData = {
         examDate: profile.exam_date ?? null,
         completedAt: new Date().toISOString(),

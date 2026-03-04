@@ -60,9 +60,9 @@ export default function RootLayout() {
     wasOnlineRef.current = isOnline;
   }, [isOnline]);
 
-  const showStudySidebar = location.pathname.startsWith("/content");
+  const showStudySidebar = isLoggedIn && location.pathname.startsWith("/content");
   const showPracticeSidebar =
-    location.pathname.startsWith("/practice") || location.pathname.startsWith("/flashcards");
+    isLoggedIn && (location.pathname.startsWith("/practice") || location.pathname.startsWith("/flashcards"));
   const showAnySidebar = showStudySidebar || showPracticeSidebar;
 
   // Bottom nav shows on all main app pages, not just sidebar pages
