@@ -351,51 +351,23 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 ## Session 9 changes (2026-03-04)
 
 - **Stripe auth header bug fixed** — `Paywall.tsx` was sending the JWT in the request body (`token:`) instead of the `Authorization: Bearer` header. This caused every checkout attempt to return 401, so Stripe was never reached. Fixed to match how `Dashboard.tsx` already does it.
+- **Stripe live mode** — All 8 env vars updated in Netlify (live publishable key, secret key, webhook secret, Plus price ID, Premium price ID, 3 coupon IDs). Stripe webhook endpoint created in live mode. Checkout confirmed working end-to-end.
 - **Sale/discount system** — Full site-wide sale toggle + promo code support:
-  - Migration `000015_app_settings.sql` — `app_settings` table (public read, admin-write RLS). Default sale row: `{"active": false, "discount": 0}`.
+  - Migration `000015_app_settings.sql` — `app_settings` table (public read, admin-write RLS). Default sale row: `{"active": false, "discount": 0}`. Applied ✅.
   - `create-checkout-session.ts` — reads sale state from Supabase at checkout time. If sale active, auto-applies Stripe coupon (`STRIPE_COUPON_10/20/30` env vars). If no sale, sets `allow_promotion_codes: true` so Stripe shows promo code field.
-  - Admin portal → new **Settings tab** — toggle sale ON/OFF, pick discount level (10/20/30%). Saves to `app_settings` instantly.
+  - Admin portal → new **Settings tab** (6th tab) — toggle sale ON/OFF, pick discount level (10/20/30%). Saves to `app_settings` instantly.
   - `Paywall.tsx` — reads sale state on load. If active: amber banner "X% off — applied automatically", strikethrough original prices, discounted prices shown.
-- **Stripe coupon env vars needed** (see pending section below)
+- **Stripe coupons created** — 10%, 20%, 30% off coupons in live mode. Promo codes: HAVEN10, HAVEN20, HAVEN30. 100% off coupon (30 uses) created for beta testers with promo code.
+- **PWA install prompt** — Hidden on desktop (macOS/Windows). Now only shows on iOS and Android where "install to home screen" makes sense. Fix in `src/hooks/usePWAInstall.ts`.
+- **Navbar avatar** — Replaced "Hi, name" text link with a teal initials circle on desktop (compact, no text). Mobile menu shows initials circle + name. Logic in `src/components/Navbar.tsx` (`getInitials` + `Avatar` helpers).
 
 ---
 
 ## Next session — tasks queued
 
-## Pending — Stripe live mode + coupons (BLOCKED on manual action)
+## ✅ Stripe live mode — DONE
 
-Stripe is still in **test mode** in production. Users cannot pay. All variables need updating in **Netlify → Site config → Environment variables** then trigger a redeploy:
-
-**Core (existing):**
-| Variable | Where to get it |
-|---|---|
-| `VITE_STRIPE_PUBLISHABLE_KEY` | Stripe Dashboard → Live mode → Developers → API keys → Publishable key (`pk_live_...`) |
-| `STRIPE_SECRET_KEY` | Stripe Dashboard → Live mode → Developers → API keys → Secret key (`sk_live_...`) |
-| `STRIPE_WEBHOOK_SECRET` | Stripe Dashboard → Live mode → Developers → Webhooks → click endpoint → Reveal signing secret (`whsec_...`) |
-| `STRIPE_PLUS_PRICE_ID` | Stripe Dashboard → Live mode → Products → Haven Plus → Price ID |
-| `STRIPE_PREMIUM_PRICE_ID` | Stripe Dashboard → Live mode → Products → Haven Premium → Price ID |
-
-**New — for sale/discount system:**
-| Variable | Where to get it |
-|---|---|
-| `STRIPE_COUPON_10` | Stripe Dashboard → Coupons → create "10% off" (percent_off: 10, no expiry, unlimited) → copy Coupon ID |
-| `STRIPE_COUPON_20` | Same, "20% off" |
-| `STRIPE_COUPON_30` | Same, "30% off" |
-
-**Promo codes (for user-entered codes when no site sale is active):**
-In Stripe Dashboard → Coupons → click a coupon → Add promotion code. Create codes like `HAVEN10`, `HAVEN20`, `HAVEN30` linked to the respective coupons. These are what you share with users; no extra code needed.
-
-If the webhook endpoint doesn't exist in live mode yet, create it:
-- URL: `https://havenstudy.app/.netlify/functions/stripe-webhook`
-- Events: `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`
-
-**Also run in Supabase SQL editor:**
-```sql
--- Migration 000015 (app_settings for sale toggle)
-```
-See `supabase/migrations/20260304000015_app_settings.sql`
-
-After updating, trigger a Netlify redeploy. Then do one real test purchase to confirm end-to-end.
+All env vars set, webhook live, coupons created, checkout confirmed working.
 
 ## Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
