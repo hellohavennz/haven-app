@@ -368,6 +368,7 @@ Key: `h-screen` on the outer div (not `min-h-screen`) is what makes the navbar t
 ## ✅ Stripe live mode — DONE
 
 All env vars set, webhook live, coupons created, checkout confirmed working.
+`STRIPE_SECRET_KEY` is a **restricted key** (not full secret key) — permissions: Customers write, Checkout Sessions write, Billing Portal Sessions write, Subscriptions read, Coupons read. Linked to `https://netlify.com`.
 
 ## Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
