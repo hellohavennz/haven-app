@@ -39,7 +39,7 @@ Core truth: the founder sat the test, found the available study material dense a
 >
 > By the time I could rebook, the official material had been updated. I had to start over.
 >
-> When I finally passed, I built Haven. Something you can study from in five-minute windows, with mock exams that actually reflect the real test.
+> When I finally passed, I wanted to build Haven. It took a couple of years to take the plunge, but here it is. Something you can study from in five-minute windows, with mock exams that actually reflect the real test.
 >
 > I built it so nobody else has to go through what I did.
 >
