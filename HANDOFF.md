@@ -357,6 +357,18 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
+## Session 14 changes (2026-03-05)
+
+- **Navbar desktop links** — Hidden for logged-out users. Sign In / Sign Up remain visible. All nav links (Study, Practice, Exam, Dashboard, Help, Analytics) only render when `user` is set.
+- **PWA icons** — Replaced `icon-192x192.png` and `icon-512x512.png` with new dark circle + teal H design matching the favicon. Generated via Node + sharp from SVG source.
+- **haven.study founding story** — "Built by someone who failed the test" headline. Story tightened to 5 short paragraphs. Live on haven.study between Resit Support callout and Pricing sections.
+- **MARKETING.md** — Created. Full launch plan: founding story (long + short form), pre-launch checklist, channel strategy (Instagram, Facebook groups, Reddit, paid ads, SEO), pricing/conversion strategy, metrics targets, competitor notes.
+- **Exam question deduplication** — `selectExamQuestions` and `selectStaticExamQuestions` now track `usedPrompts` during module selection, preventing the same question appearing twice in one exam. `selectDynamicExamQuestions` was already correct.
+- **Grammar fixes (Supabase)** — 6 flashcards/questions updated: added "the" before MRI scanner, hovercraft, jet engine, television, ATM. Rephrased "An 1851 showcase..." option. Rewrote ambiguous alcohol question: "Is it a criminal offence to sell alcohol to an 18-year-old?" → "What is the minimum age to buy alcohol in the UK?" with clean options (18/16/21/17).
+- **Content scan** — 563 questions and 574 flashcards scanned for context-dependency (zero found), duplicate prompts (14 identified, 7 cross-lesson pairs fixed via deduplication), and grammar issues (6 fixed above).
+
+---
+
 ## Session 13 changes (2026-03-05)
 
 - **haven.study landing page** — Built and deployed as a standalone static site. New repo: `hellohavennz/haven-study-landing`. Deployed to Netlify (project: `jolly-banoffee-77bb55`). Domain `haven.study` moved from havenstudy.app Netlify alias → own Netlify site with custom domain. Files: `index.html`, `netlify.toml`, `robots.txt`, `sitemap.xml`, `favicon.svg`, `og-image.png`. Full SEO: title, meta description, canonical, OG tags, Twitter Card, Schema.org `@graph` (Organization, WebSite, Course with pricing offers, FAQPage with 6 questions). Sections: hero, stats bar, "What is the test?", features, how it works, resit callout, pricing (3 tiers), FAQ accordion, CTA, footer. All CTAs link to `havenstudy.app/uk`.
@@ -469,8 +481,8 @@ Create Facebook, Instagram, X accounts for Haven Study. Then:
 3. Push to deploy
 
 ### Pending — Content review (this weekend)
-Full review of all 29 lessons, questions, and flashcards for accuracy.
-One wrong answer that causes a failed test = bad review. Priority before paid marketing spend.
+Grammar scan complete (563 questions + 574 flashcards). 6 issues fixed.
+Remaining: manual factual accuracy review of all 29 lessons. Priority before paid marketing spend.
 
 ### Pending — Launch / marketing
 See `MARKETING.md` for full plan.
