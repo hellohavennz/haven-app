@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-05 (session 12)_
+_Last updated: 2026-03-05 (session 13)_
 
 ---
 
@@ -11,7 +11,7 @@ _Last updated: 2026-03-05 (session 12)_
 | **Branch** | `main` (always deployable) |
 | **Hosting** | Netlify (primary) — auto-deploys on push to `main` |
 | **App URL** | https://havenstudy.app (Netlify primary domain) |
-| **Marketing URL** | https://haven.study (Netlify alias domain) |
+| **Marketing URL** | https://haven.study (separate Netlify site — repo: hellohavennz/haven-study-landing) |
 | **Router basename** | `/uk` — all routes live under `/uk/*` |
 | **NZ / AU redirects** | `/nz` and `/au` (+ splat) → 302 to `/uk` equivalent |
 
@@ -163,9 +163,11 @@ Phase 2 (offline study + IndexedDB progress queue) — not yet built.
 
 ## SEO / Social
 
-- **OG tags** — `og:title`, `og:description`, `og:image`, `og:url` in `index.html`
-- **Twitter card** — `summary_large_image`
+- **OG tags** — full set: `og:title`, `og:description`, `og:image`, `og:image:alt`, `og:url`, `og:locale: en_GB` in `index.html`
+- **Twitter card** — `summary_large_image` with distinct description from OG
 - **OG image** — `public/haven-icons/haven_study_banner.png` (1200×630), served at `https://havenstudy.app/haven-icons/haven_study_banner.png`
+- **Schema.org** — full `@graph`: Organization, WebSite, WebApplication (with pricing offers + `availability`), FAQPage (5 questions)
+- **Keywords** — 8 targeted keywords covering "life in the uk test", ILR, citizenship test, study guide variants
 - Test link previews at: https://www.opengraph.xyz
 
 ---
@@ -355,6 +357,18 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
+## Session 13 changes (2026-03-05)
+
+- **haven.study landing page** — Built and deployed as a standalone static site. New repo: `hellohavennz/haven-study-landing`. Deployed to Netlify (project: `jolly-banoffee-77bb55`). Domain `haven.study` moved from havenstudy.app Netlify alias → own Netlify site with custom domain. Files: `index.html`, `netlify.toml`, `robots.txt`, `sitemap.xml`, `favicon.svg`, `og-image.png`. Full SEO: title, meta description, canonical, OG tags, Twitter Card, Schema.org `@graph` (Organization, WebSite, Course with pricing offers, FAQPage with 6 questions). Sections: hero, stats bar, "What is the test?", features, how it works, resit callout, pricing (3 tiers), FAQ accordion, CTA, footer. All CTAs link to `havenstudy.app/uk`.
+- **Logo update** — Replaced book icon image with `Haven.` text logo (Montserrat bold, teal full stop) in `Navbar.tsx`. Works in light and dark mode. Both admin and regular navbar updated.
+- **Favicon** — New SVG favicon: dark circle (`#0F172A`) with teal H (`#14B8A6`), Montserrat font stack. Added to both repos. Main app: `public/haven-icons/favicon.svg` (SVG link takes priority over legacy `favicon.ico`).
+- **SEO — haven.study** — Removed unverified `sameAs` social links from Organization schema (add back once accounts created). Fixed Organization `logo` to point to `favicon.svg`. Added `og:image:alt`.
+- **SEO — havenstudy.app** — Meta description rewritten with numbers + CTA. Keywords expanded to 8. Added `robots`, `author`, `og:locale`, `og:image:alt`. Title updated to keyword-first. OG and Twitter descriptions now distinct. Canonical and `og:url` now consistent (both `/uk/`). Schema.org upgraded from bare `WebApplication` to full `@graph` (Organization, WebSite, WebApplication, FAQPage).
+- **Em dashes** — All 13 em dashes removed from `haven.study/index.html`, replaced with commas, colons, or full stops.
+- **Google Search Console** — haven.study verified via DNS TXT record at onlydomains.com. Sitemap submitted. URL inspection + index request done.
+
+---
+
 ## Session 12 changes (2026-03-05)
 
 - **Critical security fix: anon data leak on profiles** — Anonymous requests (using only the publishable API key, no JWT) were returning user profile rows including email, Stripe customer/subscription IDs, and subscription tier. Root cause: RLS policies were scoped to `{public}` (all roles) rather than `TO authenticated`. Even with a correct `USING (auth.uid() = id)` expression, Supabase's new publishable key format caused anon requests to bypass the USING filter.
@@ -426,6 +440,15 @@ All env vars set, webhook live, coupons created, checkout confirmed working.
 - Leaked password protection enabled in Supabase Auth settings
 - **Anon data leak patched** — all sensitive RLS policies now `TO authenticated` (migration 000020)
 - Verified via curl: anon → `[]` on all user tables; authenticated → own row only
+
+### ✅ haven.study landing page — DONE (session 13)
+Repo: `hellohavennz/haven-study-landing`. Live at `haven.study`. GSC verified + sitemap submitted.
+
+### Pending — haven.study social accounts
+Once Facebook, Instagram, X accounts are created:
+1. Update 3 placeholder `href="#"` social links in `haven-study-landing/index.html`
+2. Add `sameAs` back to the Organization schema in `haven-study-landing/index.html`
+3. Push to deploy
 
 ### Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
