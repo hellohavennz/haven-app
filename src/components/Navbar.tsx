@@ -119,36 +119,38 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
               <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white tracking-tight">Haven<span className="text-teal-500">.</span></span>
             </Link>
 
-            {/* Desktop nav links */}
-            <div className="hidden md:flex items-center gap-1">
-              <Link to="/content" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                Study
-              </Link>
-              <Link to="/practice" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                Practice
-              </Link>
-              <Link to="/exam" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                Exam
-              </Link>
-              <Link to="/dashboard" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                Dashboard
-              </Link>
-              <Link to="/help" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                Help
-              </Link>
-              {tier === 'premium' && (
-                <Link to="/analytics" className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                  <BarChart3 size={15} />
-                  Analytics
+            {/* Desktop nav links — only shown when logged in */}
+            {user && (
+              <div className="hidden md:flex items-center gap-1">
+                <Link to="/content" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                  Study
                 </Link>
-              )}
-              {isAdmin && (
-                <Link to="/admin" className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
-                  <Shield size={15} />
-                  Admin
+                <Link to="/practice" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                  Practice
                 </Link>
-              )}
-            </div>
+                <Link to="/exam" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                  Exam
+                </Link>
+                <Link to="/dashboard" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                  Dashboard
+                </Link>
+                <Link to="/help" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                  Help
+                </Link>
+                {tier === 'premium' && (
+                  <Link to="/analytics" className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                    <BarChart3 size={15} />
+                    Analytics
+                  </Link>
+                )}
+                {isAdmin && (
+                  <Link to="/admin" className="inline-flex items-center gap-1.5 px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                    <Shield size={15} />
+                    Admin
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Right: ThemeToggle + Upgrade (desktop) + Avatar dropdown */}
