@@ -1,4 +1,4 @@
-# Haven Study — Marketing Plan
+# Haven Study: Marketing Plan
 
 _Created: 2026-03-05_
 
@@ -23,19 +23,19 @@ Core truth: the founder sat the test, found the available study material dense a
 
 | Placement | Format |
 |---|---|
-| haven.study landing page | Dedicated "Why Haven?" or "About" section — 2–3 paragraphs, first person |
-| Instagram / Facebook | Short-form video Reel — founder on camera (or voiceover), 30–60 seconds |
+| haven.study landing page | "Why Haven exists" section. Live. |
+| Instagram / Facebook | Short-form video Reel: founder on camera (or voiceover), 30-60 seconds |
 | Reddit / community posts | Natural intro before recommending Haven in relevant threads |
 | App Store listing (future) | First paragraph of description |
 | Press / outreach | Email pitch opener |
 
-### Finalised story — long form (live on haven.study)
+### Finalised story: long form (live on haven.study)
 
-> I was in the middle of one of the most exhausting periods of my life. New baby, full-time work — and somewhere in between the feeds and the sleepless nights, I needed to pass the Life in the UK test.
+> I was in the middle of one of the most exhausting periods of my life. New baby, full-time work. Somewhere in between the feeds and the sleepless nights, I needed to pass the Life in the UK test.
 >
 > Finding time to study was hard enough. But reading a dense handbook while running on no sleep? I'd read the same paragraph three times and retain nothing. I needed something I could pick up for five minutes, put down, and actually make progress with.
 >
-> Then came the day of my test. I arrived, documents in hand — only to be turned away at the door. I'd missed my middle name on the booking form. It's printed right there in my passport, but I'd overlooked it in the chaos of new parenthood. I lost my booking fee. There was a mandatory stand-down period before I could rebook. There were tears that day.
+> Then came the day of my test. I arrived, documents in hand, only to be turned away at the door. I'd missed my middle name on the booking form. It's printed right there in my passport, but I'd overlooked it in the chaos of new parenthood. I lost my booking fee. There was a mandatory stand-down period before I could rebook. There were tears that day.
 >
 > By the time I was able to sit the test again, the official study material had been updated. I had to start over.
 >
@@ -43,11 +43,11 @@ Core truth: the founder sat the test, found the available study material dense a
 >
 > I built Haven so that nobody else has to go through what I did.
 >
-> — Jason, founder of Haven
+> Jason, founder of Haven
 
 ### Short form (Instagram hook / ad copy / caption opener)
 
-> I was turned away on test day because of a missing middle name. Lost my fee. Had to start over — with a newborn at home. I built Haven so nobody else has to go through that.
+> I was turned away on test day because of a missing middle name. Lost my fee. Had to start over, with a newborn at home. I built Haven so nobody else has to go through that.
 
 ---
 
@@ -55,11 +55,11 @@ Core truth: the founder sat the test, found the available study material dense a
 
 - [ ] All 29 lessons reviewed for accuracy
 - [ ] All practice questions and flashcards verified
-- [ ] At least 5–10 real users (friends, family, community) tested the app end-to-end
-- [ ] At least 2–3 genuine testimonials collected
-- [ ] Founding story written and added to haven.study
+- [ ] At least 5-10 real users (friends, family, community) tested the app end-to-end
+- [ ] At least 2-3 genuine testimonials collected
+- [ ] Founding story written and added to haven.study (done)
 - [ ] Social accounts created (Instagram, Facebook, X)
-- [ ] Instagram profile set up with bio, link, and first 3–6 posts ready
+- [ ] Instagram profile set up with bio, link, and first 3-6 posts ready
 
 ---
 
@@ -69,13 +69,13 @@ Core truth: the founder sat the test, found the available study material dense a
 The UK immigrant and visa community is active on Instagram. Short-form Reels have the highest organic reach.
 
 **Content pillars:**
-- "Did you know?" — one surprising test fact per post (high shareability)
-- "One question a day" — daily practice question with answer reveal
+- "Did you know?" posts: one surprising test fact per post (high shareability)
+- "One question a day" posts: daily practice question with answer reveal
 - Study tips and test day advice
 - Founding story Reel
-- Behind-the-scenes — building the app, improving content
+- Behind the scenes: building the app, improving content
 
-**Posting frequency:** 4–5x per week minimum to build algorithm traction.
+**Posting frequency:** 4-5x per week minimum to build algorithm traction.
 **Goal:** 500 followers before first paid ad spend.
 
 ### 2. Facebook groups (free, high intent)
@@ -97,31 +97,31 @@ Post in relevant subreddits. Be helpful first, mention Haven second.
 - r/ukvisa
 - r/britishexpats
 - r/immigrationuk
-- r/LifeInTheUK (create this if it doesn't exist — you'd own it)
+- r/LifeInTheUK (create this if it doesn't exist; you'd own it)
 
 **Post ideas:**
 - "I sat the Life in the UK test and here's what actually helped me pass"
 - "Free resource: I built a structured study tool for the Life in the UK test"
-- AMA (ask me anything) as someone who sat the test and built a study app
+- AMA as someone who sat the test and built a study app
 
 ### 4. Paid ads (after pre-launch checklist complete)
-Start small — £5–10/day on Meta (Facebook/Instagram) to test.
+Start small: £5-10/day on Meta (Facebook/Instagram) to test.
 
 **Targeting:**
 - UK residents
-- Age 25–50
+- Age 25-50
 - Interests: immigration, British citizenship, visa applications
 - Lookalike audiences once you have 100+ users
 
 **Ad formats to test:**
-- Founder story video (30–60s Reel)
+- Founder story video (30-60s Reel)
 - "Pass first time" static image with key stats
 - Testimonial carousel (once collected)
 
 **Don't spend on ads until:**
 - Content is verified accurate
 - You have real testimonials
-- The free tier conversion funnel is working (people sign up free → upgrade)
+- The free tier conversion funnel is working (people sign up free, then upgrade)
 
 ### 5. SEO / content marketing (long-term)
 haven.study is already optimised. Over time, consider adding:
@@ -134,12 +134,12 @@ haven.study is already optimised. Over time, consider adding:
 
 The free tier is the acquisition funnel. Keep it good enough to show quality, not so good they never upgrade.
 
-**Current free tier:** 2 modules, 5 flashcards/session — reasonable gate.
+**Current free tier:** 2 modules, 5 flashcards/session. Reasonable gate.
 
 **Upgrade triggers to consider:**
 - Show a "locked" preview of premium content to logged-in free users
-- After a free practice session: "You got 18/20 — unlock all 500+ questions to keep going"
-- After a mock exam attempt: "You've used your free exam — upgrade to run unlimited mocks"
+- After a free practice session: "You got 18/20. Unlock all 500+ questions to keep going."
+- After a mock exam attempt: "You've used your free exam. Upgrade to run unlimited mocks."
 
 ---
 
@@ -148,8 +148,8 @@ The free tier is the acquisition funnel. Keep it good enough to show quality, no
 | Metric | Target (Month 1) | Target (Month 3) |
 |---|---|---|
 | Signups | 50 | 300 |
-| Free → Plus conversion | 5% | 8% |
-| Free → Premium conversion | 1% | 2% |
+| Free to Plus conversion | 5% | 8% |
+| Free to Premium conversion | 1% | 2% |
 | Instagram followers | 200 | 1,000 |
 | MRR | £50 | £300 |
 
@@ -158,11 +158,11 @@ The free tier is the acquisition funnel. Keep it good enough to show quality, no
 ## Competitor notes
 
 Several Life in the UK test apps exist on the App Store and web. Quality varies. Haven's differentiators:
-- Superior UX — cleaner, faster, more modern than competitors
-- AI study assistant (Pippa) — unique to Haven
+- Superior UX: cleaner, faster, more modern than competitors
+- AI study assistant (Pippa): unique to Haven
 - Structured lessons, not just question dumps
 - Built by someone who sat the test
-- Resit support — unique safety net feature
+- Resit support: unique safety net feature
 
 When competitors come up in community discussions, don't attack them. Just make sure Haven's quality speaks for itself.
 
@@ -170,6 +170,6 @@ When competitors come up in community discussions, don't attack them. Just make 
 
 ## Notes / ideas to revisit
 
-- Partnership with immigration law firms / advisors — they advise clients to take the test; referral arrangement?
-- YouTube long-form content — "Full Life in the UK test walkthrough" — high search volume
+- Partnership with immigration law firms / advisors: they advise clients to take the test; referral arrangement possible
+- YouTube long-form content: "Full Life in the UK test walkthrough" has high search volume
 - Multilingual: test-takers come from many countries; could a translated marketing page (not the app) help reach non-English-speaking communities?
