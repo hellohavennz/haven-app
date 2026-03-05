@@ -450,22 +450,27 @@ Once Facebook, Instagram, X accounts are created:
 2. Add `sameAs` back to the Organization schema in `haven-study-landing/index.html`
 3. Push to deploy
 
-### Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
+### ✅ Supabase URL Configuration — DONE
+Site URL and redirect URLs confirmed set correctly.
 
-Go to **Supabase Dashboard → Authentication → URL Configuration**:
-- **Site URL** → `https://havenstudy.app/uk`
-- **Redirect URLs** → confirm `https://havenstudy.app/uk/dashboard` is listed (add if not)
-
-Without this, Google OAuth sometimes redirects to the root URL instead of `/uk/dashboard`, causing a blank screen.
+### ✅ Stripe webhook verification — DONE
+Recent Deliveries confirmed showing 200s.
 
 ### Pending — Sentry activation
-
 `@sentry/react` is installed and initialised. Just needs the DSN:
 1. Sign up at sentry.io → New project → React → copy DSN
 2. Netlify → Environment variables → add `VITE_SENTRY_DSN` = DSN value
 3. Trigger redeploy
 
-### Pending — Stripe webhook verification
-Check Stripe Dashboard → Developers → Webhooks → endpoint → Recent deliveries.
-Confirm `checkout.session.completed` shows green (200) for your test purchase.
-If red (400 / signature mismatch), resend it — your profile is already fixed via SQL so this is just to confirm future purchases auto-update `subscription_tier`.
+### Pending — Social accounts (this weekend)
+Create Facebook, Instagram, X accounts for Haven Study. Then:
+1. Update 3 placeholder `href="#"` social links in `haven-study-landing/index.html`
+2. Add `sameAs` back to Organization schema in `haven-study-landing/index.html`
+3. Push to deploy
+
+### Pending — Content review (this weekend)
+Full review of all 29 lessons, questions, and flashcards for accuracy.
+One wrong answer that causes a failed test = bad review. Priority before paid marketing spend.
+
+### Pending — Launch / marketing
+See `MARKETING.md` for full plan.
