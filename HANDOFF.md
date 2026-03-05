@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-05 (session 11)_
+_Last updated: 2026-03-05 (session 12)_
 
 ---
 
@@ -355,6 +355,17 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
+## Session 12 changes (2026-03-05)
+
+- **Critical security fix: anon data leak on profiles** — Anonymous requests (using only the publishable API key, no JWT) were returning user profile rows including email, Stripe customer/subscription IDs, and subscription tier. Root cause: RLS policies were scoped to `{public}` (all roles) rather than `TO authenticated`. Even with a correct `USING (auth.uid() = id)` expression, Supabase's new publishable key format caused anon requests to bypass the USING filter.
+- **Migration `000020`** — Rewrote all sensitive table policies with explicit `TO authenticated` scope: `profiles`, `user_progress`, `exam_attempts`, `resit_claims`, `content_reports`, `login_events`. Anon role now has zero matching policies on these tables → PostgreSQL denies all rows by default. Verified: anon curl returns `[]` on all tables; authenticated curl returns own row only.
+- **Content tables remain public-readable** (`lessons`, `questions`, `flashcards`, `study_sections`, `modules`) — intentional, these contain no user data and are needed before login.
+- **Migration `000018`** — Fixed remaining `app_settings` RLS warnings: split `FOR ALL` admin policy into `FOR INSERT` + `FOR UPDATE` (removes SELECT overlap with public_read policy); switched from inline `auth.jwt()` to `public.is_admin()`.
+- **Migration `000019`** — Added `btree` indexes on `order_index` for `questions`, `study_sections`, `lessons`, `flashcards` — ~8x query cost reduction on content load (confirmed by index_advisor).
+- **Landing page login** — "Sign In" link now always visible in navbar (was `hidden md:flex`, invisible on mobile). "Sign Up" remains desktop-only.
+
+---
+
 ## Session 11 changes (2026-03-05)
 
 - **Supabase security warnings cleared** — All 11 security issues resolved:
@@ -406,13 +417,15 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 All env vars set, webhook live, coupons created, checkout confirmed working.
 `STRIPE_SECRET_KEY` is a **restricted key** — permissions: Customers write, Checkout Sessions write, Billing Portal Sessions write, Subscriptions read, Coupons read.
 
-### ✅ Security hardening — DONE (sessions 10–11)
+### ✅ Security hardening — DONE (sessions 10–12)
 - Legacy Supabase JWT keys (service_role + anon) deactivated
 - New API keys in use: `haven_netlify_functions` (Secret) + `haven_frontend` (Publishable)
 - Test scripts removed from git; all load creds from `.env`
-- All 11 Supabase security advisor warnings resolved (see session 11 changes)
-- All 51 Supabase performance advisor warnings resolved (see session 11 changes)
+- All Supabase security advisor warnings resolved
+- All Supabase performance advisor warnings resolved
 - Leaked password protection enabled in Supabase Auth settings
+- **Anon data leak patched** — all sensitive RLS policies now `TO authenticated` (migration 000020)
+- Verified via curl: anon → `[]` on all user tables; authenticated → own row only
 
 ### Pending — Supabase URL Configuration (Google OAuth blank screen root cause)
 
