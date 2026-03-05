@@ -57,21 +57,28 @@ export function selectExamQuestions(): ExamQuestion[] {
   }
 
   const selected: ExamQuestion[] = [];
+  const usedPrompts = new Set<string>();
 
   for (const [mod, count] of Object.entries(MODULE_WEIGHTS)) {
     const pool = byModule[mod] ?? [];
     const shuffled = shuffle(pool);
-    // Take as many as available up to the target count
-    selected.push(...shuffled.slice(0, Math.min(count, shuffled.length)));
+    let added = 0;
+    for (const q of shuffled) {
+      if (added >= count) break;
+      if (!usedPrompts.has(q.prompt)) {
+        selected.push(q);
+        usedPrompts.add(q.prompt);
+        added++;
+      }
+    }
   }
 
   // If we're short (unlikely but safe), pad from any remaining questions
   if (selected.length < TOTAL_QUESTIONS) {
-    const usedIds = new Set(selected.map(q => q.prompt));
     const extras: ExamQuestion[] = [];
     for (const lesson of allLessons) {
       for (const q of lesson.questions ?? []) {
-        if (!usedIds.has(q.prompt)) {
+        if (!usedPrompts.has(q.prompt)) {
           extras.push({ ...q, lessonId: lesson.id, moduleSlug: lesson.module_slug });
         }
       }
@@ -143,16 +150,24 @@ export function selectStaticExamQuestions(examNumber: 1 | 2): ExamQuestion[] {
   }
 
   const selected: ExamQuestion[] = [];
+  const usedPrompts = new Set<string>();
 
   for (const [mod, count] of Object.entries(MODULE_WEIGHTS)) {
     const pool = byModule[mod] ?? [];
     const shuffled = seededShuffle(pool, rng);
-    selected.push(...shuffled.slice(0, Math.min(count, shuffled.length)));
+    let added = 0;
+    for (const q of shuffled) {
+      if (added >= count) break;
+      if (!usedPrompts.has(q.prompt)) {
+        selected.push(q);
+        usedPrompts.add(q.prompt);
+        added++;
+      }
+    }
   }
 
   // Pad if short (unlikely)
   if (selected.length < TOTAL_QUESTIONS) {
-    const usedPrompts = new Set(selected.map(q => q.prompt));
     const extras: ExamQuestion[] = [];
     for (const lesson of allLessons) {
       for (const q of lesson.questions ?? []) {
