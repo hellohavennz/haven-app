@@ -31,17 +31,17 @@ Core truth: the founder sat the test, found the available study material dense a
 
 ### Finalised story: long form (live on haven.study)
 
-> I was in the middle of one of the most exhausting periods of my life. New baby, full-time work. Somewhere in between the feeds and the sleepless nights, I needed to pass the Life in the UK test.
+> I was exhausted. New baby, full-time work, and somewhere in between I needed to pass the Life in the UK test.
 >
-> Finding time to study was hard enough. But reading a dense handbook while running on no sleep? I'd read the same paragraph three times and retain nothing. I needed something I could pick up for five minutes, put down, and actually make progress with.
+> Reading a dense handbook on no sleep wasn't working. I'd read the same paragraph three times and retain nothing.
 >
-> Then came the day of my test. I arrived, documents in hand, only to be turned away at the door. I'd missed my middle name on the booking form. It's printed right there in my passport, but I'd overlooked it in the chaos of new parenthood. I lost my booking fee. There was a mandatory stand-down period before I could rebook. There were tears that day.
+> Then came the day of my test. I arrived, documents in hand, only to be turned away at the door. I'd missed my middle name on the booking form. Lost my fee. Mandatory stand-down period. There were tears that day.
 >
-> By the time I was able to sit the test again, the official study material had been updated. I had to start over.
+> By the time I could rebook, the official material had been updated. I had to start over.
 >
-> When I finally passed, I started building Haven. Something you can study from in five-minute windows. Mock exams built from accurate, up-to-date material. Something that gives you the confidence to walk in on test day and know you're ready.
+> When I finally passed, I built Haven. Something you can study from in five-minute windows, with mock exams that actually reflect the real test.
 >
-> I built Haven so that nobody else has to go through what I did.
+> I built it so nobody else has to go through what I did.
 >
 > Jason, founder of Haven
 
