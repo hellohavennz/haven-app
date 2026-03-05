@@ -22,6 +22,7 @@ dist-ssr
 *.sw?
 .env
 scripts/
+marketing/
 
 # Local Netlify folder
 .netlify
