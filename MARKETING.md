@@ -29,13 +29,25 @@ Core truth: the founder sat the test, found the available study material dense a
 | App Store listing (future) | First paragraph of description |
 | Press / outreach | Email pitch opener |
 
-### Draft story (to refine in your voice)
+### Finalised story — long form (live on haven.study)
 
-> "I sat the Life in the UK test a few years ago. I remember spending weeks trying to piece together study material — PDFs, outdated apps, dense official handbooks. On test day I was stressed and unsure I'd covered everything. I passed, but I knew there had to be a better way.
+> I was in the middle of one of the most exhausting periods of my life. New baby, full-time work — and somewhere in between the feeds and the sleepless nights, I needed to pass the Life in the UK test.
 >
-> I'm a developer, so I built it. Haven is the app I wanted when I was studying — structured lessons built around the official syllabus, real practice questions, flashcards, mock exams, and an AI that can answer your questions at 11pm when you're cramming.
+> Finding time to study was hard enough. But reading a dense handbook while running on no sleep? I'd read the same paragraph three times and retain nothing. I needed something I could pick up for five minutes, put down, and actually make progress with.
 >
-> If you're preparing for the test, Haven is the most thorough and well-designed study tool available. I know because I've used everything else."
+> Then came the day of my test. I arrived, documents in hand — only to be turned away at the door. I'd missed my middle name on the booking form. It's printed right there in my passport, but I'd overlooked it in the chaos of new parenthood. I lost my booking fee. There was a mandatory stand-down period before I could rebook. There were tears that day.
+>
+> By the time I was able to sit the test again, the official study material had been updated. I had to start over.
+>
+> When I finally passed, I started building Haven. Something you can study from in five-minute windows. Mock exams built from accurate, up-to-date material. Something that gives you the confidence to walk in on test day and know you're ready.
+>
+> I built Haven so that nobody else has to go through what I did.
+>
+> — Jason, founder of Haven
+
+### Short form (Instagram hook / ad copy / caption opener)
+
+> I was turned away on test day because of a missing middle name. Lost my fee. Had to start over — with a newborn at home. I built Haven so nobody else has to go through that.
 
 ---
 
