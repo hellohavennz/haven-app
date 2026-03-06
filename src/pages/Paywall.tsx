@@ -137,8 +137,24 @@ export default function Paywall() {
             Pass Your Life in the UK Test
           </h1>
           <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300">
-            Start free, or unlock full access with a Plus or Premium plan.
+            Each failed attempt costs £50. Haven Plus costs £4.99 a month.
           </p>
+        </div>
+
+        {/* Value comparison bar */}
+        <div className="mb-8 grid gap-3 sm:grid-cols-3 text-center">
+          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
+            <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">£0</div>
+            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">to start — 3 modules, 252 questions, full flashcards</div>
+          </div>
+          <div className="rounded-2xl bg-teal-600 border border-teal-600 px-5 py-4">
+            <div className="text-2xl font-bold text-white">£4.99<span className="text-base font-normal">/mo</span></div>
+            <div className="mt-1 text-sm text-teal-100">for full access — less than 10% of one failed test</div>
+          </div>
+          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
+            <div className="text-2xl font-bold text-amber-500">£50</div>
+            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">cost of each failed attempt — plus a stand-down period</div>
+          </div>
         </div>
 
         {sale?.active && (
@@ -306,20 +322,25 @@ export default function Paywall() {
           </div>
         </div>
 
-        {/* Trust signals */}
-        <div className="mt-16 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm">
-          <div className="grid gap-8 md:grid-cols-3 text-center">
+        {/* What's included free */}
+        <div className="mt-12 rounded-3xl border border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/20 p-8">
+          <h3 className="mb-1 font-semibold text-slate-900 dark:text-white text-center">What you get for free</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-6">No credit card. No time limit.</p>
+          <div className="grid gap-4 sm:grid-cols-3 text-center">
             <div>
-              <div className="mb-3 text-4xl font-semibold text-teal-600">10,000+</div>
-              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Students Passed</div>
+              <div className="text-3xl font-bold text-teal-600 dark:text-teal-400">3</div>
+              <div className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">full modules</div>
+              <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">Values, What is the UK, Arts and Society</div>
             </div>
             <div>
-              <div className="mb-3 text-4xl font-semibold text-teal-600">94%</div>
-              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">First-Time Pass Rate</div>
+              <div className="text-3xl font-bold text-teal-600 dark:text-teal-400">252</div>
+              <div className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">practice questions</div>
+              <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">with answer explanations</div>
             </div>
             <div>
-              <div className="mb-3 text-4xl font-semibold text-teal-600">4.9/5</div>
-              <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Average Rating</div>
+              <div className="text-3xl font-bold text-teal-600 dark:text-teal-400">247</div>
+              <div className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">flashcards</div>
+              <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">full deck, not a sample</div>
             </div>
           </div>
         </div>

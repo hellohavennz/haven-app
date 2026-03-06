@@ -365,8 +365,25 @@ export default function App() {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Choose Your Plan</h2>
-            <p className="text-slate-600 dark:text-slate-300">Start free, or unlock full access</p>
+            <p className="text-slate-600 dark:text-slate-300">Each failed attempt costs £50. Haven Plus costs £4.99 a month.</p>
           </div>
+
+          {/* Value comparison */}
+          <div className="grid gap-3 sm:grid-cols-3 text-center -mt-4">
+            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
+              <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">£0</div>
+              <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">3 modules, 252 questions, full flashcards — free, forever</div>
+            </div>
+            <div className="rounded-2xl bg-teal-600 border border-teal-600 px-5 py-4">
+              <div className="text-2xl font-bold text-white">£4.99<span className="text-base font-normal">/mo</span></div>
+              <div className="mt-1 text-sm text-teal-100">full access — less than 10% of one failed test</div>
+            </div>
+            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
+              <div className="text-2xl font-bold text-amber-500">£50</div>
+              <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">cost of each failed attempt — plus a stand-down period</div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Free Plan */}
             <div className="bg-white border-2 border-slate-300 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-8 flex flex-col">
@@ -378,7 +395,7 @@ export default function App() {
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Try Haven with the first module and core practice tools</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">3 full modules. 252 practice questions. No credit card.</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start gap-3">
