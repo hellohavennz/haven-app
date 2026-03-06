@@ -134,7 +134,7 @@ haven.study is already optimised. Over time, consider adding:
 
 The free tier is the acquisition funnel. Keep it good enough to show quality, not so good they never upgrade.
 
-**Current free tier:** 2 modules, 5 flashcards/session. Reasonable gate.
+**Current free tier:** 3 modules (Values and Principles, What is the UK?, A Modern Thriving Society), full flashcards on free modules.
 
 **Upgrade triggers to consider:**
 - Show a "locked" preview of premium content to logged-in free users

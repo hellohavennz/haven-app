@@ -387,15 +387,15 @@ export default function App() {
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">2 free modules</span>
+                  <span className="text-slate-700 dark:text-slate-200">3 free modules</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">Practice questions (free modules only)</span>
+                  <span className="text-slate-700 dark:text-slate-200">Practice questions (free modules)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">Sample flashcards (5 per lesson)</span>
+                  <span className="text-slate-700 dark:text-slate-200">Full flashcards (free modules)</span>
                 </li>
               </ul>
               <Link

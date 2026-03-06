@@ -4,6 +4,7 @@ import { checkSubscriptionStatus, SubscriptionTier } from './subscription';
 const FREE_MODULES = [
   'values-and-principles',  // Module 1 - Free
   'what-is-uk',            // Module 2 - Free
+  'modern-society',        // Module 4 - Free
 ];
 
 // Check if a user has access to a specific module

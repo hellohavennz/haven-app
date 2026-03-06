@@ -22,8 +22,8 @@ export default function PracticeFlashcards() {
   const { tier, isLoading } = useSubscription();
   const data = lessonId ? getLessonById(lessonId) : null;
   usePageTitle(data?.title ? `${data.title} | Flashcards` : 'Flashcards');
-  // Plus and Premium both get full flashcard access; only Free is limited
-  const hasFullAccess = tier === "plus" || tier === "premium";
+  // Plus and Premium get full access; free users get full access on free modules
+  const hasFullAccess = tier === "plus" || tier === "premium" || !(data?.isPremium ?? true);
 
   const allCards = data?.flashcards ?? [];
   const totalCount = allCards.length;

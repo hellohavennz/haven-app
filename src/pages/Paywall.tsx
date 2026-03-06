@@ -177,9 +177,9 @@ export default function Paywall() {
             <ul className="space-y-3 mb-8 flex-1">
               {[
                 'First lesson (Values & Principles)',
-                '2 free modules',
-                'Practice questions (free modules only)',
-                'Sample flashcards (5 per lesson)',
+                '3 free modules',
+                'Practice questions (free modules)',
+                'Full flashcards (free modules)',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />

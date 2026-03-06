@@ -169,7 +169,7 @@ export default function Instagram() {
               <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text, fontWeight: 700 }}>£0</div>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {['2 free modules', '5 flashcards per session', 'Progress tracking'].map(f => (
+              {['3 free modules', 'Full flashcards (free modules)', 'Progress tracking'].map(f => (
                 <li key={f} style={{ fontSize: 14, color: styles.textMuted, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: styles.teal, fontWeight: 700 }}>✓</span> {f}
                 </li>
@@ -238,7 +238,7 @@ export default function Instagram() {
           Ready to pass your test?
         </h2>
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 16, marginBottom: 32, maxWidth: 360, margin: '0 auto 32px' }}>
-          Start with two free modules — no credit card, no commitment.
+          Start with three free modules — no credit card, no commitment.
         </p>
         <Link to="/signup" style={{ display: 'inline-block', background: styles.white, color: styles.teal, padding: '14px 36px', borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: 'none' }}>
           Try Haven Free
