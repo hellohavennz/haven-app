@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-05 (session 13)_
+_Last updated: 2026-03-08 (session 15)_
 
 ---
 
@@ -357,7 +357,17 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
-## Session 14 changes (2026-03-05)
+## Session 15 changes (2026-03-08)
+
+- **Memory hooks — formatting** — All 29 lesson memory hooks reformatted with consistent structure. Added `whitespace-pre-line` to `<p>` in `ContentLesson.tsx` and `Lesson1Content.tsx` so newlines render. Each hook now uses ALL CAPS section headers, dash-prefix bullet lists, and pipe separators for parallel items. Fixed em dash in lesson-1.3 hook.
+- **Continue button — study dashboard** — `ContentIndex.tsx` `nextLesson` logic fixed. Previously found first lesson where practice accuracy was null (always lesson 1 for unstarted users). Now finds first lesson not marked as read (`progress.read !== true`), falling back to first low-accuracy lesson, then first lesson.
+- **Key fact stale index bug** — `KeyFactTile` held internal `currentIndex` state that persisted across React Router navigations. Navigating from a lesson where you'd clicked to index 3, to a lesson with only 2 facts, left `currentIndex=3` — blank content and a wrong counter (e.g. "4/2"). Fixed by adding `key={lessonId}` to `<LessonContent>` in `ContentLesson.tsx`, forcing a full remount on lesson change.
+- **Handbook language audit** — Searched all Supabase lesson content for self-referential "handbook" language (Haven calling itself a handbook). One genuine fix: section heading "How to Use This Handbook" renamed to "The Official Handbook" and content rewritten to open with "Haven is the study platform — the source material is the official government publication...". All other bare "handbook" references updated to "official handbook" for clarity. Memory hooks updated. Study Tips section now ends: "Haven is built around that material — use both together for the best chance of passing."
+- **Module completion transition page** — New page at `/content/module-complete/:moduleSlug`. When a user clicks Next on the last lesson of a module, they now land on a transition page instead of silently entering the next module. Shows: module name + lesson count in a teal completion card; next module name + description with one-click continue button; "Back to study dashboard" link. Final module shows "Take a mock exam" instead. The Next button in `ContentLesson.tsx` detects module boundary crossings (`lesson.module_slug !== nextLesson.module_slug`) and its label changes to "Module complete / Up next: [next module title]".
+
+---
+
+## Session 14 changes (2026-03-06)
 
 - **Navbar desktop links** — Hidden for logged-out users. Sign In / Sign Up remain visible. All nav links (Study, Practice, Exam, Dashboard, Help, Analytics) only render when `user` is set.
 - **PWA icons** — Replaced `icon-192x192.png` and `icon-512x512.png` with new dark circle + teal H design matching the favicon. Generated via Node + sharp from SVG source.
@@ -366,6 +376,17 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 - **Exam question deduplication** — `selectExamQuestions` and `selectStaticExamQuestions` now track `usedPrompts` during module selection, preventing the same question appearing twice in one exam. `selectDynamicExamQuestions` was already correct.
 - **Grammar fixes (Supabase)** — 6 flashcards/questions updated: added "the" before MRI scanner, hovercraft, jet engine, television, ATM. Rephrased "An 1851 showcase..." option. Rewrote ambiguous alcohol question: "Is it a criminal offence to sell alcohol to an 18-year-old?" → "What is the minimum age to buy alcohol in the UK?" with clean options (18/16/21/17).
 - **Content scan** — 563 questions and 574 flashcards scanned for context-dependency (zero found), duplicate prompts (14 identified, 7 cross-lesson pairs fixed via deduplication), and grammar issues (6 fixed above).
+- **ChatGPT Custom GPT** — `marketing/chatgpt-custom-gpt.md` created with full system prompt and 6 workflow templates. `marketing/haven-content-export.md` (315 KB) generated from Supabase as knowledge file.
+- **Content gap analysis** — Compared Haven content against official LITUK handbook. Two confirmed gaps fixed:
+  1. **Rudyard Kipling** — Added study section, 3 questions, 3 flashcards to Arts and Culture lesson. Born India 1865, The Jungle Book + Just So Stories, Nobel Prize 1907, poem "If".
+  2. **How many American colonies?** — Added dedicated question (answer: 13) and flashcard to A Global Power lesson. The number was in study text but had no dedicated question.
+  3. **Mary Quant + designers** — Added designers paragraph to Art and Architecture study section: Chippendale, Clarice Cliff, Terence Conran, Mary Quant, Alexander McQueen, Vivienne Westwood.
+- **Deep content audit (session 14 continued)** — Full chapter-by-chapter comparison of official LITUK handbook vs Haven. 22 missing facts and 4 partials identified and fixed:
+  - Updated sections: Victorian Age, Right to Vote, Restoration/Glorious Revolution, Classical Music, Art and Architecture, Literature
+  - New sections added: Robert Burns, Immigration and Refugees (Huguenots/Jews), John Maynard Keynes
+  - New content: Florence Nightingale, George/Robert Stephenson, Boer War, 13 million emigrants, Married Women's Property Acts 1870/1882, Pankhurst's Women's Franchise League 1889, Killiecrankie 1689, Glencoe massacre, William Walton, Pre-Raphaelites (Rossetti/Hunt/Millais), Gertrude Jekyll, David Allan, John Lavery, John Petts, Lucian Freud, Kidnapped (RLS), Attlee as Deputy PM, Keynes
+  - 18 new questions and 18 new flashcards added across 4 lessons
+- **haven-content-export.md regenerated** — Now 329.3 KB, 141 sections, 585 questions, 596 flashcards.
 
 ---
 
