@@ -82,7 +82,7 @@ const ContentLesson: React.FC = () => {
               </svg>
               Memory Hook
             </h3>
-            <p className="text-slate-800 dark:text-gray-100">{lesson.memory_hook}</p>
+            <p className="text-slate-800 dark:text-gray-100 whitespace-pre-line">{lesson.memory_hook}</p>
           </div>
         )}
 

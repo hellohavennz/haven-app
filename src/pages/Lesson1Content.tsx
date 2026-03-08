@@ -21,7 +21,7 @@ export default function Lesson1Content() {
 
       <section className="bg-white border rounded-xl p-4">
         <h3 className="font-semibold mb-2">Memory Hook</h3>
-        <p className="text-slate-700">{data.memory_hook}</p>
+        <p className="text-slate-700 whitespace-pre-line">{data.memory_hook}</p>
       </section>
 
       <section>
