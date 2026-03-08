@@ -71,16 +71,16 @@ export default function ContentIndex() {
     totalLessons > 0 ? Math.round((masteredLessons / totalLessons) * 100) : 0;
 
   const nextLesson = useMemo(() => {
-    return (
-      allLessons.find((lesson) => {
-        const accuracy = getAccuracy(progressData[lesson.id]);
-        if (accuracy === null) {
-          return true;
-        }
+    // First: find the first lesson the user hasn't marked as read
+    const firstUnread = allLessons.find((lesson) => !progressData[lesson.id]?.read);
+    if (firstUnread) return firstUnread;
 
-        return accuracy < 0.8;
-      }) ?? allLessons[0]
-    );
+    // All lessons read: find the first with low practice accuracy
+    const firstWeak = allLessons.find((lesson) => {
+      const accuracy = getAccuracy(progressData[lesson.id]);
+      return accuracy !== null && accuracy < 0.8;
+    });
+    return firstWeak ?? allLessons[0];
   }, [allLessons, progressData]);
 
   const moduleSummaries = useMemo(() => {
