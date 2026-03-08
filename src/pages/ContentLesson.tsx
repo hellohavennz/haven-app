@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LessonContent from '../components/LessonContent';
-import { getLessonById, getAllLessons } from '../lib/content';
+import { getLessonById, getAllLessons, getModules } from '../lib/content';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { getAllProgress, markLessonRead } from '../lib/progress';
 import { CheckCircle2, Circle, ChevronLeft, ChevronRight, ClipboardList, Layers } from 'lucide-react';
@@ -15,6 +15,16 @@ const ContentLesson: React.FC = () => {
   const currentIndex = allLessons.findIndex(l => l.id === lessonId);
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
+
+  // If the next lesson is in a different module, show the module-complete transition
+  const crossesModuleBoundary = !!(lesson && nextLesson && lesson.module_slug !== nextLesson.module_slug);
+  const nextPath = crossesModuleBoundary
+    ? `/content/module-complete/${lesson!.module_slug}`
+    : nextLesson ? `/content/${nextLesson.id}` : null;
+  const nextModuleTitle = useMemo(() => {
+    if (!crossesModuleBoundary || !nextLesson) return null;
+    return getModules().find(m => m.slug === nextLesson.module_slug)?.title ?? null;
+  }, [crossesModuleBoundary, nextLesson]);
 
   const [isRead, setIsRead] = useState(false);
 
@@ -156,17 +166,21 @@ const ContentLesson: React.FC = () => {
                 </Link>
               ) : <div />}
 
-              {nextLesson ? (
+              {nextPath ? (
                 <Link
-                  to={`/content/${nextLesson.id}`}
-                  className="group flex flex-col gap-1 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-4 text-right hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30 transition-colors"
+                  to={nextPath}
+                  className={`group flex flex-col gap-1 rounded-xl border-2 px-4 py-4 text-right transition-colors ${
+                    crossesModuleBoundary
+                      ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20 hover:border-teal-500 hover:bg-teal-100 dark:hover:bg-teal-900/30'
+                      : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 hover:border-teal-400 hover:bg-teal-50 dark:hover:border-teal-600 dark:hover:bg-teal-900/30'
+                  }`}
                 >
-                  <span className="flex items-center gap-1 justify-end text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                    Next
+                  <span className="flex items-center gap-1 justify-end text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                    {crossesModuleBoundary ? 'Module complete' : 'Next'}
                     <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                   <span className="text-sm font-semibold text-slate-800 dark:text-gray-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 line-clamp-2">
-                    {nextLesson.title}
+                    {crossesModuleBoundary ? `Up next: ${nextModuleTitle}` : nextLesson?.title}
                   </span>
                 </Link>
               ) : <div />}
