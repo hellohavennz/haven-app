@@ -67,6 +67,7 @@ const ContentLesson: React.FC = () => {
 
         {/* Lesson Content */}
         <LessonContent
+          key={lessonId}
           sections={lesson.sections}
           study_sections={lesson.study_sections}
           overview={lesson.overview}
