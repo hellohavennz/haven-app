@@ -29,6 +29,7 @@ import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
 import Instagram from './pages/Instagram';
+import NotFound from './pages/NotFound';
 
 // Lazy-loaded: not on the critical path for any first page load
 const ExamSession      = lazy(() => import('./pages/ExamSession'));
@@ -83,6 +84,9 @@ const router = createBrowserRouter([
           { path: 'admin', element: <Suspense fallback={<Fallback />}><Admin /></Suspense> },
         ],
       },
+
+      // 404 catch-all
+      { path: '*', element: <NotFound /> },
     ],
   },
 ], { basename: '/uk' });
