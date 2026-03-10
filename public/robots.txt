@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /sitemap.xml
+Allow: /blog/
 Allow: /uk/
 Allow: /uk/login
 Allow: /uk/signup
