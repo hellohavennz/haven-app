@@ -1,0 +1,461 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const BASE = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Practical guides to help you prepare for the Life in the UK test. Clear answers to the questions people actually ask about the test, booking, and what to expect."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Haven Study" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Haven Study" />
+    <meta property="og:title" content="Life in the UK Test Study Guides | Haven Study" />
+    <meta
+      property="og:description"
+      content="Practical guides to help you prepare for the Life in the UK test."
+    />
+    <meta property="og:url" content="https://havenstudy.app/blog/" />
+    <meta property="og:image" content="https://havenstudy.app/haven-icons/haven_study_banner.png" />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Life in the UK Test Study Guides | Haven Study" />
+    <meta
+      name="twitter:description"
+      content="Practical guides to help you prepare for the Life in the UK test."
+    />
+    <meta name="twitter:image" content="https://havenstudy.app/haven-icons/haven_study_banner.png" />
+
+    <link rel="canonical" href="https://havenstudy.app/blog/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href="/haven-icons/favicon.svg" />
+    <title>Life in the UK Test Study Guides | Haven Study</title>
+  </head>
+  <body>
+    <header class="blog-header">
+      <div class="container--wide header-inner">
+        <a href="https://havenstudy.app/uk" class="logo-link" aria-label="Haven Study">
+          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect width="28" height="28" rx="7" fill="#4E8571" />
+            <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
+          </svg>
+          <span class="logo-text">Haven Study</span>
+        </a>
+        <nav class="header-nav">
+          <a href={BASE} class="nav-link active" aria-current="page">Study Guides</a>
+          <a href="https://havenstudy.app/uk/signup" class="nav-cta">Start Free</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-badge">Life in the UK Test</div>
+          <h1>Study Guides</h1>
+          <p class="hero-sub">
+            Practical answers to the questions people actually ask about the Life in the UK test:
+            when to take it, how to prepare, what to expect, and what to do if things go wrong.
+          </p>
+        </div>
+      </section>
+
+      <section class="posts-section">
+        <div class="container">
+          {posts.length === 0 ? (
+            <p class="no-posts">No guides published yet. Check back soon.</p>
+          ) : (
+            <ul class="post-list" role="list">
+              {posts.map((post) => {
+                const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                });
+                return (
+                  <li>
+                    <a href={`${BASE}${post.slug}/`} class="post-card">
+                      <div class="post-card-content">
+                        <div class="post-card-meta">
+                          <span>{formattedDate}</span>
+                          <span class="meta-sep" aria-hidden="true">·</span>
+                          <span>{post.data.readTime} min read</span>
+                        </div>
+                        <h2 class="post-card-title">{post.data.title}</h2>
+                        <p class="post-card-excerpt">{post.data.excerpt}</p>
+                        <span class="post-card-cta" aria-hidden="true">
+                          Read guide
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                          </svg>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-banner">
+            <div class="cta-banner-text">
+              <h2>Ready to start preparing?</h2>
+              <p>
+                Haven gives you 29 structured lessons, 500+ practice questions, flashcards, and
+                mock exams built around the official Life in the UK test syllabus.
+              </p>
+            </div>
+            <a href="https://havenstudy.app/uk/signup" class="cta-btn-large">
+              Start Free
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="blog-footer">
+      <div class="container--wide footer-inner">
+        <div class="footer-brand">
+          <a href="https://havenstudy.app/uk" class="logo-link footer-logo">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <rect width="28" height="28" rx="7" fill="#4E8571" />
+              <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
+            </svg>
+            <span>Haven Study</span>
+          </a>
+          <p class="footer-desc">
+            Life in the UK test preparation. Structured lessons, practice questions, and mock
+            exams built around the official syllabus.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href={BASE}>Study Guides</a>
+          <a href="https://havenstudy.app/uk/signup">Start Free</a>
+          <a href="https://havenstudy.app/uk/privacy">Privacy</a>
+          <a href="https://havenstudy.app/uk/terms">Terms</a>
+        </div>
+      </div>
+      <div class="container--wide footer-bottom">
+        <p>
+          &copy; {new Date().getFullYear()} Haven Study. All rights reserved. This site provides
+          test preparation guidance only and does not constitute immigration advice.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .blog-header {
+    background: white;
+    border-bottom: 1px solid var(--slate-200);
+    padding: 0.9rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--slate-900);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .logo-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-600);
+  }
+
+  .nav-link.active {
+    color: var(--teal-600);
+  }
+
+  .nav-link:hover {
+    color: var(--teal-600);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: var(--teal-600);
+    color: white;
+    padding: 0.45rem 1.1rem;
+    border-radius: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.15s;
+  }
+
+  .nav-cta:hover {
+    background: #3d6d5c;
+    text-decoration: none;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--teal-50);
+    border-bottom: 1px solid var(--teal-100);
+    padding: 3.5rem 0 3rem;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--teal-100);
+    color: var(--teal-600);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--slate-600);
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* Post list */
+  .posts-section {
+    padding: 3rem 0;
+  }
+
+  .no-posts {
+    color: var(--slate-500);
+  }
+
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .post-card {
+    display: block;
+    background: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 0.875rem;
+    padding: 1.75rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .post-card:hover {
+    border-color: var(--teal-500);
+    box-shadow: 0 2px 12px rgba(78, 133, 113, 0.1);
+    text-decoration: none;
+  }
+
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--slate-500);
+    margin-bottom: 0.6rem;
+  }
+
+  .meta-sep {
+    color: var(--slate-300);
+  }
+
+  .post-card-title {
+    font-size: 1.2rem;
+    color: var(--slate-900);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+
+  .post-card-excerpt {
+    font-size: 0.95rem;
+    color: var(--slate-600);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .post-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--teal-600);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* CTA banner */
+  .cta-section {
+    padding: 2rem 0 4rem;
+  }
+
+  .cta-banner {
+    background: var(--teal-600);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .cta-banner-text h2 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-banner-text p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .cta-btn-large {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: white;
+    color: var(--teal-600);
+    padding: 0.85rem 1.75rem;
+    border-radius: 0.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+
+  .cta-btn-large:hover {
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  /* Footer */
+  .blog-footer {
+    background: var(--slate-900);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 0 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo {
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-desc {
+    max-width: 300px;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+  }
+
+  .footer-links a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 0.75rem;
+    opacity: 0.55;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    .logo-text { display: none; }
+    .nav-link { display: none; }
+    .hero h1 { font-size: 1.75rem; }
+    .post-card { padding: 1.25rem; }
+    .cta-banner { padding: 1.5rem; }
+  }
+</style>

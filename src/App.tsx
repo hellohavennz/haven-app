@@ -361,6 +361,48 @@ export default function App() {
         </div>
       </section>
 
+      <section className="max-w-6xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="font-semibold text-slate-900 dark:text-white mb-3">Study Guides</h2>
+          <p className="text-slate-600 dark:text-slate-300">Practical answers to the questions people ask most about the Life in the UK test</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <a
+            href="/blog/life-in-the-uk-test-study-guide/"
+            className="block bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-7 hover:border-teal-400 transition-all group no-underline"
+          >
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full mb-4">
+              <BookOpen size={12} />
+              9 min read
+            </div>
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">Life in the UK Test: The Complete Study Guide</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Who needs to take it, what it covers, how to prepare effectively, and what to expect on the day.</p>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
+              Read guide <ArrowRight size={14} />
+            </span>
+          </a>
+          <a
+            href="/blog/when-to-take-life-in-the-uk-test-before-ilr/"
+            className="block bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-7 hover:border-teal-400 transition-all group no-underline"
+          >
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full mb-4">
+              <Clock size={12} />
+              6 min read
+            </div>
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">When Should You Take the Life in the UK Test Before ILR?</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">The test result doesn't expire, but leaving it too late creates unnecessary risk. Here's how to plan your timing.</p>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
+              Read guide <ArrowRight size={14} />
+            </span>
+          </a>
+        </div>
+        <div className="text-center mt-7">
+          <a href="/blog/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            View all guides <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
       <section id="pricing" className="-mx-4 px-4 py-20 bg-white dark:bg-gray-950/40">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">

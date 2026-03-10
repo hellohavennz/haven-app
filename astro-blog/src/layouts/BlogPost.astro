@@ -1,0 +1,364 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import '../styles/global.css';
+
+interface Props {
+  post: CollectionEntry<'posts'>['data'];
+  slug: string;
+}
+
+const { post, slug } = Astro.props;
+const BASE = import.meta.env.BASE_URL;
+const canonicalUrl = `https://havenstudy.app/blog/${slug}/`;
+
+const formattedDate = new Date(post.pubDate).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={post.description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Haven Study" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Haven Study" />
+    <meta property="og:title" content={`${post.title} | Haven Study`} />
+    <meta property="og:description" content={post.description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://havenstudy.app/haven-icons/haven_study_banner.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${post.title} | Haven Study`} />
+    <meta name="twitter:description" content={post.description} />
+    <meta name="twitter:image" content="https://havenstudy.app/haven-icons/haven_study_banner.png" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href="/haven-icons/favicon.svg" />
+    <title>{post.title} | Haven Study</title>
+  </head>
+  <body>
+    <header class="blog-header">
+      <div class="container--wide header-inner">
+        <a href="https://havenstudy.app/uk" class="logo-link" aria-label="Haven Study">
+          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect width="28" height="28" rx="7" fill="#4E8571" />
+            <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
+          </svg>
+          <span class="logo-text">Haven Study</span>
+        </a>
+        <nav class="header-nav">
+          <a href={BASE} class="nav-link">Study Guides</a>
+          <a href="https://havenstudy.app/uk/signup" class="nav-cta">Start Free</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container post-header">
+        <div class="breadcrumb">
+          <a href={BASE}>Study Guides</a>
+          <span aria-hidden="true">/</span>
+          <span>{post.title}</span>
+        </div>
+        <h1>{post.title}</h1>
+        <div class="post-meta">
+          <span class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            {formattedDate}
+          </span>
+          <span class="meta-sep" aria-hidden="true">·</span>
+          <span class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            {post.readTime} min read
+          </span>
+        </div>
+        <p class="post-excerpt">{post.excerpt}</p>
+      </div>
+
+      <div class="container">
+        <article class="prose">
+          <slot />
+        </article>
+
+        <div class="cta-box" role="complementary" aria-label="Try Haven Study">
+          <h3>Ready to start studying?</h3>
+          <p>
+            Haven gives you 29 structured lessons, 500+ practice questions, flashcards, and mock exams
+            built around the official Life in the UK test syllabus. Start free today.
+          </p>
+          <a href="https://havenstudy.app/uk/signup" class="cta-btn">Start Free</a>
+        </div>
+
+        <div class="back-link">
+          <a href={BASE}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Study Guides
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="blog-footer">
+      <div class="container--wide footer-inner">
+        <div class="footer-brand">
+          <a href="https://havenstudy.app/uk" class="logo-link footer-logo">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <rect width="28" height="28" rx="7" fill="#4E8571" />
+              <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
+            </svg>
+            <span>Haven Study</span>
+          </a>
+          <p class="footer-desc">
+            Life in the UK test preparation. Structured lessons, practice questions, and mock exams
+            built around the official syllabus.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href={BASE}>Study Guides</a>
+          <a href="https://havenstudy.app/uk/signup">Start Free</a>
+          <a href="https://havenstudy.app/uk/privacy">Privacy</a>
+          <a href="https://havenstudy.app/uk/terms">Terms</a>
+        </div>
+      </div>
+      <div class="container--wide footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Haven Study. All rights reserved. This site provides test preparation guidance only and does not constitute immigration advice.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .blog-header {
+    background: white;
+    border-bottom: 1px solid var(--slate-200);
+    padding: 0.9rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--slate-900);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .logo-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-600);
+  }
+
+  .nav-link:hover {
+    color: var(--teal-600);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: var(--teal-600);
+    color: white;
+    padding: 0.45rem 1.1rem;
+    border-radius: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.15s;
+  }
+
+  .nav-cta:hover {
+    background: #3d6d5c;
+    text-decoration: none;
+  }
+
+  .post-header {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--slate-200);
+    margin-bottom: 2.5rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--slate-500);
+    margin-bottom: 1.25rem;
+  }
+
+  .breadcrumb a {
+    color: var(--teal-600);
+    font-weight: 600;
+  }
+
+  .breadcrumb span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+  }
+
+  .post-header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--slate-500);
+    margin-bottom: 1.25rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .meta-sep {
+    color: var(--slate-300);
+  }
+
+  .post-excerpt {
+    font-size: 1.1rem;
+    color: var(--slate-600);
+    line-height: 1.65;
+    margin: 0;
+    font-style: italic;
+    border-left: 3px solid var(--teal-500);
+    padding-left: 1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-600);
+  }
+
+  .back-link a:hover {
+    color: var(--teal-600);
+    text-decoration: none;
+  }
+
+  .blog-footer {
+    background: var(--slate-900);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo {
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-desc {
+    max-width: 300px;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+  }
+
+  .footer-links a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 0.75rem;
+    opacity: 0.55;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    .logo-text { display: none; }
+    .nav-link { display: none; }
+    .post-header h1 { font-size: 1.6rem; }
+  }
+</style>

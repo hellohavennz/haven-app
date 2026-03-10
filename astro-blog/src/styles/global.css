@@ -1,0 +1,173 @@
+/* Haven Design Tokens */
+:root {
+  --cream: #FAF7F2;
+  --teal-600: #4E8571;
+  --teal-500: #5F9D86;
+  --teal-50: #F0F7F4;
+  --teal-100: #E0EFE9;
+  --slate-900: #17201E;
+  --slate-700: #2E3C39;
+  --slate-600: #4F5F5B;
+  --slate-500: #6B7C78;
+  --slate-300: #A8B8B4;
+  --slate-200: #D8E0DE;
+  --slate-100: #EBF0EE;
+  --amber-500: #C9973F;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--slate-600);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--slate-900);
+  line-height: 1.3;
+  margin-top: 0;
+}
+
+p { margin-top: 0; }
+
+a {
+  color: var(--teal-600);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Layout utilities */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container--wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Article body typography */
+.prose {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.prose h2 {
+  font-size: 1.45rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--teal-100);
+  color: var(--slate-900);
+}
+
+.prose h3 {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.prose strong {
+  color: var(--slate-900);
+  font-weight: 700;
+}
+
+.prose blockquote {
+  margin: 1.75rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--teal-500);
+  background: var(--teal-50);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--slate-700);
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose a {
+  color: var(--teal-600);
+  text-decoration: underline;
+}
+
+/* CTA box */
+.cta-box {
+  background: var(--teal-600);
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.cta-box h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cta-box p {
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: white;
+  color: var(--teal-600);
+  padding: 0.75rem 2rem;
+  border-radius: 0.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: opacity 0.15s;
+}
+
+.cta-btn:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+}

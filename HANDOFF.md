@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-08 (session 15)_
+_Last updated: 2026-03-10 (session 16)_
 
 ---
 
@@ -354,6 +354,38 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 - **Key Fact tile icon** — Removed clipboard SVG from the "Key Fact" heading in `src/components/LessonContent.tsx`. Label remains, icon gone.
 - **Navbar logo** — Logo now links to `/dashboard` when the user is on `/content`, `/practice`, or `/flashcards`; links to `/` (marketing homepage) everywhere else. Logic in `src/components/Navbar.tsx` using `useLocation`.
 - **Module tile small locks** — Removed `h-3 w-3` `<Lock>` icons from beside "Module X" label on locked tiles in `ContentIndex.tsx` and `PracticeIndex.tsx`. Larger lock icon in tile corner/body unchanged.
+
+---
+
+## Session 16 changes (2026-03-10)
+
+- **Blog at havenstudy.app/blog/** — Astro 4 blog scaffolded in `astro-blog/` directory. Builds to `dist/blog/` as part of the same Netlify deploy. No separate hosting needed.
+- **netlify.toml build command updated** — `npm run build && cd astro-blog && npm install && npm run build`. Vite builds first, then Astro appends its output to `dist/blog/`.
+- **Two articles published** — Cornerstone: "Life in the UK Test: The Complete Study Guide" (`/blog/life-in-the-uk-test-study-guide/`). Supporting: "When Should You Take the Life in the UK Test Before ILR?" (`/blog/when-to-take-life-in-the-uk-test-before-ilr/`).
+- **Study Guides section on homepage** — Two article preview cards added to `App.tsx` between "How It Works" and Pricing. Links to both blog posts. "View all guides" link to `/blog/`.
+- **Blog structure** — Astro content collections. Posts use frontmatter: `title`, `description`, `excerpt`, `pubDate`, `readTime`, `featured`. Sitemap auto-generated at `/blog/sitemap-index.xml`.
+
+### How to add a new blog post
+
+1. Create a new `.md` file in `astro-blog/src/content/posts/`
+2. Use this frontmatter at the top:
+
+```markdown
+---
+title: "Your Article Title"
+description: "Meta description for Google (150-160 chars)"
+excerpt: "Short summary shown on listing page and post header"
+pubDate: 2026-03-10
+readTime: 7
+featured: false
+---
+
+Article body in Markdown...
+```
+
+3. The filename becomes the URL slug. Example: `what-happens-if-you-fail.md` becomes `havenstudy.app/blog/what-happens-if-you-fail/`
+4. Commit and push to `main`. Netlify deploys automatically.
+5. Update the Study Guides cards in `src/App.tsx` if you want to feature the new article on the homepage.
 
 ---
 

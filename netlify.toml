@@ -1,6 +1,6 @@
 # ── Build ────────────────────────────────────────────────────────────────────
 [build]
-  command = "npm run build"
+  command = "npm run build && cd astro-blog && npm install && npm run build"
   publish = "dist"
 
 # ── Routing ───────────────────────────────────────────────────────────────────
