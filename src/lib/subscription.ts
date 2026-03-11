@@ -112,9 +112,7 @@ export function useSubscription(): SubscriptionStatus {
   return {
     tier,
     hasPlus,
-    // In the new model all paid users get all features; keep hasPremium as alias for hasPlus
-    // so existing components that check hasPremium continue to work without changes.
-    hasPremium: hasPlus,
+    hasPremium: tier === 'premium',
     accessExpiresAt,
     isLoading,
   };

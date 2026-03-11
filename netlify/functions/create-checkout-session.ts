@@ -7,11 +7,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2025-01
 const PRICE_IDS: Record<string, string> = {
   plus_1m: process.env.STRIPE_PLUS_1M_PRICE_ID!,
   plus_3m: process.env.STRIPE_PLUS_3M_PRICE_ID!,
+  premium_6m: process.env.STRIPE_PREMIUM_6M_PRICE_ID!,
 };
 
 const DURATION_DAYS: Record<string, number> = {
   plus_1m: 30,
   plus_3m: 90,
+  premium_6m: 180,
 };
 
 // Stripe coupon IDs for each discount level (set in Netlify env vars)

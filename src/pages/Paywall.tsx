@@ -2,6 +2,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   BookOpen,
   Sparkles,
+  Crown,
   CheckCircle2,
   ArrowRight,
   Award,
@@ -9,6 +10,10 @@ import {
   Tag,
   Clock,
   Calendar,
+  Brain,
+  BarChart3,
+  Bell,
+  Smartphone,
 } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
@@ -16,11 +21,12 @@ import { getCurrentUser } from '../lib/auth';
 import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../hooks/usePageTitle';
 
-type Plan = 'plus_1m' | 'plus_3m';
+type Plan = 'plus_1m' | 'plus_3m' | 'premium_6m';
 
 const PLAN_PRICES: Record<Plan, number> = {
   plus_1m: 4.99,
   plus_3m: 9.99,
+  premium_6m: 24.99,
 };
 
 function formatExpiry(iso: string): string {
@@ -35,7 +41,7 @@ export default function Paywall() {
   usePageTitle('Pricing', 'Choose your Haven Study access pass. Pay once, study at your own pace. No recurring billing.');
   const navigate = useNavigate();
   const location = useLocation();
-  const { hasPlus, accessExpiresAt, isLoading } = useSubscription();
+  const { tier, hasPlus, accessExpiresAt, isLoading } = useSubscription();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checkingOut, setCheckingOut] = useState<Plan | null>(null);
   const [checkoutError, setCheckoutError] = useState('');
@@ -113,13 +119,14 @@ export default function Paywall() {
   function ctaLabel(plan: Plan) {
     if (isLoading) return 'Loading...';
     if (checkingOut === plan) return 'Redirecting...';
-    if (hasPlus) return plan === 'plus_1m' ? 'Extend by 1 Month' : 'Extend by 3 Months';
-    return plan === 'plus_1m' ? 'Get 1 Month' : 'Get 3 Months';
+    if (plan === 'plus_1m') return hasPlus ? 'Extend by 1 Month' : 'Get 1 Month';
+    if (plan === 'plus_3m') return hasPlus ? 'Extend by 3 Months' : 'Get 3 Months';
+    return hasPlus ? 'Extend by 6 Months' : 'Get Premium';
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 px-4">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal-100 dark:bg-teal-900/40 px-4 py-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
             <Sparkles className="h-4 w-4" />
@@ -159,78 +166,76 @@ export default function Paywall() {
           </div>
         )}
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {/* Free Plan */}
-          <div className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-8 flex flex-col">
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4">
-                <BookOpen className="text-slate-600 dark:text-slate-400" size={32} />
+          <div className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-6 flex flex-col">
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-3">
+                <BookOpen className="text-slate-600 dark:text-slate-400" size={28} />
               </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Free</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Free</h3>
               <div className="flex items-baseline justify-center gap-2 mb-1">
-                <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
+                <span className="text-4xl font-semibold text-slate-900 dark:text-white">£0</span>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">No credit card. No time limit.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">No credit card. No time limit.</p>
             </div>
-            <ul className="space-y-3 mb-8 flex-1">
+            <ul className="space-y-2.5 mb-6 flex-1 text-sm">
               {[
                 '3 free modules',
                 '252 practice questions',
                 'Full flashcards (free modules)',
                 'Progress tracking',
               ].map(f => (
-                <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                <li key={f} className="flex items-start gap-2">
+                  <CheckCircle2 className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" size={16} />
                   <span className="text-slate-700 dark:text-slate-200">{f}</span>
                 </li>
               ))}
             </ul>
             <button
               onClick={() => navigate(isLoggedIn ? '/dashboard' : '/signup?plan=free')}
-              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold transition-colors mt-auto bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 text-sm"
             >
               Get Started Free
-              <ArrowRight size={18} />
+              <ArrowRight size={16} />
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">No credit card required</p>
+            <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">No credit card required</p>
           </div>
 
           {/* Plus 1 Month */}
-          <div className="bg-white dark:bg-slate-900 border-2 border-teal-300 dark:border-teal-400/40 rounded-2xl p-8 flex flex-col relative">
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
-                <Clock className="text-teal-600 dark:text-teal-400" size={32} />
+          <div className="bg-white dark:bg-slate-900 border-2 border-teal-300 dark:border-teal-400/40 rounded-2xl p-6 flex flex-col relative">
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-3">
+                <Clock className="text-teal-600 dark:text-teal-400" size={28} />
               </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
-              <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-3">1 Month Access</p>
-              <div className="flex items-baseline justify-center gap-1.5 mb-1">
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Haven Plus</h3>
+              <p className="text-xs font-medium text-teal-600 dark:text-teal-400 mb-2">1 Month Access</p>
+              <div className="flex items-baseline justify-center gap-1 mb-1">
                 {sale?.active && (
-                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">
+                  <span className="text-xl font-semibold text-slate-400 dark:text-slate-500 line-through">
                     £{PLAN_PRICES.plus_1m.toFixed(2)}
                   </span>
                 )}
-                <span className="text-5xl font-semibold text-slate-900 dark:text-white">
+                <span className="text-4xl font-semibold text-slate-900 dark:text-white">
                   £{salePrice(PLAN_PRICES.plus_1m).toFixed(2)}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">one-off payment · about £1.25/week</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">one-off · ~£1.25/week</p>
             </div>
-            <ul className="space-y-3 mb-8 flex-1">
+            <ul className="space-y-2.5 mb-6 flex-1 text-sm">
               {[
                 'All 29 lessons',
                 '500+ practice questions',
                 'All flashcards',
                 'Full mock exams',
                 'Progress tracking',
-                'Pippa AI study assistant',
                 'Resit Support',
               ].map(f => (
-                <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
+                <li key={f} className="flex items-start gap-2">
+                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={16} />
                   {f === 'Resit Support' ? (
                     <span className="text-slate-700 dark:text-slate-200">
                       <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                      {' '}(30 days free if you fail)
                     </span>
                   ) : (
                     <span className="text-slate-700 dark:text-slate-200">{f}</span>
@@ -241,55 +246,53 @@ export default function Paywall() {
             <button
               onClick={() => !checkingOut && handleSelectPlan('plus_1m')}
               disabled={isLoading || !!checkingOut}
-              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-70"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold transition-colors mt-auto bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-70 text-sm"
             >
-              {checkingOut === 'plus_1m' && <Loader2 className="animate-spin" size={18} />}
+              {checkingOut === 'plus_1m' && <Loader2 className="animate-spin" size={16} />}
               {ctaLabel('plus_1m')}
-              {checkingOut !== 'plus_1m' && !isLoading && <ArrowRight size={18} />}
+              {checkingOut !== 'plus_1m' && !isLoading && <ArrowRight size={16} />}
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Paid once. Expires after 30 days. No auto-renewal.</p>
+            <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">Expires after 30 days. No auto-renewal.</p>
           </div>
 
           {/* Plus 3 Months */}
-          <div className="bg-white dark:bg-slate-900 border-2 border-teal-400 dark:border-teal-300/60 rounded-2xl p-8 flex flex-col relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
-              BEST VALUE
+          <div className="bg-white dark:bg-slate-900 border-2 border-teal-500 dark:border-teal-300/60 rounded-2xl p-6 flex flex-col relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-xs font-semibold rounded-full whitespace-nowrap">
+              MOST POPULAR
             </div>
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
-                <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-3">
+                <Sparkles className="text-teal-600 dark:text-teal-400" size={28} />
               </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
-              <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-3">3 Months Access</p>
-              <div className="flex items-baseline justify-center gap-1.5 mb-1">
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Haven Plus</h3>
+              <p className="text-xs font-medium text-teal-600 dark:text-teal-400 mb-2">3 Months Access</p>
+              <div className="flex items-baseline justify-center gap-1 mb-1">
                 {sale?.active && (
-                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">
+                  <span className="text-xl font-semibold text-slate-400 dark:text-slate-500 line-through">
                     £{PLAN_PRICES.plus_3m.toFixed(2)}
                   </span>
                 )}
-                <span className="text-5xl font-semibold text-slate-900 dark:text-white">
+                <span className="text-4xl font-semibold text-slate-900 dark:text-white">
                   £{salePrice(PLAN_PRICES.plus_3m).toFixed(2)}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">one-off payment · under £0.80/week</p>
-              <p className="mt-1 text-xs font-medium text-teal-600 dark:text-teal-400">Save £4.98 vs buying monthly</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">one-off · under £0.80/week</p>
+              <p className="mt-0.5 text-xs font-medium text-teal-600 dark:text-teal-400">Save £4.98 vs monthly</p>
             </div>
-            <ul className="space-y-3 mb-8 flex-1">
+            <ul className="space-y-2.5 mb-6 flex-1 text-sm">
               {[
                 'All 29 lessons',
                 '500+ practice questions',
                 'All flashcards',
                 'Full mock exams',
                 'Progress tracking',
-                'Pippa AI study assistant',
                 'Resit Support',
               ].map(f => (
-                <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
+                <li key={f} className="flex items-start gap-2">
+                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={16} />
                   {f === 'Resit Support' ? (
                     <span className="text-slate-700 dark:text-slate-200">
                       <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                      {' '}(30 days free if you fail)
                     </span>
                   ) : (
                     <span className="text-slate-700 dark:text-slate-200">{f}</span>
@@ -300,13 +303,66 @@ export default function Paywall() {
             <button
               onClick={() => !checkingOut && handleSelectPlan('plus_3m')}
               disabled={isLoading || !!checkingOut}
-              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-teal-700 text-white hover:bg-teal-800 disabled:opacity-70"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold transition-colors mt-auto bg-teal-700 text-white hover:bg-teal-800 disabled:opacity-70 text-sm"
             >
-              {checkingOut === 'plus_3m' && <Loader2 className="animate-spin" size={18} />}
+              {checkingOut === 'plus_3m' && <Loader2 className="animate-spin" size={16} />}
               {ctaLabel('plus_3m')}
-              {checkingOut !== 'plus_3m' && !isLoading && <ArrowRight size={18} />}
+              {checkingOut !== 'plus_3m' && !isLoading && <ArrowRight size={16} />}
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Paid once. Expires after 90 days. No auto-renewal.</p>
+            <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">Expires after 90 days. No auto-renewal.</p>
+          </div>
+
+          {/* Premium 6 Months */}
+          <div className="bg-white dark:bg-slate-900 border-2 border-amber-300 dark:border-amber-300/50 rounded-2xl p-6 flex flex-col relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold rounded-full whitespace-nowrap">
+              ALL FEATURES
+            </div>
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-3">
+                <Crown className="text-amber-600 dark:text-amber-400" size={28} />
+              </div>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Haven Premium</h3>
+              <p className="text-xs font-medium text-amber-600 dark:text-amber-400 mb-2">6 Months Access</p>
+              <div className="flex items-baseline justify-center gap-1 mb-1">
+                {sale?.active && (
+                  <span className="text-xl font-semibold text-slate-400 dark:text-slate-500 line-through">
+                    £{PLAN_PRICES.premium_6m.toFixed(2)}
+                  </span>
+                )}
+                <span className="text-4xl font-semibold text-slate-900 dark:text-white">
+                  £{salePrice(PLAN_PRICES.premium_6m).toFixed(2)}
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">one-off · under £1/week</p>
+            </div>
+            <ul className="space-y-2.5 mb-6 flex-1 text-sm">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={16} />
+                <span className="text-slate-700 dark:text-slate-200 font-medium">Everything in Plus, and:</span>
+              </li>
+              {[
+                { icon: Brain, label: 'Pippa AI study assistant' },
+                { icon: BarChart3, label: 'Performance analytics' },
+                { icon: Sparkles, label: 'Unlimited dynamic exams' },
+                { icon: Bell, label: 'Exam date reminders' },
+                { icon: Smartphone, label: 'Offline mobile access' },
+              ].map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-start gap-2">
+                  <Icon className="text-amber-500 flex-shrink-0 mt-0.5" size={16} />
+                  <span className="text-slate-700 dark:text-slate-200">{label}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => !checkingOut && handleSelectPlan('premium_6m')}
+              disabled={isLoading || !!checkingOut}
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold transition-all mt-auto bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 disabled:opacity-70 text-sm"
+            >
+              {checkingOut === 'premium_6m' && <Loader2 className="animate-spin" size={16} />}
+              {ctaLabel('premium_6m')}
+              {checkingOut !== 'premium_6m' && !isLoading && <ArrowRight size={16} />}
+            </button>
+            <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">Expires after 180 days. No auto-renewal.</p>
           </div>
         </div>
 

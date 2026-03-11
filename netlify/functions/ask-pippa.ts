@@ -62,17 +62,18 @@ export const handler: Handler = async (event) => {
   const tier = profile?.subscription_tier as string | undefined;
   const accessExpiresAt = profile?.access_expires_at as string | null | undefined;
 
-  let hasAccess = false;
+  // Pippa is Premium only
+  let hasPremiumAccess = false;
   if (accessExpiresAt != null) {
-    // New model: check expiry date
-    hasAccess = new Date(accessExpiresAt) > new Date();
+    // New model: check expiry AND premium tier
+    hasPremiumAccess = new Date(accessExpiresAt) > new Date() && tier === 'premium';
   } else {
-    // Legacy model: check subscription tier
-    hasAccess = tier === 'plus' || tier === 'premium';
+    // Legacy model: check tier
+    hasPremiumAccess = tier === 'premium';
   }
 
-  if (!hasAccess) {
-    return { statusCode: 403, body: 'Pippa requires an active Haven Plus subscription' };
+  if (!hasPremiumAccess) {
+    return { statusCode: 403, body: 'Pippa is available to Haven Premium subscribers only' };
   }
 
   // Parse request body

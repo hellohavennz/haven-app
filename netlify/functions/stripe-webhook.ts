@@ -181,9 +181,12 @@ export const handler: Handler = async (event) => {
         const baseDate = (currentExpiry && currentExpiry > now) ? currentExpiry : now;
         const newExpiry = new Date(baseDate.getTime() + durationDays * 24 * 60 * 60 * 1000);
 
+        // Derive tier from plan key: premium_6m → 'premium', everything else → 'plus'
+        const newTier = plan === 'premium_6m' ? 'premium' : 'plus';
+
         await supabase.from('profiles').upsert({
           id: userId,
-          subscription_tier: 'plus',
+          subscription_tier: newTier,
           stripe_customer_id: session.customer as string,
           access_expires_at: newExpiry.toISOString(),
         }, { onConflict: 'id' });
@@ -198,9 +201,10 @@ export const handler: Handler = async (event) => {
             .eq('id', userId)
             .single();
           const firstName = (profile?.full_name as string | null)?.split(' ')[0] || 'there';
+          const emailSubject = newTier === 'premium' ? "You're on Haven Premium!" : "You're on Haven Plus!";
           await sendEmail(
             customerEmail,
-            "You're on Haven Plus!",
+            emailSubject,
             accessConfirmationHtml(plan, firstName, newExpiry, durationDays),
           ).catch(() => {}); // don't fail the webhook if email fails
         }

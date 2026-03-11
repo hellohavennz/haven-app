@@ -599,8 +599,8 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Analytics — all paid users */}
-      {hasPlus && (
+      {/* Analytics — Premium only */}
+      {tier === 'premium' && (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3 dark:border-slate-800 dark:bg-slate-900">
           <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-teal-600" />
