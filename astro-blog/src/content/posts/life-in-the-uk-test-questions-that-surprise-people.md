@@ -45,7 +45,7 @@ Britain's contribution to everyday technology is a running theme in the test con
 
 ## 3. What was special about Dolly the sheep?
 
-**The question:** The test includes a question about Dolly, who was born in Scotland in 1996.
+**The question:** The test may include a question about Dolly, who was born in Scotland in 1996.
 
 **The answer:** Dolly was the first mammal to be successfully cloned. The work was led by Sir Ian Wilmut and Keith Campbell at the Roslin Institute near Edinburgh.
 
@@ -71,7 +71,7 @@ Knowing the names behind the discovery matters here, not just that it happened. 
 
 ## 5. What is the Eisteddfod?
 
-**The question:** The test includes a question about an annual Welsh cultural event that is held largely in the Welsh language.
+**The question:** The test may include a question about an annual Welsh cultural event that is held largely in the Welsh language.
 
 **The answer:** The National Eisteddfod of Wales is an annual festival of music, poetry, dance, and visual art. It is one of Europe's largest cultural festivals and is conducted primarily in Welsh.
 
