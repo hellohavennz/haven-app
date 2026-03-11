@@ -472,6 +472,7 @@ const Dashboard: React.FC = () => {
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <div className="text-4xl font-semibold text-slate-900 dark:text-gray-100">{masteredCount}</div>
                   <div className="text-sm text-slate-600 dark:text-slate-300">of {totalLessons}</div>
+                  <div className="text-xs font-semibold text-green-600 uppercase tracking-wide mt-1">Mastered</div>
                 </div>
               </div>
             </div>
