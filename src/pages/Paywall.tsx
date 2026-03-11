@@ -68,10 +68,9 @@ export default function Paywall() {
   }, []);
 
   async function handleSelectPlan(plan: Plan, overrideUser?: any) {
-    if (plan === currentTier) return;
-
     if (plan === 'free') {
-      navigate('/signup?plan=free');
+      const user = await getCurrentUser();
+      navigate(user ? '/dashboard' : '/signup?plan=free');
       return;
     }
 
