@@ -537,9 +537,7 @@ const Dashboard: React.FC = () => {
                   <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden dark:bg-slate-800">
                     <div
                       className={`h-full rounded-full transition-all ${
-                        module.avgPercentage >= 80 ? 'bg-green-500' :
-                        module.avgPercentage >= 60 ? 'bg-yellow-500' :
-                        module.avgPercentage > 0 ? 'bg-red-400' : 'bg-slate-300'
+                        module.avgPercentage > 0 ? 'bg-teal-500' : 'bg-slate-300'
                       }`}
                       style={{ width: `${module.avgPercentage}%` }}
                     />
