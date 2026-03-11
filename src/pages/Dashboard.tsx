@@ -184,7 +184,7 @@ const Dashboard: React.FC = () => {
     return percentage >= 60 && percentage < 80;
   }).length;
   const needsWorkCount = needsReview;
-  const notStartedCount = totalLessons - lessonsStarted;
+  const notStartedCount = totalLessons - masteredCount - goodCount - needsWorkCount;
 
   return (
     <div className="min-h-screen bg-cream py-10 px-4 dark:bg-gray-950">
