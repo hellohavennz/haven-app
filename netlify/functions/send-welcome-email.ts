@@ -65,13 +65,13 @@ function welcomeHtml(firstName: string): string {
             <p style="margin:28px 0 12px;font-size:14px;font-weight:700;color:#111827;">Helpful reading before you start</p>
             <table cellpadding="0" cellspacing="0" style="width:100%;">
               <tr><td style="padding:6px 0;border-bottom:1px solid #f0f0f0;">
-                <a href="https://havenstudy.app/blog/life-in-the-uk-test-study-guide/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">The complete Life in the UK test guide &rarr;</a>
+                <a href="https://havenstudy.app/blog/life-in-the-uk-test-study-guide/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">The complete Life in the UK test guide</a>
               </td></tr>
               <tr><td style="padding:6px 0;border-bottom:1px solid #f0f0f0;">
-                <a href="https://havenstudy.app/blog/when-to-take-life-in-the-uk-test-before-ilr/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">When should you take the test before ILR? &rarr;</a>
+                <a href="https://havenstudy.app/blog/when-to-take-life-in-the-uk-test-before-ilr/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">When should you take the test before ILR?</a>
               </td></tr>
               <tr><td style="padding:6px 0;">
-                <a href="https://havenstudy.app/blog/life-in-the-uk-test-questions-that-surprise-people/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">5 questions that surprise most people &rarr;</a>
+                <a href="https://havenstudy.app/blog/life-in-the-uk-test-questions-that-surprise-people/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">5 questions that surprise most people</a>
               </td></tr>
             </table>
           </td>
