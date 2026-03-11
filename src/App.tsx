@@ -35,7 +35,7 @@ type IconStat = {
 };
 
 const heroStats: IconStat[] = [
-  { icon: BookOpen, value: "20+", label: "Comprehensive Lessons", background: "bg-teal-100", iconColor: "text-teal-600" },
+  { icon: BookOpen, value: "29", label: "Comprehensive Lessons", background: "bg-teal-100", iconColor: "text-teal-600" },
   { icon: Target, value: "500+", label: "Practice Questions", background: "bg-green-100", iconColor: "text-green-600" },
   {
     icon: TrendingUp,
@@ -58,19 +58,19 @@ const productFeatures: FeatureCard[] = [
   {
     icon: BookOpen,
     title: "Plain-English Lessons",
-    description: "Every topic you need for the test, explained clearly with memory hooks and key facts.",
+    description: "Every topic in the official syllabus, explained plainly and structured for memory. No padding. Just what the test actually covers.",
     gradient: "from-teal-500 to-teal-600",
   },
   {
     icon: Target,
     title: "Realistic Practice Questions",
-    description: "Hundreds of exam-style questions with detailed explanations for every answer.",
+    description: "Questions designed to reflect the real exam style. Detailed explanations for every answer so you understand why, not just what.",
     gradient: "from-green-500 to-green-600",
   },
   {
     icon: Brain,
     title: "Interactive Flashcards",
-    description: "Memorize key facts with spaced repetition. Perfect for on-the-go learning.",
+    description: "Key facts from every lesson, formatted for quick daily review. Works well in short sessions. Tap to flip, track what you know.",
     gradient: "from-purple-500 to-purple-600",
   },
   {
@@ -82,7 +82,7 @@ const productFeatures: FeatureCard[] = [
   {
     icon: Zap,
     title: "Full Mock Exams",
-    description: "Practice under real exam conditions. Build confidence before test day.",
+    description: "24 questions, 45 minutes, real exam format. The best way to know if you are genuinely ready before booking.",
     gradient: "from-orange-500 to-orange-600",
   },
   {
@@ -192,7 +192,7 @@ export default function App() {
             <span className="bg-gradient-to-r from-teal-700 to-teal-400 bg-clip-text text-transparent">Pass Confidently.</span>
           </h1>
           <p className="text-slate-600 dark:text-slate-200 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Master every topic in the Life in the UK test with interactive lessons, practice questions, and smart progress tracking. Join thousands who passed on their first try.
+            29 lessons mapped to the official syllabus. 500+ exam-style practice questions with detailed explanations. Flashcards, full mock tests, and progress tracking that shows you when you are genuinely ready.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl font-semibold hover:opacity-90 transition-all">
@@ -211,10 +211,10 @@ export default function App() {
             </Link>
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-300">
-            <span className="whitespace-nowrap">✓ Try the first lesson free</span>
-            <span className="whitespace-nowrap">✓ No credit card required</span>
-            <span className="whitespace-nowrap">✓ Resit support</span>
             <span className="whitespace-nowrap">✓ Built around the official test syllabus</span>
+            <span className="whitespace-nowrap">✓ Exam-style questions with detailed explanations</span>
+            <span className="whitespace-nowrap">✓ No credit card required</span>
+            <span className="whitespace-nowrap">✓ Resit support included</span>
           </div>
           <div className="flex justify-center mt-10">
             <ChevronDown size={28} className="animate-bounce text-slate-400 dark:text-slate-500" />
@@ -270,6 +270,40 @@ export default function App() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="-mx-4 px-4 py-16 bg-teal-50 dark:bg-teal-950/20 border-y border-teal-100 dark:border-teal-900/30">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">More questions is not always better.</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              The Life in the UK test draws from a defined syllabus. Knowing that material well is what gets you through.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+              <div className="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center mb-4">
+                <Target className="text-teal-700 dark:text-teal-400" size={20} />
+              </div>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Exam-style questions</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Haven's questions are written to reflect the real exam style, not to inflate a count. Each one tests genuine understanding rather than pattern recognition.</p>
+            </div>
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+              <div className="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center mb-4">
+                <BookOpen className="text-teal-700 dark:text-teal-400" size={20} />
+              </div>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Explanations that teach</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Every answer includes a detailed explanation so you understand why it is correct. Knowing the answer is not enough if you cannot explain it.</p>
+            </div>
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+              <div className="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center mb-4">
+                <TrendingUp className="text-teal-700 dark:text-teal-400" size={20} />
+              </div>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">A guided study path</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Haven is not a question bank. It is a complete study path: lessons first, then practice, then flashcards, then mock tests. Progress tracking shows you when you are ready.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -382,6 +416,20 @@ export default function App() {
             </span>
           </a>
           <a
+            href="/blog/life-in-the-uk-test-pass-rate/"
+            className="block bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-7 hover:border-teal-400 transition-all group no-underline"
+          >
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full mb-4">
+              <TrendingUp size={12} />
+              6 min read
+            </div>
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">What Is the Life in the UK Test Pass Rate?</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Around 1 in 3 people fail on their first attempt. Here is what the data shows and what actually makes the difference.</p>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
+              Read guide <ArrowRight size={14} />
+            </span>
+          </a>
+          <a
             href="/blog/when-to-take-life-in-the-uk-test-before-ilr/"
             className="block bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-7 hover:border-teal-400 transition-all group no-underline"
           >
@@ -391,6 +439,20 @@ export default function App() {
             </div>
             <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">When Should You Take the Life in the UK Test Before ILR?</h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">The test result doesn't expire, but leaving it too late creates unnecessary risk. Here's how to plan your timing.</p>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
+              Read guide <ArrowRight size={14} />
+            </span>
+          </a>
+          <a
+            href="/blog/how-to-choose-life-in-the-uk-test-study-app/"
+            className="block bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-700 rounded-2xl p-7 hover:border-teal-400 transition-all group no-underline"
+          >
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full mb-4">
+              <Target size={12} />
+              6 min read
+            </div>
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">How to Choose a Life in the UK Test Study App</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Large question counts are not the same as good preparation. Here is what to look for in a study tool.</p>
             <span className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
               Read guide <ArrowRight size={14} />
             </span>

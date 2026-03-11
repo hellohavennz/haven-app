@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     location: "Bristol",
     country: "Romania",
     rating: 5,
-    text: "The mock exams were brilliant for building confidence. I kept scoring 80%+ on Haven's tests, so I knew I was ready for the real thing. The £9.99 was the best money I've spent on my UK journey.",
+    text: "The mock exams were brilliant for building confidence. I kept scoring 80%+ on Haven's tests, so I knew I was ready for the real thing. The £4.99 a month was the best money I've spent on my UK journey.",
     result: "Scored 23/24 on real test",
   },
 ];

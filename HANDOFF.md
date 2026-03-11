@@ -357,6 +357,21 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 
 ---
 
+## Session 18 changes (2026-03-12)
+
+- **SEO + messaging overhaul** — Full review and implementation based on `haven_landing_seo_positioning_prompt.md`
+- **App.tsx** — Fixed "20+" stat to "29"; rewrote hero subheadline (removed "join thousands" filler, added quality + syllabus signals); updated trust bullet order (syllabus + explanations first); updated 4 feature card descriptions (lessons, practice questions, flashcards, mock exams); added "More questions is not always better" section (3-card quality section) between Features and Dashboard sections; Study Guides section expanded from 2 to 4 cards (added pass rate post and "how to choose" post)
+- **TestimonialCarousel.tsx** — Fixed outdated "£9.99" price to "£4.99/month" in Andrei Popescu's testimonial
+- **haven.study index.html** — Updated meta description to include "exam-style" and "detailed explanations"; replaced 6 emoji feature icons with inline SVGs; updated all 6 feature card descriptions; added "More questions is not always better" section between Features and How It Works; added "How is Haven different from other apps?" FAQ item to both JSON-LD schema and accordion script; expanded blog section from 4 to 6 cards (3-column grid)
+- **Blog posts (new)** — `life-in-the-uk-test-pass-rate.md` (targets "Life in the UK test pass rate" query, ~850 words, includes 68% national pass rate vs 95% Haven rate); `how-to-choose-life-in-the-uk-test-study-app.md` (targets "best Life in the UK test app" / "how to choose", ~980 words, quality-over-quantity framing)
+- **Sitemap** — 2 new blog post URLs added to `public/sitemap.xml`
+- **GSC indexing needed** — Request indexing for both new posts once deployed:
+  - `https://havenstudy.app/blog/life-in-the-uk-test-pass-rate/`
+  - `https://havenstudy.app/blog/how-to-choose-life-in-the-uk-test-study-app/`
+  - Also: `https://havenstudy.app/uk/terms` (still pending from session 17)
+
+---
+
 ## Session 17 changes (2026-03-12)
 
 - **Welcome email rewrite** — Removed phone install tip. Fixed free-tier feature list (was incorrectly listing Pippa and mock exams as free). Added "Your free account includes" green box (3 modules, practice questions, progress tracking). Added amber upgrade nudge box linking to /paywall. Added 3 blog post links. Added GDPR footer. (`netlify/functions/send-welcome-email.ts`)
