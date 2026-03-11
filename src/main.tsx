@@ -28,7 +28,6 @@ import Exam from './pages/Exam';
 import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
-import Instagram from './pages/Instagram';
 import NotFound from './pages/NotFound';
 
 // Lazy-loaded: not on the critical path for any first page load
@@ -45,9 +44,6 @@ const Terms            = lazy(() => import('./pages/Terms'));
 const Fallback = () => <div className="min-h-screen" />;
 
 const router = createBrowserRouter([
-  // Standalone — no app layout, navbar, or footer
-  { path: '/instagram', element: <Instagram /> },
-
   {
     path: '/',
     element: <RootLayout />,
