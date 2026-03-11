@@ -79,7 +79,7 @@ const faqs: FAQItem[] = [
   {
     question: "What is Resit Support?",
     answer:
-      "Resit Support is included in Haven Plus and Haven Premium. If you sit the Life in the UK test and don't pass, you can submit a photo of your result letter through your Profile page. Once approved, we'll extend your subscription by one free month so you have extra time to prepare for your resit, at no charge to you.",
+      "Resit Support is included in Haven Plus and Haven Premium. If you sit the Life in the UK test and don't pass, you can submit a photo of your result letter through your Profile page. Once approved, we'll extend your access by 30 days so you have extra time to prepare for your resit, at no charge to you.",
   },
   {
     question: "What are the requirements to claim Resit Support?",

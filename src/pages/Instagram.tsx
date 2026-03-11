@@ -140,7 +140,7 @@ export default function Instagram() {
               'Practice questions written in real exam style',
               'Flashcards designed to make hard facts stick',
               'Mock exams that mirror the real test format',
-              'Study at your own pace — on any device',
+              'Study at your own pace, on any device',
             ].map(point => (
               <div key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ flexShrink: 0, marginTop: 2 }}><IconCheck /></div>
@@ -164,7 +164,7 @@ export default function Instagram() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: styles.text }}>Free</div>
-                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Try it free · upgrade for full access</div>
+                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Try it free, upgrade for full access</div>
               </div>
               <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text, fontWeight: 700 }}>£0</div>
             </div>
@@ -180,46 +180,72 @@ export default function Instagram() {
             </Link>
           </div>
 
-          {/* Plus */}
+          {/* Plus 1 Month */}
+          <div style={{ background: styles.white, borderRadius: 16, padding: '24px', border: `1px solid ${styles.creamDark}` }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: 16, color: styles.text }}>Haven Plus</div>
+                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>1 month access</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text, fontWeight: 700 }}>£4.99</div>
+                <div style={{ fontSize: 12, color: styles.textMuted }}>one-off</div>
+              </div>
+            </div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {['All 29 lessons', '560+ practice questions', '570+ flashcards', '2 mock exams', 'Resit Support'].map(f => (
+                <li key={f} style={{ fontSize: 14, color: styles.textMuted, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ color: styles.teal, fontWeight: 700 }}>✓</span> {f}
+                </li>
+              ))}
+            </ul>
+            <Link to="/paywall" style={{ display: 'block', textAlign: 'center', background: styles.tealLight, color: styles.teal, padding: '12px', borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
+              Get Plus 1 Month
+            </Link>
+            <p style={{ textAlign: 'center', fontSize: 12, color: styles.textMuted, marginTop: 8, marginBottom: 0 }}>No auto-renewal</p>
+          </div>
+
+          {/* Plus 3 Months */}
           <div style={{ background: styles.white, borderRadius: 16, padding: '24px', border: `2px solid ${styles.teal}` }}>
             <div style={{ display: 'inline-block', background: styles.teal, color: styles.white, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 20, marginBottom: 12 }}>Most Popular</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: styles.text }}>Haven Plus</div>
-                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>Full access, monthly</div>
+                <div style={{ color: styles.textMuted, fontSize: 13, marginTop: 2 }}>3 months access</div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text, fontWeight: 700 }}>£4.99</div>
-                <div style={{ fontSize: 12, color: styles.textMuted }}>per month</div>
+                <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.text, fontWeight: 700 }}>£9.99</div>
+                <div style={{ fontSize: 12, color: styles.textMuted }}>one-off</div>
               </div>
             </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {['All 29 lessons', '560+ practice questions', '570+ flashcards', '2 mock exams per month', 'Resit support'].map(f => (
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {['All 29 lessons', '560+ practice questions', '570+ flashcards', '2 mock exams', 'Resit Support'].map(f => (
                 <li key={f} style={{ fontSize: 14, color: styles.textMuted, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: styles.teal, fontWeight: 700 }}>✓</span> {f}
                 </li>
               ))}
             </ul>
             <Link to="/paywall" style={{ display: 'block', textAlign: 'center', background: styles.teal, color: styles.white, padding: '12px', borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
-              Get Haven Plus
+              Get Plus 3 Months
             </Link>
+            <p style={{ textAlign: 'center', fontSize: 12, color: styles.textMuted, marginTop: 8, marginBottom: 0 }}>No auto-renewal</p>
           </div>
 
           {/* Premium */}
           <div style={{ background: `linear-gradient(135deg, #17201E 0%, #2A4035 100%)`, borderRadius: 16, padding: '24px' }}>
-            <div style={{ display: 'inline-block', background: styles.gold, color: styles.white, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 20, marginBottom: 12 }}>Best Value</div>
+            <div style={{ display: 'inline-block', background: styles.gold, color: styles.white, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '3px 10px', borderRadius: 20, marginBottom: 12 }}>All Features</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: styles.white }}>Haven Premium</div>
-                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginTop: 2 }}>Everything, for 6 months</div>
+                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginTop: 2 }}>6 months access</div>
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontFamily: "'Montserrat', Georgia, serif", fontSize: 28, color: styles.white, fontWeight: 700 }}>£24.99</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>6 months</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>one-off</div>
               </div>
             </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {['Everything in Plus', 'Pippa AI study assistant', 'Dynamic exams + deep analytics', 'Offline access (PWA)', 'Priority support'].map(f => (
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {['Everything in Plus', 'Pippa AI study assistant', 'Performance analytics', 'Unlimited dynamic exams', 'Exam date reminders', 'Offline mobile access'].map(f => (
                 <li key={f} style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: styles.gold, fontWeight: 700 }}>✓</span> {f}
                 </li>
@@ -228,6 +254,7 @@ export default function Instagram() {
             <Link to="/paywall" style={{ display: 'block', textAlign: 'center', background: styles.gold, color: styles.white, padding: '12px', borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
               Get Haven Premium
             </Link>
+            <p style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 8, marginBottom: 0 }}>No auto-renewal</p>
           </div>
         </div>
       </section>
@@ -243,7 +270,7 @@ export default function Instagram() {
         <Link to="/signup" style={{ display: 'inline-block', background: styles.white, color: styles.teal, padding: '14px 36px', borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: 'none' }}>
           Try Haven Free
         </Link>
-        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, marginTop: 14 }}>Free forever · upgrade anytime</p>
+        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, marginTop: 14 }}>Free forever · no auto-renewal on paid plans</p>
       </section>
 
       {/* Footer */}
