@@ -54,11 +54,7 @@ const BASE = import.meta.env.BASE_URL;
     <header class="blog-header">
       <div class="container--wide header-inner">
         <a href="https://havenstudy.app/uk" class="logo-link" aria-label="Haven Study">
-          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <rect width="28" height="28" rx="7" fill="#4E8571" />
-            <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
-          </svg>
-          <span class="logo-text">Haven Study</span>
+          <span class="logo-text">Haven<span class="logo-dot">.</span></span>
         </a>
         <nav class="header-nav">
           <a href={BASE} class="nav-link active" aria-current="page">Study Guides</a>
@@ -143,11 +139,7 @@ const BASE = import.meta.env.BASE_URL;
       <div class="container--wide footer-inner">
         <div class="footer-brand">
           <a href="https://havenstudy.app/uk" class="logo-link footer-logo">
-            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <rect width="28" height="28" rx="7" fill="#4E8571" />
-              <path d="M14 6L7 12v9h5v-5h4v5h5V12z" fill="white" />
-            </svg>
-            <span>Haven Study</span>
+            <span class="logo-text">Haven<span class="logo-dot">.</span></span>
           </a>
           <p class="footer-desc">
             Life in the UK test preparation. Structured lessons, practice questions, and mock
@@ -191,13 +183,20 @@ const BASE = import.meta.env.BASE_URL;
   .logo-link {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: var(--slate-900);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
   }
+
+  .logo-dot {
+    color: var(--teal-500);
+  }
+
+  .footer-logo { color: white; }
+  .footer-logo .logo-dot { color: var(--teal-500); }
 
   .logo-link:hover {
     text-decoration: none;
@@ -452,7 +451,6 @@ const BASE = import.meta.env.BASE_URL;
   }
 
   @media (max-width: 500px) {
-    .logo-text { display: none; }
     .nav-link { display: none; }
     .hero h1 { font-size: 1.75rem; }
     .post-card { padding: 1.25rem; }
