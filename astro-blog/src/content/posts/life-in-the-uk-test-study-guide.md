@@ -100,7 +100,7 @@ Track which topics you keep getting wrong and spend more time on those. It's eas
 
 **4. Use flashcards for tricky facts**
 
-The test includes a lot of specific dates, statistics, and names. Flashcards are an efficient way to memorise these. Reviewing a set of flashcards for 5 minutes during a commute or break adds up quickly.
+The test can include a lot of specific dates, statistics, and names. Flashcards are an efficient way to memorise these. Reviewing a set of flashcards for 5 minutes during a commute or break adds up quickly.
 
 **5. Take mock exams under realistic conditions**
 

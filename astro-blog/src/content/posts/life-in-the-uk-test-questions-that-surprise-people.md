@@ -17,13 +17,13 @@ Here are five of the most surprising questions from the real test, with the answ
 
 ## 1. Which poet wrote about daffodils?
 
-**The question:** A poem about daffodils appears in the test content. The flowers are described dancing in the breeze beside a lake.
+**The question:** A poem about daffodils may appear in test questions. The flowers are described dancing in the breeze beside a lake.
 
 **The answer:** William Wordsworth. The poem is *I Wandered Lonely as a Cloud*, written in 1802 after Wordsworth and his sister Dorothy spotted a field of daffodils near Ullswater in the Lake District.
 
 **Why it catches people out:** Most candidates spend their study time on history and government. Poetry feels like it belongs in a different kind of exam. But the test covers British arts and culture too, including writers, poets, and artists, and Wordsworth is one of the most prominent names in that section.
 
-The Romantic poets as a group appear in the test content: Blake, Byron, Keats, Shelley, and Wordsworth. The daffodil question is a particularly memorable one, partly because it feels so specific.
+The Romantic poets as a group appear in the test syllabus: Blake, Byron, Keats, Shelley, and Wordsworth. The daffodil question is a particularly memorable one, partly because it feels so specific.
 
 **The study tip:** When you see a poet's name in the material, connect it to one specific thing they wrote or are known for. For Wordsworth: daffodils, the Lake District, Romantic poetry.
 
