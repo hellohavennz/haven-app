@@ -1,5 +1,5 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-10 (session 16)_
+_Last updated: 2026-03-12 (session 17)_
 
 ---
 
@@ -354,6 +354,25 @@ All scripts load credentials from `.env` via a local `loadEnv()` — no hardcode
 - **Key Fact tile icon** — Removed clipboard SVG from the "Key Fact" heading in `src/components/LessonContent.tsx`. Label remains, icon gone.
 - **Navbar logo** — Logo now links to `/dashboard` when the user is on `/content`, `/practice`, or `/flashcards`; links to `/` (marketing homepage) everywhere else. Logic in `src/components/Navbar.tsx` using `useLocation`.
 - **Module tile small locks** — Removed `h-3 w-3` `<Lock>` icons from beside "Module X" label on locked tiles in `ContentIndex.tsx` and `PracticeIndex.tsx`. Larger lock icon in tile corner/body unchanged.
+
+---
+
+## Session 17 changes (2026-03-12)
+
+- **Welcome email rewrite** — Removed phone install tip. Fixed free-tier feature list (was incorrectly listing Pippa and mock exams as free). Added "Your free account includes" green box (3 modules, practice questions, progress tracking). Added amber upgrade nudge box linking to /paywall. Added 3 blog post links. Added GDPR footer. (`netlify/functions/send-welcome-email.ts`)
+- **Email branding** — All 3 email templates updated: flat `#4E8571` header (no gradient), "Haven." with teal dot, `#F4F7F5` page background, flat teal buttons. Affects `stripe-webhook.ts` and `send-exam-reminders.ts`.
+- **Blog link arrows removed** — `&rarr;` removed from the 3 blog links in the welcome email.
+- **Exam reminders gated to Premium** — `send-exam-reminders.ts` now filters `subscription_tier = 'premium'` in both the 7-day and 1-day queries. Free and Plus users no longer receive reminders.
+- **Paywall "Get Started Free" fix** — Button was silently doing nothing for logged-in free users due to `plan === currentTier` early return. Fixed: logged-in users go to `/dashboard`; unauthenticated users go to `/signup?plan=free`. (`src/pages/Paywall.tsx`)
+- **How to test welcome email** — From browser console while logged in at havenstudy.app/uk: grab JWT from localStorage and POST to `/.netlify/functions/send-welcome-email` with `{ email, name }`. Or sign up with a `+alias` email in incognito.
+- **OG banner** — `public/haven-icons/haven_study_banner_v2.png` (1200x630). All og:image refs updated to v2. `fb:app_id=1552125209234280`, `fb:pages=1019803537883510` added to index.html and BlogPost.astro.
+- **Blog posts published** — `life-in-the-uk-test-questions-that-surprise-people.md`, `what-happens-if-you-fail-life-in-the-uk-test.md`. Sitemap updated.
+- **Blog logo** — SVG house icon replaced with "Haven." text logo in both `index.astro` and `BlogPost.astro`.
+- **haven.study Study Guides section** — 4 blog post cards added between FAQ and final CTA in `haven-study-landing/index.html`.
+- **404 page** — `src/pages/NotFound.tsx` created. Catch-all route `{ path: '*' }` added in `src/main.tsx`.
+- **Dashboard fixes** — Not-started count formula corrected (`totalLessons - mastered - good - needsWork`). Donut chart now shows 3-colour segments (green/yellow/red). "MASTERED" label added below count. Module performance bar changed from single red to stacked green/yellow/red/grey flex bar.
+- **118 practice questions added** — Gap analysis completed; questions inserted into Supabase `questions` table via Python script. Supabase field is `prompt` (not `question`); table is `questions` (not `practice_questions`).
+- **Resend DNS** — Domain verified on `haven.study` (not havenstudy.app). All DNS records confirmed.
 
 ---
 
