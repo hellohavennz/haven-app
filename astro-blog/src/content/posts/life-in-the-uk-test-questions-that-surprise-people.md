@@ -69,10 +69,6 @@ Knowing the names behind the discovery matters here, not just that it happened. 
 
 ---
 
-## 5. What poem by William Wordsworth is often voted a UK favourite?
-
-Wait, we already covered Wordsworth. Here is the fifth instead.
-
 ## 5. What is the Eisteddfod?
 
 **The question:** The test includes a question about an annual Welsh cultural event that is held largely in the Welsh language.
