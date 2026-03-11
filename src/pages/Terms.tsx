@@ -37,9 +37,9 @@ export default function Terms() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">3. Subscriptions and payments</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
-          <li><strong>Free plan:</strong> access to the first two modules at no charge.</li>
-          <li><strong>Haven Plus:</strong> £4.99/month, billed monthly. Full access to all lessons, practice questions, flashcards, and 2 mock exams per month.</li>
-          <li><strong>Haven Premium:</strong> £24.99 every 6 months. Everything in Plus, plus dynamic exams, Pippa AI, performance analytics, and offline access.</li>
+          <li><strong>Free plan:</strong> access to three free modules at no charge.</li>
+          <li><strong>Haven Plus:</strong> one-off access pass for 30 days (£4.99) or 90 days (£9.99). Full access to all lessons, practice questions, flashcards, and 2 mock exams per month. No auto-renewal.</li>
+          <li><strong>Haven Premium:</strong> one-off access pass for 180 days (£24.99). Everything in Plus, plus dynamic exams, Pippa AI, performance analytics, exam date reminders, and offline access. No auto-renewal.</li>
           <li>Payments are processed by Stripe. By subscribing you authorise recurring charges to your payment method.</li>
           <li>You may cancel your subscription at any time via your Profile page. Access continues until the end of the current billing period.</li>
           <li>Prices are shown inclusive of any applicable taxes.</li>
