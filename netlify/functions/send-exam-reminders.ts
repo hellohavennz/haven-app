@@ -79,9 +79,9 @@ function emailHtml({
 
         <!-- Header -->
         <tr>
-          <td style="background:linear-gradient(135deg,#0d9488,#10b981);padding:28px 32px 22px;">
-            <div style="font-size:22px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Haven</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px;">Life in the UK Test Prep</div>
+          <td style="background:#4E8571;padding:28px 32px 22px;">
+            <div style="font-size:24px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Haven<span style="color:#a8d5c2;">.</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:3px;">Life in the UK Test Preparation</div>
           </td>
         </tr>
 

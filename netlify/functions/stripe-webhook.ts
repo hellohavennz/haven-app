@@ -44,9 +44,9 @@ function subscriptionConfirmationHtml(plan: 'plus' | 'premium', firstName: strin
     <tr><td align="center">
       <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
         <tr>
-          <td style="background:linear-gradient(135deg,#0d9488,#10b981);padding:28px 32px 22px;">
-            <div style="font-size:22px;font-weight:700;color:#ffffff;">Haven</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px;">Life in the UK Test Prep</div>
+          <td style="background:#4E8571;padding:28px 32px 22px;">
+            <div style="font-size:24px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Haven<span style="color:#a8d5c2;">.</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:3px;">Life in the UK Test Preparation</div>
           </td>
         </tr>
         <tr>
