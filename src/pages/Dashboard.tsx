@@ -139,12 +139,16 @@ const Dashboard: React.FC = () => {
       if (!p || p.attempted === 0) return 0;
       return (p.correct / p.attempted) * 100;
     });
-    
-    const masteredCount = moduleProgress.filter(p => p >= 80).length;
-    const avgPercentage = moduleProgress.length > 0 
+
+    const masteredCount  = moduleProgress.filter(p => p >= 80).length;
+    const goodCount      = moduleProgress.filter(p => p >= 60 && p < 80).length;
+    const needsWorkCount = moduleProgress.filter(p => p > 0 && p < 60).length;
+    const notStartedCount = moduleLessons.length - masteredCount - goodCount - needsWorkCount;
+
+    const avgPercentage = moduleProgress.length > 0
       ? Math.round(moduleProgress.reduce((a, b) => a + b, 0) / moduleProgress.length)
       : 0;
-    
+
     const questionsAnswered = moduleLessons.reduce((sum, lesson) => {
       const p = progress[lesson.id];
       return sum + (p?.attempted || 0);
@@ -153,6 +157,9 @@ const Dashboard: React.FC = () => {
     return {
       ...module,
       masteredCount,
+      goodCount,
+      needsWorkCount,
+      notStartedCount,
       totalLessons: moduleLessons.length,
       avgPercentage,
       questionsAnswered
@@ -516,34 +523,35 @@ const Dashboard: React.FC = () => {
               Performance by Module
             </h2>
 
-            <div className="space-y-4">
-              {modulePerformance.map(module => (
-                <div key={module.slug}>
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <div className="font-semibold text-slate-900 dark:text-gray-100">{module.title}</div>
-                      <div className="text-sm text-slate-600 dark:text-slate-300">
-                        {module.masteredCount}/{module.totalLessons} mastered • {module.questionsAnswered} questions
-                      </div>
+            <div className="space-y-5">
+              {modulePerformance.map(module => {
+                const total = module.totalLessons;
+                const mastered  = (module.masteredCount  / total) * 100;
+                const good      = (module.goodCount      / total) * 100;
+                const needsWork = (module.needsWorkCount / total) * 100;
+                return (
+                  <div key={module.slug}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-semibold text-slate-900 dark:text-gray-100 text-sm">{module.title}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">
+                        {module.masteredCount}/{total} mastered • {module.questionsAnswered} questions
+                      </span>
                     </div>
-                    <div className={`text-2xl font-semibold ${
-                      module.avgPercentage >= 80 ? 'text-green-600' :
-                      module.avgPercentage >= 60 ? 'text-yellow-600' :
-                      module.avgPercentage > 0 ? 'text-slate-400' : 'text-slate-300'
-                    }`}>
-                      {module.avgPercentage > 0 ? `${module.avgPercentage}%` : '—'}
+                    {/* Stacked segmented bar */}
+                    <div className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex">
+                      {module.masteredCount > 0 && (
+                        <div className="h-full bg-green-500 transition-all" style={{ width: `${mastered}%` }} />
+                      )}
+                      {module.goodCount > 0 && (
+                        <div className="h-full bg-yellow-400 transition-all" style={{ width: `${good}%` }} />
+                      )}
+                      {module.needsWorkCount > 0 && (
+                        <div className="h-full bg-red-400 transition-all" style={{ width: `${needsWork}%` }} />
+                      )}
                     </div>
                   </div>
-                  <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden dark:bg-slate-800">
-                    <div
-                      className={`h-full rounded-full transition-all ${
-                        module.avgPercentage > 0 ? 'bg-teal-500' : 'bg-slate-300'
-                      }`}
-                      style={{ width: `${module.avgPercentage}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
