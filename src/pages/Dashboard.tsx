@@ -440,23 +440,34 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center justify-center mb-8">
               <div className="relative w-48 h-48">
                 <svg className="w-full h-full transform -rotate-90">
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="80"
-                    fill="none"
-                    stroke="#DDE5E2"
-                    strokeWidth="16"
-                  />
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="80"
-                    fill="none"
-                    stroke="#10B981"
-                    strokeWidth="16"
-                    strokeDasharray={`${(masteredCount / totalLessons) * 502.4} 502.4`}
-                  />
+                  {/* Background track */}
+                  <circle cx="96" cy="96" r="80" fill="none" stroke="#DDE5E2" strokeWidth="16" />
+                  {/* Needs work — red, drawn first so green/yellow sit on top */}
+                  {needsWorkCount > 0 && (
+                    <circle
+                      cx="96" cy="96" r="80" fill="none"
+                      stroke="#EF4444" strokeWidth="16"
+                      strokeDasharray={`${(needsWorkCount / totalLessons) * 502.4} 502.4`}
+                      strokeDashoffset={-((masteredCount + goodCount) / totalLessons) * 502.4}
+                    />
+                  )}
+                  {/* Good — yellow */}
+                  {goodCount > 0 && (
+                    <circle
+                      cx="96" cy="96" r="80" fill="none"
+                      stroke="#F59E0B" strokeWidth="16"
+                      strokeDasharray={`${(goodCount / totalLessons) * 502.4} 502.4`}
+                      strokeDashoffset={-((masteredCount) / totalLessons) * 502.4}
+                    />
+                  )}
+                  {/* Mastered — green */}
+                  {masteredCount > 0 && (
+                    <circle
+                      cx="96" cy="96" r="80" fill="none"
+                      stroke="#10B981" strokeWidth="16"
+                      strokeDasharray={`${(masteredCount / totalLessons) * 502.4} 502.4`}
+                    />
+                  )}
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <div className="text-4xl font-semibold text-slate-900 dark:text-gray-100">{masteredCount}</div>
