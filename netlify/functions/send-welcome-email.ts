@@ -17,53 +17,76 @@ function welcomeHtml(firstName: string): string {
     <tr><td align="center">
       <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
 
+        <!-- Header -->
         <tr>
-          <td style="background:linear-gradient(135deg,#0d9488,#10b981);padding:28px 32px 22px;">
-            <div style="font-size:22px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Haven</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px;">Life in the UK Test Prep</div>
+          <td style="background:#4E8571;padding:28px 32px 22px;">
+            <div style="font-size:24px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Haven<span style="color:#a8d5c2;">.</span></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:3px;">Life in the UK Test Preparation</div>
           </td>
         </tr>
 
+        <!-- Body -->
         <tr>
-          <td style="padding:32px 32px 24px;">
+          <td style="padding:32px 32px 8px;">
             <h1 style="margin:0 0 12px;font-size:20px;font-weight:700;color:#111827;line-height:1.3;">Welcome, ${firstName}!</h1>
-            <p style="margin:0 0 20px;font-size:15px;color:#4b5563;line-height:1.6;">
-              You've taken the first step towards passing your Life in the UK test. Here's how to get started:
+            <p style="margin:0 0 24px;font-size:15px;color:#4b5563;line-height:1.6;">
+              Your free Haven account is ready. Here is what you can do to get started:
             </p>
 
-            <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Study:</strong> read through each lesson at your own pace</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Practice:</strong> answer questions and review flashcards</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Exam:</strong> take a mock test when you feel ready</td></tr>
-              <tr><td style="padding:6px 0;font-size:15px;color:#374151;line-height:1.5;">• <strong>Ask Pippa:</strong> your AI study assistant is always here to help</td></tr>
+            <!-- Free features -->
+            <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;width:100%;background:#F4F7F5;border-radius:10px;">
+              <tr><td style="padding:16px 20px;">
+                <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#4E8571;text-transform:uppercase;letter-spacing:0.05em;">Your free account includes</p>
+                <table cellpadding="0" cellspacing="0">
+                  <tr><td style="padding:5px 0;font-size:14px;color:#374151;line-height:1.5;">&#10003;&nbsp; 3 free study modules to get you started</td></tr>
+                  <tr><td style="padding:5px 0;font-size:14px;color:#374151;line-height:1.5;">&#10003;&nbsp; Practice questions and flashcards on free lessons</td></tr>
+                  <tr><td style="padding:5px 0;font-size:14px;color:#374151;line-height:1.5;">&#10003;&nbsp; Progress tracking across all your study sessions</td></tr>
+                </table>
+              </td></tr>
             </table>
 
             <a href="${APP_URL}/dashboard"
-               style="display:inline-block;background:linear-gradient(135deg,#0d9488,#10b981);color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;">
+               style="display:inline-block;background:#4E8571;color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;">
               Go to your Dashboard
             </a>
 
-            <table cellpadding="0" cellspacing="0" style="margin-top:28px;width:100%;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;">
+            <!-- Upgrade nudge -->
+            <table cellpadding="0" cellspacing="0" style="margin-top:24px;width:100%;background:#fffbeb;border-radius:10px;border:1px solid #fde68a;">
               <tr>
                 <td style="padding:16px 20px;">
-                  <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#166534;">📱 Tip: Install Haven on your phone</p>
-                  <p style="margin:0 0 10px;font-size:13px;color:#374151;line-height:1.5;">Add Haven to your home screen for quick access. No App Store needed, and it works offline.</p>
-                  <p style="margin:0;font-size:13px;color:#374151;line-height:1.6;">
-                    <strong>iPhone/iPad:</strong> Safari → Share button → Add to Home Screen<br>
-                    <strong>Android:</strong> Chrome → ⋮ menu → Add to Home Screen<br>
-                    <strong>Desktop:</strong> Look for the ⊕ icon in the address bar
-                  </p>
+                  <p style="margin:0 0 6px;font-size:14px;font-weight:700;color:#92400e;">Want the full Haven experience?</p>
+                  <p style="margin:0 0 10px;font-size:13px;color:#374151;line-height:1.5;">Upgrade to unlock all 29 lessons, 500+ practice questions, mock exams, and Pippa — your personal AI study assistant.</p>
+                  <a href="${APP_URL}/paywall" style="font-size:13px;font-weight:600;color:#4E8571;text-decoration:underline;">See Haven Plus and Premium plans</a>
                 </td>
               </tr>
+            </table>
+
+            <!-- Blog links -->
+            <p style="margin:28px 0 12px;font-size:14px;font-weight:700;color:#111827;">Helpful reading before you start</p>
+            <table cellpadding="0" cellspacing="0" style="width:100%;">
+              <tr><td style="padding:6px 0;border-bottom:1px solid #f0f0f0;">
+                <a href="https://havenstudy.app/blog/life-in-the-uk-test-study-guide/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">The complete Life in the UK test guide &rarr;</a>
+              </td></tr>
+              <tr><td style="padding:6px 0;border-bottom:1px solid #f0f0f0;">
+                <a href="https://havenstudy.app/blog/when-to-take-life-in-the-uk-test-before-ilr/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">When should you take the test before ILR? &rarr;</a>
+              </td></tr>
+              <tr><td style="padding:6px 0;">
+                <a href="https://havenstudy.app/blog/life-in-the-uk-test-questions-that-surprise-people/" style="font-size:14px;color:#4E8571;text-decoration:none;font-weight:600;">5 questions that surprise most people &rarr;</a>
+              </td></tr>
             </table>
           </td>
         </tr>
 
+        <!-- Footer -->
         <tr>
-          <td style="padding:20px 32px 28px;border-top:1px solid #f0f0f0;text-align:center;">
-            <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
-              Haven Study &middot; <a href="https://havenstudy.app" style="color:#0d9488;text-decoration:none;">havenstudy.app</a><br>
-              Questions? Reply to this email or visit <a href="${APP_URL}/help" style="color:#0d9488;text-decoration:none;">our help page</a>.
+          <td style="padding:24px 32px 28px;border-top:1px solid #f0f0f0;text-align:center;">
+            <p style="margin:0 0 8px;font-size:12px;color:#9ca3af;line-height:1.6;">
+              Haven Study &middot; <a href="https://havenstudy.app" style="color:#4E8571;text-decoration:none;">havenstudy.app</a><br>
+              Questions? Reply to this email or visit <a href="${APP_URL}/help" style="color:#4E8571;text-decoration:none;">our help page</a>.
+            </p>
+            <p style="margin:0;font-size:11px;color:#c0c0c0;">
+              You received this email because you created a Haven Study account.<br>
+              <a href="${APP_URL}/profile" style="color:#c0c0c0;">Manage email preferences</a>
             </p>
           </td>
         </tr>
