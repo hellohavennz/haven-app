@@ -1,5 +1,39 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-12 (session 17)_
+_Last updated: 2026-03-12 (session 18)_
+
+---
+
+## Session 18 changes
+
+### SEO and messaging overhaul (haven-app + haven-study-landing)
+- Hero stats: "20+" fixed to "29"
+- Hero subheadline rewritten to lead with quality/syllabus signal
+- Trust bullets reordered, copy updated
+- 4 feature card descriptions updated
+- Added "More questions is not always better" 3-card quality section
+- Study Guides expanded from 2 to 4 cards (pass rate + how-to-choose posts)
+- TestimonialCarousel: Andrei's price corrected £9.99 to £4.99/month
+- haven.study: meta description, 6 emoji icons replaced with SVGs, 6 feature card descriptions, quality section added, FAQ differentiation item, blog grid expanded 4 to 6
+- Social links updated (FB + Instagram) in haven.study
+
+### Blog posts added
+- `/blog/life-in-the-uk-test-pass-rate/`
+- `/blog/how-to-choose-life-in-the-uk-test-study-app/`
+- Both added to `public/sitemap.xml`
+
+### Pricing restructure (one-off access model)
+- **DB migration 000021**: `access_expires_at TIMESTAMPTZ` added to profiles
+- **Stripe**: now uses `mode: 'payment'` with `plus_1m` (£4.99/30d) and `plus_3m` (£9.99/90d)
+- **New env vars needed in Netlify**: `STRIPE_PLUS_1M_PRICE_ID`, `STRIPE_PLUS_3M_PRICE_ID`
+- **create-checkout-session.ts**: rewrote for one-time payments, duration metadata
+- **stripe-webhook.ts**: handles `checkout.session.completed` for `mode=payment` (sets access_expires_at); legacy subscription handlers kept for backward compat
+- **subscription.ts**: checks `access_expires_at` expiry; returns `accessExpiresAt` from hook; `hasPremium` is now alias for `hasPlus` (all paid users get full access)
+- **ask-pippa.ts**: allows any user with active access, not just `tier=premium`
+- **approve-resit-claim.ts**: extends `access_expires_at` for new model; legacy Stripe trial extension kept for old subscribers
+- **Paywall.tsx**: new 2-plan UI (1 Month / 3 Months), per-week pricing, active access notice, extend flow, no Premium tier
+- **App.tsx**: pricing section updated, planPremiumExtras removed, trust signals updated
+- **Profile.tsx**: shows access expiry + Extend link for new model; keeps Stripe portal for legacy; analytics section open to all hasPlus
+- **haven.study**: pricing section, structured data, resit support, FAQ updated
 
 ---
 
