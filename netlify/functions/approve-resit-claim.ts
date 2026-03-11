@@ -35,22 +35,36 @@ export const handler: Handler = async (event) => {
   if (!claim) return { statusCode: 404, body: 'Claim not found' };
   if (claim.status !== 'pending') return { statusCode: 409, body: 'Claim already reviewed' };
 
-  // Look up the user's active Stripe subscription
+  // Look up user profile — check both new (access_expires_at) and legacy (stripe_subscription_id) models
   const { data: profile } = await supabase
     .from('profiles')
-    .select('stripe_subscription_id')
+    .select('stripe_subscription_id, access_expires_at')
     .eq('id', claim.user_id)
     .single();
 
   const subscriptionId = profile?.stripe_subscription_id as string | undefined;
+  const accessExpiresAt = profile?.access_expires_at as string | null | undefined;
   let stripeExtended = false;
   let adminNotes = 'Approved';
 
-  if (subscriptionId) {
+  if (accessExpiresAt != null) {
+    // New model: extend access_expires_at by 30 days
+    const currentExpiry = new Date(accessExpiresAt);
+    const now = new Date();
+    const baseDate = currentExpiry > now ? currentExpiry : now;
+    const newExpiry = new Date(baseDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+    await supabase
+      .from('profiles')
+      .update({ access_expires_at: newExpiry.toISOString() })
+      .eq('id', claim.user_id);
+
+    adminNotes = `Approved: access extended to ${newExpiry.toISOString().split('T')[0]}`;
+  } else if (subscriptionId) {
+    // Legacy model: extend via Stripe trial
     try {
       const sub = await stripe.subscriptions.retrieve(subscriptionId);
       if (sub.status === 'active' || sub.status === 'trialing') {
-        // Push the next billing date forward by 30 days
         const newTrialEnd = sub.current_period_end + 30 * 24 * 60 * 60;
         await stripe.subscriptions.update(subscriptionId, {
           trial_end: newTrialEnd,
@@ -65,7 +79,7 @@ export const handler: Handler = async (event) => {
       adminNotes = `Approved: Stripe error: ${e.message}. Manual extension needed.`;
     }
   } else {
-    adminNotes = 'Approved: no active Stripe subscription found, manual extension needed';
+    adminNotes = 'Approved: no active access found, manual extension needed';
   }
 
   await supabase

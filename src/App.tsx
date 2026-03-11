@@ -15,10 +15,7 @@ import {
   ArrowRight,
   Star,
   Clock,
-  Crown,
   TrendingUp,
-  Headphones,
-  FileText,
   ChevronDown,
   ShieldCheck,
 } from "lucide-react";
@@ -121,27 +118,20 @@ const howItWorksSteps = [
   },
 ];
 
-const planPlusFeatures = [
+const planFeatures = [
   "All 29 comprehensive lessons",
   "500+ practice questions",
   "All flashcards for every lesson",
-  "2 mock exams per month",
+  "Full mock exams",
   "Progress tracking",
-  "Resit Support: 1 free month if you fail",
-];
-
-const planPremiumExtras = [
-  { icon: Headphones, title: "AI study assistant (Pippa)", description: "Get instant answers to your questions" },
-  { icon: BarChart3, title: "Performance analytics", description: "Identify weak areas with detailed insights" },
-  { icon: Brain, title: "Dynamic exams", description: "Unlimited randomised practice exams" },
-  { icon: FileText, title: "Offline mobile access", description: "Study anywhere, no internet needed" },
-  { icon: Zap, title: "Priority email support", description: "Get help within 24 hours" },
+  "Pippa AI study assistant",
+  "Resit Support: 30 days free if you fail",
 ];
 
 const trustSignals = [
   { icon: Clock, title: "Instant Access", description: "Start learning immediately after purchase" },
-  { icon: Award, title: "Resit Support", description: "Fail after completing the course? Get 1 month free to keep studying" },
-  { icon: CheckCircle2, title: "Cancel Anytime", description: "No long-term commitment required" },
+  { icon: Award, title: "Resit Support", description: "Prepare properly and still fail? Get 30 days of free access for your resit" },
+  { icon: ShieldCheck, title: "No Auto-Renewal", description: "One-off payment. Access expires after 30 or 90 days. No surprises." },
 ];
 
 export default function App() {
@@ -468,19 +458,19 @@ export default function App() {
       <section id="pricing" className="-mx-4 px-4 py-20 bg-white dark:bg-gray-950/40">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Choose Your Plan</h2>
-            <p className="text-slate-600 dark:text-slate-300">Each failed attempt costs £50. Haven Plus costs £4.99 a month.</p>
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Pay once. Study until you're ready.</h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">No recurring payments. No cancellation reminders. One-off access that lasts 30 or 90 days. Extend whenever you need more time.</p>
           </div>
 
           {/* Value comparison */}
           <div className="grid gap-3 sm:grid-cols-3 text-center -mt-4">
             <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
               <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">£0</div>
-              <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">3 modules, 252 questions, full flashcards — free, forever</div>
+              <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">to start — 3 modules, 252 questions, full flashcards</div>
             </div>
             <div className="rounded-2xl bg-teal-600 border border-teal-600 px-5 py-4">
-              <div className="text-2xl font-bold text-white">£4.99<span className="text-base font-normal">/mo</span></div>
-              <div className="mt-1 text-sm text-teal-100">full access — less than 10% of one failed test</div>
+              <div className="text-2xl font-bold text-white">from £4.99</div>
+              <div className="mt-1 text-sm text-teal-100">one-off payment — less than 10% of one failed test</div>
             </div>
             <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
               <div className="text-2xl font-bold text-amber-500">£50</div>
@@ -499,25 +489,15 @@ export default function App() {
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">3 full modules. 252 practice questions. No credit card.</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">3 full modules. No credit card.</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">First lesson (Values & Principles)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">3 free modules</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">Practice questions (free modules)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-700 dark:text-slate-200">Full flashcards (free modules)</span>
-                </li>
+                {['3 free modules', '252 practice questions', 'Full flashcards (free modules)', 'Progress tracking'].map(f => (
+                  <li key={f} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-slate-600 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
+                    <span className="text-slate-700 dark:text-slate-200">{f}</span>
+                  </li>
+                ))}
               </ul>
               <Link
                 to="/signup?plan=free"
@@ -528,28 +508,67 @@ export default function App() {
               </Link>
             </div>
 
-            {/* Haven Plus */}
+            {/* Haven Plus — 1 Month */}
             <div className="bg-white border-2 border-teal-300 dark:bg-slate-900 dark:border-teal-400/40 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full">MOST POPULAR</div>
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
-                  <Sparkles className="text-teal-600" size={32} />
+                  <Clock className="text-teal-600" size={32} />
                 </div>
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
-                <div className="flex items-baseline justify-center gap-1.5 mb-2">
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Haven Plus</h3>
+                <p className="text-sm font-medium text-teal-600 mb-3">1 Month Access</p>
+                <div className="flex items-baseline justify-center gap-1.5 mb-1">
                   <span className="text-5xl font-semibold text-slate-900 dark:text-white">£4.99</span>
-                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/month</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Everything you need to pass</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">one-off · about £1.25/week</p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
-                {planPlusFeatures.map(feature => (
+                {planFeatures.map(feature => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
                     {feature.startsWith('Resit Support') ? (
                       <span className="text-slate-700 dark:text-slate-200">
                         <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                        {': 1 free month if you fail'}
+                        {': 30 days free if you fail'}
+                      </span>
+                    ) : (
+                      <span className="text-slate-700 dark:text-slate-200">{feature}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/paywall"
+                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 transition-colors mt-auto"
+              >
+                Get 1 Month
+                <ArrowRight size={18} />
+              </Link>
+              <p className="mt-2 text-center text-xs text-slate-400">No auto-renewal</p>
+            </div>
+
+            {/* Haven Plus — 3 Months */}
+            <div className="bg-white border-2 border-teal-400 dark:bg-slate-900 dark:border-teal-300/60 rounded-2xl p-8 relative flex flex-col">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full">BEST VALUE</div>
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-2xl mb-4">
+                  <Sparkles className="text-teal-600" size={32} />
+                </div>
+                <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Haven Plus</h3>
+                <p className="text-sm font-medium text-teal-600 mb-3">3 Months Access</p>
+                <div className="flex items-baseline justify-center gap-1.5 mb-1">
+                  <span className="text-5xl font-semibold text-slate-900 dark:text-white">£9.99</span>
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-400">one-off · under £0.80/week</p>
+                <p className="mt-1 text-xs font-medium text-teal-600">Save £4.98 vs buying monthly</p>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {planFeatures.map(feature => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-teal-600 flex-shrink-0 mt-0.5" size={20} />
+                    {feature.startsWith('Resit Support') ? (
+                      <span className="text-slate-700 dark:text-slate-200">
+                        <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
+                        {': 30 days free if you fail'}
                       </span>
                     ) : (
                       <span className="text-slate-700 dark:text-slate-200">{feature}</span>
@@ -561,52 +580,13 @@ export default function App() {
                 to="/paywall"
                 className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-teal-700 text-white rounded-xl font-semibold hover:bg-teal-800 transition-colors mt-auto"
               >
-                Get Plus
+                Get 3 Months
                 <ArrowRight size={18} />
               </Link>
-            </div>
-
-            {/* Haven Premium */}
-            <div className="bg-white border-2 border-amber-300 dark:bg-slate-900 dark:border-amber-300/50 rounded-2xl p-8 relative flex flex-col">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full">BEST VALUE</div>
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-2xl mb-4">
-                  <Crown className="text-amber-600" size={32} />
-                </div>
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Premium</h3>
-                <div className="flex items-baseline justify-center gap-1.5 mb-2">
-                  <span className="text-5xl font-semibold text-slate-900 dark:text-white">£24.99</span>
-                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/6 months</span>
-                </div>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Ultimate learning experience</p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                  <span className="text-slate-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
-                </li>
-                {planPremiumExtras.map(extra => {
-                  const Icon = extra.icon;
-                  return (
-                    <li key={extra.title} className="flex items-start gap-3">
-                      <Icon className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
-                      <div>
-                        <span className="text-slate-900 dark:text-white font-semibold">{extra.title}</span>
-                        <p className="text-sm text-slate-600 dark:text-slate-300">{extra.description}</p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-              <Link
-                to="/paywall"
-                className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg mt-auto"
-              >
-                Get Premium
-                <ArrowRight size={18} />
-              </Link>
+              <p className="mt-2 text-center text-xs text-slate-400">No auto-renewal</p>
             </div>
           </div>
+
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             {trustSignals.map(signal => {
               const Icon = signal.icon;
@@ -630,7 +610,7 @@ export default function App() {
                 <div>
                   <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
                   <p className="text-slate-700 dark:text-slate-300">
-                    If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit, at no extra charge.
+                    If you genuinely prepare with Haven and still don't pass, we'll add <strong>30 days of free access</strong> so you can keep studying and book a resit, at no extra charge.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -664,13 +644,13 @@ export default function App() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
-                        We'll add 1 free month to your account
+                        We'll add 30 days to your access
                       </li>
                     </ul>
                   </div>
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Available on Plus and Premium plans. Does not cover the cost of rebooking your test.
+                  Available on all paid plans. Does not cover the cost of rebooking your test.
                 </p>
               </div>
             </div>

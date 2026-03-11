@@ -5,8 +5,13 @@ import { createClient } from '@supabase/supabase-js';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2025-01-27.acacia' });
 
 const PRICE_IDS: Record<string, string> = {
-  plus: process.env.STRIPE_PLUS_PRICE_ID!,
-  premium: process.env.STRIPE_PREMIUM_PRICE_ID!,
+  plus_1m: process.env.STRIPE_PLUS_1M_PRICE_ID!,
+  plus_3m: process.env.STRIPE_PLUS_3M_PRICE_ID!,
+};
+
+const DURATION_DAYS: Record<string, number> = {
+  plus_1m: 30,
+  plus_3m: 90,
 };
 
 // Stripe coupon IDs for each discount level (set in Netlify env vars)
@@ -52,6 +57,7 @@ export const handler: Handler = async (event) => {
     return { statusCode: 400, body: `Unknown plan: ${plan}` };
   }
 
+  const durationDays = DURATION_DAYS[plan];
   const siteUrl = process.env.URL ?? 'http://localhost:8888';
 
   // Look up existing Stripe customer to avoid duplicates on re-purchase
@@ -76,23 +82,21 @@ export const handler: Handler = async (event) => {
   const saleCouponId = saleActive ? COUPON_IDS[saleDiscount] : undefined;
 
   const sessionParams: Stripe.Checkout.SessionCreateParams = {
-    mode: 'subscription',
+    mode: 'payment',
     line_items: [{ price: priceId, quantity: 1 }],
     customer: existingCustomerId || undefined,
     customer_email: existingCustomerId ? undefined : email,
+    customer_creation: existingCustomerId ? undefined : 'always',
     success_url: `${siteUrl}/uk/dashboard?upgraded=1`,
     cancel_url: `${siteUrl}/uk/paywall`,
-    metadata: { userId, plan },
-    subscription_data: {
-      metadata: { userId, plan },
-    },
+    metadata: { userId, plan, duration_days: String(durationDays) },
   };
 
   if (saleActive && saleCouponId) {
-    // Auto-apply the sale coupon — Stripe disallows allow_promotion_codes when discounts is set
+    // Auto-apply the sale coupon
     sessionParams.discounts = [{ coupon: saleCouponId }];
   } else {
-    // No active sale — let users enter promotion codes (e.g. HAVEN10, HAVEN20, HAVEN30)
+    // No active sale — let users enter promotion codes
     sessionParams.allow_promotion_codes = true;
   }
 

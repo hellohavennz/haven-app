@@ -8,15 +8,19 @@ export type SubscriptionStatus = {
   tier: SubscriptionTier;
   hasPlus: boolean;
   hasPremium: boolean;
+  accessExpiresAt: string | null;
   isLoading: boolean;
 };
 
 // Module-level cache — populated by preloadSubscription() in RootLayout
 // so useSubscription() can initialise synchronously with no flash.
 let _cachedTier: SubscriptionTier | null = null;
+// undefined = not yet loaded; null = loaded, no expiry set (old model or free)
+let _cachedAccessExpiresAt: string | null | undefined = undefined;
 
 export function clearSubscriptionCache(): void {
   _cachedTier = null;
+  _cachedAccessExpiresAt = undefined;
 }
 
 // Check subscription from profiles table (source of truth)
@@ -34,12 +38,25 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
   try {
     const { data: profile, error } = await supabase
       .from('profiles')
-      .select('subscription_tier')
+      .select('subscription_tier, access_expires_at')
       .eq('id', user.id)
       .single();
 
-    if (!error && profile?.subscription_tier) {
-      _cachedTier = profile.subscription_tier as SubscriptionTier;
+    if (!error && profile) {
+      const tier = (profile.subscription_tier as SubscriptionTier) || 'free';
+      const accessExpiresAt = (profile.access_expires_at as string | null) ?? null;
+
+      _cachedAccessExpiresAt = accessExpiresAt;
+
+      // New model: access_expires_at is set — check if it has expired
+      if (accessExpiresAt !== null) {
+        const expired = new Date(accessExpiresAt) <= new Date();
+        _cachedTier = expired ? 'free' : tier;
+        return _cachedTier;
+      }
+
+      // Legacy model: rely on subscription_tier directly (Stripe handles billing)
+      _cachedTier = tier;
       return _cachedTier;
     }
 
@@ -58,9 +75,11 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
     }
 
     _cachedTier = 'free';
+    _cachedAccessExpiresAt = null;
     return _cachedTier;
   } catch {
     _cachedTier = 'free';
+    _cachedAccessExpiresAt = null;
     return _cachedTier;
   }
 }
@@ -68,23 +87,35 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
 export function useSubscription(): SubscriptionStatus {
   // Initialise synchronously from cache — no flash if preloaded
   const [tier, setTier] = useState<SubscriptionTier>(() => _cachedTier ?? 'free');
+  const [accessExpiresAt, setAccessExpiresAt] = useState<string | null>(
+    () => _cachedAccessExpiresAt ?? null,
+  );
   const [isLoading, setIsLoading] = useState(() => _cachedTier === null);
 
   useEffect(() => {
     if (_cachedTier !== null) {
       setTier(_cachedTier);
+      setAccessExpiresAt(_cachedAccessExpiresAt ?? null);
       setIsLoading(false);
       return;
     }
     checkSubscriptionStatus()
-      .then(setTier)
+      .then(t => {
+        setTier(t);
+        setAccessExpiresAt(_cachedAccessExpiresAt ?? null);
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
+  const hasPlus = tier === 'plus' || tier === 'premium';
+
   return {
     tier,
-    hasPlus: tier === 'plus' || tier === 'premium',
-    hasPremium: tier === 'premium',
+    hasPlus,
+    // In the new model all paid users get all features; keep hasPremium as alias for hasPlus
+    // so existing components that check hasPremium continue to work without changes.
+    hasPremium: hasPlus,
+    accessExpiresAt,
     isLoading,
   };
 }

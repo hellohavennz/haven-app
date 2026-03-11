@@ -52,15 +52,27 @@ export const handler: Handler = async (event) => {
     return { statusCode: 401, body: 'Invalid token' };
   }
 
-  // Verify Premium tier
+  // Verify active paid access (Plus or Premium, new or legacy model)
   const { data: profile } = await supabase
     .from('profiles')
-    .select('subscription_tier')
+    .select('subscription_tier, access_expires_at')
     .eq('id', user.id)
     .single();
 
-  if (profile?.subscription_tier !== 'premium') {
-    return { statusCode: 403, body: 'Pippa is available to Premium subscribers only' };
+  const tier = profile?.subscription_tier as string | undefined;
+  const accessExpiresAt = profile?.access_expires_at as string | null | undefined;
+
+  let hasAccess = false;
+  if (accessExpiresAt != null) {
+    // New model: check expiry date
+    hasAccess = new Date(accessExpiresAt) > new Date();
+  } else {
+    // Legacy model: check subscription tier
+    hasAccess = tier === 'plus' || tier === 'premium';
+  }
+
+  if (!hasAccess) {
+    return { statusCode: 403, body: 'Pippa requires an active Haven Plus subscription' };
   }
 
   // Parse request body

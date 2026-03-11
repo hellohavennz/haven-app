@@ -2,17 +2,13 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   BookOpen,
   Sparkles,
-  Crown,
   CheckCircle2,
   ArrowRight,
-  Brain,
-  BarChart3,
-  Headphones,
-  Bell,
-  Smartphone,
   Award,
   Loader2,
   Tag,
+  Clock,
+  Calendar,
 } from 'lucide-react';
 import { useSubscription } from '../lib/subscription';
 import { useEffect, useState } from 'react';
@@ -20,19 +16,26 @@ import { getCurrentUser } from '../lib/auth';
 import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../hooks/usePageTitle';
 
-type Plan = 'free' | 'plus' | 'premium';
+type Plan = 'plus_1m' | 'plus_3m';
 
-const PLAN_ORDER: Plan[] = ['free', 'plus', 'premium'];
+const PLAN_PRICES: Record<Plan, number> = {
+  plus_1m: 4.99,
+  plus_3m: 9.99,
+};
 
-function isUpgrade(current: Plan, target: Plan) {
-  return PLAN_ORDER.indexOf(target) > PLAN_ORDER.indexOf(current);
+function formatExpiry(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 }
 
 export default function Paywall() {
-  usePageTitle('Pricing', 'Choose the Haven Study plan that\'s right for you. Start free or unlock unlimited practice, mock exams, and flashcards with Haven Plus or Premium.');
+  usePageTitle('Pricing', 'Choose your Haven Study access pass. Pay once, study at your own pace. No recurring billing.');
   const navigate = useNavigate();
   const location = useLocation();
-  const { tier: currentTier, isLoading } = useSubscription();
+  const { hasPlus, accessExpiresAt, isLoading } = useSubscription();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checkingOut, setCheckingOut] = useState<Plan | null>(null);
   const [checkoutError, setCheckoutError] = useState('');
@@ -53,11 +56,11 @@ export default function Paywall() {
       });
   }, []);
 
-  // Handle ?checkout=plus|premium after signup redirect
+  // Handle ?checkout=plus_1m|plus_3m after signup redirect
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const checkoutPlan = params.get('checkout') as Plan | null;
-    if (checkoutPlan && (checkoutPlan === 'plus' || checkoutPlan === 'premium')) {
+    if (checkoutPlan && (checkoutPlan === 'plus_1m' || checkoutPlan === 'plus_3m')) {
       getCurrentUser().then(u => {
         if (u) {
           handleSelectPlan(checkoutPlan, u);
@@ -68,12 +71,6 @@ export default function Paywall() {
   }, []);
 
   async function handleSelectPlan(plan: Plan, overrideUser?: any) {
-    if (plan === 'free') {
-      const user = await getCurrentUser();
-      navigate(user ? '/dashboard' : '/signup?plan=free');
-      return;
-    }
-
     const user = overrideUser ?? (await getCurrentUser());
 
     if (!user) {
@@ -108,53 +105,44 @@ export default function Paywall() {
     }
   }
 
-  const isCurrent = (plan: Plan) => !isLoading && isLoggedIn && currentTier === plan;
-  const canUpgrade = (plan: Plan) => !isLoading && isUpgrade(currentTier, plan);
-
-  function ctaLabel(plan: Plan, label: string) {
-    if (isLoading) return 'Loading…';
-    if (isCurrent(plan)) return 'Current Plan';
-    if (checkingOut === plan) return 'Redirecting…';
-    return label;
+  function salePrice(basePrice: number): number {
+    if (!sale?.active) return basePrice;
+    return Math.round(basePrice * (1 - sale.discount / 100) * 100) / 100;
   }
 
-  function ctaClass(plan: Plan, primary: string) {
-    if (isCurrent(plan)) return 'bg-slate-200 dark:bg-gray-700 text-slate-500 dark:text-slate-400 cursor-default';
-    if (canUpgrade(plan) || !isLoading) return primary;
-    return primary;
+  function ctaLabel(plan: Plan) {
+    if (isLoading) return 'Loading...';
+    if (checkingOut === plan) return 'Redirecting...';
+    if (hasPlus) return plan === 'plus_1m' ? 'Extend by 1 Month' : 'Extend by 3 Months';
+    return plan === 'plus_1m' ? 'Get 1 Month' : 'Get 3 Months';
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50 to-emerald-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 px-4">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal-100 dark:bg-teal-900/40 px-4 py-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
             <Sparkles className="h-4 w-4" />
-            Choose Your Plan
+            Simple, honest pricing
           </div>
           <h1 className="mb-4 font-semibold text-slate-900 dark:text-white">
-            Pass Your Life in the UK Test
+            Pay once. Study until you're ready.
           </h1>
-          <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300">
-            Each failed attempt costs £50. Haven Plus costs £4.99 a month.
+          <p className="mx-auto max-w-xl text-slate-600 dark:text-slate-300">
+            No recurring payments. No cancellation reminders. Access lasts for as long as your pass covers. Extend whenever you need more time.
           </p>
         </div>
 
-        {/* Value comparison bar */}
-        <div className="mb-8 grid gap-3 sm:grid-cols-3 text-center">
-          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
-            <div className="text-2xl font-bold text-teal-600 dark:text-teal-400">£0</div>
-            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">to start — 3 modules, 252 questions, full flashcards</div>
+        {/* Active access notice */}
+        {!isLoading && hasPlus && accessExpiresAt && (
+          <div className="mb-8 flex items-center gap-3 rounded-2xl border border-teal-200 dark:border-teal-700 bg-teal-50 dark:bg-teal-900/20 px-6 py-4">
+            <Calendar className="text-teal-600 dark:text-teal-400 flex-shrink-0" size={20} />
+            <p className="text-teal-900 dark:text-teal-200">
+              <span className="font-semibold">Your access is active until {formatExpiry(accessExpiresAt)}.</span>
+              {' '}Need more time? Extend below and it will be added to your existing access.
+            </p>
           </div>
-          <div className="rounded-2xl bg-teal-600 border border-teal-600 px-5 py-4">
-            <div className="text-2xl font-bold text-white">£4.99<span className="text-base font-normal">/mo</span></div>
-            <div className="mt-1 text-sm text-teal-100">for full access — less than 10% of one failed test</div>
-          </div>
-          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-5 py-4">
-            <div className="text-2xl font-bold text-amber-500">£50</div>
-            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">cost of each failed attempt — plus a stand-down period</div>
-          </div>
-        </div>
+        )}
 
         {sale?.active && (
           <div className="mb-8 flex items-center justify-center gap-3 rounded-2xl border border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/20 px-6 py-4">
@@ -173,12 +161,7 @@ export default function Paywall() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Free Plan */}
-          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('free') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-slate-200 dark:border-slate-700'}`}>
-            {isCurrent('free') && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
-                YOUR PLAN
-              </div>
-            )}
+          <div className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-8 flex flex-col">
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4">
                 <BookOpen className="text-slate-600 dark:text-slate-400" size={32} />
@@ -187,14 +170,14 @@ export default function Paywall() {
               <div className="flex items-baseline justify-center gap-2 mb-1">
                 <span className="text-5xl font-semibold text-slate-900 dark:text-white">£0</span>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">forever</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">No credit card. No time limit.</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               {[
-                'First lesson (Values & Principles)',
                 '3 free modules',
-                'Practice questions (free modules)',
+                '252 practice questions',
                 'Full flashcards (free modules)',
+                'Progress tracking',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-slate-500 dark:text-slate-400 flex-shrink-0 mt-0.5" size={20} />
@@ -203,51 +186,51 @@ export default function Paywall() {
               ))}
             </ul>
             <button
-              onClick={() => !isCurrent('free') && handleSelectPlan('free')}
-              disabled={isCurrent('free') || isLoading}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('free', 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200')}`}
+              onClick={() => navigate(isLoggedIn ? '/dashboard' : '/signup?plan=free')}
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200"
             >
-              {ctaLabel('free', 'Get Started Free')}
-              {!isCurrent('free') && !isLoading && <ArrowRight size={18} />}
+              Get Started Free
+              <ArrowRight size={18} />
             </button>
             <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">No credit card required</p>
           </div>
 
-          {/* Haven Plus */}
-          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('plus') ? 'border-teal-400 ring-4 ring-teal-100 dark:ring-teal-900/40' : 'border-teal-300 dark:border-teal-400/40'}`}>
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
-              {isCurrent('plus') ? 'YOUR PLAN' : 'MOST POPULAR'}
-            </div>
+          {/* Plus 1 Month */}
+          <div className="bg-white dark:bg-slate-900 border-2 border-teal-300 dark:border-teal-400/40 rounded-2xl p-8 flex flex-col relative">
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
-                <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
+                <Clock className="text-teal-600 dark:text-teal-400" size={32} />
               </div>
               <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
+              <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-3">1 Month Access</p>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
                 {sale?.active && (
-                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">£4.99</span>
+                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">
+                    £{PLAN_PRICES.plus_1m.toFixed(2)}
+                  </span>
                 )}
                 <span className="text-5xl font-semibold text-slate-900 dark:text-white">
-                  {sale?.active ? `£${(4.99 * (1 - sale.discount / 100)).toFixed(2)}` : '£4.99'}
+                  £{salePrice(PLAN_PRICES.plus_1m).toFixed(2)}
                 </span>
-                <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/month</span>
               </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">one-off payment · about £1.25/week</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
               {[
-                'All 29 comprehensive lessons',
+                'All 29 lessons',
                 '500+ practice questions',
-                'All flashcards for every lesson',
-                '2 mock exams per month',
+                'All flashcards',
+                'Full mock exams',
                 'Progress tracking',
-                'Resit Support: 1 free month if you fail',
+                'Pippa AI study assistant',
+                'Resit Support',
               ].map(f => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
-                  {f.startsWith('Resit Support') ? (
+                  {f === 'Resit Support' ? (
                     <span className="text-slate-700 dark:text-slate-200">
                       <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
-                      {': 1 free month if you fail'}
+                      {' '}(30 days free if you fail)
                     </span>
                   ) : (
                     <span className="text-slate-700 dark:text-slate-200">{f}</span>
@@ -256,68 +239,74 @@ export default function Paywall() {
               ))}
             </ul>
             <button
-              onClick={() => !isCurrent('plus') && !checkingOut && handleSelectPlan('plus')}
-              disabled={isCurrent('plus') || isLoading || !!checkingOut}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto ${ctaClass('plus', 'bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-70')}`}
+              onClick={() => !checkingOut && handleSelectPlan('plus_1m')}
+              disabled={isLoading || !!checkingOut}
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-70"
             >
-              {checkingOut === 'plus' && <Loader2 className="animate-spin" size={18} />}
-              {ctaLabel('plus', 'Get Plus')}
-              {!isCurrent('plus') && !isLoading && checkingOut !== 'plus' && <ArrowRight size={18} />}
+              {checkingOut === 'plus_1m' && <Loader2 className="animate-spin" size={18} />}
+              {ctaLabel('plus_1m')}
+              {checkingOut !== 'plus_1m' && !isLoading && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Cancel anytime</p>
+            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Paid once. Expires after 30 days. No auto-renewal.</p>
           </div>
 
-          {/* Haven Premium */}
-          <div className={`bg-white dark:bg-slate-900 border-2 rounded-2xl p-8 flex flex-col relative ${isCurrent('premium') ? 'border-amber-400 ring-4 ring-amber-100 dark:ring-amber-900/40' : 'border-amber-300 dark:border-amber-300/50'}`}>
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-full whitespace-nowrap">
-              {isCurrent('premium') ? 'YOUR PLAN' : 'BEST VALUE'}
+          {/* Plus 3 Months */}
+          <div className="bg-white dark:bg-slate-900 border-2 border-teal-400 dark:border-teal-300/60 rounded-2xl p-8 flex flex-col relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-teal-700 text-white text-sm font-semibold rounded-full whitespace-nowrap">
+              BEST VALUE
             </div>
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl mb-4">
-                <Crown className="text-amber-600 dark:text-amber-400" size={32} />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-4">
+                <Sparkles className="text-teal-600 dark:text-teal-400" size={32} />
               </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Premium</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Haven Plus</h3>
+              <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-3">3 Months Access</p>
               <div className="flex items-baseline justify-center gap-1.5 mb-1">
                 {sale?.active && (
-                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">£24.99</span>
+                  <span className="text-2xl font-semibold text-slate-400 dark:text-slate-500 line-through">
+                    £{PLAN_PRICES.plus_3m.toFixed(2)}
+                  </span>
                 )}
                 <span className="text-5xl font-semibold text-slate-900 dark:text-white">
-                  {sale?.active ? `£${(24.99 * (1 - sale.discount / 100)).toFixed(2)}` : '£24.99'}
+                  £{salePrice(PLAN_PRICES.plus_3m).toFixed(2)}
                 </span>
-                <span className="text-sm font-medium text-slate-500 dark:text-slate-400">/6 months</span>
               </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">one-off payment · under £0.80/week</p>
+              <p className="mt-1 text-xs font-medium text-teal-600 dark:text-teal-400">Save £4.98 vs buying monthly</p>
             </div>
             <ul className="space-y-3 mb-8 flex-1">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                <span className="text-slate-900 dark:text-white font-semibold">Everything in Haven Plus, and:</span>
-              </li>
               {[
-                { Icon: Headphones, title: 'AI study assistant (Pippa)', desc: 'Get instant answers to your questions' },
-                { Icon: BarChart3, title: 'Performance analytics', desc: 'Identify weak areas with detailed insights' },
-                { Icon: Brain, title: 'Dynamic exams', desc: 'Unlimited randomised practice exams' },
-                { Icon: Bell, title: 'Exam reminders', desc: 'Alerts 7 days and 1 day before your test' },
-                { Icon: Smartphone, title: 'Install to home screen', desc: 'Works offline. Study anywhere, no internet needed.' },
-              ].map(({ Icon, title, desc }) => (
-                <li key={title} className="flex items-start gap-3">
-                  <Icon className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <span className="text-slate-900 dark:text-white font-semibold">{title}</span>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">{desc}</p>
-                  </div>
+                'All 29 lessons',
+                '500+ practice questions',
+                'All flashcards',
+                'Full mock exams',
+                'Progress tracking',
+                'Pippa AI study assistant',
+                'Resit Support',
+              ].map(f => (
+                <li key={f} className="flex items-start gap-3">
+                  <CheckCircle2 className="text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" size={20} />
+                  {f === 'Resit Support' ? (
+                    <span className="text-slate-700 dark:text-slate-200">
+                      <a href="#resit-support" className="text-teal-700 underline dark:text-teal-300">Resit Support</a>
+                      {' '}(30 days free if you fail)
+                    </span>
+                  ) : (
+                    <span className="text-slate-700 dark:text-slate-200">{f}</span>
+                  )}
                 </li>
               ))}
             </ul>
             <button
-              onClick={() => !isCurrent('premium') && !checkingOut && handleSelectPlan('premium')}
-              disabled={isCurrent('premium') || isLoading || !!checkingOut}
-              className={`flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-all mt-auto ${ctaClass('premium', 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg disabled:opacity-70')}`}
+              onClick={() => !checkingOut && handleSelectPlan('plus_3m')}
+              disabled={isLoading || !!checkingOut}
+              className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold transition-colors mt-auto bg-teal-700 text-white hover:bg-teal-800 disabled:opacity-70"
             >
-              {checkingOut === 'premium' && <Loader2 className="animate-spin" size={18} />}
-              {ctaLabel('premium', 'Get Premium')}
-              {!isCurrent('premium') && !isLoading && checkingOut !== 'premium' && <ArrowRight size={18} />}
+              {checkingOut === 'plus_3m' && <Loader2 className="animate-spin" size={18} />}
+              {ctaLabel('plus_3m')}
+              {checkingOut !== 'plus_3m' && !isLoading && <ArrowRight size={18} />}
             </button>
-            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">6-month plan · best value</p>
+            <p className="mt-3 text-center text-xs text-slate-400 dark:text-slate-500">Paid once. Expires after 90 days. No auto-renewal.</p>
           </div>
         </div>
 
@@ -354,7 +343,7 @@ export default function Paywall() {
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-1">Resit Support</h3>
                 <p className="text-slate-700 dark:text-slate-300">
-                  If you genuinely prepare with Haven and still don't pass, we'll give you <strong>1 free month</strong> of continued access so you can keep studying and book a resit, at no extra charge.
+                  If you genuinely prepare with Haven and still don't pass, we'll add <strong>30 days of free access</strong> so you can keep studying and book a resit, at no extra charge.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -388,13 +377,13 @@ export default function Paywall() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="text-amber-500 flex-shrink-0 mt-0.5" size={15} />
-                      We'll add 1 free month to your account
+                      We'll add 30 days to your access
                     </li>
                   </ul>
                 </div>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Available on Plus and Premium plans. Does not cover the cost of rebooking your test.
+                Available on all paid plans. Does not cover the cost of rebooking your test.
               </p>
             </div>
           </div>

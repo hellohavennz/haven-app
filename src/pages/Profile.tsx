@@ -124,7 +124,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
   };
   const STATUS_TEXT: Record<string, string> = {
     pending:  "Your application is under review. We'll process it within 2 business days.",
-    approved: 'Approved! 30 days have been added before your next billing date. No action needed.',
+    approved: 'Approved! 30 days of free access have been added to your account. No action needed.',
     rejected: 'Unfortunately your application was not approved. You may resubmit with updated evidence below.',
   };
 
@@ -136,8 +136,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
       </h2>
 
       <p className="text-sm text-slate-700 dark:text-slate-300">
-        If you studied with Haven and still didn't pass, we'll add <strong>30 days</strong> before
-        your next billing date at no charge. Works for both Plus and Premium plans.
+        If you studied with Haven and still didn't pass, we'll add <strong>30 days of free access</strong> to your account at no charge.
       </p>
 
       {/* Existing claim status */}
@@ -255,8 +254,7 @@ function ResitSupportSection({ userId, userEmail }: { userId: string; userEmail:
               </button>
 
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                We review applications within 2 business days. If approved, 30 days will be added
-                before your next billing date automatically. No action needed from you.
+                We review applications within 2 business days. If approved, 30 days of free access will be added to your account automatically.
               </p>
             </form>
           )}
@@ -290,7 +288,7 @@ const TIER_COLORS: Record<string, string> = {
 export default function Profile() {
   usePageTitle('Profile', 'Manage your Haven Study account, subscription, and personal details.');
   const [user, setUser] = useState<any>(null);
-  const { tier } = useSubscription();
+  const { tier, hasPlus, accessExpiresAt } = useSubscription();
   const [name, setName] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -601,8 +599,8 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Analytics — Premium only */}
-      {tier === 'premium' && (
+      {/* Analytics — all paid users */}
+      {hasPlus && (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3 dark:border-slate-800 dark:bg-slate-900">
           <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-teal-600" />
@@ -626,41 +624,62 @@ export default function Profile() {
       )}
 
       {/* Manage subscription — only for paying users */}
-      {(tier === 'plus' || tier === 'premium') && (
+      {hasPlus && (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 dark:border-slate-800 dark:bg-slate-900">
           <h2 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <CreditCard className="h-5 w-5 text-teal-600" />
-            Subscription
+            Access
           </h2>
 
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Manage your billing, download invoices, or cancel your subscription via the Stripe customer portal.
-          </p>
+          {accessExpiresAt ? (
+            // New model: show expiry date and link to extend
+            <div className="space-y-3">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Your access is active until{' '}
+                <span className="font-semibold text-slate-900 dark:text-white">
+                  {new Date(accessExpiresAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </span>.
+              </p>
+              <Link
+                to="/paywall"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 text-sm"
+              >
+                Extend Access
+              </Link>
+            </div>
+          ) : (
+            // Legacy model: show Stripe portal
+            <div className="space-y-3">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Manage your billing, download invoices, or cancel your subscription via the Stripe customer portal.
+              </p>
 
-          {portalError && (
-            <div className="flex items-center gap-2 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
-              <AlertCircle className="h-4 w-4 flex-shrink-0" />
-              {portalError}
+              {portalError && (
+                <div className="flex items-center gap-2 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                  {portalError}
+                </div>
+              )}
+
+              <button
+                onClick={handleManageSubscription}
+                disabled={portalLoading}
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 disabled:opacity-40"
+              >
+                {portalLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Opening portal...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard className="h-4 w-4" />
+                    Manage Subscription
+                  </>
+                )}
+              </button>
             </div>
           )}
-
-          <button
-            onClick={handleManageSubscription}
-            disabled={portalLoading}
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 font-semibold text-white transition-all hover:bg-teal-700 disabled:opacity-40"
-          >
-            {portalLoading ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Opening portal…
-              </>
-            ) : (
-              <>
-                <CreditCard className="h-4 w-4" />
-                Manage Subscription
-              </>
-            )}
-          </button>
         </div>
       )}
     </div>
