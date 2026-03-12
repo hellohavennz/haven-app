@@ -187,7 +187,8 @@ const reminder = async () => {
     .select('id')
     .eq('exam_date', date7)
     .eq('exam_reminder_7d_sent', false)
-    .eq('subscription_tier', 'premium');
+    .eq('subscription_tier', 'premium')
+    .or(`access_expires_at.is.null,access_expires_at.gt.${today.toISOString()}`);
 
   if (err7d) {
     console.error('Failed to query 7-day candidates:', err7d.message);
@@ -216,7 +217,8 @@ const reminder = async () => {
     .select('id')
     .eq('exam_date', date1)
     .eq('exam_reminder_1d_sent', false)
-    .eq('subscription_tier', 'premium');
+    .eq('subscription_tier', 'premium')
+    .or(`access_expires_at.is.null,access_expires_at.gt.${today.toISOString()}`);
 
   if (err1d) {
     console.error('Failed to query 1-day candidates:', err1d.message);

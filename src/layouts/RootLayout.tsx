@@ -142,19 +142,32 @@ export default function RootLayout() {
           {!showAnySidebar && (
             <footer className="border-t border-slate-200 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300">
               <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center gap-4">
-                <a
-                  href="https://www.instagram.com/haven.study.uk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Haven on Instagram"
-                  className="text-slate-400 hover:text-pink-500 transition-colors"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-                  </svg>
-                </a>
+                <div className="flex items-center gap-5">
+                  <a
+                    href="https://www.facebook.com/HavenStudyUK/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Haven on Facebook"
+                    className="text-slate-400 hover:text-blue-500 transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/haven.study.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Haven on Instagram"
+                    className="text-slate-400 hover:text-pink-500 transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                      <circle cx="12" cy="12" r="4"/>
+                      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </a>
+                </div>
                 <div className="flex items-center gap-4 text-xs text-slate-400 dark:text-slate-500">
                   <Link to="/privacy" className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Privacy Policy</Link>
                   <span>·</span>
