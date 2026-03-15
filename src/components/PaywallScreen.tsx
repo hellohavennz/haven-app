@@ -104,7 +104,7 @@ export default function PaywallScreen() {
           </div>
           <h3 className="font-semibold text-slate-900 mb-2">One-Time Payment</h3>
           <p className="text-sm text-slate-600">
-            Pay once, learn forever. No recurring fees or hidden costs.
+            Pay once. Access lasts 30 to 180 days. No recurring fees.
           </p>
         </div>
       </div>

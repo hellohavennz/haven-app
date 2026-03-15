@@ -38,7 +38,7 @@ function formatExpiry(iso: string): string {
 }
 
 export default function Paywall() {
-  usePageTitle('Pricing', 'Choose your Haven Study access pass. Pay once, study at your own pace. No recurring billing.');
+  usePageTitle('Pricing', 'Choose your Haven Study access pass. One-off payment, no auto-renewal. Extend anytime.');
   const navigate = useNavigate();
   const location = useLocation();
   const { tier, hasPlus, accessExpiresAt, isLoading } = useSubscription();
@@ -133,7 +133,7 @@ export default function Paywall() {
             Simple, honest pricing
           </div>
           <h1 className="mb-4 font-semibold text-slate-900 dark:text-white">
-            Pay once. Study until you're ready.
+            Pay once. No auto-renewal. Extend anytime.
           </h1>
           <p className="mx-auto max-w-xl text-slate-600 dark:text-slate-300">
             No recurring payments. No cancellation reminders. Access lasts for as long as your pass covers. Extend whenever you need more time.

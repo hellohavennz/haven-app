@@ -468,8 +468,8 @@ export default function App() {
       <section id="pricing" className="-mx-4 px-4 py-20 bg-white dark:bg-gray-950/40">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center mb-12">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Pay once. Study until you're ready.</h2>
-            <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">No recurring payments. No cancellation reminders. One-off access that lasts 30 or 90 days. Extend whenever you need more time.</p>
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Pay once. No auto-renewal. Extend anytime.</h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">No recurring payments. No cancellation reminders. One-off access for 30, 90, or 180 days. Need more time? Just extend — it stacks on top of what you have left.</p>
           </div>
 
           {/* Value comparison */}
