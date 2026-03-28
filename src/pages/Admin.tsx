@@ -21,11 +21,13 @@ import {
   rejectResitClaim,
   getEvidenceUrl,
   adminUserAction,
+  fetchPippaStats,
   type AdminOverview,
   type ContentReport,
   type AdminUser,
   type ExamStats,
   type ResitClaim,
+  type PippaStats,
 } from '../lib/adminApi';
 import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -283,6 +285,32 @@ function MrrCard({ currentMrr, revenueByDay, plusCount, premiumCount }: {
 }
 
 // ── Overview tab ──────────────────────────────────────────────────────────
+function PippaSection() {
+  const [pippa, setPippa] = useState<PippaStats | null>(null);
+
+  useEffect(() => {
+    fetchPippaStats().then(setPippa).catch(() => {});
+  }, []);
+
+  if (!pippa) return null;
+
+  // Haiku 4.5 pricing: $0.80/MTok input, $4.00/MTok output
+  const costUsd = (pippa.input_tokens_30d * 0.80 + pippa.output_tokens_30d * 4.00) / 1_000_000;
+  const totalTokens = pippa.input_tokens_30d + pippa.output_tokens_30d;
+
+  return (
+    <section>
+      <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Pippa AI</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <StatCard label="Conversations (7d)" value={pippa.conversations_7d} />
+        <StatCard label="Conversations (30d)" value={pippa.conversations_30d} />
+        <StatCard label="Tokens used (30d)" value={totalTokens.toLocaleString()} sub={`${pippa.input_tokens_30d.toLocaleString()} in / ${pippa.output_tokens_30d.toLocaleString()} out`} />
+        <StatCard label="Est. API cost (30d)" value={`$${costUsd.toFixed(3)}`} sub="Haiku 4.5 rates" />
+      </div>
+    </section>
+  );
+}
+
 function OverviewTab() {
   const [data, setData] = useState<AdminOverview | null>(null);
   const [loading, setLoading] = useState(true);
@@ -366,6 +394,8 @@ function OverviewTab() {
           <StatCard label="Tests in 7 days" value={data.upcoming_7d} sub={`${data.upcoming_30d} in 30 days`} />
         </div>
       </section>
+
+      <PippaSection />
     </div>
   );
 }

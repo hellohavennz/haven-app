@@ -66,6 +66,20 @@ export async function fetchAdminOverview(): Promise<AdminOverview> {
   return data as AdminOverview;
 }
 
+export type PippaStats = {
+  conversations_7d: number;
+  conversations_30d: number;
+  input_tokens_30d: number;
+  output_tokens_30d: number;
+  total_conversations: number;
+};
+
+export async function fetchPippaStats(): Promise<PippaStats> {
+  const { data, error } = await supabase.rpc('admin_pippa_stats');
+  if (error) throw error;
+  return data as PippaStats;
+}
+
 export async function fetchAdminReports(status: 'open' | 'reviewed' | 'resolved' | 'all' = 'open'): Promise<ContentReport[]> {
   const { data, error } = await supabase.rpc('admin_get_reports', { p_status: status });
   if (error) throw error;

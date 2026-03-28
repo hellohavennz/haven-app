@@ -114,6 +114,13 @@ export const handler: Handler = async (event) => {
 
     const reply = response.content[0].type === 'text' ? response.content[0].text : '';
 
+    // Log token usage for admin monitoring (fire-and-forget)
+    supabase.from('pippa_usage').insert({
+      user_id: user.id,
+      input_tokens: response.usage.input_tokens,
+      output_tokens: response.usage.output_tokens,
+    }).then(() => {});
+
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
