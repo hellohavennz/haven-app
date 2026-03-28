@@ -1,4 +1,4 @@
-import { StrictMode, lazy, Suspense } from 'react';
+import { StrictMode, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import * as Sentry from '@sentry/react';
@@ -29,6 +29,7 @@ import Help from './pages/Help';
 import Paywall from './pages/Paywall';
 import { ThemeProvider } from './context/ThemeContext';
 import NotFound from './pages/NotFound';
+import { LazyRoute } from './components/ChunkErrorBoundary';
 
 // Lazy-loaded: not on the critical path for any first page load
 const ExamSession      = lazy(() => import('./pages/ExamSession'));
@@ -41,8 +42,6 @@ const ResetPassword    = lazy(() => import('./pages/ResetPassword'));
 const Privacy          = lazy(() => import('./pages/Privacy'));
 const Terms            = lazy(() => import('./pages/Terms'));
 
-const Fallback = () => <div className="min-h-screen" />;
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,9 +51,9 @@ const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
-      { path: 'reset-password', element: <Suspense fallback={<Fallback />}><ResetPassword /></Suspense> },
-      { path: 'privacy', element: <Suspense fallback={<Fallback />}><Privacy /></Suspense> },
-      { path: 'terms', element: <Suspense fallback={<Fallback />}><Terms /></Suspense> },
+      { path: 'reset-password', element: <LazyRoute><ResetPassword /></LazyRoute> },
+      { path: 'privacy', element: <LazyRoute><Privacy /></LazyRoute> },
+      { path: 'terms', element: <LazyRoute><Terms /></LazyRoute> },
       { path: 'help', element: <Help /> },
       { path: 'paywall', element: <Paywall /> },
 
@@ -72,12 +71,12 @@ const router = createBrowserRouter([
           { path: 'practice/:lessonId/flashcards', element: <PracticeFlashcards /> },
           { path: 'flashcards/:lessonId', element: <PracticeFlashcards /> },
           { path: 'exam', element: <Exam /> },
-          { path: 'exam/take', element: <Suspense fallback={<Fallback />}><ExamSession /></Suspense> },
-          { path: 'exam/drill', element: <Suspense fallback={<Fallback />}><ExamDrill /></Suspense> },
-          { path: 'welcome', element: <Suspense fallback={<Fallback />}><Welcome /></Suspense> },
-          { path: 'profile', element: <Suspense fallback={<Fallback />}><Profile /></Suspense> },
-          { path: 'analytics', element: <Suspense fallback={<Fallback />}><Analytics /></Suspense> },
-          { path: 'admin', element: <Suspense fallback={<Fallback />}><Admin /></Suspense> },
+          { path: 'exam/take', element: <LazyRoute><ExamSession /></LazyRoute> },
+          { path: 'exam/drill', element: <LazyRoute><ExamDrill /></LazyRoute> },
+          { path: 'welcome', element: <LazyRoute><Welcome /></LazyRoute> },
+          { path: 'profile', element: <LazyRoute><Profile /></LazyRoute> },
+          { path: 'analytics', element: <LazyRoute><Analytics /></LazyRoute> },
+          { path: 'admin', element: <LazyRoute><Admin /></LazyRoute> },
         ],
       },
 
