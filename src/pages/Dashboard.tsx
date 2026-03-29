@@ -10,6 +10,7 @@ import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 import { usePageTitle } from '../hooks/usePageTitle';
 import InstallHaven from '../components/InstallHaven';
+import FeedbackPrompt from '../components/FeedbackPrompt';
 
 interface LessonProgressData {
   attempted: number;
@@ -198,6 +199,12 @@ const Dashboard: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-8 text-slate-900 dark:text-gray-100">
         {/* PWA install prompt */}
         <InstallHaven />
+
+        {/* Feedback prompt — shows after 3 days, dismissible */}
+        <FeedbackPrompt
+          userId={user?.id}
+          accountCreatedAt={user?.created_at}
+        />
 
         {/* Upgrade success banner */}
         {upgradeBanner && (

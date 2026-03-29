@@ -80,6 +80,28 @@ export async function fetchPippaStats(): Promise<PippaStats> {
   return data as PippaStats;
 }
 
+export type FeedbackEntry = {
+  id: number;
+  rating: number;
+  comment: string | null;
+  created_at: string;
+  email: string;
+  subscription_tier: string | null;
+};
+
+export type FeedbackData = {
+  total: number;
+  avg_rating: number | null;
+  by_stars: Record<number, number>;
+  entries: FeedbackEntry[];
+};
+
+export async function fetchFeedback(): Promise<FeedbackData> {
+  const { data, error } = await supabase.rpc('admin_get_feedback');
+  if (error) throw error;
+  return data as FeedbackData;
+}
+
 export async function fetchAdminReports(status: 'open' | 'reviewed' | 'resolved' | 'all' = 'open'): Promise<ContentReport[]> {
   const { data, error } = await supabase.rpc('admin_get_reports', { p_status: status });
   if (error) throw error;

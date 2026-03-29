@@ -4,7 +4,7 @@ import {
   Users, Flag, Trophy, BarChart3, CheckCircle2, XCircle,
   Clock, TrendingUp, AlertTriangle, RefreshCw, ChevronDown, ChevronUp,
   Calendar, Shield, FileCheck, ExternalLink, Loader2, Snowflake, Trash2,
-  Settings, Tag,
+  Settings, Tag, Star, MessageSquare,
 } from 'lucide-react';
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -22,19 +22,21 @@ import {
   getEvidenceUrl,
   adminUserAction,
   fetchPippaStats,
+  fetchFeedback,
   type AdminOverview,
   type ContentReport,
   type AdminUser,
   type ExamStats,
   type ResitClaim,
   type PippaStats,
+  type FeedbackData,
 } from '../lib/adminApi';
 import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 const ADMIN_EMAIL = 'hello.haven.nz@gmail.com';
 
-type Tab = 'overview' | 'reports' | 'users' | 'exams' | 'resit' | 'settings';
+type Tab = 'overview' | 'reports' | 'users' | 'exams' | 'resit' | 'feedback' | 'settings';
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -1171,6 +1173,104 @@ function SettingsTab() {
   );
 }
 
+// ── Feedback tab ──────────────────────────────────────────────────────────
+function FeedbackTab() {
+  const [data, setData] = useState<FeedbackData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchFeedback()
+      .then(setData)
+      .catch(e => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMsg msg={error} />;
+  if (!data) return null;
+
+  const starCounts = data.by_stars ?? {};
+  const maxCount = Math.max(...Object.values(starCounts).map(Number), 1);
+
+  return (
+    <div className="space-y-6">
+      {/* Summary */}
+      <div className="grid grid-cols-2 gap-3">
+        <StatCard label="Total responses" value={data.total} accent />
+        <StatCard
+          label="Average rating"
+          value={data.avg_rating != null ? `${data.avg_rating} / 5` : '—'}
+          sub={data.total > 0 ? `${data.total} response${data.total !== 1 ? 's' : ''}` : 'No feedback yet'}
+        />
+      </div>
+
+      {/* Star breakdown */}
+      {data.total > 0 && (
+        <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-5">
+          <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-4">Rating breakdown</h2>
+          <div className="space-y-2">
+            {[5, 4, 3, 2, 1].map(star => {
+              const count = Number(starCounts[star] ?? 0);
+              const pct = Math.round((count / maxCount) * 100);
+              return (
+                <div key={star} className="flex items-center gap-3">
+                  <div className="flex items-center gap-1 w-14 flex-shrink-0">
+                    <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{star}</span>
+                  </div>
+                  <div className="flex-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-amber-400 transition-all"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                  <span className="text-sm text-slate-500 dark:text-slate-400 w-6 text-right">{count}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Entries */}
+      <div className="space-y-3">
+        <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">All feedback</h2>
+        {(data.entries ?? []).length === 0 ? (
+          <p className="text-sm text-slate-500 dark:text-slate-400">No feedback submitted yet.</p>
+        ) : (
+          <div className="space-y-2">
+            {(data.entries ?? []).map(entry => (
+              <div key={entry.id} className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-4">
+                <div className="flex items-start justify-between gap-3 mb-1">
+                  <div className="flex items-center gap-1">
+                    {[1,2,3,4,5].map(n => (
+                      <Star
+                        key={n}
+                        className={`h-4 w-4 ${n <= entry.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-200 dark:text-slate-700'}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+                    <span className={`rounded-full px-2 py-0.5 font-medium ${TIER_COLOURS[entry.subscription_tier ?? 'free'] ?? TIER_COLOURS.free}`}>
+                      {entry.subscription_tier ?? 'free'}
+                    </span>
+                    <span>{timeAgo(entry.created_at)}</span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">{entry.email}</p>
+                {entry.comment && (
+                  <p className="text-sm text-slate-700 dark:text-slate-300 mt-2">{entry.comment}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main admin page ───────────────────────────────────────────────────────
 export default function Admin() {
   usePageTitle('Admin');
@@ -1204,6 +1304,7 @@ export default function Admin() {
     { id: 'users',     label: 'Users',     icon: Users },
     { id: 'exams',     label: 'Exams',     icon: Trophy },
     { id: 'resit',     label: 'Resit',     icon: FileCheck },
+    { id: 'feedback',  label: 'Feedback',  icon: MessageSquare },
     { id: 'settings',  label: 'Settings',  icon: Settings },
   ];
 
@@ -1247,6 +1348,7 @@ export default function Admin() {
       {tab === 'users'     && <UsersTab />}
       {tab === 'exams'     && <ExamsTab />}
       {tab === 'resit'     && <ResitTab />}
+      {tab === 'feedback'  && <FeedbackTab />}
       {tab === 'settings'  && <SettingsTab />}
     </div>
   );
