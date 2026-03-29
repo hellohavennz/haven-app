@@ -102,6 +102,33 @@ export async function fetchFeedback(): Promise<FeedbackData> {
   return data as FeedbackData;
 }
 
+export type ChurnRiskUser = {
+  id: string;
+  email: string;
+  subscription_tier: string;
+  exam_date: string;
+  last_login: string | null;
+  days_inactive: number | null;
+};
+
+export async function fetchChurnRisk(): Promise<ChurnRiskUser[]> {
+  const { data, error } = await supabase.rpc('admin_churn_risk');
+  if (error) throw error;
+  return (data as ChurnRiskUser[]) ?? [];
+}
+
+export type ActivationStats = {
+  free_total: number;
+  activated: number;
+  rate: number;
+};
+
+export async function fetchActivationStats(): Promise<ActivationStats> {
+  const { data, error } = await supabase.rpc('admin_activation_stats');
+  if (error) throw error;
+  return data as ActivationStats;
+}
+
 export async function fetchAdminReports(status: 'open' | 'reviewed' | 'resolved' | 'all' = 'open'): Promise<ContentReport[]> {
   const { data, error } = await supabase.rpc('admin_get_reports', { p_status: status });
   if (error) throw error;

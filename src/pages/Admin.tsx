@@ -23,6 +23,8 @@ import {
   adminUserAction,
   fetchPippaStats,
   fetchFeedback,
+  fetchChurnRisk,
+  fetchActivationStats,
   type AdminOverview,
   type ContentReport,
   type AdminUser,
@@ -30,6 +32,8 @@ import {
   type ResitClaim,
   type PippaStats,
   type FeedbackData,
+  type ChurnRiskUser,
+  type ActivationStats,
 } from '../lib/adminApi';
 import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -287,6 +291,73 @@ function MrrCard({ currentMrr, revenueByDay, plusCount, premiumCount }: {
 }
 
 // ── Overview tab ──────────────────────────────────────────────────────────
+function ActivationSection() {
+  const [stats, setStats] = useState<ActivationStats | null>(null);
+
+  useEffect(() => {
+    fetchActivationStats().then(setStats).catch(() => {});
+  }, []);
+
+  if (!stats) return null;
+
+  return (
+    <section>
+      <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Activation</h2>
+      <div className="grid grid-cols-3 gap-3">
+        <StatCard label="Free users" value={stats.free_total} />
+        <StatCard label="Read a lesson" value={stats.activated} sub="at least one" />
+        <StatCard label="Activation rate" value={`${stats.rate}%`} sub="free users engaged" accent />
+      </div>
+    </section>
+  );
+}
+
+function ChurnRiskSection() {
+  const [users, setUsers] = useState<ChurnRiskUser[] | null>(null);
+
+  useEffect(() => {
+    fetchChurnRisk().then(setUsers).catch(() => {});
+  }, []);
+
+  if (!users || users.length === 0) return null;
+
+  return (
+    <section>
+      <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
+        Churn risk — paid users, exam within 60 days, inactive 14+ days
+      </h2>
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-900/10 overflow-hidden">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-amber-200 dark:border-amber-800">
+              <th className="px-4 py-2.5 text-left font-semibold text-amber-800 dark:text-amber-300">Email</th>
+              <th className="px-4 py-2.5 text-left font-semibold text-amber-800 dark:text-amber-300">Plan</th>
+              <th className="px-4 py-2.5 text-left font-semibold text-amber-800 dark:text-amber-300">Exam date</th>
+              <th className="px-4 py-2.5 text-left font-semibold text-amber-800 dark:text-amber-300">Last login</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(u => (
+              <tr key={u.id} className="border-b border-amber-100 dark:border-amber-900/40 last:border-0">
+                <td className="px-4 py-2.5 text-slate-700 dark:text-slate-300">{u.email}</td>
+                <td className="px-4 py-2.5">
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${TIER_COLOURS[u.subscription_tier] ?? TIER_COLOURS.free}`}>
+                    {u.subscription_tier}
+                  </span>
+                </td>
+                <td className="px-4 py-2.5 text-slate-700 dark:text-slate-300">{formatDate(u.exam_date)}</td>
+                <td className="px-4 py-2.5 text-slate-500 dark:text-slate-400">
+                  {u.last_login ? `${u.days_inactive}d ago` : 'Never'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
 function PippaSection() {
   const [pippa, setPippa] = useState<PippaStats | null>(null);
 
@@ -398,6 +469,8 @@ function OverviewTab() {
       </section>
 
       <PippaSection />
+      <ActivationSection />
+      <ChurnRiskSection />
     </div>
   );
 }

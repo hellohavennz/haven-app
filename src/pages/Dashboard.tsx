@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useProgress } from '../lib/progress';
 import { getAllLessons, getModules, getLessonsForModule } from '../lib/content';
 import { getCurrentUser, getSession } from '../lib/auth';
-import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X } from 'lucide-react';
+import { Trophy, Star, TrendingUp, Zap, BookOpen, CheckCircle, Target, Sparkles, ArrowRight, CheckCircle2, XCircle, FileCheck, X, Flame } from 'lucide-react';
 import { useSubscription, clearSubscriptionCache, checkSubscriptionStatus } from '../lib/subscription';
 import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth } from '../lib/examUtils';
 import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
@@ -11,6 +11,7 @@ import type { ExamAttempt } from '../types';
 import { usePageTitle } from '../hooks/usePageTitle';
 import InstallHaven from '../components/InstallHaven';
 import FeedbackPrompt from '../components/FeedbackPrompt';
+import { useStudyStreak } from '../hooks/useStudyStreak';
 
 interface LessonProgressData {
   attempted: number;
@@ -96,6 +97,7 @@ const Dashboard: React.FC = () => {
   }, [user, tier, tierLoading]);
 
   const progress = useProgress(user?.id);
+  const streak = useStudyStreak(user?.id);
 
   const hasFullAccess = user && (tier === 'plus' || tier === 'premium');
 
@@ -234,6 +236,13 @@ const Dashboard: React.FC = () => {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
+            {streak >= 2 && (
+              <div className="flex items-center gap-1.5 rounded-full bg-orange-100 px-3 py-1.5 text-sm font-semibold text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                title={`${streak}-day study streak`}>
+                <Flame className="h-4 w-4" />
+                {streak}-day streak
+              </div>
+            )}
             {daysUntilExam !== null && (
               <div className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
                 daysUntilExam <= 7

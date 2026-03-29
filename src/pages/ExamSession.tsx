@@ -13,6 +13,9 @@ import {
   ChevronDown,
   ChevronUp,
   Dumbbell,
+  Share2,
+  Copy,
+  Check,
 } from "lucide-react";
 import {
   selectStaticExamQuestions,
@@ -85,6 +88,7 @@ export default function ExamSession() {
   const [finalAnswers, setFinalAnswers] = useState<(number | null)[]>([]);
   const [history, setHistory] = useState<ExamAttempt[]>([]);
   const [showReview, setShowReview] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -523,8 +527,41 @@ export default function ExamSession() {
     const mins = Math.floor(attempt.durationSeconds / 60);
     const secs = attempt.durationSeconds % 60;
 
+    const shareText = `I just scored ${attempt.correct}/24 on a Haven mock Life in the UK exam! Feeling more confident about the real test. havenstudy.app`;
+
+    async function handleShare() {
+      if (navigator.share) {
+        try { await navigator.share({ text: shareText }); } catch { /* dismissed */ }
+      } else {
+        await navigator.clipboard.writeText(shareText);
+        setShareCopied(true);
+        setTimeout(() => setShareCopied(false), 2500);
+      }
+    }
+
     return (
       <div ref={scrollRef} className="mx-auto max-w-2xl space-y-8 px-4 py-10">
+
+        {/* Pass celebration */}
+        {attempt.passed && (
+          <div className="rounded-2xl border border-green-200 bg-green-50 p-5 dark:border-green-800 dark:bg-green-900/20">
+            <p className="font-semibold text-green-800 dark:text-green-200 mb-1">Well done on passing!</p>
+            <p className="text-sm text-green-700 dark:text-green-300 mb-4">
+              If you know anyone else preparing for the Life in the UK test, feel free to share Haven with them.
+            </p>
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center gap-2 rounded-xl bg-white border border-green-300 px-4 py-2 text-sm font-semibold text-green-700 hover:bg-green-50 transition-colors dark:bg-transparent dark:border-green-700 dark:text-green-300 dark:hover:bg-green-900/30"
+            >
+              {shareCopied ? (
+                <><Check className="h-4 w-4" /> Copied to clipboard</>
+              ) : (
+                <><Share2 className="h-4 w-4" /> Share Haven</>
+              )}
+            </button>
+          </div>
+        )}
+
         {/* Score circle */}
         <div className="text-center space-y-4">
           <div
