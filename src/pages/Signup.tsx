@@ -39,24 +39,12 @@ export default function Signup() {
   const passwordValid = passwordRules.every(r => r.ok);
 
   const planDetails = {
-    free: {
-      name: 'Free',
-      price: '£0',
-      icon: UserPlus,
-      color: 'gray'
-    },
-    plus: {
-      name: 'Haven Plus',
-      price: '£4.99',
-      icon: Zap,
-      color: 'teal'
-    },
-    premium: {
-      name: 'Haven Premium',
-      price: '£24.99',
-      icon: Crown,
-      color: 'amber'
-    }
+    free:        { name: 'Free',           price: '£0',     icon: UserPlus, color: 'gray'  },
+    plus:        { name: 'Haven Plus',     price: '£4.99',  icon: Zap,      color: 'teal'  },
+    plus_1m:     { name: 'Haven Plus',     price: '£4.99',  icon: Zap,      color: 'teal'  },
+    plus_3m:     { name: 'Haven Plus',     price: '£9.99',  icon: Zap,      color: 'teal'  },
+    premium:     { name: 'Haven Premium',  price: '£24.99', icon: Crown,    color: 'amber' },
+    premium_6m:  { name: 'Haven Premium',  price: '£24.99', icon: Crown,    color: 'amber' },
   };
 
   const plan = planDetails[selectedPlan as keyof typeof planDetails] || planDetails.free;
@@ -95,7 +83,8 @@ export default function Signup() {
         }).catch(() => {});
       }
 
-      if ((selectedPlan === 'plus' || selectedPlan === 'premium') && data.user && accessToken) {
+      const isPaidPlan = ['plus', 'plus_1m', 'plus_3m', 'premium', 'premium_6m'].includes(selectedPlan);
+      if (isPaidPlan && data.user && accessToken) {
         // Go straight to Stripe — skip the paywall detour
         setLoadingStep('checkout');
         const res = await fetch('/.netlify/functions/create-checkout-session', {
@@ -122,7 +111,7 @@ export default function Signup() {
       setError("");
       // Persist plan across the OAuth full-page redirect so Dashboard can
       // trigger checkout after the user returns.
-      if (selectedPlan === 'plus' || selectedPlan === 'premium') {
+      if (['plus', 'plus_1m', 'plus_3m', 'premium', 'premium_6m'].includes(selectedPlan)) {
         localStorage.setItem('pending_checkout_plan', selectedPlan);
       }
       await signInWithGoogle();
@@ -303,7 +292,7 @@ export default function Signup() {
 
           {(selectedPlan === 'plus' || selectedPlan === 'premium') && (
             <div className="rounded-xl border-2 border-teal-100 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/20 p-4 mb-4 text-sm text-teal-800 dark:text-teal-200">
-              After creating your account you'll be taken to our secure payment page to complete your {plan.name} subscription.
+              After creating your account you'll be taken to our secure payment page to complete your {plan.name} purchase.
             </div>
           )}
 
