@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 
 import { getCurrentUser } from "../lib/auth";
-import { hasAccessToModule } from "../lib/access";
+import { hasAccessToModuleSync } from "../lib/access";
+import { useSubscription } from "../lib/subscription";
 
 import {
   getAllLessons,
@@ -36,6 +37,7 @@ export default function PracticeIndex() {
   const modules = useMemo(() => getModules(), []);
   const allLessons = useMemo(() => getAllLessons(), []);
   const [user, setUser] = useState<any>(null);
+  const { tier } = useSubscription();
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -269,7 +271,7 @@ export default function PracticeIndex() {
                 hasPractice,
               } = summary;
 
-              const hasAccess = hasAccessToModule(module.slug, user);
+              const hasAccess = hasAccessToModuleSync(module.slug, user, tier);
               const isLocked = !hasAccess;
 
               return (

@@ -12,7 +12,8 @@ import {
 import { getLessonsForModule, getModules } from "../lib/content";
 import { useProgress } from "../lib/progress";
 import { getCurrentUser } from "../lib/auth";
-import { hasAccessToModule } from "../lib/access";
+import { hasAccessToModuleSync } from "../lib/access";
+import { useSubscription } from "../lib/subscription";
 
 type ProgressRecord = Record<string, { attempted: number; correct: number }>;
 
@@ -31,6 +32,7 @@ export default function PracticeSidebar({
     modules[0]?.slug ?? null
   );
   const [user, setUser] = useState<any>(null);
+  const { tier } = useSubscription();
 
   useEffect(() => {
     getCurrentUser().then(setUser);
@@ -160,7 +162,7 @@ export default function PracticeSidebar({
           {modules.map((module) => {
             const lessons = getLessonsForModule(module.slug);
             const isExpanded = expandedModule === module.slug;
-            const hasAccess = hasAccessToModule(module.slug, user);
+            const hasAccess = hasAccessToModuleSync(module.slug, user, tier);
             const isLocked = !hasAccess;
 
             const practiceableLessons = lessons.filter(
