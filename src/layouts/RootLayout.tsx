@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { WifiOff } from "lucide-react";
+import { AlertTriangle, WifiOff } from "lucide-react";
 
 import Navbar from "../components/Navbar";
 import PracticeSidebar from "../components/PracticeSidebar";
@@ -24,6 +24,7 @@ export default function RootLayout() {
   const [pippaOpen, setPippaOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
   const [contentReady, setContentReady] = useState(false);
+  const [contentLoadError, setContentLoadError] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline = useOnlineStatus();
@@ -44,6 +45,7 @@ export default function RootLayout() {
       })
       .catch(err => {
         console.error('Failed to load content:', err);
+        setContentLoadError(true);
         setContentReady(true);
       });
 
@@ -125,6 +127,17 @@ export default function RootLayout() {
   return (
     <div className="relative flex h-screen flex-col bg-gradient-to-br from-slate-50 via-white to-teal-50 text-slate-900 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900 dark:text-gray-100">
       <Navbar onOpenDrawer={showAnySidebar ? openDrawer : undefined} />
+
+      {/* Content load error banner */}
+      {contentLoadError && (
+        <div className="flex flex-shrink-0 items-center justify-center gap-2 border-b border-red-200 bg-red-50 py-2 text-xs text-red-700 dark:border-red-800/50 dark:bg-red-900/20 dark:text-red-300">
+          <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0" />
+          Couldn't load content.
+          <button onClick={() => window.location.reload()} className="underline font-medium">
+            Tap to retry
+          </button>
+        </div>
+      )}
 
       {/* Offline banner */}
       {!isOnline && (
