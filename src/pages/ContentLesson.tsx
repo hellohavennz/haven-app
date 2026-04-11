@@ -4,14 +4,23 @@ import LessonContent from '../components/LessonContent';
 import { getLessonById, getAllLessons, getModules } from '../lib/content';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { getAllProgress, markLessonRead } from '../lib/progress';
-import { CheckCircle2, Circle, ChevronLeft, ChevronRight, ClipboardList, Layers } from 'lucide-react';
+import { CheckCircle2, Circle, ChevronLeft, ChevronRight, ClipboardList, Layers, Lock } from 'lucide-react';
 import ReportButton from '../components/ReportButton';
+import { useSubscription } from '../lib/subscription';
+import { getCurrentUser } from '../lib/auth';
+import { hasAccessToModuleSync } from '../lib/access';
 
 const ContentLesson: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const lesson = lessonId ? getLessonById(lessonId) : null;
   usePageTitle(lesson?.title);
   const allLessons = getAllLessons();
+  const { tier } = useSubscription();
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    getCurrentUser().then(setUser);
+  }, []);
   const currentIndex = allLessons.findIndex(l => l.id === lessonId);
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
@@ -49,6 +58,37 @@ const ContentLesson: React.FC = () => {
         <Link to="/content" className="text-teal-600 hover:text-teal-700 font-semibold dark:text-teal-300 dark:hover:text-teal-200">
           ← Back to Study
         </Link>
+      </div>
+    );
+  }
+
+  // Gate access: free users can only view free-module lessons.
+  // Wait for user to load before enforcing (avoids a brief paywall flash for paid users).
+  if (user && !hasAccessToModuleSync(lesson.module_slug, user, tier)) {
+    return (
+      <div className="min-h-screen bg-white py-8 px-4 dark:bg-gray-950">
+        <div className="max-w-5xl mx-auto">
+          <Link to="/content" className="text-teal-600 hover:text-teal-700 font-semibold mb-6 inline-flex items-center dark:text-teal-300">
+            <ChevronLeft className="w-5 h-5 mr-1" />
+            Back to Study
+          </Link>
+          <h1 className="font-semibold text-slate-900 mt-2 mb-8 dark:text-gray-100">{lesson.title}</h1>
+          <div className="rounded-2xl border border-teal-200 bg-teal-50 p-10 text-center dark:bg-teal-900/20 dark:border-teal-800">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-100 dark:bg-teal-800/50 mb-4">
+              <Lock className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+            </div>
+            <h2 className="font-semibold text-slate-900 dark:text-white mb-2">This lesson is on the Plus plan</h2>
+            <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-sm mx-auto">
+              Unlock all 29 lessons, practice questions, and mock exams from £4.99.
+            </p>
+            <Link
+              to="/paywall"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-all"
+            >
+              View plans
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

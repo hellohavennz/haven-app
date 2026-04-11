@@ -17,15 +17,22 @@ export type SubscriptionStatus = {
 let _cachedTier: SubscriptionTier | null = null;
 // undefined = not yet loaded; null = loaded, no expiry set (old model or free)
 let _cachedAccessExpiresAt: string | null | undefined = undefined;
+let _cacheTimestamp: number | null = null;
+const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 export function clearSubscriptionCache(): void {
   _cachedTier = null;
   _cachedAccessExpiresAt = undefined;
+  _cacheTimestamp = null;
 }
 
 // Check subscription from profiles table (source of truth)
 export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
-  if (_cachedTier !== null) return _cachedTier;
+  const cacheValid =
+    _cachedTier !== null &&
+    _cacheTimestamp !== null &&
+    Date.now() - _cacheTimestamp < CACHE_TTL_MS;
+  if (cacheValid) return _cachedTier!;
 
   const user = await getCurrentUser();
 
@@ -52,11 +59,13 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
       if (accessExpiresAt !== null) {
         const expired = new Date(accessExpiresAt) <= new Date();
         _cachedTier = expired ? 'free' : tier;
+        _cacheTimestamp = Date.now();
         return _cachedTier;
       }
 
       // Legacy model: rely on subscription_tier directly (Stripe handles billing)
       _cachedTier = tier;
+      _cacheTimestamp = Date.now();
       return _cachedTier;
     }
 
@@ -76,6 +85,7 @@ export async function checkSubscriptionStatus(): Promise<SubscriptionTier> {
 
     _cachedTier = 'free';
     _cachedAccessExpiresAt = null;
+    _cacheTimestamp = Date.now();
     return _cachedTier;
   } catch {
     _cachedTier = 'free';

@@ -92,6 +92,9 @@ export const handler: Handler = async (event) => {
   if (!message?.trim()) {
     return { statusCode: 400, body: 'Message is required' };
   }
+  if (message.length > 4000) {
+    return { statusCode: 400, body: 'Message too long (max 4000 characters)' };
+  }
 
   // Build system prompt, optionally with user context
   const systemWithContext = context

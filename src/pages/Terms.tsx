@@ -35,13 +35,13 @@ export default function Terms() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-semibold text-slate-900 dark:text-white">3. Subscriptions and payments</h2>
+        <h2 className="font-semibold text-slate-900 dark:text-white">3. Purchases and payments</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
           <li><strong>Free plan:</strong> access to three free modules at no charge.</li>
           <li><strong>Haven Plus:</strong> one-off access pass for 30 days (£4.99) or 90 days (£9.99). Full access to all lessons, practice questions, flashcards, and 2 mock exams per month. No auto-renewal.</li>
           <li><strong>Haven Premium:</strong> one-off access pass for 180 days (£24.99). Everything in Plus, plus dynamic exams, Pippa AI, performance analytics, exam date reminders, and offline access. No auto-renewal.</li>
-          <li>Payments are processed by Stripe. By subscribing you authorise recurring charges to your payment method.</li>
-          <li>You may cancel your subscription at any time via your Profile page. Access continues until the end of the current billing period.</li>
+          <li>All purchases are one-off payments. There are no recurring charges and no automatic renewals.</li>
+          <li>Payments are processed securely by Stripe. Your access expires at the end of the purchased period.</li>
           <li>Prices are shown inclusive of any applicable taxes.</li>
         </ul>
       </section>
@@ -49,7 +49,7 @@ export default function Terms() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">4. Refunds</h2>
         <p className="text-sm leading-relaxed">
-          If you are not satisfied with your subscription, contact us at{' '}
+          If you are not satisfied with your purchase, contact us at{' '}
           <a href="mailto:support@haven.study" className="text-teal-600 hover:underline dark:text-teal-400">support@haven.study</a>{' '}
           within 14 days of your first payment and we will issue a full refund. After 14 days,
           refunds are at our discretion.
@@ -59,14 +59,14 @@ export default function Terms() {
       <section className="space-y-3">
         <h2 className="font-semibold text-slate-900 dark:text-white">5. Resit Support</h2>
         <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
-          <li>Resit Support is available to active Plus and Premium subscribers.</li>
+          <li>Resit Support is available to users with an active Plus or Premium access pass.</li>
           <li>
             To be eligible you must: have completed all study lessons, achieved an average
             practice score of 75% or higher, passed at least one mock exam, and sat your
             real Life in the UK test within the previous 14 days.
           </li>
           <li>You must submit photo evidence of your failed test result for verification.</li>
-          <li>If approved, your subscription will be extended by 30 days at no charge.</li>
+          <li>If approved, your access will be extended by 30 days at no charge.</li>
           <li>Resit Support does not cover the cost of rebooking your test.</li>
           <li>Each account may claim Resit Support once.</li>
           <li>We reserve the right to decline claims that do not meet the eligibility criteria.</li>

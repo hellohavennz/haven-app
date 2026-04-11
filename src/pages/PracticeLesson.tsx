@@ -2,10 +2,13 @@ import { useEffect, useMemo, useState, useRef } from "react";
 import { Link, Navigate, useParams, useNavigate, useLocation } from "react-router-dom";
 import { getLessonById, getAllLessons } from "../lib/content";
 import { recordAttempt } from "../lib/progress";
-import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap, ArrowRight } from "lucide-react";
+import { CheckCircle2, AlertCircle, Lightbulb, Brain, Zap, ArrowRight, Lock, ChevronLeft } from "lucide-react";
 import type { Question } from "../types";
 import ReportButton from "../components/ReportButton";
 import { usePageTitle } from '../hooks/usePageTitle';
+import { useSubscription } from "../lib/subscription";
+import { getCurrentUser } from "../lib/auth";
+import { hasAccessToModuleSync } from "../lib/access";
 
 function shuffle<T>(arr: T[]): T[] {
   const shuffled = arr.slice();
@@ -56,6 +59,12 @@ export default function PracticeLesson() {
   const location = useLocation();
   const data = lessonId ? getLessonById(lessonId) : null;
   usePageTitle(data?.title);
+  const { tier } = useSubscription();
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    getCurrentUser().then(setUser);
+  }, []);
 
   // Shuffle questions AND shuffle options within each question
   const shuffledQuestions = useMemo(() => {
@@ -101,6 +110,33 @@ export default function PracticeLesson() {
   }, [lessonId, location.pathname]);
 
   if (!data) return <div className="max-w-3xl mx-auto p-6 text-slate-900 dark:text-gray-100">Lesson not found.</div>;
+
+  if (user && !hasAccessToModuleSync(data.module_slug, user, tier)) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-8 text-slate-900 dark:text-gray-100">
+        <Link to="/practice" className="text-teal-600 hover:text-teal-700 font-semibold mb-6 inline-flex items-center dark:text-teal-300">
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          Back to Practice
+        </Link>
+        <h1 className="font-semibold text-slate-900 mt-2 mb-8 dark:text-gray-100">{data.title}</h1>
+        <div className="rounded-2xl border border-teal-200 bg-teal-50 p-10 text-center dark:bg-teal-900/20 dark:border-teal-800">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-100 dark:bg-teal-800/50 mb-4">
+            <Lock className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+          </div>
+          <h2 className="font-semibold text-slate-900 dark:text-white mb-2">This lesson is on the Plus plan</h2>
+          <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-sm mx-auto">
+            Unlock all 29 lessons, practice questions, and mock exams from £4.99.
+          </p>
+          <Link
+            to="/paywall"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition-all"
+          >
+            View plans
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (!hasQuestions && !showChoice) {
     return (
