@@ -9,6 +9,7 @@ import { getExamHistory, syncExamHistory, getReadinessStatus, getExamsThisMonth 
 import { isOnboardingComplete, getDaysUntilExam } from '../lib/onboarding';
 import type { ExamAttempt } from '../types';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { useProductTour } from '../hooks/useProductTour';
 import InstallHaven from '../components/InstallHaven';
 import FeedbackPrompt from '../components/FeedbackPrompt';
 import { useStudyStreak } from '../hooks/useStudyStreak';
@@ -95,6 +96,15 @@ const Dashboard: React.FC = () => {
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, tier, tierLoading]);
+
+  const { launchTour } = useProductTour();
+
+  // Launch the tour on first dashboard visit, after the page has rendered
+  useEffect(() => {
+    if (!isFirstVisit || isLoading) return;
+    const t = setTimeout(() => launchTour(), 900);
+    return () => clearTimeout(t);
+  }, [isFirstVisit, isLoading, launchTour]);
 
   const progress = useProgress(user?.id);
   const streak = useStudyStreak(user?.id);
@@ -409,7 +419,7 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div data-tour="dashboard-stats" className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {/* Overall Accuracy */}
           <div className="bg-teal-600 rounded-2xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-4">

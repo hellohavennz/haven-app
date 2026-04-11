@@ -122,13 +122,13 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
             {/* Desktop nav links — only shown when logged in */}
             {user && (
               <div className="hidden md:flex items-center gap-1">
-                <Link to="/content" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                <Link to="/content" data-tour="nav-study-desktop" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
                   Study
                 </Link>
-                <Link to="/practice" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                <Link to="/practice" data-tour="nav-practice-desktop" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
                   Practice
                 </Link>
-                <Link to="/exam" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
+                <Link to="/exam" data-tour="nav-exam-desktop" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">
                   Exam
                 </Link>
                 <Link to="/dashboard" className="px-4 py-2 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors dark:text-slate-200 dark:hover:bg-slate-800">

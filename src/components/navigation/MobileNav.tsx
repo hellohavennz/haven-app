@@ -40,6 +40,7 @@ export default function MobileNav({ pippaOpen }: MobileNavProps) {
       >
         <NavLink
           to="/content"
+          data-tour="nav-study-mobile"
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
@@ -55,6 +56,7 @@ export default function MobileNav({ pippaOpen }: MobileNavProps) {
 
         <NavLink
           to={practicePath}
+          data-tour="nav-practice-mobile"
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
@@ -71,6 +73,7 @@ export default function MobileNav({ pippaOpen }: MobileNavProps) {
 
         <NavLink
           to={flashcardsPath}
+          data-tour="nav-flashcards-mobile"
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",
@@ -86,6 +89,7 @@ export default function MobileNav({ pippaOpen }: MobileNavProps) {
 
         <NavLink
           to="/exam"
+          data-tour="nav-exam-mobile"
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",

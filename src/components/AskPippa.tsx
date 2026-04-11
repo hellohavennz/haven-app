@@ -162,6 +162,7 @@ export default function AskPippa({ isOpen, onOpen, onClose, hideMobileFloatingBt
       {!isOpen && (
         <button
           onClick={onOpen}
+          data-tour="pippa-btn"
           className={[
             "fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl",
             hideMobileFloatingBtn ? "hidden md:flex" : "flex",

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePageTitle } from '../hooks/usePageTitle';
+import { useProductTour } from '../hooks/useProductTour';
+import { Map } from 'lucide-react';
 import {
   BookOpen,
   Brain,
@@ -121,6 +123,7 @@ function FAQAccordion({ item }: { item: FAQItem }) {
 
 export default function Help() {
   usePageTitle('Help & Support', 'Answers to common questions about Haven Study, plus contact details if you need more support.');
+  const { launchTour } = useProductTour();
   const [activeTab, setActiveTab] = useState<'help' | 'facts'>('help');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -211,6 +214,25 @@ export default function Help() {
 
       {activeTab === 'help' && (
       <div className="space-y-12">
+
+      {/* Quick tour re-launch */}
+      <div className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
+            <Map className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+          </div>
+          <div>
+            <p className="font-semibold text-slate-900 dark:text-white text-sm">New to Haven?</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Take a 30-second guided tour of the main sections.</p>
+          </div>
+        </div>
+        <button
+          onClick={() => launchTour(true)}
+          className="flex-shrink-0 rounded-xl border border-teal-300 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-700 dark:bg-teal-900/20 dark:text-teal-300 dark:hover:bg-teal-900/40"
+        >
+          Show me around
+        </button>
+      </div>
 
       <div className="rounded-2xl border border-slate-200 bg-teal-50 p-8 dark:border-slate-800 dark:bg-slate-900">
         <h2 className="mb-6 font-semibold text-slate-900 dark:text-white">How to Use Haven</h2>

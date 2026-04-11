@@ -144,3 +144,212 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out;
 }
+
+/* ── Intro.js tour overrides ──────────────────────────────────────────────────
+   Override default Intro.js styles to match Haven's design system.
+   All rules use .introjs-* class specificity to avoid affecting app styles.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* Tooltip container */
+.introjs-tooltip {
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  max-width: 320px !important;
+  min-width: 280px !important;
+  padding: 20px 20px 16px !important;
+  background-color: #ffffff !important;
+  font-family: 'Source Sans 3', system-ui, sans-serif !important;
+  border: 1px solid #dde3e1 !important;
+}
+
+/* Tooltip title */
+.introjs-tooltip-title {
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #17201E !important;
+  margin-bottom: 8px !important;
+  line-height: 1.3 !important;
+}
+
+/* Tooltip body text */
+.introjs-tooltiptext {
+  font-family: 'Source Sans 3', system-ui, sans-serif !important;
+  font-size: 14px !important;
+  color: #4F5F5B !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Arrow colour to match white tooltip */
+.introjs-arrow {
+  border-color: transparent !important;
+}
+.introjs-arrow.top,
+.introjs-arrow.top-right,
+.introjs-arrow.top-middle {
+  border-bottom-color: #ffffff !important;
+}
+.introjs-arrow.bottom,
+.introjs-arrow.bottom-right,
+.introjs-arrow.bottom-middle {
+  border-top-color: #ffffff !important;
+}
+.introjs-arrow.left,
+.introjs-arrow.left-bottom {
+  border-right-color: #ffffff !important;
+}
+.introjs-arrow.right,
+.introjs-arrow.right-bottom {
+  border-left-color: #ffffff !important;
+}
+
+/* Button row */
+.introjs-tooltipbuttons {
+  border-top: 1px solid #f0f3f2 !important;
+  padding-top: 12px !important;
+  margin-top: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Reset all Intro.js button overrides from our global button rule */
+.introjs-button {
+  font-family: 'Source Sans 3', system-ui, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 7px 16px !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+  text-shadow: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
+}
+
+/* Next / Done button — teal primary */
+.introjs-nextbutton,
+.introjs-donebutton {
+  background-color: #4E8571 !important;
+  border: 1px solid #4E8571 !important;
+  color: #ffffff !important;
+  margin-left: auto !important;
+}
+.introjs-nextbutton:hover,
+.introjs-donebutton:hover {
+  background-color: #3D6B59 !important;
+  border-color: #3D6B59 !important;
+  color: #ffffff !important;
+}
+
+/* Back / Prev button — ghost */
+.introjs-prevbutton {
+  background-color: transparent !important;
+  border: 1px solid #c3ceca !important;
+  color: #4F5F5B !important;
+}
+.introjs-prevbutton:hover {
+  background-color: #f0f3f2 !important;
+  color: #17201E !important;
+}
+.introjs-prevbutton.introjs-disabled {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Skip button — subtle text link */
+.introjs-skipbutton {
+  font-family: 'Source Sans 3', system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #8fa39d !important;
+  background: none !important;
+  border: none !important;
+  padding: 4px 8px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  margin-right: auto !important;
+  order: -1 !important;
+}
+.introjs-skipbutton:hover {
+  color: #4F5F5B !important;
+}
+
+/* Progress bar */
+.introjs-progress {
+  background-color: #dde3e1 !important;
+  border-radius: 99px !important;
+  height: 3px !important;
+  margin: 0 0 14px !important;
+}
+.introjs-progressbar {
+  background-color: #4E8571 !important;
+  border-radius: 99px !important;
+}
+
+/* Bullet dots — hidden (we use progress bar instead) */
+.introjs-bullets {
+  display: none !important;
+}
+
+/* Highlight box around the target element */
+.introjs-helperLayer {
+  border-radius: 10px !important;
+  box-shadow:
+    0 0 0 2px #4E8571,
+    0 0 0 5000px rgba(23, 32, 30, 0.4) !important;
+}
+
+/* Helper number badge — hidden */
+.introjs-helperNumberLayer {
+  display: none !important;
+}
+
+/* Dark mode adjustments */
+.dark .introjs-tooltip {
+  background-color: #1e2d2a !important;
+  border-color: #2e4a44 !important;
+}
+.dark .introjs-tooltip-title {
+  color: #f0f3f2 !important;
+}
+.dark .introjs-tooltiptext {
+  color: #c3ceca !important;
+}
+.dark .introjs-tooltipbuttons {
+  border-top-color: #2e4a44 !important;
+}
+.dark .introjs-prevbutton {
+  border-color: #3a4f4a !important;
+  color: #c3ceca !important;
+}
+.dark .introjs-prevbutton:hover {
+  background-color: #2e4a44 !important;
+  color: #f0f3f2 !important;
+}
+.dark .introjs-arrow.top,
+.dark .introjs-arrow.top-right,
+.dark .introjs-arrow.top-middle {
+  border-bottom-color: #1e2d2a !important;
+}
+.dark .introjs-arrow.bottom,
+.dark .introjs-arrow.bottom-right,
+.dark .introjs-arrow.bottom-middle {
+  border-top-color: #1e2d2a !important;
+}
+.dark .introjs-arrow.left,
+.dark .introjs-arrow.left-bottom {
+  border-right-color: #1e2d2a !important;
+}
+.dark .introjs-arrow.right,
+.dark .introjs-arrow.right-bottom {
+  border-left-color: #1e2d2a !important;
+}
+.dark .introjs-progress {
+  background-color: #2e4a44 !important;
+}
+.dark .introjs-helperLayer {
+  box-shadow:
+    0 0 0 2px #5F9D86,
+    0 0 0 5000px rgba(14, 22, 20, 0.5) !important;
+}
