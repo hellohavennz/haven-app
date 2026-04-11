@@ -9,6 +9,7 @@
  */
 
 import { schedule } from '@netlify/functions';
+import type { HandlerEvent } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 
 const ADMIN_EMAIL = 'hello.haven.nz@gmail.com';
@@ -200,7 +201,16 @@ function buildEmail({
 
 // ── Main handler ──────────────────────────────────────────────────────────────
 
-const digest = async () => {
+const digest = async (event: HandlerEvent) => {
+  let isScheduled = false;
+  try { isScheduled = !!JSON.parse(event.body || '{}').next_run; } catch { /* ok */ }
+  if (!isScheduled) {
+    const secret = event.headers?.['x-cron-secret'];
+    if (!process.env.CRON_SECRET || secret !== process.env.CRON_SECRET) {
+      return { statusCode: 401, body: 'Unauthorized' };
+    }
+  }
+
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY not set');
     return { statusCode: 500, body: 'RESEND_API_KEY not configured' };

@@ -14,6 +14,7 @@
  */
 
 import { schedule } from '@netlify/functions';
+import type { HandlerEvent } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 
 const FROM = 'Haven <reminders@haven.study>';
@@ -162,7 +163,17 @@ function oneDayEmail(): { subject: string; html: string } {
 // schedule() wraps the function so it runs on cron AND remains HTTP-invocable
 // for manual testing via POST /.netlify/functions/send-exam-reminders
 
-const reminder = async () => {
+const reminder = async (event: HandlerEvent) => {
+  // Allow scheduled invocations (body contains next_run); require secret for manual HTTP calls
+  let isScheduled = false;
+  try { isScheduled = !!JSON.parse(event.body || '{}').next_run; } catch { /* ok */ }
+  if (!isScheduled) {
+    const secret = event.headers?.['x-cron-secret'];
+    if (!process.env.CRON_SECRET || secret !== process.env.CRON_SECRET) {
+      return { statusCode: 401, body: 'Unauthorized' };
+    }
+  }
+
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not set — skipping reminder run');
     return { statusCode: 500, body: 'RESEND_API_KEY not configured' };
