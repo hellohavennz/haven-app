@@ -257,8 +257,17 @@
   pointer-events: none !important;
 }
 
-/* Skip button — subtle text link */
+/* Skip button — sits in the top-right corner of the tooltip header.
+   Intro.js renders it as position:absolute with a fixed 45px square size
+   designed for a single × glyph. We override to fit a short text label. */
 .introjs-skipbutton {
+  position: absolute !important;
+  top: 8px !important;
+  right: 10px !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1.4 !important;
+  white-space: nowrap !important;
   font-family: 'Source Sans 3', system-ui, sans-serif !important;
   font-size: 12px !important;
   font-weight: 500 !important;
@@ -268,8 +277,6 @@
   padding: 4px 8px !important;
   text-decoration: none !important;
   cursor: pointer !important;
-  margin-right: auto !important;
-  order: -1 !important;
 }
 .introjs-skipbutton:hover {
   color: #4F5F5B !important;

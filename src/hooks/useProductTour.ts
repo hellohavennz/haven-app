@@ -171,7 +171,7 @@ export function useProductTour() {
       overlayOpacity:    0.4,
       nextLabel:         'Next',
       prevLabel:         'Back',
-      skipLabel:         'Skip tour',
+      skipLabel:         'Skip',
       doneLabel:         "Let's go",
     });
 
