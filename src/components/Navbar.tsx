@@ -108,6 +108,7 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
               <button
                 type="button"
                 onClick={onOpenDrawer}
+                data-tour="module-drawer-btn"
                 className="md:hidden rounded-md p-2 text-slate-700 hover:bg-slate-100 transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
                 aria-label="Open module navigation"
               >
@@ -173,6 +174,7 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
               <div className="relative" ref={profileMenuRef}>
                 <button
                   onClick={() => setProfileMenuOpen(v => !v)}
+                  data-tour="profile-btn"
                   aria-label="Profile menu"
                   className="rounded-full hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                 >

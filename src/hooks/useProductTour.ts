@@ -24,7 +24,7 @@ import { useCallback } from 'react';
 import introJs from 'intro.js';
 
 const TOUR_SEEN_KEY = 'haven-tour-seen';
-const TOUR_VERSION  = '1'; // bump this string to re-show the tour to everyone
+const TOUR_VERSION  = '2'; // bump this string to re-show the tour to everyone
 
 export function isTourSeen(): boolean {
   try {
@@ -37,7 +37,7 @@ export function isTourSeen(): boolean {
 function markTourSeen(): void {
   try {
     localStorage.setItem(TOUR_SEEN_KEY, TOUR_VERSION);
-  } catch { /* storage unavailable — ok */ }
+  } catch { /* storage unavailable, ok */ }
 }
 
 /**
@@ -51,7 +51,9 @@ function queryVisible(selector: string): HTMLElement | null {
   return width === 0 && height === 0 ? null : el;
 }
 
-type StepPosition = 'top' | 'bottom' | 'left' | 'right' | 'auto' | 'floating';
+type StepPosition = 'top' | 'bottom' | 'left' | 'right' | 'floating'
+  | 'top-right-aligned' | 'top-left-aligned' | 'top-middle-aligned'
+  | 'bottom-right-aligned' | 'bottom-left-aligned' | 'bottom-middle-aligned';
 
 interface RawStep {
   selector?: string;   // undefined = floating/centered tooltip (no element highlight)
@@ -72,7 +74,7 @@ export function useProductTour() {
       {
         title: 'Welcome to Haven',
         intro:
-          "A quick look at how Haven is structured. Takes about 30 seconds — or skip if you'd rather explore on your own.",
+          "A quick look at how Haven is structured. Takes about 30 seconds. Skip any time if you'd rather explore on your own.",
       },
 
       // Step 2: Dashboard stats
@@ -80,38 +82,56 @@ export function useProductTour() {
         selector: '[data-tour="dashboard-stats"]',
         title: 'Your progress, at a glance',
         intro:
-          'Your dashboard shows accuracy, lessons mastered, and how you\'re tracking against your exam date. It updates automatically as you study.',
+          "Your dashboard shows accuracy, lessons mastered, and how you're tracking against your exam date. It updates automatically as you study.",
         position: 'bottom',
       },
 
-      // Step 3: Study
+      // Step 3: Profile / account menu — always shown, both mobile and desktop
+      {
+        selector: '[data-tour="profile-btn"]',
+        title: 'Your account menu',
+        intro:
+          "Tap your avatar to access your Profile, Dashboard, Help, and Sign Out. Premium users also see Analytics here.",
+        position: 'bottom-left-aligned',
+      },
+
+      // Step 4: Mobile bottom nav overview — mobile only (filtered on desktop via queryVisible)
+      {
+        selector: '[data-tour="mobile-nav"]',
+        title: 'Your study shortcuts',
+        intro:
+          "This bar at the bottom gives you one-tap access to Study, Practice, Flashcards, and Exam. It's always visible so you can switch sections instantly.",
+        position: 'top',
+      },
+
+      // Step 5: Study
       {
         selector: `[data-tour="nav-study${navSuffix}"]`,
         title: 'Start with Study',
         intro:
-          'Work through lessons covering each topic from the official syllabus. Start here if you\'re new, or when revisiting a topic.',
+          "Work through lessons covering each topic from the official syllabus. Start here if you're new, or when revisiting a topic.",
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 4: Practice
+      // Step 6: Practice
       {
         selector: `[data-tour="nav-practice${navSuffix}"]`,
         title: 'Test what you know',
         intro:
-          'Exam-style questions — the same format as the real test. Every answer includes a detailed explanation, so wrong answers become learning moments.',
+          "Exam-style questions in the same format as the real test. Every answer includes a detailed explanation, so wrong answers become learning moments.",
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 5: Flashcards
+      // Step 7: Flashcards
       // Mobile: targets the MobileNav item.
-      // Desktop: floating step (Flashcards has no top-level Navbar link — it's inside Practice).
+      // Desktop: floating step (no top-level Navbar link; Flashcards lives inside Practice).
       ...(isMobile
         ? [
             {
               selector: '[data-tour="nav-flashcards-mobile"]',
               title: 'Lock in the facts',
               intro:
-                'Flashcards are for dates, names, and figures that need to stick. Most effective after you\'ve read the lesson — not instead of it.',
+                "Flashcards are for dates, names, and figures that need to stick. Most effective after reading the lesson, not instead of it.",
               position: 'top' as StepPosition,
             },
           ]
@@ -119,20 +139,29 @@ export function useProductTour() {
             {
               title: 'Lock in the facts',
               intro:
-                "Flashcards live inside the Practice section, at the top of each lesson. Use them to lock in dates, names, and figures — best after you've read the lesson first.",
+                "Flashcards live inside the Practice section, at the top of each lesson. Best used to lock in dates, names, and figures after reading the lesson first.",
             },
           ]),
 
-      // Step 6: Mock exam
+      // Step 8: Mock exam
       {
         selector: `[data-tour="nav-exam${navSuffix}"]`,
         title: "When you're ready",
         intro:
-          "Mock exam: 24 questions, 45 minutes, no hints — the real format. Take it once you've covered the material. Your first score is a baseline, not a verdict.",
+          "Mock exam: 24 questions, 45 minutes, no hints. The real format. Take it once you've covered the material. Your first score is a baseline, not a verdict.",
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 7: Pippa (conditionally shown — button only exists if tier === 'premium')
+      // Step 9: Module drawer — floating step so it always shows.
+      // The burger button only appears on study/practice pages on mobile, so we
+      // describe where to find it rather than targeting the element directly.
+      {
+        title: 'Jump between modules',
+        intro:
+          "On the Study, Practice, and Flashcard pages, tap the menu icon in the top left to see all modules. You can jump to any topic at any time without going back to the start.",
+      },
+
+      // Step 10: Pippa (conditionally shown — button only exists if tier === 'premium')
       {
         selector: '[data-tour="pippa-btn"]',
         title: 'Meet Pippa',
