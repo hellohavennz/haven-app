@@ -216,22 +216,26 @@ export default function Help() {
       <div className="space-y-12">
 
       {/* Quick tour re-launch */}
-      <div className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/40">
-            <Map className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+      <div className="rounded-2xl border-2 border-teal-200 bg-teal-50 p-6 dark:border-teal-800 dark:bg-teal-900/20">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600">
+              <Map className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <p className="font-semibold text-slate-900 dark:text-white">New to Haven?</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-0.5">
+                Take a 30-second guided tour of all the main sections — Study, Practice, Flashcards, and Exam.
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="font-semibold text-slate-900 dark:text-white text-sm">New to Haven?</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Take a 30-second guided tour of the main sections.</p>
-          </div>
+          <button
+            onClick={() => launchTour(true)}
+            className="flex-shrink-0 rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700 dark:hover:bg-teal-500"
+          >
+            Show me around
+          </button>
         </div>
-        <button
-          onClick={() => launchTour(true)}
-          className="flex-shrink-0 rounded-xl border border-teal-300 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-100 dark:border-teal-700 dark:bg-teal-900/20 dark:text-teal-300 dark:hover:bg-teal-900/40"
-        >
-          Show me around
-        </button>
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-teal-50 p-8 dark:border-slate-800 dark:bg-slate-900">
