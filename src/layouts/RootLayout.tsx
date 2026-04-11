@@ -9,7 +9,8 @@ import StudySidebar from "../components/navigation/StudySidebar";
 import AskPippa from "../components/AskPippa";
 import { Link } from "react-router-dom";
 import { preloadContent } from "../lib/content";
-import { checkSubscriptionStatus, useSubscription } from "../lib/subscription";
+import { checkSubscriptionStatus, clearSubscriptionCache, useSubscription } from "../lib/subscription";
+import type { SubscriptionTier } from "../lib/subscription";
 import { preloadOnboarding } from "../lib/onboarding";
 import { recordLoginEvent } from "../lib/adminApi";
 import { supabase } from "../lib/supabase";
@@ -18,6 +19,7 @@ import { useOnlineStatus, syncProgressOnReconnect } from "../lib/offline";
 export default function RootLayout() {
   const location = useLocation();
   const { tier } = useSubscription();
+  const [effectiveTier, setEffectiveTier] = useState<SubscriptionTier>('free');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pippaOpen, setPippaOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
@@ -29,7 +31,8 @@ export default function RootLayout() {
 
   useEffect(() => {
     Promise.all([preloadContent(), checkSubscriptionStatus(), preloadOnboarding()])
-      .then(() => {
+      .then(([, resolvedTier]) => {
+        setEffectiveTier(resolvedTier as SubscriptionTier);
         setContentReady(true);
         supabase.auth.getUser().then(({ data }) => {
           if (data.user) {
@@ -45,9 +48,18 @@ export default function RootLayout() {
       });
 
     // Keep isLoggedIn in sync with auth state changes (e.g. logout)
-    const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange((_event, session) => {
+    // Also re-check subscription on sign-in/out to avoid stale cached tier
+    const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange((event, session) => {
       setIsLoggedIn(!!session?.user);
-      if (!session?.user) setIsAdmin(false);
+      if (!session?.user) {
+        setIsAdmin(false);
+        clearSubscriptionCache();
+        setEffectiveTier('free');
+      }
+      if (event === 'SIGNED_IN') {
+        clearSubscriptionCache();
+        checkSubscriptionStatus().then(setEffectiveTier);
+      }
     });
     return () => authSub.unsubscribe();
   }, []);
@@ -205,7 +217,7 @@ export default function RootLayout() {
         </>
       )}
 
-      {tier === 'premium' && isLoggedIn && !isAdmin && (
+      {effectiveTier === 'premium' && isLoggedIn && !isAdmin && (
         <AskPippa
           isOpen={pippaOpen}
           onOpen={() => setPippaOpen(true)}

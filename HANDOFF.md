@@ -21,19 +21,38 @@ _Last updated: 2026-03-12 (session 18)_
 - `/blog/how-to-choose-life-in-the-uk-test-study-app/`
 - Both added to `public/sitemap.xml`
 
-### Pricing restructure (one-off access model)
+### /uk/instagram removed
+- Route and Instagram.tsx deleted — traffic now directed to haven.study instead
+- Instagram bio link updated to haven.study
+
+### FAQ overhaul (haven.study)
+- Expanded from 8 to 12 questions
+- New questions: official alignment depth, exam-style realism, 1000+ objection, failed test resit, handbook needed, short vs long study, one-off access model
+- Fixed: offline access attribution (Premium only, not Plus); Resit Support "30 days" not "one month"
+- JSON-LD FAQPage schema updated to 8 SEO-targeted questions
+
+### Consistency pass (Instagram + Help + Terms)
+- Instagram.tsx: updated to 4-tier pricing before removal
+- Help.tsx: "extend your subscription by one free month" fixed to "extend your access by 30 days"
+- Terms.tsx: "first two modules" fixed to "three free modules"; pricing updated to one-off model
+
+### Module 3 (modern-society) free access fix
+- FREE_MODULES in access.ts already included modern-society but is_free in Supabase was false
+- Fix: run `UPDATE modules SET is_free = true WHERE slug = 'modern-society';` in Supabase SQL editor
+
+### Pricing restructure (one-off access model, 4 tiers)
 - **DB migration 000021**: `access_expires_at TIMESTAMPTZ` added to profiles
-- **Stripe**: now uses `mode: 'payment'` with `plus_1m` (£4.99/30d) and `plus_3m` (£9.99/90d)
-- **New env vars needed in Netlify**: `STRIPE_PLUS_1M_PRICE_ID`, `STRIPE_PLUS_3M_PRICE_ID`
-- **create-checkout-session.ts**: rewrote for one-time payments, duration metadata
-- **stripe-webhook.ts**: handles `checkout.session.completed` for `mode=payment` (sets access_expires_at); legacy subscription handlers kept for backward compat
-- **subscription.ts**: checks `access_expires_at` expiry; returns `accessExpiresAt` from hook; `hasPremium` is now alias for `hasPlus` (all paid users get full access)
-- **ask-pippa.ts**: allows any user with active access, not just `tier=premium`
-- **approve-resit-claim.ts**: extends `access_expires_at` for new model; legacy Stripe trial extension kept for old subscribers
-- **Paywall.tsx**: new 2-plan UI (1 Month / 3 Months), per-week pricing, active access notice, extend flow, no Premium tier
-- **App.tsx**: pricing section updated, planPremiumExtras removed, trust signals updated
-- **Profile.tsx**: shows access expiry + Extend link for new model; keeps Stripe portal for legacy; analytics section open to all hasPlus
-- **haven.study**: pricing section, structured data, resit support, FAQ updated
+- **Stripe**: now uses `mode: 'payment'` with plan keys `plus_1m` (30d), `plus_3m` (90d), `premium_6m` (180d)
+- **New env vars needed in Netlify**: `STRIPE_PLUS_1M_PRICE_ID`, `STRIPE_PLUS_3M_PRICE_ID`, `STRIPE_PREMIUM_6M_PRICE_ID`
+- **create-checkout-session.ts**: rewrote for one-time payments; duration stored in metadata; plan key determines tier
+- **stripe-webhook.ts**: `checkout.session.completed` for `mode=payment` calculates `access_expires_at` (stacks on existing), sets tier via plan key (`premium_6m` = 'premium', others = 'plus'); legacy subscription handlers kept for backward compat
+- **subscription.ts**: checks `access_expires_at` expiry (returns 'free' if expired); returns `accessExpiresAt` from hook; `hasPremium: tier === 'premium'` (distinct from hasPlus); `hasPlus: tier === 'plus' || tier === 'premium'`
+- **ask-pippa.ts**: Premium-only check restored (not just any paid user)
+- **approve-resit-claim.ts**: extends `access_expires_at` by 30 days for new model; legacy Stripe trial extension kept for old subscribers
+- **Paywall.tsx**: 4-column grid (Free | Plus 1M | Plus 3M | Premium 6M), per-week pricing, active access notice with expiry, extend flow, amber Premium card with Crown icon
+- **App.tsx**: 4-column pricing grid, planPlusFeatures + planPremiumExtras, trust signals updated ("No Auto-Renewal")
+- **Profile.tsx**: shows access expiry + Extend link for new model; keeps Stripe portal for legacy; analytics gated to Premium only (restored)
+- **haven.study**: 3-column Plus grid + full-width Premium banner row below it; Pippa removed from Plus cards
 
 ---
 
@@ -100,20 +119,27 @@ _Last updated: 2026-03-12 (session 18)_
 
 ## Subscription tiers (source of truth)
 
-| Feature | Free | Plus (£4.99/mo) | Premium (£24.99/6 mo) |
-|---|---|---|---|
-| Lessons | 2 modules | All 29 | All 29 |
-| Practice questions | Free modules only | 500+ | 500+ |
-| Flashcards | 5 per session | All | All |
-| Mock exams | — | 2 / month | 2 / month |
-| Dynamic exam | — | — | ✅ |
-| Resit Support | — | ✅ | ✅ |
-| Pippa AI (AskPippa) | — | — | ✅ |
-| Performance analytics | — | — | ✅ |
-| Offline access | — | — | ✅ |
-| Priority support | — | — | ✅ |
+One-off access passes (no recurring billing). Legacy monthly subscribers still work via old subscription handlers.
+
+| Feature | Free | Plus 1M (£4.99) | Plus 3M (£9.99) | Premium 6M (£24.99) |
+|---|---|---|---|---|
+| Lessons | 3 free modules | All 29 | All 29 | All 29 |
+| Practice questions | Free modules only | 500+ | 500+ | 500+ |
+| Flashcards | Free modules only | All | All | All |
+| Mock exams | — | 2 / month | 2 / month | 2 / month |
+| Dynamic exam | — | — | — | ✅ |
+| Resit Support | — | ✅ | ✅ | ✅ |
+| Pippa AI (AskPippa) | — | — | — | ✅ |
+| Performance analytics | — | — | — | ✅ |
+| Exam date reminders | — | — | — | ✅ |
+| Offline access | — | — | — | ✅ |
+| Priority support | — | — | — | ✅ |
 
 `profiles.subscription_tier` values: `'free'` | `'plus'` | `'premium'`
+`profiles.access_expires_at`: `NULL` = legacy recurring subscriber; timestamp = new one-off purchase user
+
+Access stacking: re-purchasing extends from existing expiry (not purchase date).
+Backward compat: old legacy `customer.subscription.deleted` webhook still resets tier to 'free' when old subscriptions lapse.
 
 ---
 
@@ -269,8 +295,11 @@ SUPABASE_SERVICE_ROLE_KEY    # Secret key (haven_netlify_functions) — server-o
 VITE_STRIPE_PUBLISHABLE_KEY  # safe for browser
 STRIPE_SECRET_KEY            # server-only
 STRIPE_WEBHOOK_SECRET        # whsec_... from Stripe dashboard
-STRIPE_PLUS_PRICE_ID         # price_... for Plus monthly
-STRIPE_PREMIUM_PRICE_ID      # price_... for Premium 6-monthly
+STRIPE_PLUS_PRICE_ID         # price_... for Plus monthly (legacy — keep for old subscribers)
+STRIPE_PREMIUM_PRICE_ID      # price_... for Premium 6-monthly (legacy — keep for old subscribers)
+STRIPE_PLUS_1M_PRICE_ID      # price_... for Plus 1 Month one-off (£4.99) — NEW, needs creating in Stripe
+STRIPE_PLUS_3M_PRICE_ID      # price_... for Plus 3 Months one-off (£9.99) — NEW, needs creating in Stripe
+STRIPE_PREMIUM_6M_PRICE_ID   # price_... for Premium 6 Months one-off (£24.99) — NEW, needs creating in Stripe
 ANTHROPIC_API_KEY            # server-only, used by ask-pippa function
 ```
 
@@ -559,6 +588,30 @@ Article body in Markdown...
 ---
 
 ## Next session — tasks queued
+
+### ✅ Stripe new products — DONE
+- `STRIPE_PLUS_1M_PRICE_ID` = `price_1T9vsl9UvTYU80N1V5nFYk48` (Plus 1 Month, £4.99)
+- `STRIPE_PLUS_3M_PRICE_ID` = `price_1T9vvE9UvTYU80N1MgvuqH3Z` (Plus 3 Months, £9.99)
+- `STRIPE_PREMIUM_6M_PRICE_ID` = existing Premium price ID (renamed from STRIPE_PREMIUM_PRICE_ID)
+All 3 env vars set in Netlify.
+
+### Pending — Supabase migration 000021 (user action required)
+Run in Supabase SQL editor:
+```sql
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
+```
+(File: `supabase/migrations/20260312000021_access_expires_at.sql`)
+
+### Pending — GSC indexing
+Request indexing in Google Search Console for:
+- `https://havenstudy.app/blog/life-in-the-uk-test-pass-rate/`
+- `https://havenstudy.app/blog/how-to-choose-life-in-the-uk-test-study-app/`
+- `https://havenstudy.app/uk/terms`
+
+### Pending — send-exam-reminders.ts check
+Currently filters `subscription_tier = 'premium'`. This is correct for the new model BUT should also verify `access_expires_at > NOW()` for new-model users (so expired Premium users don't receive reminders). Update the Supabase query in `send-exam-reminders.ts`.
+
+
 
 ### ✅ Stripe live mode — DONE
 All env vars set, webhook live, coupons created, checkout confirmed working.

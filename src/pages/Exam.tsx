@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { getCurrentUser } from "../lib/auth";
 import { useSubscription } from "../lib/subscription";
-import { getExamHistory, getReadinessStatus, getExamsThisMonth, MODULE_LABELS } from "../lib/examUtils";
+import { syncExamHistory, getReadinessStatus, getExamsThisMonth, MODULE_LABELS } from "../lib/examUtils";
 import type { ExamAttempt } from "../types";
 import { usePageTitle } from '../hooks/usePageTitle';
 
@@ -25,7 +25,7 @@ export default function Exam() {
 
   useEffect(() => {
     getCurrentUser().then(setUser);
-    setHistory(getExamHistory());
+    syncExamHistory().then(setHistory);
   }, []);
 
   const hasPlus = user && (tier === "plus" || tier === "premium");

@@ -74,16 +74,17 @@ export default function Signup() {
 
       const accessToken = data.session?.access_token;
 
-      // Fire-and-forget welcome email
-      if (accessToken) {
+      const isPaidPlan = ['plus', 'plus_1m', 'plus_3m', 'premium', 'premium_6m'].includes(selectedPlan);
+
+      // Only send the free welcome email for free signups.
+      // Paid signups receive an access confirmation email from the Stripe webhook after payment.
+      if (accessToken && !isPaidPlan) {
         fetch('/.netlify/functions/send-welcome-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
           body: JSON.stringify({ email, name: name.trim() || undefined }),
         }).catch(() => {});
       }
-
-      const isPaidPlan = ['plus', 'plus_1m', 'plus_3m', 'premium', 'premium_6m'].includes(selectedPlan);
       if (isPaidPlan && data.user && accessToken) {
         // Go straight to Stripe — skip the paywall detour
         setLoadingStep('checkout');
@@ -290,7 +291,7 @@ export default function Signup() {
             </div>
           </div>
 
-          {(selectedPlan === 'plus' || selectedPlan === 'premium') && (
+          {['plus', 'plus_1m', 'plus_3m', 'premium', 'premium_6m'].includes(selectedPlan) && (
             <div className="rounded-xl border-2 border-teal-100 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/20 p-4 mb-4 text-sm text-teal-800 dark:text-teal-200">
               After creating your account you'll be taken to our secure payment page to complete your {plan.name} purchase.
             </div>
