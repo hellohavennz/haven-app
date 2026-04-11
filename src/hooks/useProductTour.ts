@@ -178,8 +178,10 @@ export function useProductTour() {
     // Scroll the target element into view using scrollIntoView, which
     // respects the nearest scrollable ancestor (<main> in Haven).
     // Fixed elements (nav items) are skipped — they're always visible.
-    tour.onchange(function (this: HTMLElement) {
-      const el = this as HTMLElement;
+    // NOTE: in intro.js v8 the callback receives the element as the first
+    // argument; `this` is the Tour instance, NOT the element.
+    tour.onchange(function(targetElement: HTMLElement) {
+      const el = targetElement;
       if (!el || el === document.documentElement || el === document.body) return;
       const position = window.getComputedStyle(el).position;
       if (position === 'fixed' || position === 'sticky') return;
@@ -190,7 +192,9 @@ export function useProductTour() {
     tour.oncomplete(markTourSeen);
     tour.onexit(markTourSeen);
 
-    tour.start();
+    tour.start().catch((err: unknown) => {
+      console.error('[Haven tour] start() failed:', err);
+    });
   }, []);
 
   return { launchTour };
