@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getCurrentUser, logout } from "../lib/auth";
 import { onAuthStateChange } from "../lib/auth";
@@ -20,6 +20,26 @@ function Avatar({ user }: { user: any }) {
   return (
     <div className="h-8 w-8 rounded-full bg-teal-600 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
       {getInitials(user)}
+    </div>
+  );
+}
+
+const DRAWER_HINT_KEY = 'haven-drawer-hint-seen';
+
+function DrawerHint({ onDismiss }: { onDismiss: () => void }) {
+  return (
+    <div className="absolute left-0 top-[calc(100%+8px)] z-[100] w-56 rounded-xl bg-slate-900 p-4 shadow-xl dark:bg-slate-700">
+      {/* Arrow pointing up to the burger button */}
+      <div className="absolute -top-1.5 left-3.5 h-3 w-3 rotate-45 rounded-sm bg-slate-900 dark:bg-slate-700" />
+      <p className="text-xs leading-relaxed text-white/90">
+        Tap here to browse all modules and jump to any topic at any time.
+      </p>
+      <button
+        onClick={onDismiss}
+        className="mt-3 text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors"
+      >
+        Got it
+      </button>
     </div>
   );
 }
@@ -70,6 +90,32 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
     navigate("/");
   };
 
+  const [showDrawerHint, setShowDrawerHint] = useState(false);
+
+  const dismissDrawerHint = useCallback(() => {
+    setShowDrawerHint(false);
+    try { localStorage.setItem(DRAWER_HINT_KEY, '1'); } catch { /* ok */ }
+  }, []);
+
+  // Show the coachmark once on mobile when the burger is present (study pages)
+  useEffect(() => {
+    if (!onOpenDrawer) return;
+    if (window.innerWidth >= 768) return;
+    try {
+      if (!localStorage.getItem(DRAWER_HINT_KEY)) {
+        const t = setTimeout(() => setShowDrawerHint(true), 600);
+        return () => clearTimeout(t);
+      }
+    } catch { /* ok */ }
+  }, [onOpenDrawer]);
+
+  // Auto-dismiss after 6 seconds
+  useEffect(() => {
+    if (!showDrawerHint) return;
+    const t = setTimeout(dismissDrawerHint, 6000);
+    return () => clearTimeout(t);
+  }, [showDrawerHint, dismissDrawerHint]);
+
   const isAdmin = user?.email === 'hello.haven.nz@gmail.com';
   const showUpgrade = user && tier !== 'premium';
   const upgradeText = tier === 'plus' ? 'Upgrade to Premium' : 'Upgrade to Plus';
@@ -105,15 +151,18 @@ export default function Navbar({ onOpenDrawer }: NavbarProps) {
           {/* Left: module drawer burger (mobile, sidebar pages only) + Logo */}
           <div className="flex items-center gap-2 md:gap-8">
             {onOpenDrawer && (
-              <button
-                type="button"
-                onClick={onOpenDrawer}
-                data-tour="module-drawer-btn"
-                className="md:hidden rounded-md p-2 text-slate-700 hover:bg-slate-100 transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
-                aria-label="Open module navigation"
-              >
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              </button>
+              <div className="relative md:hidden">
+                <button
+                  type="button"
+                  onClick={() => { onOpenDrawer(); dismissDrawerHint(); }}
+                  data-tour="module-drawer-btn"
+                  className="rounded-md p-2 text-slate-700 hover:bg-slate-100 transition-colors dark:text-slate-200 dark:hover:bg-slate-800"
+                  aria-label="Open module navigation"
+                >
+                  <Menu className="h-6 w-6" aria-hidden="true" />
+                </button>
+                {showDrawerHint && <DrawerHint onDismiss={dismissDrawerHint} />}
+              </div>
             )}
 
             <Link to={logoHref} className="flex items-center">
