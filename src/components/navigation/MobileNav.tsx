@@ -106,6 +106,7 @@ export default function MobileNav({ pippaOpen }: MobileNavProps) {
 
         <NavLink
           to="/dashboard"
+          data-tour="nav-dashboard-mobile"
           className={({ isActive }) =>
             [
               "flex flex-1 flex-col items-center gap-1 rounded-xl px-2 py-1 text-small font-medium transition-colors",

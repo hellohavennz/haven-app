@@ -24,7 +24,7 @@ import { useCallback } from 'react';
 import introJs from 'intro.js';
 
 const TOUR_SEEN_KEY = 'haven-tour-seen';
-const TOUR_VERSION  = '2'; // bump this string to re-show the tour to everyone
+const TOUR_VERSION  = '3'; // bump this string to re-show the tour to everyone
 
 export function isTourSeen(): boolean {
   try {
@@ -95,16 +95,25 @@ export function useProductTour() {
         position: 'bottom-left-aligned',
       },
 
-      // Step 4: Mobile bottom nav overview — mobile only (filtered on desktop via queryVisible)
+      // Step 4: Light/dark toggle — always visible in the navbar on all devices
+      {
+        selector: '[data-tour="theme-toggle"]',
+        title: 'Light and dark mode',
+        intro:
+          "Switch between light and dark mode here. Your preference is saved automatically.",
+        position: isMobile ? 'bottom-left-aligned' : 'bottom',
+      },
+
+      // Step 5: Mobile bottom nav overview — mobile only (filtered on desktop via queryVisible)
       {
         selector: '[data-tour="mobile-nav"]',
         title: 'Your study shortcuts',
         intro:
-          "This bar at the bottom gives you one-tap access to Study, Practice, Flashcards, and Exam. It's always visible so you can switch sections instantly.",
+          "This bar at the bottom gives you one-tap access to Study, Practice, Flashcards, Exam, and your Dashboard. Always visible so you can switch sections instantly.",
         position: 'top',
       },
 
-      // Step 5: Study
+      // Step 6: Study
       {
         selector: `[data-tour="nav-study${navSuffix}"]`,
         title: 'Start with Study',
@@ -113,7 +122,7 @@ export function useProductTour() {
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 6: Practice
+      // Step 7: Practice
       {
         selector: `[data-tour="nav-practice${navSuffix}"]`,
         title: 'Test what you know',
@@ -122,7 +131,7 @@ export function useProductTour() {
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 7: Flashcards
+      // Step 8: Flashcards
       // Mobile: targets the MobileNav item.
       // Desktop: floating step (no top-level Navbar link; Flashcards lives inside Practice).
       ...(isMobile
@@ -143,7 +152,7 @@ export function useProductTour() {
             },
           ]),
 
-      // Step 8: Mock exam
+      // Step 9: Mock exam
       {
         selector: `[data-tour="nav-exam${navSuffix}"]`,
         title: "When you're ready",
@@ -152,16 +161,31 @@ export function useProductTour() {
         position: isMobile ? 'top' : 'bottom',
       },
 
-      // Step 9: Module drawer — floating step so it always shows.
-      // The burger button only appears on study/practice pages on mobile, so we
-      // describe where to find it rather than targeting the element directly.
+      // Step 10: Dashboard icon — mobile only (it lives in the bottom nav; desktop uses the profile dropdown)
+      {
+        selector: '[data-tour="nav-dashboard-mobile"]',
+        title: 'Back to your dashboard',
+        intro:
+          "The Dashboard tab shows your overall progress, accuracy, and how you're tracking against your exam date.",
+        position: 'top',
+      },
+
+      // Step 11: Module drawer — floating step so it always shows regardless of which page you're on.
+      // The burger button only appears on study/practice pages, so we describe it here with
+      // the full module list so users know what to expect when they tap it.
       {
         title: 'Jump between modules',
         intro:
-          "On the Study, Practice, and Flashcard pages, tap the menu icon in the top left to see all modules. You can jump to any topic at any time without going back to the start.",
+          "On Study, Practice, and Flashcard pages, tap the menu icon (top left) to see all 5 modules:<br><br>"
+          + "<b>1.</b> Values and Principles<br>"
+          + "<b>2.</b> What is the UK<br>"
+          + "<b>3.</b> A Modern Society<br>"
+          + "<b>4.</b> Arts and Culture<br>"
+          + "<b>5.</b> Government and Law<br><br>"
+          + "Tap any module to jump straight to it.",
       },
 
-      // Step 10: Pippa (conditionally shown — button only exists if tier === 'premium')
+      // Step 12: Pippa (conditionally shown — button only exists if tier === 'premium')
       {
         selector: '[data-tour="pippa-btn"]',
         title: 'Meet Pippa',
