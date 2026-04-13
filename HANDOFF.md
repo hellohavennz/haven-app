@@ -1,5 +1,41 @@
 # Haven App — Handoff Notes
-_Last updated: 2026-03-12 (session 18)_
+_Last updated: 2026-04-13 (session 19 — ILR Tracker)_
+
+---
+
+## Session 19 changes
+
+### ILR & Citizenship Tracker (haven-study-landing)
+
+New standalone Vite + React + TS app at `tracker-src/`. Builds to `tracker/` at repo root.
+Live URL (after deploy): https://haven.study/tracker/
+
+**Files created:**
+- `tracker-src/` — full Vite sub-project
+  - `package.json`, `vite.config.ts`, `tailwind.config.js`, `tsconfig.json`, `postcss.config.js`
+  - `index.html` — app shell with Google Fonts
+  - `src/types/index.ts` — Trip, Setup, ChecklistState, TrackerState
+  - `src/lib/calculations.ts` — absence counting, rolling 12-month peak, date estimators
+  - `src/lib/export.ts` — CSV export (travel log) + text summary export
+  - `src/hooks/useTrackerStore.ts` — localStorage state (key: `haven-tracker-v1`)
+  - `src/components/ui/` — Button, Card, Badge, Input/Textarea
+  - `src/components/layout/` — Header, Footer, Disclaimer
+  - `src/components/tracker/` — ProgressCard, TripForm, TripTable, ChecklistItem
+  - `src/pages/` — Landing, Setup, Dashboard, TravelLog, Checklist
+  - `src/App.tsx` — HashRouter (avoids Netlify SPA redirect config for subfolder)
+  - `src/main.tsx`, `src/index.css`
+  - `public/favicon.svg`
+- `.gitignore` — ignores `tracker-src/node_modules/` and `tracker/`
+- `netlify.toml` — updated with `command = "cd tracker-src && npm ci && npm run build"`
+
+**Key decisions:**
+- HashRouter: all routing via `#/setup`, `#/dashboard` etc. No Netlify redirect rules needed.
+- No backend, no login: all state in localStorage key `haven-tracker-v1`
+- Absence counting: departure + return dates NOT counted (whole absent days only)
+- Rolling 12-month peak: slides 365-day window day-by-day from period start to today
+- ILR limit heuristic: 450 days (5yr), 270 days (3yr), 180 days (2yr) — warnings at 85%
+
+**Deploy note:** Push to main. Netlify runs build command, generates `tracker/`, serves at `/tracker/`.
 
 ---
 
